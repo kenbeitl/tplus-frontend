@@ -6,8 +6,8 @@ interface LogoProps extends React.SVGProps<SVGSVGElement> {
 
 const Logo = ({ open, ...props }: LogoProps) => {
   // Adjust size based on open state
-  const logoWidth = open ? 120 : 32;
-  const logoHeight = open ? (120 * 464) / 960 : 32; // Maintain aspect ratio
+  const logoWidth = open ? 60 : 32;
+  const logoHeight = open ? (60 * 464) / 960 : 32; // Maintain aspect ratio
   
   return (
     <svg 

@@ -1,0 +1,22 @@
+{
+  "nav": {
+    "dashboard": "仪表板",
+    "services": "服务",
+    "govConnect": "政府连接",
+    "bizConnect": "商业连接",
+    "payConnect": "支付连接",
+    "safeConnect": "安全连接",
+    "signConnect": "签署连接"
+  },
+  "app": {
+    "title": "TPlus 前端"
+  },
+  "menu": {
+    "language": "语言"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功"
+  }
+}

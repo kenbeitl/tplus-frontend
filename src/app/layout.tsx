@@ -6,6 +6,7 @@ import MUIThemeProvider from "@/layout/MUIThemeProvider";
 import AuthWrapper from "@/layout/AuthWrapper";
 import AppWrapper from "@/layout/AppWrapper";
 import { usePathname } from "next/navigation";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -26,13 +27,15 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} antialiased`}
       >
-        <MUIThemeProvider>
-          {isAuth ? (
-            <AuthWrapper>{children}</AuthWrapper>
-          ) : (
-            <AppWrapper>{children}</AppWrapper>
-          )}
-        </MUIThemeProvider>
+        <LanguageProvider>
+          <MUIThemeProvider>
+            {isAuth ? (
+              <AuthWrapper>{children}</AuthWrapper>
+            ) : (
+              <AppWrapper>{children}</AppWrapper>
+            )}
+          </MUIThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

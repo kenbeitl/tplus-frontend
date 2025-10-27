@@ -11,14 +11,13 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import LanguageIcon from '@mui/icons-material/Language';
-import InboxIcon from '@mui/icons-material/Inbox';
-import MailIcon from '@mui/icons-material/Mail';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import { Menu, MenuItem, SvgIcon } from '@mui/material';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import { Menu, MenuItem } from '@mui/material';
 import Logo from '@/assets/svg/Logo';
+import { AccountBalanceOutlined, ApartmentOutlined } from '@mui/icons-material';
+import { usePathname, useRouter } from 'next/navigation';
+import { DropdownListItem, NavigationListItem } from '@/components/NavigationComponents';
+import { useLanguage, useTranslations, localeLabels, type Locale } from '@/contexts/LanguageContext';
 
 const drawerWidth = 240;
 const drawerMiniWidth = 64;
@@ -104,11 +103,15 @@ export default function AppWrapper({
   children: React.ReactNode 
 }) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const { locale, setLocale } = useLanguage();
+  const t = useTranslations();
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-  const handleDrawerToggle = () => {
-    setOpen(!open);
+  const handleDrawerClick = () => {
+    setDrawerOpen(!drawerOpen);
   }
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -119,6 +122,21 @@ export default function AppWrapper({
     setAnchorEl(null);
   }
 
+  const handleLanguageChange = (newLocale: Locale) => {
+    setLocale(newLocale);
+    handleClose();
+  };
+
+  // Navigation handler
+  const handleNavigation = (path: string) => {
+    router.push(path);
+  };
+
+  // Check if path is active
+  const isPathActive = (path: string) => {
+    return pathname === path || pathname.startsWith(path + '/');
+  };
+
   return (
     <div className="app-layout min-h-screen">
       <Box className="flex">
@@ -126,13 +144,13 @@ export default function AppWrapper({
           position="fixed"
           color="transparent"
           elevation={0}
-          open={open}
+          open={drawerOpen}
         >
           <Toolbar>
             <IconButton
               size="large"
               edge="start"
-              onClick={handleDrawerToggle}
+              onClick={handleDrawerClick}
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
@@ -157,82 +175,72 @@ export default function AppWrapper({
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>English</MenuItem>
-              <MenuItem onClick={handleClose}>繁體中文</MenuItem>
-              <MenuItem onClick={handleClose}>简体中文</MenuItem>
+              {Object.entries(localeLabels).map(([localeKey, label]) => (
+                <MenuItem 
+                  key={localeKey}
+                  onClick={() => handleLanguageChange(localeKey as Locale)}
+                  selected={locale === localeKey}
+                >
+                  {label}
+                </MenuItem>
+              ))}
             </Menu>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={open}>
+        <Drawer variant="permanent" open={drawerOpen}>
           <DrawerHeader>
-            <Logo open={open} />
+            <Logo open={drawerOpen} />
           </DrawerHeader>
-          <List className="grow">
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-                <ListItemButton
-                  sx={[
-                    {
-                      minHeight: 48,
-                      px: 2.5,
-                    },
-                    open ? { justifyContent: 'initial' } : { justifyContent: 'center' },
-                  ]}
-                >
-                  <ListItemIcon
-                    sx={[
-                      {
-                        minWidth: 0,
-                        justifyContent: 'center',
-                      },
-                      open ? { mr: 3 } : { mr: 'auto' },
-                    ]}
-                  >
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={text}
-                    sx={[
-                      open ? { opacity: 1 } : { opacity: 0 },
-                    ]}
-                  />
-                </ListItemButton>
-              </ListItem>
-            ))}
+          <List 
+            className="grow w-full max-w-sm"
+            component="nav"
+          >
+            {/* Dashboard Navigation */}
+            <NavigationListItem
+              icon={<HomeOutlinedIcon />}
+              primary={t('nav.dashboard')}
+              path="/"
+              isActive={isPathActive('/')}
+              onClick={handleNavigation}
+            />
+            
+            {/* Services Dropdown */}
+            <DropdownListItem
+              icon={<ApartmentOutlined />}
+              primary={t('nav.services')}
+              isActive={pathname.includes('/services')}
+            >
+              <NavigationListItem
+                icon={<AccountBalanceOutlined />}
+                primary={t('nav.govConnect')}
+                path="/services/gov-connect"
+                isActive={isPathActive('/services/gov-connect')}
+                onClick={handleNavigation}
+                sx={{ pl: 4 }}
+              />
+              
+              <NavigationListItem
+                icon={<ApartmentOutlined />}
+                primary={t('nav.bizConnect')}
+                path="/services/biz-connect"
+                isActive={isPathActive('/services/biz-connect')}
+                onClick={handleNavigation}
+                sx={{ pl: 4 }}
+              />
+              
+              <NavigationListItem
+                icon={<AccountBalanceOutlined />}
+                primary={t('nav.payConnect')}
+                path="/services/pay-connect"
+                isActive={isPathActive('/services/pay-connect')}
+                onClick={handleNavigation}
+                sx={{ pl: 4 }}
+              />
+            </DropdownListItem>
           </List>
           <Divider />
           <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-                <ListItemButton
-                  sx={[
-                    {
-                      minHeight: 48,
-                      px: 2.5,
-                    },
-                    open ? { justifyContent: 'initial' } : { justifyContent: 'center' },
-                  ]}
-                >
-                  <ListItemIcon
-                    sx={[
-                      {
-                        minWidth: 0,
-                        justifyContent: 'center',
-                      },
-                      open ? { mr: 3 } : { mr: 'auto' },
-                    ]}
-                  >
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={text}
-                    sx={[
-                      open ? { opacity: 1 } : { opacity: 0 },
-                    ]}
-                  />
-                </ListItemButton>
-              </ListItem>
-            ))}
+           
           </List>
         </Drawer>
         <Box component="main">
