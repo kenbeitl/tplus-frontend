@@ -37,10 +37,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: 'hidden',
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
-  },
+  width: `calc(${theme.spacing(8)} + 1px)`,
 });
 
 const DrawerHeader = styled('div')(({ theme }) => ({
@@ -197,10 +194,12 @@ export default function AppWrapper({
           >
             {/* Dashboard Navigation */}
             <NavigationListItem
+              level={1}
               icon={<HomeOutlinedIcon />}
               primary={t('nav.dashboard')}
               path="/"
               isActive={isPathActive('/')}
+              isDrawerOpen={drawerOpen}
               onClick={handleNavigation}
             />
             
@@ -208,33 +207,38 @@ export default function AppWrapper({
             <DropdownListItem
               icon={<ApartmentOutlined />}
               primary={t('nav.services')}
-              isActive={pathname.includes('/services')}
+              // isActive={pathname.includes('/services')}
+              isDrawerOpen={drawerOpen}
             >
               <NavigationListItem
+                level={2}
                 icon={<AccountBalanceOutlined />}
                 primary={t('nav.govConnect')}
                 path="/services/gov-connect"
                 isActive={isPathActive('/services/gov-connect')}
+                isDrawerOpen={drawerOpen}
                 onClick={handleNavigation}
-                sx={{ pl: 4 }}
               />
               
               <NavigationListItem
+                level={2}
                 icon={<ApartmentOutlined />}
                 primary={t('nav.bizConnect')}
                 path="/services/biz-connect"
                 isActive={isPathActive('/services/biz-connect')}
+                isComingSoon={true}
+                isDrawerOpen={drawerOpen}
                 onClick={handleNavigation}
-                sx={{ pl: 4 }}
               />
               
               <NavigationListItem
+                level={2}
                 icon={<AccountBalanceOutlined />}
                 primary={t('nav.payConnect')}
                 path="/services/pay-connect"
                 isActive={isPathActive('/services/pay-connect')}
+                isDrawerOpen={drawerOpen}
                 onClick={handleNavigation}
-                sx={{ pl: 4 }}
               />
             </DropdownListItem>
           </List>

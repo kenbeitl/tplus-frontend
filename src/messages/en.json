@@ -15,6 +15,7 @@
     "language": "Language"
   },
   "common": {
+    "comingSoon": "Coming Soon",
     "loading": "Loading...",
     "error": "Error",
     "success": "Success"

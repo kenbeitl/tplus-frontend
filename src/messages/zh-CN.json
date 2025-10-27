@@ -15,6 +15,7 @@
     "language": "语言"
   },
   "common": {
+    "comingSoon": "敬请期待",
     "loading": "加载中...",
     "error": "错误",
     "success": "成功"

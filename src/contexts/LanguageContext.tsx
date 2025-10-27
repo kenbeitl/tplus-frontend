@@ -16,46 +16,10 @@ interface LanguageContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
   t: (key: string, params?: Record<string, string | number>) => string;
+  messages: Record<string, any>;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-
-// Simple translation function (can be replaced with next-intl later)
-const translations: Record<Locale, Record<string, string>> = {
-  'en': {
-    'nav.dashboard': 'Dashboard',
-    'nav.services': 'Services',
-    'nav.govConnect': 'GovConnect',
-    'nav.bizConnect': 'BizConnect',
-    'nav.payConnect': 'PayConnect',
-    'nav.safeConnect': 'SafeConnect',
-    'nav.signConnect': 'SignConnect',
-    'app.title': 'TPlus Frontend',
-    'menu.language': 'Language',
-  },
-  'zh-HK': {
-    'nav.dashboard': '儀表板',
-    'nav.services': '服務',
-    'nav.govConnect': '政府連接',
-    'nav.bizConnect': '商業連接',
-    'nav.payConnect': '支付連接',
-    'nav.safeConnect': '安全連接',
-    'nav.signConnect': '簽署連接',
-    'app.title': 'TPlus 前端',
-    'menu.language': '語言',
-  },
-  'zh-CN': {
-    'nav.dashboard': '仪表板',
-    'nav.services': '服务',
-    'nav.govConnect': '政府连接',
-    'nav.bizConnect': '商业连接',
-    'nav.payConnect': '支付连接',
-    'nav.safeConnect': '安全连接',
-    'nav.signConnect': '签署连接',
-    'app.title': 'TPlus 前端',
-    'menu.language': '语言',
-  }
-};
 
 interface LanguageProviderProps {
   children: React.ReactNode;
@@ -64,38 +28,76 @@ interface LanguageProviderProps {
 
 export function LanguageProvider({ children, defaultLocale = 'en' }: LanguageProviderProps) {
   const [locale, setLocale] = useState<Locale>(defaultLocale);
+  const [messages, setMessages] = useState<Record<string, any>>({});
+
+  // Load messages for the current locale
+  const loadMessages = async (localeToLoad: Locale) => {
+    try {
+      const messageModule = await import(`../messages/${localeToLoad}.json`);
+      setMessages(messageModule.default || messageModule);
+    } catch (error) {
+      console.error(`Failed to load messages for locale: ${localeToLoad}`, error);
+      // Fallback to English messages
+      try {
+        const fallbackModule = await import(`../messages/en.json`);
+        setMessages(fallbackModule.default || fallbackModule);
+      } catch (fallbackError) {
+        console.error('Failed to load fallback messages', fallbackError);
+        setMessages({});
+      }
+    }
+  };
 
   // Load saved locale from localStorage on mount
   useEffect(() => {
     const savedLocale = localStorage.getItem('locale') as Locale;
     if (savedLocale && locales.includes(savedLocale)) {
       setLocale(savedLocale);
+      loadMessages(savedLocale);
+    } else {
+      loadMessages(defaultLocale);
     }
-  }, []);
+  }, [defaultLocale]);
 
-  // Save locale to localStorage when it changes
+  // Load messages when locale changes
   useEffect(() => {
+    loadMessages(locale);
     localStorage.setItem('locale', locale);
   }, [locale]);
 
-  // Simple translation function
+  // Translation function that works with nested objects
   const t = (key: string, params?: Record<string, string | number>) => {
-    let translation = translations[locale][key] || key;
+    // Split the key by dots to handle nested objects (e.g., 'nav.dashboard')
+    const keys = key.split('.');
+    let translation: any = messages;
     
-    // Replace parameters if provided
+    // Navigate through the nested object
+    for (const k of keys) {
+      translation = translation?.[k];
+      if (translation === undefined) break;
+    }
+    
+    // If translation not found, return the key
+    if (translation === undefined) {
+      return key;
+    }
+    
+    // Convert to string and replace parameters if provided
+    let result = String(translation);
     if (params) {
       Object.entries(params).forEach(([param, value]) => {
-        translation = translation.replace(`{${param}}`, String(value));
+        result = result.replace(`{${param}}`, String(value));
       });
     }
     
-    return translation;
+    return result;
   };
 
   const value: LanguageContextType = {
     locale,
     setLocale,
-    t
+    t,
+    messages
   };
 
   return (
