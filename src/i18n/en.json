@@ -6,7 +6,10 @@
     "bizConnect": "BizConnect",
     "payConnect": "PayConnect",
     "safeConnect": "SafeConnect",
-    "signConnect": "SignConnect"
+    "signConnect": "SignConnect",
+    "subscriptions": "Subscriptions",
+    "settings": "Settings",
+    "helpCentre": "Help Centre"
   },
   "app": {
     "title": "TPlus Frontend"

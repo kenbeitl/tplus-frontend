@@ -8,7 +8,9 @@ import MuiListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Collapse } from '@mui/material';
 import { ExpandLessOutlined, ExpandMoreOutlined } from '@mui/icons-material';
-import { useTranslations } from '@/contexts/LanguageContext';
+import { useTranslations, useDrawer } from '@/contexts/AppContext';
+import InlineTag from './InlineTag';
+import { usePathname } from 'next/navigation';
 
 // Styled ListItemButton with active state support
 const ListItemIcon = styled(MuiListItemIcon)(() => ({
@@ -16,7 +18,7 @@ const ListItemIcon = styled(MuiListItemIcon)(() => ({
     marginRight: '8px'
 }));
 
-const ListItemButton = styled(MuiListItemButton)<{ isActive?: boolean, isDrawerOpen?: boolean }>(({ theme, isActive, isDrawerOpen }) => ({
+const ListItemButton = styled(MuiListItemButton)<{ isActive?: boolean }>(({ theme, isActive }) => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     borderRadius: theme.shape.borderRadius,
@@ -52,6 +54,8 @@ const ListItemButton = styled(MuiListItemButton)<{ isActive?: boolean, isDrawerO
     }),
 }));
 
+ 
+
 // Reusable Dropdown List Item Component
 interface DropdownListItemProps {
   icon: React.ReactNode;
@@ -67,10 +71,10 @@ export function DropdownListItem({
   primary, 
   children, 
   isActive = false,
-  isDrawerOpen = false,
   defaultOpen = false 
 }: DropdownListItemProps) {
   const [open, setOpen] = React.useState(defaultOpen);
+  const isDrawerOpen = useDrawer().drawerOpen;
 
   const handleClick = () => {
     setOpen(!open);
@@ -80,11 +84,12 @@ export function DropdownListItem({
     <>
       <ListItemButton onClick={handleClick} isActive={isActive}>
         <ListItemIcon>{icon}</ListItemIcon>
-        { isDrawerOpen &&
+        { 
+            isDrawerOpen &&
             <>
                 <ListItemText primary={primary} />
                 {open ? <ExpandLessOutlined /> : <ExpandMoreOutlined />}
-            </>
+            </> 
         }
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
@@ -103,7 +108,6 @@ interface NavigationListItemProps {
   path: string;
   isActive?: boolean;
   isComingSoon?: boolean;
-  isDrawerOpen?: boolean;
   level?: number;
   onClick?: (path: string) => void;
   sx?: any;
@@ -113,27 +117,29 @@ export function NavigationListItem({
   icon, 
   primary, 
   path, 
-  isActive = false,
-  isDrawerOpen = false,
   isComingSoon = false,
   level = 1,
   onClick,
 }: NavigationListItemProps) {
   const t = useTranslations();
+  const pathname = usePathname();
+  const isDrawerOpen = useDrawer().drawerOpen;
   
-  // Memoize the display text to avoid unnecessary re-computations
+  const isPathActive = React.useMemo(() => {
+    return pathname === path || pathname.startsWith(path + '/');
+  }, [pathname, path]);
+  
   const displayText = React.useMemo(() => {
     return isComingSoon ? (
       <>
-        {primary} <span className="tag">{t('common.comingSoon')}</span>
+        {primary} <InlineTag label={t('common.comingSoon')} />
       </>
     ) : primary;
   }, [primary, isComingSoon, t]);
   
   return (
     <ListItemButton
-      isActive={isActive}
-      isDrawerOpen={isDrawerOpen}
+      isActive={isPathActive}
       onClick={() => onClick?.(path)}
       sx={{ pl: level === 2 && isDrawerOpen === true ? 4 : 2 }}
     >

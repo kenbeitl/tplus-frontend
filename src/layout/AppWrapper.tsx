@@ -14,10 +14,11 @@ import LanguageIcon from '@mui/icons-material/Language';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { Menu, MenuItem } from '@mui/material';
 import Logo from '@/assets/svg/Logo';
-import { AccountBalanceOutlined, ApartmentOutlined } from '@mui/icons-material';
+import { AccountBalanceOutlined, ApartmentOutlined, CreditCardOutlined, CreditCardRounded, EditNoteOutlined, HelpOutlineOutlined, SettingsOutlined, ShieldOutlined, ShoppingCartOutlined } from '@mui/icons-material';
 import { usePathname, useRouter } from 'next/navigation';
 import { DropdownListItem, NavigationListItem } from '@/components/NavigationComponents';
-import { useLanguage, useTranslations, localeLabels, type Locale } from '@/contexts/LanguageContext';
+import { useLanguage, useTranslations, useDrawer, localeLabels, type Locale } from '@/contexts/AppContext';
+import path from 'path';
 
 const drawerWidth = 240;
 const drawerMiniWidth = 64;
@@ -100,15 +101,50 @@ export default function AppWrapper({
   children: React.ReactNode 
 }) {
   const theme = useTheme();
-  const pathname = usePathname();
   const router = useRouter();
   const { locale, setLocale } = useLanguage();
   const t = useTranslations();
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const { drawerOpen, toggleDrawer } = useDrawer();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
+  interface serviceListType {
+    icon: React.ReactNode;
+    label: string;
+    path: string;
+    coming_soon?: boolean;
+  }
+
+  const serviceList = [
+    {
+      icon: <EditNoteOutlined />,
+      label: t('nav.signConnect'),
+      path: '/services/sign-connect'
+    },
+    {
+      icon: <ApartmentOutlined />,
+      label: t('nav.bizConnect'),
+      path: '/services/biz-connect',
+      coming_soon: true
+    },
+    { 
+      icon: <CreditCardOutlined />, 
+      label: t('nav.payConnect'),
+      path: '/services/pay-connect'
+    },
+    {
+      icon: <AccountBalanceOutlined />,
+      label: t('nav.govConnect'),
+      path: '/services/gov-connect'
+    },
+    {
+      icon: <ShieldOutlined />,
+      label: t('nav.safeConnect'),
+      path: '/services/safe-connect'
+    },
+  ]
+
   const handleDrawerClick = () => {
-    setDrawerOpen(!drawerOpen);
+    toggleDrawer();
   }
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -129,10 +165,7 @@ export default function AppWrapper({
     router.push(path);
   };
 
-  // Check if path is active
-  const isPathActive = (path: string) => {
-    return pathname === path || pathname.startsWith(path + '/');
-  };
+ 
 
   return (
     <div className="app-layout min-h-screen">
@@ -198,8 +231,6 @@ export default function AppWrapper({
               icon={<HomeOutlinedIcon />}
               primary={t('nav.dashboard')}
               path="/"
-              isActive={isPathActive('/')}
-              isDrawerOpen={drawerOpen}
               onClick={handleNavigation}
             />
             
@@ -207,44 +238,53 @@ export default function AppWrapper({
             <DropdownListItem
               icon={<ApartmentOutlined />}
               primary={t('nav.services')}
-              // isActive={pathname.includes('/services')}
-              isDrawerOpen={drawerOpen}
             >
-              <NavigationListItem
-                level={2}
-                icon={<AccountBalanceOutlined />}
-                primary={t('nav.govConnect')}
-                path="/services/gov-connect"
-                isActive={isPathActive('/services/gov-connect')}
-                isDrawerOpen={drawerOpen}
-                onClick={handleNavigation}
-              />
-              
-              <NavigationListItem
-                level={2}
-                icon={<ApartmentOutlined />}
-                primary={t('nav.bizConnect')}
-                path="/services/biz-connect"
-                isActive={isPathActive('/services/biz-connect')}
-                isComingSoon={true}
-                isDrawerOpen={drawerOpen}
-                onClick={handleNavigation}
-              />
-              
-              <NavigationListItem
-                level={2}
-                icon={<AccountBalanceOutlined />}
-                primary={t('nav.payConnect')}
-                path="/services/pay-connect"
-                isActive={isPathActive('/services/pay-connect')}
-                isDrawerOpen={drawerOpen}
-                onClick={handleNavigation}
-              />
+              { 
+                serviceList.map((service: serviceListType) => (
+                  <NavigationListItem
+                    level={2}
+                    icon={service.icon}
+                    primary={service.label}
+                    path={service.path}
+                    isComingSoon={service.coming_soon || false}
+                    onClick={handleNavigation}
+                  />
+                )) 
+              }
             </DropdownListItem>
           </List>
           <Divider />
-          <List>
-           
+          <List
+            className="w-full max-w-sm"
+            component="nav"
+          >
+            {/* Subscription Navigation */}
+            <NavigationListItem
+              level={1}
+              icon={<ShoppingCartOutlined />}
+              primary={t('nav.subscriptions')}
+              path="/subscriptions"
+              onClick={handleNavigation}
+            />
+            
+            {/* Settings Navigation */}
+            <NavigationListItem
+              level={1}
+              icon={<SettingsOutlined />}
+              primary={t('nav.settings')}
+              path="/settings"
+              onClick={handleNavigation}
+            />
+
+            {/* Help Centre Navigation */}
+            <NavigationListItem
+              level={1}
+              icon={<HelpOutlineOutlined />}
+              primary={t('nav.helpCentre')}
+              path="/help-centre"
+              onClick={handleNavigation}
+            />
+            
           </List>
         </Drawer>
         <Box component="main">

@@ -12,34 +12,40 @@ export const localeLabels: Record<Locale, string> = {
   'zh-CN': '简体中文'
 };
 
-interface LanguageContextType {
+interface AppContextType {
+  // Language
   locale: Locale;
   setLocale: (locale: Locale) => void;
   t: (key: string, params?: Record<string, string | number>) => string;
   messages: Record<string, any>;
+  // Drawer
+  drawerOpen: boolean;
+  setDrawerOpen: (open: boolean) => void;
+  toggleDrawer: () => void;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const AppContext = createContext<AppContextType | undefined>(undefined);
 
-interface LanguageProviderProps {
+interface AppProviderProps {
   children: React.ReactNode;
   defaultLocale?: Locale;
 }
 
-export function LanguageProvider({ children, defaultLocale = 'en' }: LanguageProviderProps) {
+export function AppProvider({ children, defaultLocale = 'en' }: AppProviderProps) {
   const [locale, setLocale] = useState<Locale>(defaultLocale);
   const [messages, setMessages] = useState<Record<string, any>>({});
+  const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
 
   // Load messages for the current locale
   const loadMessages = async (localeToLoad: Locale) => {
     try {
-      const messageModule = await import(`../messages/${localeToLoad}.json`);
+      const messageModule = await import(`../i18n/${localeToLoad}.json`);
       setMessages(messageModule.default || messageModule);
     } catch (error) {
       console.error(`Failed to load messages for locale: ${localeToLoad}`, error);
       // Fallback to English messages
       try {
-        const fallbackModule = await import(`../messages/en.json`);
+        const fallbackModule = await import(`../i18n/en.json`);
         setMessages(fallbackModule.default || fallbackModule);
       } catch (fallbackError) {
         console.error('Failed to load fallback messages', fallbackError);
@@ -93,30 +99,49 @@ export function LanguageProvider({ children, defaultLocale = 'en' }: LanguagePro
     return result;
   };
 
-  const value: LanguageContextType = {
+  const toggleDrawer = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
+  const value: AppContextType = {
     locale,
     setLocale,
     t,
-    messages
+    messages,
+    drawerOpen,
+    setDrawerOpen,
+    toggleDrawer
   };
 
   return (
-    <LanguageContext.Provider value={value}>
+    <AppContext.Provider value={value}>
       {children}
-    </LanguageContext.Provider>
+    </AppContext.Provider>
   );
 }
 
-export function useLanguage(): LanguageContextType {
-  const context = useContext(LanguageContext);
+export function useApp(): AppContextType {
+  const context = useContext(AppContext);
   if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+    throw new Error('useApp must be used within an AppProvider');
   }
   return context;
 }
 
+// Hook for language functionality
+export function useLanguage() {
+  const { locale, setLocale, t, messages } = useApp();
+  return { locale, setLocale, t, messages };
+}
+
 // Hook for just getting the translation function
 export function useTranslations() {
-  const { t } = useLanguage();
+  const { t } = useApp();
   return t;
+}
+
+// Hook for drawer functionality
+export function useDrawer() {
+  const { drawerOpen, setDrawerOpen, toggleDrawer } = useApp();
+  return { drawerOpen, setDrawerOpen, toggleDrawer };
 }

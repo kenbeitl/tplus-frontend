@@ -6,7 +6,10 @@
     "bizConnect": "商業連接",
     "payConnect": "支付連接",
     "safeConnect": "安全連接",
-    "signConnect": "簽署連接"
+    "signConnect": "簽署連接",
+    "subscriptions": "訂閱",
+    "settings": "設置",
+    "helpCentre": "幫助中心"
   },
   "app": {
     "title": "TPlus 前端"
