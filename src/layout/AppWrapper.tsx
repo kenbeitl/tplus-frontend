@@ -1,6 +1,9 @@
 "use client";
 
 import * as React from 'react';
+import { useRouter } from 'next/navigation';
+
+// MUI Components
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -9,16 +12,15 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import LanguageIcon from '@mui/icons-material/Language';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { Menu, MenuItem } from '@mui/material';
+
+// Icons
+import { Building, Building2, CreditCard, FilePenLine, Globe, HelpCircleIcon, House, PanelLeft, Settings, Shield, ShoppingCart } from 'lucide-react';
+
+// Local Components & Contexts
 import Logo from '@/assets/svg/Logo';
-import { AccountBalanceOutlined, ApartmentOutlined, CreditCardOutlined, CreditCardRounded, EditNoteOutlined, HelpOutlineOutlined, SettingsOutlined, ShieldOutlined, ShoppingCartOutlined } from '@mui/icons-material';
-import { usePathname, useRouter } from 'next/navigation';
 import { DropdownListItem, NavigationListItem } from '@/components/NavigationComponents';
 import { useLanguage, useTranslations, useDrawer, localeLabels, type Locale } from '@/contexts/AppContext';
-import path from 'path';
 
 const drawerWidth = 240;
 const drawerMiniWidth = 64;
@@ -116,28 +118,28 @@ export default function AppWrapper({
 
   const serviceList = [
     {
-      icon: <EditNoteOutlined />,
+      icon: <FilePenLine />,
       label: t('nav.signConnect'),
       path: '/services/sign-connect'
     },
     {
-      icon: <ApartmentOutlined />,
+      icon: <Building2 />,
       label: t('nav.bizConnect'),
       path: '/services/biz-connect',
       coming_soon: true
     },
     { 
-      icon: <CreditCardOutlined />, 
+      icon: <CreditCard />, 
       label: t('nav.payConnect'),
       path: '/services/pay-connect'
     },
     {
-      icon: <AccountBalanceOutlined />,
+      icon: <Building />,
       label: t('nav.govConnect'),
       path: '/services/gov-connect'
     },
     {
-      icon: <ShieldOutlined />,
+      icon: <Shield />,
       label: t('nav.safeConnect'),
       path: '/services/safe-connect'
     },
@@ -178,25 +180,22 @@ export default function AppWrapper({
         >
           <Toolbar>
             <IconButton
-              size="large"
               edge="start"
-              onClick={handleDrawerClick}
-              color="inherit"
               aria-label="menu"
-              sx={{ mr: 2 }}
+              color="inherit"
+              onClick={handleDrawerClick}
             >
-              <MenuIcon />
+              <PanelLeft size={20} color={'#000000'} />
             </IconButton>
             <div className="grow" />
             <IconButton
-              size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleMenu}
               color="inherit"
             >
-              <LanguageIcon />
+              <Globe size={20} color={'#000000'} />
             </IconButton>
             <Menu
               id="language-menu"
@@ -228,7 +227,7 @@ export default function AppWrapper({
             {/* Dashboard Navigation */}
             <NavigationListItem
               level={1}
-              icon={<HomeOutlinedIcon />}
+              icon={<House />}
               primary={t('nav.dashboard')}
               path="/"
               onClick={handleNavigation}
@@ -236,7 +235,7 @@ export default function AppWrapper({
             
             {/* Services Dropdown */}
             <DropdownListItem
-              icon={<ApartmentOutlined />}
+              icon={<Building2 />}
               primary={t('nav.services')}
             >
               { 
@@ -261,7 +260,7 @@ export default function AppWrapper({
             {/* Subscription Navigation */}
             <NavigationListItem
               level={1}
-              icon={<ShoppingCartOutlined />}
+              icon={<ShoppingCart />}
               primary={t('nav.subscriptions')}
               path="/subscriptions"
               onClick={handleNavigation}
@@ -270,7 +269,7 @@ export default function AppWrapper({
             {/* Settings Navigation */}
             <NavigationListItem
               level={1}
-              icon={<SettingsOutlined />}
+              icon={<Settings />}
               primary={t('nav.settings')}
               path="/settings"
               onClick={handleNavigation}
@@ -279,7 +278,7 @@ export default function AppWrapper({
             {/* Help Centre Navigation */}
             <NavigationListItem
               level={1}
-              icon={<HelpOutlineOutlined />}
+              icon={<HelpCircleIcon />}
               primary={t('nav.helpCentre')}
               path="/help-centre"
               onClick={handleNavigation}

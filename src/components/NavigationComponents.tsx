@@ -1,57 +1,64 @@
 "use client";
 
 import * as React from 'react';
+import { usePathname } from 'next/navigation';
+
+// MUI Components
 import { styled } from '@mui/material/styles';
 import MuiListItemButton from '@mui/material/ListItemButton';
-import List from '@mui/material/List';
 import MuiListItemIcon from '@mui/material/ListItemIcon';
+import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 import { Collapse } from '@mui/material';
-import { ExpandLessOutlined, ExpandMoreOutlined } from '@mui/icons-material';
+
+// MUI Icons
+import { ChevronDown, ChevronUp } from 'lucide-react';
+
+// Local Components & Contexts
 import { useTranslations, useDrawer } from '@/contexts/AppContext';
 import InlineTag from './InlineTag';
-import { usePathname } from 'next/navigation';
 
 // Styled ListItemButton with active state support
 const ListItemIcon = styled(MuiListItemIcon)(() => ({
     minWidth: 'auto',
-    marginRight: '8px'
+    width: '20px',
+    color: 'black'
 }));
 
-const ListItemButton = styled(MuiListItemButton)<{ isActive?: boolean }>(({ theme, isActive }) => ({
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    borderRadius: theme.shape.borderRadius,
- 
-    '&.Mui-selected, &.Mui-selected:hover': {
-        backgroundColor: theme.palette.primary.main,
-        color: theme.palette.primary.contrastText,
+const ListItemButton = styled(MuiListItemButton)<{ isActive?: boolean, isDrawerOpen?: boolean }>(({ theme, isActive, isDrawerOpen }) => ({
+    paddingTop: theme.spacing(0.5),
+    paddingBottom: theme.spacing(0.5),
+    // Level 2 base styles
+    '&.lv2': {
+        paddingLeft: theme.spacing(2),
+        borderLeft: isDrawerOpen ? `1px solid ${theme.palette.divider}` : 0,
+        marginLeft: isDrawerOpen ? theme.spacing(2) : 0,
     },
+    
+    // Button wrapper styles
+    '& .real-btn': {
+        width: '100%',
+        padding: theme.spacing(0.5, 1),
+        background: isActive ? theme.palette.gradient.primary : 'transparent',
+        color: isActive ? theme.palette.primary.contrastText : 'inherit',
+        borderRadius: isActive ? theme.shape.borderRadius : 0,
+    },
+    
+    // Tag styles
     '& .tag': {
         background: theme.palette.gradient.secondary,
         borderRadius: theme.shape.borderRadius,
-        paddingLeft: theme.spacing(0.5),
-        paddingRight: theme.spacing(0.5),
+        padding: theme.spacing(0, 0.5),
         fontSize: '0.75rem',
         fontWeight: 500,
         color: theme.palette.primary.contrastText,
     },
-
-    ...(isActive && {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        background: theme.palette.gradient.primary,
-        color: theme.palette.primary.contrastText,
-
-        '&:hover': {
-            backgroundColor: theme.palette.primary.dark,
-        },
-        '& .MuiListItemIcon-root': {
-            color: theme.palette.primary.contrastText,
-            borderRadius: theme.shape.borderRadius,
-        },   
-       
-    }),
+    
+    // Icon styles
+    '& .MuiListItemIcon-root': {
+        marginRight: isDrawerOpen ? theme.spacing(1) : 0,
+        color: (isActive) ? theme.palette.primary.contrastText : 'black',
+    },
 }));
 
  
@@ -82,15 +89,21 @@ export function DropdownListItem({
 
   return (
     <>
-      <ListItemButton onClick={handleClick} isActive={isActive}>
-        <ListItemIcon>{icon}</ListItemIcon>
-        { 
-            isDrawerOpen &&
-            <>
-                <ListItemText primary={primary} />
-                {open ? <ExpandLessOutlined /> : <ExpandMoreOutlined />}
-            </> 
-        }
+      <ListItemButton 
+        onClick={handleClick} 
+        isActive={isActive}
+        isDrawerOpen={isDrawerOpen}
+      >
+        <div className="flex justify-center real-btn">
+            <ListItemIcon>{icon}</ListItemIcon>
+            { 
+                isDrawerOpen &&
+                <>
+                    <ListItemText primary={primary} />
+                    {open ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                </> 
+            }
+        </div>
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
@@ -101,7 +114,6 @@ export function DropdownListItem({
   );
 }
 
-// Simple Navigation List Item Component
 interface NavigationListItemProps {
   icon: React.ReactNode;
   primary: string;
@@ -139,12 +151,15 @@ export function NavigationListItem({
   
   return (
     <ListItemButton
-      isActive={isPathActive}
-      onClick={() => onClick?.(path)}
-      sx={{ pl: level === 2 && isDrawerOpen === true ? 4 : 2 }}
+        className={`lv${level}`}
+        isActive={isPathActive}
+        isDrawerOpen={isDrawerOpen}
+        onClick={() => onClick?.(path)}
     >
-      <ListItemIcon>{icon}</ListItemIcon>
-      { isDrawerOpen && <ListItemText primary={displayText} /> }
+        <div className="flex justify-center real-btn">
+            <ListItemIcon>{icon}</ListItemIcon>
+            { isDrawerOpen && <ListItemText primary={displayText} /> }
+        </div>
     </ListItemButton>
   );
 }

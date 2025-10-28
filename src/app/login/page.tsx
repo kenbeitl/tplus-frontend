@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import FluidLogo from '../../components/FluidLogo';
 
-export default function Home() {
+export default function Login() {
 
 
   return (
