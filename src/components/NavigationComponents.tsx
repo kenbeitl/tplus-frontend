@@ -94,7 +94,7 @@ export function DropdownListItem({
         isActive={isActive}
         isDrawerOpen={isDrawerOpen}
       >
-        <div className="flex justify-center real-btn">
+        <div className="flex justify-center items-center real-btn">
             <ListItemIcon>{icon}</ListItemIcon>
             { 
                 isDrawerOpen &&
@@ -156,7 +156,7 @@ export function NavigationListItem({
         isDrawerOpen={isDrawerOpen}
         onClick={() => onClick?.(path)}
     >
-        <div className="flex justify-center real-btn">
+        <div className="flex justify-center items-center real-btn">
             <ListItemIcon>{icon}</ListItemIcon>
             { isDrawerOpen && <ListItemText primary={displayText} /> }
         </div>

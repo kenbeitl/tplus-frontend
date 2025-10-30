@@ -2,11 +2,13 @@
 
 import Spacer from '@/components/ui/Spacer';
 import Modal from '@/components/Modal';
+import Form from '@/components/form/Form';
+import FormField from '@/components/form/FormField';
+import FormActions from '@/components/form/FormActions';
 import { useModal } from '@/hooks/useModal';
 import { useFormValidation } from '@/hooks/useFormValidation';
-import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, TextField, Typography } from '@mui/material';
+import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { ArrowRight, CircleCheckBig, FileText } from 'lucide-react';
-import theme from '@/theme/theme';
 
 export default function GovConnect() {
   const applicationModal = useModal();
@@ -15,9 +17,9 @@ export default function GovConnect() {
     {
       name: '',
       phone_number: '',
-      email: 'demo@tradelink.com.hk',
+      email: 'demo@tradelink.com.hk', // To be filled with logged in user's email
       job_title: '',
-      company_name: 'Demo company',
+      company_name: 'Demo company', // To be filled with logged in user's company name
       message: '',
     },
     {
@@ -28,7 +30,7 @@ export default function GovConnect() {
       },
       phone_number: {
         required: true,
-        pattern: /^[0-9]{8,15}$/,
+        pattern: /^[+0-9]{8,15}$/,
         message: 'Phone number must be 8-15 digits',
       },
       email: {
@@ -56,6 +58,9 @@ export default function GovConnect() {
     if (form.validateAll()) {
       console.log('Form submitted:', form.values);
       // Handle form submission here
+      
+
+
       applicationModal.handleClose();
       form.reset();
     }
@@ -192,110 +197,106 @@ export default function GovConnect() {
     </Grid>
 
     <Modal open={applicationModal.open} onClose={handleCloseModal} maxWidth={800}>      
-      <Grid container spacing={2}>
-        <Grid size={{ xs: 12, sm: 6 }}>
-          <TextField
-            label="Name"
-            placeholder="Enter your full name"
-            value={form.values.name}
-            onChange={(e) => form.handleChange('name', e.target.value)}
-            onBlur={() => form.handleBlur('name')}
-            error={form.touched.name && !!form.errors.name}
-            helperText={form.touched.name && form.errors.name}
-            required
-            fullWidth
-            slotProps={{ inputLabel: { shrink: true } }}
-          />
+      <Form onSubmit={handleSubmit}>
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <FormField
+              name="name"
+              label="Name"
+              placeholder="Enter your full name"
+              value={form.values.name}
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              error={form.errors.name}
+              touched={form.touched.name}
+              required
+            />
+          </Grid>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <FormField
+              name="phone_number"
+              label="Phone Number"
+              placeholder="Enter phone number"
+              value={form.values.phone_number}
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              error={form.errors.phone_number}
+              touched={form.touched.phone_number}
+              required
+            />
+          </Grid>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <FormField
+              name="email"
+              label="Email"
+              placeholder="Enter email address"
+              value={form.values.email}
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              error={form.errors.email}
+              touched={form.touched.email}
+              required
+              disabled
+            />
+          </Grid>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <FormField
+              name="job_title"
+              label="Job Title"
+              placeholder="e.g., Operations Manager"
+              value={form.values.job_title}
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              error={form.errors.job_title}
+              touched={form.touched.job_title}
+              required
+            />
+          </Grid>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <FormField
+              name="company_name"
+              label="Company Name"
+              placeholder="Enter your company name"
+              value={form.values.company_name}
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              error={form.errors.company_name}
+              touched={form.touched.company_name}
+              required
+              disabled
+            />
+          </Grid>
+          <Grid size={{ xs: 12 }}>
+            <FormField
+              name="message"
+              label="Message (optional)"
+              placeholder="Additional messages or specific requirements..."
+              value={form.values.message}
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              error={form.errors.message}
+              touched={form.touched.message}
+              multiline
+              minRows={4}
+              maxRows={10}
+            />
+          </Grid>
         </Grid>
-        <Grid size={{ xs: 12, sm: 6 }}>
-          <TextField
-            label="Phone Number"
-            placeholder="Enter phone number"
-            value={form.values.phone_number}
-            onChange={(e) => form.handleChange('phone_number', e.target.value)}
-            onBlur={() => form.handleBlur('phone_number')}
-            error={form.touched.phone_number && !!form.errors.phone_number}
-            helperText={form.touched.phone_number && form.errors.phone_number}
-            required
-            fullWidth
-            slotProps={{ inputLabel: { shrink: true } }}
-          />
-        </Grid>
-        <Grid size={{ xs: 12, sm: 6 }}>
-          <TextField
-            label="Email"
-            placeholder="Enter email address"
-            value={form.values.email}
-            onChange={(e) => form.handleChange('email', e.target.value)}
-            onBlur={() => form.handleBlur('email')}
-            error={form.touched.email && !!form.errors.email}
-            helperText={form.touched.email && form.errors.email}
-            required
-            disabled
-            fullWidth
-            slotProps={{ inputLabel: { shrink: true } }}
-          />
-        </Grid>
-        <Grid size={{ xs: 12, sm: 6 }}>
-          <TextField
-            label="Job Title"
-            placeholder="Enter your job title"
-            value={form.values.job_title}
-            onChange={(e) => form.handleChange('job_title', e.target.value)}
-            onBlur={() => form.handleBlur('job_title')}
-            error={form.touched.job_title && !!form.errors.job_title}
-            helperText={form.touched.job_title && form.errors.job_title}
-            required
-            fullWidth
-            slotProps={{ inputLabel: { shrink: true } }}
-          />
-        </Grid>
-         <Grid size={{ xs: 12, sm: 6 }}>
-          <TextField
-            label="Company Name"
-            placeholder="Enter your company name"
-            value={form.values.company_name}
-            onChange={(e) => form.handleChange('company_name', e.target.value)}
-            onBlur={() => form.handleBlur('company_name')}
-            error={form.touched.company_name && !!form.errors.company_name}
-            helperText={form.touched.company_name && form.errors.company_name}
-            required
-            disabled
-            fullWidth
-            slotProps={{ inputLabel: { shrink: true } }}
-          />
-        </Grid>
-        <Grid size={{ xs: 12 }}>
-          <TextField
-            label="Message (optional)"
-            placeholder="Enter your message here..."
-            multiline
-            minRows={4}
-            maxRows={10}
-            value={form.values.message}
-            onChange={(e) => form.handleChange('message', e.target.value)}
-            onBlur={() => form.handleBlur('message')}
-            error={form.touched.message && !!form.errors.message}
-            helperText={form.touched.message && form.errors.message}
-            fullWidth
-            slotProps={{ inputLabel: { shrink: true } }}
-          />
-        </Grid>
-      </Grid>
 
-      <Box sx={{ mt: 3, display: 'flex', gap: 2, justifyContent: 'flex-end' }}>
-        <Button variant="outlined" onClick={handleCloseModal}>
-          Cancel
-        </Button>
-        <Button 
-          variant="gradient" 
-          color="primary" 
-          onClick={handleSubmit}
-          disabled={isSubmitDisabled}
+        <Typography 
+          sx={{ mt: 2 }} 
+          variant="body2" 
+          component="p"
         >
-          Submit Application
-        </Button>
-      </Box>
+          By submitting this form, I confirm I have read and agree to T+'s Privacy Statement.
+        </Typography>
+
+        <FormActions
+          onCancel={handleCloseModal}
+          submitLabel="Submit Application"
+          isSubmitDisabled={isSubmitDisabled}
+        />
+      </Form>
     </Modal>
    </>
   );
