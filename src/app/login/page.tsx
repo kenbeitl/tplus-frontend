@@ -1,10 +1,10 @@
-import React from 'react';
+
 import {
   Card,
   Container,
   Typography,
 } from '@mui/material';
-import FluidLogo from '../../components/FluidLogo';
+import Logo from '@/assets/svg/Logo';
 
 export default function Login() {
 
@@ -15,7 +15,9 @@ export default function Login() {
         maxWidth="md"
         className="flex items-center justify-center min-h-screen">
         <Card variant="outlined" className="w-100 p-6 text-center">
-          <FluidLogo width={100} className="flex justify-center mb-6" />
+          <div className="flex justify-center mb-6">
+            <Logo open={true} />
+          </div>
           <Typography sx={{ mb: 3 }} variant="subtitle1" component="p" color="text.secondary">Sign in to access your business services</Typography>
           
         </Card>

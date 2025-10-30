@@ -286,7 +286,7 @@ export default function AppWrapper({
             
           </List>
         </Drawer>
-        <Box component="main">
+        <Box component="main" sx={{ width: '100%' }}>
           <DrawerHeader />
           {children}
         </Box>

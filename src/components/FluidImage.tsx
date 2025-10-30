@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import { Box, SxProps, Theme } from "@mui/material";
 
-interface FluidLogoProps {
+interface FluidImageProps {
+    src: string;
     width?: number;
     height?: number;
     alt?: string;
@@ -10,19 +11,22 @@ interface FluidLogoProps {
     className?: string;
 }
 
-export default function FluidLogo({ 
+export default function FluidImage({
+    src,
     width, 
     height, 
     alt = "",
+    sx,
     priority = false,
     className = ""
-}: FluidLogoProps) {
+}: FluidImageProps) {
     return (
         <Box 
             className={className}
+            sx={sx}
         >
             <Image 
-                src="/logo-T-Plus.svg" 
+                src={src} 
                 alt={alt} 
                 width={width || 0}
                 height={height || 0}
