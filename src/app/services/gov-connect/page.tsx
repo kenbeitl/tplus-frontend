@@ -7,11 +7,14 @@ import FormField from '@/components/form/FormField';
 import FormActions from '@/components/form/FormActions';
 import { useModal } from '@/hooks/useModal';
 import { useFormValidation } from '@/hooks/useFormValidation';
+import { applicationService, ApplicationFormData } from '@/services';
 import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { ArrowRight, CircleCheckBig, FileText } from 'lucide-react';
+import { useState } from 'react';
 
 export default function GovConnect() {
   const applicationModal = useModal();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useFormValidation(
     {
@@ -54,15 +57,27 @@ export default function GovConnect() {
     }
   );
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (form.validateAll()) {
-      console.log('Form submitted:', form.values);
-      // Handle form submission here
-      
-
-
-      applicationModal.handleClose();
-      form.reset();
+      setIsSubmitting(true);
+      try {
+        // Submit application via API
+        const result = await applicationService.submit(form.values as ApplicationFormData);
+        console.log('Application submitted successfully:', result);
+        
+        // Close modal and reset form on success
+        applicationModal.handleClose();
+        form.reset();
+        
+        // Optional: Show success message
+        // You can use a toast notification here
+      } catch (error) {
+        console.error('Failed to submit application:', error);
+        // Optional: Show error message
+        // You can use a toast notification here
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -74,7 +89,7 @@ export default function GovConnect() {
   // Check if form is touched and has no errors
   const isFormTouched = Object.keys(form.touched).some(key => form.touched[key]);
   const hasErrors = Object.keys(form.errors).some(key => form.errors[key]);
-  const isSubmitDisabled = !isFormTouched || hasErrors;
+  const isSubmitDisabled = !isFormTouched || hasErrors || isSubmitting;
 
   return (
    <>
