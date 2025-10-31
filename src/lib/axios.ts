@@ -19,6 +19,15 @@ axiosInstance.interceptors.request.use(
         config.headers.Authorization = `Bearer ${token}`;
       }
     }
+
+    // Wrap data payload for Strapi (only for POST, PUT, PATCH)
+    if (config.data && ['post', 'put', 'patch'].includes(config.method?.toLowerCase() || '')) {
+      // Check if data is already wrapped
+      if (!config.data.data) {
+        config.data = { data: config.data };
+      }
+    }
+
     return config;
   },
   (error) => {
@@ -29,6 +38,13 @@ axiosInstance.interceptors.request.use(
 // Response interceptor
 axiosInstance.interceptors.response.use(
   (response) => {
+    // Unwrap Strapi response data
+    if (response.data && response.data.data !== undefined) {
+      response.data = {
+        ...response.data,
+        data: response.data.data
+      };
+    }
     return response;
   },
   (error) => {

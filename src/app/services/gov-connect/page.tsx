@@ -4,10 +4,11 @@ import Spacer from '@/components/ui/Spacer';
 import Modal from '@/components/Modal';
 import Form from '@/components/form/Form';
 import FormField from '@/components/form/FormField';
+import HiddenField from '@/components/form/HiddenField';
 import FormActions from '@/components/form/FormActions';
 import { useModal } from '@/hooks/useModal';
 import { useFormValidation } from '@/hooks/useFormValidation';
-import { applicationService, ApplicationFormData } from '@/services';
+import { applicationService, type ApplicationFormData } from '@/services';
 import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { ArrowRight, CircleCheckBig, FileText } from 'lucide-react';
 import { useState } from 'react';
@@ -18,20 +19,25 @@ export default function GovConnect() {
   
   const form = useFormValidation(
     {
+      formID: 'govconnect-dual-declaration', // Hidden field to identify form type
       name: '',
-      phone_number: '',
+      phoneNumber: '',
       email: 'demo@tradelink.com.hk', // To be filled with logged in user's email
-      job_title: '',
-      company_name: 'Demo company', // To be filled with logged in user's company name
+      jobTitle: '',
+      companyName: 'Demo company', // To be filled with logged in user's company name
       message: '',
     },
     {
+      // formID doesn't need validation as it's a hidden field
+      formID: {
+        required: false,
+      },
       name: {
         required: true,
         minLength: 2,
         message: 'Name is required (min 2 characters)',
       },
-      phone_number: {
+      phoneNumber: {
         required: true,
         pattern: /^[+0-9]{8,15}$/,
         message: 'Phone number must be 8-15 digits',
@@ -41,12 +47,12 @@ export default function GovConnect() {
         pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
         message: 'Valid email is required',
       },
-      job_title: {
+      jobTitle: {
         required: true,
         minLength: 2,
         message: 'Job title is required (min 2 characters)',
       },
-      company_name: {
+      companyName: {
         required: true,
         minLength: 2,
         message: 'Company name is required (min 2 characters)',
@@ -213,6 +219,11 @@ export default function GovConnect() {
 
     <Modal open={applicationModal.open} onClose={handleCloseModal} maxWidth={800}>      
       <Form onSubmit={handleSubmit}>
+        <HiddenField
+          name="formID"
+          value={form.values.formID}
+          onChange={form.handleChange}
+        />
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, sm: 6 }}>
             <FormField
@@ -229,14 +240,14 @@ export default function GovConnect() {
           </Grid>
           <Grid size={{ xs: 12, sm: 6 }}>
             <FormField
-              name="phone_number"
+              name="phoneNumber"
               label="Phone Number"
               placeholder="Enter phone number"
-              value={form.values.phone_number}
+              value={form.values.phoneNumber}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
-              error={form.errors.phone_number}
-              touched={form.touched.phone_number}
+              error={form.errors.phoneNumber}
+              touched={form.touched.phoneNumber}
               required
             />
           </Grid>
@@ -251,34 +262,32 @@ export default function GovConnect() {
               error={form.errors.email}
               touched={form.touched.email}
               required
-              disabled
             />
           </Grid>
           <Grid size={{ xs: 12, sm: 6 }}>
             <FormField
-              name="job_title"
+              name="jobTitle"
               label="Job Title"
               placeholder="e.g., Operations Manager"
-              value={form.values.job_title}
+              value={form.values.jobTitle}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
-              error={form.errors.job_title}
-              touched={form.touched.job_title}
+              error={form.errors.jobTitle}
+              touched={form.touched.jobTitle}
               required
             />
           </Grid>
           <Grid size={{ xs: 12, sm: 6 }}>
             <FormField
-              name="company_name"
+              name="companyName"
               label="Company Name"
               placeholder="Enter your company name"
-              value={form.values.company_name}
+              value={form.values.companyName}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
-              error={form.errors.company_name}
-              touched={form.touched.company_name}
+              error={form.errors.companyName}
+              touched={form.touched.companyName}
               required
-              disabled
             />
           </Grid>
           <Grid size={{ xs: 12 }}>

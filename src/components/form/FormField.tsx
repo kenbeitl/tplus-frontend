@@ -10,6 +10,7 @@ interface FormFieldProps extends Omit<TextFieldProps, 'value' | 'onChange' | 'on
   error?: string;
   touched?: boolean;
   shrinkLabel?: boolean;
+  hidden?: boolean;
 }
 
 export default function FormField({
@@ -20,8 +21,21 @@ export default function FormField({
   error,
   touched,
   shrinkLabel = true,
+  hidden = false,
   ...textFieldProps
 }: FormFieldProps) {
+  // If hidden, render a hidden input
+  if (hidden) {
+    return (
+      <input
+        type="hidden"
+        name={name}
+        value={value}
+        onChange={(e) => onChange(name, e.target.value)}
+      />
+    );
+  }
+
   return (
     <TextField
       value={value}

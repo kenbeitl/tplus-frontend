@@ -1,71 +1,81 @@
 import { apiService } from '@/lib/api';
+import { strapiService } from '@/lib/strapi';
 
 // Application form data type
 export interface ApplicationFormData {
+  formID?: string;
   name: string;
-  phone_number: string;
+  phoneNumber: string;
   email: string;
-  job_title: string;
-  company_name: string;
+  jobTitle: string;
+  companyName: string;
   message?: string;
 }
 
 export interface Application {
-  id: string;
-  name: string;
-  phone_number: string;
-  email: string;
-  job_title: string;
-  company_name: string;
-  message?: string;
-  status: 'pending' | 'approved' | 'rejected';
-  createdAt: string;
-  updatedAt: string;
+  id: number;
+  attributes: {
+    formID?: string;
+    name: string;
+    phoneNumber: string;
+    email: string;
+    jobTitle: string;
+    companyName: string;
+    message?: string;
+    status: 'pending' | 'approved' | 'rejected';
+    createdAt: string;
+    updatedAt: string;
+  };
 }
 
 export interface ApplicationListParams {
   page?: number;
-  limit?: number;
+  pageSize?: number;
   status?: string;
   search?: string;
 }
 
 export interface ApplicationListResponse {
-  applications: Application[];
-  total: number;
-  page: number;
-  limit: number;
+  data: Application[];
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
 }
 
 // Application service
 export const applicationService = {
   // Submit new application
   submit: async (data: ApplicationFormData): Promise<Application> => {
-    return apiService.post<Application>('/applications', data);
+    return strapiService.create<Application>('applications', data);
   },
 
   // Get all applications with pagination
   getAll: async (params?: ApplicationListParams): Promise<ApplicationListResponse> => {
-    return apiService.get<ApplicationListResponse>('/applications', params);
+    return strapiService.getCollection<Application>('applications', params);
   },
 
   // Get single application by ID
-  getById: async (id: string): Promise<Application> => {
-    return apiService.get<Application>(`/applications/${id}`);
+  getById: async (id: string | number): Promise<Application> => {
+    return strapiService.getById<Application>('applications', id);
   },
 
   // Update application
-  update: async (id: string, data: Partial<ApplicationFormData>): Promise<Application> => {
-    return apiService.put<Application>(`/applications/${id}`, data);
+  update: async (id: string | number, data: Partial<ApplicationFormData>): Promise<Application> => {
+    return strapiService.update<Application>('applications', id, data);
   },
 
   // Delete application
-  delete: async (id: string): Promise<void> => {
-    return apiService.delete<void>(`/applications/${id}`);
+  delete: async (id: string | number): Promise<Application> => {
+    return strapiService.delete<Application>('applications', id);
   },
 
   // Update application status
-  updateStatus: async (id: string, status: 'pending' | 'approved' | 'rejected'): Promise<Application> => {
-    return apiService.patch<Application>(`/applications/${id}/status`, { status });
+  updateStatus: async (id: string | number, status: 'pending' | 'approved' | 'rejected'): Promise<Application> => {
+    return strapiService.update<Application>('applications', id, { status });
   },
 };
