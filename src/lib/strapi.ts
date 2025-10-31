@@ -35,13 +35,19 @@ class StrapiService {
       pageSize?: number;
       sort?: string;
       filters?: Record<string, any>;
-      populate?: string | string[];
+      populate?: string | string[] | Record<string, any>;
     }
   ): Promise<StrapiCollectionResponse<T>> {
     const response: AxiosResponse<StrapiCollectionResponse<T>> = await axiosInstance.get(
       `/${contentType}`, 
       { params }
     );
+    return response.data;
+  }
+
+  // Get collection by full URL (for custom query strings)
+  async getCollectionByUrl<T = any>(url: string): Promise<StrapiCollectionResponse<T>> {
+    const response: AxiosResponse<StrapiCollectionResponse<T>> = await axiosInstance.get(url);
     return response.data;
   }
 

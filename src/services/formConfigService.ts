@@ -26,47 +26,62 @@ export interface FormFieldConfig {
   defaultValue?: string;
 }
 
+export interface FormListItem {
+  id: number;
+  formID: string;
+  formTitle: string;  // Changed from 'title' to 'formTitle'
+  description?: string;
+  fields?: FormFieldConfig[];  // Made optional since it's not in the current response
+  submitButtonText?: string;
+  cancelButtonText?: string;
+  privacyText?: string;
+}
+
 export interface FormConfig {
   id: number;
-  attributes: {
-    formID: string;
-    title: string;
-    description?: string;
-    fields: FormFieldConfig[];
-    submitButtonText?: string;
-    cancelButtonText?: string;
-    privacyText?: string;
-    createdAt: string;
-    updatedAt: string;
-  };
+  documentId: string;  // Added documentId field
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;  // Added publishedAt field
+  FormList: FormListItem[];  // No longer nested under attributes
 }
 
 export interface FormConfigParams {
-  populate?: string;
+  populate?: Record<string, boolean | string>;
   filters?: {
-    formID?: {
-      $eq?: string;
+    FormList?: {
+      formID?: {
+        $eq?: string;
+      };
     };
   };
 }
 
 class FormConfigService {
-  async getFormConfig(formID: string): Promise<FormConfig> {
-    const params: FormConfigParams = {
-      filters: {
-        formID: {
-          $eq: formID
-        }
-      }
-    };
+  async getFormConfig(formID: string): Promise<FormListItem> {
+    // Construct the URL manually to avoid axios auto-encoding issues
+    // Target: /api/forms?filters[FormList][formID][$eq]=govconnect-dual-declaration&populate[FormList]=true
     
-    const response = await strapiService.getCollection<FormConfig>('form-configs', params);
+    const searchParams = new URLSearchParams();
+    searchParams.append('filters[FormList][formID][$eq]', formID);
+    searchParams.append('populate[FormList]', 'true');
+    const url = `/forms?${searchParams.toString()}`;
+    
+    const response = await strapiService.getCollectionByUrl<FormConfig>(url);
     
     if (!response.data || response.data.length === 0) {
       throw new Error(`Form configuration not found for formID: ${formID}`);
     }
     
-    return response.data[0];
+    // Find the specific FormList item with the matching formID
+    const form = response.data[0];
+    const formListItem = form.FormList.find((item: FormListItem) => item.formID === formID);
+    
+    if (!formListItem) {
+      throw new Error(`FormList item not found for formID: ${formID}`);
+    }
+    
+    return formListItem;
   }
 
   async getAllFormConfigs(): Promise<FormConfig[]> {
@@ -74,11 +89,11 @@ class FormConfigService {
     return response.data;
   }
 
-  async createFormConfig(data: Omit<FormConfig['attributes'], 'createdAt' | 'updatedAt'>): Promise<FormConfig> {
+  async createFormConfig(data: Omit<FormConfig, 'id' | 'documentId' | 'createdAt' | 'updatedAt' | 'publishedAt'>): Promise<FormConfig> {
     return strapiService.create<FormConfig>('form-configs', data);
   }
 
-  async updateFormConfig(id: number, data: Partial<FormConfig['attributes']>): Promise<FormConfig> {
+  async updateFormConfig(id: number, data: Partial<Omit<FormConfig, 'id' | 'documentId' | 'createdAt' | 'updatedAt' | 'publishedAt'>>): Promise<FormConfig> {
     return strapiService.update<FormConfig>('form-configs', id, data);
   }
 

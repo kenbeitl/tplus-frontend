@@ -2,100 +2,57 @@
 
 import Spacer from '@/components/ui/Spacer';
 import Modal from '@/components/Modal';
-import Form from '@/components/form/Form';
-import FormField from '@/components/form/FormField';
-import HiddenField from '@/components/form/HiddenField';
-import FormActions from '@/components/form/FormActions';
+import FormBase from '@/components/form/FormBase';
 import { useModal } from '@/hooks/useModal';
-import { useFormValidation } from '@/hooks/useFormValidation';
-import { applicationService, type ApplicationFormData } from '@/services';
 import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { ArrowRight, CircleCheckBig, FileText } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { formConfigService, type FormListItem } from '@/services/formConfigService';
 
 export default function GovConnect() {
-  const applicationModal = useModal();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  // Form configuration - declare formIDs for this page
+  const DUAL_DECLARATION_FORM_ID = 'govconnect-dual-declaration';
+  // Future forms can be added here:
+  // const CLASSIFICATION_FORM_ID = 'govconnect-classification';
+  // const VERIFICATION_FORM_ID = 'govconnect-verification';
   
-  const form = useFormValidation(
-    {
-      formID: 'govconnect-dual-declaration', // Hidden field to identify form type
-      name: '',
-      phoneNumber: '',
-      email: 'demo@tradelink.com.hk', // To be filled with logged in user's email
-      jobTitle: '',
-      companyName: 'Demo company', // To be filled with logged in user's company name
-      message: '',
-    },
-    {
-      // formID doesn't need validation as it's a hidden field
-      formID: {
-        required: false,
-      },
-      name: {
-        required: true,
-        minLength: 2,
-        message: 'Name is required (min 2 characters)',
-      },
-      phoneNumber: {
-        required: true,
-        pattern: /^[+0-9]{8,15}$/,
-        message: 'Phone number must be 8-15 digits',
-      },
-      email: {
-        required: true,
-        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        message: 'Valid email is required',
-      },
-      jobTitle: {
-        required: true,
-        minLength: 2,
-        message: 'Job title is required (min 2 characters)',
-      },
-      companyName: {
-        required: true,
-        minLength: 2,
-        message: 'Company name is required (min 2 characters)',
-      },
-      message: {
-        required: false,
-      },
-    }
-  );
+  const applicationModal = useModal();
+  const [formInfo, setFormInfo] = useState<FormListItem | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async () => {
-    if (form.validateAll()) {
-      setIsSubmitting(true);
-      try {
-        // Submit application via API
-        const result = await applicationService.submit(form.values as ApplicationFormData);
-        console.log('Application submitted successfully:', result);
-        
-        // Close modal and reset form on success
-        applicationModal.handleClose();
-        form.reset();
-        
-        // Optional: Show success message
-        // You can use a toast notification here
-      } catch (error) {
-        console.error('Failed to submit application:', error);
-        // Optional: Show error message
-        // You can use a toast notification here
-      } finally {
-        setIsSubmitting(false);
-      }
+  // Fetch form config when modal opens
+  useEffect(() => {
+    if (applicationModal.open && !formInfo) {
+      setLoading(true);
+      formConfigService.getFormConfig(DUAL_DECLARATION_FORM_ID)
+        .then((data) => {
+          // Add the formID from our declared variable since Strapi won't return it
+          const formInfoWithId = {
+            ...data,
+            formID: DUAL_DECLARATION_FORM_ID
+          };
+          setFormInfo(formInfoWithId);
+        })
+        .catch((error) => {
+          console.error('Failed to fetch form config:', error);
+          // Fallback: create basic form info with required formID
+          setFormInfo({
+            id: 1,
+            formID: DUAL_DECLARATION_FORM_ID,
+            formTitle: 'Apply for Dual Declaration Service',
+            description: 'Please provide your details and requirements for the service',
+            submitButtonText: 'Submit Application'
+          });
+        })
+        .finally(() => setLoading(false));
     }
-  };
+  }, [applicationModal.open, formInfo]);
 
   const handleCloseModal = () => {
     applicationModal.handleClose();
-    form.reset();
+    // Optionally reset formInfo to refetch on next open
+    // setFormInfo(null);
   };
-
-  // Check if form is touched and has no errors
-  const isFormTouched = Object.keys(form.touched).some(key => form.touched[key]);
-  const hasErrors = Object.keys(form.errors).some(key => form.errors[key]);
-  const isSubmitDisabled = !isFormTouched || hasErrors || isSubmitting;
 
   return (
    <>
@@ -218,109 +175,11 @@ export default function GovConnect() {
     </Grid>
 
     <Modal open={applicationModal.open} onClose={handleCloseModal} maxWidth={800}>      
-      <Form onSubmit={handleSubmit}>
-        <HiddenField
-          name="formID"
-          value={form.values.formID}
-          onChange={form.handleChange}
-        />
-        <Grid container spacing={2}>
-          <Grid size={{ xs: 12, sm: 6 }}>
-            <FormField
-              name="name"
-              label="Name"
-              placeholder="Enter your full name"
-              value={form.values.name}
-              onChange={form.handleChange}
-              onBlur={form.handleBlur}
-              error={form.errors.name}
-              touched={form.touched.name}
-              required
-            />
-          </Grid>
-          <Grid size={{ xs: 12, sm: 6 }}>
-            <FormField
-              name="phoneNumber"
-              label="Phone Number"
-              placeholder="Enter phone number"
-              value={form.values.phoneNumber}
-              onChange={form.handleChange}
-              onBlur={form.handleBlur}
-              error={form.errors.phoneNumber}
-              touched={form.touched.phoneNumber}
-              required
-            />
-          </Grid>
-          <Grid size={{ xs: 12, sm: 6 }}>
-            <FormField
-              name="email"
-              label="Email"
-              placeholder="Enter email address"
-              value={form.values.email}
-              onChange={form.handleChange}
-              onBlur={form.handleBlur}
-              error={form.errors.email}
-              touched={form.touched.email}
-              required
-            />
-          </Grid>
-          <Grid size={{ xs: 12, sm: 6 }}>
-            <FormField
-              name="jobTitle"
-              label="Job Title"
-              placeholder="e.g., Operations Manager"
-              value={form.values.jobTitle}
-              onChange={form.handleChange}
-              onBlur={form.handleBlur}
-              error={form.errors.jobTitle}
-              touched={form.touched.jobTitle}
-              required
-            />
-          </Grid>
-          <Grid size={{ xs: 12, sm: 6 }}>
-            <FormField
-              name="companyName"
-              label="Company Name"
-              placeholder="Enter your company name"
-              value={form.values.companyName}
-              onChange={form.handleChange}
-              onBlur={form.handleBlur}
-              error={form.errors.companyName}
-              touched={form.touched.companyName}
-              required
-            />
-          </Grid>
-          <Grid size={{ xs: 12 }}>
-            <FormField
-              name="message"
-              label="Message (optional)"
-              placeholder="Additional messages or specific requirements..."
-              value={form.values.message}
-              onChange={form.handleChange}
-              onBlur={form.handleBlur}
-              error={form.errors.message}
-              touched={form.touched.message}
-              multiline
-              minRows={4}
-              maxRows={10}
-            />
-          </Grid>
-        </Grid>
-
-        <Typography 
-          sx={{ mt: 2 }} 
-          variant="body2" 
-          component="p"
-        >
-          By submitting this form, I confirm I have read and agree to T+'s Privacy Statement.
-        </Typography>
-
-        <FormActions
-          onCancel={handleCloseModal}
-          submitLabel="Submit Application"
-          isSubmitDisabled={isSubmitDisabled}
-        />
-      </Form>
+      <FormBase 
+        data={formInfo} 
+        loading={loading}
+        onClose={handleCloseModal}
+      />
     </Modal>
    </>
   );

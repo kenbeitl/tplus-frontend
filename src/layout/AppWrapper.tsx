@@ -21,6 +21,7 @@ import { Building, Building2, CreditCard, FilePenLine, Globe, HelpCircleIcon, Ho
 import Logo from '@/assets/svg/Logo';
 import { DropdownListItem, NavigationListItem } from '@/components/NavigationComponents';
 import { useLanguage, useTranslations, useDrawer, localeLabels, type Locale } from '@/contexts/AppContext';
+import { SnackbarProvider } from '@/contexts/SnackbarContext';
 
 const drawerWidth = 240;
 const drawerMiniWidth = 64;
@@ -170,14 +171,15 @@ export default function AppWrapper({
  
 
   return (
-    <div className="app-layout min-h-screen">
-      <Box className="flex">
-        <AppBar 
-          position="fixed"
-          color="transparent"
-          elevation={0}
-          open={drawerOpen}
-        >
+    <SnackbarProvider>
+      <div className="app-layout min-h-screen">
+        <Box className="flex">
+          <AppBar 
+            position="fixed"
+            color="transparent"
+            elevation={0}
+            open={drawerOpen}
+          >
           <Toolbar>
             <IconButton
               edge="start"
@@ -292,5 +294,6 @@ export default function AppWrapper({
         </Box>
       </Box>
     </div>
+    </SnackbarProvider>
   );
 }
