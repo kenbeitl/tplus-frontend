@@ -1,15 +1,8 @@
-'use client';
+import { redirect } from 'next/navigation';
+import type { NextPage } from 'next';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+const ServicesPage: NextPage = () => {
+  redirect('/');
+};
 
-export default function ServicesPage() {
-  const router = useRouter();
-
-  useEffect(() => {
-    // Redirect to dashboard or first service
-    router.replace('/');
-  }, [router]);
-
-  return null;
-}
+export default ServicesPage;
