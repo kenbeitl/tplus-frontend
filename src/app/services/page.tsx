@@ -1,8 +1,5 @@
-export async function generateStaticParams() {
-  return [];
-}
-
 export default function ServicesPage() {
+
   return (
     <div style={{ padding: '20px', textAlign: 'center' }}>
       <h1>Services</h1>
