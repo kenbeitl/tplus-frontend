@@ -22,3 +22,46 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Swiper full width styles */
+.swiper {
+  width: 100% !important;
+  --swiper-slide-padding: 20px;
+}
+
+.swiper-slide {
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Ensure MUI Paper/Card styles are preserved */
+.swiper-slide .MuiPaper-root {
+  box-shadow: none; /* Will be overridden by elevation prop */
+}
+
+.swiper .swiper-button-prev,
+.swiper .swiper-button-next {
+  border-radius: 2rem;
+  background-color: white;
+  width: 2rem;
+  height: 2rem;
+}
+
+.swiper .swiper-button-prev {
+  left: 1rem !important;
+}
+
+.swiper .swiper-button-next {
+  right: 1rem !important;
+}
+
+.swiper .swiper-button-prev svg,
+.swiper .swiper-button-next svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.swiper .swiper-button-prev svg path,
+.swiper .swiper-button-next svg path {
+  fill: var(--foreground);
+}

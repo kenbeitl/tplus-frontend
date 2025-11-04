@@ -26,17 +26,17 @@ import { SnackbarProvider } from '@/contexts/SnackbarContext';
 const drawerWidth = 240;
 const drawerMiniWidth = 64;
 
-const openedMixin = (theme: Theme): CSSObject => ({
+const openedMixin = (theme: Theme, disableTransition = false): CSSObject => ({
   width: drawerWidth,
-  transition: theme.transitions.create('width', {
+  transition: disableTransition ? 'none' : theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: 'hidden',
 });
 
-const closedMixin = (theme: Theme): CSSObject => ({
-  transition: theme.transitions.create('width', {
+const closedMixin = (theme: Theme, disableTransition = false): CSSObject => ({
+  transition: disableTransition ? 'none' : theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
@@ -58,14 +58,14 @@ interface AppBarProps extends MuiAppBarProps {
 }
 
 const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
+  shouldForwardProp: (prop) => prop !== 'open' && prop !== 'disableTransition',
+})<AppBarProps & { disableTransition?: boolean }>(({ theme, open, disableTransition }) => ({
   border: 0,
   borderBottom: '1px solid ' + theme.palette.divider,
   marginLeft: open ? drawerWidth : drawerMiniWidth,
   width: open ? `calc(100% - ${drawerWidth}px)` : `calc(100% - ${drawerMiniWidth}px)`,
   zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(['width', 'margin'], {
+  transition: disableTransition ? 'none' : theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
     duration: open 
       ? theme.transitions.duration.enteringScreen 
@@ -73,8 +73,10 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme }) => ({
+const Drawer = styled(MuiDrawer, { 
+  shouldForwardProp: (prop) => prop !== 'open' && prop !== 'disableTransition' 
+})<{ open?: boolean; disableTransition?: boolean }>(
+  ({ theme, disableTransition }) => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
@@ -83,15 +85,15 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
       {
         props: ({ open }) => open,
         style: {
-          ...openedMixin(theme),
-          '& .MuiDrawer-paper': openedMixin(theme),
+          ...openedMixin(theme, disableTransition),
+          '& .MuiDrawer-paper': openedMixin(theme, disableTransition),
         },
       },
       {
         props: ({ open }) => !open,
         style: {
-          ...closedMixin(theme),
-          '& .MuiDrawer-paper': closedMixin(theme),
+          ...closedMixin(theme, disableTransition),
+          '& .MuiDrawer-paper': closedMixin(theme, disableTransition),
         },
       },
     ],
@@ -109,6 +111,17 @@ export default function AppWrapper({
   const t = useTranslations();
   const { drawerOpen, toggleDrawer } = useDrawer();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [isInitialMount, setIsInitialMount] = React.useState(true);
+
+  // Enable transitions after initial mount and drawer state is loaded
+  React.useEffect(() => {
+    // Small delay to ensure drawer state is loaded from localStorage
+    const timer = setTimeout(() => {
+      setIsInitialMount(false);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   interface serviceListType {
     icon: React.ReactNode;
@@ -179,6 +192,7 @@ export default function AppWrapper({
             color="transparent"
             elevation={0}
             open={drawerOpen}
+            disableTransition={isInitialMount}
           >
           <Toolbar>
             <IconButton
@@ -218,7 +232,11 @@ export default function AppWrapper({
             </Menu>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={drawerOpen}>
+        <Drawer 
+          variant="permanent" 
+          open={drawerOpen}
+          disableTransition={isInitialMount}
+        >
           <DrawerHeader>
             <Logo open={drawerOpen} />
           </DrawerHeader>
@@ -241,8 +259,9 @@ export default function AppWrapper({
               primary={t('nav.services')}
             >
               { 
-                serviceList.map((service: serviceListType) => (
+                serviceList.map((service: serviceListType, index) => (
                   <NavigationListItem
+                    key={index}
                     level={2}
                     icon={service.icon}
                     primary={service.label}

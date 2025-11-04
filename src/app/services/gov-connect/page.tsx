@@ -92,7 +92,7 @@ export default function GovConnect() {
           <Button 
             sx={{ width: '100%' }} 
             variant="gradient" 
-            color="primary"
+            color="blue"
             endIcon={<ArrowRight />}
             onClick={applicationModal.handleOpen}
           >Apply Now</Button>
@@ -130,7 +130,7 @@ export default function GovConnect() {
           <Button 
             sx={{ width: '100%' }} 
             variant="gradient" 
-            color="primary"
+            color="blue"
             endIcon={<ArrowRight />}
           >Launch Classifier</Button>
         </Card>
@@ -167,7 +167,7 @@ export default function GovConnect() {
           <Button 
             sx={{ width: '100%' }} 
             variant="gradient" 
-            color="primary"
+            color="blue"
             endIcon={<ArrowRight />}
           >Launch Service</Button>
         </Card>

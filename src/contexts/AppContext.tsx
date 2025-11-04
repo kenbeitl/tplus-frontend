@@ -35,6 +35,7 @@ export function AppProvider({ children, defaultLocale = 'en' }: AppProviderProps
   const [locale, setLocale] = useState<Locale>(defaultLocale);
   const [messages, setMessages] = useState<Record<string, any>>({});
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+  const [isClient, setIsClient] = useState(false);
 
   // Load messages for the current locale
   const loadMessages = async (localeToLoad: Locale) => {
@@ -56,6 +57,7 @@ export function AppProvider({ children, defaultLocale = 'en' }: AppProviderProps
 
   // Load saved locale from localStorage on mount
   useEffect(() => {
+    setIsClient(true);
     const savedLocale = localStorage.getItem('locale') as Locale;
     if (savedLocale && locales.includes(savedLocale)) {
       setLocale(savedLocale);
@@ -63,13 +65,28 @@ export function AppProvider({ children, defaultLocale = 'en' }: AppProviderProps
     } else {
       loadMessages(defaultLocale);
     }
+    
+    // Load saved drawer state from localStorage
+    const savedDrawerState = localStorage.getItem('drawerOpen');
+    if (savedDrawerState !== null) {
+      setDrawerOpen(savedDrawerState === 'true');
+    }
   }, [defaultLocale]);
 
   // Load messages when locale changes
   useEffect(() => {
     loadMessages(locale);
-    localStorage.setItem('locale', locale);
-  }, [locale]);
+    if (isClient) {
+      localStorage.setItem('locale', locale);
+    }
+  }, [locale, isClient]);
+
+  // Save drawer state to localStorage when it changes
+  useEffect(() => {
+    if (isClient) {
+      localStorage.setItem('drawerOpen', drawerOpen.toString());
+    }
+  }, [drawerOpen, isClient]);
 
   // Translation function that works with nested objects
   const t = (key: string, params?: Record<string, string | number>) => {

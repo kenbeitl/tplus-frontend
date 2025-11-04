@@ -32,7 +32,9 @@ export default function RootLayout({
             {isAuth ? (
               <AuthWrapper>{children}</AuthWrapper>
             ) : (
-              <AppWrapper>{children}</AppWrapper>
+              <AppWrapper>
+                <div className="p-4 sm:p-6">{children}</div>
+              </AppWrapper>
             )}
           </MUIThemeProvider>
         </AppProvider>

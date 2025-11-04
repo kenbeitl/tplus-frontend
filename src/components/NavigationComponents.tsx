@@ -25,7 +25,9 @@ const ListItemIcon = styled(MuiListItemIcon)(() => ({
     color: 'black'
 }));
 
-const ListItemButton = styled(MuiListItemButton)<{ isActive?: boolean, isDrawerOpen?: boolean }>(({ theme, isActive, isDrawerOpen }) => ({
+const ListItemButton = styled(MuiListItemButton, {
+    shouldForwardProp: (prop) => prop !== 'isActive' && prop !== 'isDrawerOpen',
+})<{ isActive?: boolean, isDrawerOpen?: boolean }>(({ theme, isActive, isDrawerOpen }) => ({
     paddingTop: theme.spacing(0.5),
     paddingBottom: theme.spacing(0.5),
     // Level 2 base styles
@@ -39,19 +41,9 @@ const ListItemButton = styled(MuiListItemButton)<{ isActive?: boolean, isDrawerO
     '& .real-btn': {
         width: '100%',
         padding: theme.spacing(0.5, 1),
-        background: isActive ? theme.palette.gradient.primary : 'transparent',
+        background: isActive ? theme.palette.gradient.blue : 'transparent',
         color: isActive ? theme.palette.primary.contrastText : 'inherit',
         borderRadius: isActive ? theme.shape.borderRadius : 0,
-    },
-    
-    // Tag styles
-    '& .tag': {
-        background: theme.palette.gradient.secondary,
-        borderRadius: theme.shape.borderRadius,
-        padding: theme.spacing(0, 0.5),
-        fontSize: '0.75rem',
-        fontWeight: 500,
-        color: theme.palette.primary.contrastText,
     },
     
     // Icon styles
@@ -81,11 +73,48 @@ export function DropdownListItem({
   defaultOpen = false 
 }: DropdownListItemProps) {
   const [open, setOpen] = React.useState(defaultOpen);
+  const [mounted, setMounted] = React.useState(false);
   const isDrawerOpen = useDrawer().drawerOpen;
+
+  // Create a unique key for this dropdown based on primary text
+  const storageKey = `dropdown_${primary.replace(/\s+/g, '_').toLowerCase()}`;
+
+  // Ensure client-side hydration and load saved state
+  React.useEffect(() => {
+    setMounted(true);
+    
+    // Load saved dropdown state from localStorage
+    const savedState = localStorage.getItem(storageKey);
+    if (savedState !== null) {
+      setOpen(savedState === 'true');
+    }
+  }, [storageKey]);
+
+  // Save dropdown state to localStorage when it changes
+  React.useEffect(() => {
+    if (mounted) {
+      localStorage.setItem(storageKey, open.toString());
+    }
+  }, [open, mounted, storageKey]);
 
   const handleClick = () => {
     setOpen(!open);
   };
+
+  // Prevent hydration mismatch by not rendering dynamic content until mounted
+  if (!mounted) {
+    return (
+      <ListItemButton 
+        onClick={handleClick} 
+        isActive={isActive}
+        isDrawerOpen={false} // Use consistent initial state
+      >
+        <div className="flex justify-center items-center real-btn">
+          <ListItemIcon>{icon}</ListItemIcon>
+        </div>
+      </ListItemButton>
+    );
+  }
 
   return (
     <>
@@ -135,19 +164,43 @@ export function NavigationListItem({
 }: NavigationListItemProps) {
   const t = useTranslations();
   const pathname = usePathname();
+  const [mounted, setMounted] = React.useState(false);
   const isDrawerOpen = useDrawer().drawerOpen;
   
+  // Ensure client-side hydration
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+  
   const isPathActive = React.useMemo(() => {
+    if (!mounted) return false; // Prevent hydration mismatch
     return pathname === path || pathname.startsWith(path + '/');
-  }, [pathname, path]);
+  }, [pathname, path, mounted]);
   
   const displayText = React.useMemo(() => {
+    if (!mounted) return primary; // Consistent initial render
     return isComingSoon ? (
       <>
-        {primary} <InlineTag label={t('common.comingSoon')} />
+        {primary} <InlineTag variant="orange" label={t('common.comingSoon')} />
       </>
     ) : primary;
-  }, [primary, isComingSoon, t]);
+  }, [primary, isComingSoon, t, mounted]);
+  
+  // Prevent hydration mismatch by using consistent initial state
+  if (!mounted) {
+    return (
+      <ListItemButton
+          className={`lv${level}`}
+          isActive={false} // Use consistent initial state
+          isDrawerOpen={false} // Use consistent initial state
+          onClick={() => onClick?.(path)}
+      >
+          <div className="flex justify-center items-center real-btn">
+              <ListItemIcon>{icon}</ListItemIcon>
+          </div>
+      </ListItemButton>
+    );
+  }
   
   return (
     <ListItemButton

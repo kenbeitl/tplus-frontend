@@ -4,14 +4,14 @@ import { createTheme } from '@mui/material/styles';
 declare module '@mui/material/styles' {
   interface Palette {
     gradient: {
-      primary: string;
-      secondary: string;
+      blue: string;
+      orange: string;
     };
   }
   interface PaletteOptions {
     gradient?: {
-      primary?: string;
-      secondary?: string;
+      blue?: string;
+      orange?: string;
     };
   }
 }
@@ -19,6 +19,9 @@ declare module '@mui/material/styles' {
 declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
     gradient: true;
+  }
+  interface ButtonPropsColorOverrides {
+    blue: true;
   }
 }
 
@@ -30,8 +33,8 @@ const theme = createTheme({
       secondary: '#919191',
     },
     gradient: {
-      primary: 'linear-gradient(90deg,rgba(0, 73, 220, 1) 0%, rgba(0, 150, 220, 1) 100%);',
-      secondary: 'linear-gradient(90deg,rgba(255, 176, 102, 1) 0%, rgba(255, 92, 51, 1) 100%);',
+      blue: 'linear-gradient(90deg,rgba(0, 73, 220, 1) 0%, rgba(0, 150, 220, 1) 100%);',
+      orange: 'linear-gradient(90deg,rgba(255, 176, 102, 1) 0%, rgba(255, 92, 51, 1) 100%);',
     }
   },
   typography: {
@@ -46,6 +49,65 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          // Base overlay class with common styles
+          '& .bg-overlay, & .bg-overlay-light, & .bg-overlay-heavy': {
+            position: 'relative',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              borderRadius: 'inherit',
+              pointerEvents: 'none',
+            },
+            '& > *:not(.tag)': {
+              position: 'relative',
+              zIndex: 1,
+            },
+          },
+          // Specific overlay intensities
+          '& .bg-overlay::before': {
+            backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          },
+          '& .bg-overlay-light::before': {
+            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+          },
+          '& .bg-overlay-heavy::before': {
+            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+          },
+          // Reusable tag classes
+          '& .tag, & .tag-outlined, & .tag-orange, & .tag-blue': {
+            background: '#FFFFFF',
+            display: 'inline-block',
+            borderRadius: '10px',
+            padding: '0 8px',
+            fontSize: '0.75rem',
+            fontWeight: 500,
+            lineHeight: 1.5,
+            textAlign: 'center',
+            whiteSpace: 'nowrap',
+          },
+          '.tag-outlined, & .tag-orange, & .tag-blue': {
+            color: '#FFFFFF',
+          },
+          '& .tag-orange': {
+            background: 'linear-gradient(90deg,rgba(255, 176, 102, 1) 0%, rgba(255, 92, 51, 1) 100%)',
+          },
+          '& .tag-blue': {
+            background: 'linear-gradient(90deg,rgba(0, 73, 220, 1) 0%, rgba(0, 150, 220, 1) 100%)',
+          },
+          '& .tag-outlined': {
+            border: '1px solid #999999',
+            background: '#555555',
+          },
+        },
+      },
+    },
     MuiInputLabel: {
       styleOverrides: {
         root: {
@@ -97,7 +159,7 @@ const theme = createTheme({
       },
       variants: [
         {
-          props: { variant: 'gradient', color: 'primary' },
+          props: { variant: 'gradient', color: 'blue' },
           style: {
             color: '#FFFFFF',
             background: 'linear-gradient(90deg,rgba(0, 73, 220, 1) 0%, rgba(0, 150, 220, 1) 100%);',
