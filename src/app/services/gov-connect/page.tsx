@@ -5,7 +5,7 @@ import Modal from '@/components/Modal';
 import FormBase from '@/components/form/FormBase';
 import { useModal } from '@/hooks/useModal';
 import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import { ArrowRight, CircleCheckBig, FileText } from 'lucide-react';
+import { ArrowRight, Brain, CircleCheckBig, FileText, Search } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { formConfigService, type FormListItem } from '@/services/formConfigService';
 
@@ -51,7 +51,7 @@ export default function GovConnect() {
   const handleCloseModal = () => {
     applicationModal.handleClose();
     // Optionally reset formInfo to refetch on next open
-    // setFormInfo(null);
+    setFormInfo(null);
   };
 
   return (
@@ -61,7 +61,11 @@ export default function GovConnect() {
     <Spacer height={20} />
     <Grid container spacing={2}>
       <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-        <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
+        <Card variant="outlined" className="p-6" sx={{ 
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column'
+        }}>
           <Box sx={{ display: 'flex', alignItems: 'top', gap: 1 }}>
             <FileText size={24} />
             <Typography variant="h6" component="h2">Single Submission for Dual Declaration</Typography>
@@ -69,7 +73,7 @@ export default function GovConnect() {
           <Typography sx={{ mt: 2 }} variant="body2" component="p">
             Streamline customs declarations with single submission for both import and export requirements
           </Typography>
-          <List>
+          <List sx={{ flexGrow: 1 }}>
             <ListItem>
               <ListItemIcon>
                 <CircleCheckBig size={20} color="#87e119" />
@@ -90,7 +94,7 @@ export default function GovConnect() {
             </ListItem>
           </List>
           <Button 
-            sx={{ width: '100%' }} 
+            sx={{ width: '100%', mt: 'auto' }} 
             variant="gradient" 
             color="blue"
             endIcon={<ArrowRight />}
@@ -99,36 +103,40 @@ export default function GovConnect() {
         </Card>
       </Grid>
       <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-        <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
+        <Card variant="outlined" className="p-6" sx={{ 
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column'
+        }}>
           <Box sx={{ display: 'flex', alignItems: 'top', gap: 1 }}>
-            <FileText size={24} />
-            <Typography variant="h6" component="h2">Single Submission for Dual Declaration</Typography>
+            <Search size={24} />
+            <Typography variant="h6" component="h2">HS Code AI Classifier</Typography>
           </Box>
           <Typography sx={{ mt: 2 }} variant="body2" component="p">
-            Streamline customs declarations with single submission for both import and export requirements
+            Get AI-powered HS code classification for your products instantly
           </Typography>
-          <List>
+          <List sx={{ flexGrow: 1 }}>
             <ListItem>
               <ListItemIcon>
                 <CircleCheckBig size={20} color="#87e119" />
               </ListItemIcon>
-              <ListItemText primary="Reduce paperwork by 60%" />
+              <ListItemText primary="HK HS Code (Ask Tracie)" />
             </ListItem>
             <ListItem>
               <ListItemIcon>
                 <CircleCheckBig size={20} color="#87e119" />
               </ListItemIcon>
-              <ListItemText primary="Faster processing time" />
+              <ListItemText primary="China HS Code (Ask Xiao Cui)" />
             </ListItem>
             <ListItem>
               <ListItemIcon>
                 <CircleCheckBig size={20} color="#87e119" />
               </ListItemIcon>
-              <ListItemText primary="Single point of submission" />
+              <ListItemText primary="Instant classification results" />
             </ListItem>
           </List>
           <Button 
-            sx={{ width: '100%' }} 
+            sx={{ width: '100%', mt: 'auto' }} 
             variant="gradient" 
             color="blue"
             endIcon={<ArrowRight />}
@@ -136,36 +144,40 @@ export default function GovConnect() {
         </Card>
       </Grid>
       <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-        <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
+        <Card variant="outlined" className="p-6" sx={{ 
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column'
+        }}>
           <Box sx={{ display: 'flex', alignItems: 'top', gap: 1 }}>
-            <FileText size={24} />
-            <Typography variant="h6" component="h2">Single Submission for Dual Declaration</Typography>
+            <Brain size={24} />
+            <Typography variant="h6" component="h2">AI-Powered Customs Automation</Typography>
           </Box>
           <Typography sx={{ mt: 2 }} variant="body2" component="p">
-            Streamline customs declarations with single submission for both import and export requirements
+            Automate customs declarations with AI-powered document processing
           </Typography>
-          <List>
+          <List sx={{ flexGrow: 1 }}>
             <ListItem>
               <ListItemIcon>
                 <CircleCheckBig size={20} color="#87e119" />
               </ListItemIcon>
-              <ListItemText primary="Reduce paperwork by 60%" />
+              <ListItemText primary="Automated data extraction" />
             </ListItem>
             <ListItem>
               <ListItemIcon>
                 <CircleCheckBig size={20} color="#87e119" />
               </ListItemIcon>
-              <ListItemText primary="Faster processing time" />
+              <ListItemText primary="Import & export declarations" />
             </ListItem>
             <ListItem>
               <ListItemIcon>
                 <CircleCheckBig size={20} color="#87e119" />
               </ListItemIcon>
-              <ListItemText primary="Single point of submission" />
+              <ListItemText primary="Ready in 10 minutes" />
             </ListItem>
           </List>
           <Button 
-            sx={{ width: '100%' }} 
+            sx={{ width: '100%', mt: 'auto' }} 
             variant="gradient" 
             color="blue"
             endIcon={<ArrowRight />}
