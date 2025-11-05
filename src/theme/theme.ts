@@ -7,12 +7,24 @@ declare module '@mui/material/styles' {
       blue: string;
       orange: string;
     };
+    plain: {
+      green : {
+        background: string;
+        text: string;
+      };
+    };
   }
   interface PaletteOptions {
     gradient?: {
       blue?: string;
       orange?: string;
     };
+    plain?: {
+      green?: {
+        background: string;
+        text: string;
+      };
+    }
   }
 }
 
@@ -35,7 +47,13 @@ const theme = createTheme({
     gradient: {
       blue: 'linear-gradient(90deg,rgba(0, 73, 220, 1) 0%, rgba(0, 150, 220, 1) 100%);',
       orange: 'linear-gradient(90deg,rgba(255, 176, 102, 1) 0%, rgba(255, 92, 51, 1) 100%);',
-    }
+    },
+    plain: {
+      green : {
+        background: '#dcfce7',
+        text: '#016630',
+      }      
+    },
   },
   typography: {
     fontSize: 12,
@@ -47,10 +65,14 @@ const theme = createTheme({
       fontSize: '1rem',
       color: '#666666',
     },
+    caption: {
+      fontSize: '0.875rem',
+      color: '#666666',
+    }
   },
   components: {
     MuiCssBaseline: {
-      styleOverrides: {
+      styleOverrides: (theme) => ({
         body: {
           // Base overlay class with common styles
           '& .bg-overlay, & .bg-overlay-light, & .bg-overlay-heavy': {
@@ -106,15 +128,15 @@ const theme = createTheme({
             background: 'linear-gradient(90deg,rgba(0, 73, 220, 1) 0%, rgba(0, 150, 220, 1) 100%)',
           },
           '& .tag-green': {
-            background: '#dcfce7',
-            color: '#016630',
+            background: theme.palette.plain.green.background,
+            color: theme.palette.plain.green.text,
           },
           '& .tag-outlined': {
             border: '1px solid #999999',
             background: '#555555',
           },
         },
-      },
+      }),
     },
     MuiInputLabel: {
       styleOverrides: {
@@ -180,6 +202,14 @@ const theme = createTheme({
           style: {
             color: '#666666',
             borderColor: '#666666'
+          }
+        },
+        {
+          props: { variant: 'outlined', color: 'blue' },
+          style: {
+            color: '#2b7fff',
+            backgroundColor: '#FFFFFF',
+            borderColor: '#bedbff'
           }
         }
       ]

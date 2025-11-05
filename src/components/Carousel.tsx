@@ -33,7 +33,7 @@ export default function Carousel({ slideNum }: { slideNum: number }) {
                 >
                     <Box className="flex items-center mb-5">
                         <Icon sx={{ width: 40, height: 40, fontSize: 30, mr: 1 }}>🍀</Icon>
-                        <InlineTag label="Business" variant="outlined" className="!text-base" />
+                        <InlineTag label="Business" variant="outlined" className="text-base!" />
                     </Box>
                     <Typography variant="h4" component="h2" color="white" sx={{ mb: 2 }}>Single Submission for Dual Declaration Service</Typography>
                     <Typography variant="body1" component="p" color="white" sx={{ mb: 3 }}>Streamline your customs declarations with our intelligent dual submission system</Typography>
