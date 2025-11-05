@@ -5,6 +5,12 @@ import {
   Typography,
 } from '@mui/material';
 import Logo from '@/assets/svg/Logo';
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Login | TPlus",
+  description: "Secure login portal for TPlus application",
+}
 
 export default function Login() {
 

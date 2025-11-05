@@ -15,6 +15,7 @@ export default function Carousel({ slideNum }: { slideNum: number }) {
             modules={[Navigation]}
             navigation
             loop
+            autoplay={true}
             spaceBetween={16}
             slidesPerView={1}
         >
@@ -41,10 +42,7 @@ export default function Carousel({ slideNum }: { slideNum: number }) {
                         variant="gradient" 
                         color="blue"
                     >Apply Now</Button>
-                    <InlineTag 
-                        label="Sponsored"
-                        className="absolute top-4 right-4"
-                    />
+                    <InlineTag label="Sponsored" className="absolute top-4 right-4" />
                 </Paper>
             </SwiperSlide>
         ))} 

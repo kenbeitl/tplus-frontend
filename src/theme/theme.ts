@@ -81,9 +81,10 @@ const theme = createTheme({
             backgroundColor: 'rgba(0, 0, 0, 0.6)',
           },
           // Reusable tag classes
-          '& .tag, & .tag-outlined, & .tag-orange, & .tag-blue': {
+          '& .tag, & .tag-outlined, & .tag-orange, & .tag-blue, & .tag-green': {
             background: '#FFFFFF',
-            display: 'inline-block',
+            display: 'inline-flex',
+            alignItems: 'center',
             borderRadius: '10px',
             padding: '0 8px',
             fontSize: '0.75rem',
@@ -91,6 +92,9 @@ const theme = createTheme({
             lineHeight: 1.5,
             textAlign: 'center',
             whiteSpace: 'nowrap',
+            '& svg': {
+              width: '1rem'
+            }
           },
           '.tag-outlined, & .tag-orange, & .tag-blue': {
             color: '#FFFFFF',
@@ -100,6 +104,10 @@ const theme = createTheme({
           },
           '& .tag-blue': {
             background: 'linear-gradient(90deg,rgba(0, 73, 220, 1) 0%, rgba(0, 150, 220, 1) 100%)',
+          },
+          '& .tag-green': {
+            background: '#dcfce7',
+            color: '#016630',
           },
           '& .tag-outlined': {
             border: '1px solid #999999',
@@ -141,7 +149,9 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           minWidth: 'auto',
+          marginTop: 6,
           marginRight: 4,
+          alignSelf: 'start',
         }
       }
     },

@@ -1,13 +1,15 @@
-'use client';
-
 import Spacer from '@/components/ui/Spacer';
-import Modal from '@/components/Modal';
-import FormBase from '@/components/form/FormBase';
-import { useModal } from '@/hooks/useModal';
-import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import { ArrowRight, Brain, CircleCheckBig, FileText, Search } from 'lucide-react';
-import { useState, useEffect } from 'react';
-import { formConfigService, type FormListItem } from '@/services/formConfigService';
+import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
+import InlineTag from '@/components/InlineTag';
+import ActionButton from '@/components/ActionButton';
+import { Brain, CircleCheckBig, FileText, Search } from 'lucide-react';
+import { Metadata } from "next";
+import GovConnectClient from './GovConnectClient';
+
+
+export const metadata: Metadata = {
+  title: 'GovConnect | Services | TPlus',
+}
 
 export default function GovConnect() {
   // Form configuration - declare formIDs for this page
@@ -15,49 +17,12 @@ export default function GovConnect() {
   // Future forms can be added here:
   // const CLASSIFICATION_FORM_ID = 'govconnect-classification';
   // const VERIFICATION_FORM_ID = 'govconnect-verification';
-  
-  const applicationModal = useModal();
-  const [formInfo, setFormInfo] = useState<FormListItem | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  // Fetch form config when modal opens
-  useEffect(() => {
-    if (applicationModal.open && !formInfo) {
-      setLoading(true);
-      formConfigService.getFormConfig(DUAL_DECLARATION_FORM_ID)
-        .then((data) => {
-          // Add the formID from our declared variable since Strapi won't return it
-          const formInfoWithId = {
-            ...data,
-            formID: DUAL_DECLARATION_FORM_ID
-          };
-          setFormInfo(formInfoWithId);
-        })
-        .catch((error) => {
-          console.error('Failed to fetch form config:', error);
-          // Fallback: create basic form info with required formID
-          setFormInfo({
-            id: 1,
-            formID: DUAL_DECLARATION_FORM_ID,
-            formTitle: 'Apply for Dual Declaration Service',
-            description: 'Please provide your details and requirements for the service',
-            submitButtonText: 'Submit Application'
-          });
-        })
-        .finally(() => setLoading(false));
-    }
-  }, [applicationModal.open, formInfo]);
-
-  const handleCloseModal = () => {
-    applicationModal.handleClose();
-    // Optionally reset formInfo to refetch on next open
-    setFormInfo(null);
-  };
 
   return (
-   <>
+   <Box component="div" className="relative">
     <Typography sx={{ fontWeight: 700 }} variant="h4" component="h1">GovConnect</Typography>
     <Typography variant="body2" component="p">Single Submission for Dual Declaration</Typography>
+    <InlineTag label="Services Available" className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
     <Spacer height={20} />
     <Grid container spacing={2}>
       <Grid size={{ xs: 12, sm: 6, md: 4 }}>
@@ -93,13 +58,10 @@ export default function GovConnect() {
               <ListItemText primary="Single point of submission" />
             </ListItem>
           </List>
-          <Button 
-            sx={{ width: '100%', mt: 'auto' }} 
-            variant="gradient" 
-            color="blue"
-            endIcon={<ArrowRight />}
-            onClick={applicationModal.handleOpen}
-          >Apply Now</Button>
+          <GovConnectClient 
+            formId={DUAL_DECLARATION_FORM_ID} 
+            buttonText="Apply Now" 
+          />
         </Card>
       </Grid>
       <Grid size={{ xs: 12, sm: 6, md: 4 }}>
@@ -135,12 +97,7 @@ export default function GovConnect() {
               <ListItemText primary="Instant classification results" />
             </ListItem>
           </List>
-          <Button 
-            sx={{ width: '100%', mt: 'auto' }} 
-            variant="gradient" 
-            color="blue"
-            endIcon={<ArrowRight />}
-          >Launch Classifier</Button>
+          <ActionButton buttonText="Launch Classifier" />
         </Card>
       </Grid>
       <Grid size={{ xs: 12, sm: 6, md: 4 }}>
@@ -176,23 +133,10 @@ export default function GovConnect() {
               <ListItemText primary="Ready in 10 minutes" />
             </ListItem>
           </List>
-          <Button 
-            sx={{ width: '100%', mt: 'auto' }} 
-            variant="gradient" 
-            color="blue"
-            endIcon={<ArrowRight />}
-          >Launch Service</Button>
+          <ActionButton buttonText="Launch Service" />
         </Card>
       </Grid>
     </Grid>
-
-    <Modal open={applicationModal.open} onClose={handleCloseModal} maxWidth={800}>      
-      <FormBase 
-        data={formInfo} 
-        loading={loading}
-        onClose={handleCloseModal}
-      />
-    </Modal>
-   </>
+   </Box>
   );
 }
