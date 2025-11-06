@@ -30,15 +30,14 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 100%;
 }
 
 /* Help Centre styles */
-.help-card {
+.card-hover {
   cursor: pointer;
 }
 
-.help-card:hover {
+.card-hover:hover {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
@@ -55,6 +54,15 @@ body {
 
 .swiper-slide .MuiPaper-root {
   box-shadow: none;
+}
+
+.swiper .swiper-pagination-bullet {
+  transition: width 0.3s ease;
+}
+
+.swiper .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  width: 2em;
+  border-radius: 1em;
 }
 
 .swiper .swiper-button-prev,

@@ -60,7 +60,7 @@ type Props = {
   onClose: () => void;
 };
 
-export default function DialogSubscription({ open, onClose }: Props) {
+export default function ModalSubscription({ open, onClose }: Props) {
   return (
     <InfoModal
       open={open}

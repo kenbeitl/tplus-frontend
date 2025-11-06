@@ -1,27 +1,34 @@
 'use client';
 
-import { Box, Button, Icon, Paper, Typography } from "@mui/material";
-import { Navigation } from "swiper/modules";
+import { Box, Button, Paper, Typography } from "@mui/material";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import InlineTag from "./InlineTag";
 import Emoji from "./Emoji";
 
 export default function Carousel({ slideNum }: { slideNum: number }) {
     return (
         <Swiper
-            modules={[Navigation]}
+            modules={[Autoplay, Navigation, Pagination]}
             navigation
+            pagination={{ clickable: true }}
             loop
-            autoplay={true}
-            spaceBetween={16}
+            // autoplay
+            spaceBetween={8}
             slidesPerView={1}
+            style={{
+                "--swiper-pagination-color": "#FFFFFF",
+                "--swiper-pagination-bullet-inactive-color": "#999999",
+                "--swiper-pagination-bullet-inactive-opacity": "1",
+            } as React.CSSProperties}
         >
         {new Array(slideNum).fill(null).map((_, index) => (
-            <SwiperSlide key={index} className="px-2">
+            <SwiperSlide key={index}>
                 <Paper 
                     elevation={3}
                     className="bg-overlay-heavy"

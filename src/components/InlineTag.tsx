@@ -10,8 +10,8 @@ export default function InlineTag({
     variant?: string, 
     label: string,
     className?: string,
-    startIcon?: React.ReactNode,
-    endIcon?: React.ReactNode
+    startIcon?: React.ReactNode | string,
+    endIcon?: React.ReactNode | string
 }): React.ReactNode {
     return (
         <span className={`tag ${variant ? 'tag-'+variant : ''} ${className}`.trim()}>

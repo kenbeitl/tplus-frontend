@@ -122,6 +122,9 @@ const theme = createTheme({
             lineHeight: 1.5,
             textAlign: 'center',
             whiteSpace: 'nowrap',
+            '&.text-only': {
+              padding: 0
+            },
             '& svg': {
               width: '1rem'
             }

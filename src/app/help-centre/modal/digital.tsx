@@ -61,7 +61,7 @@ type Props = {
   onClose: () => void;
 };
 
-export default function DialogDigital({ open, onClose }: Props) {
+export default function ModalDigital({ open, onClose }: Props) {
   return (
     <InfoModal
       open={open}

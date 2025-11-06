@@ -4,10 +4,10 @@ import { useState } from 'react';
 import Spacer from '@/components/ui/Spacer';
 import { Box, Button, Card, Grid, InputAdornment, Stack, TextField, Typography } from '@mui/material';
 
-// dialogs
-import DialogDigital from './modal/digital';
-import DialogSigning from './modal/signing';
-import DialogSubscription from './modal/subscription';
+// modals
+import ModalDigital from './modal/digital';
+import ModalSigning from './modal/signing';
+import ModalSubscription from './modal/subscription';
 
 // Icons
 import {  CircleQuestionMark, CreditCard, FilePenLine, Search, Shield, SquareArrowOutUpRight, User, Users } from 'lucide-react';
@@ -54,7 +54,7 @@ export default function HelpCentre() {
     {/* search bar */}
     <Grid container spacing={2}>
       <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-        <Card variant="outlined" className="p-6 help-card" sx={{ height: '100%' }} onClick={() => handleOpen('digital')}>
+        <Card variant="outlined" className="p-6 card-hover" sx={{ height: '100%' }} onClick={() => handleOpen('digital')}>
           <Box sx={{ display: 'flex', alignItems: 'top', gap: 1 }}>
             <Users size={24} />
             <Typography variant="h6" component="h2">Digital Identity Guide</Typography>
@@ -65,7 +65,7 @@ export default function HelpCentre() {
         </Card>
       </Grid>
       <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-        <Card variant="outlined" className="p-6 help-card" sx={{ height: '100%' }} onClick={() => handleOpen('signing')}>
+        <Card variant="outlined" className="p-6 card-hover" sx={{ height: '100%' }} onClick={() => handleOpen('signing')}>
           <Box sx={{ display: 'flex', alignItems: 'top', gap: 1 }}>
             <FilePenLine size={24} />
             <Typography variant="h6" component="h2">Signing Platform Guide</Typography>
@@ -76,7 +76,7 @@ export default function HelpCentre() {
         </Card>
       </Grid>
       <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-        <Card variant="outlined" className="p-6 help-card" sx={{ height: '100%' }} onClick={() => handleOpen('subscription')}>
+        <Card variant="outlined" className="p-6 card-hover" sx={{ height: '100%' }} onClick={() => handleOpen('subscription')}>
           <Box sx={{ display: 'flex', alignItems: 'top', gap: 1 }}>
             <CreditCard size={24} />
             <Typography variant="h6" component="h2">Subscription Plans Guide</Typography>
@@ -233,9 +233,9 @@ export default function HelpCentre() {
       </Grid>
     </Grid>
 
-    <DialogDigital open={openCard === 'digital'} onClose={handleClose} />
-    <DialogSigning open={openCard === 'signing'} onClose={handleClose} />
-    <DialogSubscription open={openCard === 'subscription'} onClose={handleClose} />
+    <ModalDigital open={openCard === 'digital'} onClose={handleClose} />
+    <ModalSigning open={openCard === 'signing'} onClose={handleClose} />
+    <ModalSubscription open={openCard === 'subscription'} onClose={handleClose} />
    </>
   );
 }

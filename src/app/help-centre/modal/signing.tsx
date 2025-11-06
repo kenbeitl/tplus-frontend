@@ -50,7 +50,7 @@ type Props = {
   onClose: () => void;
 };
 
-export default function DialogSigning({ open, onClose }: Props) {
+export default function ModalSigning({ open, onClose }: Props) {
   return (
     <InfoModal
       open={open}

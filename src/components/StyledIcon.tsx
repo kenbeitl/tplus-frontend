@@ -5,7 +5,7 @@ interface StyledIconProps {
   size?: number;
   bgColor?: string;
   textColor?: string;
-  variant?: 'green' | 'blue' | 'blue-inverted' | 'orange' | 'amber' | 'indigo' | 'indigo-inverted' | 'purple' | 'purple-inverted' | 'gray' | 'custom';
+  variant?: 'transparent' | 'green' | 'blue' | 'blue-inverted' | 'blue-gradient' | 'orange' | 'amber' | 'indigo' | 'indigo-inverted' | 'purple' | 'purple-inverted' | 'gray' | 'custom';
   className?: string;
   square?: boolean;
 }
@@ -22,6 +22,10 @@ export default function StyledIcon({
   
   // Define preset color variants
   const variants = {
+    transparent: {
+      bg: 'bg-transparent',
+      text: 'text-inherit',
+    },
     green: {
       bg: 'bg-green-100',
       text: 'text-green-600',
@@ -32,6 +36,10 @@ export default function StyledIcon({
     },
     'blue-inverted': {
       bg: 'bg-blue-600',
+      text: 'text-white',
+    },
+    'blue-gradient': {
+      bg: 'bg-linear-to-r from-blue-500 to-blue-700',
       text: 'text-white',
     },
     orange: {
