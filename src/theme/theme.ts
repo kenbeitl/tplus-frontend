@@ -1,30 +1,31 @@
 'use client';
 import { createTheme } from '@mui/material/styles';
 
+type ColorConfig = {
+  background: string;
+  text: string;
+};
+
+// Gradient constants
+const GRADIENTS = {
+  blue: 'linear-gradient(90deg, rgba(0, 73, 220, 1) 0%, rgba(0, 150, 220, 1) 100%)',
+  orange: 'linear-gradient(90deg, rgba(255, 176, 102, 1) 0%, rgba(255, 92, 51, 1) 100%)',
+} as const;
+
 declare module '@mui/material/styles' {
   interface Palette {
-    gradient: {
-      blue: string;
-      orange: string;
-    };
+    gradient: typeof GRADIENTS;
     plain: {
-      green : {
-        background: string;
-        text: string;
-      };
+      green: ColorConfig;
+      white: ColorConfig;
     };
   }
   interface PaletteOptions {
-    gradient?: {
-      blue?: string;
-      orange?: string;
-    };
+    gradient?: Partial<typeof GRADIENTS>;
     plain?: {
-      green?: {
-        background: string;
-        text: string;
-      };
-    }
+      green?: ColorConfig;
+      white?: ColorConfig;
+    };
   }
 }
 
@@ -44,15 +45,16 @@ const theme = createTheme({
       primary: '#333333',
       secondary: '#919191',
     },
-    gradient: {
-      blue: 'linear-gradient(90deg,rgba(0, 73, 220, 1) 0%, rgba(0, 150, 220, 1) 100%);',
-      orange: 'linear-gradient(90deg,rgba(255, 176, 102, 1) 0%, rgba(255, 92, 51, 1) 100%);',
-    },
+    gradient: GRADIENTS,
     plain: {
-      green : {
+      green: {
         background: '#dcfce7',
         text: '#016630',
-      }      
+      },
+      white: {
+        background: '#FFFFFF',
+        text: '#000000',
+      },
     },
   },
   typography: {
@@ -68,7 +70,7 @@ const theme = createTheme({
     caption: {
       fontSize: '0.875rem',
       color: '#666666',
-    }
+    },
   },
   components: {
     MuiCssBaseline: {
@@ -103,7 +105,7 @@ const theme = createTheme({
             backgroundColor: 'rgba(0, 0, 0, 0.6)',
           },
           // Reusable tag classes
-          '& .tag, & .tag-outlined, & .tag-orange, & .tag-blue, & .tag-green': {
+          '& .tag': {
             background: '#FFFFFF',
             display: 'inline-flex',
             alignItems: 'center',
@@ -118,22 +120,27 @@ const theme = createTheme({
               width: '1rem'
             }
           },
-          '.tag-outlined, & .tag-orange, & .tag-blue': {
-            color: '#FFFFFF',
-          },
           '& .tag-orange': {
-            background: 'linear-gradient(90deg,rgba(255, 176, 102, 1) 0%, rgba(255, 92, 51, 1) 100%)',
+            color: '#FFFFFF',
+            background: theme.palette.gradient.orange,
           },
           '& .tag-blue': {
-            background: 'linear-gradient(90deg,rgba(0, 73, 220, 1) 0%, rgba(0, 150, 220, 1) 100%)',
+            color: '#FFFFFF',
+            background: theme.palette.gradient.blue,
           },
           '& .tag-green': {
-            background: theme.palette.plain.green.background,
             color: theme.palette.plain.green.text,
+            background: theme.palette.plain.green.background,
+          },
+          '& .tag-white': {
+            color: theme.palette.plain.white.text,
+            background: theme.palette.plain.white.background,
+            border: '1px solid #e5e7eb',
           },
           '& .tag-outlined': {
-            border: '1px solid #999999',
+            color: theme.palette.text.primary,
             background: '#555555',
+            border: '1px solid #999999',
           },
         },
       }),
@@ -194,30 +201,30 @@ const theme = createTheme({
           props: { variant: 'gradient', color: 'blue' },
           style: {
             color: '#FFFFFF',
-            background: 'linear-gradient(90deg,rgba(0, 73, 220, 1) 0%, rgba(0, 150, 220, 1) 100%);',
-          }
+            background: GRADIENTS.blue,
+          },
         },
         {
           props: { variant: 'outlined' },
           style: {
             color: '#666666',
-            borderColor: '#666666'
-          }
+            borderColor: '#666666',
+          },
         },
         {
           props: { variant: 'outlined', color: 'blue' },
           style: {
             color: '#2b7fff',
             backgroundColor: '#FFFFFF',
-            borderColor: '#bedbff'
-          }
-        }
-      ]
-    }
+            borderColor: '#bedbff',
+          },
+        },
+      ],
+    },
   },
   shape: {
     borderRadius: 10,
-  }
+  },
 });
 
 export default theme;

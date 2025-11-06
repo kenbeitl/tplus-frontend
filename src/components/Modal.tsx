@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Modal as MuiModal, Box, IconButton, Typography } from '@mui/material';
+import { Modal as MuiModal, Box, IconButton } from '@mui/material';
 import { X } from 'lucide-react';
 
 interface ModalProps {
@@ -36,6 +36,20 @@ export default function Modal({
           p: 4,
           maxHeight: '90vh',
           overflow: 'auto',
+          scrollbarGutter: 'stable',
+          '&::-webkit-scrollbar': {
+            width: '8px',
+          },
+          '&::-webkit-scrollbar-track': {
+            margin: '16px',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+            borderRadius: '4px',
+          },
+          '&::-webkit-scrollbar-thumb:hover': {
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',
+          },
         }}
       >
         <IconButton

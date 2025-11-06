@@ -23,6 +23,15 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Help Centre styles */
+.help-card {
+  cursor: pointer;
+}
+
+.help-card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
 /* Swiper full width styles */
 .swiper {
   width: 100% !important;
@@ -34,9 +43,8 @@ body {
   box-sizing: border-box;
 }
 
-/* Ensure MUI Paper/Card styles are preserved */
 .swiper-slide .MuiPaper-root {
-  box-shadow: none; /* Will be overridden by elevation prop */
+  box-shadow: none;
 }
 
 .swiper .swiper-button-prev,

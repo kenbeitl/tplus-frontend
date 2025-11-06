@@ -4,7 +4,7 @@ import InlineTag from '@/components/InlineTag';
 import ActionButton from '@/components/ActionButton';
 import { Brain, CircleCheckBig, FileText, Search } from 'lucide-react';
 import { Metadata } from "next";
-import GovConnectClient from './GovConnectClient';
+import ButtonWithFormModal from '@/components/ButtonWithFormModal';
 
 
 export const metadata: Metadata = {
@@ -58,9 +58,9 @@ export default function GovConnect() {
               <ListItemText primary="Single point of submission" />
             </ListItem>
           </List>
-          <GovConnectClient 
+          <ButtonWithFormModal
             formId={DUAL_DECLARATION_FORM_ID} 
-            buttonText="Apply Now" 
+            buttonText="Apply Now"
           />
         </Card>
       </Grid>

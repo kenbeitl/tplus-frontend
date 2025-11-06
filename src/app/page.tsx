@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Carousel from "@/components/Carousel";
 import Spacer from "@/components/ui/Spacer";
-import { Award, Building, Building2, Calendar, CircleCheckBig, CreditCard, FilePenLine, Link, Shield } from "lucide-react";
+import { ArrowRight, Award, Building, Building2, Calendar, CircleCheckBig, CreditCard, FilePenLine, Link, Shield } from "lucide-react";
 import StyledIcon from "@/components/StyledIcon";
 import { Box, Button, Card, Grid, Icon, Paper, Typography } from "@mui/material";
 
@@ -45,16 +45,20 @@ export default function Dashboard() {
         <Spacer height={20} />
         <Grid container spacing={2}>
           <Grid size="grow">
-            <Card variant="outlined" className="p-3 lg:p-6"></Card>
+            <Card variant="outlined" className="p-3 lg:p-6 bg-blue-50! border-blue-200!"></Card>
           </Grid>
           <Grid size={1}>
-            <Card variant="outlined" className="p-3 lg:p-6"></Card>
+            <Card elevation={0} className="p-3 lg:p-6 flex items-center justify-center">
+              <ArrowRight className="text-blue-400" />
+            </Card>
           </Grid>
           <Grid size="grow">
             <Card variant="outlined" className="p-3 lg:p-6"></Card>
           </Grid>
           <Grid size={1}>
-            <Card variant="outlined" className="p-3 lg:p-6"></Card>
+            <Card elevation={0} className="p-3 lg:p-6 flex items-center justify-center">
+              <ArrowRight className="text-purple-400" />
+            </Card>
           </Grid>
           <Grid size="grow">
             <Card variant="outlined" className="p-3 lg:p-6"></Card>
