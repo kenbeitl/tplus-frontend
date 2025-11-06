@@ -107,9 +107,11 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
       )}
       
       {data.description && (
-        <Typography variant="body2" sx={{ mb: 3 }}>
-          {data.description}
-        </Typography>
+        <Typography 
+          variant="body2" 
+          sx={{ mb: 3 }}
+          dangerouslySetInnerHTML={{ __html: data.description }}
+        />
       )}
 
       <Form onSubmit={handleSubmit}>

@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/material';
 import Spacer from '@/components/ui/Spacer';
-import Modal from '@/components/Modal';
+import InfoModal from '@/components/InfoModal';
 import { CircleCheckBig } from 'lucide-react';
 
 const DIALOG_CARD = [
@@ -62,24 +62,13 @@ type Props = {
 
 export default function DialogSubscription({ open, onClose }: Props) {
   return (
-    <Modal
+    <InfoModal
       open={open}
       onClose={onClose}
       maxWidth={768}
+      title="Subscription Plans Comparison"
+      subtitle="Compare all T+ plans to find the best fit for your business needs"
     >
-      <Typography
-        variant="h6"
-        component="h2"
-        sx={{
-          fontSize: '18px',
-          mb: 1,
-        }}
-      >
-        Subscription Plans Comparison
-      </Typography>
-      <Typography variant="body2" color="text.secondary" sx={{ fontSize: '14px', mb: 3 }}>
-        Compare all T+ plans to find the best fit for your business needs
-      </Typography>
         {/* FIXME - table / something else not implemented */}
         <TableContainer component={Paper} sx={{ boxShadow: 'none' }}>
           <Table size="small" aria-label="digital identity comparison table">
@@ -182,7 +171,7 @@ export default function DialogSubscription({ open, onClose }: Props) {
             </Grid>
           ))}
         </Grid>
-    </Modal>
+    </InfoModal>
   );
 }
 

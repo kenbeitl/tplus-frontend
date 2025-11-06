@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/material';
 import Spacer from '@/components/ui/Spacer';
-import Modal from '@/components/Modal';
+import InfoModal from '@/components/InfoModal';
 import { CircleCheckBig } from 'lucide-react';
 import InlineTag from '@/components/InlineTag';
 
@@ -63,24 +63,13 @@ type Props = {
 
 export default function DialogDigital({ open, onClose }: Props) {
   return (
-    <Modal
+    <InfoModal
       open={open}
       onClose={onClose}
       maxWidth={768}
+      title="Digital Identity Comparison Guide"
+      subtitle="Choose the right digital identity for your needs"
     >
-      <Typography
-        variant="h6"
-        component="h2"
-        sx={{
-          fontSize: '18px',
-          mb: 1,
-        }}
-      >
-        Digital Identity Comparison Guide
-      </Typography>
-      <Typography variant="body2" color="text.secondary" sx={{ fontSize: '14px', mb: 3 }}>
-        Choose the right digital identity for your needs
-      </Typography>
         {/* FIXME - table / something else not implemented */}
         <TableContainer component={Paper} sx={{ boxShadow: 'none' }}>
           <Table size="small" aria-label="digital identity comparison table">
@@ -175,7 +164,7 @@ export default function DialogDigital({ open, onClose }: Props) {
             </Grid>
           ))}
         </Grid>
-    </Modal>
+    </InfoModal>
   );
 }
 

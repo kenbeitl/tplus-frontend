@@ -18,6 +18,7 @@ declare module '@mui/material/styles' {
     plain: {
       green: ColorConfig;
       white: ColorConfig;
+      grey: ColorConfig;
     };
   }
   interface PaletteOptions {
@@ -25,6 +26,7 @@ declare module '@mui/material/styles' {
     plain?: {
       green?: ColorConfig;
       white?: ColorConfig;
+      grey?: ColorConfig;
     };
   }
 }
@@ -55,6 +57,10 @@ const theme = createTheme({
         background: '#FFFFFF',
         text: '#000000',
       },
+      grey: {
+        background: '#555555',
+        text: '#FFFFFF',
+      }
     },
   },
   typography: {
@@ -138,7 +144,7 @@ const theme = createTheme({
             border: '1px solid #e5e7eb',
           },
           '& .tag-outlined': {
-            color: theme.palette.text.primary,
+            color: theme.palette.plain.grey.text,
             background: '#555555',
             border: '1px solid #999999',
           },

@@ -3,7 +3,8 @@ import Carousel from "@/components/Carousel";
 import Spacer from "@/components/ui/Spacer";
 import { ArrowRight, Award, Building, Building2, Calendar, CircleCheckBig, CreditCard, FilePenLine, Link, Shield } from "lucide-react";
 import StyledIcon from "@/components/StyledIcon";
-import { Box, Button, Card, Grid, Icon, Paper, Typography } from "@mui/material";
+import Emoji from "@/components/Emoji";
+import { Box, Button, Card, Grid, Paper, Typography } from "@mui/material";
 
 export const metadata: Metadata = {
   title: 'Dashboard | TPlus',
@@ -25,7 +26,7 @@ export default function Dashboard() {
         />
         <Spacer height={10} />
         <Box className="flex items-center">
-          <Icon sx={{ width: 40, height: 40, fontSize: 30, mr: 1 }}>🎉</Icon>
+          <Emoji symbol="🎉" size={40} sx={{ mr: 1 }} />
           <Typography variant="h4" component="h2">Welcome to T+</Typography>
         </Box>
         <Spacer height={20} />
@@ -38,7 +39,7 @@ export default function Dashboard() {
 
       <Card variant="outlined" className="p-6">
         <Box className="flex items-center">
-          <Icon sx={{ width: 20, height: 25, fontSize: 16, mr: 1 }}>🚀</Icon>
+          <Emoji symbol="🚀" size={25} sx={{ mr: 1 }} />
           <Typography variant="body1" component="h3">Get Started Tips</Typography>
         </Box>
         <Typography variant="body2" component="p" sx={{ mt: 2 }}>Follow these 3 steps to unlock the full potential of T+</Typography>
@@ -72,7 +73,7 @@ export default function Dashboard() {
       <Card variant="outlined" className="p-6">
         <Box className="flex items-center">
           <CircleCheckBig size="20" color="#016630" className="mr-2" />
-          <Icon sx={{ width: 20, height: 25, fontSize: 16, mr: 1 }}>🆓</Icon>
+          <Emoji symbol="🆓" size={25} sx={{ mr: 1 }} />
           <Typography variant="body1" component="h3" color="#016630">Free Trial Features</Typography>
         </Box>
         <Typography variant="body2" component="p" sx={{ mt: 2 }}>You can start using these features right away (some with limited access):</Typography>
@@ -160,7 +161,7 @@ export default function Dashboard() {
       <Card variant="outlined" className="p-6">
         <Box className="flex items-center">
           <Calendar size="20" color="#c05621" className="mr-2" />
-          <Icon sx={{ width: 20, height: 25, fontSize: 16, mr: 1 }}>🔐</Icon>
+          <Emoji symbol="🔐" size={25} sx={{ mr: 1 }} />
           <Typography variant="body1" component="h3" color="#c05621">Features Available Soon</Typography>
         </Box>
         <Typography variant="body2" component="p" sx={{ mt: 2 }}>These advanced features are being rolled out progressively. Some will only be available with a subscription:</Typography>
@@ -266,7 +267,7 @@ export default function Dashboard() {
 
       <Card variant="outlined" className="p-6">
         <Box className="flex items-center">
-          <Icon sx={{ width: 20, height: 25, fontSize: 16, mr: 1 }}>🛠️</Icon>
+          <Emoji symbol="🛠️" size={25} sx={{ mr: 1 }} />
           <Typography variant="body1" component="h3" fontWeight={500}>Need help getting started?</Typography>
         </Box>
         <Typography variant="body2" component="p" sx={{ mt: 2 }}>Follow these 3 steps to unlock the full potential of T+</Typography>

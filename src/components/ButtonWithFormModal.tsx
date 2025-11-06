@@ -1,7 +1,7 @@
 'use client';
 
 import ButtonWithModal from '@/components/ButtonWithModal';
-import FormModal from '@/components/FormModal';
+import FormModal from '@/components/form/FormModal';
 import { ArrowRight } from 'lucide-react';
 
 interface ButtonWithFormModalProps {

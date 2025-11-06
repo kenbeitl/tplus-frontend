@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/material';
 import Spacer from '@/components/ui/Spacer';
-import Modal from '@/components/Modal';
+import InfoModal from '@/components/InfoModal';
 import { CircleCheckBig } from 'lucide-react';
 
 const DIALOG_CARD = [
@@ -52,24 +52,13 @@ type Props = {
 
 export default function DialogSigning({ open, onClose }: Props) {
   return (
-    <Modal
+    <InfoModal
       open={open}
       onClose={onClose}
       maxWidth={768}
+      title="Signing Platform Comparison"
+      subtitle="Choose the best signing platform for your needs"
     >
-      <Typography
-        variant="h6"
-        component="h2"
-        sx={{
-          fontSize: '18px',
-          mb: 1,
-        }}
-      >
-        Signing Platform Comparison
-      </Typography>
-      <Typography variant="body2" color="text.secondary" sx={{ fontSize: '14px', mb: 3 }}>
-        Choose the best signing platform for your needs
-      </Typography>
         {/* FIXME - table / something else not implemented */}
         <TableContainer component={Paper} sx={{ boxShadow: 'none' }}>
           <Table size="small" aria-label="digital identity comparison table">
@@ -166,7 +155,7 @@ export default function DialogSigning({ open, onClose }: Props) {
             </Grid>
           ))}
         </Grid>
-    </Modal>
+    </InfoModal>
   );
 }
 

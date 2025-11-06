@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import InlineTag from "./InlineTag";
+import Emoji from "./Emoji";
 
 export default function Carousel({ slideNum }: { slideNum: number }) {
     return (
@@ -32,7 +33,7 @@ export default function Carousel({ slideNum }: { slideNum: number }) {
                     }}
                 >
                     <Box className="flex items-center mb-5">
-                        <Icon sx={{ width: 40, height: 40, fontSize: 30, mr: 1 }}>🍀</Icon>
+                        <Emoji symbol="🍀" size={40} sx={{ mr: 1 }} />
                         <InlineTag label="Business" variant="outlined" className="text-base!" />
                     </Box>
                     <Typography variant="h4" component="h2" color="white" sx={{ mb: 2 }}>Single Submission for Dual Declaration Service</Typography>
