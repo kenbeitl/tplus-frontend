@@ -20,7 +20,7 @@ export default function GovConnect() {
 
   return (
    <Box component="div" className="relative">
-    <Typography sx={{ fontWeight: 700 }} variant="h4" component="h1">GovConnect</Typography>
+    <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">GovConnect</Typography>
     <Typography variant="body2" component="p">Single Submission for Dual Declaration</Typography>
     <InlineTag label="Services Available" className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
     <Spacer height={20} />

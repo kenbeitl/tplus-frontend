@@ -70,7 +70,7 @@ const DIALOG_CARD = [
 export default function PayConnectClient() {
   return (
     <>
-      <Typography sx={{ fontWeight: 700 }} variant="h4" component="h1">PayConnect</Typography>
+      <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">PayConnect</Typography>
       <Typography variant="body2" component="p">Comprehensive financial services and payment solutions for your business</Typography>
       <Spacer height={20} />
       <InlineTag label="Sponsored Partner Offers" className="text-base! text-only" startIcon={<Sparkles className="h-4 w-4 text-amber-500" />} />
