@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { Grid, Typography, CircularProgress, Alert, Box } from '@mui/material';
 import Form from './Form';
 import FormField from './FormField';
@@ -48,6 +48,13 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
 
   // Initialize form validation
   const form = useFormValidation(initialValues, validationRules);
+
+  // Update formID when data changes
+  useEffect(() => {
+    if (data?.formID && form.values.formID !== data.formID) {
+      form.handleChange('formID', data.formID);
+    }
+  }, [data?.formID, form.values.formID, form.handleChange]);
 
   // Form submission logic
   const { submit: submitApplication, isSubmitting } = useFormSubmission(

@@ -7,9 +7,11 @@ import { ArrowRight } from 'lucide-react';
 interface ButtonWithFormModalProps {
   formId: string;
   buttonText: string;
+  buttonEndIcon?: React.ReactNode;
+  textOnly?: boolean;
 }
 
-export default function ButtonWithFormModal({ formId, buttonText }: ButtonWithFormModalProps) {
+export default function ButtonWithFormModal({ textOnly = false, formId, buttonText, buttonEndIcon = <ArrowRight /> }: ButtonWithFormModalProps) {
   return (
     <ButtonWithModal
       buttonText={buttonText}
@@ -18,7 +20,8 @@ export default function ButtonWithFormModal({ formId, buttonText }: ButtonWithFo
         variant: 'gradient',
         color: 'blue',
       }}
-      buttonEndIcon={<ArrowRight />}
+      buttonEndIcon={buttonEndIcon}
+      textOnly={textOnly}
       modalContent={(open, onClose) => (
         <FormModal
           open={open}

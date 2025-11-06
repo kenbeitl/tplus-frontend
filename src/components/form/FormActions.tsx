@@ -26,7 +26,7 @@ export default function FormActions({
       </Button>
       <Button
         variant="gradient"
-        color="primary"
+        color="blue"
         type={submitType}
         onClick={onSubmit}
         disabled={isSubmitDisabled}

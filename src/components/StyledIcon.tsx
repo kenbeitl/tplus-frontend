@@ -1,11 +1,11 @@
 import React from 'react';
 
 interface StyledIconProps {
-  icon: React.ReactNode;
+  icon: React.ReactNode | string;
   size?: number;
   bgColor?: string;
   textColor?: string;
-  variant?: 'green' | 'blue' | 'orange' | 'amber' | 'gray' | 'custom';
+  variant?: 'green' | 'blue' | 'blue-inverted' | 'orange' | 'amber' | 'indigo' | 'indigo-inverted' | 'purple' | 'purple-inverted' | 'gray' | 'custom';
   className?: string;
   square?: boolean;
 }
@@ -30,6 +30,10 @@ export default function StyledIcon({
       bg: 'bg-blue-100',
       text: 'text-blue-600',
     },
+    'blue-inverted': {
+      bg: 'bg-blue-600',
+      text: 'text-white',
+    },
     orange: {
       bg: 'bg-orange-100',
       text: 'text-orange-600',
@@ -37,6 +41,22 @@ export default function StyledIcon({
     amber: {
       bg: 'bg-amber-100',
       text: 'text-amber-600',
+    },
+    indigo: {
+      bg: 'bg-indigo-100',
+      text: 'text-indigo-600',
+    },
+    'indigo-inverted': {
+      bg: 'bg-indigo-600',
+      text: 'text-white',
+    },
+    purple: {
+      bg: 'bg-purple-100',
+      text: 'text-purple-600',
+    },
+    'purple-inverted': {
+      bg: 'bg-purple-600',
+      text: 'text-white',
     },
     gray: {
       bg: 'bg-gray-100',
@@ -65,7 +85,7 @@ export default function StyledIcon({
     <div 
       className={`flex items-center justify-center ${borderRadiusClass} ${colorClasses} ${className}`.trim()}
       style={{
-        minWidth: `${size}px`,
+        width: `${size}px`,
         height: `${size}px`,
         ...customStyles,
       }}

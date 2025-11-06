@@ -22,6 +22,7 @@ import Logo from '@/assets/svg/Logo';
 import { DropdownListItem, NavigationListItem } from '@/components/NavigationComponents';
 import { useLanguage, useTranslations, useDrawer, localeLabels, type Locale } from '@/contexts/AppContext';
 import { SnackbarProvider } from '@/contexts/SnackbarContext';
+import StyledIcon from '@/components/StyledIcon';
 
 const drawerWidth = 240;
 const drawerMiniWidth = 64;
@@ -113,6 +114,7 @@ export default function AppWrapper({
   const { drawerOpen, toggleDrawer } = useDrawer();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isInitialMount, setIsInitialMount] = React.useState(true);
+  const [didLogin, setDidLogin] = React.useState(true); // temp true
 
   // Enable transitions after initial mount and drawer state is loaded
   React.useEffect(() => {
@@ -231,6 +233,14 @@ export default function AppWrapper({
                 </MenuItem>
               ))}
             </Menu>
+            {didLogin && 
+              <StyledIcon 
+              icon="TD" 
+              variant="gray"
+              size={40}
+              className="ms-1"
+              />
+            }            
           </Toolbar>
         </AppBar>
         <Drawer 

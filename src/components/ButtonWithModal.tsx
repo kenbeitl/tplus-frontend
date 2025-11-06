@@ -1,7 +1,7 @@
 'use client';
 
 import { useModal } from '@/hooks/useModal';
-import { Button, ButtonProps } from '@mui/material';
+import { Button, ButtonProps, Link } from '@mui/material';
 import { ReactNode } from 'react';
 
 interface ButtonWithModalProps {
@@ -10,6 +10,7 @@ interface ButtonWithModalProps {
   modalContent: (open: boolean, onClose: () => void) => ReactNode;
   buttonStartIcon?: ReactNode;
   buttonEndIcon?: ReactNode;
+  textOnly?: boolean;
 }
 
 export default function ButtonWithModal({
@@ -18,19 +19,30 @@ export default function ButtonWithModal({
   modalContent,
   buttonStartIcon,
   buttonEndIcon,
+  textOnly,
 }: ButtonWithModalProps) {
   const modal = useModal();
 
   return (
     <>
-      <Button
-        {...buttonProps}
-        startIcon={buttonStartIcon}
-        endIcon={buttonEndIcon}
-        onClick={modal.handleOpen}
-      >
+      {textOnly ? (
+        <Link
+          variant="caption" 
+          underline="hover"
+          onClick={modal.handleOpen}
+        >
+          {buttonText}
+        </Link>
+      ) : (
+        <Button
+          {...buttonProps}
+          startIcon={buttonStartIcon}
+          endIcon={buttonEndIcon}
+          onClick={modal.handleOpen}
+        >
         {buttonText}
-      </Button>
+        </Button>
+      )}
 
       {modalContent(modal.open, modal.handleClose)}
     </>

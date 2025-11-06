@@ -1,16 +1,18 @@
 import { Metadata } from "next";
 import Carousel from "@/components/Carousel";
 import Spacer from "@/components/ui/Spacer";
-import { ArrowRight, Award, Building, Building2, Calendar, CircleCheckBig, CreditCard, FilePenLine, Link, Shield } from "lucide-react";
+import { ArrowRight, Award, Building, Building2, Calendar, CircleCheckBig, CreditCard, FilePenLine, IdCard, Shield, Sparkles, User } from "lucide-react";
 import StyledIcon from "@/components/StyledIcon";
 import Emoji from "@/components/Emoji";
-import { Box, Button, Card, Grid, Paper, Typography } from "@mui/material";
+import { Box, Button, Card, Grid, Link, Paper, Typography } from "@mui/material";
+import ButtonWithFormModal from "@/components/ButtonWithFormModal";
 
 export const metadata: Metadata = {
   title: 'Dashboard | TPlus',
 }
 
 export default function Dashboard() {
+  const CONTACT_SUPPORT_FORM_ID = 'contact-support';
 
   return (
     <>
@@ -46,23 +48,71 @@ export default function Dashboard() {
         <Spacer height={20} />
         <Grid container spacing={2}>
           <Grid size="grow">
-            <Card variant="outlined" className="p-3 lg:p-6 bg-blue-50! border-blue-200!"></Card>
+            <Card 
+              variant="outlined" 
+              className="p-3 lg:p-6 bg-linear-to-br from-blue-50 to-blue-100 border-2 border-blue-200! gap-4 center-layout"
+            >
+              <StyledIcon 
+                icon={<User size={25} />} 
+                variant="blue-inverted"
+                size={50}
+              />
+              <StyledIcon 
+                icon="1" 
+                variant="blue-inverted"
+                size={32}
+              />
+              <Typography variant="body2" component="h4">Complete your profile</Typography>
+              <Typography variant="caption" component="p" sx={{ color: '#2563eb' }}>Fill in your user and company profile to access all T+ platform features</Typography>
+            </Card>
           </Grid>
           <Grid size={1}>
-            <Card elevation={0} className="p-3 lg:p-6 flex items-center justify-center">
+            <Card elevation={0} className="center-layout">
               <ArrowRight className="text-blue-400" />
             </Card>
           </Grid>
           <Grid size="grow">
-            <Card variant="outlined" className="p-3 lg:p-6"></Card>
+            <Card 
+              variant="outlined" 
+              className="p-3 lg:p-6 bg-linear-to-br from-purple-50 to-purple-100 border-2 border-purple-200! gap-4 center-layout"
+            >
+              <StyledIcon 
+                icon={<IdCard size={25} />} 
+                variant="purple-inverted"
+                size={50}
+              />
+              <StyledIcon 
+                icon="2" 
+                variant="purple-inverted"
+                size={32}
+              />
+              <Typography variant="body2" component="h4">Apply for Digital Identity</Typography>
+              <Typography variant="caption" component="p" sx={{ color: '#9333ea' }}>Create your verified digital identity to securely access T+ services</Typography>
+            </Card>
           </Grid>
           <Grid size={1}>
-            <Card elevation={0} className="p-3 lg:p-6 flex items-center justify-center">
+            <Card elevation={0} className="center-layout">
               <ArrowRight className="text-purple-400" />
             </Card>
           </Grid>
           <Grid size="grow">
-            <Card variant="outlined" className="p-3 lg:p-6"></Card>
+            <Card 
+              variant="outlined" 
+              className="p-3 lg:p-6 bg-linear-to-br from-indigo-50 to-indigo-100 border-2 border-indigo-200! gap-4 center-layout"
+            >
+              <StyledIcon 
+                icon={<Sparkles size={25} />} 
+                variant="indigo-inverted"
+                size={50}
+              />
+              <StyledIcon 
+                icon="3" 
+                variant="indigo-inverted"
+                size={32}
+              />
+              <Typography variant="body2" component="h4">Explore Services</Typography>
+              <Typography variant="caption" component="p" sx={{ color: '#4f46e5' }}>Use the menu bar to browse and try out all available services</Typography>
+            </Card>
           </Grid>
         </Grid>
       </Card>
@@ -273,10 +323,16 @@ export default function Dashboard() {
         <Typography variant="body2" component="p" sx={{ mt: 2 }}>Follow these 3 steps to unlock the full potential of T+</Typography>
         <Spacer height={20} />
         <Box
-          className="flex flex-col items-center text-center py-8"
+          className="flex flex-row gap-5 justify-center items-center"
           component="div"
         >
-          {/* Help Center | Contact Support */}
+          <Link variant="caption" href="/help-centre" underline="hover">Help Centre</Link> 
+          | 
+          <ButtonWithFormModal
+            textOnly={true}
+            formId={CONTACT_SUPPORT_FORM_ID} 
+            buttonText="Contact Support"
+          />
         </Box>
       </Card>
     </>
