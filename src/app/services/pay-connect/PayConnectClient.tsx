@@ -95,7 +95,7 @@ export default function PayConnectClient() {
                     </Box>
                     <Typography sx={{ mt: 2 }} variant="body2" component="p">{item.description}</Typography>
                     <Spacer height={20} />
-                    <Card variant="outlined" className="p-3 bg-blue-50! border-blue-200! center-layout">
+                    <Card variant="outlined" className="p-3 border-2! bg-blue-50! border-blue-200! center-layout">
                         <StyledIcon 
                             icon={item.providersAvailable} 
                             variant="transparent"

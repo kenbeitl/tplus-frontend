@@ -15,7 +15,7 @@ const GRADIENTS = {
 declare module '@mui/material/styles' {
   interface Palette {
     gradient: typeof GRADIENTS;
-    plain: {
+    tag: {
       green: ColorConfig;
       white: ColorConfig;
       grey: ColorConfig;
@@ -23,11 +23,20 @@ declare module '@mui/material/styles' {
   }
   interface PaletteOptions {
     gradient?: Partial<typeof GRADIENTS>;
-    plain?: {
+    tag?: {
       green?: ColorConfig;
       white?: ColorConfig;
       grey?: ColorConfig;
     };
+  }
+  interface TypeText {
+    blue: string;
+    darkBlue: string;
+    green: string;
+    indigo: string;
+    orange: string;
+    purple: string;
+    white: string;
   }
 }
 
@@ -37,6 +46,12 @@ declare module '@mui/material/Button' {
   }
   interface ButtonPropsColorOverrides {
     blue: true;
+    darkBlue: true;
+    green: true;
+    indigo: true;
+    orange: true;
+    purple: true
+    white: true;
   }
 }
 
@@ -46,9 +61,16 @@ const theme = createTheme({
     text: {
       primary: '#333333',
       secondary: '#919191',
+      blue: '#2563eb',
+      darkBlue: '#1C398E',
+      indigo: '#4f46e5',
+      green: '#016630',
+      orange: '#D35400',
+      purple: '#9333ea',
+      white: '#FFFFFF',
     },
     gradient: GRADIENTS,
-    plain: {
+    tag: {
       green: {
         background: '#dcfce7',
         text: '#016630',
@@ -65,7 +87,7 @@ const theme = createTheme({
   },
   typography: {
     fontSize: 12,
-    fontFamily: 'var(--font-roboto), "Helvetica", "Arial", sans-serif',
+    fontFamily: 'sans-serif',
     body1: {
       fontSize: '1rem',
     },
@@ -129,6 +151,10 @@ const theme = createTheme({
               width: '1rem'
             }
           },
+          '& .tag-transparent': {
+            color: 'inherit',
+            background: 'transparent',
+          },
           '& .tag-orange': {
             color: '#FFFFFF',
             background: theme.palette.gradient.orange,
@@ -138,16 +164,16 @@ const theme = createTheme({
             background: theme.palette.gradient.blue,
           },
           '& .tag-green': {
-            color: theme.palette.plain.green.text,
-            background: theme.palette.plain.green.background,
+            color: theme.palette.tag.green.text,
+            background: theme.palette.tag.green.background,
           },
           '& .tag-white': {
-            color: theme.palette.plain.white.text,
-            background: theme.palette.plain.white.background,
+            color: theme.palette.tag.white.text,
+            background: theme.palette.tag.white.background,
             border: '1px solid #e5e7eb',
           },
           '& .tag-outlined': {
-            color: theme.palette.plain.grey.text,
+            color: theme.palette.tag.grey.text,
             background: '#555555',
             border: '1px solid #999999',
           },
@@ -180,6 +206,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           padding: 0,
+          marginBottom: 6,
         }
       }
     },
@@ -187,9 +214,17 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           minWidth: 'auto',
-          marginTop: 6,
           marginRight: 4,
-          alignSelf: 'start',
+          alignSelf: 'center',
+        }
+      }
+    },
+    MuiListItemText: {
+      styleOverrides: {
+        root: {
+          '& .MuiTypography-root': {
+            fontSize: '14px'
+          }
         }
       }
     },
@@ -200,7 +235,6 @@ const theme = createTheme({
           lineHeight: 1.5,
           fontSize: '0.9rem',
           '&:disabled': {
-            color: '#FFFFFF',
             opacity: 0.6,
           }
         },
@@ -226,6 +260,25 @@ const theme = createTheme({
             color: '#2b7fff',
             backgroundColor: '#FFFFFF',
             borderColor: '#bedbff',
+          },
+        },
+        {
+          props: { variant: 'outlined', color: 'white' },
+          style: {
+            color: '#666666',
+            backgroundColor: '#FFFFFF',
+            borderColor: '#666666',
+          },
+        },
+        {
+          props: { variant: 'contained' },
+          style: {
+            color: '#2b7fff',
+            boxShadow: 'none',
+            '&:hover': {
+              boxShadow: 'none',
+              backgroundColor: '#f0f7ff',
+            },
           },
         },
       ],

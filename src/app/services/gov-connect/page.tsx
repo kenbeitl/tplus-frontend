@@ -41,19 +41,19 @@ export default function GovConnect() {
           <List sx={{ flexGrow: 1 }}>
             <ListItem>
               <ListItemIcon>
-                <CircleCheckBig size={20} color="#87e119" />
+                <CircleCheckBig size={16} color="#43A047" />
               </ListItemIcon>
               <ListItemText primary="Reduce paperwork by 60%" />
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <CircleCheckBig size={20} color="#87e119" />
+                <CircleCheckBig size={16} color="#43A047" />
               </ListItemIcon>
               <ListItemText primary="Faster processing time" />
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <CircleCheckBig size={20} color="#87e119" />
+                <CircleCheckBig size={16} color="#43A047" />
               </ListItemIcon>
               <ListItemText primary="Single point of submission" />
             </ListItem>
@@ -80,19 +80,19 @@ export default function GovConnect() {
           <List sx={{ flexGrow: 1 }}>
             <ListItem>
               <ListItemIcon>
-                <CircleCheckBig size={20} color="#87e119" />
+                <CircleCheckBig size={16} color="#43A047" />
               </ListItemIcon>
               <ListItemText primary="HK HS Code (Ask Tracie)" />
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <CircleCheckBig size={20} color="#87e119" />
+                <CircleCheckBig size={16} color="#43A047" />
               </ListItemIcon>
               <ListItemText primary="China HS Code (Ask Xiao Cui)" />
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <CircleCheckBig size={20} color="#87e119" />
+                <CircleCheckBig size={16} color="#43A047" />
               </ListItemIcon>
               <ListItemText primary="Instant classification results" />
             </ListItem>
@@ -116,19 +116,19 @@ export default function GovConnect() {
           <List sx={{ flexGrow: 1 }}>
             <ListItem>
               <ListItemIcon>
-                <CircleCheckBig size={20} color="#87e119" />
+                <CircleCheckBig size={16} color="#43A047" />
               </ListItemIcon>
               <ListItemText primary="Automated data extraction" />
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <CircleCheckBig size={20} color="#87e119" />
+                <CircleCheckBig size={16} color="#43A047" />
               </ListItemIcon>
               <ListItemText primary="Import & export declarations" />
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <CircleCheckBig size={20} color="#87e119" />
+                <CircleCheckBig size={16} color="#43A047" />
               </ListItemIcon>
               <ListItemText primary="Ready in 10 minutes" />
             </ListItem>

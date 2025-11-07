@@ -136,7 +136,7 @@ export default function ModalSubscription({ open, onClose }: Props) {
                     {item.features.map((f) => (
                       <ListItem key={f} disableGutters>
                         <ListItemIcon sx={{ minWidth: 12 }}>
-                          <CircleCheckBig size={12} color="#87e119" />
+                          <CircleCheckBig size={12} color="#43A047" />
                         </ListItemIcon>
                         <ListItemText
                           slotProps={{
