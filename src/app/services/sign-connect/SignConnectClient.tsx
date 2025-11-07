@@ -125,9 +125,8 @@ export default function SignConnectClient() {
         <Spacer height={30} />
         <Box component="div" className="flex justify-center">
           <ActionButton
-            
             buttonText="Learn More about Signing Platforms"
-            variant="contained"
+            variant="text"
             onClick={() => router.push('/help-centre')}
             noIcon
           />

@@ -1,4 +1,5 @@
 'use client';
+import { backdropClasses } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 
 type ColorConfig = {
@@ -273,11 +274,27 @@ const theme = createTheme({
         {
           props: { variant: 'contained' },
           style: {
+            color: '#FFFFFF',
+            backgroundColor: '#2b7fff',
+            boxShadow: 'none',
+            border: '1px solid #2b7fff',
+            '&:hover': {
+              color: '#2b7fff',
+              backgroundColor: '#FFFFFF',
+              borderColor: '#2b7fff',
+              boxShadow: 'none',
+            },
+          },
+        },
+        {
+          props: { variant: 'text' },
+          style: {
             color: '#2b7fff',
+            backgroundColor: 'transparent',
             boxShadow: 'none',
             '&:hover': {
               boxShadow: 'none',
-              backgroundColor: '#f0f7ff',
+              backgroundColor: 'rgba(43, 127, 255, 0.1)',
             },
           },
         },
