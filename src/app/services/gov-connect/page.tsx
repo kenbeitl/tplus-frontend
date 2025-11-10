@@ -2,7 +2,7 @@ import Spacer from '@/components/ui/Spacer';
 import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import InlineTag from '@/components/InlineTag';
 import ActionButton from '@/components/ActionButton';
-import { Brain, CircleCheckBig, FileText, Search } from 'lucide-react';
+import { ArrowRight, Brain, CircleCheckBig, FileText, Search } from 'lucide-react';
 import { Metadata } from "next";
 import ButtonWithFormModal from '@/components/ButtonWithFormModal';
 
@@ -60,6 +60,7 @@ export default function GovConnect() {
           </List>
           <ButtonWithFormModal
             formId={DUAL_DECLARATION_FORM_ID} 
+            buttonEndIcon={<ArrowRight />}
             buttonText="Apply Now"
           />
         </Card>
@@ -97,7 +98,7 @@ export default function GovConnect() {
               <ListItemText primary="Instant classification results" />
             </ListItem>
           </List>
-          <ActionButton buttonText="Launch Classifier" />
+          <ActionButton buttonText="Launch Classifier" endIcon={<ArrowRight />} />
         </Card>
       </Grid>
       <Grid size={{ xs: 12, sm: 6, md: 4 }}>
@@ -133,7 +134,7 @@ export default function GovConnect() {
               <ListItemText primary="Ready in 10 minutes" />
             </ListItem>
           </List>
-          <ActionButton buttonText="Launch Service" />
+          <ActionButton buttonText="Launch Service" endIcon={<ArrowRight />} />
         </Card>
       </Grid>
     </Grid>

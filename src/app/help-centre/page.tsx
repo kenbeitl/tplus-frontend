@@ -10,9 +10,11 @@ import ModalSigning from './modal/signing';
 import ModalSubscription from './modal/subscription';
 
 // Icons
-import {  CircleQuestionMark, CreditCard, FilePenLine, Search, Shield, SquareArrowOutUpRight, User, Users } from 'lucide-react';
+import {  ArrowRight, CircleQuestionMark, CreditCard, FilePenLine, Search, Shield, SquareArrowOutUpRight, User, Users } from 'lucide-react';
+import ButtonWithFormModal from '@/components/ButtonWithFormModal';
 
 type CardId = 'digital' | 'signing' | 'subscription' | null;
+const CONTACT_SUPPORT_FORM_ID = 'contact-support';
 
 export default function HelpCentre() {
   const [openCard, setOpenCard] = useState<CardId>(null);
@@ -211,11 +213,11 @@ export default function HelpCentre() {
           </Typography>
           <Spacer height={20} />
           <Box sx={{ display: 'flex', alignItems: 'top', gap: 1 }}>
-            <Button 
-              sx={{ width: 'auto' }} 
-              variant="gradient" 
-             color="blue"
-            >Contact Support</Button>
+            <ButtonWithFormModal
+                formId={CONTACT_SUPPORT_FORM_ID} 
+                buttonText="Contact Support"
+                sx={{ width: 'auto' }}
+            />
             <Button 
               sx={{ 
                 width: 'auto',

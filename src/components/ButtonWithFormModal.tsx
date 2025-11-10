@@ -2,24 +2,29 @@
 
 import ButtonWithModal from '@/components/ButtonWithModal';
 import FormModal from '@/components/form/FormModal';
-import { ArrowRight } from 'lucide-react';
+import { SxProps, Theme } from '@mui/material';
 
 interface ButtonWithFormModalProps {
   formId: string;
   buttonText: string;
+  buttonStartIcon?: React.ReactNode;
   buttonEndIcon?: React.ReactNode;
   textOnly?: boolean;
+  className?: string;
+  sx?: SxProps<Theme>;
 }
 
-export default function ButtonWithFormModal({ textOnly = false, formId, buttonText, buttonEndIcon = <ArrowRight /> }: ButtonWithFormModalProps) {
+export default function ButtonWithFormModal({ textOnly = false, className, formId, buttonText, buttonStartIcon, buttonEndIcon, sx }: ButtonWithFormModalProps) {
   return (
     <ButtonWithModal
       buttonText={buttonText}
       buttonProps={{
-        sx: { width: '100%', mt: 'auto' },
+        sx: sx || { width: '100%', mt: 'auto' },
         variant: 'gradient',
         color: 'blue',
+        className: className,
       }}
+      buttonStartIcon={buttonStartIcon}
       buttonEndIcon={buttonEndIcon}
       textOnly={textOnly}
       modalContent={(open, onClose) => (

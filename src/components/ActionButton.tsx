@@ -1,19 +1,20 @@
 'use client';
 
 import { Button } from '@mui/material';
-import { ArrowRight } from 'lucide-react';
 
 interface ActionButtonProps {
   buttonText: string;
   variant?: 'text' | 'outlined' | 'contained' | 'gradient';
   autoWidth?: boolean;
   color?: 'blue' | 'white';
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
   noIcon?: boolean;
   disabled?: boolean;
   onClick?: (() => void) | string; // Function or URL string
 }
 
-export default function ActionButton({ buttonText, variant = 'gradient', autoWidth = false, color = 'blue', noIcon, disabled = false, onClick }: ActionButtonProps) {
+export default function ActionButton({ buttonText, variant = 'gradient', autoWidth = false, color = 'blue', startIcon, endIcon, noIcon, disabled = false, onClick }: ActionButtonProps) {
 
   const handleClick = () => {
     if (typeof onClick === 'string') {
@@ -29,7 +30,8 @@ export default function ActionButton({ buttonText, variant = 'gradient', autoWid
       variant={variant} 
       color={color}
       disabled={disabled}
-      endIcon={!noIcon ? <ArrowRight /> : null}
+      startIcon={!noIcon ? startIcon : null}
+      endIcon={!noIcon ? endIcon : null}
       onClick={handleClick}
     >
       {buttonText}

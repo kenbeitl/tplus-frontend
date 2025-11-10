@@ -3,13 +3,17 @@
 import React from "react";
 import InlineTag from "@/components/InlineTag";
 import Spacer from "@/components/ui/Spacer";
-import { Box, Button, Card, Grid, Input, List, ListItem, ListItemText, Paper, Typography } from "@mui/material";
+import { Badge, Box, Button, Card, FormControlLabel, FormGroup, Grid, List, ListItem, ListItemText, Paper, Switch, Typography } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
-import { CircleCheckBig, Download, Eye, Monitor, Search, Shield, Smartphone, Star, Wifi } from "lucide-react";
+import { AlertTriangle, CircleCheckBig, Download, Eye, Mail, Monitor, Search, Shield, ShieldAlert, Smartphone, Star, Users, Wifi } from "lucide-react";
 import { TabList, Tab, TabPanel } from "@/components/ui/StyledTabs";
 import StyledIcon from "@/components/StyledIcon";
 import FormField from "@/components/form/FormField";
 import theme from "@/theme/theme";
+import ActionButton from "@/components/ActionButton";
+import ButtonWithFormModal from "@/components/ButtonWithFormModal";
+
+const WEB_VULNERABILITY_ASSESSMENT_REQUEST = 'web-vulnerability-assessment-request';
 
 const TGuardMobileAppFeature = [
   {
@@ -44,15 +48,39 @@ const PROTECTION_FEATURES = [
 export default function SafeConnectClient() {
   const [value, setValue] = React.useState('1');
   const [darkWebEmail, setDarkWebEmail] = React.useState('');
+  const [darkWebResult, setDarkWebResult] = React.useState<any>({
+    found: false,
+  });
 
   const handleDarkWebCheck = () => {
-    // [TODO]: Implement dark web monitoring logic here
-    alert(`Checking dark web for breaches related to: ${darkWebEmail}`);
+    // Mock dark web monitoring result
+    const mockLeaks = [
+      { source: 'Elance.com', date: '2019-01' },
+      { source: '7k7k.com', date: '2020-03' },
+      { source: 'DataBreachSite.com', date: '2021-08' },
+      { source: 'BusinessNetwork.net', date: '2022-12' }
+    ];
+    
+    setDarkWebResult({
+      email: darkWebEmail,
+      atRisk: mockLeaks.length > 0,
+      leaks: mockLeaks,
+      found: false,
+      breaches: mockLeaks.map(leak => ({
+        name: leak.source,
+        date: leak.date,
+        compromisedData: ['Email', 'Password']
+      })),
+      message: mockLeaks.length > 0 
+        ? `Your email was found in ${mockLeaks.length} data breaches.` 
+        : 'No breaches found for your email.'
+    });
   };
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   }
+
   return (
     <Box component="div" className="relative">
       <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">SafeConnect</Typography>
@@ -114,14 +142,14 @@ export default function SafeConnectClient() {
                     <Box key={index} component="div" className="text-center p-3 bg-gray-50 rounded-lg">
                       {feature.icon}
                       <Box component="div" className="font-medium text-sm mb-1">{feature.title}</Box>
-                      <Box component="div" className="text-xs text-muted-foreground">{feature.description}</Box>
+                      <Box component="div" className="text-xs text-muted-foreground text-gray-400">{feature.description}</Box>
                     </Box>
                   ))}
                 </Box>
               </Card>
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
-              <Card variant="outlined" sx={{ p: 2, height: '100%' }}>
+              <Card variant="outlined" sx={{ px: 3, pt: 3, pb: 6, height: '100%' }}>
                 <InlineTag 
                   className="font-bold! text-only text-base!"
                   label="Dark Web Monitoring"
@@ -130,7 +158,20 @@ export default function SafeConnectClient() {
                 />
                 <Typography variant="body2" component="p">Check if your email or company data has been compromised in data breaches</Typography>
                 <Spacer height={20} />
-                  <Typography variant="body1" component="h4" className="font-bold! mb-3">Email Breach Check</Typography>
+                  <Box component="div" className="flex justify-between items-center">
+                    <Typography variant="body1" component="h4" className="font-bold! mb-3">Email Breach Check</Typography>
+                    <FormGroup>
+                      <FormControlLabel 
+                        control={
+                          <Switch 
+                            checked={darkWebResult.found}
+                            onChange={() => setDarkWebResult({...darkWebResult, found: !darkWebResult.found})} 
+                          />
+                        } 
+                        label={`Set Dark Web Result to ${(!darkWebResult?.found).toString()}`} 
+                      />
+                    </FormGroup>
+                  </Box>
                   <div className="space-y-2">
                     <FormField
                       name="darkWebEmail"
@@ -140,10 +181,60 @@ export default function SafeConnectClient() {
                       onBlur={() => {}}
                       size="small"
                     />
-                    <Button variant="gradient" color="blue" startIcon={<Search size={16} />} sx={{ width: "100%", mt: 1 }} onClick={handleDarkWebCheck} disabled={!darkWebEmail.trim()}>Check Now</Button>
+                    <Button variant="gradient" color="blue" startIcon={<Search size={16} />} sx={{ width: "100%", mt: 1 }} onClick={handleDarkWebCheck} disabled={!darkWebEmail || !darkWebEmail.includes('@')}>Check Now</Button>
                   </div>
                   <Typography variant="caption" component="p" sx={{ mt: 1 }}>We'll search across known data breach databases to check if your email has been compromised.</Typography>
                   <Spacer height={20} />
+                  {darkWebResult && (
+                    <>
+                      <div className={`p-4 rounded-lg border ${
+                        darkWebResult.found 
+                          ? 'bg-red-50 border-red-200' 
+                          : 'bg-green-50 border-green-200'
+                      }`}>
+                        <div className="flex items-start space-x-3">
+                          {darkWebResult.found ? (
+                            <AlertTriangle size={20} className="text-red-600 mt-0.5" />
+                          ) : (
+                            <CircleCheckBig size={20} className="text-green-600 mt-0.5" />
+                          )}
+                          <div className="flex-1">
+                            <h4 className={`font-medium ${
+                              darkWebResult.found ? 'text-red-900' : 'text-green-900'
+                            }`}>
+                              {darkWebResult.found ? 'Breaches Found' : 'No Breaches Found'}
+                            </h4>
+                            <p className={`text-sm mt-1 ${
+                              darkWebResult.found ? 'text-red-700' : 'text-green-700'
+                            }`}>
+                              {darkWebResult.message}
+                            </p>
+                            {darkWebResult.found && darkWebResult.breaches && (
+                              <div className="mt-3 space-y-2">
+                                {darkWebResult.breaches.map((breach: any, index: number) => (
+                                  <div key={index} className="bg-white p-3 rounded border">
+                                    <div className="flex justify-between items-start">
+                                      <div>
+                                        <p className="font-medium text-sm">{breach.name}</p>
+                                        <p className="text-xs text-muted-foreground">{breach.date}</p>
+                                      </div>
+                                      <Badge badgeContent={breach.compromisedData.length} color="error">
+                                        <ShieldAlert />
+                                      </Badge>
+                                    </div>
+                                    <p className="text-xs mt-2 text-muted-foreground">
+                                      Compromised: {breach.compromisedData.join(', ')}
+                                    </p>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                      <Spacer height={20} />
+                    </>
+                  )}
                   <Card 
                     variant="outlined" 
                     className="p-4 bg-blue-50! border-2! border-blue-200!"
@@ -162,7 +253,65 @@ export default function SafeConnectClient() {
           </Grid>
         </TabPanel>
         <TabPanel value="2">
-
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
+                <InlineTag 
+                  className="font-bold! text-only text-base!"
+                  label="Web Vulnerability Assessment"
+                  variant="transparent"
+                  startIcon={<Search />}
+                />
+                <Typography variant="body2" component="p">Comprehensive website security scanning and vulnerability detection with detailed reporting</Typography>
+                <Spacer height={20} />
+                <Card variant="outlined" className="p-3 bg-green-50! border-green-200!">
+                  <InlineTag 
+                    className="font-bold! text-only text-base!"
+                    label="Free Annual Assessment Available"
+                    variant="transparent"
+                    startIcon={<CircleCheckBig />}
+                  />
+                  <Typography variant="caption" component="p">Get one comprehensive vulnerability assessment per year at no cost. Additional assessments available for purchase at competitive rates.</Typography>
+                </Card>
+                <Spacer height={20} />
+                <Box component="div" className="flex items-center justify-between mb-3">
+                  <Typography variant="body1" component="h4" className="font-bold!">Request New Assessment</Typography>
+                  <InlineTag
+                    variant="green" 
+                    className="text-xs!"
+                    label="Free Annual Quota Available"
+                  />
+                </Box>
+                <ButtonWithFormModal
+                  formId={WEB_VULNERABILITY_ASSESSMENT_REQUEST} 
+                  buttonStartIcon={<Search size={20} />}
+                  buttonText="Request Free Assessment"
+                />
+                <Spacer height={40} />
+                <Card variant="outlined" className="p-5 bg-blue-50! border-blue-200!">
+                  <Box component="div" className="flex">
+                    <Mail size={24} className="text-blue-600 mr-3 shrink-0" />
+                    <Box>
+                      <Typography variant="subtitle1" component="p" color={theme.palette.text.darkBlue} sx={{ fontWeight: 700 }}>Assessment Reports Delivered via Email</Typography>
+                      <Typography variant="caption" component="p" color={theme.palette.text.blue}>All web vulnerability assessment reports will be sent directly to your registered email address upon completion. Reports are not stored in the T+ platform for security and privacy reasons.<br/><br/>Please check your email inbox (and spam folder) for assessment reports after requesting a scan.</Typography>
+                    </Box>
+                  </Box>
+                </Card>
+              </Card>
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
+                <InlineTag 
+                  className="font-bold! text-only text-base!"
+                  label="Consulting Services"
+                  variant="transparent"
+                  startIcon={<Users />}
+                />
+                <Typography variant="body2" component="p">Professional cybersecurity services and solutions from trusted partners</Typography>
+                <Spacer height={20} />
+              </Card>
+            </Grid>
+          </Grid>     
         </TabPanel>
       </TabContext>
     </Box>

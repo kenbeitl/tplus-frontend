@@ -1,17 +1,20 @@
 'use client';
 
-import React, { useMemo, useEffect } from 'react';
-import { Grid, Typography, CircularProgress, Alert, Box } from '@mui/material';
+import { useMemo, useEffect } from 'react';
+import { Grid, Typography, CircularProgress, Alert, Box, Card } from '@mui/material';
 import Form from './Form';
 import FormField from './FormField';
 import HiddenField from './HiddenField';
 import FormActions from './FormActions';
 import { useFormValidation } from '@/hooks/useFormValidation';
 import { useFormSubmission } from '@/hooks/useFormSubmission';
-import { applicationService, type ApplicationFormData } from '@/services';
+import { applicationService } from '@/services';
 
 // Import the types from formConfigService
 import { FormListItem } from '@/services/formConfigService';
+import { Check } from 'lucide-react';
+import InlineTag from '../InlineTag';
+import theme from '@/theme/theme';
 
 interface FormBaseProps {
   data: FormListItem | null;
@@ -41,7 +44,7 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
       phoneNumber: '',
       email: '',
       jobTitle: '',
-      companyName: '',
+      companyName: 'Demo Company',
       message: '',
     };
   }, [data?.formID]);
@@ -121,6 +124,17 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
         />
       )}
 
+      <Card variant="outlined" className="p-3 mb-6 bg-blue-50! border-blue-200!">
+        <Box className="flex items-center">
+          <InlineTag
+            className='text-only text-blue-700!'
+            variant="transparent"
+            label="Some fields have been pre-filled with your profile information."
+            startIcon={<Check size={16} color={theme.palette.text.blue} />}
+          />
+        </Box>
+      </Card>
+
       <Form onSubmit={handleSubmit}>
         {/* Hidden formID field */}
         <HiddenField
@@ -134,7 +148,7 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
           <Grid size={{ xs: 12, sm: 6 }}>
             <FormField
               name="name"
-              label="Name"
+              label="Full Name"
               placeholder="Enter your full name"
               value={form.values.name || ''}
               onChange={form.handleChange}

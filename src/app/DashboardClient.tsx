@@ -301,7 +301,7 @@ export default function DashboardClient() {
                     </Grid>
                     <Grid size={12}>
                         <Card variant="outlined" className="p-3 bg-blue-50! border-blue-200!">
-                            <Typography variant="body1" component="h4">Ready to upgrade!</Typography>
+                            <Typography variant="body1" component="h4">Ready to upgrade?</Typography>
                             <Typography variant="caption" component="h4" color="#2b7fff">Unlock all features by subscribing to our plans — launching soon!</Typography>
                             <Button variant="outlined" color="blue" sx={{ mt: 2 }}>View Subscription Plans</Button>
                         </Card>
@@ -328,6 +328,7 @@ export default function DashboardClient() {
                     <ButtonWithFormModal
                         textOnly={true}
                         formId={CONTACT_SUPPORT_FORM_ID} 
+                        buttonEndIcon={<ArrowRight />}
                         buttonText="Contact Support"
                     />
                 </Box>

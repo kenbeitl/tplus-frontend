@@ -1,4 +1,3 @@
-import { apiService } from '@/lib/api';
 import { strapiService } from '@/lib/strapi';
 
 // Application form data type

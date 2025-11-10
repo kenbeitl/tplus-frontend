@@ -43,7 +43,10 @@ export interface FormConfig {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;  // Added publishedAt field
-  FormList: FormListItem[];  // No longer nested under attributes
+  active?: boolean;
+  fromDate?: string | null;
+  toDate?: string | null;
+  FormList: FormListItem | FormListItem[];  // Can be either object or array
 }
 
 export interface FormConfigParams {
@@ -73,15 +76,28 @@ class FormConfigService {
       throw new Error(`Form configuration not found for formID: ${formID}`);
     }
     
-    // Find the specific FormList item with the matching formID
+    // Get the form from response
     const form = response.data[0];
-    const formListItem = form.FormList.find((item: FormListItem) => item.formID === formID);
     
-    if (!formListItem) {
-      throw new Error(`FormList item not found for formID: ${formID}`);
+    // FormList can be either an object or an array
+    // When filtered by formID, Strapi returns it as an object
+    if (typeof form.FormList === 'object' && !Array.isArray(form.FormList)) {
+      // FormList is a single object
+      return form.FormList as FormListItem;
     }
     
-    return formListItem;
+    // FormList is an array, find the matching item
+    if (Array.isArray(form.FormList)) {
+      const formListItem = form.FormList.find((item: FormListItem) => item.formID === formID);
+      
+      if (!formListItem) {
+        throw new Error(`FormList item not found for formID: ${formID}`);
+      }
+      
+      return formListItem;
+    }
+    
+    throw new Error(`Invalid FormList structure for formID: ${formID}`);
   }
 
   async getAllFormConfigs(): Promise<FormConfig[]> {
