@@ -11,7 +11,7 @@ import {
 import Spacer from '@/components/ui/Spacer';
 import InfoModal from '@/components/InfoModal';
 import { CircleCheckBig } from 'lucide-react';
-import InlineTag from '@/components/InlineTag';
+import Tag from '@/components/Tag';
 
 const DIALOG_CARD = [
   {
@@ -112,7 +112,7 @@ export default function ModalDigital({ open, onClose }: Props) {
                     <Typography variant="h6" component="h3">{item.identity}</Typography>
                   </Box>
 
-                  <InlineTag 
+                  <Tag 
                     variant="white"
                     label={item.userType}
                   />

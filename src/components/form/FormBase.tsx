@@ -13,7 +13,7 @@ import { applicationService } from '@/services';
 // Import the types from formConfigService
 import { FormListItem } from '@/services/formConfigService';
 import { Check } from 'lucide-react';
-import InlineTag from '../InlineTag';
+import Tag from '../Tag';
 import theme from '@/theme/theme';
 
 interface FormBaseProps {
@@ -126,7 +126,7 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
 
       <Card variant="outlined" className="p-3 mb-6 bg-blue-50! border-blue-200!">
         <Box className="flex items-center">
-          <InlineTag
+          <Tag
             className='text-only text-blue-700!'
             variant="transparent"
             label="Some fields have been pre-filled with your profile information."

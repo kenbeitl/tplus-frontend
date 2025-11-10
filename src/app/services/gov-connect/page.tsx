@@ -1,6 +1,6 @@
 import Spacer from '@/components/ui/Spacer';
 import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import InlineTag from '@/components/InlineTag';
+import Tag from '@/components/Tag';
 import ActionButton from '@/components/ActionButton';
 import { ArrowRight, Brain, CircleCheckBig, FileText, Search } from 'lucide-react';
 import { Metadata } from "next";
@@ -22,7 +22,7 @@ export default function GovConnect() {
    <Box component="div" className="relative">
     <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">GovConnect</Typography>
     <Typography variant="body2" component="p">Single Submission for Dual Declaration</Typography>
-    <InlineTag label="Services Available" className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
+    <Tag label="Services Available" className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
     <Spacer height={20} />
     <Grid container spacing={2}>
       <Grid size={{ xs: 12, sm: 6, md: 4 }}>

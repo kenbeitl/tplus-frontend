@@ -5,7 +5,7 @@ import { Box, Card, Grid, Typography } from '@mui/material';
 
 import ButtonWithModal from '@/components/ButtonWithModal';
 import Carousel from '@/components/Carousel';
-import InlineTag from '@/components/InlineTag';
+import Tag from '@/components/Tag';
 import Spacer from '@/components/ui/Spacer';
 import StyledIcon from '@/components/StyledIcon';
 
@@ -73,7 +73,7 @@ export default function PayConnectClient() {
       <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">PayConnect</Typography>
       <Typography variant="body2" component="p">Comprehensive financial services and payment solutions for your business</Typography>
       <Spacer height={20} />
-      <InlineTag label="Sponsored Partner Offers" className="text-base! text-only" startIcon={<Sparkles className="h-4 w-4 text-amber-500" />} />
+      <Tag label="Sponsored Partner Offers" className="text-base! text-only" startIcon={<Sparkles className="h-4 w-4 text-amber-500" />} />
       <Spacer height={20} />
       <Carousel slideNum={2} />
       <Spacer height={40} />

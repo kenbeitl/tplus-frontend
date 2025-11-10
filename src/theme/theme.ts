@@ -18,6 +18,7 @@ declare module '@mui/material/styles' {
     gradient: typeof GRADIENTS;
     tag: {
       green: ColorConfig;
+      blue: ColorConfig;
       white: ColorConfig;
       grey: ColorConfig;
     };
@@ -26,6 +27,7 @@ declare module '@mui/material/styles' {
     gradient?: Partial<typeof GRADIENTS>;
     tag?: {
       green?: ColorConfig;
+      blue: ColorConfig;
       white?: ColorConfig;
       grey?: ColorConfig;
     };
@@ -75,6 +77,10 @@ const theme = createTheme({
       green: {
         background: '#dcfce7',
         text: '#016630',
+      },
+      blue: {
+        background: '#84baff',
+        text: '#000000',
       },
       white: {
         background: '#FFFFFF',
@@ -161,8 +167,8 @@ const theme = createTheme({
             background: theme.palette.gradient.orange,
           },
           '& .tag-blue': {
-            color: '#FFFFFF',
-            background: theme.palette.gradient.blue,
+            color: theme.palette.tag.blue.text,
+            background: theme.palette.tag.blue.background,
           },
           '& .tag-green': {
             color: theme.palette.tag.green.text,

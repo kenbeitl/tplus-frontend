@@ -16,7 +16,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 
 // Local Components & Contexts
 import { useTranslations, useDrawer } from '@/contexts/AppContext';
-import InlineTag from './InlineTag';
+import Tag from './Tag';
 
 // Styled ListItemButton with active state support
 const ListItemIcon = styled(MuiListItemIcon)(() => ({
@@ -181,7 +181,7 @@ export function NavigationListItem({
     if (!mounted) return primary; // Consistent initial render
     return isComingSoon ? (
       <>
-        {primary} <InlineTag variant="orange" label={t('common.comingSoon')} />
+        {primary} <Tag variant="orange" label={t('common.comingSoon')} />
       </>
     ) : primary;
   }, [primary, isComingSoon, t, mounted]);

@@ -4,7 +4,7 @@ import InfoModal from '@/components/InfoModal';
 import Spacer from '@/components/ui/Spacer';
 import theme from '@/theme/theme';
 import StyledIcon from '@/components/StyledIcon';
-import InlineTag from '@/components/InlineTag';
+import Tag from '@/components/Tag';
 import ActionButton from '@/components/ActionButton';
 import { TriangleAlert } from 'lucide-react';
 
@@ -58,7 +58,7 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: Props) {
       ))}
       <Card variant="outlined" className="p-3 bg-orange-50! border-orange-200!">
         <Box className="flex items-center">
-          <InlineTag
+          <Tag
             className='text-only text-orange-700!'
             variant="transparent"
             label="If you register DMSS using iAM Smart, SSO will not be available."

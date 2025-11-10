@@ -1,19 +1,19 @@
 'use client';
 
 import React from "react";
-import InlineTag from "@/components/InlineTag";
+import Tag from "@/components/Tag";
 import Spacer from "@/components/ui/Spacer";
 import { Badge, Box, Button, Card, FormControlLabel, FormGroup, Grid, List, ListItem, ListItemText, Paper, Switch, Typography } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
-import { AlertTriangle, CircleCheckBig, Download, Eye, Mail, Monitor, Search, Shield, ShieldAlert, Smartphone, Star, Users, Wifi } from "lucide-react";
+import { AlertTriangle, CircleCheckBig, Download, ExternalLink, Eye, Mail, Monitor, Search, Shield, ShieldAlert, Smartphone, Star, Users, Wifi } from "lucide-react";
 import { TabList, Tab, TabPanel } from "@/components/ui/StyledTabs";
 import StyledIcon from "@/components/StyledIcon";
 import FormField from "@/components/form/FormField";
 import theme from "@/theme/theme";
-import ActionButton from "@/components/ActionButton";
 import ButtonWithFormModal from "@/components/ButtonWithFormModal";
 
 const WEB_VULNERABILITY_ASSESSMENT_REQUEST = 'web-vulnerability-assessment-request';
+const NETWORK_BOX_CYBERSECURITY = 'network-box-cybersecurity';
 
 const TGuardMobileAppFeature = [
   {
@@ -44,6 +44,24 @@ const PROTECTION_FEATURES = [
   'Password security recommendations',
   'Corporate domain monitoring',
 ];
+
+const KEY_FEATURES = [
+  "24/7 SOC Monitoring",
+  "Managed Firewall",
+  "Intrusion Prevention",
+  "Threat Intelligence",
+  "Email Security",
+  "Web Filtering",
+]
+
+const REASONS_FOR_TPLUS_SECURITY_PARTNERS = [
+  "Vetted and certified security professionals",
+  "24/7 support and monitoring available",
+  "Competitive pricing with transparent costs",
+  "Local expertise with global standards",
+  "Seamless integration with T+ platform",
+  "Compliance with Hong Kong regulations",
+]
 
 export default function SafeConnectClient() {
   const [value, setValue] = React.useState('1');
@@ -85,7 +103,7 @@ export default function SafeConnectClient() {
     <Box component="div" className="relative">
       <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">SafeConnect</Typography>
       <Typography variant="body2" component="p">Comprehensive cybersecurity tools and services for individuals and corporations</Typography>
-      <InlineTag label="Services Available" className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
+      <Tag label="Services Available" className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
       <Spacer height={20} />
       <TabContext value={value}>
         <Box>
@@ -98,7 +116,7 @@ export default function SafeConnectClient() {
           <Grid container spacing={2}>
             <Grid size={{ xs: 12, sm: 6 }}>
               <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
-                <InlineTag 
+                <Tag 
                   className="font-bold! text-only text-base!"
                   label="T Guard Mobile App"
                   variant="transparent"
@@ -124,9 +142,9 @@ export default function SafeConnectClient() {
                       <Typography variant="body1" component="h4" sx={{ fontWeight: 700 }}>T-Guard Mobile Security</Typography>
                       <Typography variant="caption" component="p">Comprehensive mobile security with real-time threat protection</Typography>
                       <Box component="div" className="flex gap-4 mt-3">
-                        <InlineTag label="Free Download" variant="green" />
+                        <Tag label="Free Download" variant="green" />
                         <Box component="div" className="flex">
-                          <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                          <Star className="h-4 w-4 mr-1 text-yellow-500 fill-current" />
                           <span className="text-sm font-medium">4.8</span>
                           <span className="text-sm text-muted-foreground">(12,847)</span>
                         </Box>  
@@ -150,7 +168,7 @@ export default function SafeConnectClient() {
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
               <Card variant="outlined" sx={{ px: 3, pt: 3, pb: 6, height: '100%' }}>
-                <InlineTag 
+                <Tag 
                   className="font-bold! text-only text-base!"
                   label="Dark Web Monitoring"
                   variant="transparent"
@@ -256,7 +274,7 @@ export default function SafeConnectClient() {
           <Grid container spacing={2}>
             <Grid size={{ xs: 12, sm: 6 }}>
               <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
-                <InlineTag 
+                <Tag 
                   className="font-bold! text-only text-base!"
                   label="Web Vulnerability Assessment"
                   variant="transparent"
@@ -265,7 +283,7 @@ export default function SafeConnectClient() {
                 <Typography variant="body2" component="p">Comprehensive website security scanning and vulnerability detection with detailed reporting</Typography>
                 <Spacer height={20} />
                 <Card variant="outlined" className="p-3 bg-green-50! border-green-200!">
-                  <InlineTag 
+                  <Tag 
                     className="font-bold! text-only text-base!"
                     label="Free Annual Assessment Available"
                     variant="transparent"
@@ -276,7 +294,7 @@ export default function SafeConnectClient() {
                 <Spacer height={20} />
                 <Box component="div" className="flex items-center justify-between mb-3">
                   <Typography variant="body1" component="h4" className="font-bold!">Request New Assessment</Typography>
-                  <InlineTag
+                  <Tag
                     variant="green" 
                     className="text-xs!"
                     label="Free Annual Quota Available"
@@ -301,7 +319,7 @@ export default function SafeConnectClient() {
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
               <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
-                <InlineTag 
+                <Tag 
                   className="font-bold! text-only text-base!"
                   label="Consulting Services"
                   variant="transparent"
@@ -309,6 +327,56 @@ export default function SafeConnectClient() {
                 />
                 <Typography variant="body2" component="p">Professional cybersecurity services and solutions from trusted partners</Typography>
                 <Spacer height={20} />
+                <Card variant="outlined" className="px-5 py-7 card-hover">
+                    <Box component="div" className="flex items-center justify-around mb-3">
+                      <Typography variant="body1" component="h4" className="font-bold!">Network Box Managed Security Services for SMEs</Typography>
+                      <Tag
+                        variant="white" 
+                        className="text-xs! mx-2"
+                        label="Managed Security"
+                      />
+                      <Box component="div" className="flex items-center">
+                        <Star className="h-4 w-4 mr-1 text-yellow-500 fill-current" />
+                        <span className="text-sm font-medium">4.8</span>
+                      </Box>
+                    </Box>
+                    <Typography variant="caption" component="p" sx={{ mb: 3 }}>Comprehensive managed security services providing 24/7 SOC monitoring, managed firewall, and threat intelligence specifically designed for small and medium enterprises.</Typography>
+                    <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700 }}>Provider:</Typography>
+                    <Typography variant="body2" component="p" sx={{ mb: 3 }}>Network Box</Typography>
+                    <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700 }}>Starting at:</Typography>
+                    <Typography variant="body2" component="p" sx={{ mb: 3 }}>From $800/month</Typography>
+                    <Box component="div" className="flex justify-end mb-2">
+                      <ButtonWithFormModal
+                        sx={{ width: 'auto' }}
+                        formId={NETWORK_BOX_CYBERSECURITY}
+                        buttonText="Learn More"
+                        buttonStartIcon={<ExternalLink size={16} />}
+                      />
+                    </Box>
+                    <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700, mb: 1 }}>Key Features & Capabilities:</Typography>
+                    <Box component="div" className="grid lg:grid-cols-2 gap-2 mb-2">
+                      {KEY_FEATURES.map((feature, index) => (
+                        <Box component="div" key={`feature-${index}`}>
+                          <Tag 
+                            className="h-6 w-auto!"
+                            variant="blue"
+                            label={feature}
+                          />
+                        </Box>
+                      ))}
+                    </Box>
+                </Card>
+                <Spacer height={20} />
+                <Card variant="outlined" className="p-5 bg-blue-50! border-blue-200!">
+                  <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: theme.palette.text.darkBlue, mb: 1 }}>Why Choose T+ Security Partners?</Typography>
+                  <List sx={{ color: theme.palette.text.darkBlue, fontSize: 12, py: 0, pl: 2, listStyleType: 'disc', '& .MuiListItem-root': { display: 'list-item' } }}>
+                    {REASONS_FOR_TPLUS_SECURITY_PARTNERS.map((reason, i) => (
+                      <ListItem key={`reason-${i}`} sx={{ py: 0 }}>
+                        <ListItemText primary={reason} />
+                      </ListItem>
+                    ))}
+                  </List>
+                </Card>
               </Card>
             </Grid>
           </Grid>     

@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import InlineTag from "./InlineTag";
+import Tag from "./Tag";
 import Emoji from "./Emoji";
 
 export default function Carousel({ slideNum }: { slideNum: number }) {
@@ -41,7 +41,7 @@ export default function Carousel({ slideNum }: { slideNum: number }) {
                 >
                     <Box className="flex items-center mb-5">
                         <Emoji symbol="🍀" size={40} sx={{ mr: 1 }} />
-                        <InlineTag label="Business" variant="outlined" className="text-base!" />
+                        <Tag label="Business" variant="outlined" className="text-base!" />
                     </Box>
                     <Typography variant="h4" component="h2" color="white" sx={{ mb: 2 }}>Single Submission for Dual Declaration Service</Typography>
                     <Typography variant="body1" component="p" color="white" sx={{ mb: 3 }}>Streamline your customs declarations with our intelligent dual submission system</Typography>
@@ -50,7 +50,7 @@ export default function Carousel({ slideNum }: { slideNum: number }) {
                         variant="gradient" 
                         color="blue"
                     >Apply Now</Button>
-                    <InlineTag label="Sponsored" className="absolute top-4 right-4" />
+                    <Tag label="Sponsored" className="absolute top-4 right-4" />
                 </Paper>
             </SwiperSlide>
         ))} 

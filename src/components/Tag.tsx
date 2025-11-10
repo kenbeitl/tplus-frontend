@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function InlineTag({ 
+export default function Tag({ 
     variant = '',
     label,
     className = '',
