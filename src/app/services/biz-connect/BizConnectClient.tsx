@@ -159,7 +159,7 @@ export default function BizConnectClient() {
                 ))}            
             </Grid>
             <Spacer height={40} />
-            <Card variant="outlined" className="bg-gradient-to-r from-slate-50 to-blue-50 p-6">
+            <Card variant="outlined" className="bg-linear-to-r from-slate-50 to-blue-50 p-6">
                 <Box component="div" className="flex items-center gap-4 mb-3">
                     <Shield size={32} color={theme.palette.text.blue} />
                     <Typography variant="h6" component="h3">Built for Your Success</Typography>

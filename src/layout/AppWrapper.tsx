@@ -15,7 +15,7 @@ import IconButton from '@mui/material/IconButton';
 import { Menu, MenuItem } from '@mui/material';
 
 // Icons
-import { Building, Building2, CreditCard, FilePenLine, Globe, HelpCircleIcon, House, PanelLeft, Settings, Shield, ShoppingCart } from 'lucide-react';
+import { Building, Building2, CreditCard, FilePenLine, Globe, HelpCircleIcon, House, LogOut, PanelLeft, Settings, Shield, ShoppingCart } from 'lucide-react';
 
 // Local Components & Contexts
 import Logo from '@/assets/svg/Logo';
@@ -23,6 +23,7 @@ import { DropdownListItem, NavigationListItem } from '@/components/NavigationCom
 import { useLanguage, useTranslations, useDrawer, localeLabels, type Locale } from '@/contexts/AppContext';
 import { SnackbarProvider } from '@/contexts/SnackbarContext';
 import StyledIcon from '@/components/StyledIcon';
+import { logout } from '@/lib/logout';
 
 const drawerWidth = 240;
 const drawerMiniWidth = 64;
@@ -113,8 +114,39 @@ export default function AppWrapper({
   const t = useTranslations();
   const { drawerOpen, toggleDrawer } = useDrawer();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [userMenuAnchorEl, setUserMenuAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isInitialMount, setIsInitialMount] = React.useState(true);
-  const [didLogin, setDidLogin] = React.useState(true); // temp true
+  const [didLogin, setDidLogin] = React.useState(false);
+
+  // Check session status on mount
+  React.useEffect(() => {
+    const hasSession = sessionStorage.getItem('hasSession') === 'true';
+    const sessionExpiry = sessionStorage.getItem('sessionExpiry');
+    
+    // Check if session is expired
+    if (hasSession && sessionExpiry) {
+      const expiryTime = parseInt(sessionExpiry, 10);
+      const now = Date.now();
+      
+      if (now > expiryTime) {
+        // Session expired, logout
+        sessionStorage.removeItem('hasSession');
+        sessionStorage.removeItem('sessionExpiry');
+        document.cookie = 'hasSession=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict';
+        document.cookie = 'sessionExpiry=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict';
+        window.location.href = '/login';
+        return;
+      }
+    }
+    
+    setDidLogin(hasSession);
+    
+    // Sync cookie with SessionStorage
+    if (hasSession && sessionExpiry) {
+      document.cookie = `hasSession=true; path=/; SameSite=Strict`;
+      document.cookie = `sessionExpiry=${sessionExpiry}; path=/; SameSite=Strict`;
+    }
+  }, []);
 
   // Enable transitions after initial mount and drawer state is loaded
   React.useEffect(() => {
@@ -170,8 +202,21 @@ export default function AppWrapper({
     setAnchorEl(event.currentTarget);
   }
 
+  const handleUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setUserMenuAnchorEl(event.currentTarget);
+  }
+
   const handleClose = () => {
     setAnchorEl(null);
+  }
+
+  const handleUserMenuClose = () => {
+    setUserMenuAnchorEl(null);
+  }
+
+  const handleLogout = () => {
+    handleUserMenuClose();
+    logout();
   }
 
   const handleLanguageChange = (newLocale: Locale) => {
@@ -234,13 +279,41 @@ export default function AppWrapper({
               ))}
             </Menu>
             {didLogin && 
-              <StyledIcon 
-              icon="TD" 
-              variant="gray"
-              size={40}
-              className="ms-1"
-              />
-            }            
+              <IconButton
+                aria-label="user menu"
+                aria-controls="user-menu"
+                aria-haspopup="true"
+                onClick={handleUserMenu}
+                color="inherit"
+                sx={{ p: 0, ml: 1 }}
+              >
+                <StyledIcon 
+                  icon="TD" 
+                  variant="gray"
+                  size={40}
+                />
+              </IconButton>
+            }
+            <Menu
+              id="user-menu"
+              keepMounted
+              anchorEl={userMenuAnchorEl}
+              open={Boolean(userMenuAnchorEl)}
+              onClose={handleUserMenuClose}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+            >
+              <MenuItem onClick={handleLogout}>
+                <LogOut size={16} style={{ marginRight: 8 }} />
+                Logout
+              </MenuItem>
+            </Menu>
           </Toolbar>
         </AppBar>
         <Drawer 

@@ -1,11 +1,12 @@
 'use client';
 
 import { useMemo, useEffect } from 'react';
-import { Grid, Typography, CircularProgress, Alert, Box, Card } from '@mui/material';
+import { Grid, Typography, Alert, Box, Card } from '@mui/material';
 import Form from './Form';
 import FormField from './FormField';
 import HiddenField from './HiddenField';
 import FormActions from './FormActions';
+import FormSkeleton from './FormSkeleton';
 import { useFormValidation } from '@/hooks/useFormValidation';
 import { useFormSubmission } from '@/hooks/useFormSubmission';
 import { applicationService } from '@/services';
@@ -88,14 +89,7 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
 
   // Loading state
   if (loading) {
-    return (
-      <Box sx={{ textAlign: 'center', padding: '2rem' }}>
-        <CircularProgress />
-        <Typography variant="body2" sx={{ mt: 2 }}>
-          Loading form configuration...
-        </Typography>
-      </Box>
-    );
+    return <FormSkeleton fields={6} />;
   }
 
   // Error state

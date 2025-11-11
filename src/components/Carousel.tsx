@@ -50,7 +50,7 @@ export default function Carousel({ slideNum }: { slideNum: number }) {
                         variant="gradient" 
                         color="blue"
                     >Apply Now</Button>
-                    <Tag label="Sponsored" className="absolute top-4 right-4" />
+                    <Tag label="Sponsored" className="tag absolute top-4 right-4" />
                 </Paper>
             </SwiperSlide>
         ))} 
