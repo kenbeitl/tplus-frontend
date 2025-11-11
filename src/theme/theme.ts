@@ -139,51 +139,6 @@ const theme = createTheme({
           '& .bg-overlay-heavy::before': {
             backgroundColor: 'rgba(0, 0, 0, 0.6)',
           },
-          // Reusable tag classes
-          '& .tag': {
-            background: '#FFFFFF',
-            display: 'inline-flex',
-            alignItems: 'center',
-            borderRadius: '10px',
-            padding: '0 8px',
-            fontSize: '0.75rem',
-            fontWeight: 500,
-            lineHeight: 1.5,
-            textAlign: 'center',
-            whiteSpace: 'nowrap',
-            '&.text-only': {
-              padding: 0
-            },
-            '& svg': {
-              width: '1rem'
-            }
-          },
-          '& .tag-transparent': {
-            color: 'inherit',
-            background: 'transparent',
-          },
-          '& .tag-orange': {
-            color: '#FFFFFF',
-            background: theme.palette.gradient.orange,
-          },
-          '& .tag-blue': {
-            color: theme.palette.tag.blue.text,
-            background: theme.palette.tag.blue.background,
-          },
-          '& .tag-green': {
-            color: theme.palette.tag.green.text,
-            background: theme.palette.tag.green.background,
-          },
-          '& .tag-white': {
-            color: theme.palette.tag.white.text,
-            background: theme.palette.tag.white.background,
-            border: '1px solid #e5e7eb',
-          },
-          '& .tag-outlined': {
-            color: theme.palette.tag.grey.text,
-            background: '#555555',
-            border: '1px solid #999999',
-          },
         },
       }),
     },

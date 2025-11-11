@@ -21,7 +21,8 @@
     "comingSoon": "Coming Soon",
     "loading": "Loading...",
     "error": "Error",
-    "success": "Success"
+    "success": "Success",
+    "learnMore": "Learn More"
   },
   "pages": {
     "govConnect": {

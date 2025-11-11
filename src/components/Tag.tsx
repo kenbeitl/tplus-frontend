@@ -1,23 +1,84 @@
 import React from "react";
+import { styled } from '@mui/material/styles';
+
+type TagVariant = 'transparent' | 'orange' | 'blue' | 'green' | 'white' | 'outlined';
+
+interface TagProps {
+  variant?: TagVariant;
+  label: string;
+  className?: string;
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
+}
+
+const TagRoot = styled('span', {
+  shouldForwardProp: (prop) => prop !== 'variant',
+})<{ variant?: TagVariant }>(({ theme, variant }) => ({
+  background: '#FFFFFF',
+  display: 'inline-flex',
+  alignItems: 'center',
+  borderRadius: '10px',
+  padding: '0 8px',
+  fontSize: '0.75rem',
+  fontWeight: 500,
+  lineHeight: 1.5,
+  textAlign: 'center',
+  whiteSpace: 'nowrap',
+  
+  '&.text-only': {
+    padding: 0
+  },
+  
+  '& svg': {
+    width: '1rem'
+  },
+  
+  // Variant styles
+  ...(variant === 'transparent' && {
+    color: 'inherit',
+    background: 'transparent',
+  }),
+  
+  ...(variant === 'orange' && {
+    color: '#FFFFFF',
+    background: theme.palette.gradient.orange,
+  }),
+  
+  ...(variant === 'blue' && {
+    color: theme.palette.tag.blue.text,
+    background: theme.palette.tag.blue.background,
+  }),
+  
+  ...(variant === 'green' && {
+    color: theme.palette.tag.green.text,
+    background: theme.palette.tag.green.background,
+  }),
+  
+  ...(variant === 'white' && {
+    color: theme.palette.tag.white.text,
+    background: theme.palette.tag.white.background,
+    border: '1px solid #e5e7eb',
+  }),
+  
+  ...(variant === 'outlined' && {
+    color: theme.palette.tag.grey.text,
+    background: '#555555',
+    border: '1px solid #999999',
+  }),
+}));
 
 export default function Tag({ 
-    variant = '',
-    label,
-    className = '',
-    startIcon,
-    endIcon,
-}: { 
-    variant?: string, 
-    label: string,
-    className?: string,
-    startIcon?: React.ReactNode | string,
-    endIcon?: React.ReactNode | string
-}): React.ReactNode {
-    return (
-        <span className={`tag ${variant ? 'tag-'+variant : ''} ${className}`.trim()}>
-            { startIcon && <span className="mr-1">{ startIcon }</span> }
-            { label }
-            { endIcon && <span className="ml-1">{ endIcon }</span> }
-        </span>
-    )
+  variant,
+  label,
+  className = '',
+  startIcon,
+  endIcon,
+}: TagProps): React.ReactNode {
+  return (
+    <TagRoot variant={variant} className={className}>
+      {startIcon && <span className="mr-1">{startIcon}</span>}
+      {label}
+      {endIcon && <span className="ml-1">{endIcon}</span>}
+    </TagRoot>
+  );
 }

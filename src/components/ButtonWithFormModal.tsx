@@ -2,7 +2,7 @@
 
 import ButtonWithModal from '@/components/ButtonWithModal';
 import FormModal from '@/components/form/FormModal';
-import { SxProps, Theme } from '@mui/material';
+import { ButtonProps } from '@mui/material';
 
 interface ButtonWithFormModalProps {
   formId: string;
@@ -10,19 +10,25 @@ interface ButtonWithFormModalProps {
   buttonStartIcon?: React.ReactNode;
   buttonEndIcon?: React.ReactNode;
   textOnly?: boolean;
-  className?: string;
-  sx?: SxProps<Theme>;
+  buttonProps?: Partial<ButtonProps>;
 }
 
-export default function ButtonWithFormModal({ textOnly = false, className, formId, buttonText, buttonStartIcon, buttonEndIcon, sx }: ButtonWithFormModalProps) {
+export default function ButtonWithFormModal({ 
+  textOnly = false, 
+  formId, 
+  buttonText, 
+  buttonStartIcon, 
+  buttonEndIcon, 
+  buttonProps 
+}: ButtonWithFormModalProps) {
   return (
     <ButtonWithModal
       buttonText={buttonText}
       buttonProps={{
-        sx: sx || { width: '100%', mt: 'auto' },
+        sx: { width: '100%', mt: 'auto' },
         variant: 'gradient',
         color: 'blue',
-        className: className,
+        ...buttonProps,
       }}
       buttonStartIcon={buttonStartIcon}
       buttonEndIcon={buttonEndIcon}

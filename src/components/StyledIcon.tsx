@@ -1,13 +1,19 @@
 import React from 'react';
 
+type ColorVariant = 'transparent' | 'red' | 'green' | 'blue' | 'orange' | 'amber' | 'indigo' | 'purple' | 'gray';
+type InvertedVariant = `${Exclude<ColorVariant, 'transparent' | 'gray'>}-inverted`;
+type Variant = ColorVariant | InvertedVariant | 'blue-gradient' | 'custom';
+type Elevation = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+
 interface StyledIconProps {
   icon: React.ReactNode | string;
   size?: number;
   bgColor?: string;
   textColor?: string;
-  variant?: 'transparent' | 'green' | 'blue' | 'blue-inverted' | 'blue-gradient' | 'orange' | 'amber' | 'indigo' | 'indigo-inverted' | 'purple' | 'purple-inverted' | 'gray' | 'custom';
+  variant?: Variant;
   className?: string;
   square?: boolean;
+  elevation?: Elevation;
 }
 
 export default function StyledIcon({ 
@@ -18,6 +24,7 @@ export default function StyledIcon({
   variant = 'gray',
   className = '',
   square = false,
+  elevation = 0,
 }: StyledIconProps): React.ReactNode {
   
   // Define preset color variants
@@ -26,9 +33,21 @@ export default function StyledIcon({
       bg: 'bg-transparent',
       text: 'text-inherit',
     },
+    red: {
+      bg: 'bg-red-100',
+      text: 'text-red-600',
+    },
+    'red-inverted': {
+      bg: 'bg-red-600',
+      text: 'text-white',
+    },
     green: {
       bg: 'bg-green-100',
       text: 'text-green-600',
+    },
+    'green-inverted': {
+      bg: 'bg-green-600',
+      text: 'text-white',
     },
     blue: {
       bg: 'bg-blue-100',
@@ -46,9 +65,17 @@ export default function StyledIcon({
       bg: 'bg-orange-100',
       text: 'text-orange-600',
     },
+    'orange-inverted': {
+      bg: 'bg-orange-600',
+      text: 'text-white',
+    },
     amber: {
       bg: 'bg-amber-100',
       text: 'text-amber-600',
+    },
+    'amber-inverted': {
+      bg: 'bg-amber-600',
+      text: 'text-white',
     },
     indigo: {
       bg: 'bg-indigo-100',
@@ -83,6 +110,18 @@ export default function StyledIcon({
   // Border radius class based on square prop
   const borderRadiusClass = square ? 'rounded-lg' : 'rounded-full';
   
+  // Box shadow based on elevation
+  const shadowClasses: Record<number, string> = {
+    0: '',
+    1: 'shadow-sm',
+    2: 'shadow',
+    3: 'shadow-md',
+    4: 'shadow-lg',
+    5: 'shadow-xl',
+    6: 'shadow-2xl',
+  };
+  const elevationClass = shadowClasses[Math.min(elevation, 6)] || shadowClasses[6];
+  
   // Custom styles for when custom colors are provided
   const customStyles = isCustom ? {
     backgroundColor: bgColor,
@@ -91,7 +130,7 @@ export default function StyledIcon({
 
   return (
     <div 
-      className={`flex items-center justify-center ${borderRadiusClass} ${colorClasses} ${className}`.trim()}
+      className={`flex items-center justify-center ${borderRadiusClass} ${colorClasses} ${elevationClass} ${className}`.trim()}
       style={{
         width: `${size}px`,
         height: `${size}px`,
