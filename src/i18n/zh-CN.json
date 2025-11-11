@@ -2,11 +2,11 @@
   "nav": {
     "dashboard": "仪表板",
     "services": "服务",
-    "govConnect": "政府连接",
-    "bizConnect": "商业连接",
-    "payConnect": "支付连接",
-    "safeConnect": "安全连接",
-    "signConnect": "签署连接",
+    "govConnect": "政府连线",
+    "bizConnect": "商业连线",
+    "payConnect": "支付连线",
+    "safeConnect": "安全连线",
+    "signConnect": "签署连线",
     "subscriptions": "订阅",
     "settings": "设置",
     "helpCentre": "帮助中心"
@@ -22,5 +22,35 @@
     "loading": "加载中...",
     "error": "错误",
     "success": "成功"
+  },
+  "pages": {
+    "govConnect": {
+      "title": "政府连线",
+      "context": "单一提交双重申报"
+    },
+    "bizConnect": {
+      "title": "商业连线",
+      "context": "您通往全球商业机会和合作伙伴关系的门户"
+    },
+    "payConnect": {
+      "title": "支付连线",
+      "context": "为您的业务提供全面的金融服务和支付解决方案"
+    },
+    "safeConnect": {
+      "title": "安全连线",
+      "context": "为个人和企业提供全面的网络安全工具和服务"
+    },
+    "signConnect": {
+      "title": "签署连线",
+      "context": "数字文件签署和管理平台"
+    },
+    "subscriptions": {
+      "title": "订阅"
+    },
+    "settings": {
+      "title": "设置",
+      "userProfile": "用户资料",
+      "companyProfile": "公司资料"
+    }
   }
 }

@@ -22,5 +22,35 @@
     "loading": "Loading...",
     "error": "Error",
     "success": "Success"
+  },
+  "pages": {
+    "govConnect": {
+      "title": "GovConnect",
+      "context": "Single Submission for Dual Declaration"
+    },
+    "bizConnect": {
+      "title": "BizConnect",
+      "context": "Your gateway to global business opportunities and partnerships"
+    },
+    "payConnect": {
+      "title": "PayConnect",
+      "context": "Comprehensive financial services and payment solutions for your business"
+    },
+    "safeConnect": {
+      "title": "SafeConnect",
+      "context": "Comprehensive cybersecurity tools and services for individuals and corporations"
+    },
+    "signConnect": {
+      "title": "SignConnect",
+      "context": "Digital document signing and management platform"
+    },
+    "subscriptions": {
+      "title": "Subscriptions"
+    },
+    "settings": {
+      "title": "Settings",
+      "userProfile": "User Profile",
+      "companyProfile": "Company Profile"
+    }
   }
 }

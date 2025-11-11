@@ -12,8 +12,10 @@ import { Brain, CircleCheckBig, FilePenLine, FileText } from 'lucide-react';
 import theme from '@/theme/theme';
 import ActionButton from '@/components/ActionButton';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from '@/contexts/AppContext';
 
 export default function SignConnectClient() {
+  const t = useTranslations();
   const digitalIdentityModal = useModal();
   const tradelinkModal = useModal();
   const router = useRouter();
@@ -67,12 +69,8 @@ export default function SignConnectClient() {
 
   return (
     <>
-      <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">
-        SignConnect
-      </Typography>
-      <Typography variant="body2" component="p">
-        Digital document signing and management platform
-      </Typography>
+      <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.signConnect.title") }</Typography>
+      <Typography variant="body2" component="p">{ t("pages.signConnect.context") }</Typography>
       <Spacer height={20} />
       <Paper variant="outlined" className="flex flex-col items-center p-6 h-full">
         <StyledIcon 

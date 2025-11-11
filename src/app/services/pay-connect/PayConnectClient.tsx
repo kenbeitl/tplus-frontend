@@ -16,6 +16,8 @@ import ModalLocalCrossBorderRemittance from './modal/local-cross-border-remittan
 import ModalTradeCardInsurance from './modal/trade-card-insurance';
 import ModalTradeFinancing from './modal/trade-financing';
 
+import { useTranslations } from '@/contexts/AppContext';
+
 const DIALOG_CARD = [
     {
         id: "1",
@@ -68,55 +70,57 @@ const DIALOG_CARD = [
 ]
 
 export default function PayConnectClient() {
-  return (
-    <>
-      <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">PayConnect</Typography>
-      <Typography variant="body2" component="p">Comprehensive financial services and payment solutions for your business</Typography>
-      <Spacer height={20} />
-      <Tag label="Sponsored Partner Offers" className="text-base! text-only" startIcon={<Sparkles className="h-4 w-4 text-amber-500" />} />
-      <Spacer height={20} />
-      <Carousel slideNum={2} />
-      <Spacer height={40} />
-      <Grid container spacing={2}>
-        {DIALOG_CARD.map((item) => (
-            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={item.id}>
-                <Card variant="outlined" className="p-6 card-hover" sx={{ height: '100%' }}>
-                    <Box className="flex items-center">
-                    <StyledIcon
-                        icon={item.icon} 
-                        variant="blue-gradient"
-                        size={36}
-                        square
-                        className="mr-3"
-                    />
-                    <Box>
-                        <Typography variant="body1" component="h4">{item.title}</Typography>
-                    </Box>
-                    </Box>
-                    <Typography sx={{ mt: 2 }} variant="body2" component="p">{item.description}</Typography>
-                    <Spacer height={20} />
-                    <Card variant="outlined" className="p-3 border-2! bg-blue-50! border-blue-200! center-layout">
-                        <StyledIcon 
-                            icon={item.providersAvailable} 
-                            variant="transparent"
+    const t = useTranslations();
+
+    return (
+        <>
+        <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.payConnect.title") }</Typography>
+        <Typography variant="body2" component="p">{ t("pages.payConnect.context") }</Typography>
+        <Spacer height={20} />
+        <Tag label="Sponsored Partner Offers" className="text-base! text-only" startIcon={<Sparkles className="h-4 w-4 text-amber-500" />} />
+        <Spacer height={20} />
+        <Carousel slideNum={2} />
+        <Spacer height={40} />
+        <Grid container spacing={2}>
+            {DIALOG_CARD.map((item) => (
+                <Grid size={{ xs: 12, sm: 6, md: 4 }} key={item.id}>
+                    <Card variant="outlined" className="p-6 card-hover" sx={{ height: '100%' }}>
+                        <Box className="flex items-center">
+                        <StyledIcon
+                            icon={item.icon} 
+                            variant="blue-gradient"
+                            size={36}
+                            square
+                            className="mr-3"
                         />
-                        <Typography variant="caption" component="p">Service Providers Available</Typography>
+                        <Box>
+                            <Typography variant="body1" component="h4">{item.title}</Typography>
+                        </Box>
+                        </Box>
+                        <Typography sx={{ mt: 2 }} variant="body2" component="p">{item.description}</Typography>
+                        <Spacer height={20} />
+                        <Card variant="outlined" className="p-3 border-2! bg-blue-50! border-blue-200! center-layout">
+                            <StyledIcon 
+                                icon={item.providersAvailable} 
+                                variant="transparent"
+                            />
+                            <Typography variant="caption" component="p">Service Providers Available</Typography>
+                        </Card>
+                        <Spacer height={20} />
+                        <ButtonWithModal
+                            buttonProps={{
+                                variant: 'gradient',
+                                color: 'blue',
+                                className: 'w-full',
+                            }}
+                            buttonText="View All Providers"
+                            buttonEndIcon={<ArrowRight />}
+                            modalContent={item.targetModal}
+                        /> 
                     </Card>
-                    <Spacer height={20} />
-                    <ButtonWithModal
-                        buttonProps={{
-                            variant: 'gradient',
-                            color: 'blue',
-                            className: 'w-full',
-                        }}
-                        buttonText="View All Providers"
-                        buttonEndIcon={<ArrowRight />}
-                        modalContent={item.targetModal}
-                    /> 
-                </Card>
-            </Grid>        
-        ))}        
-      </Grid>
-    </>
-  );
+                </Grid>        
+            ))}        
+        </Grid>
+        </>
+    );
 }

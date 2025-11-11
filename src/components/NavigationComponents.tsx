@@ -63,6 +63,7 @@ interface DropdownListItemProps {
   isActive?: boolean;
   isDrawerOpen?: boolean;
   defaultOpen?: boolean;
+  storageKey?: string; // Add stable key prop
 }
 
 export function DropdownListItem({ 
@@ -70,14 +71,15 @@ export function DropdownListItem({
   primary, 
   children, 
   isActive = false,
-  defaultOpen = false 
+  defaultOpen = false,
+  storageKey: propStorageKey
 }: DropdownListItemProps) {
   const [open, setOpen] = React.useState(defaultOpen);
   const [mounted, setMounted] = React.useState(false);
   const isDrawerOpen = useDrawer().drawerOpen;
 
-  // Create a unique key for this dropdown based on primary text
-  const storageKey = `dropdown_${primary.replace(/\s+/g, '_').toLowerCase()}`;
+  // Use provided storageKey or fallback to primary-based key
+  const storageKey = propStorageKey || `dropdown_${primary.replace(/\s+/g, '_').toLowerCase()}`;
 
   // Ensure client-side hydration and load saved state
   React.useEffect(() => {

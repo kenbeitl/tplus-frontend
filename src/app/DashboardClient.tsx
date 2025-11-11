@@ -8,8 +8,10 @@ import Emoji from "@/components/Emoji";
 import { Box, Button, Card, Grid, Link, Paper, Typography } from "@mui/material";
 import ButtonWithFormModal from "@/components/ButtonWithFormModal";
 import theme from "@/theme/theme";
+import { useTranslations } from "@/contexts/AppContext";
 
 export default function DashboardClient() {
+    const t = useTranslations();
     const CONTACT_SUPPORT_FORM_ID = 'contact-support';
     return (
         <>

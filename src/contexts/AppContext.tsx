@@ -61,9 +61,6 @@ export function AppProvider({ children, defaultLocale = 'en' }: AppProviderProps
     const savedLocale = localStorage.getItem('locale') as Locale;
     if (savedLocale && locales.includes(savedLocale)) {
       setLocale(savedLocale);
-      loadMessages(savedLocale);
-    } else {
-      loadMessages(defaultLocale);
     }
     
     // Load saved drawer state from localStorage
@@ -75,9 +72,11 @@ export function AppProvider({ children, defaultLocale = 'en' }: AppProviderProps
 
   // Load messages when locale changes
   useEffect(() => {
-    loadMessages(locale);
-    if (isClient) {
-      localStorage.setItem('locale', locale);
+    if (locale) {
+      loadMessages(locale);
+      if (isClient) {
+        localStorage.setItem('locale', locale);
+      }
     }
   }, [locale, isClient]);
 

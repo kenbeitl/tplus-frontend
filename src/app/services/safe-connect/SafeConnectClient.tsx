@@ -11,6 +11,7 @@ import StyledIcon from "@/components/StyledIcon";
 import FormField from "@/components/form/FormField";
 import theme from "@/theme/theme";
 import ButtonWithFormModal from "@/components/ButtonWithFormModal";
+import { useTranslations } from '@/contexts/AppContext';
 
 const WEB_VULNERABILITY_ASSESSMENT_REQUEST = 'web-vulnerability-assessment-request';
 const NETWORK_BOX_CYBERSECURITY = 'network-box-cybersecurity';
@@ -64,6 +65,7 @@ const REASONS_FOR_TPLUS_SECURITY_PARTNERS = [
 ]
 
 export default function SafeConnectClient() {
+  const t = useTranslations();
   const [value, setValue] = React.useState('1');
   const [darkWebEmail, setDarkWebEmail] = React.useState('');
   const [darkWebResult, setDarkWebResult] = React.useState<any>({
@@ -101,8 +103,8 @@ export default function SafeConnectClient() {
 
   return (
     <Box component="div" className="relative">
-      <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">SafeConnect</Typography>
-      <Typography variant="body2" component="p">Comprehensive cybersecurity tools and services for individuals and corporations</Typography>
+      <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.safeConnect.title") }</Typography>
+      <Typography variant="body2" component="p">{ t("pages.safeConnect.context") }</Typography>
       <Tag label="Services Available" className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
       <Spacer height={20} />
       <TabContext value={value}>

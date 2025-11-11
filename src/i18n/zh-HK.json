@@ -22,5 +22,35 @@
     "loading": "載入中...",
     "error": "錯誤",
     "success": "成功"
+  },
+  "pages": {
+    "govConnect": {
+      "title": "政府連線",
+      "context": "單一提交雙重申報"
+    },
+    "bizConnect": {
+      "title": "商業連線",
+      "context": "您通往全球商業機會和合作夥伴關係的門戶"
+    },
+    "payConnect": {
+      "title": "支付連線",
+      "context": "為您的業務提供全面的金融服務和支付解決方案"
+    },
+    "safeConnect": {
+      "title": "安全連線",
+      "context": "為個人和企業提供全面的網絡安全工具和服務"
+    },
+    "signConnect": {
+      "title": "簽署連線",
+      "context": "數字文件簽署和管理平台"
+    },
+    "subscriptions": {
+      "title": "訂閱"
+    },
+    "settings": {
+      "title": "設定",
+      "userProfile": "用戶資料",
+      "companyProfile": "公司資料"
+    }
   }
 }

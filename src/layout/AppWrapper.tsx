@@ -268,6 +268,7 @@ export default function AppWrapper({
             <DropdownListItem
               icon={<Building2 />}
               primary={t('nav.services')}
+              storageKey="dropdown_services"
             >
               { 
                 serviceList.map((service: serviceListType, index) => (
