@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  const isAuth = pathname.includes('/login') || pathname.includes('/register') || pathname.includes('/auth');
+  const isAuth = pathname.includes('/login') || pathname.includes('/sign-up') || pathname.includes('/register') || pathname.includes('/auth');
 
   return (
     <html lang="en">

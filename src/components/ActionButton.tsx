@@ -1,9 +1,10 @@
 'use client';
 
-import { Button } from '@mui/material';
+import { Button, ButtonProps } from '@mui/material';
 
 interface ActionButtonProps {
   buttonText: string;
+  buttonProps?: Partial<ButtonProps>;
   variant?: 'text' | 'outlined' | 'contained' | 'gradient';
   autoWidth?: boolean;
   color?: 'blue' | 'white';
@@ -14,7 +15,7 @@ interface ActionButtonProps {
   onClick?: (() => void) | string; // Function or URL string
 }
 
-export default function ActionButton({ buttonText, variant = 'gradient', autoWidth = false, color = 'blue', startIcon, endIcon, noIcon, disabled = false, onClick }: ActionButtonProps) {
+export default function ActionButton({ buttonText, buttonProps, variant = 'gradient', autoWidth = false, color = 'blue', startIcon, endIcon, noIcon, disabled = false, onClick }: ActionButtonProps) {
 
   const handleClick = () => {
     if (typeof onClick === 'string') {
@@ -26,13 +27,14 @@ export default function ActionButton({ buttonText, variant = 'gradient', autoWid
 
   return (
     <Button 
-      sx={{ width: autoWidth ? 'auto' : '100%', mt: 'auto' }} 
+      sx={{ width: autoWidth ? 'auto' : '100%', mt: 'auto' }}
       variant={variant} 
       color={color}
       disabled={disabled}
       startIcon={!noIcon ? startIcon : null}
       endIcon={!noIcon ? endIcon : null}
       onClick={handleClick}
+      {...buttonProps}
     >
       {buttonText}
     </Button>

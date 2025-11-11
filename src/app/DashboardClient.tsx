@@ -9,9 +9,12 @@ import { Box, Button, Card, Grid, Link, Paper, Typography } from "@mui/material"
 import ButtonWithFormModal from "@/components/ButtonWithFormModal";
 import theme from "@/theme/theme";
 import { useTranslations } from "@/contexts/AppContext";
+import ActionButton from "@/components/ActionButton";
+import { useRouter } from "next/navigation";
 
 export default function DashboardClient() {
     const t = useTranslations();
+    const router = useRouter();
     const CONTACT_SUPPORT_FORM_ID = 'contact-support';
     return (
         <>
@@ -305,7 +308,13 @@ export default function DashboardClient() {
                         <Card variant="outlined" className="p-3 bg-blue-50! border-blue-200!">
                             <Typography variant="body1" component="h4">Ready to upgrade?</Typography>
                             <Typography variant="caption" component="h4" color="#2b7fff">Unlock all features by subscribing to our plans — launching soon!</Typography>
-                            <Button variant="outlined" color="blue" sx={{ mt: 2 }}>View Subscription Plans</Button>
+                            <ActionButton
+                                autoWidth
+                                variant="outlined" 
+                                color="blue" 
+                                buttonText="View Subscription Plans"
+                                onClick={() => router.push("/subscriptions")}
+                            />
                         </Card>
                     </Grid>
                 </Grid>
