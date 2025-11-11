@@ -349,7 +349,9 @@ export default function SafeConnectClient() {
                     <Typography variant="body2" component="p" sx={{ mb: 3 }}>From $800/month</Typography>
                     <Box component="div" className="flex justify-end mb-2">
                       <ButtonWithFormModal
-                        sx={{ width: 'auto' }}
+                        buttonProps={{
+                          sx:{ width: 'auto' }
+                        }}                        
                         formId={NETWORK_BOX_CYBERSECURITY}
                         buttonText="Learn More"
                         buttonStartIcon={<ExternalLink size={16} />}
