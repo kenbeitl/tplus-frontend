@@ -216,7 +216,9 @@ export default function HelpCentre() {
             <ButtonWithFormModal
                 formId={CONTACT_SUPPORT_FORM_ID} 
                 buttonText="Contact Support"
-                sx={{ width: 'auto' }}
+                buttonProps={{
+                  sx:{ width: 'auto' }
+                }}                
             />
             <Button 
               sx={{ 
