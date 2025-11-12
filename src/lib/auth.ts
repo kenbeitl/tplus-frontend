@@ -18,15 +18,15 @@ export async function requireAuth() {
   
   // Check if session exists and hasn't expired
   if (!hasSession || !sessionExpiry) {
-    redirect('/login');
+    redirect('/');
   }
   
   const expiryTime = parseInt(sessionExpiry, 10);
   const now = Date.now();
   
   if (now > expiryTime) {
-    // Session expired, redirect to login
-    redirect('/login');
+    // Session expired, redirect to login (now root)
+    redirect('/');
   }
   
   return true;

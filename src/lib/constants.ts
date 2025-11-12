@@ -34,7 +34,7 @@ export const FORM_IDS = {
 // ============================================
 export const ROUTES = {
   HOME: '/',
-  LOGIN: '/login',
+  LOGIN: '/',
   
   // Services
   SERVICES: '/services',

@@ -1,15 +1,11 @@
 import { Metadata } from "next";
-import DashboardClient from "./DashboardClient";
-import { requireAuth } from "@/lib/auth";
+import LoginClient from "./login/LoginClient";
 
 export const metadata: Metadata = {
-  title: 'Dashboard | TPlus',
-}
+  title: "Login | TPlus",
+  description: "Secure login portal for TPlus application",
+};
 
-export default async function Dashboard() {
-  await requireAuth();
-  
-  return (
-    <DashboardClient />
-  );
+export default function RootLogin() {
+  return <LoginClient />;
 }

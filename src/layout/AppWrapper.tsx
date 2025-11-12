@@ -134,7 +134,7 @@ export default function AppWrapper({
         sessionStorage.removeItem('sessionExpiry');
         document.cookie = 'hasSession=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict';
         document.cookie = 'sessionExpiry=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict';
-        window.location.href = '/login';
+        window.location.href = '/';
         return;
       }
     }

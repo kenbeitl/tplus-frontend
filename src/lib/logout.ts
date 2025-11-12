@@ -9,6 +9,6 @@ export function logout() {
   document.cookie = 'hasSession=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict';
   document.cookie = 'sessionExpiry=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict';
   
-  // Redirect to login
-  window.location.href = '/login';
+  // Redirect to root (login now at '/')
+  window.location.href = '/';
 }
