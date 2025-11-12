@@ -1,11 +1,11 @@
 import { Metadata } from "next";
-import SignInClient from "./sign-in/SignInClient";
+import LoginClient from "./login/LoginClient";
 
 export const metadata: Metadata = {
-  title: "Sign In | TPlus",
-  description: "Secure sign in portal for TPlus application",
+  title: "Login | TPlus",
+  description: "Secure login portal for TPlus application",
 };
 
 export default function RootLogin() {
-  return <SignInClient />;
+  return <LoginClient />;
 }

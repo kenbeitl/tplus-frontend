@@ -120,7 +120,7 @@ export default function StyledIcon({
     5: 'shadow-xl',
     6: 'shadow-2xl',
   };
-  const elevationClass = shadowClasses[Math.min(elevation, 6)] || shadowClasses[6];
+  const elevationClass = elevation > 0 ? shadowClasses[Math.min(elevation, 6)] : '';
   
   // Custom styles for when custom colors are provided
   const customStyles = isCustom ? {

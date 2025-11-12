@@ -42,7 +42,7 @@ export default function LoginClient() {
         document.cookie = `sessionExpiry=${expiryTime}; path=/; SameSite=Strict`;
         
         // Redirect to external URL after login
-        window.location.href = 'http://192.168.221.118:8082';
+        router.push('/login');
     };
 
     return (
