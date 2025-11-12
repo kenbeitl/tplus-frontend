@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import LoginClient from "../login/LoginClientOld";
+import LoginClient from "../sign-in/SignInClientOld";
 
 export const metadata: Metadata = {
   title: "Sign Up | TPlus",
