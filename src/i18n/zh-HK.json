@@ -45,7 +45,8 @@
       "context": "數字文件簽署和管理平台"
     },
     "subscriptions": {
-      "title": "訂閱"
+      "title": "訂閱",
+      "context": "管理您的訂閱計劃並探索升級選項"
     },
     "settings": {
       "title": "設定",

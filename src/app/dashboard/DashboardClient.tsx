@@ -5,7 +5,7 @@ import Spacer from "@/components/ui/Spacer";
 import { ArrowRight, Award, Building, Building2, Calendar, CircleCheckBig, CreditCard, FilePenLine, IdCard, Shield, Sparkles, User } from "lucide-react";
 import StyledIcon from "@/components/StyledIcon";
 import Emoji from "@/components/Emoji";
-import { Box, Button, Card, Grid, Link, Paper, Typography } from "@mui/material";
+import { Box, Card, Grid, Link, Paper, Typography } from "@mui/material";
 import ButtonWithFormModal from "@/components/ButtonWithFormModal";
 import theme from "@/theme/theme";
 import { useTranslations } from "@/contexts/AppContext";
@@ -52,7 +52,8 @@ export default function DashboardClient() {
                     <Grid size="grow">
                         <Card 
                             variant="outlined" 
-                            className="p-3 lg:p-6 bg-linear-to-br from-blue-50 to-blue-100 border-2 border-blue-200! gap-4 center-layout"
+                            className="p-3 lg:p-6 bg-linear-to-br from-blue-50 to-blue-100 border-2 border-blue-200! gap-4 center-layout h-full"
+                            sx={{ height: '100%' }}
                         >
                         <StyledIcon 
                             icon={<User size={25} />} 
@@ -68,7 +69,7 @@ export default function DashboardClient() {
                         <Typography variant="caption" component="p" sx={{ color: theme.palette.text.blue }}>Fill in your user and company profile to access all T+ platform features</Typography>
                     </Card>
                 </Grid>
-                <Grid size={1}>
+                <Grid size={1} sx={{ alignSelf: 'center' }}>
                     <Card elevation={0} className="center-layout">
                         <ArrowRight className="text-blue-400" />
                     </Card>
@@ -76,7 +77,7 @@ export default function DashboardClient() {
                 <Grid size="grow">
                     <Card 
                         variant="outlined" 
-                        className="p-3 lg:p-6 bg-linear-to-br from-purple-50 to-purple-100 border-2 border-purple-200! gap-4 center-layout"
+                        className="p-3 lg:p-6 bg-linear-to-br from-purple-50 to-purple-100 border-2 border-purple-200! gap-4 center-layout h-full"
                     >
                         <StyledIcon 
                             icon={<IdCard size={25} />} 
@@ -92,7 +93,7 @@ export default function DashboardClient() {
                         <Typography variant="caption" component="p" sx={{ color: theme.palette.text.purple }}>Create your verified digital identity to securely access T+ services</Typography>
                     </Card>
                 </Grid>
-                <Grid size={1}>
+                <Grid size={1} sx={{ alignSelf: 'center' }}>
                     <Card elevation={0} className="center-layout">
                         <ArrowRight className="text-purple-400" />
                     </Card>
@@ -100,7 +101,7 @@ export default function DashboardClient() {
                 <Grid size="grow">
                     <Card 
                         variant="outlined" 
-                        className="p-3 lg:p-6 bg-linear-to-br from-indigo-50 to-indigo-100 border-2 border-indigo-200! gap-4 center-layout"
+                        className="p-3 lg:p-6 bg-linear-to-br from-indigo-50 to-indigo-100 border-2 border-indigo-200! gap-4 center-layout h-full"
                     >
                         <StyledIcon 
                             icon={<Sparkles size={25} />} 

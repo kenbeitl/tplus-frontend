@@ -46,7 +46,8 @@
       "context": "Digital document signing and management platform"
     },
     "subscriptions": {
-      "title": "Subscriptions"
+      "title": "Subscriptions",
+      "context": "Manage your subscription plan and explore upgrade options"
     },
     "settings": {
       "title": "Settings",
