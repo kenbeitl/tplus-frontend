@@ -7,70 +7,71 @@ import ButtonWithModal from '@/components/ButtonWithModal';
 import Carousel from '@/components/Carousel';
 import Tag from '@/components/Tag';
 import Spacer from '@/components/ui/Spacer';
-import StyledIcon from '@/components/StyledIcon';
+import StyledIcon from '@/components/StyledIcon';;
 
-import ModalBankAccountOpening from './modal/bank-account-opening';
-import ModalDebtCollectionServices from './modal/debt-collection-services';
-import ModalIntegratedPaymentSolutions from './modal/integrated-payment-solutions';
-import ModalLocalCrossBorderRemittance from './modal/local-cross-border-remittance';
-import ModalTradeCardInsurance from './modal/trade-card-insurance';
-import ModalTradeFinancing from './modal/trade-financing';
+import ProviderModal from './modal/provider-modal';
 
 import { useTranslations } from '@/contexts/AppContext';
 
-const DIALOG_CARD = [
-    {
-        id: "1",
-        icon: <Building size={18} />,
-        title: "Bank Account Opening",
-        description: "Open business accounts with partner banks across Asia-Pacific",
-        providersAvailable: 2,
-        targetModal: (open: boolean, onClose: () => void) => <ModalBankAccountOpening open={open} onClose={onClose} />
-    },
-    {
-        id: "2",
-        icon: <CreditCard size={18} />,
-        title: "Integrated Payment Solutions",
-        description: "Online and offline payment processing for your business",
-        providersAvailable: 2,
-        targetModal: (open: boolean, onClose: () => void) => <ModalIntegratedPaymentSolutions open={open} onClose={onClose} /> 
-    },
-    {
-        id: "3",
-        icon: <Plane size={18} />,
-        title: "Local & Cross-Border Remittance",
-        description: "Fast and secure money transfers locally and internationally",
-        providersAvailable: 2,
-        targetModal: (open: boolean, onClose: () => void) => <ModalLocalCrossBorderRemittance open={open} onClose={onClose} />
-    },
-    {
-        id: "4",
-        icon: <DollarSign size={18} />,
-        title: "Trade Financing",
-        description: "Flexible trade financing solutions to support your business growth",
-        providersAvailable: 2,
-        targetModal: (open: boolean, onClose: () => void) => <ModalTradeFinancing open={open} onClose={onClose} />
-    },
-    {
-        id: "5",
-        icon: <Shield size={18} />,
-        title: "Trade Credit Insurance",
-        description: "Protect your business against trade credit risks",
-        providersAvailable: 2,
-        targetModal: (open: boolean, onClose: () => void) => <ModalTradeCardInsurance open={open} onClose={onClose} /> 
-    },
-    {
-        id: "6",
-        icon: <Users size={18} />,
-        title: "Debt Collection Services",
-        description: "Efficient debt recovery solutions for your business",
-        providersAvailable: 2,
-        targetModal: (open: boolean, onClose: () => void) => <ModalDebtCollectionServices open={open} onClose={onClose} />
-    },                
-]
-
 export default function PayConnectClient() {
+
     const t = useTranslations();
+
+    const getProviderCount = (key: string) => {
+        const providers = t(`pages.payConnect.modal.${key}.providers`);
+        return Array.isArray(providers) ? providers.length : 0;
+    };
+
+    const DIALOG_CARD = [
+        {
+            id: "1",
+            icon: <Building size={18} />,
+            title: "Bank Account Opening",
+            description: "Open business accounts with partner banks across Asia-Pacific",
+            providersAvailable: getProviderCount("bankAccountOpening"),
+            targetModal: (open: boolean, onClose: () => void) => <ProviderModal open={open} onClose={onClose} type="bankAccountOpening" emoji="🏦" />
+        },
+        {
+            id: "2",
+            icon: <CreditCard size={18} />,
+            title: "Integrated Payment Solutions",
+            description: "Online and offline payment processing for your business",
+            providersAvailable: getProviderCount("integratedPaymentSolutions"),
+            targetModal: (open: boolean, onClose: () => void) => <ProviderModal open={open} onClose={onClose} type="integratedPaymentSolutions"  emoji="💳"/> 
+        },
+        {
+            id: "3",
+            icon: <Plane size={18} />,
+            title: "Local & Cross-Border Remittance",
+            description: "Fast and secure money transfers locally and internationally",
+            providersAvailable: getProviderCount("localCrossBorderRemittance"),
+            targetModal: (open: boolean, onClose: () => void) => <ProviderModal open={open} onClose={onClose} type="localCrossBorderRemittance" emoji="🌐" />
+        },
+        {
+            id: "4",
+            icon: <DollarSign size={18} />,
+            title: "Trade Financing",
+            description: "Flexible trade financing solutions to support your business growth",
+            providersAvailable: getProviderCount("tradeFinancing"),
+            targetModal: (open: boolean, onClose: () => void) => <ProviderModal open={open} onClose={onClose} type="tradeFinancing" emoji="🏛️" />
+        },
+        {
+            id: "5",
+            icon: <Shield size={18} />,
+            title: "Trade Credit Insurance",
+            description: "Protect your business against trade credit risks",
+            providersAvailable: getProviderCount("tradeCreditInsurance"),
+            targetModal: (open: boolean, onClose: () => void) => <ProviderModal open={open} onClose={onClose} type="tradeCreditInsurance" emoji="🛡️" /> 
+        },
+        {
+            id: "6",
+            icon: <Users size={18} />,
+            title: "Debt Collection Services",
+            description: "Efficient debt recovery solutions for your business",
+            providersAvailable: getProviderCount("debtCollectionServices"),
+            targetModal: (open: boolean, onClose: () => void) => <ProviderModal open={open} onClose={onClose} type="debtCollectionServices" emoji="⚖️" />
+        },
+    ]
 
     return (
         <>
@@ -91,7 +92,7 @@ export default function PayConnectClient() {
                             variant="blue-gradient"
                             size={36}
                             square
-                            className="mr-3"
+                            className="mr-3 shrink-0"
                         />
                         <Box>
                             <Typography variant="body1" component="h4">{item.title}</Typography>

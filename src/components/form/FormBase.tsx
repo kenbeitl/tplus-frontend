@@ -12,13 +12,13 @@ import { useFormSubmission } from '@/hooks/useFormSubmission';
 import { applicationService } from '@/services';
 
 // Import the types from formConfigService
-import { FormListItem } from '@/services/formConfigService';
+import { FormTemplate } from '@/services/formConfigService';
 import { Check } from 'lucide-react';
 import Tag from '../Tag';
 import theme from '@/theme/theme';
 
 interface FormBaseProps {
-  data: FormListItem | null;
+  data: (FormTemplate & { formId: string }) | null;
   loading?: boolean;
   onClose: () => void;
 }
@@ -27,7 +27,7 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
   // Build validation rules - matching the rolled back form
   const validationRules = useMemo(() => {
     return {
-      formID: { required: false },
+      formId: { required: false },
       name: { required: true, message: 'Name is required' },
       phoneNumber: { required: true, message: 'Phone number is required' },
       email: { required: true, message: 'Email is required' },
@@ -40,7 +40,7 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
   // Build initial form values - matching the rolled back form
   const initialValues = useMemo(() => {
     return {
-      formID: data?.formID || '',
+      formId: data?.formId || '',
       name: '',
       phoneNumber: '',
       email: '',
@@ -48,17 +48,17 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
       companyName: 'Demo Company',
       message: '',
     };
-  }, [data?.formID]);
+  }, [data?.formId]);
 
   // Initialize form validation
   const form = useFormValidation(initialValues, validationRules);
 
-  // Update formID when data changes
+  // Update formId when data changes
   useEffect(() => {
-    if (data?.formID && form.values.formID !== data.formID) {
-      form.handleChange('formID', data.formID);
+    if (data?.formId && form.values.formId !== data.formId) {
+      form.handleChange('formId', data.formId);
     }
-  }, [data?.formID, form.values.formID, form.handleChange]);
+  }, [data?.formId, form.values.formId, form.handleChange]);
 
   // Form submission logic
   const { submit: submitApplication, isSubmitting } = useFormSubmission(
@@ -130,10 +130,10 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
       </Card>
 
       <Form onSubmit={handleSubmit}>
-        {/* Hidden formID field */}
+        {/* Hidden formId field */}
         <HiddenField
-          name="formID"
-          value={form.values.formID || ''}
+          name="formId"
+          value={form.values.formId || ''}
           onChange={form.handleChange}
         />
 

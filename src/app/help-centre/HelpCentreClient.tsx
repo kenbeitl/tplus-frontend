@@ -14,7 +14,7 @@ import { CircleQuestionMark, CreditCard, FilePenLine, Search, Shield, SquareArro
 import ButtonWithFormModal from '@/components/ButtonWithFormModal';
 
 type CardId = 'digital' | 'signing' | 'subscription' | null;
-const CONTACT_SUPPORT_FORM_ID = 'contact-support';
+const CONTACT_SUPPORT_TEMPLATE_ID = 'contact-support';
 
 export default function HelpCentreClient() {
   const [openCard, setOpenCard] = useState<CardId>(null);
@@ -214,7 +214,7 @@ export default function HelpCentreClient() {
           <Spacer height={20} />
           <Box sx={{ display: 'flex', alignItems: 'top', gap: 1 }}>
             <ButtonWithFormModal
-                formId={CONTACT_SUPPORT_FORM_ID} 
+                templateId={CONTACT_SUPPORT_TEMPLATE_ID} 
                 buttonText="Contact Support"
                 buttonProps={{
                   sx:{ width: 'auto' }

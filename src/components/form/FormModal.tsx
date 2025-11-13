@@ -3,38 +3,42 @@
 import Modal from '@/components/Modal';
 import FormBase from '@/components/form/FormBase';
 import { useState, useEffect } from 'react';
-import { formConfigService, type FormListItem } from '@/services/formConfigService';
+import { formConfigService, type FormTemplate } from '@/services/formConfigService';
 
 interface FormModalProps {
   open: boolean;
   onClose: () => void;
-  formId: string;
+  templateId: string;
+  formId?: string;
   maxWidth?: number;
+  placeholder?: string;
 }
 
-export default function FormModal({ open, onClose, formId, maxWidth = 800 }: FormModalProps) {
-  const [formInfo, setFormInfo] = useState<FormListItem | null>(null);
+export default function FormModal({ open, onClose, templateId, formId, maxWidth = 800, placeholder }: FormModalProps) {
+  const [formInfo, setFormInfo] = useState<(FormTemplate & { formId: string }) | null>(null);
   const [loading, setLoading] = useState(false);
 
   // Fetch form config when modal opens
   useEffect(() => {
     if (open && !formInfo) {
       setLoading(true);
-      formConfigService.getFormConfig(formId)
+      formConfigService.getFormConfig(templateId, formId)
         .then((data) => {
-          // Add the formID from our declared variable since Strapi won't return it
-          const formInfoWithId = {
-            ...data,
-            formID: formId
-          };
-          setFormInfo(formInfoWithId);
+
+          if (placeholder) {
+            data.description = data.description?.replace("${placeholder}", placeholder);
+            data.formTitle = data.formTitle?.replace("${placeholder}", placeholder);
+          }         
+
+          setFormInfo(data);
         })
         .catch((error) => {
           console.error('Failed to fetch form config:', error);
-          // Fallback: create basic form info with required formID
+          // Fallback: create basic form info with required fields
           setFormInfo({
             id: 1,
-            formID: formId,
+            templateId: templateId,
+            formId: formId || templateId,
             formTitle: 'Application Form',
             description: 'Please provide your details and requirements for the service',
             submitButtonText: 'Submit Application'
@@ -42,7 +46,7 @@ export default function FormModal({ open, onClose, formId, maxWidth = 800 }: For
         })
         .finally(() => setLoading(false));
     }
-  }, [open, formInfo, formId]);
+  }, [open, formInfo, templateId, formId]);
 
   const handleCloseModal = () => {
     onClose();

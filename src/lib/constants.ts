@@ -3,9 +3,9 @@
  */
 
 // ============================================
-// FORM IDs
+// TEMPLATE IDs (Form Templates)
 // ============================================
-export const FORM_IDS = {
+export const TEMPLATE_IDS = {
   // Help Centre Forms
   CONTACT_SUPPORT: 'contact-support',
   
@@ -23,11 +23,18 @@ export const FORM_IDS = {
   PAYCONNECT_TRADE_CARD: 'payconnect-trade-card-insurance',
   PAYCONNECT_TRADE_FINANCING: 'payconnect-trade-financing',
   
+  // SafeConnect Forms
+  SAFECONNECT_WEB_VULNERABILITY: 'safeconnect-web-vulnerability-assessment',
+  SAFECONNECT_NETWORK_BOX: 'safeconnect-network-box-cybersecurity',
+  
   // SignConnect Forms
   SIGNCONNECT_TRADELINK: 'signconnect-tradelink-esign',
   SIGNCONNECT_DOCUSIGN: 'signconnect-docusign',
   SIGNCONNECT_FADADA: 'signconnect-fadada',
 } as const;
+
+// Legacy alias for backward compatibility
+export const FORM_IDS = TEMPLATE_IDS;
 
 // ============================================
 // ROUTES
@@ -116,5 +123,6 @@ export const SUCCESS_MESSAGES = {
 } as const;
 
 // Type exports for type safety
-export type FormId = typeof FORM_IDS[keyof typeof FORM_IDS];
+export type TemplateId = typeof TEMPLATE_IDS[keyof typeof TEMPLATE_IDS];
+export type FormId = TemplateId; // Legacy alias
 export type Route = typeof ROUTES[keyof typeof ROUTES];

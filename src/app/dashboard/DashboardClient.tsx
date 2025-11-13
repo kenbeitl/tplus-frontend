@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 export default function DashboardClient() {
     const t = useTranslations();
     const router = useRouter();
-    const CONTACT_SUPPORT_FORM_ID = 'contact-support';
+    const CONTACT_SUPPORT_TEMPLATE_ID = 'contact-support';
     return (
         <>
             <Carousel slideNum={2} />
@@ -55,69 +55,69 @@ export default function DashboardClient() {
                             className="p-3 lg:p-6 bg-linear-to-br from-blue-50 to-blue-100 border-2 border-blue-200! gap-4 center-layout h-full"
                             sx={{ height: '100%' }}
                         >
-                        <StyledIcon 
-                            icon={<User size={25} />} 
-                            variant="blue-inverted"
-                            size={50}
-                        />
-                        <StyledIcon 
-                            icon="1" 
-                            variant="blue-inverted"
-                            size={32}
-                        />
-                        <Typography variant="body2" component="h4">Complete your profile</Typography>
-                        <Typography variant="caption" component="p" sx={{ color: theme.palette.text.blue }}>Fill in your user and company profile to access all T+ platform features</Typography>
-                    </Card>
+                            <StyledIcon 
+                                icon={<User size={25} />} 
+                                variant="blue-inverted"
+                                size={50}
+                            />
+                            <StyledIcon 
+                                icon="1" 
+                                variant="blue-inverted"
+                                size={32}
+                            />
+                            <Typography variant="body2" component="h4">Complete your profile</Typography>
+                            <Typography variant="caption" component="p" sx={{ color: theme.palette.text.blue }}>Fill in your user and company profile to access all T+ platform features</Typography>
+                        </Card>
+                    </Grid>
+                    <Grid size={1} sx={{ alignSelf: 'center' }}>
+                        <Card elevation={0} className="center-layout">
+                            <ArrowRight className="text-blue-400" />
+                        </Card>
+                    </Grid>
+                    <Grid size="grow">
+                        <Card 
+                            variant="outlined" 
+                            className="p-3 lg:p-6 bg-linear-to-br from-purple-50 to-purple-100 border-2 border-purple-200! gap-4 center-layout h-full"
+                        >
+                            <StyledIcon 
+                                icon={<IdCard size={25} />} 
+                                variant="purple-inverted"
+                                size={50}
+                            />
+                            <StyledIcon 
+                                icon="2" 
+                                variant="purple-inverted"
+                                size={32}
+                            />
+                            <Typography variant="body2" component="h4">Apply for Digital Identity</Typography>
+                            <Typography variant="caption" component="p" sx={{ color: theme.palette.text.purple }}>Create your verified digital identity to securely access T+ services</Typography>
+                        </Card>
+                    </Grid>
+                    <Grid size={1} sx={{ alignSelf: 'center' }}>
+                        <Card elevation={0} className="center-layout">
+                            <ArrowRight className="text-purple-400" />
+                        </Card>
+                    </Grid>
+                    <Grid size="grow">
+                        <Card 
+                            variant="outlined" 
+                            className="p-3 lg:p-6 bg-linear-to-br from-indigo-50 to-indigo-100 border-2 border-indigo-200! gap-4 center-layout h-full"
+                        >
+                            <StyledIcon 
+                                icon={<Sparkles size={25} />} 
+                                variant="indigo-inverted"
+                                size={50}
+                            />
+                            <StyledIcon 
+                                icon="3" 
+                                variant="indigo-inverted"
+                                size={32}
+                            />
+                            <Typography variant="body2" component="h4">Explore Services</Typography>
+                            <Typography variant="caption" component="p" sx={{ color: theme.palette.text.indigo }}>Use the menu bar to browse and try out all available services</Typography>
+                        </Card>
+                    </Grid>
                 </Grid>
-                <Grid size={1} sx={{ alignSelf: 'center' }}>
-                    <Card elevation={0} className="center-layout">
-                        <ArrowRight className="text-blue-400" />
-                    </Card>
-                </Grid>
-                <Grid size="grow">
-                    <Card 
-                        variant="outlined" 
-                        className="p-3 lg:p-6 bg-linear-to-br from-purple-50 to-purple-100 border-2 border-purple-200! gap-4 center-layout h-full"
-                    >
-                        <StyledIcon 
-                            icon={<IdCard size={25} />} 
-                            variant="purple-inverted"
-                            size={50}
-                        />
-                        <StyledIcon 
-                            icon="2" 
-                            variant="purple-inverted"
-                            size={32}
-                        />
-                        <Typography variant="body2" component="h4">Apply for Digital Identity</Typography>
-                        <Typography variant="caption" component="p" sx={{ color: theme.palette.text.purple }}>Create your verified digital identity to securely access T+ services</Typography>
-                    </Card>
-                </Grid>
-                <Grid size={1} sx={{ alignSelf: 'center' }}>
-                    <Card elevation={0} className="center-layout">
-                        <ArrowRight className="text-purple-400" />
-                    </Card>
-                </Grid>
-                <Grid size="grow">
-                    <Card 
-                        variant="outlined" 
-                        className="p-3 lg:p-6 bg-linear-to-br from-indigo-50 to-indigo-100 border-2 border-indigo-200! gap-4 center-layout h-full"
-                    >
-                        <StyledIcon 
-                            icon={<Sparkles size={25} />} 
-                            variant="indigo-inverted"
-                            size={50}
-                        />
-                        <StyledIcon 
-                            icon="3" 
-                            variant="indigo-inverted"
-                            size={32}
-                        />
-                        <Typography variant="body2" component="h4">Explore Services</Typography>
-                        <Typography variant="caption" component="p" sx={{ color: theme.palette.text.indigo }}>Use the menu bar to browse and try out all available services</Typography>
-                    </Card>
-                </Grid>
-            </Grid>
             </Card>
             <Spacer height={20} />
             
@@ -339,7 +339,7 @@ export default function DashboardClient() {
                     | 
                     <ButtonWithFormModal
                         textOnly={true}
-                        formId={CONTACT_SUPPORT_FORM_ID} 
+                        templateId={CONTACT_SUPPORT_TEMPLATE_ID} 
                         buttonEndIcon={<ArrowRight />}
                         buttonText="Contact Support"
                     />

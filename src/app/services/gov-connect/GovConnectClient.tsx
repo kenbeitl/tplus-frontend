@@ -10,7 +10,7 @@ import { useTranslations } from '@/contexts/AppContext';
 
 export default function GovConnectClient() {
     const t = useTranslations();
-    const DUAL_DECLARATION_FORM_ID = 'govconnect-dual-declaration';
+    const DUAL_DECLARATION_TEMPLATE_ID = 'govconnect-dual-declaration';
     return (
         <Box component="div" className="relative">
         <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.govConnect.title") }</Typography>
@@ -52,7 +52,7 @@ export default function GovConnectClient() {
                     </ListItem>
                 </List>
                 <ButtonWithFormModal
-                    formId={DUAL_DECLARATION_FORM_ID} 
+                    templateId={DUAL_DECLARATION_TEMPLATE_ID}
                     buttonEndIcon={<ArrowRight />}
                     buttonText="Apply Now"
                 />

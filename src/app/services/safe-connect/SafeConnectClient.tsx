@@ -13,8 +13,8 @@ import theme from "@/theme/theme";
 import ButtonWithFormModal from "@/components/ButtonWithFormModal";
 import { useTranslations } from '@/contexts/AppContext';
 
-const WEB_VULNERABILITY_ASSESSMENT_REQUEST = 'web-vulnerability-assessment-request';
-const NETWORK_BOX_CYBERSECURITY = 'network-box-cybersecurity';
+const WEB_VULNERABILITY_ASSESSMENT_TEMPLATE_ID = 'safeconnect-web-vulnerability-assessment';
+const NETWORK_BOX_CYBERSECURITY_TEMPLATE_ID = 'safeconnect-network-box-cybersecurity';
 
 const TGuardMobileAppFeature = [
   {
@@ -303,7 +303,7 @@ export default function SafeConnectClient() {
                   />
                 </Box>
                 <ButtonWithFormModal
-                  formId={WEB_VULNERABILITY_ASSESSMENT_REQUEST} 
+                  templateId={WEB_VULNERABILITY_ASSESSMENT_TEMPLATE_ID} 
                   buttonStartIcon={<Search size={20} />}
                   buttonText="Request Free Assessment"
                 />
@@ -352,7 +352,7 @@ export default function SafeConnectClient() {
                         buttonProps={{
                           sx:{ width: 'auto' }
                         }}                        
-                        formId={NETWORK_BOX_CYBERSECURITY}
+                        templateId={NETWORK_BOX_CYBERSECURITY_TEMPLATE_ID}
                         buttonText="Learn More"
                         buttonStartIcon={<ExternalLink size={16} />}
                       />

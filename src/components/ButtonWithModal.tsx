@@ -6,8 +6,8 @@ import { ReactNode } from 'react';
 
 interface ButtonWithModalProps {
   buttonText: string;
-  buttonProps?: Omit<ButtonProps, 'onClick' | 'children'>;
   modalContent: (open: boolean, onClose: () => void) => ReactNode;
+  buttonProps?: Omit<ButtonProps, 'onClick' | 'children'>;
   buttonStartIcon?: ReactNode;
   buttonEndIcon?: ReactNode;
   textOnly?: boolean;

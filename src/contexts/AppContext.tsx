@@ -16,7 +16,7 @@ interface AppContextType {
   // Language
   locale: Locale;
   setLocale: (locale: Locale) => void;
-  t: (key: string, params?: Record<string, string | number>) => string;
+  t: (key: string, params?: Record<string, string | number>) => any;
   messages: Record<string, any>;
   // Drawer
   drawerOpen: boolean;
@@ -88,7 +88,7 @@ export function AppProvider({ children, defaultLocale = 'en' }: AppProviderProps
   }, [drawerOpen, isClient]);
 
   // Translation function that works with nested objects
-  const t = (key: string, params?: Record<string, string | number>) => {
+  const t = (key: string, params?: Record<string, string | number>): any => {
     // Split the key by dots to handle nested objects (e.g., 'nav.dashboard')
     const keys = key.split('.');
     let translation: any = messages;
@@ -102,6 +102,11 @@ export function AppProvider({ children, defaultLocale = 'en' }: AppProviderProps
     // If translation not found, return the key
     if (translation === undefined) {
       return key;
+    }
+    
+    // If translation is an array or object, return it as-is
+    if (Array.isArray(translation) || typeof translation === 'object') {
+      return translation;
     }
     
     // Convert to string and replace parameters if provided

@@ -35,7 +35,81 @@
     },
     "payConnect": {
       "title": "PayConnect",
-      "context": "Comprehensive financial services and payment solutions for your business"
+      "context": "Comprehensive financial services and payment solutions for your business",
+      "modal": {
+        "bankAccountOpening": {
+          "title": "Bank Account Opening",
+          "context": "Open business accounts with partner banks across Asia-Pacific",
+          "providers": [
+            {
+              "name":"HSBC Business Banking",
+              "context": "Comprehensive business banking with global connectivity",
+              "features": [
+                "Multi-currency accounts",
+                "Global reach",
+                "Trade finance"
+              ],
+              "minDeposit":"10000",
+              "processingTime":"5-7",
+              "details": "/slide-1.webp",
+              "formId": "hsbc-business-banking"
+            },
+            {
+              "name":"DBS SME Banking",
+              "context": "Digital banking solutions tailored for SMEs",
+              "features": [
+                "Digital-first banking",
+                "AI-powered insights",
+                "SME focus"
+              ],
+              "minDeposit":"5000",
+              "processingTime":"3-5",
+              "details": null,
+              "formId": "dbs-sme-banking"
+            }
+          ]
+        },        
+        "integratedPaymentSolutions": {
+          "title": "Integrated Payment Solutions",
+          "context": "Online and offline payment processing for your business",
+          "providers": [
+            {"a":"aaa"},
+            {"b":"bbbb"}
+          ]
+        },
+        "localCrossBorderRemittance": {
+          "title": "Local & Cross-Border Remittance",
+          "context": "Fast and secure money transfers locally and internationally",
+          "providers": [
+            {"a":"aaa"},
+            {"b":"bbbb"}
+          ]
+        },
+        "tradeFinancing": {
+          "title": "Trade Financing",
+          "context": "Letters of credit, trade loans, and export financing",
+          "providers": [
+            {"a":"aaa"},
+            {"b":"bbbb"}
+          ]
+        },
+        "tradeCreditInsurance": {
+          "title": "Trade Credit Insurance",
+          "context": "Protect your business from buyer default and political risks",
+          "providers": [
+            {"a":"aaa"},
+            {"b":"bbbb"}
+          ]
+        },
+        "debtCollectionServices": {
+          "title": "Debt Collection Services",
+          "context": "Professional debt recovery and collection services",
+          "providers": [
+            {"a":"aaa"},
+            {"b":"bbbb"}
+          ]
+        }
+      }
     },
     "safeConnect": {
       "title": "SafeConnect",

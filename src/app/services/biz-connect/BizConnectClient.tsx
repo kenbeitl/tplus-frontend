@@ -69,8 +69,8 @@ const WHATS_COMING_LIST = [
     },
 ]
 
-const CONTACT_SUPPORT_FORM_ID = 'contact-support';
-const NOTIFICATION_BIZCONNECT_LAUNCH = "notification-bizconnect-launch";
+const CONTACT_SUPPORT_TEMPLATE_ID = 'contact-support';
+const GET_NOTIFICATION_ID = "get-notification";
 
 export default function BizConnectClient() {
     const t = useTranslations();
@@ -94,7 +94,8 @@ export default function BizConnectClient() {
                         <Typography variant="body2" component="p" className="mt-4">BizConnect is our comprehensive business intelligence and networking platform designed to help you discover partnerships, conduct due diligence, and expand into new markets with confidence.</Typography>
                         <Box component="div" className="flex items-center gap-2 mt-6">
                             <ButtonWithFormModal
-                                formId={NOTIFICATION_BIZCONNECT_LAUNCH}
+                                templateId={GET_NOTIFICATION_ID}
+                                formId="BizConnect"
                                 buttonStartIcon={<Bell size={16} />}
                                 buttonText="Notify Me at Launch"
                                 buttonProps={{
@@ -199,7 +200,8 @@ export default function BizConnectClient() {
                     </Box>
                     <Box component="div" className="flex gap-2 items-center">
                         <ButtonWithFormModal 
-                            formId={NOTIFICATION_BIZCONNECT_LAUNCH}
+                            templateId={GET_NOTIFICATION_ID}
+                            formId="BizConnect"
                             buttonStartIcon={<Bell size={16} />}
                             buttonText="Get Notified"
                             buttonProps={{
@@ -208,7 +210,7 @@ export default function BizConnectClient() {
                             }}
                         />
                         <ButtonWithFormModal 
-                            formId={CONTACT_SUPPORT_FORM_ID}
+                            templateId={CONTACT_SUPPORT_TEMPLATE_ID}
                             buttonText="Contact Support"
                             buttonProps={{
                                 variant: 'outlined',

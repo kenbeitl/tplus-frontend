@@ -5,7 +5,9 @@ import FormModal from '@/components/form/FormModal';
 import { ButtonProps } from '@mui/material';
 
 interface ButtonWithFormModalProps {
-  formId: string;
+  templateId: string;
+  formId?: string; // Optional: defaults to templateId if not provided
+  placeholder?: string;
   buttonText: string;
   buttonStartIcon?: React.ReactNode;
   buttonEndIcon?: React.ReactNode;
@@ -15,12 +17,17 @@ interface ButtonWithFormModalProps {
 
 export default function ButtonWithFormModal({ 
   textOnly = false, 
-  formId, 
+  templateId,
+  formId,
+  placeholder,
   buttonText, 
   buttonStartIcon, 
   buttonEndIcon, 
   buttonProps 
 }: ButtonWithFormModalProps) {
+
+  console.log(formId);
+  
   return (
     <ButtonWithModal
       buttonText={buttonText}
@@ -37,7 +44,9 @@ export default function ButtonWithFormModal({
         <FormModal
           open={open}
           onClose={onClose}
+          templateId={templateId}
           formId={formId}
+          placeholder={placeholder || formId}
         />
       )}
     />

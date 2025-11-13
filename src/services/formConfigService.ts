@@ -26,9 +26,9 @@ export interface FormFieldConfig {
   defaultValue?: string;
 }
 
-export interface FormListItem {
+export interface FormTemplate {
   id: number;
-  formID: string;
+  templateId: string;
   formTitle: string;  // Changed from 'title' to 'formTitle'
   description?: string;
   fields?: FormFieldConfig[];  // Made optional since it's not in the current response
@@ -46,14 +46,14 @@ export interface FormConfig {
   active?: boolean;
   fromDate?: string | null;
   toDate?: string | null;
-  FormList: FormListItem | FormListItem[];  // Can be either object or array
+  FormTemplate: FormTemplate | FormTemplate[];  // Can be either object or array
 }
 
 export interface FormConfigParams {
   populate?: Record<string, boolean | string>;
   filters?: {
-    FormList?: {
-      formID?: {
+    FormTemplate?: {
+      templateId?: {
         $eq?: string;
       };
     };
@@ -61,43 +61,43 @@ export interface FormConfigParams {
 }
 
 class FormConfigService {
-  async getFormConfig(formID: string): Promise<FormListItem> {
+  async getFormConfig(templateId: string, formId?: string): Promise<FormTemplate & { formId: string }> {
     // Construct the URL manually to avoid axios auto-encoding issues
-    // Target: /api/forms?filters[FormList][formID][$eq]=govconnect-dual-declaration&populate[FormList]=true
+    // Target: /api/form-templates?filters[FormTemplate][templateId][$eq]=govconnect-dual-declaration&populate[FormTemplate]=true
     
     const searchParams = new URLSearchParams();
-    searchParams.append('filters[FormList][formID][$eq]', formID);
-    searchParams.append('populate[FormList]', 'true');
-    const url = `/forms?${searchParams.toString()}`;
+    searchParams.append('filters[FormTemplate][templateId][$eq]', templateId);
+    searchParams.append('populate[FormTemplate]', 'true');
+    const url = `/form-templates?${searchParams.toString()}`;
     
     const response = await strapiService.getCollectionByUrl<FormConfig>(url);
     
     if (!response.data || response.data.length === 0) {
-      throw new Error(`Form configuration not found for formID: ${formID}`);
+      throw new Error(`Form configuration not found for templateId: ${templateId}`);
     }
     
     // Get the form from response
     const form = response.data[0];
     
-    // FormList can be either an object or an array
-    // When filtered by formID, Strapi returns it as an object
-    if (typeof form.FormList === 'object' && !Array.isArray(form.FormList)) {
-      // FormList is a single object
-      return form.FormList as FormListItem;
+    // FormTemplate can be either an object or an array
+    // When filtered by templateId, Strapi returns it as an object
+    let template: FormTemplate;
+    
+    if (typeof form.FormTemplate === 'object' && !Array.isArray(form.FormTemplate)) {
+      // FormTemplate is a single object
+      template = form.FormTemplate as FormTemplate;
+    } else if (Array.isArray(form.FormTemplate) && form.FormTemplate.length > 0) {
+      // FormTemplate is an array, get the first item
+      template = form.FormTemplate[0];
+    } else {
+      throw new Error(`Invalid FormTemplate structure for templateId: ${templateId}`);
     }
     
-    // FormList is an array, find the matching item
-    if (Array.isArray(form.FormList)) {
-      const formListItem = form.FormList.find((item: FormListItem) => item.formID === formID);
-      
-      if (!formListItem) {
-        throw new Error(`FormList item not found for formID: ${formID}`);
-      }
-      
-      return formListItem;
-    }
-    
-    throw new Error(`Invalid FormList structure for formID: ${formID}`);
+    // Return template with formId (defaults to templateId if not provided)
+    return {
+      ...template,
+      formId: formId || templateId
+    };
   }
 
   async getAllFormConfigs(): Promise<FormConfig[]> {

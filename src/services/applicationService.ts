@@ -2,7 +2,7 @@ import { strapiService } from '@/lib/strapi';
 
 // Application form data type
 export interface ApplicationFormData {
-  formID?: string;
+  formId?: string;
   name: string;
   phoneNumber: string;
   email: string;
@@ -14,7 +14,7 @@ export interface ApplicationFormData {
 export interface Application {
   id: number;
   attributes: {
-    formID?: string;
+    formId?: string;
     name: string;
     phoneNumber: string;
     email: string;
