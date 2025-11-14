@@ -1,7 +1,6 @@
 'use client';
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, Link, Paper, Typography } from '@mui/material';
 import InfoModal from '@/components/InfoModal';
-import Spacer from '@/components/ui/Spacer';
 import Emoji from '@/components/Emoji';
 
 type Props = {
@@ -9,9 +8,10 @@ type Props = {
   onClose: () => void;
   name: string;
   emoji: string;
+  source: string;
 };
 
-export default function ProviderDetails({ open, onClose, name, emoji }: Props) {
+export default function ProviderDetails({ open, onClose, name, emoji, source }: Props) {
   return (
     <InfoModal
       open={open}
@@ -23,18 +23,14 @@ export default function ProviderDetails({ open, onClose, name, emoji }: Props) {
         <Typography variant="h5" component="h2" sx={{ mb: 1 }}>{name}</Typography>
       </Box>
       <Typography variant="body2" component="p">Detailed product information and features</Typography>
-      <Spacer height={40} />
       <Box 
-        component="div" 
-        sx={{
-          padding: 2,
-          border: '1px dashed',
-          borderColor: 'divider',
-          borderRadius: 2,
-        }}
+        component="div"
+        className="mt-12 mx-8 mb-8 border-dashed border-2 border-gray-300 rounded-xl bg-gray-200!"
       >
-        <Paper className="flex items-center justify-center bg-gray-400">
-          zzzz
+        <Paper className="flex items-center justify-center bg-transparent! overflow-hidden" elevation={0}>
+          <Link href={source} target="_blank" rel="noopener noreferrer">
+          <img src={source} alt={name} />
+          </Link>
         </Paper>
       </Box>
     </InfoModal>

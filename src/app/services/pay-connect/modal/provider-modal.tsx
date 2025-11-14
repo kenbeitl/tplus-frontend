@@ -23,9 +23,12 @@ interface Provider {
   name: string;
   context: string;
   features?: string[];
+  coverage?: string;
+  fees?: string;
   minDeposit?: string;
+  successRate?: string;
   processingTime?: string;
-  details?: string | null;
+  details?: string;
   formId?: string; // Optional: specific formId for this provider
 }
 
@@ -85,22 +88,56 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
               <Spacer height={20} />
               <Box className="p-3 bg-gray-50 rounded">
                 <Grid container spacing={2}>
-                  <Grid size={6}>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
-                      Min Deposit
-                    </Typography>
-                    <Typography variant="caption" sx={{ color: 'text.primary', fontWeight: 500 }}>
-                      ${provider.minDeposit}
-                    </Typography>
-                  </Grid>
-                  <Grid size={6}>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
-                      Processing Time
-                    </Typography>
-                    <Typography variant="caption" sx={{ color: 'text.primary', fontWeight: 500 }}>
-                      {provider.processingTime} days
-                    </Typography>
-                  </Grid>
+                  {provider.coverage && (
+                    <Grid size={6}>
+                      <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
+                        Coverage
+                      </Typography>
+                      <Typography variant="caption" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                        {provider.coverage}
+                      </Typography>
+                    </Grid>
+                  )}
+                  {provider.minDeposit && (
+                    <Grid size={6}>
+                      <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
+                        Min Deposit
+                      </Typography>
+                      <Typography variant="caption" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                        ${Number(provider.minDeposit).toLocaleString('en-US')}
+                      </Typography>
+                    </Grid>
+                  )}
+                  {provider.fees && (
+                    <Grid size={6}>
+                      <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
+                        Fees
+                      </Typography>
+                      <Typography variant="caption" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                        {provider.fees}
+                      </Typography>
+                    </Grid>
+                  )}
+                  {provider.successRate && (
+                    <Grid size={6}>
+                      <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
+                        Success Rate
+                      </Typography>
+                      <Typography variant="caption" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                        {provider.successRate}
+                      </Typography>
+                    </Grid>
+                  )}
+                  {provider.processingTime && (
+                    <Grid size={6}>
+                      <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
+                        Processing Time
+                      </Typography>
+                      <Typography variant="caption" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                        {provider.processingTime} days
+                      </Typography>
+                    </Grid>
+                  )}
                 </Grid>
               </Box>
               {provider.details && (
@@ -113,7 +150,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
                       sx: { width: '100%' }
                     }}
                     buttonStartIcon={<Eye size={16} />}
-                    modalContent={(open: boolean, onClose: () => void) => <ProviderDetails open={open} onClose={onClose} name={provider.name} emoji={emoji} />}
+                    modalContent={(open: boolean, onClose: () => void) => <ProviderDetails open={open} onClose={onClose} name={provider.name} emoji={emoji} source={provider.details || ''} />}
                   />
                 </>
               )}

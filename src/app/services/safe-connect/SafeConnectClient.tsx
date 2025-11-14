@@ -358,7 +358,7 @@ export default function SafeConnectClient() {
                       />
                     </Box>
                     <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700, mb: 1 }}>Key Features & Capabilities:</Typography>
-                    <Box component="div" className="grid lg:grid-cols-2 gap-2 mb-2">
+                    <Box component="div" className="flex flex-wrap gap-2 mb-2">
                       {KEY_FEATURES.map((feature, index) => (
                         <Box component="div" key={`feature-${index}`}>
                           <Tag 

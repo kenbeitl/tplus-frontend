@@ -34,7 +34,237 @@
     },
     "payConnect": {
       "title": "支付连线",
-      "context": "为您的业务提供全面的金融服务和支付解决方案"
+      "context": "为您的业务提供全面的金融服务和支付解决方案",
+      "modal": {
+        "bankAccountOpening": {
+          "title": "开立银行账户",
+          "context": "与亚太地区的合作银行开设企业账户",
+          "providers": [
+            {
+              "name": "汇丰企业银行",
+              "context": "提供具全球连接性的全面商业银行服务",
+              "features": [
+                "多币种账户",
+                "全球网络",
+                "贸易融资"
+              ],
+              "coverage": "",
+              "minDeposit": "10000",
+              "fees": "",
+              "processingTime": "5-7 个工作日",
+              "successRate": "",
+              "details": "/slide-1.webp",
+              "formId": "hsbc-business-banking"
+            },
+            {
+              "name": "星展中小企业银行",
+              "context": "为中小企业量身打造的数字化银行方案",
+              "features": [
+                "数字化银行服务",
+                "人工智能洞察分析",
+                "中小企聚焦"
+              ],
+              "coverage": "",
+              "minDeposit": "5000",
+              "fees": "",
+              "processingTime": "3-5 个工作日",
+              "successRate": "",
+              "details": "",
+              "formId": "dbs-sme-banking"
+            }
+          ]
+        },
+        "integratedPaymentSolutions": {
+          "title": "综合支付解决方案",
+          "context": "为您的企业提供线上及线下支付处理服务",
+          "providers": [
+            {
+              "name": "Stripe 商业服务",
+              "context": "为互联网企业提供完整的支付基础设施",
+              "features": [
+                "在线支付",
+                "全球接受",
+                "开发者 API"
+              ],
+              "coverage": "",
+              "minDeposit": "",
+              "fees": "每笔交易 2.9% + $0.30",
+              "processingTime": "即时设置",
+              "successRate": "",
+              "details": "",
+              "formId": "stripe-for-business"
+            },
+            {
+              "name": "Square 销售点系统",
+              "context": "集成的支付与商业管理解决方案",
+              "features": [
+                "线下支付",
+                "库存管理",
+                "数据分析"
+              ],
+              "coverage": "",
+              "minDeposit": "",
+              "fees": "每笔交易 2.6%",
+              "processingTime": "1-2 个工作日",
+              "successRate": "",
+              "details": "",
+              "formId": "square-point-of-sale"
+            }
+          ]
+        },
+        "localCrossBorderRemittance": {
+          "title": "本地与跨境汇款",
+          "context": "快速、安全地进行本地及国际资金转账",
+          "providers": [
+            {
+              "name": "Wise 商业账户",
+              "context": "以真实汇率进行国际汇款",
+              "features": [
+                "真实汇率",
+                "多币种账户",
+                "API 集成"
+              ],
+              "coverage": "",
+              "minDeposit": "",
+              "fees": "转账金额的 0.5-2%",
+              "processingTime": "1-2 个工作日",
+              "successRate": "",
+              "details": "",
+              "formId": "wise-business"
+            },
+            {
+              "name": "Remitly 商业汇款",
+              "context": "具有合规保障的跨境支付服务",
+              "features": [
+                "聚焦亚太地区",
+                "包含合规支持",
+                "交易量折扣"
+              ],
+              "coverage": "",
+              "minDeposit": "",
+              "fees": "转账金额的 1-3%",
+              "processingTime": "当天至 3 日内",
+              "successRate": "",
+              "details": "",
+              "formId": "remitly-business"
+            }
+          ]
+        },
+        "tradeFinancing": {
+          "title": "贸易融资",
+          "context": "信用证、贸易贷款及出口融资服务",
+          "providers": [
+            {
+              "name": "渣打银行贸易融资",
+              "context": "为进口商及出口商提供全面的贸易融资解决方案",
+              "features": [
+                "信用证服务",
+                "贸易贷款",
+                "跟单托收"
+              ],
+              "coverage": "",
+              "minDeposit": "50000",
+              "fees": "",
+              "processingTime": "7-14 个工作日",
+              "successRate": "",
+              "details": "",
+              "formId": "standard-chartered-trade"
+            },
+            {
+              "name": "中国工商银行贸易融资",
+              "context": "专注中国贸易与“一带一路”项目融资",
+              "features": [
+                "一带一路融资",
+                "人民币解决方案",
+                "供应链融资"
+              ],
+              "coverage": "",
+              "minDeposit": "100000",
+              "fees": "",
+              "processingTime": "5-10 个工作日",
+              "successRate": "",
+              "details": "",
+              "formId": "icbc-trade-finance"
+            }
+          ]
+        },
+        "tradeCreditInsurance": {
+          "title": "贸易信用保险",
+          "context": "保护您的企业免受买方违约和政治风险损失",
+          "providers": [
+            {
+              "name": "Coface 贸易信用保险",
+              "context": "全方位的贸易信用保险与风险管理服务",
+              "features": [
+                "买方违约保护",
+                "政治风险保障",
+                "信用监控"
+              ],
+              "coverage": "最高赔付 90% 的损失",
+              "minDeposit": "",
+              "fees": "",
+              "processingTime": "3-5 个工作日",
+              "successRate": "",
+              "details": "",
+              "formId": "coface-trade-credit"
+            },
+            {
+              "name": "Euler Hermes 信用保险",
+              "context": "全球领先的贸易信用保险与风险服务提供商",
+              "features": [
+                "全球保障",
+                "信用信息",
+                "债务催收"
+              ],
+              "coverage": "最高赔付 85% 的损失",
+              "minDeposit": "",
+              "fees": "",
+              "processingTime": "5-7 个工作日",
+              "successRate": "",
+              "details": "",
+              "formId": "euler-hermes-insurance"
+            }
+          ]
+        },
+        "debtCollectionServices": {
+          "title": "债务催收服务",
+          "context": "专业的债务回收与催收服务",
+          "providers": [
+            {
+              "name": "Intrum 债务催收",
+              "context": "具有高成功率的专业债务催收服务",
+              "features": [
+                "友好协商催收",
+                "法律程序",
+                "债务组合管理"
+              ],
+              "coverage": "",
+              "minDeposit": "",
+              "fees": "",
+              "processingTime": "30-90 天",
+              "successRate": "75% 回收成功率",
+              "details": "",
+              "formId": "intrum-debt-collection"
+            },
+            {
+              "name": "EOS 债务回收",
+              "context": "结合数字创新的国际债务催收服务",
+              "features": [
+                "多法域操作",
+                "数字化方案",
+                "注重合规"
+              ],
+              "coverage": "",
+              "minDeposit": "",
+              "fees": "",
+              "processingTime": "45-120 天",
+              "successRate": "70% 回收成功率",
+              "details": "",
+              "formId": "eos-debt-recovery"
+            }
+          ]
+        }
+      }
     },
     "safeConnect": {
       "title": "安全连线",
@@ -51,7 +281,8 @@
     "settings": {
       "title": "设置",
       "userProfile": "用户资料",
-      "companyProfile": "公司资料"
+      "companyProfile": "公司资料",
+      "manageUsers": "管理用户"
     }
   }
 }

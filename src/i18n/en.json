@@ -49,8 +49,11 @@
                 "Global reach",
                 "Trade finance"
               ],
-              "minDeposit":"10000",
+              "coverage": "",
+              "minDeposit": "10000",
+              "fees": "",
               "processingTime":"5-7",
+              "successRate": "",
               "details": "/slide-1.webp",
               "formId": "hsbc-business-banking"
             },
@@ -62,9 +65,12 @@
                 "AI-powered insights",
                 "SME focus"
               ],
-              "minDeposit":"5000",
+              "coverage": "",
+              "minDeposit": "5000",
+              "fees": "",
               "processingTime":"3-5",
-              "details": null,
+              "successRate": "",
+              "details": "",
               "formId": "dbs-sme-banking"
             }
           ]
@@ -73,40 +79,190 @@
           "title": "Integrated Payment Solutions",
           "context": "Online and offline payment processing for your business",
           "providers": [
-            {"a":"aaa"},
-            {"b":"bbbb"}
+            {
+              "name":"Stripe for Business",
+              "context": "Complete payment infrastructure for internet businesses",
+              "features": [
+                "Online payments",
+                "Global acceptance",
+                "Developer APIs"
+              ],
+              "coverage": "",
+              "minDeposit": "",
+              "fees": "2.9% + $0.30 per transaction",
+              "processingTime":"Instant setup",
+              "successRate": "",
+              "details": "",
+              "formId": "stripe-for-business"
+            },
+            {
+              "name":"Square Point of Sale",
+              "context": "All-in-one payment and business management solution",
+              "features": [
+                "In-person payments",
+                "Inventory management",
+                "Analytics"
+              ],
+              "coverage": "",
+              "minDeposit": "",
+              "fees": "2.6% per transaction",
+              "processingTime":"1-2 business days",
+              "successRate": "",
+              "details": "",
+              "formId": "square-point-of-sale"
+            }
           ]
         },
         "localCrossBorderRemittance": {
           "title": "Local & Cross-Border Remittance",
           "context": "Fast and secure money transfers locally and internationally",
           "providers": [
-            {"a":"aaa"},
-            {"b":"bbbb"}
+            {
+              "name":"Wise Business",
+              "context": "International money transfers at real exchange rates",
+              "features": [
+                "Real exchange rates",
+                "Multi-currency accounts",
+                "API integration"
+              ],
+              "coverage": "",
+              "minDeposit": "",
+              "fees": "0.5-2% of transfer amount",
+              "processingTime":"1-2 business days",
+              "successRate": "",
+              "details": "",
+              "formId": "wise-business"
+            },
+            {
+              "name":"Remitly Business",
+              "context": "Cross-border payments with regulatory compliance",
+              "features": [
+                "Asia-Pacific focus",
+                "Compliance included",
+                "Volume discounts"
+              ],
+              "coverage": "",
+              "minDeposit": "",
+              "fees": "1-3% of transfer amount",
+              "processingTime":"Same day to 3 days",
+              "successRate": "",
+              "details": "",
+              "formId": "remitly-business"
+            }
           ]
         },
         "tradeFinancing": {
           "title": "Trade Financing",
           "context": "Letters of credit, trade loans, and export financing",
           "providers": [
-            {"a":"aaa"},
-            {"b":"bbbb"}
+            {
+              "name":"Standard Chartered Trade",
+              "context": "Comprehensive trade finance solutions for importers and exporters",
+              "features": [
+                "Letters of credit",
+                "Trade loans",
+                "Documentary collections"
+              ],
+              "coverage": "",
+              "minDeposit": "50000",
+              "fees": "",
+              "processingTime":"7-14 business days",
+              "successRate": "",
+              "details": "",
+              "formId": "standard-chartered-trade"
+            },
+            {
+              "name":"ICBC Trade Finance",
+              "context": "Specialized China trade and Belt & Road financing",
+              "features": [
+                "Belt & Road financing",
+                "RMB solutions",
+                "Supply chain finance"
+              ],
+              "coverage": "",
+              "minDeposit": "100000",
+              "fees": "",
+              "processingTime":"5-10 business days",
+              "successRate": "",
+              "details": "",
+              "formId": "icbc-trade-finance"
+            }
           ]
         },
         "tradeCreditInsurance": {
           "title": "Trade Credit Insurance",
           "context": "Protect your business from buyer default and political risks",
           "providers": [
-            {"a":"aaa"},
-            {"b":"bbbb"}
+            {
+              "name":"Coface Trade Credit",
+              "context": "Comprehensive trade credit insurance and risk management",
+              "features": [
+                "Buyer default protection",
+                "Political risk coverage",
+                "Credit monitoring"
+              ],
+              "coverage": "Up to 90% of losses",
+              "minDeposit": "",
+              "fees": "",
+              "processingTime":"3-5 business days",
+              "successRate": "",
+              "details": "",
+              "formId": "coface-trade-credit"
+            },
+            {
+              "name":"Euler Hermes Insurance",
+              "context": "World leader in trade credit insurance and risk services",
+              "features": [
+                "Global coverage",
+                "Credit information",
+                "Debt collection"
+              ],
+              "coverage": "Up to 85% of losses",
+              "minDeposit": "",
+              "fees": "",
+              "processingTime":"5-7 business days",
+              "successRate": "",
+              "details": "",
+              "formId": "euler-hermes-insurance"
+            }
           ]
         },
         "debtCollectionServices": {
           "title": "Debt Collection Services",
           "context": "Professional debt recovery and collection services",
           "providers": [
-            {"a":"aaa"},
-            {"b":"bbbb"}
+            {
+              "name":"Intrum Debt Collection",
+              "context": "Professional debt collection with high success rates",
+              "features": [
+                "Amicable collection",
+                "Legal proceedings",
+                "Portfolio management"
+              ],
+              "coverage": "",
+              "minDeposit":"",
+              "fees": "",
+              "processingTime":"30-90 days",
+              "successRate": "75% recovery rate",
+              "details": "",
+              "formId": "intrum-debt-collection"
+            },
+            {
+              "name":"EOS Debt Recovery",
+              "context": "International debt collection with digital innovation",
+              "features": [
+                "Multi-jurisdiction",
+                "Digital solutions",
+                "Compliance focus"
+              ],
+              "coverage": "",
+              "minDeposit":"",
+              "fees": "",
+              "processingTime":"45-120 days",
+              "successRate": "70% recovery rate",
+              "details": "",
+              "formId": "eos-debt-recovery"
+            }
           ]
         }
       }
@@ -126,7 +282,8 @@
     "settings": {
       "title": "Settings",
       "userProfile": "User Profile",
-      "companyProfile": "Company Profile"
+      "companyProfile": "Company Profile",
+      "manageUsers": "Manage Users"
     }
   }
 }

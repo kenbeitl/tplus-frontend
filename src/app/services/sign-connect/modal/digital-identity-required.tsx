@@ -89,8 +89,8 @@ export default function ModalDigitalIdentityRequired({ open, onClose }: Props) {
                   <Typography variant="body2" component="p">{option.description}</Typography>
                   <Spacer height={10} />
                   <List sx={{ flexGrow: 1 }}>
-                    {option.list.map((point) => (
-                      <ListItem>
+                    {option.list.map((point, p) => (
+                      <ListItem key={`point-${p}`}>
                         <ListItemIcon>
                           <CircleCheckBig size={16} color="#43A047" />
                         </ListItemIcon>

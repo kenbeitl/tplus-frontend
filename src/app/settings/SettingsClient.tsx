@@ -25,10 +25,12 @@ export default function SettingsClient() {
                     <TabList onChange={handleChange} variant="fullWidth">
                         <Tab label={t("pages.settings.userProfile")} value="1" disableRipple />
                         <Tab label={t("pages.settings.companyProfile")} value="2" disableRipple />
+                        <Tab label={t("pages.settings.manageUsers")} value="3" disableRipple />
                     </TabList>
                 </Box>
                 <TabPanel value="1"></TabPanel>
                 <TabPanel value="2"></TabPanel>
+                <TabPanel value="3"></TabPanel>
             </TabContext>
         </>
     )
