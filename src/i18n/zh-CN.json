@@ -276,7 +276,9 @@
     },
     "subscriptions": {
       "title": "订阅",
-      "context": "管理您的订阅计划并探索升级选项"
+      "context": "管理您的订阅计划并探索升级选项",
+      "monthly": "每月订阅",
+      "yearly": "每年订阅"
     },
     "settings": {
       "title": "设置",

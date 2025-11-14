@@ -277,7 +277,9 @@
     },
     "subscriptions": {
       "title": "Subscriptions",
-      "context": "Manage your subscription plan and explore upgrade options"
+      "context": "Manage your subscription plan and explore upgrade options",
+      "monthly": "Monthly",
+      "yearly": "Yearly"
     },
     "settings": {
       "title": "Settings",

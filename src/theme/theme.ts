@@ -1,5 +1,4 @@
 'use client';
-import { backdropClasses } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 
 type ColorConfig = {
@@ -11,6 +10,7 @@ type ColorConfig = {
 const GRADIENTS = {
   blue: 'linear-gradient(90deg, rgba(0, 73, 220, 1) 0%, rgba(0, 150, 220, 1) 100%)',
   orange: 'linear-gradient(90deg, rgba(255, 176, 102, 1) 0%, rgba(255, 92, 51, 1) 100%)',
+  purple: 'linear-gradient(90deg, rgba(168, 85, 247, 1) 0%, rgba(99, 102, 241, 1) 100%)',
 } as const;
 
 declare module '@mui/material/styles' {
@@ -32,13 +32,20 @@ declare module '@mui/material/styles' {
       grey?: ColorConfig;
     };
   }
+  interface TypeBackground {
+    lightblue: string;
+    red: string;
+  }
   interface TypeText {
     blue: string;
     darkBlue: string;
     green: string;
+    lightGreen: string;
     indigo: string;
     orange: string;
+    gold: string;
     purple: string;
+    darkPurple: string;
     white: string;
   }
 }
@@ -68,9 +75,16 @@ const theme = createTheme({
       darkBlue: '#1C398E',
       indigo: '#4f46e5',
       green: '#016630',
+      lightGreen: '#00a63e',
       orange: '#D35400',
+      gold: '#ca8a04',
       purple: '#9333ea',
+      darkPurple: '#6B21A8',
       white: '#FFFFFF',
+    },
+    background: {
+      lightblue: '#eff6ff',
+      red: 'red',
     },
     gradient: GRADIENTS,
     tag: {
