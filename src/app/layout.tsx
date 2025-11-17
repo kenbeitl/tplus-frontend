@@ -1,12 +1,13 @@
 'use client';
 
-import { Roboto } from "next/font/google";
 import "@/globals.css";
+import { Roboto } from "next/font/google";
 import MUIThemeProvider from "@/layout/MUIThemeProvider";
 import AuthWrapper from "@/layout/AuthWrapper";
 import AppWrapper from "@/layout/AppWrapper";
 import { usePathname } from "next/navigation";
 import { AppProvider } from "@/contexts/AppContext";
+import { SessionProvider } from "next-auth/react";
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -27,17 +28,19 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} antialiased`}
       >
-        <AppProvider>
-          <MUIThemeProvider>
-            {isAuth ? (
-              <AuthWrapper>{children}</AuthWrapper>
-            ) : (
-              <AppWrapper>
-                <div className="p-4 sm:p-6">{children}</div>
-              </AppWrapper>
-            )}
-          </MUIThemeProvider>
-        </AppProvider>
+        <SessionProvider>
+          <AppProvider>
+            <MUIThemeProvider>
+              {isAuth ? (
+                <AuthWrapper>{children}</AuthWrapper>
+              ) : (
+                <AppWrapper>
+                  <div className="p-4 sm:p-6">{children}</div>
+                </AppWrapper>
+              )}
+            </MUIThemeProvider>
+          </AppProvider>
+        </SessionProvider>
       </body>
     </html>
   );

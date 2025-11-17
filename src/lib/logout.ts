@@ -1,14 +1,30 @@
 'use client';
 
-export function logout() {
-  // Clear SessionStorage
-  sessionStorage.removeItem('hasSession');
-  sessionStorage.removeItem('sessionExpiry');
+import { signOut, useSession } from 'next-auth/react';
 
-  // Clear cookies
-  document.cookie = 'hasSession=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict';
-  document.cookie = 'sessionExpiry=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict';
+export function useLogout() {
+  const { data: session } = useSession();
 
-  // Redirect to external logout endpoint
-  window.location.href = 'http://192.168.221.118:8082/logout';
+  const logout = async () => {
+    // Get id_token from session
+    const idToken = (session as any)?.idToken;
+    
+    // Sign out from NextAuth
+    await signOut({ redirect: false });
+
+    // Construct Keycloak logout URL with post-logout redirect and id_token_hint
+    const keycloakIssuer = process.env.NEXT_PUBLIC_KEYCLOAK_ISSUER;
+    const postLogoutRedirectUri = encodeURIComponent(window.location.origin + '/login');
+    
+    let logoutUrl = `${keycloakIssuer}/protocol/openid-connect/logout?post_logout_redirect_uri=${postLogoutRedirectUri}`;
+    
+    if (idToken) {
+      logoutUrl += `&id_token_hint=${idToken}`;
+    }
+
+    // Redirect to Keycloak logout
+    window.location.href = logoutUrl;
+  };
+
+  return logout;
 }

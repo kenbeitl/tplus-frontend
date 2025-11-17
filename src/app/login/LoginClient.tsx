@@ -1,5 +1,6 @@
 'use client';
 
+import { useSession, signIn } from 'next-auth/react';
 import {
   Box,
   Card,
@@ -8,41 +9,31 @@ import {
   CircularProgress,
 } from '@mui/material';
 import Logo from '@/assets/svg/Logo';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import ActionButton from '@/components/ActionButton';
 
 export default function LoginClient() {
+    const { data: session, status } = useSession();
     const router = useRouter();
-    const pathname = usePathname();
     const [isLoading, setIsLoading] = useState(false);
 
     // Check if user is already logged in
     useEffect(() => {
-        const hasSession = sessionStorage.getItem('hasSession') === 'true';
-        if (hasSession) {
+        if (status === 'authenticated' && session) {
+            console.log('Session authenticated, redirecting to dashboard');
             router.push('/dashboard');
         }
-    }, [router]);
+    }, [session, status, router]);
 
     const handleLogin = async () => {
         setIsLoading(true);
-        
-        // Simulate authentication delay (remove in production with real auth)
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        // Calculate session expiry (8 hours from now)
-        const expiryTime = Date.now() + (8 * 60 * 60 * 1000);
-        
-        sessionStorage.setItem('hasSession', 'true');
-        sessionStorage.setItem('sessionExpiry', expiryTime.toString());
-        
-        // Set cookies with expiry
-        document.cookie = `hasSession=true; path=/; SameSite=Strict`;
-        document.cookie = `sessionExpiry=${expiryTime}; path=/; SameSite=Strict`;
-        
-        // Redirect to external URL after login
-        router.push('/login');
+        try {
+            await signIn('keycloak', { callbackUrl: '/dashboard' });
+        } catch (error) {
+            console.error('Login error:', error);
+            setIsLoading(false);
+        }
     };
 
     return (

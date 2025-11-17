@@ -25,8 +25,6 @@ export default function ButtonWithFormModal({
   buttonEndIcon, 
   buttonProps 
 }: ButtonWithFormModalProps) {
-
-  console.log(formId);
   
   return (
     <ButtonWithModal

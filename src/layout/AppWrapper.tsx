@@ -2,9 +2,10 @@
 
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 // MUI Components
-import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
+import { styled, Theme, CSSObject } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
@@ -23,7 +24,7 @@ import { DropdownListItem, NavigationListItem } from '@/components/NavigationCom
 import { useLanguage, useTranslations, useDrawer, localeLabels, type Locale } from '@/contexts/AppContext';
 import { SnackbarProvider } from '@/contexts/SnackbarContext';
 import StyledIcon from '@/components/StyledIcon';
-import { logout } from '@/lib/logout';
+import { useLogout } from '@/lib/logout';
 
 const drawerWidth = 240;
 const drawerMiniWidth = 64;
@@ -51,7 +52,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
@@ -108,48 +108,29 @@ export default function AppWrapper({
 }: { 
   children: React.ReactNode 
 }) {
-  const theme = useTheme();
   const router = useRouter();
+  const { data: session, status } = useSession();
   const { locale, setLocale } = useLanguage();
   const t = useTranslations();
   const { drawerOpen, toggleDrawer } = useDrawer();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [userMenuAnchorEl, setUserMenuAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isInitialMount, setIsInitialMount] = React.useState(true);
-  const [didLogin, setDidLogin] = React.useState(false);
 
-  // Check session status on mount
+  const user = session?.user;
+  const username = user?.name;
+  const logout = useLogout();
+
+  // Check authentication status with NextAuth
   React.useEffect(() => {
-    const hasSession = sessionStorage.getItem('hasSession') === 'true';
-    const sessionExpiry = sessionStorage.getItem('sessionExpiry');
-    
-    // Check if session is expired
-    if (hasSession && sessionExpiry) {
-      const expiryTime = parseInt(sessionExpiry, 10);
-      const now = Date.now();
-      
-      if (now > expiryTime) {
-        // Session expired, logout
-        sessionStorage.removeItem('hasSession');
-        sessionStorage.removeItem('sessionExpiry');
-        document.cookie = 'hasSession=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict';
-        document.cookie = 'sessionExpiry=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict';
-        window.location.href = '/';
-        return;
-      }
+    if (status === 'unauthenticated') {
+      router.push('/login');
     }
-    
-    setDidLogin(hasSession);
-    
-    // Sync cookie with SessionStorage
-    if (hasSession && sessionExpiry) {
-      document.cookie = `hasSession=true; path=/; SameSite=Strict`;
-      document.cookie = `sessionExpiry=${sessionExpiry}; path=/; SameSite=Strict`;
-    }
-  }, []);
+  }, [status, router]);
 
   // Enable transitions after initial mount and drawer state is loaded
   React.useEffect(() => {
+
     // Small delay to ensure drawer state is loaded from localStorage
     const timer = setTimeout(() => {
       setIsInitialMount(false);
@@ -214,9 +195,9 @@ export default function AppWrapper({
     setUserMenuAnchorEl(null);
   }
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     handleUserMenuClose();
-    logout();
+    await logout();
   }
 
   const handleLanguageChange = (newLocale: Locale) => {
@@ -229,7 +210,10 @@ export default function AppWrapper({
     router.push(path);
   };
 
- 
+  const getInitials = (username: string | null | undefined) => {
+    return username?.split(' ').map(n => n[0]).join('').toUpperCase() || 'TD';
+  };
+
 
   return (
     <SnackbarProvider>
@@ -278,7 +262,7 @@ export default function AppWrapper({
                 </MenuItem>
               ))}
             </Menu>
-            {didLogin && 
+            {status === 'authenticated' && session && 
               <IconButton
                 aria-label="user menu"
                 aria-controls="user-menu"
@@ -288,7 +272,7 @@ export default function AppWrapper({
                 sx={{ p: 0, ml: 1 }}
               >
                 <StyledIcon 
-                  icon="TD" 
+                  icon={getInitials(username)} 
                   variant="gray"
                   size={40}
                 />
@@ -300,14 +284,8 @@ export default function AppWrapper({
               anchorEl={userMenuAnchorEl}
               open={Boolean(userMenuAnchorEl)}
               onClose={handleUserMenuClose}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'right',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
               <MenuItem onClick={handleLogout}>
                 <LogOut size={16} style={{ marginRight: 8 }} />
