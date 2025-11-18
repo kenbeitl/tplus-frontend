@@ -1,13 +1,14 @@
 'use client';
 
 import { Button, ButtonProps } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
 interface ActionButtonProps {
   buttonText: string;
   buttonProps?: Partial<ButtonProps>;
   variant?: 'text' | 'outlined' | 'contained' | 'gradient';
   autoWidth?: boolean;
-  color?: 'blue' | 'white';
+  color?: 'blue' | 'purple' | 'white';
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   noIcon?: boolean;
@@ -16,10 +17,15 @@ interface ActionButtonProps {
 }
 
 export default function ActionButton({ buttonText, buttonProps, variant = 'gradient', autoWidth = false, color = 'blue', startIcon, endIcon, noIcon, disabled = false, onClick }: ActionButtonProps) {
-
+  const router = useRouter();
   const handleClick = () => {
     if (typeof onClick === 'string') {
-      window.open(onClick, onClick.startsWith('http') ? '_blank' : '_self');
+      if (onClick.startsWith('http')) {
+        // Open external links in a new tab
+        window.open(onClick, '_blank');
+      } else {
+        router.push(onClick);
+      }
     } else if (typeof onClick === 'function') {
       onClick();
     }

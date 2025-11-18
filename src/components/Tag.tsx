@@ -2,9 +2,11 @@ import React from "react";
 import { styled } from '@mui/material/styles';
 
 type TagVariant = 'transparent' | 'orange' | 'blue' | 'green' | 'purple' | 'white' | 'outlined';
+type ColorVariant = 'yellow';
 
 interface TagProps {
   variant?: TagVariant;
+  color?: ColorVariant;
   label: string;
   className?: string;
   startIcon?: React.ReactNode;
@@ -13,7 +15,7 @@ interface TagProps {
 
 const TagRoot = styled('span', {
   shouldForwardProp: (prop) => prop !== 'variant',
-})<{ variant?: TagVariant }>(({ theme, variant }) => ({
+})<{ variant?: TagVariant }>(({ theme, variant, color }) => ({
   background: '#FFFFFF',
   display: 'inline-flex',
   alignItems: 'center',
@@ -70,17 +72,25 @@ const TagRoot = styled('span', {
     background: '#555555',
     border: '1px solid #999999',
   }),
+  
+  ...(variant === 'outlined' && color === 'yellow' && {
+    color: '#92400E',
+    background: '#FEF3C7',
+    border: '1px solid #FDE68A',
+    borderRadius: '8px',
+  }),
 }));
 
 export default function Tag({ 
   variant,
+  color,
   label,
   className = '',
   startIcon,
   endIcon,
 }: TagProps): React.ReactNode {
   return (
-    <TagRoot variant={variant} className={className}>
+    <TagRoot variant={variant} color={color} className={className}>
       {startIcon && <span className="mr-1">{startIcon}</span>}
       {label}
       {endIcon && <span className="ml-1">{endIcon}</span>}

@@ -37,6 +37,7 @@ declare module '@mui/material/styles' {
     red: string;
   }
   interface TypeText {
+    darkAmber: string;
     blue: string;
     darkBlue: string;
     green: string;
@@ -71,6 +72,7 @@ const theme = createTheme({
     text: {
       primary: '#333333',
       secondary: '#919191',
+      darkAmber: '#78350F',
       blue: '#2563eb',
       darkBlue: '#1C398E',
       indigo: '#4f46e5',
@@ -219,8 +221,15 @@ const theme = createTheme({
         {
           props: { variant: 'gradient', color: 'blue' },
           style: {
-            color: '#FFFFFF',
+            color: '#FFFFFF !important',
             background: GRADIENTS.blue,
+          },
+        },
+        {
+          props: { variant: 'gradient', color: 'purple' },
+          style: {
+            color: '#FFFFFF !important',
+            background: GRADIENTS.purple,
           },
         },
         {
@@ -268,6 +277,7 @@ const theme = createTheme({
             backgroundColor: 'transparent',
             boxShadow: 'none',
             '&:hover': {
+              color: '#1C398E',
               boxShadow: 'none',
               backgroundColor: 'rgba(43, 127, 255, 0.1)',
             },
