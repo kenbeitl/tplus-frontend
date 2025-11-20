@@ -16,7 +16,7 @@ import IconButton from '@mui/material/IconButton';
 import { Menu, MenuItem } from '@mui/material';
 
 // Icons
-import { Building, Building2, CreditCard, FilePenLine, Globe, HelpCircleIcon, House, LogOut, PanelLeft, Settings, Shield, ShoppingCart } from 'lucide-react';
+import { Building2, Globe, HelpCircleIcon, House, LogOut, PanelLeft, Settings, ShoppingCart } from 'lucide-react';
 
 // Local Components & Contexts
 import Logo from '@/assets/svg/Logo';
@@ -25,9 +25,18 @@ import { useLanguage, useTranslations, useDrawer, localeLabels, type Locale } fr
 import { SnackbarProvider } from '@/contexts/SnackbarContext';
 import StyledIcon from '@/components/StyledIcon';
 import { useLogout } from '@/lib/logout';
+import { serviceServices, type Service } from '@/services/serviceServices';
 
 const drawerWidth = 240;
 const drawerMiniWidth = 64;
+
+interface serviceListType {
+  id: number;
+  serviceName: string;
+  icon: React.ReactNode;
+  path: string;
+  isActive?: boolean;
+}
 
 const openedMixin = (theme: Theme, disableTransition = false): CSSObject => ({
   width: drawerWidth,
@@ -116,10 +125,51 @@ export default function AppWrapper({
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [userMenuAnchorEl, setUserMenuAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isInitialMount, setIsInitialMount] = React.useState(true);
+  const [serviceList, setServiceList] = React.useState<serviceListType[]>([]);
+  const [isLoadingServices, setIsLoadingServices] = React.useState(true);
 
   const user = session?.user;
   const username = user?.name;
   const logout = useLogout();
+
+  const getServiceIcon = (iconName: string): React.ReactNode => {
+    const pascalCase = iconName
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join('');
+
+    const icons = require('lucide-react');
+    const IconComponent = icons[pascalCase];
+    
+    return IconComponent ? <IconComponent /> : null;
+  };
+
+  // Fetch services from API
+  React.useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        setIsLoadingServices(true);
+        const response = await serviceServices.getAll(locale);
+        
+        const mappedServices: serviceListType[] = response.map((service: Service) => ({
+          id: service.id,
+          serviceName: service.serviceName,
+          icon: getServiceIcon(service.icon),
+          path: service.path,
+          isActive: service.isActive
+        }));
+        
+        setServiceList(mappedServices);
+      } catch (error) {
+        console.error('Failed to fetch services:', error);
+        setServiceList([]);
+      } finally {
+        setIsLoadingServices(false);
+      }
+    };
+
+    fetchServices();
+  }, [locale]);
 
   // Check authentication status with NextAuth
   React.useEffect(() => {
@@ -138,42 +188,6 @@ export default function AppWrapper({
     
     return () => clearTimeout(timer);
   }, []);
-
-  interface serviceListType {
-    icon: React.ReactNode;
-    label: string;
-    path: string;
-    coming_soon?: boolean;
-  }
-
-  const serviceList = [
-    {
-      icon: <FilePenLine />,
-      label: t('nav.signConnect'),
-      path: '/services/sign-connect'
-    },
-    {
-      icon: <Building2 />,
-      label: t('nav.bizConnect'),
-      path: '/services/biz-connect',
-      coming_soon: true
-    },
-    { 
-      icon: <CreditCard />, 
-      label: t('nav.payConnect'),
-      path: '/services/pay-connect'
-    },
-    {
-      icon: <Building />,
-      label: t('nav.govConnect'),
-      path: '/services/gov-connect'
-    },
-    {
-      icon: <Shield />,
-      label: t('nav.safeConnect'),
-      path: '/services/safe-connect'
-    },
-  ]
 
   const handleDrawerClick = () => {
     toggleDrawer();
@@ -321,18 +335,28 @@ export default function AppWrapper({
               primary={t('nav.services')}
               storageKey="dropdown_services"
             >
-              { 
-                serviceList.map((service: serviceListType, index) => (
+              {
+                isLoadingServices ? (
                   <NavigationListItem
-                    key={index}
                     level={2}
-                    icon={service.icon}
-                    primary={service.label}
-                    path={service.path}
-                    isComingSoon={service.coming_soon || false}
-                    onClick={handleNavigation}
+                    icon={<Building2 />}
+                    primary="Loading..."
+                    path="#"
+                    onClick={() => {}}
                   />
-                )) 
+                ) : (
+                  serviceList.map((service: serviceListType, index) => (
+                    <NavigationListItem
+                      key={index}
+                      level={2}
+                      icon={service.icon}
+                      primary={service.serviceName}
+                      path={service.path}
+                      isComingSoon={!service.isActive}
+                      onClick={handleNavigation}
+                    />
+                  ))
+                )
               }
             </DropdownListItem>
           </List>
