@@ -1,5 +1,5 @@
 'use client';
-import { createTheme } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 type ColorConfig = {
   background: string;
@@ -37,6 +37,7 @@ declare module '@mui/material/styles' {
     red: string;
   }
   interface TypeText {
+    red: string;
     darkAmber: string;
     blue: string;
     darkBlue: string;
@@ -72,6 +73,7 @@ const theme = createTheme({
     text: {
       primary: '#333333',
       secondary: '#919191',
+      red: '#d32f2f',
       darkAmber: '#78350F',
       blue: '#2563eb',
       darkBlue: '#1C398E',
@@ -171,6 +173,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        input: {
+          padding: '10px 14px',
+        },
+      },
+    },
     MuiTextField: {
       styleOverrides: {
         root: {
@@ -266,6 +275,21 @@ const theme = createTheme({
               color: '#2b7fff',
               backgroundColor: '#FFFFFF',
               borderColor: '#2b7fff',
+              boxShadow: 'none',
+            },
+          },
+        },
+        {
+          props: { variant: 'contained', color: 'error' },
+          style: {
+            color: '#FFFFFF',
+            backgroundColor: '#d32f2f',
+            boxShadow: 'none',
+            border: '1px solid #d32f2f',
+            '&:hover': {
+              color: '#d32f2f',
+              backgroundColor: '#FFFFFF',
+              borderColor: '#d32f2f',
               boxShadow: 'none',
             },
           },

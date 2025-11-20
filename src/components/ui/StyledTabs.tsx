@@ -34,6 +34,5 @@ export const Tab = styled(MuiTab)(({ theme }) => ({
 
 export const TabPanel = styled(MuiTabPanel)(({ theme }) => ({
     paddingLeft: 0,
-    paddingRight: 0,
-    
+    paddingRight: 0,    
 }));

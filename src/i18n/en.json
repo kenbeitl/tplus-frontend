@@ -285,7 +285,22 @@
       "title": "Settings",
       "userProfile": "User Profile",
       "companyProfile": "Company Profile",
-      "manageUsers": "Manage Users"
+      "loginDetails": "Login Details",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "companyName": "Company Name",
+      "userRole": "User Role",
+      "email": "Email",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "dangerZone": "Danger Zone",
+      "deleteAccount": "Delete Account",
+      "saveChanges": "Save Changes",
+      "industry": "Select industry",
+      "location": "Location",
+      "websiteURL": "Website URL",
+      "cetsId": "CETS ID",
+      "employeeCount": "Select range"
     }
   }
 }
