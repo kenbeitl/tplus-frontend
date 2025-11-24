@@ -26,11 +26,12 @@ import { SnackbarProvider } from '@/contexts/SnackbarContext';
 import StyledIcon from '@/components/StyledIcon';
 import { useLogout } from '@/lib/logout';
 import { serviceServices, type Service } from '@/services/serviceServices';
+import { getLucideIcon } from '@/helpers/utils';
 
 const drawerWidth = 240;
 const drawerMiniWidth = 64;
 
-interface serviceListType {
+interface serviceProps {
   id: number;
   serviceName: string;
   icon: React.ReactNode;
@@ -125,24 +126,12 @@ export default function AppWrapper({
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [userMenuAnchorEl, setUserMenuAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isInitialMount, setIsInitialMount] = React.useState(true);
-  const [serviceList, setServiceList] = React.useState<serviceListType[]>([]);
+  const [serviceList, setServiceList] = React.useState<serviceProps[]>([]);
   const [isLoadingServices, setIsLoadingServices] = React.useState(true);
 
   const user = session?.user;
   const username = user?.name;
   const logout = useLogout();
-
-  const getServiceIcon = (iconName: string): React.ReactNode => {
-    const pascalCase = iconName
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join('');
-
-    const icons = require('lucide-react');
-    const IconComponent = icons[pascalCase];
-    
-    return IconComponent ? <IconComponent /> : null;
-  };
 
   // Fetch services from API
   React.useEffect(() => {
@@ -151,11 +140,11 @@ export default function AppWrapper({
         setIsLoadingServices(true);
         const response = await serviceServices.getAll(locale);
         
-        const mappedServices: serviceListType[] = response.map((service: Service) => ({
+        const mappedServices: serviceProps[] = response.map((service: Service) => ({
           id: service.id,
           serviceName: service.serviceName,
-          icon: getServiceIcon(service.icon),
-          path: service.path,
+          icon: getLucideIcon(service.icon),
+          path: `/services/${service.slug}`,
           isActive: service.isActive
         }));
         
@@ -345,7 +334,7 @@ export default function AppWrapper({
                     onClick={() => {}}
                   />
                 ) : (
-                  serviceList.map((service: serviceListType, index) => (
+                  serviceList.map((service: serviceProps, index) => (
                     <NavigationListItem
                       key={index}
                       level={2}

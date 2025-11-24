@@ -7,12 +7,9 @@ import {
   Button,
   Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography,
 } from '@mui/material';
-import InfoModal from '@/components/InfoModal';
-import Spacer from '@/components/ui/Spacer';
+import { InfoModal, Spacer, StyledIcon, ActionButton } from '@/components';
 import { CircleCheckBig, Shield, User } from 'lucide-react';
-import StyledIcon from '@/components/StyledIcon';
 import ModalHowToApplyForIdOne from './how-to-apply-for-id-one';
-import ActionButton from '@/components/ActionButton';
 
 type Props = {
   open: boolean;

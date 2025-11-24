@@ -1,15 +1,10 @@
 'use client';
 
-import Tag from "@/components/Tag";
-import Spacer from "@/components/ui/Spacer";
+import { Tag, Spacer, StyledIcon, ActionButton, ButtonWithFormModal } from "@/components";
 import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
-
 import { useTranslations } from '@/contexts/AppContext';
 import { ArrowRight, Bell, Briefcase, Building2, CircleCheckBig, FileCheck, Globe, Search, Shield, Sparkles, Target, Users } from "lucide-react";
 import theme from "@/theme/theme";
-import StyledIcon from "@/components/StyledIcon";
-import ActionButton from "@/components/ActionButton";
-import ButtonWithFormModal from "@/components/ButtonWithFormModal";
 
 const WHATS_COMING_LIST = [
     {

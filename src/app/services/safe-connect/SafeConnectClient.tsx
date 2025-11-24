@@ -1,16 +1,11 @@
 'use client';
 
 import React from "react";
-import Tag from "@/components/Tag";
-import Spacer from "@/components/ui/Spacer";
+import { Tag, Spacer, TabList, Tab, TabPanel, StyledIcon, FormField, ButtonWithFormModal } from "@/components";
 import { Badge, Box, Button, Card, FormControlLabel, FormGroup, Grid, List, ListItem, ListItemText, Paper, Switch, Typography } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import { AlertTriangle, CircleCheckBig, Download, ExternalLink, Eye, Mail, Monitor, Search, Shield, ShieldAlert, Smartphone, Star, Users, Wifi } from "lucide-react";
-import { TabList, Tab, TabPanel } from "@/components/ui/StyledTabs";
-import StyledIcon from "@/components/StyledIcon";
-import FormField from "@/components/form/FormField";
 import theme from "@/theme/theme";
-import ButtonWithFormModal from "@/components/ButtonWithFormModal";
 import { useTranslations } from '@/contexts/AppContext';
 
 const WEB_VULNERABILITY_ASSESSMENT_TEMPLATE_ID = 'safeconnect-web-vulnerability-assessment';

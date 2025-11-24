@@ -1,8 +1,7 @@
 
 'use client';
 
-import Modal from '@/components/Modal';
-import FormBase from '@/components/form/FormBase';
+import { Modal, FormBase } from '@/components';
 import { useState, useEffect } from 'react';
 import { formConfigService, type FormTemplate } from '@/services/formConfigService';
 

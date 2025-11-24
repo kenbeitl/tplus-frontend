@@ -1,17 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import Spacer from '@/components/ui/Spacer';
 import { Box, Button, Card, Grid, InputAdornment, Stack, TextField, Typography } from '@mui/material';
+import { CircleQuestionMark, CreditCard, FilePenLine, Search, Shield, SquareArrowOutUpRight, User, Users } from 'lucide-react';
 
 // modals
-import ModalDigital from './modal/digital';
-import ModalSigning from './modal/signing';
-import ModalSubscription from './modal/subscription';
-
-// Icons
-import { CircleQuestionMark, CreditCard, FilePenLine, Search, Shield, SquareArrowOutUpRight, User, Users } from 'lucide-react';
-import ButtonWithFormModal from '@/components/ButtonWithFormModal';
+import { ModalDigital, ModalSigning, ModalSubscription } from './modal';
+import { Spacer, ButtonWithFormModal } from '@/components';
 
 type CardId = 'digital' | 'signing' | 'subscription' | null;
 const CONTACT_SUPPORT_TEMPLATE_ID = 'contact-support';

@@ -2,15 +2,8 @@
 
 import { ArrowRight, Building, CreditCard, DollarSign, Plane, Shield, Sparkles, Users } from 'lucide-react';
 import { Box, Card, Grid, Typography } from '@mui/material';
-
-import ButtonWithModal from '@/components/ButtonWithModal';
-import Carousel from '@/components/Carousel';
-import Tag from '@/components/Tag';
-import Spacer from '@/components/ui/Spacer';
-import StyledIcon from '@/components/StyledIcon';;
-
+import { ButtonWithModal, Carousel, Tag, Spacer, StyledIcon } from '@/components';
 import ProviderModal from './modal/provider-modal';
-
 import { useTranslations } from '@/contexts/AppContext';
 
 export default function PayConnectClient() {

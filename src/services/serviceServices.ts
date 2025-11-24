@@ -5,64 +5,44 @@ export interface Service {
   serviceName: string;
   icon: string;
   isActive: boolean;
-  path: string;
+  slug: string;
 }
 
-export interface ServiceGroup {
+export interface ServiceItem {
   id: number;
   documentId: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
   locale: string;
-  Services: Service[];
-}
-
-export interface ServiceResponse {
-  data: ServiceGroup[];
-  meta: {
-    pagination: {
-      page: number;
-      pageSize: number;
-      pageCount: number;
-      total: number;
-    };
-  };
+  Service: Service;
+  Content: any[];
+  localizations: any[];
 }
 
 export const serviceServices = {
   getAll: async (locale: string = 'en'): Promise<Service[]> => {
     try {
-      const response = await strapiService.getCollection<ServiceGroup>('services', {
-        populate: 'Services',
+      
+      const response = await strapiService.getCollection<ServiceItem>('services', {
+        populate: 'Service',
         filters: { 
-            locale: { $eq: locale } 
+          locale: { $eq: locale } 
         }
       });
-      console.log('Fetched services response:', response);
       
-      // Extract Services array from the first item and return directly
-      return (response as ServiceResponse).data[0]?.Services || [];
+      const ServiceList: Service[] = response.data.filter(item => item.Service).map(item => ({
+        id: item.Service.id,
+        serviceName: item.Service.serviceName,
+        icon: item.Service.icon,
+        isActive: item.Service.isActive,
+        slug: item.Service.slug
+      }));
+    
+      return ServiceList;      
     } catch (error) {
       console.error('Error fetching services:', error);
       throw error;
     }
   },
-
-  getBySlug: async (slug: string, locale: string = 'en'): Promise<Service | null> => {
-    try {
-      const response = await strapiService.getCollection<ServiceGroup>('services', {
-        populate: 'Services',
-        filters: {
-          locale: { $eq: locale }
-        }
-      });
-      
-      const serviceResponse = response as ServiceResponse;
-      const services = serviceResponse.data[0]?.Services || [];
-      
-      // Find service by path/slug
-      return services.find(service => service.path.includes(slug)) || null;
-    } catch (error) {
-      console.error('Error fetching service by slug:', error);
-      throw error;
-    }
-  }
 };

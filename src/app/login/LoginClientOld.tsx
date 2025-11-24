@@ -11,12 +11,10 @@ import {
   Radio,
 } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
-import { TabList, Tab, TabPanel } from "@/components/ui/StyledTabs";
+import { TabList, Tab, TabPanel, ActionButton, FormField } from "@/components";
 import Logo from '@/assets/svg/Logo';
 import { useRouter, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import ActionButton from '@/components/ActionButton';
-import FormField from '@/components/form/FormField';
 import theme from '@/theme/theme';
 
 export default function LoginClient() {

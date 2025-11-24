@@ -10,14 +10,9 @@ import {
   Typography,
 } from '@mui/material';
 import { Building, ExternalLink, Eye } from 'lucide-react';
-import InfoModal from '@/components/InfoModal';
-import StyledIcon from '@/components/StyledIcon';
+import { InfoModal, StyledIcon, Spacer, Emoji, ButtonWithModal, ButtonWithFormModal } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
-import Spacer from '@/components/ui/Spacer';
-import Emoji from '@/components/Emoji';
-import ButtonWithModal from '@/components/ButtonWithModal';
 import ProviderDetails from '@/app/services/pay-connect/modal/provider-details';
-import ButtonWithFormModal from '@/components/ButtonWithFormModal';
 
 interface Provider {
   name: string;

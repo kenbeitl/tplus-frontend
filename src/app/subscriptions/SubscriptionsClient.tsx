@@ -7,11 +7,7 @@ import { Calendar, CircleCheckBig, Coins, Crown, Gift, Star, Zap } from "lucide-
 
 import { useTranslations } from '@/contexts/AppContext';
 import theme from "@/theme/theme";
-import Spacer from "@/components/ui/Spacer";
-import { TabList as MuiTabList, Tab as MuiTab, TabPanel } from "@/components/ui/StyledTabs";
-import ActionButton from "@/components/ActionButton";
-import Emoji from "@/components/Emoji";
-import Tag from "@/components/Tag";
+import { Spacer, TabList as MuiTabList, Tab as MuiTab, TabPanel, ActionButton, Emoji, Tag } from "@/components";
 
 const TabList = styled(MuiTabList)({
     borderRadius: '8px !important',

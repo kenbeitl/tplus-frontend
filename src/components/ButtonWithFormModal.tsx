@@ -1,7 +1,6 @@
 'use client';
 
-import ButtonWithModal from '@/components/ButtonWithModal';
-import FormModal from '@/components/form/FormModal';
+import { ButtonWithModal, FormModal } from '@/components';
 import { ButtonProps } from '@mui/material';
 
 interface ButtonWithFormModalProps {

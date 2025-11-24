@@ -1,22 +1,15 @@
 'use client';
 
 import React, { useMemo } from "react";
-import Spacer from "@/components/ui/Spacer";
-import { TabList, Tab, TabPanel } from "@/components/ui/StyledTabs";
-import Form from "@/components/form/Form";
+import { Spacer, TabList, Tab, TabPanel, Form, FormField, FormSelect, ActionButton, Tag } from "@/components";
 import { useTranslations } from '@/contexts/AppContext';
 import { useFormValidation } from "@/hooks/useFormValidation";
-
 import { Box, Card, Divider, Grid, Paper, Switch, TextField, Typography } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import { SelectChangeEvent } from '@mui/material';
 import { Building, CircleCheck, CircleCheckBig, Eye, User } from "lucide-react";
 import { useSession } from "next-auth/react";
-import FormField from "@/components/form/FormField";
-import FormSelect from "@/components/form/FormSelect";
 import theme from "@/theme/theme";
-import ActionButton from "@/components/ActionButton";
-import Tag from "@/components/Tag";
 
 export default function SettingsClient() {
     const { data: session, status } = useSession();

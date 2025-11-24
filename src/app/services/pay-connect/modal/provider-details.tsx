@@ -1,7 +1,6 @@
 'use client';
 import { Box, Link, Paper, Typography } from '@mui/material';
-import InfoModal from '@/components/InfoModal';
-import Emoji from '@/components/Emoji';
+import { InfoModal, Emoji } from '@/components';
 
 type Props = {
   open: boolean;

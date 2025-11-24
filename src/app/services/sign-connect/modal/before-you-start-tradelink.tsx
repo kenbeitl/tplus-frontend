@@ -1,11 +1,7 @@
 'use client';
 import { Box, Card, Link, Typography } from '@mui/material';
-import InfoModal from '@/components/InfoModal';
-import Spacer from '@/components/ui/Spacer';
+import { InfoModal, Spacer, StyledIcon, Tag, ActionButton } from '@/components';
 import theme from '@/theme/theme';
-import StyledIcon from '@/components/StyledIcon';
-import Tag from '@/components/Tag';
-import ActionButton from '@/components/ActionButton';
 import { TriangleAlert } from 'lucide-react';
 
 type Props = {

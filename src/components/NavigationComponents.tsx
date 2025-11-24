@@ -2,16 +2,8 @@
 
 import * as React from 'react';
 import { usePathname } from 'next/navigation';
-
-// MUI Components
 import { styled } from '@mui/material/styles';
-import MuiListItemButton from '@mui/material/ListItemButton';
-import MuiListItemIcon from '@mui/material/ListItemIcon';
-import List from '@mui/material/List';
-import ListItemText from '@mui/material/ListItemText';
-import { Collapse } from '@mui/material';
-
-// MUI Icons
+import { Collapse, List, ListItemText, ListItemButton as MuiListItemButton, ListItemIcon as MuiListItemIcon  } from '@mui/material';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 // Local Components & Contexts
@@ -19,13 +11,13 @@ import { useTranslations, useDrawer } from '@/contexts/AppContext';
 import Tag from './Tag';
 
 // Styled ListItemButton with active state support
-const ListItemIcon = styled(MuiListItemIcon)(() => ({
+export const ListItemIcon = styled(MuiListItemIcon)(() => ({
     minWidth: 'auto',
     width: '20px',
     color: 'black'
 }));
 
-const ListItemButton = styled(MuiListItemButton, {
+export const ListItemButton = styled(MuiListItemButton, {
     shouldForwardProp: (prop) => prop !== 'isActive' && prop !== 'isDrawerOpen',
 })<{ isActive?: boolean, isDrawerOpen?: boolean }>(({ theme, isActive, isDrawerOpen }) => ({
     paddingTop: theme.spacing(0.5),

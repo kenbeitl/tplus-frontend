@@ -7,10 +7,8 @@ import {
   Paper,
   Typography,
 } from '@mui/material';
-import InfoModal from '@/components/InfoModal';
-import Spacer from '@/components/ui/Spacer';
+import { InfoModal, Spacer, StyledIcon } from '@/components';
 import theme from '@/theme/theme';
-import StyledIcon from '@/components/StyledIcon';
 
 type Props = {
   open: boolean;

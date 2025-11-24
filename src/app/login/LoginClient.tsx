@@ -11,7 +11,7 @@ import {
 import Logo from '@/assets/svg/Logo';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import ActionButton from '@/components/ActionButton';
+import { ActionButton } from '@/components';
 
 export default function LoginClient() {
     const { data: session, status } = useSession();

@@ -1,18 +1,15 @@
 'use client';
 
 import { useEffect } from 'react';
-import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material';
-import Spacer from '@/components/ui/Spacer';
-import { useModal } from '@/hooks/useModal';
-
-import ModalDigitalIdentityRequired from './modal/digital-identity-required';
-import ModalBeforeYouStartTradelink from './modal/before-you-start-tradelink';
-import StyledIcon from '@/components/StyledIcon';
-import { Brain, CircleCheckBig, FilePenLine, FileText } from 'lucide-react';
-import theme from '@/theme/theme';
-import ActionButton from '@/components/ActionButton';
 import { useRouter } from 'next/navigation';
+import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material';
+import { Brain, CircleCheckBig, FilePenLine, FileText } from 'lucide-react';
+
+import theme from '@/theme/theme';
+import { Spacer, StyledIcon, ActionButton } from '@/components';
+import { useModal } from '@/hooks/useModal';
 import { useTranslations } from '@/contexts/AppContext';
+import { ModalBeforeYouStartTradelink, ModalDigitalIdentityRequired } from './modal';
 
 export default function SignConnectClient() {
   const t = useTranslations();

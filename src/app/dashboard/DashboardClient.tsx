@@ -1,16 +1,12 @@
 'use client';
 
-import Carousel from "@/components/Carousel";
-import Spacer from "@/components/ui/Spacer";
-import { ArrowRight, Award, Building, Building2, Calendar, CircleCheckBig, CreditCard, FilePenLine, IdCard, Shield, Sparkles, User } from "lucide-react";
-import StyledIcon from "@/components/StyledIcon";
-import Emoji from "@/components/Emoji";
+import { useRouter } from "next/navigation";
 import { Box, Card, Grid, Link, Paper, Typography } from "@mui/material";
-import ButtonWithFormModal from "@/components/ButtonWithFormModal";
+import { ArrowRight, Award, Building, Building2, Calendar, CircleCheckBig, CreditCard, FilePenLine, IdCard, Shield, Sparkles, User } from "lucide-react";
+
+import { Carousel, Spacer, StyledIcon, Emoji, ButtonWithFormModal, ActionButton } from "@/components";
 import theme from "@/theme/theme";
 import { useTranslations } from "@/contexts/AppContext";
-import ActionButton from "@/components/ActionButton";
-import { useRouter } from "next/navigation";
 
 export default function DashboardClient() {
     const t = useTranslations();
