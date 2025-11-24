@@ -1,0 +1,38 @@
+{
+    "title": "债务催收服务",
+    "context": "专业的债务回收与催收服务",
+    "providers": [
+        {
+            "name": "Intrum 债务催收",
+            "context": "具有高成功率的专业债务催收服务",
+            "features": [
+                "友好协商催收",
+                "法律程序",
+                "债务组合管理"
+            ],
+            "coverage": "",
+            "minDeposit": "",
+            "fees": "",
+            "processingTime": "30-90 天",
+            "successRate": "75% 回收成功率",
+            "details": "",
+            "formId": "intrum-debt-collection"
+        },
+        {
+            "name": "EOS 债务回收",
+            "context": "结合数字创新的国际债务催收服务",
+            "features": [
+                "多法域操作",
+                "数字化方案",
+                "注重合规"
+            ],
+            "coverage": "",
+            "minDeposit": "",
+            "fees": "",
+            "processingTime": "45-120 天",
+            "successRate": "70% 回收成功率",
+            "details": "",
+            "formId": "eos-debt-recovery"
+        }
+    ]
+}

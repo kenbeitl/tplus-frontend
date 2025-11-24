@@ -1,0 +1,38 @@
+{
+    "title": "貿易信用保險",
+    "context": "保障您的企業免受買方違約及政治風險的損失",
+    "providers": [
+        {
+            "name": "Coface 貿易信用保險",
+            "context": "全方位的貿易信用保險與風險管理服務",
+            "features": [
+                "買方違約保障",
+                "政治風險保障",
+                "信用監控"
+            ],
+            "coverage": "最高承保 90% 損失",
+            "minDeposit": "",
+            "fees": "",
+            "processingTime": "3-5 個工作天",
+            "successRate": "",
+            "details": "",
+            "formId": "coface-trade-credit"
+        },
+        {
+            "name": "Euler Hermes 信用保險",
+            "context": "領先全球的貿易信用保險與風險服務提供者",
+            "features": [
+                "全球保障",
+                "信用資訊",
+                "債務收回"
+            ],
+            "coverage": "最高承保 85% 損失",
+            "minDeposit": "",
+            "fees": "",
+            "processingTime": "5-7 個工作天",
+            "successRate": "",
+            "details": "",
+            "formId": "euler-hermes-insurance"
+        }
+    ]
+}

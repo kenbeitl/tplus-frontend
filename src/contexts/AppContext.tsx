@@ -104,8 +104,13 @@ export function AppProvider({ children, defaultLocale = 'en' }: AppProviderProps
       return key;
     }
     
-    // If translation is an array or object, return it as-is
-    if (Array.isArray(translation) || typeof translation === 'object') {
+    // If translation is an array, return it as-is
+    if (Array.isArray(translation)) {
+      return translation;
+    }
+    
+    // If translation is an object (but not null), return it as-is
+    if (typeof translation === 'object' && translation !== null) {
       return translation;
     }
     

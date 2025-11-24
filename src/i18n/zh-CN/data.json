@@ -2,11 +2,38 @@
     "nav": {
         "dashboard": "仪表板",
         "services": "服务",
-        "govConnect": "政府连线",
-        "bizConnect": "商业连线",
-        "payConnect": "支付连线",
-        "safeConnect": "安全连线",
-        "signConnect": "签署连线",
+         "serviceList": [
+            {
+                "name": "签署连线",
+                "icon": "file-pen-line",
+                "path": "/services/sign-connect",
+                "isActive": true
+            },
+            {
+                "name": "商业连线",
+                "icon": "building2",
+                "path": "/services/biz-connect",
+                "isActive": false
+            },
+            {
+                "name": "支付连线",
+                "icon": "credit-card",
+                "path": "/services/pay-connect",
+                "isActive": true
+            },
+            {
+                "name": "政府连线",
+                "icon": "building",
+                "path": "/services/gov-connect",
+                "isActive": true
+            },
+            {
+                "name": "安全连线",
+                "icon": "shield",
+                "path": "/services/safe-connect",
+                "isActive": true
+            }
+        ],
         "subscriptions": "订阅",
         "settings": "设置",
         "helpCentre": "帮助中心"

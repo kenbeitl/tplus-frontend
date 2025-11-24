@@ -1,0 +1,38 @@
+{
+    "title": "貿易融資",
+    "context": "信用狀、貿易貸款及出口融資服務",
+    "providers": [
+        {
+            "name": "渣打銀行貿易融資",
+            "context": "為進口商與出口商提供全面的貿易融資方案",
+            "features": [
+                "信用狀服務",
+                "貿易貸款",
+                "託收文件"
+            ],
+            "coverage": "",
+            "minDeposit": "50000",
+            "fees": "",
+            "processingTime": "7-14 個工作天",
+            "successRate": "",
+            "details": "",
+            "formId": "standard-chartered-trade"
+        },
+        {
+            "name": "中國工商銀行貿易融資",
+            "context": "專注於中國貿易及「一帶一路」專案的融資方案",
+            "features": [
+                "一帶一路融資",
+                "人民幣解決方案",
+                "供應鏈融資"
+            ],
+            "coverage": "",
+            "minDeposit": "100000",
+            "fees": "",
+            "processingTime": "5-10 個工作天",
+            "successRate": "",
+            "details": "",
+            "formId": "icbc-trade-finance"
+        }
+    ]
+}

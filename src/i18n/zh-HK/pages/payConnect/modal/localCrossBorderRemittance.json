@@ -1,0 +1,38 @@
+{
+    "title": "本地及跨境匯款",
+    "context": "快速且安全地進行本地及國際資金轉帳",
+    "providers": [
+        {
+            "name": "Wise 商業帳戶",
+            "context": "以實際匯率進行國際匯款",
+            "features": [
+                "實際匯率",
+                "多幣別帳戶",
+                "API 整合"
+            ],
+            "coverage": "",
+            "minDeposit": "",
+            "fees": "轉帳金額的 0.5-2%",
+            "processingTime": "1-2 個工作天",
+            "successRate": "",
+            "details": "",
+            "formId": "wise-business"
+        },
+        {
+            "name": "Remitly 商業匯款",
+            "context": "具法規合規性的跨境支付服務",
+            "features": [
+                "亞太區專注",
+                "包含法規合規",
+                "交易量折扣"
+            ],
+            "coverage": "",
+            "minDeposit": "",
+            "fees": "轉帳金額的 1-3%",
+            "processingTime": "即日至 3 日內",
+            "successRate": "",
+            "details": "",
+            "formId": "remitly-business"
+        }
+    ]
+}

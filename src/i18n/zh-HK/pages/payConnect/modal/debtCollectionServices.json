@@ -1,0 +1,38 @@
+{
+    "title": "債務追收服務",
+    "context": "專業的債務回收及催收服務",
+    "providers": [
+        {
+            "name": "Intrum 債務追收",
+            "context": "具高成功率的專業債務回收服務",
+            "features": [
+                "友好追收",
+                "法律程序",
+                "債務組合管理"
+            ],
+            "coverage": "",
+            "minDeposit": "",
+            "fees": "",
+            "processingTime": "30-90 天",
+            "successRate": "75% 成功回收率",
+            "details": "",
+            "formId": "intrum-debt-collection"
+        },
+        {
+            "name": "EOS 債務回收",
+            "context": "結合數碼創新的國際債務回收服務",
+            "features": [
+                "多司法管轄區",
+                "數碼化方案",
+                "重視合規"
+            ],
+            "coverage": "",
+            "minDeposit": "",
+            "fees": "",
+            "processingTime": "45-120 天",
+            "successRate": "70% 成功回收率",
+            "details": "",
+            "formId": "eos-debt-recovery"
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "title": "综合支付解决方案",
+    "context": "为您的企业提供线上及线下支付处理服务",
+    "providers": [
+        {
+            "name": "Stripe 商业服务",
+            "context": "为互联网企业提供完整的支付基础设施",
+            "features": [
+                "在线支付",
+                "全球接受",
+                "开发者 API"
+            ],
+            "coverage": "",
+            "minDeposit": "",
+            "fees": "每笔交易 2.9% + $0.30",
+            "processingTime": "即时设置",
+            "successRate": "",
+            "details": "",
+            "formId": "stripe-for-business"
+        },
+        {
+            "name": "Square 销售点系统",
+            "context": "集成的支付与商业管理解决方案",
+            "features": [
+                "线下支付",
+                "库存管理",
+                "数据分析"
+            ],
+            "coverage": "",
+            "minDeposit": "",
+            "fees": "每笔交易 2.6%",
+            "processingTime": "1-2 个工作日",
+            "successRate": "",
+            "details": "",
+            "formId": "square-point-of-sale"
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "title": "开立银行账户",
+    "context": "与亚太地区的合作银行开设企业账户",
+    "providers": [
+        {
+            "name": "汇丰企业银行",
+            "context": "提供具全球连接性的全面商业银行服务",
+            "features": [
+                "多币种账户",
+                "全球网络",
+                "贸易融资"
+            ],
+            "coverage": "",
+            "minDeposit": "10000",
+            "fees": "",
+            "processingTime": "5-7 个工作日",
+            "successRate": "",
+            "details": "/slide-1.webp",
+            "formId": "hsbc-business-banking"
+        },
+        {
+            "name": "星展中小企业银行",
+            "context": "为中小企业量身打造的数字化银行方案",
+            "features": [
+                "数字化银行服务",
+                "人工智能洞察分析",
+                "中小企聚焦"
+            ],
+            "coverage": "",
+            "minDeposit": "5000",
+            "fees": "",
+            "processingTime": "3-5 个工作日",
+            "successRate": "",
+            "details": "",
+            "formId": "dbs-sme-banking"
+        }
+    ]
+}

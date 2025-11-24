@@ -1,0 +1,38 @@
+{
+    "title": "開設銀行帳戶",
+    "context": "與亞太地區的合作銀行開立商業帳戶",
+    "providers": [
+        {
+            "name": "滙豐商業銀行",
+            "context": "提供具全球聯繫能力的全面商業銀行服務",
+            "features": [
+                "多種貨幣帳戶",
+                "全球網絡",
+                "貿易融資"
+            ],
+            "coverage": "",
+            "minDeposit": "10000",
+            "fees": "",
+            "processingTime": "5-7 個工作天",
+            "successRate": "",
+            "details": "/slide-1.webp",
+            "formId": "hsbc-business-banking"
+        },
+        {
+            "name": "星展中小企銀行服務",
+            "context": "為中小企量身打造的數碼銀行方案",
+            "features": [
+                "數碼化銀行服務",
+                "人工智能洞察分析",
+                "中小企專注"
+            ],
+            "coverage": "",
+            "minDeposit": "5000",
+            "fees": "",
+            "processingTime": "3-5 個工作天",
+            "successRate": "",
+            "details": "",
+            "formId": "dbs-sme-banking"
+        }
+    ]
+}
