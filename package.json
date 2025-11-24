@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8081",
+    "dev": "node ./src/scripts/build-i18n.js && next dev -p 8081",
     "build": "next build",
     "start": "next start -p 8081",
     "lint": "eslint"

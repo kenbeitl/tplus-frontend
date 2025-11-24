@@ -1,0 +1,21 @@
+{
+    "title": "設定",
+    "userProfile": "用戶資料",
+    "companyProfile": "公司資料",
+    "loginDetails": "登入詳情",
+    "firstName": "名字",
+    "lastName": "姓氏",
+    "companyName": "公司名稱",
+    "userRole": "用戶角色",
+    "email": "電子郵件",
+    "currentPassword": "當前密碼",
+    "newPassword": "新密碼",
+    "dangerZone": "危險區域",
+    "deleteAccount": "刪除帳戶",
+    "saveChanges": "保存更改",
+    "industry": "選擇行業",
+    "location": "位置",
+    "websiteURL": "公司網站",
+    "cetsId": "CETS 編號",
+    "employeeCount": "員工人數"
+}

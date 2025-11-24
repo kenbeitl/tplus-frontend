@@ -1,0 +1,38 @@
+{
+    "title": "Bank Account Opening",
+    "context": "Open business accounts with partner banks across Asia-Pacific",
+    "providers": [
+        {
+            "name":"HSBC Business Banking",
+            "context": "Comprehensive business banking with global connectivity",
+            "features": [
+                "Multi-currency accounts",
+                "Global reach",
+                "Trade finance"
+            ],
+            "coverage": "",
+            "minDeposit": "10000",
+            "fees": "",
+            "processingTime":"5-7",
+            "successRate": "",
+            "details": "/slide-1.webp",
+            "formId": "hsbc-business-banking"
+        },
+        {
+            "name":"DBS SME Banking",
+            "context": "Digital banking solutions tailored for SMEs",
+            "features": [
+                "Digital-first banking",
+                "AI-powered insights",
+                "SME focus"
+            ],
+            "coverage": "",
+            "minDeposit": "5000",
+            "fees": "",
+            "processingTime":"3-5",
+            "successRate": "",
+            "details": "",
+            "formId": "dbs-sme-banking"
+        }
+    ]
+}

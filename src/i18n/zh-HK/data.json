@@ -1,0 +1,26 @@
+{
+    "nav": {
+        "dashboard": "儀表板",
+        "services": "服務",
+        "govConnect": "政府連接",
+        "bizConnect": "商業連接",
+        "payConnect": "支付連接",
+        "safeConnect": "安全連接",
+        "signConnect": "簽署連接",
+        "subscriptions": "訂閱",
+        "settings": "設置",
+        "helpCentre": "幫助中心"
+    },
+    "app": {
+        "title": "TPlus 前端"
+    },
+    "menu": {
+        "language": "語言"
+    },
+    "common": {
+        "comingSoon": "敬請期待",
+        "loading": "載入中...",
+        "error": "錯誤",
+        "success": "成功"
+    }
+}

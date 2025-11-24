@@ -1,0 +1,38 @@
+{
+    "title": "Trade Credit Insurance",
+    "context": "Protect your business from buyer default and political risks",
+    "providers": [
+        {
+        "name":"Coface Trade Credit",
+        "context": "Comprehensive trade credit insurance and risk management",
+        "features": [
+            "Buyer default protection",
+            "Political risk coverage",
+            "Credit monitoring"
+        ],
+        "coverage": "Up to 90% of losses",
+        "minDeposit": "",
+        "fees": "",
+        "processingTime":"3-5 business days",
+        "successRate": "",
+        "details": "",
+        "formId": "coface-trade-credit"
+        },
+        {
+        "name":"Euler Hermes Insurance",
+        "context": "World leader in trade credit insurance and risk services",
+        "features": [
+            "Global coverage",
+            "Credit information",
+            "Debt collection"
+        ],
+        "coverage": "Up to 85% of losses",
+        "minDeposit": "",
+        "fees": "",
+        "processingTime":"5-7 business days",
+        "successRate": "",
+        "details": "",
+        "formId": "euler-hermes-insurance"
+        }
+    ]
+}

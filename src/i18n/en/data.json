@@ -1,0 +1,27 @@
+{
+    "nav": {
+        "dashboard": "Dashboard",
+        "services": "Services",
+        "govConnect": "GovConnect",
+        "bizConnect": "BizConnect",
+        "payConnect": "PayConnect",
+        "safeConnect": "SafeConnect",
+        "signConnect": "SignConnect",
+        "subscriptions": "Subscriptions",
+        "settings": "Settings",
+        "helpCentre": "Help Centre"
+    },
+    "app": {
+        "title": "TPlus Frontend"
+    },
+    "menu": {
+        "language": "Language"
+    },
+    "common": {
+        "comingSoon": "Coming Soon",
+        "loading": "Loading...",
+        "error": "Error",
+        "success": "Success",
+        "learnMore": "Learn More"
+    }
+}

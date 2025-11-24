@@ -1,0 +1,38 @@
+{
+    "title": "Local & Cross-Border Remittance",
+    "context": "Fast and secure money transfers locally and internationally",
+    "providers": [
+        {
+        "name":"Wise Business",
+        "context": "International money transfers at real exchange rates",
+        "features": [
+            "Real exchange rates",
+            "Multi-currency accounts",
+            "API integration"
+        ],
+        "coverage": "",
+        "minDeposit": "",
+        "fees": "0.5-2% of transfer amount",
+        "processingTime":"1-2 business days",
+        "successRate": "",
+        "details": "",
+        "formId": "wise-business"
+        },
+        {
+        "name":"Remitly Business",
+        "context": "Cross-border payments with regulatory compliance",
+        "features": [
+            "Asia-Pacific focus",
+            "Compliance included",
+            "Volume discounts"
+        ],
+        "coverage": "",
+        "minDeposit": "",
+        "fees": "1-3% of transfer amount",
+        "processingTime":"Same day to 3 days",
+        "successRate": "",
+        "details": "",
+        "formId": "remitly-business"
+        }
+    ]
+}
