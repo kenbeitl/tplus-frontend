@@ -1,0 +1,31 @@
+{
+    "title": "儀表板",
+    "welcomeTitle": "歡迎使用 T+",
+    "welcomeLine1": "您的帳戶已成功建立 — 歡迎加入！",
+    "welcomeLine2": "為了幫助您入門，我們已啟動了 <strong>3 個月免費試用</strong>，<br />讓您可以立即訪問一系列核心服務。<br />立即探索，了解 T+ 如何支持您的業務發展。",
+    "getStartedTitle": "快速上手",
+    "getStartedContext": "按照以下 3 個步驟，釋放",
+    "getStartedSteps": [
+        {
+            "theme": "blue",
+            "icon": "user",
+            "step": "1",
+            "title": "完善您的資料",
+            "description": "填寫您的用戶和公司資料，以訪問 T+ 平台的所有功能"
+        },
+        {
+            "theme": "purple",
+            "icon": "id-card",
+            "step": "2",
+            "title": "申請數字身份",
+            "description": "創建經過驗證的數字身份，安全訪問 T+ 服務"
+        },
+        {
+            "theme": "indigo",
+            "icon": "sparkles",
+            "step": "3",
+            "title": "探索服務",
+            "description": "使用選單欄瀏覽並嘗試所有可用服務"
+        }
+    ]
+}

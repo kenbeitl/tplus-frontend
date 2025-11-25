@@ -1,0 +1,31 @@
+{
+    "title": "Dashboard",
+    "welcomeTitle": "Welcome to T+",
+    "welcomeLine1": "Your account has been successfully created — welcome aboard!",
+    "welcomeLine2": "To help you get started, we've activated a <strong>3-month free trial</strong>, giving you immediate<br /> access to a selection of core services. Explore now and discover how T+ can support<br /> your business.",
+    "getStartedTitle": "Get Started Tips",
+    "getStartedContext": "Follow these 3 steps to unlock the full potential of T+",
+    "getStartedSteps": [
+        {
+            "theme": "blue",
+            "icon": "user",
+            "step": "1",
+            "title": "Complete Your Profile",
+            "description": "Fill in your user and company profile to access all T+ platform features"
+        },
+        {
+            "theme": "purple",
+            "icon": "id-card",
+            "step": "2",
+            "title": "Apply for Digital Identity",
+            "description": "Create your verified digital identity to securely access T+ services"
+        },
+        {
+            "theme": "indigo",
+            "icon": "sparkles",
+            "step": "3",
+            "title": "Explore Services",
+            "description": "Use the menu bar to browse and try out all available services"
+        }
+    ]
+}

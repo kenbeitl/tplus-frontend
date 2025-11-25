@@ -7,11 +7,14 @@ import { ArrowRight, Award, Building, Building2, Calendar, CircleCheckBig, Credi
 import { Carousel, Spacer, StyledIcon, Emoji, ButtonWithFormModal, ActionButton } from "@/components";
 import theme from "@/theme/theme";
 import { useTranslations } from "@/contexts/AppContext";
+import React from "react";
+import { getLucideIcon } from "@/helpers/utils";
 
 export default function DashboardClient() {
     const t = useTranslations();
     const router = useRouter();
     const CONTACT_SUPPORT_TEMPLATE_ID = 'contact-support';
+    const GET_STARTED_STEPS = t('pages.dashboard.getStartedSteps');
     return (
         <>
             <Carousel slideNum={2} />
@@ -27,12 +30,12 @@ export default function DashboardClient() {
                 <Spacer height={10} />
                 <Box className="flex items-center">
                     <Emoji symbol="🎉" size={40} sx={{ mr: 1 }} />
-                    <Typography variant="h4" component="h2">Welcome to T+</Typography>
+                    <Typography variant="h4" component="h2">{ t('pages.dashboard.welcomeTitle') }</Typography>
                 </Box>
                 <Spacer height={20} />
-                <Typography variant="body2" component="p">Your account has been successfully created — welcome aboard!</Typography>
+                <Typography variant="body2" component="p">{ t('pages.dashboard.welcomeLine1') }</Typography>
                 <Spacer height={20} />
-                <Typography variant="body2" component="p">To help you get started, we've activated a <strong>3-month free trial</strong>, giving you immediate<br /> access to a selection of core services. Explore now and discover how T+ can support<br /> your business.</Typography>
+                <Typography variant="body2" component="p" dangerouslySetInnerHTML={{ __html: t('pages.dashboard.welcomeLine2') }} />
             </Box>
         
         {/* Get Started Tips */}
@@ -40,79 +43,42 @@ export default function DashboardClient() {
             <Card variant="outlined" className="p-6">
                 <Box className="flex items-center">
                     <Emoji symbol="🚀" size={25} sx={{ mr: 1 }} />
-                    <Typography variant="body1" component="h3">Get Started Tips</Typography>
+                    <Typography variant="body1" component="h3">{ t('pages.dashboard.getStartedTitle') }</Typography>
                 </Box>
-                <Typography variant="body2" component="p" sx={{ mt: 2 }}>Follow these 3 steps to unlock the full potential of T+</Typography>
+                <Typography variant="body2" component="p" sx={{ mt: 2 }}>{ t('pages.dashboard.getStartedContext') }</Typography>
                 <Spacer height={20} />
                 <Grid container spacing={2}>
-                    <Grid size="grow">
-                        <Card 
-                            variant="outlined" 
-                            className="p-3 lg:p-6 bg-linear-to-br from-blue-50 to-blue-100 border-2 border-blue-200! gap-4 center-layout h-full"
-                            sx={{ height: '100%' }}
-                        >
-                            <StyledIcon 
-                                icon={<User size={25} />} 
-                                variant="blue-inverted"
-                                size={50}
-                            />
-                            <StyledIcon 
-                                icon="1" 
-                                variant="blue-inverted"
-                                size={32}
-                            />
-                            <Typography variant="body2" component="h4">Complete your profile</Typography>
-                            <Typography variant="caption" component="p" sx={{ color: theme.palette.text.blue }}>Fill in your user and company profile to access all T+ platform features</Typography>
-                        </Card>
-                    </Grid>
-                    <Grid size={1} sx={{ alignSelf: 'center' }}>
-                        <Card elevation={0} className="center-layout">
-                            <ArrowRight className="text-blue-400" />
-                        </Card>
-                    </Grid>
-                    <Grid size="grow">
-                        <Card 
-                            variant="outlined" 
-                            className="p-3 lg:p-6 bg-linear-to-br from-purple-50 to-purple-100 border-2 border-purple-200! gap-4 center-layout h-full"
-                        >
-                            <StyledIcon 
-                                icon={<IdCard size={25} />} 
-                                variant="purple-inverted"
-                                size={50}
-                            />
-                            <StyledIcon 
-                                icon="2" 
-                                variant="purple-inverted"
-                                size={32}
-                            />
-                            <Typography variant="body2" component="h4">Apply for Digital Identity</Typography>
-                            <Typography variant="caption" component="p" sx={{ color: theme.palette.text.purple }}>Create your verified digital identity to securely access T+ services</Typography>
-                        </Card>
-                    </Grid>
-                    <Grid size={1} sx={{ alignSelf: 'center' }}>
-                        <Card elevation={0} className="center-layout">
-                            <ArrowRight className="text-purple-400" />
-                        </Card>
-                    </Grid>
-                    <Grid size="grow">
-                        <Card 
-                            variant="outlined" 
-                            className="p-3 lg:p-6 bg-linear-to-br from-indigo-50 to-indigo-100 border-2 border-indigo-200! gap-4 center-layout h-full"
-                        >
-                            <StyledIcon 
-                                icon={<Sparkles size={25} />} 
-                                variant="indigo-inverted"
-                                size={50}
-                            />
-                            <StyledIcon 
-                                icon="3" 
-                                variant="indigo-inverted"
-                                size={32}
-                            />
-                            <Typography variant="body2" component="h4">Explore Services</Typography>
-                            <Typography variant="caption" component="p" sx={{ color: theme.palette.text.indigo }}>Use the menu bar to browse and try out all available services</Typography>
-                        </Card>
-                    </Grid>
+                    {Array.isArray(GET_STARTED_STEPS) && GET_STARTED_STEPS.map((step, index) => (
+                        <React.Fragment key={index}>
+                            <Grid size="grow">
+                                <Card 
+                                    variant="outlined" 
+                                    className={`p-3 lg:p-6 bg-linear-to-br border-2 border-${step.theme}-200! from-${step.theme}-50 to-${step.theme}-100 gap-4 center-layout h-full`}
+                                    sx={{ height: '100%' }}
+                                >
+                                    <StyledIcon 
+                                        icon={getLucideIcon(step.icon, 25)} 
+                                        variant={`${step.theme}-inverted` as any}
+                                        size={50}
+                                    />
+                                    <StyledIcon 
+                                        icon={step.step} 
+                                        variant={`${step.theme}-inverted` as any}
+                                        size={32}
+                                    />
+                                    <Typography variant="body2" component="h4">{step.title}</Typography>
+                                    <Typography variant="caption" component="p" color={theme.palette.text[step.theme as keyof typeof theme.palette.text]}>{step.description}</Typography>
+                                </Card>
+                            </Grid>
+                            {index < GET_STARTED_STEPS.length - 1 && (
+                            <Grid size={1} sx={{ alignSelf: 'center' }}>
+                                <Card elevation={0} className="center-layout">
+                                    <ArrowRight className={`text-${step.theme}-400`} />
+                                </Card>
+                            </Grid>
+                            )}
+                        </React.Fragment>
+                    ))}
                 </Grid>
             </Card>
             <Spacer height={20} />
