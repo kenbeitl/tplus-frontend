@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "populate": "node ./src/scripts/build-i18n.js",
     "dev": "node ./src/scripts/build-i18n.js && next dev -p 8081",
     "build": "next build",
     "start": "next start -p 8081",

@@ -1,18 +1,11 @@
 'use client';
 
-import {
-  Box,
-  Card,
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from '@mui/material';
+import { Box, Card, Grid, List, ListItem, ListItemText, Typography } from '@mui/material';
 import { Building, ExternalLink, Eye } from 'lucide-react';
 import { InfoModal, StyledIcon, Spacer, Emoji, ButtonWithModal, ButtonWithFormModal } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
 import ProviderDetails from '@/app/services/pay-connect/modal/provider-details';
+import { substituteSlot } from '@/helpers/utils';
 
 interface Provider {
   name: string;
@@ -60,7 +53,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
         </Box>
       </Box>
       <Spacer height={30} />
-      <Typography variant="caption" component="p" sx={{ color: 'text.secondary' }}>Compare and select from { providerCount } available providers</Typography>
+      <Typography variant="caption" component="p" sx={{ color: 'text.secondary' }}>{ substituteSlot(t('pages.payConnect.compareSelectProvider'), '$slot', providerCount) }</Typography>
       <Spacer height={20} />
       <Grid container spacing={2}>
         {providerList.map((provider: Provider, index: number) => (
@@ -72,7 +65,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
               </Box>
               <Typography variant="h6" component="p" sx={{ color: 'text.secondary' }}>{ provider.context }</Typography>
               <Spacer height={20} />
-              <Typography variant="subtitle1" component="p">Key Features:</Typography>
+              <Typography variant="subtitle1" component="p">{ t('pages.payConnect.keyFeatures') }</Typography>
               <List sx={{ color: 'text.primary', fontSize: 12, py: 0, pl: 2, listStyleType: 'disc', '& .MuiListItem-root': { display: 'list-item' } }}>
                 {provider.features?.map((feature: string, f_idx: number) => (
                   <ListItem key={`features-${f_idx}`} sx={{ py: 0 }}>
@@ -86,7 +79,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
                   {provider.coverage && (
                     <Grid size={6}>
                       <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
-                        Coverage
+                        { t('pages.payConnect.coverage') }
                       </Typography>
                       <Typography variant="caption" sx={{ color: 'text.primary', fontWeight: 500 }}>
                         {provider.coverage}
@@ -96,7 +89,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
                   {provider.minDeposit && (
                     <Grid size={6}>
                       <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
-                        Min Deposit
+                        { t('pages.payConnect.minDeposit') }
                       </Typography>
                       <Typography variant="caption" sx={{ color: 'text.primary', fontWeight: 500 }}>
                         ${Number(provider.minDeposit).toLocaleString('en-US')}
@@ -106,7 +99,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
                   {provider.fees && (
                     <Grid size={6}>
                       <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
-                        Fees
+                        { t('pages.payConnect.fees') }
                       </Typography>
                       <Typography variant="caption" sx={{ color: 'text.primary', fontWeight: 500 }}>
                         {provider.fees}
@@ -116,7 +109,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
                   {provider.successRate && (
                     <Grid size={6}>
                       <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
-                        Success Rate
+                        { t('pages.payConnect.successRate') }
                       </Typography>
                       <Typography variant="caption" sx={{ color: 'text.primary', fontWeight: 500 }}>
                         {provider.successRate}
@@ -126,10 +119,10 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
                   {provider.processingTime && (
                     <Grid size={6}>
                       <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
-                        Processing Time
+                        { t('pages.payConnect.processingTime') }
                       </Typography>
                       <Typography variant="caption" sx={{ color: 'text.primary', fontWeight: 500 }}>
-                        {provider.processingTime} days
+                        {provider.processingTime}
                       </Typography>
                     </Grid>
                   )}
@@ -139,7 +132,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
                 <>
                   <Spacer height={20} />
                   <ButtonWithModal
-                    buttonText="View Detailed Information"
+                    buttonText={ t('pages.payConnect.viewDetailedInformation') }
                     buttonProps={{
                       variant: 'outlined',
                       sx: { width: '100%' }
@@ -153,7 +146,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
               <ButtonWithFormModal
                   templateId="payconnect-service-providers"
                   formId={`payconnect-service-providers@${provider.formId}`}
-                  buttonText="Use Service"
+                  buttonText={ t('pages.payConnect.useService') }
                   buttonProps={{
                     variant: 'gradient',
                     sx: { width: '100%' }

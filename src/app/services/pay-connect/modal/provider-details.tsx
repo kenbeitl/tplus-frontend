@@ -1,6 +1,7 @@
 'use client';
 import { Box, Link, Paper, Typography } from '@mui/material';
 import { InfoModal, Emoji } from '@/components';
+import { useTranslations } from '@/contexts/AppContext';
 
 type Props = {
   open: boolean;
@@ -11,6 +12,7 @@ type Props = {
 };
 
 export default function ProviderDetails({ open, onClose, name, emoji, source }: Props) {
+  const t = useTranslations();
   return (
     <InfoModal
       open={open}
@@ -21,7 +23,7 @@ export default function ProviderDetails({ open, onClose, name, emoji, source }: 
         <Emoji symbol={emoji} size={36} className="mr-3" />
         <Typography variant="h5" component="h2" sx={{ mb: 1 }}>{name}</Typography>
       </Box>
-      <Typography variant="body2" component="p">Detailed product information and features</Typography>
+      <Typography variant="body2" component="p">{ t('pages.payConnect.detailedProductInfoFeatures') }</Typography>
       <Box 
         component="div"
         className="mt-12 mx-8 mb-8 border-dashed border-2 border-gray-300 rounded-xl bg-gray-200!"
