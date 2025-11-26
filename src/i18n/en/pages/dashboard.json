@@ -1,31 +1,110 @@
 {
     "title": "Dashboard",
-    "welcomeTitle": "Welcome to T+",
-    "welcomeLine1": "Your account has been successfully created — welcome aboard!",
-    "welcomeLine2": "To help you get started, we've activated a <strong>3-month free trial</strong>, giving you immediate<br /> access to a selection of core services. Explore now and discover how T+ can support<br /> your business.",
-    "getStartedTitle": "Get Started Tips",
-    "getStartedContext": "Follow these 3 steps to unlock the full potential of T+",
-    "getStartedSteps": [
-        {
-            "theme": "blue",
-            "icon": "user",
-            "step": "1",
-            "title": "Complete Your Profile",
-            "description": "Fill in your user and company profile to access all T+ platform features"
-        },
-        {
-            "theme": "purple",
-            "icon": "id-card",
-            "step": "2",
-            "title": "Apply for Digital Identity",
-            "description": "Create your verified digital identity to securely access T+ services"
-        },
-        {
-            "theme": "indigo",
-            "icon": "sparkles",
-            "step": "3",
-            "title": "Explore Services",
-            "description": "Use the menu bar to browse and try out all available services"
+    "welcome": {
+        "title": "Welcome to T+",
+        "line1": "Your account has been successfully created — welcome aboard!",
+        "line2": "To help you get started, we've activated a <strong>3-month free trial</strong>, giving you immediate<br /> access to a selection of core services. Explore now and discover how T+ can support<br /> your business."  
+    },
+    "getStartedTips": {
+        "title": "Get Started Tips",
+        "context": "Follow these 3 steps to unlock the full potential of T+",
+        "steps": [
+            {
+                "theme": "blue",
+                "icon": "user",
+                "step": "1",
+                "title": "Complete Your Profile",
+                "description": "Fill in your user and company profile to access all T+ platform features"
+            },
+            {
+                "theme": "purple",
+                "icon": "id-card",
+                "step": "2",
+                "title": "Apply for Digital Identity",
+                "description": "Create your verified digital identity to securely access T+ services"
+            },
+            {
+                "theme": "indigo",
+                "icon": "sparkles",
+                "step": "3",
+                "title": "Explore Services",
+                "description": "Use the menu bar to browse and try out all available services"
+            }
+        ]
+    },
+    "freeTrialFeatures": {
+        "title": "Free Trial Features",
+        "context": "You can start using these features right away (some with limited access):",
+        "list": [
+            {
+                    "icon": "file-pen-line",
+                    "title": "SignConnect",
+                    "context": "Sign documents via Tradelink's DMSS using a certified digital identity (limited signing quota)."
+            },
+            {
+                    "icon": "credit-card",
+                    "title": "PayConnect",
+                    "context": "Enjoy exclusive offers on financial services provided by T+ partners."
+            },
+            {
+                    "icon": "building2",
+                    "title": "GovConnect",
+                    "context": "Use smart trade functions to automate and enhance trade compliance."
+            },
+            {
+                    "icon": "shield",
+                    "title": "SafeConnect",
+                    "context": "Access cybersecurity services for individuals and corporations (some features may be limited)."
+            }
+        ],
+        "remarks": {
+            "body": "Note: Some features may require a subscription after the trial period ends. Click on the relevant pages in the menu to start using them."
         }
-    ]
+    },
+    "featuresTBC": {
+        "title": "Features Available Soon",
+        "context": "These advanced features are being rolled out progressively. Some will only be available with a subscription:",
+        "list": [
+            {
+                    "icon": "file-pen-line",
+                    "title": "SignConnect",
+                    "context": "Sign via other platforms (e.g. DocuSign, Fadada) and access premium features such as AI Document Assistant and AI Legal Assistant — exclusive to T+ members.",
+                    "isActive": true
+            },
+            {
+                    "icon": "building",
+                    "title": "BizConnect",
+                    "context": "Comprehensive business intelligence, due diligence services, and global market entry support launching soon.",
+                    "isActive": false
+            },
+            {
+                    "icon": "building2",
+                    "title": "GovConnect",
+                    "context": "Use advanced AI tools to automate trade compliance (e.g. AI-powered customs automation) and connect to more government services via T+.",
+                    "isActive": true
+            },
+            {
+                    "icon": "shield",
+                    "title": "SafeConnect",
+                    "context": "Add-on cybersecurity services, such as additional web vulnerability assessments.",
+                    "isActive": true
+            },
+            {
+                    "icon": "badge",
+                    "title": "ESG",
+                    "context": "Track your environmental impact through paperless signing, and download annual ESG certificates or badges/reports from T+ partners with exclusive offers.",
+                    "isActive": true
+            }
+        ],
+        "remarks": {
+            "title": "Ready to upgrade?",
+            "context": "Unlock all features by subscribing to our plans — launching soon!"
+        }
+    },
+    "viewSubscriptionPlans": "View Subscription Plans",
+    "needHelp": {
+        "title": "Need help getting started?",
+        "context": "Follow these 3 steps to unlock the full potential of T+"
+    },
+    "contactSupport": "Contact Support"
 }

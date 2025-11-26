@@ -1,31 +1,110 @@
 {
     "title": "仪表板",
-    "welcomeTitle": "欢迎使用 T+",
-    "welcomeLine1": "您的账户已成功创建 — 欢迎加入！",
-    "welcomeLine2": "为了帮助您入门，我们已激活了 <strong>3 个月免费试用</strong>，<br />让您可以立即访问一系列核心服务。<br />立即探索，了解 T+ 如何支持您的业务发展。",
-    "getStartedTitle": "快速上手",
-    "getStartedContext": "按照以下 3 个步骤，释放 T+ 的全部",
-    "getStartedSteps": [
-        {
-            "theme": "blue",
-            "icon": "user",
-            "step": "1",
-            "title": "完善您的资料",
-            "description": "填写您的用户和公司资料，以访问 T+ 平台的所有功能"
-        },
-        {
-            "theme": "purple",
-            "icon": "id-card",
-            "step": "2",
-            "title": "申请数字身份",
-            "description": "创建经过验证的数字身份，安全访问 T+ 服务"
-        },
-        {
-            "theme": "indigo",
-            "icon": "sparkles",
-            "step": "3",
-            "title": "探索服务",
-            "description": "使用菜单栏浏览并尝试所有可用服务"
+    "welcome": {
+        "title": "欢迎使用 T+",
+        "line1": "您的账户已成功创建——欢迎加入！",
+        "line2": "为了帮助您快速上手，我们已为您激活了<strong>3 个月免费试用</strong>，让您立即<br />访问一系列核心服务。立即探索，发现 T+ 如何支持<br />您的业务发展。"
+    },
+    "getStartedTips": {
+        "title": "入门提示",
+        "context": "按照以下 3 个步骤，释放 T+ 的全部潜力",
+        "steps": [
+            {
+                "theme": "blue",
+                "icon": "user",
+                "step": "1",
+                "title": "完善您的资料",
+                "description": "填写您的用户和公司资料，以访问所有 T+ 平台功能"
+            },
+            {
+                "theme": "purple",
+                "icon": "id-card",
+                "step": "2",
+                "title": "申请数字身份",
+                "description": "创建经过验证的数字身份，安全访问 T+ 服务"
+            },
+            {
+                "theme": "indigo",
+                "icon": "sparkles",
+                "step": "3",
+                "title": "探索服务",
+                "description": "使用菜单栏浏览并尝试所有可用服务"
+            }
+        ]
+    },
+    "freeTrialFeatures": {
+        "title": "免费试用功能",
+        "context": "您可以立即开始使用以下功能（部分功能访问受限）：",
+        "list": [
+            {
+                    "icon": "file-pen-line",
+                    "title": "签署连线",
+                    "context": "通过 Tradelink 的 DMSS 使用经过认证的数字身份签署文件（签署配额有限）。"
+            },
+            {
+                    "icon": "credit-card",
+                    "title": "支付连线",
+                    "context": "享受 T+ 合作伙伴提供的金融服务独家优惠。"
+            },
+            {
+                    "icon": "building2",
+                    "title": "政府连线",
+                    "context": "使用智能贸易功能自动化和增强贸易合规性。"
+            },
+            {
+                    "icon": "shield",
+                    "title": "安全连线",
+                    "context": "访问个人和企业的网络安全服务（某些功能可能受限）。"
+            }
+        ],
+        "remarks": {
+            "body": "注意：试用期结束后，某些功能可能需要订阅。点击菜单中的相关页面即可开始使用它们。"
         }
-    ]
+    },
+    "featuresTBC": {
+        "title": "更多功能即将推出",
+        "context": "我们正在积极开发更多功能，敬请期待！",
+        "list": [
+            {
+                "icon": "file-pen-line",
+                "title": "签署连线",
+                "context": "更多高级签署功能，提升您的数字签署体验。",
+                "isActive": true
+            },
+            {
+                "icon": "building2",
+                "title": "商业连线",
+                "context": "全面的商业解决方案，助力您的业务增长。",
+                "isActive": false
+            },
+            {
+                "icon": "building",
+                "title": "政府连线",
+                "context": "增强的政府服务，提升贸易合规性。",
+                "isActive": true
+            },
+            {
+                "icon": "shield",
+                "title": "安全连线",
+                "context": "先进的网络安全功能，保护您的数字资产。",
+                "isActive": true
+            },
+            {
+                "icon": "badge",
+                "title": "ESG",
+                "context": "通过无纸化签署跟踪您的环境影响，并从 T+ 合作伙伴处下载年度 ESG 证书或徽章/报告，享受独家优惠。",
+                "isActive": true
+            }
+        ],
+        "remarks": {
+            "title": "准备好升级了吗？",
+            "context": "通过订阅我们的计划，解锁所有功能——敬请期待！"
+        }
+    },
+    "viewSubscriptionPlans": "查看订阅计划",
+    "needHelp": {
+        "title": "需要帮助入门吗？",
+        "context": "按照以下 3 个步骤，释放 T+ 的全部潜力"
+    },
+    "contactSupport": "联系支持团队"
 }

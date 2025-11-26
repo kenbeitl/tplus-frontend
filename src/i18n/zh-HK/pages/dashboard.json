@@ -1,31 +1,110 @@
 {
     "title": "儀表板",
-    "welcomeTitle": "歡迎使用 T+",
-    "welcomeLine1": "您的帳戶已成功建立 — 歡迎加入！",
-    "welcomeLine2": "為了幫助您入門，我們已啟動了 <strong>3 個月免費試用</strong>，<br />讓您可以立即訪問一系列核心服務。<br />立即探索，了解 T+ 如何支持您的業務發展。",
-    "getStartedTitle": "快速上手",
-    "getStartedContext": "按照以下 3 個步驟，釋放",
-    "getStartedSteps": [
-        {
-            "theme": "blue",
-            "icon": "user",
-            "step": "1",
-            "title": "完善您的資料",
-            "description": "填寫您的用戶和公司資料，以訪問 T+ 平台的所有功能"
-        },
-        {
-            "theme": "purple",
-            "icon": "id-card",
-            "step": "2",
-            "title": "申請數字身份",
-            "description": "創建經過驗證的數字身份，安全訪問 T+ 服務"
-        },
-        {
-            "theme": "indigo",
-            "icon": "sparkles",
-            "step": "3",
-            "title": "探索服務",
-            "description": "使用選單欄瀏覽並嘗試所有可用服務"
+    "welcome": {
+        "title": "歡迎使用 T+",
+        "line1": "您的賬戶已成功創建——歡迎加入！",
+        "line2": "為了幫助您快速上手，我們已為您激活了<strong>3 個月免費試用</strong>，讓您立即<br />訪問一系列核心服務。立即探索，發現 T+ 如何支持<br />您的業務發展。"
+    },
+    "getStartedTips": {
+        "title": "入門提示",
+        "context": "按照以下 3 個步驟，釋放 T+ 的全部潛力",
+        "steps": [
+            {
+                "theme": "blue",
+                "icon": "user",
+                "step": "1",
+                "title": "完善您的資料",
+                "description": "填寫您的用戶和公司資料，以訪問所有 T+ 平台功能"
+            },
+            {
+                "theme": "purple",
+                "icon": "id-card",
+                "step": "2",
+                "title": "申請數字身份",
+                "description": "創建經過驗證的數字身份，安全訪問 T+ 服務"
+            },
+            {
+                "theme": "indigo",
+                "icon": "sparkles",
+                "step": "3",
+                "title": "探索服務",
+                "description": "使用菜單欄瀏覽並嘗試所有可用服務"
+            }
+        ]
+    },
+    "freeTrialFeatures": {
+        "title": "免費試用功能",
+        "context": "您可以立即開始使用以下功能（部分功能訪問受限）：",
+        "list": [
+            {
+                "icon": "file-pen-line",
+                "title": "簽署連線",
+                "context": "通過 Tradelink 的 DMSS 使用經過認證的數字身份簽署文件（簽署配額有限）。"
+            },
+            {
+                "icon": "credit-card",
+                "title": "支付連線",
+                "context": "享受 T+ 合作夥伴提供的金融服務獨家優惠。"
+            },
+            {
+                "icon": "building2",
+                "title": "政府連線",
+                "context": "使用智能貿易功能自動化和增強貿易合規性。"
+            },
+            {
+                "icon": "shield",
+                "title": "安全連線",
+                "context": "訪問個人和企業的網絡安全服務（某些功能可能受限）。"
+            }
+        ],
+        "remarks": {    
+            "body": "注意：試用期結束後，某些功能可能需要訂閱。點擊菜單中的相關頁面即可開始使用它們。"
         }
-    ]
+    },
+    "featuresTBC": {
+        "title": "更多功能即將推出",
+        "context": "我們正在積極開發更多功能，敬請期待！",
+        "list": [
+            {
+                "icon": "file-pen-line",
+                "title": "簽署連線",
+                "context": "更多進階簽署功能，提升您的數位簽章體驗。",
+                "isActive": true
+            },
+            {
+                "icon": "building",
+                "title": "商業連線",
+                "context": "全面的商業情報、盡職調查服務和全球市場進入支持，敬請期待。",
+                "isActive": false
+            },
+            {
+                "icon": "building2",
+                "title": "政府連線",
+                "context": "更多智能貿易功能，助您輕鬆應對貿易合規挑戰。",
+                "isActive": true
+            },
+            {
+                "icon": "shield",
+                "title": "安全連線",
+                "context": "增強的網絡安全服務，保障個人和企業的數字安全。",
+                "isActive": true
+            },
+            {
+                "icon": "badge",
+                "title": "ESG",
+                "context": "通過無紙化簽署追蹤您的環境影響，並從 T+ 合作夥伴處下載年度 ESG 證書或徽章/報告，享受獨家優惠。",
+                "isActive": true
+            }
+        ],
+        "remarks": {
+            "title": "準備好升級了嗎？",
+            "context": "訂閱我們的計劃，解鎖所有功能—敬請期待！"
+        }
+    },
+    "viewSubscriptionPlans": "查看訂閱計畫",
+    "needHelp": {
+        "title": "需要幫忙入門嗎？",
+        "context": "依照以下 3 個步驟，釋放 T+ 的全部潛力"
+    },
+    "contactSupport": "聯絡支援團隊"
 }
