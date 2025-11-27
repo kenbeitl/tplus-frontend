@@ -1,0 +1,40 @@
+{
+    "title": "政府連線",
+    "context": "單一提交雙重申報",
+    "services": [
+        {
+            "icon": "file-text",
+            "title": "單一提交雙重申報",
+            "description": "簡化海關申報，單一提交滿足進出口要求",
+            "features": [
+                "減少60%的文書工作",
+                "更快的處理時間",
+                "單一提交點"
+            ],
+            "formTemplateId": "govconnect-dual-declaration",
+            "buttonText": "立即申請"
+        },
+        {
+            "icon": "search",
+            "title": "HS編碼AI分類器",
+            "description": "即時獲取AI驅動的產品HS編碼分類",
+            "features": [
+                "香港HS編碼（諮詢Tracie）",
+                "中國HS編碼（諮詢小翠）",
+                "即時分類結果"
+            ]
+        },
+        {
+            "icon": "brain",
+            "title": "AI驅動的海關自動化",
+            "description": "利用AI驅動的文檔處理自動化海關申報",
+            "features": [
+                "自動數據提取",
+                "進出口申報",
+                "10分鐘內完成"
+            ]
+        }
+    ],
+    "servicesAvailble": "服務已推出",
+    "applyNow": "立即申請"
+}

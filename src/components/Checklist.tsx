@@ -1,3 +1,4 @@
+import theme from '@/theme/theme';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { CircleCheckBig } from 'lucide-react';
 
