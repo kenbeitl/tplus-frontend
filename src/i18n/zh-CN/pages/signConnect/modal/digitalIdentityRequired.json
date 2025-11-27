@@ -1,0 +1,36 @@
+{
+    "title": "需要签署数码化合约？",
+    "context": "请先申请数码身份以进行签署",
+    "options": [
+        {
+            "id": "iAMSmart",
+            "icon": "shield",
+            "iconColor": "blue",
+            "name": "「智方便」",
+            "description": "适用于香​​港身份证持有人",
+            "list": [
+                "适用于所有年满18岁并持有有效香港身份证的个人",
+                "获香港特区政府认可",
+                "免费申请",
+                "少于5分钟"
+            ],
+            "action": "https://www.iamsmart.gov.hk/sc/reg.html"
+        },
+        {
+            "id": "iD-One",
+            "icon": "user",
+            "iconColor": "green",
+            "name": "iD-One",
+            "description": "适用于电子护照持有人",
+            "list": [
+                "适用于所有年满18岁并持有符合ICAO标准电子护照的个人",
+                "获香港特区政府认可",
+                "可遥距申请",
+                "少于5分钟"
+            ],
+            "action": "open-modal"
+        }
+    ],
+    "learnMoreAboutDigitalIdentities": "了解更多关于数码身份",
+    "alreadyHaveDigitalID": "我已经有数码身份"
+}

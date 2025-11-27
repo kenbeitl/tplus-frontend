@@ -15,6 +15,9 @@ const GRADIENTS = {
 
 declare module '@mui/material/styles' {
   interface Palette {
+    icon: {
+      green: string;
+    };
     gradient: typeof GRADIENTS;
     tag: {
       green: ColorConfig;
@@ -24,6 +27,9 @@ declare module '@mui/material/styles' {
     };
   }
   interface PaletteOptions {
+    icon: {
+      green?: string;
+    };
     gradient?: Partial<typeof GRADIENTS>;
     tag?: {
       green?: ColorConfig;
@@ -85,6 +91,9 @@ const theme = createTheme({
       purple: '#9333ea',
       darkPurple: '#6B21A8',
       white: '#FFFFFF',
+    },
+    icon: {
+      green: '#43A047'
     },
     background: {
       lightblue: '#eff6ff',

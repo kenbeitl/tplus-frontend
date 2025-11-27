@@ -1,0 +1,49 @@
+{
+    "title": "簽署連線",
+    "context": "數字文件簽署和管理平台",
+    "signingPlatform": {
+        "title": "選擇您的簽署平台",
+        "context": "從可用的簽署平台中選擇，開始安全地簽署文件。",
+        "platforms": [
+            {
+                "icon": "file-pen-line",
+                "name": "Tradelink",
+                "description": "使用iAM Smart+和iD-One的基本簽署功能",
+                "list": [
+                    "基本簽署功能",
+                    "可使用iAM Smart+",
+                    "可使用iD-One",
+                    "符合政府規定"
+                ],
+                "action": "open-modal",
+                "isActive": true
+            },
+            {
+                "icon": "file-text",
+                "name": "DocuSign",
+                "description": "行業領先的電子簽名解決方案，確保文件安全簽署。",
+                "list": [
+                    "使用iD-One簽署",
+                    "來自其他地區的數字ID",
+                    "先進的AI文件管理",
+                    "全球合規"
+                ],
+                "isActive": false
+            },
+            {
+                "icon": "brain",
+                "name": "法大大",
+                "description": "行業領先的電子簽名解決方案，確保文件安全簽署。",
+                "list": [
+                    "使用iD-One簽署",
+                    "來自中國的數字ID",
+                    "先進的AI文件管理",
+                    "AI法律助手"
+                ],
+                "isActive": false
+            }
+        ]
+    },
+    "selectService": "選擇服務",
+    "learnMoreAboutSigningPlatforms": "了解更多關於簽署平台的信息"
+}

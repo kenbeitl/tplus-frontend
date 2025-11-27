@@ -16,7 +16,6 @@
     "useService": "Use Service",
     "cards": [
         {
-            "id": "1",
             "icon": "building",
             "title": "Bank Account Opening",
             "description": "Open business accounts with partner banks across Asia-Pacific",
@@ -24,7 +23,6 @@
             "emoji": "🏦"
         },
         {
-            "id": "2",
             "icon": "credit-card",
             "title": "Integrated Payment Solutions",
             "description": "Online and offline payment processing for your business",
@@ -32,7 +30,6 @@
             "emoji": "💳"
         },
         {
-            "id": "3",
             "icon": "plane",
             "title": "Local & Cross-Border Remittance",
             "description": "Fast and secure money transfers locally and internationally",
@@ -40,7 +37,6 @@
             "emoji": "🌐"
         },
         {
-            "id": "4",
             "icon": "dollar-sign",
             "title": "Trade Financing",
             "description": "Flexible trade financing solutions to support your business growth",
@@ -48,7 +44,6 @@
             "emoji": "🏛️"
         },
         {
-            "id": "5",
             "icon": "shield",
             "title": "Trade Credit Insurance",
             "description": "Protect your business against trade credit risks",
@@ -56,7 +51,6 @@
             "emoji": "🛡️"
         },
         {
-            "id": "6",
             "icon": "users",
             "title": "Debt Collection Services",
             "description": "Efficient debt recovery solutions for your business",

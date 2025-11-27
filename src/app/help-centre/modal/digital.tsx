@@ -12,6 +12,7 @@ import Spacer from '@/components/ui/Spacer';
 import InfoModal from '@/components/InfoModal';
 import { CircleCheckBig } from 'lucide-react';
 import Tag from '@/components/Tag';
+import theme from '@/theme/theme';
 
 const DIALOG_CARD = [
   {
@@ -103,8 +104,8 @@ export default function ModalDigital({ open, onClose }: Props) {
         </TableContainer>
         <Spacer height={30} />
         <Grid container spacing={2}>
-          {DIALOG_CARD.map((item) => (
-            <Grid size={{ xs: 12, sm: 6, md: 6 }} key={item.id}>
+          {DIALOG_CARD.map((item,) => (
+            <Grid size={{ xs: 12, sm: 6, md: 6 }} key={`dc-${item.id}`}>
               <Card variant="outlined" sx={{ height: '100%', p: 0 }}>
                 {/* Use CardActionArea if you want the whole card clickable */}
                 <CardContent sx={{ p: 3 }}>
@@ -129,7 +130,7 @@ export default function ModalDigital({ open, onClose }: Props) {
                     {item.features.map((f) => (
                       <ListItem key={f} disableGutters>
                         <ListItemIcon sx={{ minWidth: 12 }}>
-                          <CircleCheckBig size={12} color="#43A047" />
+                          <CircleCheckBig size={12} color={theme.palette.icon.green} />
                         </ListItemIcon>
                         <ListItemText
                           slotProps={{

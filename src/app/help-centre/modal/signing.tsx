@@ -11,6 +11,7 @@ import {
 import Spacer from '@/components/ui/Spacer';
 import InfoModal from '@/components/InfoModal';
 import { CircleCheckBig } from 'lucide-react';
+import theme from '@/theme/theme';
 
 const DIALOG_CARD = [
   {
@@ -126,7 +127,7 @@ export default function ModalSigning({ open, onClose }: Props) {
                     {item.features.map((f) => (
                       <ListItem key={f} disableGutters>
                         <ListItemIcon sx={{ minWidth: 12 }}>
-                          <CircleCheckBig size={12} color="#43A047" />
+                          <CircleCheckBig size={12} color={theme.palette.icon.green} />
                         </ListItemIcon>
                         <ListItemText
                           slotProps={{

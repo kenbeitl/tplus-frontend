@@ -1,0 +1,49 @@
+{
+    "title": "签署连线",
+    "context": "数字文件签署和管理平台",
+    "signingPlatform": {
+        "title": "选择您的签署平台",
+        "context": "从可用的签署平台中选择，开始安全地签署文件。",
+        "platforms": [
+            {
+                "icon": "file-pen-line",
+                "name": "Tradelink",
+                "description": "使用iAM Smart+和iD-One的基本签署功能",
+                "list": [
+                    "基本签署功能",
+                    "可使用iAM Smart+",
+                    "可使用iD-One",
+                    "符合政府规定"
+                ],
+                "action": "open-modal",
+                "isActive": true
+            },
+            {
+                "icon": "file-text",
+                "name": "DocuSign",
+                "description": "行业领先的电子签名解决方案，确保文件安全签署。",
+                "list": [
+                    "使用iD-One签署",
+                    "来自其他地区的数字ID",
+                    "先进的AI文件管理",
+                    "全球合规"
+                ],
+                "isActive": false
+            },
+            {
+                "icon": "brain",
+                "name": "法大大",
+                "description": "行业领先的电子签名解决方案，确保文件安全签署。",
+                "list": [
+                    "使用iD-One签署",
+                    "来自中国的数字ID",
+                    "先进的AI文件管理",
+                    "AI法律助手"
+                ],
+                "isActive": false
+            }
+        ]
+    },
+    "selectService": "选择服务",
+    "learnMoreAboutSigningPlatforms": "了解更多关于签署平台的信息"
+}

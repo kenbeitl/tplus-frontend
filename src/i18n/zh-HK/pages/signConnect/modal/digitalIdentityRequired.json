@@ -1,0 +1,36 @@
+{
+    "title": "需要簽署數位化合約？",
+    "context": "請先申請數位身分簽署",
+    "options": [
+        {
+            "id": "iAMSmart",
+            "icon": "shield",
+            "iconColor": "blue",
+            "name": "「智方便」",
+            "description": "適用於加拿大身分證持有者",
+            "list": [
+                "適用於所有年滿18歲並持有有效香港身分證的個人",
+                "獲香港特區政府認可",
+                "免費申請",
+                "少於5分鐘"
+            ],
+            "action": "https://www.iamsmart.gov.hk/tc/reg.html"
+        },
+        {
+            "id": "iD-One",
+            "icon": "user",
+            "iconColor": "green",
+            "name": "iD-One",
+            "description": "適用於電子護照持有人",
+            "list": [
+                "適用於所有年滿18歲並持有符合ICAO標準電子護照的個人",
+                "獲香港特區政府認可",
+                "可遙距申請",
+                "少於5分鐘"
+            ],
+            "action": "open-modal"
+        }
+    ],
+    "learnMoreAboutDigitalIdentities": "了解更多關於數位身分",
+    "alreadyHaveDigitalID": "我已經有數位身分"
+}

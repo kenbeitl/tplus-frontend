@@ -2,6 +2,11 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+// Static imports for instant translation loading
+import enMessages from '@/i18n/en.json';
+import zhHKMessages from '@/i18n/zh-HK.json';
+import zhCNMessages from '@/i18n/zh-CN.json';
+
 export type Locale = 'en' | 'zh-HK' | 'zh-CN';
 
 export const locales: Locale[] = ['en', 'zh-HK', 'zh-CN'];
@@ -10,6 +15,13 @@ export const localeLabels: Record<Locale, string> = {
   'en': 'English',
   'zh-HK': '繁體中文',
   'zh-CN': '简体中文'
+};
+
+// Translation map for instant access
+const translationMap: Record<Locale, Record<string, any>> = {
+  'en': enMessages,
+  'zh-HK': zhHKMessages,
+  'zh-CN': zhCNMessages,
 };
 
 interface AppContextType {
@@ -33,27 +45,9 @@ interface AppProviderProps {
 
 export function AppProvider({ children, defaultLocale = 'en' }: AppProviderProps) {
   const [locale, setLocale] = useState<Locale>(defaultLocale);
-  const [messages, setMessages] = useState<Record<string, any>>({});
+  const [messages, setMessages] = useState<Record<string, any>>(translationMap[defaultLocale]);
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const [isClient, setIsClient] = useState(false);
-
-  // Load messages for the current locale
-  const loadMessages = async (localeToLoad: Locale) => {
-    try {
-      const messageModule = await import(`../i18n/${localeToLoad}.json`);
-      setMessages(messageModule.default || messageModule);
-    } catch (error) {
-      console.error(`Failed to load messages for locale: ${localeToLoad}`, error);
-      // Fallback to English messages
-      try {
-        const fallbackModule = await import(`../i18n/en.json`);
-        setMessages(fallbackModule.default || fallbackModule);
-      } catch (fallbackError) {
-        console.error('Failed to load fallback messages', fallbackError);
-        setMessages({});
-      }
-    }
-  };
 
   // Load saved locale from localStorage on mount
   useEffect(() => {
@@ -70,13 +64,11 @@ export function AppProvider({ children, defaultLocale = 'en' }: AppProviderProps
     }
   }, [defaultLocale]);
 
-  // Load messages when locale changes
+  // Switch translations instantly when locale changes
   useEffect(() => {
-    if (locale) {
-      loadMessages(locale);
-      if (isClient) {
-        localStorage.setItem('locale', locale);
-      }
+    setMessages(translationMap[locale]);
+    if (isClient) {
+      localStorage.setItem('locale', locale);
     }
   }, [locale, isClient]);
 

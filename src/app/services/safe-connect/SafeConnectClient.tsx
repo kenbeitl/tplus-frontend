@@ -129,7 +129,7 @@ export default function SafeConnectClient() {
                     <StyledIcon 
                       icon={<Shield size={32} />} 
                       variant="custom"
-                      textColor="#43A047"
+                      textcolor={theme.palette.icon.green}
                       bgColor="white"
                       size={64}
                       square

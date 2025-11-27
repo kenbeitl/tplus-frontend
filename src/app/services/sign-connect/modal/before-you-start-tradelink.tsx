@@ -1,41 +1,28 @@
 'use client';
-import { Box, Card, Link, Typography } from '@mui/material';
+import { Box, Card, Typography } from '@mui/material';
 import { InfoModal, Spacer, StyledIcon, Tag, ActionButton } from '@/components';
 import theme from '@/theme/theme';
 import { TriangleAlert } from 'lucide-react';
+import { useTranslations } from '@/contexts/AppContext';
 
 type Props = {
   open: boolean;
   onClose: () => void;
 };
 
-const TRADELINK_NOTES = [
-  {
-    title: 'Digital Identity Required',
-    context: 'You\'ll need a certified digital identity: iAM Smart or iD-One.',
-    remarks: <>Not sure which one to choose? <Link variant='caption' href="/help-centre" sx={{ color: theme.palette.text.blue }} underline="hover">View here for a quick comparison and application steps.</Link></>,
-  },
-  {
-    title: 'Email Registration on DMSS',
-    context: 'You must register using the same email you used for T+, which will be auto-filled when you proceed.',
-  },
-  {
-    title: 'Single Sign-On (SSO)',
-    context: 'Once registered, your T+ and DMSS account will be connected for seamless future sign-ins.',
-  }
-]
-
 export default function ModalBeforeYouStartTradelink({ open, onClose }: Props) {
+  const t = useTranslations();
+  const TRADELINK_NOTES = t('pages.signConnect.modal.beforeYouStartTradelink.notes');
   return (
     <InfoModal
       open={open}
       onClose={onClose}
       maxWidth={768}
     >
-      <Typography variant="h5" component="h2" sx={{ mb: 1 }}>Before You Start</Typography>
-      <Typography variant="body2" component="p">To sign documents via Tradelink, please note:</Typography>
+      <Typography variant="h5" component="h2" sx={{ mb: 1 }}>{ t('pages.signConnect.modal.beforeYouStartTradelink.title') }</Typography>
+      <Typography variant="body2" component="p">{ t('pages.signConnect.modal.beforeYouStartTradelink.body') }</Typography>
       <Spacer height={20} />
-      {TRADELINK_NOTES.map((note, s) => (
+      {Array.isArray(TRADELINK_NOTES) && TRADELINK_NOTES.map((note, s) => (
         <Box className="flex items-top mb-3" key={`note-${s}`}>
           <StyledIcon 
             icon={s + 1} 
@@ -44,11 +31,8 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: Props) {
             className="mr-3"
           />
           <Box>
-            <Typography variant="body1" component="h4">{note.title}</Typography>
-            <Typography variant="caption" component="p">{note.context}</Typography>
-            {note.remarks && (
-              <Typography variant="caption" component="p">{note.remarks}</Typography>
-            )}
+            <Typography variant="body1" component="h4">{note.text}</Typography>
+            <Typography variant="caption" component="p" dangerouslySetInnerHTML={{ __html: note.description }} />
           </Box>
         </Box>
       ))}
@@ -57,7 +41,7 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: Props) {
           <Tag
             className='text-only text-orange-700!'
             variant="transparent"
-            label="If you register DMSS using iAM Smart, SSO will not be available."
+            label={ t('pages.signConnect.modal.beforeYouStartTradelink.warning') }
             startIcon={<TriangleAlert size={16} color={theme.palette.text.orange} />}
           />
         </Box>
@@ -67,7 +51,7 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: Props) {
         <ActionButton
           autoWidth 
           noIcon
-          buttonText='Continue to sign document'
+          buttonText={ t('pages.signConnect.modal.beforeYouStartTradelink.buttonText') }
           onClick="https://dmss.tradelink.com.hk/dmss/web/login?lang=en_US"
         />
       </Box>

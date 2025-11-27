@@ -1,0 +1,49 @@
+{
+    "title": "SignConnect",
+    "context": "Digital document signing and management platform",
+    "signingPlatform": {
+        "title": "Choose Your Signing Platform",
+        "context": "Select from the available signing platforms to start signing documents securely.",
+        "platforms": [
+            {
+                "icon": "file-pen-line",
+                "name": "Tradelink",
+                "description": "Basic signing functions with iAM Smart+ and iD-One",
+                "list": [
+                    "Basic signing functions",
+                    "Can use iAM Smart+",
+                    "Can use iD-One",
+                    "Government compliant"
+                ],
+                "action": "open-modal",
+                "isActive": true
+            },
+            {
+                "icon": "file-text",
+                "name": "DocuSign",
+                "description": "Industry-leading eSignature solution for secure document signing.",
+                "list": [
+                    "Sign with iD-One",
+                    "Digital IDs from other regions",
+                    "Advanced AI document management",
+                    "Global compliance"
+                ],
+                "isActive": false
+            },
+            {
+                "icon": "brain",
+                "name": "Fadada",
+                "description": "Industry-leading eSignature solution for secure document signing.",
+                "list": [
+                    "Sign with iD-One",
+                    "Digital IDs from China",
+                    "Advanced AI document management",
+                    "AI legal assistant"
+                ],
+                "isActive": false
+            }
+        ]
+    },
+    "selectService": "Select Service",
+    "learnMoreAboutSigningPlatforms": "Learn More about Signing Platforms"
+}

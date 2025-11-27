@@ -144,7 +144,7 @@ export default function BizConnectClient() {
                                 {item.list.map((point) => (
                                     <ListItem key={`${item.title}-point-${point}`}>
                                         <ListItemIcon>
-                                            <CircleCheckBig size={16} color="#43A047" />
+                                            <CircleCheckBig size={16} color={theme.palette.icon.green} />
                                         </ListItemIcon>
                                         <ListItemText primary={point} />
                                     </ListItem>

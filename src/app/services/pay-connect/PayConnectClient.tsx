@@ -28,8 +28,8 @@ export default function PayConnectClient() {
             <Carousel slideNum={2} />
             <Spacer height={40} />
             <Grid container spacing={2}>
-                {Array.isArray(DIALOG_CARD) && DIALOG_CARD.map((item) => (
-                    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={item.id}>
+                {Array.isArray(DIALOG_CARD) && DIALOG_CARD.map((item, index) => (
+                    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={`payconnect-card-${index}`}>
                         <Card variant="outlined" className="p-6 card-hover" sx={{ height: '100%' }}>
                             <Box className="flex items-center">
                             <StyledIcon

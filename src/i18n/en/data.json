@@ -49,6 +49,7 @@
         "loading": "Loading...",
         "error": "Error",
         "success": "Success",
-        "learnMore": "Learn More"
+        "learnMore": "Learn More",
+        "apply": "Apply"
     }
 }

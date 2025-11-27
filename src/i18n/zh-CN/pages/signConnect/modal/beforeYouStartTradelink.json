@@ -1,0 +1,20 @@
+{
+    "title": "开始之前",
+    "body": "通过Tradelink签署文件前，请注意以下事项：",
+    "notes": [
+        {
+            "text": "需要数字身份",
+            "description": "您需要一个经过认证的数字身份：iAM Smart或iD-One。<br>不确定选择哪个？<a href='/help-centre' target='_self'>查看这里获取快速比较和申请步骤。</a>"
+        },
+        {
+            "text": "在DMSS上注册电子邮件",
+            "description": "您必须使用与T+相同的电子邮件进行注册，继续操作时该电子邮件将被自动填充。"
+        },
+        {
+            "text": "单点登录（SSO）",
+            "description": "注册后，您的T+和DMSS账户将连接，以实现无缝的未来登录体验。"
+        }
+    ],
+    "warning": "如果您使用iAM Smart注册DMSS，则无法使用SSO。",
+    "buttonText": "继续签署文件"
+}

@@ -11,7 +11,7 @@ export default function Checklist({ items }: ChecklistProps) {
             {items.map((text, index) => (
                 <ListItem key={index}>
                     <ListItemIcon>
-                        <CircleCheckBig size={16} color="#43A047" />
+                        <CircleCheckBig size={16} color={theme.palette.icon.green} />
                     </ListItemIcon>
                     <ListItemText primary={text} />
                 </ListItem>

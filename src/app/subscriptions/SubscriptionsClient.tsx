@@ -93,7 +93,7 @@ export function SubscriptionPlanCard ({
                         {plan.featureList?.map((f) => (
                             <ListItem key={f} disableGutters>
                                 <ListItemIcon>
-                                    <CircleCheckBig size={16} color="#43A047" />
+                                    <CircleCheckBig size={16} color={theme.palette.icon.green} />
                                 </ListItemIcon>
                                 <ListItemText
                                     slotProps={{ primary: { variant: 'body2', sx: { fontSize: '12px' } }}}
