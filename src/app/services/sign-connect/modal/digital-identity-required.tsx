@@ -14,12 +14,12 @@ import { useTranslations } from '@/contexts/AppContext';
 import { getLucideIcon } from '@/helpers/utils';
 import theme from '@/theme/theme';
 
-type Props = {
+type ModalProps = {
   open: boolean;
   onClose: () => void;
 };
 
-export default function ModalDigitalIdentityRequired({ open, onClose }: Props) {
+export default function ModalDigitalIdentityRequired({ open, onClose }: ModalProps) {
   const t = useTranslations();
   const router = useRouter();
   const [showIdOneModal, setShowIdOneModal] = useState(false);

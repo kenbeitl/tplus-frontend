@@ -1,3 +1,34 @@
 {
-    "title": ""
+    "title": "如何申請 iD-One",
+    "context": "請依照下列步驟申請您的 iD-One 數位身分",
+    "eligibility": {
+        "title": "資格要求",
+        "requirements": [
+            "年滿 18 歲或以上",
+            "持有有效電子護照",
+            "可使用具備相機功能的智慧型手機",
+            "有效的電子郵件地址"
+        ]
+    },
+    "applicationSteps": {
+        "title": "申請步驟：",
+        "steps": [
+            {
+                "title": "下載 Tradelink Sign 手機應用程式",
+                "context": "可在 iOS App Store 與 Google Play Store 下載"
+            },
+            {
+                "title": "準備您的檔案和啟動碼",
+                "context": "準備好您的電子護照以供掃描。在應用程式中輸入啟動碼 \"TPLUS@T6LK30\"。"
+            },
+            {
+                "title": "完成身份驗證",
+                "context": "拍攝自拍照並掃描您的電子護照以進行驗證"
+            }
+        ]
+    },
+    "processTime": {
+        "title": "處理時間",
+        "body": "您的 iD-One 申請通常會在 5 分鐘內處理完畢。獲批准後，您將收到確認電子郵件。"
+    }
 }

@@ -56,12 +56,12 @@ const DIALOG_CARD = [
   },
 ];
 
-type Props = {
+type ModalProps = {
   open: boolean;
   onClose: () => void;
 };
 
-export default function ModalSubscription({ open, onClose }: Props) {
+export default function ModalSubscription({ open, onClose }: ModalProps) {
   return (
     <InfoModal
       open={open}

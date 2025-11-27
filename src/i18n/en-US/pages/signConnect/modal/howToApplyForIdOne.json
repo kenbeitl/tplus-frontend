@@ -1,3 +1,34 @@
 {
-    "title": ""
+    "title": "How to Apply for ID-One",
+    "context": "Follow these steps to apply for your iD-One digital identity",
+    "eligibility": {
+        "title": "Eligibility Requirements",
+        "requirements": [
+            "Must be 18 years or older",
+            "Valid e-passport holder",
+            "Access to a smartphone with camera",
+            "Valid email address"
+        ]
+    },
+    "applicationSteps": {
+        "title": "Application Steps:",
+        "steps": [
+            {
+                "title": "Download the Tradelink Sign Mobile App",
+                "context": "Available on iOS App Store and Google Play Store"
+            },
+            {
+                "title": "Prepare Your Documents and Activation Code",
+                "context": "Have your e-passport ready for scanning. Input activation code \"TPLUS@T6LK30\" in the App."
+            },
+            {
+                "title": "Complete Identity Verification",
+                "context": "Take a selfie and scan your e-passport for verification"
+            }
+        ]
+    },
+    "processTime": {
+        "title": "Processing Time",
+        "body": "Your iD-One application will typically be processed within 5 minutes. You'll receive an email confirmation once approved."
+    }
 }

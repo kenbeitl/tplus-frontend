@@ -1,60 +1,35 @@
 'use client';
-import {
-  Box,
-  Card, CardContent,
-  Grid,
-  List, ListItem, ListItemIcon, ListItemText,
-  Paper,
-  Typography,
-} from '@mui/material';
-import { InfoModal, Spacer, StyledIcon } from '@/components';
-import theme from '@/theme/theme';
 
-type Props = {
+import theme from '@/theme/theme';
+import { Box, Card, List, ListItem, ListItemText, Typography } from '@mui/material';
+import { InfoModal, Spacer, StyledIcon } from '@/components';
+import { useTranslations } from '@/contexts/AppContext';
+
+type ModalProps = {
   open: boolean;
   onClose: () => void;
 };
 
-const ELIGIBILITY_REQUIREMENTS = [
-  'Must be 18 years or older',
-  'Valid e-passport holder',
-  'Access to a smartphone with camera',
-  'Valid email address',
-];
-
-const APPLICATION_STEPS = [
-  {
-    title: 'Download the Tradelink Sign Mobile App',
-    context: 'Available on iOS App Store and Google Play Store',
-  },
-  {
-    title: 'Prepare Your Documents and Activation Code',
-    context: 'Have your e-passport ready for scanning. Input activation code "TPLUS@T6LK30" in the App.'
-  },
-  {
-    title: 'Complete Identity Verification',
-    context: 'Take a selfie and scan your e-passport for verification'
-  }
-];
-  
-
-export default function ModalHowToApplyForIDOne({ open, onClose }: Props) {
+export default function ModalHowToApplyForIDOne({ open, onClose }: ModalProps) {
+  const t = useTranslations();
+  const ELIGIBILITY_REQUIREMENTS = t('pages.signConnect.modal.howToApplyForIdOne.eligibility.requirements');
+  const APPLICATION_STEPS = t('pages.signConnect.modal.howToApplyForIdOne.applicationSteps');
   return (
     <InfoModal
       open={open}
       onClose={onClose}
       maxWidth={768}
     >
-      <Typography variant="h5" component="h2" sx={{ mb: 1 }}>How to Apply for iD-One</Typography>
-      <Typography variant="body2" component="p">Follow these steps to apply for your iD-One digital identity</Typography>
+      <Typography variant="h5" component="h2" sx={{ mb: 1 }}>{ t('pages.signConnect.modal.howToApplyForIdOne.title') }</Typography>
+      <Typography variant="body2" component="p">{ t('pages.signConnect.modal.howToApplyForIdOne.context') }</Typography>
       <Spacer height={20} />
       <Card 
         variant="outlined" 
         className="p-4 bg-blue-50! border-2! border-blue-200!"
       >
-        <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: theme.palette.text.darkBlue, mb: 1 }}>Eligibility Requirements</Typography>
+        <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: theme.palette.text.darkBlue, mb: 1 }}>{ t('pages.signConnect.modal.howToApplyForIdOne.eligibility.title') }</Typography>
         <List sx={{ color: theme.palette.text.blue, fontSize: 12, py: 0, pl: 2, listStyleType: 'disc', '& .MuiListItem-root': { display: 'list-item' } }}>
-          {ELIGIBILITY_REQUIREMENTS.map((requirement, i) => (
+          {Array.isArray(ELIGIBILITY_REQUIREMENTS) && ELIGIBILITY_REQUIREMENTS.map((requirement: string, i: number) => (
             <ListItem key={`requirement-${i}`} sx={{ py: 0 }}>
               <ListItemText primary={requirement} />
             </ListItem>
@@ -62,8 +37,8 @@ export default function ModalHowToApplyForIDOne({ open, onClose }: Props) {
         </List>
       </Card>
       <Spacer height={20} />
-      <Typography variant="h6" component="h3" sx={{ mb: 1 }}>Application Steps:</Typography>
-      {APPLICATION_STEPS.map((step, s) => (
+      <Typography variant="h6" component="h3" sx={{ mb: 1 }}>{ t('pages.signConnect.modal.howToApplyForIdOne.applicationSteps.title') }</Typography>
+      {Array.isArray(APPLICATION_STEPS) && APPLICATION_STEPS.map((step, s) => (
         <Box className="flex items-top mb-3" key={`step-${s}`}>
           <StyledIcon 
             icon={s + 1} 
@@ -82,8 +57,8 @@ export default function ModalHowToApplyForIDOne({ open, onClose }: Props) {
         variant="outlined" 
         className="p-4 bg-green-50! border-2 border-green-200!"
       >
-        <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: theme.palette.text.green, mb: 1 }}>Processing Time</Typography>
-        <Typography variant="caption" component="p">Your iD-One application will typically be processed within 5 minutes. You'll receive an email confirmation once approved.</Typography>
+        <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: theme.palette.text.green, mb: 1 }}>{ t('pages.signConnect.modal.howToApplyForIdOne.processTime.title') }</Typography>
+        <Typography variant="caption" component="p">{ t('pages.signConnect.modal.howToApplyForIdOne.processTime.body') }</Typography>
       </Card>
     </InfoModal>
   );

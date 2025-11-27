@@ -20,10 +20,9 @@ export default function SignConnectClient() {
 
   const DIGITAL_SIGNING_PLATFORMS = t('pages.signConnect.signingPlatform.platforms');
 
-  // Open modal on component mount
   useEffect(() => {
     digitalIdentityModal.handleOpen();
-  }, []); // Empty dependency array = runs once on mount
+  }, []);
 
   return (
     <>

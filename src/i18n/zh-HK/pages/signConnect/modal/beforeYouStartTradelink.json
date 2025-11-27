@@ -16,5 +16,6 @@
         }
     ],
     "warning": "如果您使用iAM Smart註冊DMSS，則無法使用SSO。",
-    "buttonText": "繼續簽署文件"
+    "buttonText": "繼續簽署文件",
+    "link": "https://dmss.tradelink.com.hk/dmss/web/login?lang=zh_HK"
 }

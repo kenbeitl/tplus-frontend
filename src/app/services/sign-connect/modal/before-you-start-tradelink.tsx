@@ -5,12 +5,12 @@ import theme from '@/theme/theme';
 import { TriangleAlert } from 'lucide-react';
 import { useTranslations } from '@/contexts/AppContext';
 
-type Props = {
+type ModalProps = {
   open: boolean;
   onClose: () => void;
 };
 
-export default function ModalBeforeYouStartTradelink({ open, onClose }: Props) {
+export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalProps) {
   const t = useTranslations();
   const TRADELINK_NOTES = t('pages.signConnect.modal.beforeYouStartTradelink.notes');
   return (
@@ -52,7 +52,7 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: Props) {
           autoWidth 
           noIcon
           buttonText={ t('pages.signConnect.modal.beforeYouStartTradelink.buttonText') }
-          onClick="https://dmss.tradelink.com.hk/dmss/web/login?lang=en_US"
+          onClick={ t('pages.signConnect.modal.beforeYouStartTradelink.link') }
         />
       </Box>
     </InfoModal>

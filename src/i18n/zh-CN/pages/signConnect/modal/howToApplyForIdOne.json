@@ -1,3 +1,34 @@
 {
-    "title": ""
+    "title": "如何申请 iD-One",
+    "context": "请按照以下步骤申请您的 iD-One 数码身分",
+    "eligibility": {
+        "title": "资格要求",
+        "requirements": [
+            "年满 18 岁或以上",
+            "持有有效电子护照",
+            "可使用具备相机功能的智能手机",
+            "有效的电邮地址"
+        ]
+    },
+    "applicationSteps": {
+        "title": "申请步骤：",
+        "steps": [
+            {
+                "title": "下载 Tradelink Sign 手机应用程式",
+                "context": "可在 iOS App Store 和 Google Play Store 下载"
+            },
+            {
+                "title": "准备您的文件和激活码",
+                "context": "准备好您的电子护照以供扫描。在应用程式中输入激活码 \"TPLUS@T6LK30\"。"
+            },
+            {
+                "title": "完成身份验证",
+                "context": "拍摄自拍照并扫描您的电子护照以进行验证"
+            }
+        ]
+    },
+    "processTime": {
+        "title": "处理时间",
+        "body": "您的 iD-One 申请通常会在 5 分钟内处理完毕。获批准后，您将收到确认电邮。"
+    }
 }
