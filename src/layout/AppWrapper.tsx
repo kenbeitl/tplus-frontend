@@ -117,10 +117,10 @@ export default function AppWrapper({
 }: { 
   children: React.ReactNode 
 }) {
+  const t = useTranslations();
   const router = useRouter();
   const { data: session, status } = useSession();
   const { locale, setLocale } = useLanguage();
-  const t = useTranslations();
   const { drawerOpen, toggleDrawer } = useDrawer();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [userMenuAnchorEl, setUserMenuAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -131,13 +131,6 @@ export default function AppWrapper({
   const logout = useLogout();
   
   const serviceList: serviceProps[] = t('nav.serviceList');
-
-  // Check authentication status with NextAuth
-  React.useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/login');
-    }
-  }, [status, router]);
 
   // Enable transitions after initial mount and drawer state is loaded
   React.useEffect(() => {

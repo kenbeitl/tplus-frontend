@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const locales = ['en', 'zh-HK', 'zh-CN'];
+const locales = ['en-US', 'zh-HK', 'zh-CN'];
 const rootDir = path.resolve(__dirname, '../i18n');
 
 function mergeAllJsonFiles(dir) {

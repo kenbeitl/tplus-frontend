@@ -26,6 +26,22 @@ export default function LoginClient() {
         }
     }, [session, status, router]);
 
+    // Show loading screen while checking authentication
+    if (status === 'loading' || status === 'authenticated') {
+        return (
+            <Container 
+                maxWidth="md"
+                className="flex items-center justify-center min-h-screen">
+                <Box className="text-center">
+                    <CircularProgress />
+                    <Typography variant="body2" sx={{ mt: 2 }}>
+                        {status === 'loading' ? 'Loading...' : 'Redirecting to dashboard...'}
+                    </Typography>
+                </Box>
+            </Container>
+        );
+    }
+
     const handleLogin = async () => {
         setIsLoading(true);
         try {

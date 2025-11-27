@@ -3,23 +3,23 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 // Static imports for instant translation loading
-import enMessages from '@/i18n/en.json';
+import enMessages from '@/i18n/en-US.json';
 import zhHKMessages from '@/i18n/zh-HK.json';
 import zhCNMessages from '@/i18n/zh-CN.json';
 
-export type Locale = 'en' | 'zh-HK' | 'zh-CN';
+export type Locale = 'en-US' | 'zh-HK' | 'zh-CN';
 
-export const locales: Locale[] = ['en', 'zh-HK', 'zh-CN'];
+export const locales: Locale[] = ['en-US', 'zh-HK', 'zh-CN'];
 
 export const localeLabels: Record<Locale, string> = {
-  'en': 'English',
+  'en-US': 'English',
   'zh-HK': '繁體中文',
   'zh-CN': '简体中文'
 };
 
 // Translation map for instant access
 const translationMap: Record<Locale, Record<string, any>> = {
-  'en': enMessages,
+  'en-US': enMessages,
   'zh-HK': zhHKMessages,
   'zh-CN': zhCNMessages,
 };
@@ -43,7 +43,7 @@ interface AppProviderProps {
   defaultLocale?: Locale;
 }
 
-export function AppProvider({ children, defaultLocale = 'en' }: AppProviderProps) {
+export function AppProvider({ children, defaultLocale = 'en-US' }: AppProviderProps) {
   const [locale, setLocale] = useState<Locale>(defaultLocale);
   const [messages, setMessages] = useState<Record<string, any>>(translationMap[defaultLocale]);
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);

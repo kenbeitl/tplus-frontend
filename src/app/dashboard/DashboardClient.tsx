@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { Box, Card, Grid, Link, Paper, Typography } from "@mui/material";
-import { ArrowRight, Award, Building, Building2, Calendar, CircleCheckBig, CreditCard, FilePenLine, IdCard, Shield, Sparkles, User } from "lucide-react";
+import { ArrowRight, Calendar, CircleCheckBig } from "lucide-react";
 
 import { Carousel, Spacer, StyledIcon, Emoji, ButtonWithFormModal, ActionButton } from "@/components";
 import theme from "@/theme/theme";

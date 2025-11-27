@@ -21,7 +21,7 @@ export interface ServiceItem {
 }
 
 export const serviceServices = {
-  getAll: async (locale: string = 'en'): Promise<Service[]> => {
+  getAll: async (locale: string = 'en-US'): Promise<Service[]> => {
     try {
       
       const response = await strapiService.getCollection<ServiceItem>('services', {
