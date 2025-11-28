@@ -1,0 +1,70 @@
+{
+    "title": "Settings",
+    "userProfile": {
+        "title": "User Profile",
+        "context": "Manage your personal account information and security settings",
+        "loginDetails": "Login Details",
+        "dangerZone": "Danger Zone",
+        "deleteAccount": {
+            "title": "Delete Account",
+            "description": "Permanently delete your account and all data",
+            "buttonText": "Delete My Account"
+        }
+    },
+    "companyProfile": {
+        "title":"Company Profile",
+        "context": "View your company information (contact admin to make changes)",
+        "viewOnly": {
+            "title": "View Only",
+            "description": "You can view company profile information but cannot make changes. Contact your administrator to update company details."
+        },
+        "publicProfile": {
+            "title": "Make my company profile public",
+            "body": "Your profile will be visible in BizConnect when it launches. You can manage this setting now for future use."
+        },
+        "businessIdentifiers": "Business Identifiers"
+    },
+    "form": {
+        "labels": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "companyName": "Company Name",
+            "userRole": "User Role",
+            "email": "Email",
+            "currentPassword": "Current Password",
+            "newPassword": "New Password",
+            "industry": "Select industry",
+            "location": "Location",
+            "websiteURL": "Website URL",
+            "cetsId": "CETS ID",
+            "employeeCount": "Select range",
+            "saveChanges": "Save Changes"
+        },
+        "validation": {
+            "firstNameRequired": "First name is required and must be at least 2 characters",
+            "lastNameRequired": "Last name is required and must be at least 2 characters",
+            "emailRequired": "A valid email is required",
+            "currentPasswordMinLength": "Current password must be at least 6 characters",
+            "newPasswordMinLength": "New password must be at least 6 characters"
+        },
+        "industryOptions": [
+            { "value": "technology", "label": "Technology" },
+            { "value": "finance", "label": "Finance" },
+            { "value": "manufacturing", "label": "Manufacturing" },
+            { "value": "construction", "label": "Construction" }
+        ],
+        "employeeCountOptions": [
+            { "value": "1-10", "label": "1-10" },
+            { "value": "11-50", "label": "11-50" },
+            { "value": "51-200", "label": "51-200" },
+            { "value": "201-500", "label": "201-500" },
+            { "value": "500+", "label": "500+" }
+        ],
+        "businessIdentifierTypeOptions": [
+            { "value": "business_registration_no", "label": "Business Registration No." },
+            { "value": "duns_no", "label": "D-U-N-S No." },
+            { "value": "lei_no", "label": "LEI No." },
+            { "value": "unified_social_credit_identifier", "label": "Unified Social Credit Identifier (统一社会信用代码)" }
+        ]
+    }
+}

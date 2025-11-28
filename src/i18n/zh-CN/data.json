@@ -54,6 +54,22 @@
         "servicesAvailable": "服务已推出",
         "applyNow": "立即申请",
         "getNotified": "获取通知",
-        "contactSupport": "联系支援"
+        "contactSupport": "联系支援",
+        "redirectingTo": "正在重定向到{page}...",
+        "saveChanges": "保存"
+    },
+    "form": {
+        "firstName": "名",
+        "lastName": "姓",
+        "companyName": "公司名称",
+        "userRole": "用户角色",
+        "email": "电子邮件",
+        "currentPassword": "当前密码",
+        "newPassword": "新密码",
+        "industry": "选择行业",
+        "location": "地点",
+        "websiteURL": "网站网址",
+        "cetsId": "CETS ID",
+        "employeeCount": "选择范围"
     }
 }

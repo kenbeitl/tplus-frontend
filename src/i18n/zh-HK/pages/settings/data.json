@@ -1,0 +1,70 @@
+{
+    "title": "設定",
+    "userProfile": {
+        "title": "用戶資料",
+        "context": "管理您的個人帳戶信息和安全設置",
+        "loginDetails": "登錄詳情",
+        "dangerZone": "危險區域",
+        "deleteAccount": {
+            "title": "刪除帳戶",
+            "description": "永久刪除您的帳戶及所有數據",
+            "buttonText": "刪除我的帳戶"
+        }
+    },
+    "companyProfile": {
+        "title":"公司資料",
+        "context": "查看您的公司資料（聯絡管理員以進行更改）",
+        "viewOnly": {
+            "title": "僅供查看",
+            "description": "您可以查看公司資料，但無法進行更改。請聯絡您的管理員以更新公司詳細資料。"
+        },
+        "publicProfile": {
+            "title": "公開我的公司資料",
+            "body": "當 BizConnect 推出時，您的資料將可供查看。您現在可以管理此設置以備將來使用。"
+        },
+        "businessIdentifiers": "商業識別碼"
+    },
+    "form": {
+        "labels": {
+            "firstName": "名字",
+            "lastName": "姓氏",
+            "companyName": "公司名稱",
+            "userRole": "用戶角色",
+            "email": "電郵地址",
+            "currentPassword": "當前密碼",
+            "newPassword": "新密碼",
+            "industry": "選擇行業",
+            "location": "地點",
+            "websiteURL": "網站網址",
+            "cetsId": "CETS ID",
+            "employeeCount": "選擇範圍",
+            "saveChanges": "儲存變更"
+        },
+        "validation": {
+            "firstNameRequired": "名字為必填項且必須至少包含 2 個字符",
+            "lastNameRequired": "姓氏為必填項且必須至少包含 2 個字符",
+            "emailRequired": "需要有效的電郵地址",
+            "currentPasswordMinLength": "當前密碼必須至少包含 6 個字符",
+            "newPasswordMinLength": "新密碼必須至少包含 6 個字符"
+        },
+        "industryOptions": [
+            { "value": "technology", "label": "科技" },
+            { "value": "finance", "label": "金融" },
+            { "value": "manufacturing", "label": "製造業" },
+            { "value": "construction", "label": "建築業" }
+        ],
+        "employeeCountOptions": [
+            { "value": "1-10", "label": "1-10" },
+            { "value": "11-50", "label": "11-50" },
+            { "value": "51-200", "label": "51-200" },
+            { "value": "201-500", "label": "201-500" },
+            { "value": "500+", "label": "500+" }
+        ],
+        "businessIdentifierTypeOptions": [
+            { "value": "business_registration_no", "label": "商業登記號碼" },
+            { "value": "duns_no", "label": "鄧白氏編號" },
+            { "value": "lei_no", "label": "LEI 編號" },
+            { "value": "unified_social_credit_identifier", "label": "統一社會信用代碼" }
+        ]
+    }
+}

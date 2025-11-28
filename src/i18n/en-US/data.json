@@ -54,6 +54,22 @@
         "servicesAvailable": "Services Available",
         "applyNow": "Apply Now",
         "getNotified": "Get Notified",
-        "contactSupport": "Contact Support"
+        "contactSupport": "Contact Support",
+        "redirectingTo": "Redirecting to {page}...",
+        "saveChanges": "Save Changes"
+    },
+    "form": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "companyName": "Company Name",
+        "userRole": "User Role",
+        "email": "Email",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "industry": "Select industry",
+        "location": "Location",
+        "websiteURL": "Website URL",
+        "cetsId": "CETS ID",
+        "employeeCount": "Select range"
     }
 }
