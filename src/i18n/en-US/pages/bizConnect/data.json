@@ -1,0 +1,100 @@
+{
+    "title": "BizConnect",
+    "context": "Your gateway to global business opportunities and partnerships",
+    "prelaunch": {
+        "title": "Expanding Your Business Network",
+        "body": "BizConnect is our comprehensive business intelligence and networking platform designed to help you discover partnerships, conduct due diligence, and expand into new markets with confidence.",
+        "buttonText": "Notify Me at Launch"
+    },
+    "upcoming": {
+        "title": "What's Coming with BizConnect",
+        "features": [
+            {
+                "icon": "search",
+                "variant": "blue-inverted",
+                "title": "Business Matching Network",
+                "description": "Access our extensive database of 1M+ verified businesses across Hong Kong, Mainland China, and overseas markets",
+                "list": [
+                    "Advanced search and filtering capabilities",
+                    "Industry-specific recommendations",
+                    "AI-powered partnership suggestions"
+                ]
+            },
+            {
+                "icon": "file-check",
+                "variant": "purple-inverted",
+                "title": "Due Diligence Services",
+                "description": "Comprehensive background checks and verification services for potential business partners",
+                "list": [
+                    "Company verification and credentials",
+                    "Financial health assessments",
+                    "Regulatory compliance checks"
+                ]
+            },
+            {
+                "icon": "globe",
+                "variant": "green-inverted",
+                "title": "One-Stop Go Global Services",
+                "description": "Everything you need to expand your business into international markets",
+                "list": [
+                    "Market entry strategy consulting",
+                    "International partnership facilitation",
+                    "Cross-border regulatory guidance"
+                ]
+            },
+            {
+                "icon": "target",
+                "variant": "red-inverted",
+                "title": "China Market Entry Services",
+                "description": "Specialized support for businesses looking to enter or expand in the Chinese market",
+                "list": [
+                    "Mainland China business registration",
+                    "Local partner identification",
+                    "Regulatory compliance assistance"
+                ]
+            },
+            {
+                "icon": "users",
+                "variant": "orange-inverted",
+                "title": "Verified Business Network",
+                "description": "Connect with confidence through our verified and authenticated business community",
+                "list": [
+                    "Digital identity verification",
+                    "Business credential authentication",
+                    "Secure communication channels"
+                ]
+            }
+        ]
+    },
+    "builtForYourSuccess": {
+        "title": "Built for Your Success",
+        "context": "BizConnect combines cutting-edge technology with comprehensive business services",
+        "features": [
+            {
+                "icon": "briefcase", 
+                "title": "End-to-End Support",
+                "description": "From initial research to partnership execution, we support you throughout your business expansion journey"
+            },
+            {
+                "icon": "shield", 
+                "title": "Secure & Verified",
+                "description": "All businesses in our network undergo rigorous verification to ensure authenticity and reliability"
+            },
+            {
+                "icon": "globe", 
+                "title": "Global Reach",
+                "description": "Access opportunities across multiple markets including Hong Kong, Mainland China, and international territories"
+            }
+        ]
+    },
+    "stayInformed": {
+        "title": "Stay Informed",
+        "body": "Be the first to know when BizConnect launches and get exclusive early access",
+        "buttonText1": "Get Notified",
+        "buttonText2": "Contact Support"
+    },
+    "developmentInProgress": {
+        "title": "Development in Progress",
+        "body": "Our team is working diligently to bring you BizConnect with all its powerful features. We're currently in active development and expect to launch in the coming months. Thank you for your patience!"
+    }
+}

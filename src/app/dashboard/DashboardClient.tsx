@@ -231,7 +231,7 @@ export default function DashboardClient() {
                             textOnly={true}
                             templateId={CONTACT_SUPPORT_TEMPLATE_ID} 
                             buttonEndIcon={<ArrowRight />}
-                            buttonText={ t('pages.dashboard.contactSupport') }
+                            buttonText={ t('common.contactSupport') }
                         />
                     </Box>
                 </Card>   

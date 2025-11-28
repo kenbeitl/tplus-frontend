@@ -1,0 +1,100 @@
+{
+    "title": "BizConnect",
+    "context": "您通往全球商业机会和合作伙伴关系的门户",
+    "prelaunch": {
+        "title": "扩展您的商业网络",
+        "body": "BizConnect 是我们全面的商业情报和网络平台，旨在帮助您发现合作伙伴，进行尽职调查，并自信地拓展新市场。",
+        "buttonText": "在发布时通知我"
+    },
+    "upcoming": {
+        "title": "BizConnect 即将推出的功能",
+        "features": [
+            {
+                "icon": "search",
+                "variant": "blue-inverted",
+                "title": "商业匹配网络",
+                "description": "访问我们在香港、中国大陆和海外市场的超过 100 万家经过验证的企业的广泛数据库",
+                "list": [
+                    "高级搜索和过滤功能",
+                    "行业特定推荐",
+                    "AI 驱动的合作伙伴建议"
+                ]
+            },
+            {
+                "icon": "file-check",
+                "variant": "purple-inverted",
+                "title": "尽职调查服务",
+                "description": "为潜在商业合作伙伴提供全面的背景调查和验证服务",
+                "list": [
+                    "市场进入策略咨询",
+                    "国际合作伙伴促进",
+                    "跨境监管指导"
+                ]
+            },
+            {
+                "icon": "globe",
+                "variant": "green-inverted",
+                "title": "一站式全球化服务",
+                "description": "满足您拓展业务进入国际市场的所有需求",
+                "list": [
+                    "市场进入策略咨询",
+                    "国际合作伙伴促进",
+                    "跨境监管指导"
+                ]
+            },
+            {
+                "icon": "target",
+                "variant": "red-inverted",
+                "title": "中国市场进入服务",
+                "description": "为希望进入或扩展中国市场的企业提供专业支持",
+                "list": [
+                    "中国大陆企业注册",
+                    "本地合作伙伴识别",
+                    "监管合规协助"
+                ]
+            },
+            {
+                "icon": "users",
+                "variant": "orange-inverted",
+                "title": "验证的商业网络",
+                "description": "通过我们经过验证和认证的商业社区自信地建立联系",
+                "list": [
+                    "数字身份验证",
+                    "商业凭证认证",
+                    "安全通信渠道"
+                ]
+            }
+        ]
+    },
+    "builtForYourSuccess": {
+        "title": "为您的成功而打造",
+        "context": "BizConnect 结合了尖端技术和全面的商业服务，旨在帮助您实现业务目标。",
+        "features": [
+            {
+                "icon": "briefcase",
+                "title": "全面的商业数据库",
+                "description": "访问我们庞大的经过验证的企业数据库，涵盖多个行业和地区。"
+            },
+            {
+                "icon": "building-2",
+                "title": "专业的市场洞察",
+                "description": "利用数据驱动的见解做出明智的业务决策，识别新兴趋势和机会。"
+            },
+            {
+                "icon": "circle-check-big",
+                "title": "可靠的验证服务",
+                "description": "确保与可信赖的合作伙伴建立联系，降低风险并保护您的业务利益。"
+            }
+        ]
+    },
+    "stayInformed": {
+        "title": "保持信息畅通",
+        "body": "注册以在 BizConnect 发布时收到通知，并获取最新的功能更新和新闻。",
+        "buttonText1": "在发布时通知我",
+        "buttonText2": "了解更多关于 BizConnect 的信息"
+    },
+    "developmentInProgress": {
+        "title": "正在开发中",
+        "body": "我们正在努力打造 BizConnect，为您提供无与伦比的商业网络和情报工具。敬请期待！"
+    }
+}

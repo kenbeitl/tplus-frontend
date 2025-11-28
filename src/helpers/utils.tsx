@@ -1,10 +1,11 @@
+import theme from "@/theme/theme";
 import React from "react";
 
-export function getLucideIcon(iconName: string, size: number = 25): React.ReactNode {
+export function getLucideIcon(iconName: string, size: number = 25, color?: string): React.ReactNode {
     const pascalCase = iconName.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
     const icons = require('lucide-react');
-    const IconComponent = icons[pascalCase] as React.ComponentType<{ size?: number }>;
-    return IconComponent ? <IconComponent size={size} /> : null;
+    const IconComponent = icons[pascalCase] as React.ComponentType<{ size?: number, color?: string }>;
+    return IconComponent ? <IconComponent size={size} color={color} /> : null;
 }
 
 export function substituteSlot(search: string, slot: string, value: string | React.ReactNode): React.ReactNode {
