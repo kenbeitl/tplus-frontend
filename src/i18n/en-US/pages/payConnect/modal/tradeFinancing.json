@@ -3,36 +3,36 @@
     "context": "Letters of credit, trade loans, and export financing",
     "providers": [
         {
-        "name":"Standard Chartered Trade",
-        "context": "Comprehensive trade finance solutions for importers and exporters",
-        "features": [
-            "Letters of credit",
-            "Trade loans",
-            "Documentary collections"
-        ],
-        "coverage": "",
-        "minDeposit": "50000",
-        "fees": "",
-        "processingTime":"7-14 business days",
-        "successRate": "",
-        "details": "",
-        "formId": "standard-chartered-trade"
+            "name":"Standard Chartered Trade",
+            "context": "Comprehensive trade finance solutions for importers and exporters",
+            "features": [
+                "Letters of credit",
+                "Trade loans",
+                "Documentary collections"
+            ],
+            "coverage": "",
+            "minDeposit": "50000",
+            "fees": "",
+            "processingTime":"7-14 business days",
+            "successRate": "",
+            "details": "",
+            "formId": "standard-chartered-trade"
         },
         {
-        "name":"ICBC Trade Finance",
-        "context": "Specialized China trade and Belt & Road financing",
-        "features": [
-            "Belt & Road financing",
-            "RMB solutions",
-            "Supply chain finance"
-        ],
-        "coverage": "",
-        "minDeposit": "100000",
-        "fees": "",
-        "processingTime":"5-10 business days",
-        "successRate": "",
-        "details": "",
-        "formId": "icbc-trade-finance"
+            "name":"ICBC Trade Finance",
+            "context": "Specialized China trade and Belt & Road financing",
+            "features": [
+                "Belt & Road financing",
+                "RMB solutions",
+                "Supply chain finance"
+            ],
+            "coverage": "",
+            "minDeposit": "100000",
+            "fees": "",
+            "processingTime":"5-10 business days",
+            "successRate": "",
+            "details": "",
+            "formId": "icbc-trade-finance"
         }
     ]
 }

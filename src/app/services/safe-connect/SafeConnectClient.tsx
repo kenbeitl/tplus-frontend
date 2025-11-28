@@ -1,63 +1,17 @@
 'use client';
 
 import React from "react";
-import { Tag, Spacer, TabList, Tab, TabPanel, StyledIcon, FormField, ButtonWithFormModal } from "@/components";
 import { Badge, Box, Button, Card, FormControlLabel, FormGroup, Grid, List, ListItem, ListItemText, Paper, Switch, Typography } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
-import { AlertTriangle, CircleCheckBig, Download, ExternalLink, Eye, Mail, Monitor, Search, Shield, ShieldAlert, Smartphone, Star, Users, Wifi } from "lucide-react";
+import { AlertTriangle, CircleCheckBig, Download, ExternalLink, Eye, Mail, Search, Shield, ShieldAlert, Smartphone, Star, Users } from "lucide-react";
+
+import { Tag, Spacer, TabList, Tab, TabPanel, StyledIcon, FormField, ButtonWithFormModal } from "@/components";
 import theme from "@/theme/theme";
 import { useTranslations } from '@/contexts/AppContext';
+import { getLucideIcon } from "@/helpers/utils";
 
 const WEB_VULNERABILITY_ASSESSMENT_TEMPLATE_ID = 'safeconnect-web-vulnerability-assessment';
 const NETWORK_BOX_CYBERSECURITY_TEMPLATE_ID = 'safeconnect-network-box-cybersecurity';
-
-const TGuardMobileAppFeature = [
-  {
-    icon: <Shield className="h-8 w-8 text-blue-600 mx-auto mb-2" />,
-    title: "Real-time Protection",
-    description: "Advanced threat detection",
-  },
-  {
-    icon: <Monitor className="h-8 w-8 text-blue-600 mx-auto mb-2" />,
-    title: "App Scanning",
-    description: "Malware analysis",
-  },
-  {
-    icon: <Wifi className="h-8 w-8 text-blue-600 mx-auto mb-2" />,
-    title: "WiFi Security",
-    description: "Public network protection",
-  },
-  {
-    icon: <Eye className="h-8 w-8 text-blue-600 mx-auto mb-2" />,
-    title: "Privacy Monitor",
-    description: "Permission tracking",
-  },
-];
-
-const PROTECTION_FEATURES = [
-  'Real-time breach monitoring',
-  'Identity theft alerts',
-  'Password security recommendations',
-  'Corporate domain monitoring',
-];
-
-const KEY_FEATURES = [
-  "24/7 SOC Monitoring",
-  "Managed Firewall",
-  "Intrusion Prevention",
-  "Threat Intelligence",
-  "Email Security",
-  "Web Filtering",
-]
-
-const REASONS_FOR_TPLUS_SECURITY_PARTNERS = [
-  "Vetted and certified security professionals",
-  "24/7 support and monitoring available",
-  "Competitive pricing with transparent costs",
-  "Local expertise with global standards",
-  "Seamless integration with T+ platform",
-  "Compliance with Hong Kong regulations",
-]
 
 export default function SafeConnectClient() {
   const t = useTranslations();
@@ -66,6 +20,31 @@ export default function SafeConnectClient() {
   const [darkWebResult, setDarkWebResult] = React.useState<any>({
     found: false,
   });
+
+  const translations = React.useMemo(() => {
+    const individuals = t('pages.safeConnect.cybersecurityForIndividuals');
+    const corporates = t('pages.safeConnect.cybersecurityForCorporates');
+
+    interface tGuardFeatureProps {
+      icon: string;
+      title: string;
+      description: string;
+    }
+    
+    return {
+      // Individuals
+      individuals,
+      tGuard: individuals?.tGuard,
+      tGuardApp: individuals?.tGuard?.app,
+      tGuardFeatures: individuals?.tGuard?.app?.features as tGuardFeatureProps[] || [],
+      darkWebFeatures: individuals?.darkWeb?.eligibility?.requirements as string[] || [],
+      
+      // Corporates
+      corporates,
+      networkBoxFeatures: corporates?.consultingServices?.networkBoxForSMEs?.features as string[] || [],
+      securityPartnerReasons: corporates?.consultingServices?.whyTPlusSecurityPartners as string[] || [],
+    };
+  }, [t]);
 
   const handleDarkWebCheck = () => {
     // Mock dark web monitoring result
@@ -100,13 +79,13 @@ export default function SafeConnectClient() {
     <Box component="div" className="relative">
       <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.safeConnect.title") }</Typography>
       <Typography variant="body2" component="p">{ t("pages.safeConnect.context") }</Typography>
-      <Tag label="Services Available" className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
+      <Tag label={t('pages.safeConnect.servicesAvailable')} className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
       <Spacer height={20} />
       <TabContext value={value}>
         <Box>
           <TabList onChange={handleChange} variant="fullWidth">
-            <Tab label="Cybersecurity for Individuals" value="1" disableRipple />
-            <Tab label="Cybersecurity for Corporates" value="2" disableRipple />
+            <Tab label={translations.individuals.title} value="1" disableRipple />
+            <Tab label={translations.corporates.title} value="2" disableRipple />
           </TabList>
         </Box>
         <TabPanel value="1">
@@ -115,11 +94,11 @@ export default function SafeConnectClient() {
               <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
                 <Tag 
                   className="font-bold! text-only text-base!"
-                  label="T Guard Mobile App"
+                  label={translations.tGuard.title}
                   variant="transparent"
                   startIcon={<Smartphone />}
                 />
-                <Typography variant="body2" component="p">Personal cybersecurity protection for your mobile devices with real-time threat monitoring</Typography>
+                <Typography variant="body2" component="p">{translations.tGuard.context}</Typography>
                 <Spacer height={20} />
                 <Paper
                   className="p-6 bg-linear-to-r from-blue-50 to-green-50"
@@ -129,17 +108,17 @@ export default function SafeConnectClient() {
                     <StyledIcon 
                       icon={<Shield size={32} />} 
                       variant="custom"
-                      textcolor={theme.palette.icon.green}
+                      textColor={theme.palette.icon.green}
                       bgColor="white"
                       size={64}
                       square
                       className="mr-3"
                     />
                     <Box component="div">
-                      <Typography variant="body1" component="h4" sx={{ fontWeight: 700 }}>T-Guard Mobile Security</Typography>
-                      <Typography variant="caption" component="p">Comprehensive mobile security with real-time threat protection</Typography>
+                      <Typography variant="body1" component="h4" sx={{ fontWeight: 700 }}>{translations.tGuardApp.name}</Typography>
+                      <Typography variant="caption" component="p">{translations.tGuardApp.description}</Typography>
                       <Box component="div" className="flex gap-4 mt-3">
-                        <Tag label="Free Download" variant="green" />
+                        <Tag label={translations.tGuardApp.freeDownload} variant="green" />
                         <Box component="div" className="flex">
                           <Star className="h-4 w-4 mr-1 text-yellow-500 fill-current" />
                           <span className="text-sm font-medium">4.8</span>
@@ -149,13 +128,15 @@ export default function SafeConnectClient() {
                     </Box>
                   </Box>
                   <Spacer height={20} />
-                  <Button variant="gradient" color="blue" startIcon={<Download size={16} />} sx={{ width: "100%" }} onClick={() => window.open("https://play.google.com/store/apps/details?id=com.tradelinkapps.ekycrass&hl=en", "_blank")}>Download from Google Play</Button>
+                  <Button variant="gradient" color="blue" startIcon={<Download size={16} />} sx={{ width: "100%" }} onClick={() => window.open(translations.tGuardApp.link, "_blank")}>{translations.tGuardApp.buttonText}</Button>
                 </Paper>
                 <Spacer height={20} />
                 <Box component="div" className="grid grid-cols-2 gap-3">
-                  {TGuardMobileAppFeature.map((feature, index) => (
-                    <Box key={index} component="div" className="text-center p-3 bg-gray-50 rounded-lg">
-                      {feature.icon}
+                  {translations.tGuardFeatures.map((feature, index: number) => (
+                    <Box key={`tg-${index}`} component="div" className="text-center p-3 bg-gray-50 rounded-lg">
+                      <Box component="div" className="h-8 w-8 text-blue-600 mx-auto mb-2">
+                        { getLucideIcon(feature.icon, 32) }
+                      </Box>
                       <Box component="div" className="font-medium text-sm mb-1">{feature.title}</Box>
                       <Box component="div" className="text-xs text-muted-foreground text-gray-400">{feature.description}</Box>
                     </Box>
@@ -256,7 +237,7 @@ export default function SafeConnectClient() {
                   >
                     <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: theme.palette.text.darkBlue, mb: 1 }}>Eligibility Requirements</Typography>
                     <List sx={{ color: theme.palette.text.blue, fontSize: 12, py: 0, pl: 2, listStyleType: 'disc', '& .MuiListItem-root': { display: 'list-item' } }}>
-                      {PROTECTION_FEATURES.map((features, i) => (
+                      {translations.darkWebFeatures.map((features: string, i: number) => (
                         <ListItem key={`features-${i}`} sx={{ py: 0 }}>
                           <ListItemText primary={features} />
                         </ListItem>
@@ -325,7 +306,7 @@ export default function SafeConnectClient() {
                 <Typography variant="body2" component="p">Professional cybersecurity services and solutions from trusted partners</Typography>
                 <Spacer height={20} />
                 <Card variant="outlined" className="px-5 py-7 card-hover">
-                    <Box component="div" className="flex items-center justify-around mb-3">
+                    <Box component="div" className="flex items-center mb-3">
                       <Typography variant="body1" component="h4" className="font-bold!">Network Box Managed Security Services for SMEs</Typography>
                       <Tag
                         variant="white" 
@@ -354,7 +335,7 @@ export default function SafeConnectClient() {
                     </Box>
                     <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700, mb: 1 }}>Key Features & Capabilities:</Typography>
                     <Box component="div" className="flex flex-wrap gap-2 mb-2">
-                      {KEY_FEATURES.map((feature, index) => (
+                      {translations.networkBoxFeatures.map((feature: string, index: number) => (
                         <Box component="div" key={`feature-${index}`}>
                           <Tag 
                             className="h-6 w-auto!"
@@ -369,7 +350,7 @@ export default function SafeConnectClient() {
                 <Card variant="outlined" className="p-5 bg-blue-50! border-blue-200!">
                   <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: theme.palette.text.darkBlue, mb: 1 }}>Why Choose T+ Security Partners?</Typography>
                   <List sx={{ color: theme.palette.text.darkBlue, fontSize: 12, py: 0, pl: 2, listStyleType: 'disc', '& .MuiListItem-root': { display: 'list-item' } }}>
-                    {REASONS_FOR_TPLUS_SECURITY_PARTNERS.map((reason, i) => (
+                    {translations.securityPartnerReasons.map((reason: string, i: number) => (
                       <ListItem key={`reason-${i}`} sx={{ py: 0 }}>
                         <ListItemText primary={reason} />
                       </ListItem>

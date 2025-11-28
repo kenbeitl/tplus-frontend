@@ -3,7 +3,7 @@ import SubscriptionsClient from "./SubscriptionsClient";
 import { requireAuth } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: 'Subscriptions | TPlus',
+  title: 'Subscriptions | T+',
 }
 
 export default async function Subscriptions() {

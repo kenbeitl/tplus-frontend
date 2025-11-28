@@ -3,7 +3,7 @@ import SafeConnectClient from "./SafeConnectClient";
 import { requireAuth } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: 'SafeConnect | Services | TPlus',
+  title: 'SafeConnect | Services | T+',
 }
 
 export default async function SafeConnect() {

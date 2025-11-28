@@ -38,22 +38,22 @@
         "list": [
             {
                     "icon": "file-pen-line",
-                    "title": "签署连线",
+                    "title": "SignConnect",
                     "context": "通过 Tradelink 的 DMSS 使用经过认证的数字身份签署文件（签署配额有限）。"
             },
             {
                     "icon": "credit-card",
-                    "title": "支付连线",
+                    "title": "PayConnect",
                     "context": "享受 T+ 合作伙伴提供的金融服务独家优惠。"
             },
             {
                     "icon": "building2",
-                    "title": "政府连线",
+                    "title": "GovConnect",
                     "context": "使用智能贸易功能自动化和增强贸易合规性。"
             },
             {
                     "icon": "shield",
-                    "title": "安全连线",
+                    "title": "SafeConnect",
                     "context": "访问个人和企业的网络安全服务（某些功能可能受限）。"
             }
         ],
@@ -67,7 +67,7 @@
         "list": [
             {
                 "icon": "file-pen-line",
-                "title": "签署连线",
+                "title": "SignConnect",
                 "context": "更多高级签署功能，提升您的数字签署体验。",
                 "isActive": true
             },
@@ -79,13 +79,13 @@
             },
             {
                 "icon": "building",
-                "title": "政府连线",
+                "title": "GovConnect",
                 "context": "增强的政府服务，提升贸易合规性。",
                 "isActive": true
             },
             {
                 "icon": "shield",
-                "title": "安全连线",
+                "title": "SafeConnect",
                 "context": "先进的网络安全功能，保护您的数字资产。",
                 "isActive": true
             },

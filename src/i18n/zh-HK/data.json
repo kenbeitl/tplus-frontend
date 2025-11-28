@@ -28,7 +28,7 @@
                 "isActive": true
             },
             {
-                "name": "安全連線",
+                "name": "SafeConnect",
                 "icon": "shield",
                 "path": "/services/safe-connect",
                 "isActive": true

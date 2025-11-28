@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { requireAuth } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: 'Services | TPlus',
+  title: 'Services | T+',
 }
 
 export default async function ServicesPage() {

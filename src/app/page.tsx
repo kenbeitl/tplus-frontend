@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import LoginClient from "./login/LoginClient";
 
 export const metadata: Metadata = {
-  title: "Login | TPlus",
+  title: "Login | T+",
   description: "Secure login portal for TPlus application",
 };
 

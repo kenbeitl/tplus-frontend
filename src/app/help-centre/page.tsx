@@ -3,7 +3,7 @@ import HelpCentreClient from "./HelpCentreClient";
 import { requireAuth } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: 'Help Centre | TPlus',
+  title: 'Help Centre | T+',
 }
 
 export default async function HelpCentre() {

@@ -3,7 +3,7 @@ import SettingsClient from "./SettingsClient";
 import { requireAuth } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: 'Settings | TPlus',
+  title: 'Settings | T+',
 }
 
 export default async function Settings() {

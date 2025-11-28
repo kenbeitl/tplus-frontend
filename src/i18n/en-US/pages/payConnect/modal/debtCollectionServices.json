@@ -3,36 +3,36 @@
     "context": "Professional debt recovery and collection services",
     "providers": [
         {
-        "name":"Intrum Debt Collection",
-        "context": "Professional debt collection with high success rates",
-        "features": [
-            "Amicable collection",
-            "Legal proceedings",
-            "Portfolio management"
-        ],
-        "coverage": "",
-        "minDeposit":"",
-        "fees": "",
-        "processingTime":"30-90 days",
-        "successRate": "75% recovery rate",
-        "details": "",
-        "formId": "intrum-debt-collection"
+            "name":"Intrum Debt Collection",
+            "context": "Professional debt collection with high success rates",
+            "features": [
+                "Amicable collection",
+                "Legal proceedings",
+                "Portfolio management"
+            ],
+            "coverage": "",
+            "minDeposit":"",
+            "fees": "",
+            "processingTime":"30-90 days",
+            "successRate": "75% recovery rate",
+            "details": "",
+            "formId": "intrum-debt-collection"
         },
         {
-        "name":"EOS Debt Recovery",
-        "context": "International debt collection with digital innovation",
-        "features": [
-            "Multi-jurisdiction",
-            "Digital solutions",
-            "Compliance focus"
-        ],
-        "coverage": "",
-        "minDeposit":"",
-        "fees": "",
-        "processingTime":"45-120 days",
-        "successRate": "70% recovery rate",
-        "details": "",
-        "formId": "eos-debt-recovery"
+            "name":"EOS Debt Recovery",
+            "context": "International debt collection with digital innovation",
+            "features": [
+                "Multi-jurisdiction",
+                "Digital solutions",
+                "Compliance focus"
+            ],
+            "coverage": "",
+            "minDeposit":"",
+            "fees": "",
+            "processingTime":"45-120 days",
+            "successRate": "70% recovery rate",
+            "details": "",
+            "formId": "eos-debt-recovery"
         }
     ]
 }

@@ -53,7 +53,7 @@
             },
             {
                 "icon": "shield",
-                "title": "安全連線",
+                "title": "SafeConnect",
                 "context": "訪問個人和企業的網絡安全服務（某些功能可能受限）。"
             }
         ],
@@ -85,7 +85,7 @@
             },
             {
                 "icon": "shield",
-                "title": "安全連線",
+                "title": "SafeConnect",
                 "context": "增強的網絡安全服務，保障個人和企業的數字安全。",
                 "isActive": true
             },

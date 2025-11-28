@@ -3,7 +3,7 @@ import DashboardClient from "./DashboardClient";
 import { requireAuth } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: 'Dashboard | TPlus',
+  title: 'Dashboard | T+',
 }
 
 export default async function DashboardPage() {
