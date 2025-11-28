@@ -1,0 +1,58 @@
+{
+    "title": "個人網路安全",
+    "tGuard": {
+        "title": "T Guard行動應用程式",
+        "context": "為您的行動裝置提供個人網路安全保護，即時監控威脅",
+        "app": {
+            "name": "T-Guard行動安全",
+            "description": "提供全面的行動安全和即時威脅保護",
+            "freeDownload": "免費下載",
+            "link": "https://play.google.com/store/apps/details?id=com.tradelinkapps.ekycrass&hl=zh_CN",
+            "buttonText": "從Google Play下載",
+            "features": [
+                {
+                    "icon": "shield",
+                    "title": "即時偵測",
+                    "description": "先進的威脅偵測"
+                },
+                {
+                    "icon": "monitor",
+                    "title": "應用掃描",
+                    "description": "惡意軟體分析"
+                },
+                {
+                    "icon": "wifi",
+                    "title": "WiFi安全",
+                    "description": "公共網路保護"
+                },
+                {
+                    "icon": "eye",
+                    "title": "隱私監控",
+                    "description": "權限追蹤"
+                }
+            ]
+        }
+    },
+    "darkWeb": {
+        "title": "暗網監控",
+        "context": "檢查您的電子郵件或公司資料是否在資料外洩中被洩露",
+        "emailBreachCheck": {
+            "title": "電子郵件外洩檢查",
+            "setDarkWebResult": "設定暗網結果為",
+            "placeholder": "輸入電子郵件地址以檢查外洩情況",
+            "buttonText": "立即檢查",
+            "remarks": "我們將搜尋已知的資料外洩資料庫，以檢查您的電子郵件是否被外洩。",
+            "noBreachFound": "未發現外洩",
+            "breachFound": "發現外洩"
+        },
+        "eligibility": {
+            "title": "資格要求",
+            "requirements": [
+                "即時外洩監控",
+                "身份盜用警報",
+                "密碼安全建議",
+                "企業網域監控"
+            ]
+        }
+    }
+}

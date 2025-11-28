@@ -2,27 +2,27 @@
     "nav": {
         "dashboard": "儀表板",
         "services": "服務",
-         "serviceList": [
+        "serviceList": [
             {
-                "name": "簽署連線",
+                "name": "SignConnect",
                 "icon": "file-pen-line",
                 "path": "/services/sign-connect",
                 "isActive": true
             },
             {
-                "name": "商業連線",
+                "name": "BizConnect",
                 "icon": "building2",
                 "path": "/services/biz-connect",
                 "isActive": false
             },
             {
-                "name": "支付連線",
+                "name": "PayConnect",
                 "icon": "credit-card",
                 "path": "/services/pay-connect",
                 "isActive": true
             },
             {
-                "name": "政府連線",
+                "name": "GovConnect",
                 "icon": "building",
                 "path": "/services/gov-connect",
                 "isActive": true
@@ -50,6 +50,8 @@
         "error": "錯誤",
         "success": "成功",
         "learnMore": "了解更多",
-        "apply": "申請"
+        "apply": "申請",
+        "servicesAvailable": "服務已推出",
+        "applyNow": "立即申請"
     }
 }

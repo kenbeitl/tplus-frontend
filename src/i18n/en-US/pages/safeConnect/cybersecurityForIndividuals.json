@@ -1,0 +1,58 @@
+{
+    "title": "Cybersecurity for Individuals",
+    "tGuard": {
+        "title": "T Guard Mobile App",
+        "context": "Personal cybersecurity protection for your mobile devices with real-time threat monitoring",
+        "app": {
+            "name": "T-Guard Mobile Security",
+            "description": "Comprehensive mobile security with real-time threat protection",
+            "freeDownload": "Free Download",
+            "link": "https://play.google.com/store/apps/details?id=com.tradelinkapps.ekycrass&hl=en",
+            "buttonText": "Download from Google Play",
+            "features": [
+                {
+                    "icon": "shield",
+                    "title": "Real-time Detection",
+                    "description": "Advanced threat detection"
+                },
+                {
+                    "icon": "monitor",
+                    "title": "App Scanning",
+                    "description": "Malware analysis"
+                },
+                {
+                    "icon": "wifi",
+                    "title": "WiFi Security",
+                    "description": "Public network protection"
+                },
+                {
+                    "icon": "eye",
+                    "title": "Privacy Monitor",
+                    "description": "Permission tracking"
+                }
+            ]
+        }
+    },
+    "darkWeb": {
+        "title": "Dark Web Monitoring",
+        "context": "Check if your email or company data has been compromised in data breaches",
+        "emailBreachCheck": {
+            "title": "Email Breach Check",
+            "setDarkWebResult": "Set Dark Web Result to",
+            "placeholder": "Enter email address to check for breaches",
+            "buttonText": "Check Now",
+            "remarks": "We'll search across known data breach databases to check if your email has been compromised.",
+            "noBreachFound": "No Breaches Found",
+            "breachFound": "Breaches Found"
+        },
+        "eligibility": {
+            "title": "Eligibility Requirements",
+            "requirements": [
+                "Real-time breach monitoring",
+                "Identity theft alerts",
+                "Password security recommendations",
+                "Corporate domain monitoring"
+            ]
+        }
+    }
+}

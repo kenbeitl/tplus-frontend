@@ -37,12 +37,18 @@ export default function SafeConnectClient() {
       tGuard: individuals?.tGuard,
       tGuardApp: individuals?.tGuard?.app,
       tGuardFeatures: individuals?.tGuard?.app?.features as tGuardFeatureProps[] || [],
+      darkWeb: individuals?.darkWeb,
+      darkWebEligibility: individuals?.darkWeb?.eligibility,
       darkWebFeatures: individuals?.darkWeb?.eligibility?.requirements as string[] || [],
       
       // Corporates
       corporates,
-      networkBoxFeatures: corporates?.consultingServices?.networkBoxForSMEs?.features as string[] || [],
-      securityPartnerReasons: corporates?.consultingServices?.whyTPlusSecurityPartners as string[] || [],
+      webVulnerability: corporates?.webVulnerability,
+      consultingServices: corporates?.consultingServices,
+      networkBoxForSMEs: corporates?.consultingServices?.networkBoxForSMEs,
+      networkBoxFeatures: corporates?.consultingServices?.networkBoxForSMEs?.key?.features as string[] || [],
+      whyTPlusSecurityPartners: corporates?.consultingServices?.whyTPlusSecurityPartners,
+      securityPartnerReasons: corporates?.consultingServices?.whyTPlusSecurityPartners?.reasons as string[] || [],
     };
   }, [t]);
 
@@ -79,7 +85,7 @@ export default function SafeConnectClient() {
     <Box component="div" className="relative">
       <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.safeConnect.title") }</Typography>
       <Typography variant="body2" component="p">{ t("pages.safeConnect.context") }</Typography>
-      <Tag label={t('pages.safeConnect.servicesAvailable')} className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
+      <Tag label={t('common.servicesAvailable')} className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
       <Spacer height={20} />
       <TabContext value={value}>
         <Box>
@@ -148,14 +154,14 @@ export default function SafeConnectClient() {
               <Card variant="outlined" sx={{ px: 3, pt: 3, pb: 6, height: '100%' }}>
                 <Tag 
                   className="font-bold! text-only text-base!"
-                  label="Dark Web Monitoring"
+                  label={translations.darkWeb.title}
                   variant="transparent"
                   startIcon={<Eye />}
                 />
-                <Typography variant="body2" component="p">Check if your email or company data has been compromised in data breaches</Typography>
+                <Typography variant="body2" component="p">{translations.darkWeb.context}</Typography>
                 <Spacer height={20} />
                   <Box component="div" className="flex justify-between items-center">
-                    <Typography variant="body1" component="h4" className="font-bold! mb-3">Email Breach Check</Typography>
+                    <Typography variant="body1" component="h4" className="font-bold! mb-3">{translations.darkWeb.emailBreachCheck.title}</Typography>
                     <FormGroup>
                       <FormControlLabel 
                         control={
@@ -164,7 +170,7 @@ export default function SafeConnectClient() {
                             onChange={() => setDarkWebResult({...darkWebResult, found: !darkWebResult.found})} 
                           />
                         } 
-                        label={`Set Dark Web Result to ${(!darkWebResult?.found).toString()}`} 
+                        label={`${translations.darkWeb.emailBreachCheck.setDarkWebResult} ${(!darkWebResult?.found).toString()}`} 
                       />
                     </FormGroup>
                   </Box>
@@ -172,14 +178,14 @@ export default function SafeConnectClient() {
                     <FormField
                       name="darkWebEmail"
                       value={darkWebEmail}
-                      placeholder="Enter email address to check for breaches"
+                      placeholder={translations.darkWeb.emailBreachCheck.placeholder}
                       onChange={(name, value) => setDarkWebEmail(value)}
                       onBlur={() => {}}
                       size="small"
                     />
-                    <Button variant="gradient" color="blue" startIcon={<Search size={16} />} sx={{ width: "100%", mt: 1 }} onClick={handleDarkWebCheck} disabled={!darkWebEmail || !darkWebEmail.includes('@')}>Check Now</Button>
+                    <Button variant="gradient" color="blue" startIcon={<Search size={16} />} sx={{ width: "100%", mt: 1 }} onClick={handleDarkWebCheck} disabled={!darkWebEmail || !darkWebEmail.includes('@')}>{translations.darkWeb.emailBreachCheck.buttonText}</Button>
                   </div>
-                  <Typography variant="caption" component="p" sx={{ mt: 1 }}>We'll search across known data breach databases to check if your email has been compromised.</Typography>
+                  <Typography variant="caption" component="p" sx={{ mt: 1 }}>{translations.darkWeb.emailBreachCheck.remarks}</Typography>
                   <Spacer height={20} />
                   {darkWebResult && (
                     <>
@@ -235,7 +241,7 @@ export default function SafeConnectClient() {
                     variant="outlined" 
                     className="p-4 bg-blue-50! border-2! border-blue-200!"
                   >
-                    <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: theme.palette.text.darkBlue, mb: 1 }}>Eligibility Requirements</Typography>
+                    <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: theme.palette.text.darkBlue, mb: 1 }}>{translations.darkWebEligibility.title}</Typography>
                     <List sx={{ color: theme.palette.text.blue, fontSize: 12, py: 0, pl: 2, listStyleType: 'disc', '& .MuiListItem-root': { display: 'list-item' } }}>
                       {translations.darkWebFeatures.map((features: string, i: number) => (
                         <ListItem key={`features-${i}`} sx={{ py: 0 }}>
@@ -254,42 +260,48 @@ export default function SafeConnectClient() {
               <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
                 <Tag 
                   className="font-bold! text-only text-base!"
-                  label="Web Vulnerability Assessment"
+                  label={translations.webVulnerability.title}
                   variant="transparent"
                   startIcon={<Search />}
                 />
-                <Typography variant="body2" component="p">Comprehensive website security scanning and vulnerability detection with detailed reporting</Typography>
+                <Typography variant="body2" component="p">{translations.webVulnerability.context}</Typography>
                 <Spacer height={20} />
                 <Card variant="outlined" className="p-3 bg-green-50! border-green-200!">
                   <Tag 
                     className="font-bold! text-only text-base!"
-                    label="Free Annual Assessment Available"
+                    label={translations.webVulnerability.freeAnnual.title}
                     variant="transparent"
                     startIcon={<CircleCheckBig />}
                   />
-                  <Typography variant="caption" component="p">Get one comprehensive vulnerability assessment per year at no cost. Additional assessments available for purchase at competitive rates.</Typography>
+                  <Typography variant="caption" component="p">{translations.webVulnerability.freeAnnual.body}</Typography>
                 </Card>
                 <Spacer height={20} />
                 <Box component="div" className="flex items-center justify-between mb-3">
-                  <Typography variant="body1" component="h4" className="font-bold!">Request New Assessment</Typography>
+                  <Typography variant="body1" component="h4" className="font-bold!">{translations.webVulnerability.newRequest.title}</Typography>
                   <Tag
                     variant="green" 
                     className="text-xs!"
-                    label="Free Annual Quota Available"
+                    label={translations.webVulnerability.newRequest.freeQuota}
                   />
                 </Box>
                 <ButtonWithFormModal
                   templateId={WEB_VULNERABILITY_ASSESSMENT_TEMPLATE_ID} 
                   buttonStartIcon={<Search size={20} />}
-                  buttonText="Request Free Assessment"
+                  buttonText={translations.webVulnerability.newRequest.buttonText}
                 />
                 <Spacer height={40} />
                 <Card variant="outlined" className="p-5 bg-blue-50! border-blue-200!">
                   <Box component="div" className="flex">
                     <Mail size={24} className="text-blue-600 mr-3 shrink-0" />
                     <Box>
-                      <Typography variant="subtitle1" component="p" color={theme.palette.text.darkBlue} sx={{ fontWeight: 700 }}>Assessment Reports Delivered via Email</Typography>
-                      <Typography variant="caption" component="p" color={theme.palette.text.blue}>All web vulnerability assessment reports will be sent directly to your registered email address upon completion. Reports are not stored in the T+ platform for security and privacy reasons.<br/><br/>Please check your email inbox (and spam folder) for assessment reports after requesting a scan.</Typography>
+                      <Typography variant="subtitle1" component="p" color={theme.palette.text.darkBlue} sx={{ fontWeight: 700 }}>
+                        {translations.webVulnerability.reportsViaEmail.title}
+                      </Typography>
+                      <Typography variant="caption" component="p" color={theme.palette.text.blue}>
+                        {/* TODO: Replace by rich text block */}
+                        {translations.webVulnerability.reportsViaEmail.line1}<br/><br/>
+                        {translations.webVulnerability.reportsViaEmail.line2}
+                      </Typography>
                     </Box>
                   </Box>
                 </Card>
@@ -299,41 +311,41 @@ export default function SafeConnectClient() {
               <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
                 <Tag 
                   className="font-bold! text-only text-base!"
-                  label="Consulting Services"
+                  label={translations.consultingServices.title}
                   variant="transparent"
                   startIcon={<Users />}
                 />
-                <Typography variant="body2" component="p">Professional cybersecurity services and solutions from trusted partners</Typography>
+                <Typography variant="body2" component="p">{translations.consultingServices.context}</Typography>
                 <Spacer height={20} />
                 <Card variant="outlined" className="px-5 py-7 card-hover">
                     <Box component="div" className="flex items-center mb-3">
-                      <Typography variant="body1" component="h4" className="font-bold!">Network Box Managed Security Services for SMEs</Typography>
+                      <Typography variant="body1" component="h4" className="font-bold!">{translations.networkBoxForSMEs.title}</Typography>
                       <Tag
                         variant="white" 
                         className="text-xs! mx-2"
-                        label="Managed Security"
+                        label={translations.networkBoxForSMEs.tag}
                       />
                       <Box component="div" className="flex items-center">
                         <Star className="h-4 w-4 mr-1 text-yellow-500 fill-current" />
                         <span className="text-sm font-medium">4.8</span>
                       </Box>
                     </Box>
-                    <Typography variant="caption" component="p" sx={{ mb: 3 }}>Comprehensive managed security services providing 24/7 SOC monitoring, managed firewall, and threat intelligence specifically designed for small and medium enterprises.</Typography>
-                    <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700 }}>Provider:</Typography>
-                    <Typography variant="body2" component="p" sx={{ mb: 3 }}>Network Box</Typography>
-                    <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700 }}>Starting at:</Typography>
-                    <Typography variant="body2" component="p" sx={{ mb: 3 }}>From $800/month</Typography>
+                    <Typography variant="caption" component="p" sx={{ mb: 3 }}>{translations.networkBoxForSMEs.body}</Typography>
+                    <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700 }}>{translations.networkBoxForSMEs.provider.title}</Typography>
+                    <Typography variant="body2" component="p" sx={{ mb: 3 }}>{translations.networkBoxForSMEs.provider.name}</Typography>
+                    <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700 }}>{translations.networkBoxForSMEs.startingAt.title}</Typography>
+                    <Typography variant="body2" component="p" sx={{ mb: 3 }}>{translations.networkBoxForSMEs.startingAt.price}</Typography>
                     <Box component="div" className="flex justify-end mb-2">
                       <ButtonWithFormModal
                         buttonProps={{
                           sx:{ width: 'auto' }
                         }}                        
                         templateId={NETWORK_BOX_CYBERSECURITY_TEMPLATE_ID}
-                        buttonText="Learn More"
+                        buttonText={t('common.learnMore')}
                         buttonStartIcon={<ExternalLink size={16} />}
                       />
                     </Box>
-                    <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700, mb: 1 }}>Key Features & Capabilities:</Typography>
+                    <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700, mb: 1 }}>{translations.networkBoxForSMEs.key.title}</Typography>
                     <Box component="div" className="flex flex-wrap gap-2 mb-2">
                       {translations.networkBoxFeatures.map((feature: string, index: number) => (
                         <Box component="div" key={`feature-${index}`}>
@@ -348,7 +360,7 @@ export default function SafeConnectClient() {
                 </Card>
                 <Spacer height={20} />
                 <Card variant="outlined" className="p-5 bg-blue-50! border-blue-200!">
-                  <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: theme.palette.text.darkBlue, mb: 1 }}>Why Choose T+ Security Partners?</Typography>
+                  <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: theme.palette.text.darkBlue, mb: 1 }}>{translations.whyTPlusSecurityPartners.title}</Typography>
                   <List sx={{ color: theme.palette.text.darkBlue, fontSize: 12, py: 0, pl: 2, listStyleType: 'disc', '& .MuiListItem-root': { display: 'list-item' } }}>
                     {translations.securityPartnerReasons.map((reason: string, i: number) => (
                       <ListItem key={`reason-${i}`} sx={{ py: 0 }}>

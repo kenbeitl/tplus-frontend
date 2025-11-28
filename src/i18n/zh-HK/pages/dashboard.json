@@ -38,17 +38,17 @@
         "list": [
             {
                 "icon": "file-pen-line",
-                "title": "簽署連線",
+                "title": "SignConnect",
                 "context": "通過 Tradelink 的 DMSS 使用經過認證的數字身份簽署文件（簽署配額有限）。"
             },
             {
                 "icon": "credit-card",
-                "title": "支付連線",
+                "title": "PayConnect",
                 "context": "享受 T+ 合作夥伴提供的金融服務獨家優惠。"
             },
             {
                 "icon": "building2",
-                "title": "政府連線",
+                "title": "GovConnect",
                 "context": "使用智能貿易功能自動化和增強貿易合規性。"
             },
             {
@@ -67,19 +67,19 @@
         "list": [
             {
                 "icon": "file-pen-line",
-                "title": "簽署連線",
+                "title": "SignConnect",
                 "context": "更多進階簽署功能，提升您的數位簽章體驗。",
                 "isActive": true
             },
             {
                 "icon": "building",
-                "title": "商業連線",
+                "title": "BizConnect",
                 "context": "全面的商業情報、盡職調查服務和全球市場進入支持，敬請期待。",
                 "isActive": false
             },
             {
                 "icon": "building2",
-                "title": "政府連線",
+                "title": "GovConnect",
                 "context": "更多智能貿易功能，助您輕鬆應對貿易合規挑戰。",
                 "isActive": true
             },

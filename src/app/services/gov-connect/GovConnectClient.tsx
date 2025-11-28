@@ -14,7 +14,7 @@ export default function GovConnectClient() {
         <Box component="div" className="relative">
         <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.govConnect.title") }</Typography>
         <Typography variant="body2" component="p">{ t("pages.govConnect.context") }</Typography>
-        <Tag label={ t('pages.govConnect.servicesAvailable') } className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
+        <Tag label={ t('common.servicesAvailable') } className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
         <Spacer height={20} />
         <Grid container spacing={2}>
             {Array.isArray(GOV_SERVICE_LIST) && GOV_SERVICE_LIST.map((service, index: number) => (
@@ -38,7 +38,7 @@ export default function GovConnectClient() {
                             <ButtonWithFormModal
                                 templateId={DUAL_DECLARATION_TEMPLATE_ID}
                                 buttonEndIcon={<ArrowRight />}
-                                buttonText={t('pages.govConnect.applyNow')}
+                                buttonText={t('common.applyNow')}
                             />
                         ) : (
                             <ActionButton

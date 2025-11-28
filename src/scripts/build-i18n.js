@@ -19,13 +19,13 @@ function mergeAllJsonFiles(dir) {
         const subContent = readSubDir(fullPath);
         
         if (parentKey) {
-          // Nested directory (e.g., payConnect/modal)
+          // Nested directory
           if (!result[parentKey]) {
             result[parentKey] = {};
           }
           result[parentKey][dirName] = subContent;
         } else {
-          // Top-level directory (e.g., pages, payConnect)
+          // Top-level directory
           result[dirName] = subContent;
         }
       } else if (item.isFile() && path.extname(item.name) === '.json') {

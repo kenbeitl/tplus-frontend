@@ -50,6 +50,8 @@
         "error": "Error",
         "success": "Success",
         "learnMore": "Learn More",
-        "apply": "Apply"
+        "apply": "Apply",
+        "servicesAvailable": "Services Available",
+        "applyNow": "Apply Now"
     }
 }
