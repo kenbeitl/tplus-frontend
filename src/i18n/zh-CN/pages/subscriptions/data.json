@@ -1,0 +1,136 @@
+{
+    "title": "订阅",
+    "context": "管理您的订阅计划并探索升级选项",
+    "welcome": {
+        "title": "欢迎礼物：6 个月免费专业计划",
+        "body": "作为尊贵的新会员，您可免费享受我们专业计划的全部功能长达 6 个月！探索所有高级功能，包括 GovConnect、BizConnect、高级安全性和每月 100 个代币。",
+        "daysRemainingSlot": "剩余 {days} 天",
+        "trialEndsSlot": "试用结束日期：{date}"
+    },
+    "currentPlan": {
+        "title": "当前订阅",
+        "intro": "您当前的计划和使用概览",
+        "label": "当前计划",
+        "planId": "",
+        "planInfo": {
+            "planName": "专业计划",
+            "trialPeriod": "6 个月试用期",
+            "trialEnds": "试用结束日期：",
+            "daysRemaining": "剩余天数："
+        },
+        "tokenUsage": {
+            "title": "代币使用情况",
+            "usedSlot": "已使用：{tokens}",
+            "remainingSlot": "剩余：{tokens}",
+            "resetDate": "{days} 天后重置"
+        },
+        "trialProgress": {
+            "title": "免费试用进度",
+            "daysUsed": "已使用天数：",
+            "daysLeft": "剩余天数：",
+            "percentTrialRemaining": "试用剩余 {percent}%"
+        }
+    },
+    "subscriptionPlans": {
+        "title": "订阅计划",
+        "intro": "比较计划并为您的业务选择最佳选项。您当前正在享受专业计划的 6 个月免费试用。",
+        "discountTag": "节省高达 {percent}%",
+        "tokensPerMonth": "{tokens} 代币/月",
+        "enjoyFreeDays": "再享受 {days} 天免费",
+        "currentPlan": "当前计划",
+        "freeTrials": "免费试用",
+        "availableAfterTrialPeriod": "试用期后可用",
+        "plans": [
+            {
+                "id": "",
+                "theme": "blue",
+                "cardStyle": "border-2! border-blue-200!",
+                "icon": "zap",
+                "name": "基础版",
+                "currency": "HKD",
+                "bill": {
+                    "monthly": 100,
+                    "yearly": 1080
+                },
+                "description": "适合小型企业的基本功能",
+                "featureList": [
+                    "完整平台访问权限",
+                    "1 个免费数字身份（iD-One）",
+                    "每年 2 次网络漏洞评估",
+                    "SignConnect - Tradelink DMSS",
+                    "PayConnect - 完整访问权限",
+                    "GovConnect - 基本访问权限",
+                    "SafeConnect - T-Guard 应用程序",
+                    "每月 5 个代币"
+                ],
+                "totalTokens": 5
+            },
+            {
+                "id": "",
+                "theme": "purple",
+                "cardStyle": "bg-linear-to-br from-purple-50 via-indigo-50 to-blue-50 border-2! border-purple-600!",
+                "icon": "star",
+                "name": "专业版",
+                "currency": "HKD",
+                "bill": {
+                    "monthly": 310,
+                    "yearly": 3000
+                },
+                "description": "为发展中的企业提供高级功能",
+                "featureList": [
+                    "完整平台访问权限",
+                    "1 个免费数码身份（DocuSign或Fadada）",
+                    "每月 5 个信封",
+                    "1 个免费企业数字身份（iCorp-One）",
+                    "所有公司用户免费 iD-One",
+                    "每年 5 份 BizConnect 商业报告",
+                    "每年 2 次网络漏洞评估",
+                    "每月 3 次 AI 声明生成",
+                    "每月 100 个代币"
+                ],
+                "totalTokens": 100
+            },
+            {
+                "id": "",
+                "theme": "gold",
+                "cardStyle": "border-2! border-yellow-200!",
+                "icon": "crown",
+                "name": "旗舰版",
+                "currency": "HKD",
+                "bill": {
+                    "monthly": 700,
+                    "yearly": 7800
+                },
+                "description": "为大型企业提供全面的解决方案",
+                "featureList": [
+                    "完整访问所有功能",
+                    "1 个签署平台（DocuSign 或 Fadada）",
+                    "每月 20 个信封",
+                    "1 个免费 iCorp-One",
+                    "所有公司用户无限免费 iD-One",
+                    "每年 20 份 BizConnect 商业报告",
+                    "无限次网络漏洞评估",
+                    "无限次 AI 声明生成",
+                    "每月 400 个代币",
+                    "专属客户经理",
+                    "优先支持"
+                ],
+                "totalTokens": 400
+            }
+        ],
+        "pointToNote": {
+            "title": "免费试用结束后",
+            "body": "当您的 6 个月试用期结束时，您可以选择继续使用专业版计划，年付 HK$250/月或月付 HK$310/月，或切换到更适合您需求的其他计划。我们会在试用期到期前向您发送提醒。",
+            "essential": "订阅购买功能将在 {days} 天后（试用期结束时）开放。"
+        }
+    },
+    "additionalTokens": {
+        "title": "额外代币包",
+        "intro": "需要更多代币？选择适合您业务需求的代币包。",
+        "pointToNote":  {
+            "title": "代币包使用说明",
+            "body": "购买的代币包将立即添加到您的账户中，并在购买后 30 天内有效。未使用的代币将不会累积到下一个计费周期。",
+            "learnMoreAboutTokenPricing": "了解有关代币定价的更多信息"
+        }
+    }
+}

@@ -1,4 +1,3 @@
-import theme from "@/theme/theme";
 import React from "react";
 
 export function getLucideIcon(iconName: string, size: number = 25, color?: string): React.ReactNode {
@@ -8,7 +7,7 @@ export function getLucideIcon(iconName: string, size: number = 25, color?: strin
     return IconComponent ? <IconComponent size={size} color={color} /> : null;
 }
 
-export function substituteSlot(search: string, slot: string, value: string | React.ReactNode): React.ReactNode {
+export function substituteSlot(search: string, slot: string, value: string | number | React.ReactNode): React.ReactNode {
     let chunks = search.split(slot);
     if (chunks.length > 1) {
         return chunks.map((chunk, index) => {
@@ -21,4 +20,13 @@ export function substituteSlot(search: string, slot: string, value: string | Rea
         });
     }
     return search;
+}
+
+export function getLocalDateString(dateString: string, locale: string = 'en-US'): string {
+    const date = new Date(dateString);
+    return date.toLocaleDateString(locale, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
 }

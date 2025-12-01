@@ -3,7 +3,7 @@
     "context": "為您的業務提供全面的金融服務和支付解決方案",
     "serviceProvidersAvailable": "可用的服務提供商",
     "viewAllProviders": "查看所有提供商",
-    "compareSelectProvider": "從 $slot 個可用提供商中進行比較和選擇",
+    "compareSelectProvider": "從 {slot} 個可用提供商中進行比較和選擇",
     "sponsoredPartnerOffers": "贊助合作夥伴優惠",
     "keyFeatures": "主要特點：",
     "coverage": "覆蓋範圍",

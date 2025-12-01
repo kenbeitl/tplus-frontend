@@ -45,18 +45,22 @@
         "language": "Language"
     },
     "common": {
-        "comingSoon": "Coming Soon",
-        "loading": "Loading...",
-        "error": "Error",
-        "success": "Success",
-        "learnMore": "Learn More",
         "apply": "Apply",
-        "servicesAvailable": "Services Available",
         "applyNow": "Apply Now",
-        "getNotified": "Get Notified",
+        "availableSoon": "Available Soon",
+        "comingSoon": "Coming Soon",
         "contactSupport": "Contact Support",
+        "days": "{days} Days",
+        "error": "Error",
+        "getNotified": "Get Notified",
+        "learnMore": "Learn More",
+        "loading": "Loading...",
+        "monthly": "Monthly",
         "redirectingTo": "Redirecting to {page}...",
-        "saveChanges": "Save Changes"
+        "saveChanges": "Save Changes",
+        "servicesAvailable": "Services Available",
+        "success": "Success",
+        "yearly": "Yearly"
     },
     "form": {
         "firstName": "First Name",

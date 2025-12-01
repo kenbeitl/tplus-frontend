@@ -53,7 +53,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
         </Box>
       </Box>
       <Spacer height={30} />
-      <Typography variant="caption" component="p" sx={{ color: 'text.secondary' }}>{ substituteSlot(t('pages.payConnect.compareSelectProvider'), '$slot', providerCount) }</Typography>
+      <Typography variant="caption" component="p" sx={{ color: 'text.secondary' }}>{ substituteSlot(t('pages.payConnect.compareSelectProvider'), '{slot}', providerCount) }</Typography>
       <Spacer height={20} />
       <Grid container spacing={2}>
         {providerList.map((provider: Provider, index: number) => (

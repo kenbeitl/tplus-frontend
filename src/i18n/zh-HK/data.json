@@ -45,18 +45,22 @@
         "language": "語言"
     },
     "common": {
-        "comingSoon": "敬請期待",
-        "loading": "載入中...",
-        "error": "錯誤",
-        "success": "成功",
-        "learnMore": "了解更多",
         "apply": "申請",
-        "servicesAvailable": "服務已推出",
         "applyNow": "立即申請",
-        "getNotified": "獲取通知",
+        "availableSoon": "即將推出",
+        "comingSoon": "敬請期待",
         "contactSupport": "聯繫支援",
+        "days": "{days}天",
+        "error": "錯誤",
+        "getNotified": "獲取通知",
+        "learnMore": "了解更多",
+        "loading": "載入中...",
+        "monthly": "每月",
         "redirectingTo": "正在重定向到{page}...",
-        "saveChanges": "保存更改"
+        "saveChanges": "保存更改",
+        "servicesAvailable": "服務已推出",
+        "success": "成功",
+        "yearly": "每年"
     },
     "form": {
         "firstName": "名",

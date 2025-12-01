@@ -29,9 +29,9 @@ export interface FormFieldConfig {
 export interface FormTemplate {
   id: number;
   templateId: string;
-  formTitle: string;  // Changed from 'title' to 'formTitle'
+  formTitle: string;  
   description?: string;
-  fields?: FormFieldConfig[];  // Made optional since it's not in the current response
+  fields?: FormFieldConfig[];  
   submitButtonText?: string;
   cancelButtonText?: string;
   privacyText?: string;
@@ -39,14 +39,14 @@ export interface FormTemplate {
 
 export interface FormConfig {
   id: number;
-  documentId: string;  // Added documentId field
+  documentId: string;  
   createdAt: string;
   updatedAt: string;
-  publishedAt: string;  // Added publishedAt field
+  publishedAt: string;  
   active?: boolean;
   fromDate?: string | null;
   toDate?: string | null;
-  FormTemplate: FormTemplate | FormTemplate[];  // Can be either object or array
+  FormTemplate: FormTemplate | FormTemplate[]; 
 }
 
 export interface FormConfigParams {
@@ -62,8 +62,6 @@ export interface FormConfigParams {
 
 class FormConfigService {
   async getFormConfig(templateId: string, formId?: string): Promise<FormTemplate & { formId: string }> {
-    // Construct the URL manually to avoid axios auto-encoding issues
-    // Target: /api/form-templates?filters[FormTemplate][templateId][$eq]=govconnect-dual-declaration&populate[FormTemplate]=true
     
     const searchParams = new URLSearchParams();
     searchParams.append('filters[FormTemplate][templateId][$eq]', templateId);
@@ -76,24 +74,18 @@ class FormConfigService {
       throw new Error(`Form configuration not found for templateId: ${templateId}`);
     }
     
-    // Get the form from response
     const form = response.data[0];
     
-    // FormTemplate can be either an object or an array
-    // When filtered by templateId, Strapi returns it as an object
     let template: FormTemplate;
     
     if (typeof form.FormTemplate === 'object' && !Array.isArray(form.FormTemplate)) {
-      // FormTemplate is a single object
       template = form.FormTemplate as FormTemplate;
     } else if (Array.isArray(form.FormTemplate) && form.FormTemplate.length > 0) {
-      // FormTemplate is an array, get the first item
       template = form.FormTemplate[0];
     } else {
       throw new Error(`Invalid FormTemplate structure for templateId: ${templateId}`);
     }
     
-    // Return template with formId (defaults to templateId if not provided)
     return {
       ...template,
       formId: formId || templateId
