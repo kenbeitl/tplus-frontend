@@ -1,0 +1,55 @@
+{
+    "id": "digital",
+    "title": "Digital Identity Comparison",
+    "context": "Choose the right digital identity for your needs",
+    "cards": [
+        {
+            "identity": "iAM Smart",
+            "userType": "Local Individuals",
+            "description": "Hong Kong government digital identity for residents",
+            "features": [
+                "Government services access",
+                "Local business verification",
+                "Secure authentication"
+            ],
+            "eligibility": "Hong Kong residents with HKID",
+            "processingTime": "1-2 business days"
+        },
+        {
+            "identity": "iD-One",
+            "userType": "Global Individuals",
+            "description": "International digital identity for global users",
+            "features": [
+                "Cross-border services",
+                "International verification",
+                "Multi-jurisdiction support"
+            ],
+            "eligibility": "International users with valid passport",
+            "processingTime": "3-5 business days"
+        },
+        {
+            "identity": "CorpID",
+            "userType": "Local Corporations",
+            "description": "Hong Kong corporate digital identity",
+            "features": [
+                "Local business registration",
+                "Government compliance",
+                "Corporate verification"
+            ],
+            "eligibility": "Hong Kong registered companies",
+            "processingTime": "2-3 business days"
+        },
+        {
+            "identity": "iCorp-One",
+            "userType": "Global Corporations",
+            "description": "International corporate digital identity",
+            "features": [
+                "Global business verification",
+                "Cross-border compliance",
+                "International standards"
+            ],
+            "eligibility": "Internationally registered companies",
+            "processingTime": "5-7 business days"
+        }
+    ]
+}

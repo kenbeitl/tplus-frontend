@@ -1,0 +1,119 @@
+{
+    "title": "帮助中心",
+    "context": "查找有关 T+ 服务和功能的有用文章和指南",
+    "searchPlaceholder": "搜索帮助文章...",
+    "pageIndex": [
+        {
+            "id": "digital",
+            "icon": "users",
+            "title": "数码身份指南",
+            "description": "比较和了解数码身份选项"
+        },
+        {
+            "id": "signing",
+            "icon": "file-pen-line",
+            "title": "签署平台指南",
+            "description": "比较 Tradelink、DocuSign 和 Fadada"
+        },
+        {
+            "id": "subscription",
+            "icon": "credit-card",
+            "title": "订阅计划指南",
+            "description": "比较所有 T+ 订阅计划和功能"
+        }
+    ],
+    "keyFeatures": "主要功能：",
+    "tableHeaders": {
+        "identity": "身份",
+        "userType": "用户类型",
+        "description": "描述",
+        "processingTime": "处理时间",
+        "platform": "平台",
+        "cost": "费用",
+        "bestFor": "适合对象",
+        "availability": "可用性"
+    },
+    "cards": [
+        {
+            "icon": "help-circle",
+            "title": "入门指南",
+            "list": [
+                {
+                    "text": "T+ 服务的第一步",
+                    "link": ""
+                },
+                {
+                    "text": "设置您的用户资料",
+                    "link": ""
+                },
+                {
+                    "text": "设置您的公司资料",
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "icon": "user",
+            "title": "数码身份",
+            "list": [
+                {
+                    "text": "数码身份概述",
+                    "link": ""
+                },
+                {
+                    "text": "如何申请 iD-One",
+                    "link": ""
+                },
+                {
+                    "text": "如何申请 iCorp-One",
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "icon": "file-signature",
+            "title": "T+ 服务",
+            "list": [
+                {
+                    "text": "T-Guard 签署平台指南",
+                    "link": ""
+                },
+                {
+                    "text": "iD-One 数码身份指南",
+                    "link": ""
+                },
+                {
+                    "text": "iCorp-One 企业数码身份指南",
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "icon": "shield",
+            "title": "法律与政策信息",
+            "list": [
+                {
+                    "text": "条款与条件",
+                    "link": ""
+                },
+                {
+                    "text": "免责声明",
+                    "link": ""
+                },
+                {
+                    "text": "版权声明",
+                    "link": ""
+                },
+                {
+                    "text": "隐私声明",
+                    "link": ""
+                }
+            ]
+        }
+    ],
+    "stillNeedHelp": {
+        "title": "仍然需要帮助？",
+        "body": "找不到您要找的内容？ 联系我们的支持团队"
+    },
+    "scheduleACall": "安排通话"
+}

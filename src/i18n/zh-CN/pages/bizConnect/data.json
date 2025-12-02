@@ -59,7 +59,7 @@
                 "title": "验证的商业网络",
                 "description": "通过我们经过验证和认证的商业社区自信地建立联系",
                 "list": [
-                    "数字身份验证",
+                    "数码身份验证",
                     "商业凭证认证",
                     "安全通信渠道"
                 ]
@@ -89,9 +89,7 @@
     },
     "stayInformed": {
         "title": "保持信息畅通",
-        "body": "注册以在 BizConnect 发布时收到通知，并获取最新的功能更新和新闻。",
-        "buttonText1": "在发布时通知我",
-        "buttonText2": "了解更多关于 BizConnect 的信息"
+        "body": "注册以在 BizConnect 发布时收到通知，并获取最新的功能更新和新闻。"
     },
     "developmentInProgress": {
         "title": "正在开发中",

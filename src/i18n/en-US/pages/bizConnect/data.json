@@ -89,9 +89,7 @@
     },
     "stayInformed": {
         "title": "Stay Informed",
-        "body": "Be the first to know when BizConnect launches and get exclusive early access",
-        "buttonText1": "Get Notified",
-        "buttonText2": "Contact Support"
+        "body": "Be the first to know when BizConnect launches and get exclusive early access"
     },
     "developmentInProgress": {
         "title": "Development in Progress",

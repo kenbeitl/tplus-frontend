@@ -20,8 +20,8 @@
                 "theme": "purple",
                 "icon": "id-card",
                 "step": "2",
-                "title": "申請數字身份",
-                "description": "創建經過驗證的數字身份，安全訪問 T+ 服務"
+                "title": "申請數碼身份",
+                "description": "創建經過驗證的數碼身份，安全訪問 T+ 服務"
             },
             {
                 "theme": "indigo",
@@ -39,7 +39,7 @@
             {
                 "icon": "file-pen-line",
                 "title": "SignConnect",
-                "context": "通過 Tradelink 的 DMSS 使用經過認證的數字身份簽署文件（簽署配額有限）。"
+                "context": "通過 Tradelink 的 DMSS 使用經過認證的數碼身份簽署文件（簽署配額有限）。"
             },
             {
                 "icon": "credit-card",

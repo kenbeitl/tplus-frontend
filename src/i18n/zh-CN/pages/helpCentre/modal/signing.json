@@ -1,0 +1,40 @@
+{
+    "id": "signing",
+    "title": "签署平台比较",
+    "context": "选择最适合您需求的签署平台",
+    "cards": [
+        {
+            "platform": "Tradelink",
+            "cost": "",
+            "bestFor": "政府文件和基本业务需求",
+            "features": [
+                "全球商业验证",
+                "跨境合规",
+                "国际标准"
+            ],
+            "availability": "所有 T+ 用户"
+        },
+        {
+            "platform": "DocuSign",
+            "cost": "需要订阅",
+            "bestFor": "国际业务和复杂工作流程",
+            "features": [
+                "全球商业验证",
+                "跨境合规",
+                "国际标准"
+            ],
+            "availability": "商务和企业计划"
+        },
+        {
+            "platform": "Fadada",
+            "cost": "需要订阅",
+            "bestFor": "亚太地区的业务运营",
+            "features": [
+                "全球商业验证",
+                "跨境合规",
+                "国际标准"
+            ],
+            "availability": "商务和企业计划"
+        }
+    ]
+}

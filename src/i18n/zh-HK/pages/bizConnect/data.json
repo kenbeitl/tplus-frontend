@@ -89,9 +89,7 @@
     },
     "stayInformed": {
         "title": "保持訊息暢通",
-        "body": "註冊以在 BizConnect 發佈時收到通知，並獲取最新的功能更新和新聞。",
-        "buttonText1": "發佈時通知我",
-        "buttonText2": "了解更多關於 BizConnect 的資訊"
+        "body": "註冊以在 BizConnect 發佈時收到通知，並獲取最新的功能更新和新聞。"
     },
     "developmentInProgress": {
         "title": "正在開發中",

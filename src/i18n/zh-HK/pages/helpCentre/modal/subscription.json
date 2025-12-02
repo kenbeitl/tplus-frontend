@@ -1,0 +1,59 @@
+{
+    "id": "subscription",
+    "title": "訂閱方案比較",
+    "context": "比較所有 T+ 方案，找到最適合您業務需求的方案",
+    "cards": [
+        {
+            "id": "1",
+            "title": "iAM Smart",
+            "userType": "本地個人",
+            "description": "香港居民的政府數位身分",
+            "features": [
+                "政府服務訪問",
+                "本地商業驗證",
+                "安全認證"
+            ],
+            "eligibility": "持有香港身分證的香港居民",
+            "processingTime": "1-2 個工作天"
+        },
+        {
+            "id": "2",
+            "title": "iD-One",
+            "userType": "全球個人",
+            "description": "全球使用者的國際數位身分",
+            "features": [
+                "跨境服務",
+                "國際驗證",
+                "多司法管轄區支持"
+            ],
+            "eligibility": "持有有效護照的國際使用者",
+            "processingTime": "3-5 個工作天"
+        },
+        {
+            "id": "3",
+            "title": "CorpID",
+            "userType": "本地公司",
+            "description": "香港企業數位身分",
+            "features": [
+                "本地商業註冊",
+                "政府合規",
+                "企業驗證"
+            ],
+            "eligibility": "在香港註冊的公司",
+            "processingTime": "2-3 個工作天"
+        },
+        {
+            "id": "4",
+            "title": "iCorp-One",
+            "userType": "全球公司",
+            "description": "國際企業數位身分",
+            "features": [
+                "全球商業驗證",
+                "跨境合規",
+                "國際標準"
+            ],
+            "eligibility": "在國際上註冊的公司",
+            "processingTime": "5-7 個工作天"
+        }
+    ]
+}

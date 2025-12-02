@@ -1,0 +1,119 @@
+{
+    "title": "幫助中心",
+    "context": "尋找有關 T+ 服務和功能的幫助文章",
+    "searchPlaceholder": "搜索幫助文章...",
+    "pageIndex": [
+        {
+            "id": "digital",
+            "icon": "users",
+            "title": "數碼身份指南",
+            "description": "比較和了解數碼身份選項"
+        },
+        {
+            "id": "signing",
+            "icon": "file-pen-line",
+            "title": "簽署平台指南",
+            "description": "比較 Tradelink、DocuSign 和 Fadada"
+        },
+        {
+            "id": "subscription",
+            "icon": "credit-card",
+            "title": "訂閱計劃指南",
+            "description": "比較所有 T+ 訂閱計劃和功能"
+        }
+    ],
+    "keyFeatures": "主要功能：",
+    "tableHeaders": {
+        "identity": "身份",
+        "userType": "用戶類型",
+        "description": "描述",
+        "processingTime": "處理時間",
+        "platform": "平台",
+        "cost": "費用",
+        "bestFor": "適合對象",
+        "availability": "可用性"
+    },
+    "cards": [
+        {
+            "icon": "help-circle",
+            "title": "入門指南",
+            "list": [
+                {
+                    "text": "T+ 服務的第一步",
+                    "link": ""
+                },
+                {
+                    "text": "設置您的用戶資料",
+                    "link": ""
+                },
+                {
+                    "text": "設置您的公司資料",
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "icon": "user",
+            "title": "數碼身份",
+            "list": [
+                {
+                    "text": "數碼身份概述",
+                    "link": ""
+                },
+                {
+                    "text": "如何申請 iD-One",
+                    "link": ""
+                },
+                {
+                    "text": "如何申請 iCorp-One",
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "icon": "file-signature",
+            "title": "T+ 服務",
+            "list": [
+                {
+                    "text": "T-Guard 電子簽署平台概述",
+                    "link": ""
+                },
+                {
+                    "text": "如何使用 T-Guard 發送文件進行簽署",
+                    "link": ""
+                },
+                {
+                    "text": "如何管理您的數碼身份",
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "icon": "shield",
+            "title": "法律與政策資訊",
+            "list": [
+                {
+                    "text": "條款與條件",
+                    "link": ""
+                },
+                {
+                    "text": "免責聲明",
+                    "link": ""
+                },
+                {
+                    "text": "版權聲明",
+                    "link": ""
+                },
+                {
+                    "text": "私隱聲明",
+                    "link": ""
+                }
+            ]
+        }
+    ],
+    "stillNeedHelp": {
+        "title": "仍然需要幫助？",
+        "body": "找不到您要找的內容？請聯繫我們的支持團隊"
+    },
+    "scheduleACall": "安排通話"
+}

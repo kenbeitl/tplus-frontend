@@ -1,0 +1,40 @@
+{
+    "id": "signing",
+    "title": "Signing Platform Comparison",
+    "context": "Choose the best signing platform for your needs",
+    "cards": [
+        {
+            "platform": "Tradelink",
+            "cost": "",
+            "bestFor": "Government documents and basic business needs",
+            "features": [
+                "Global business verification",
+                "Cross-border compliance",
+                "International standards"
+            ],
+            "availability": "All T+ users"
+        },
+        {
+            "platform": "DocuSign",
+            "cost": "Subscription required",
+            "bestFor": "International business and complex workflows",
+            "features": [
+                "Global business verification",
+                "Cross-border compliance",
+                "International standards"
+            ],
+            "availability": "Business and Enterprise plans"
+        },
+        {
+            "platform": "Fadada",
+            "cost": "Subscription required",
+            "bestFor": "Asia-Pacific business operations",
+            "features": [
+                "Global business verification",
+                "Cross-border compliance",
+                "International standards"
+            ],
+            "availability": "Business and Enterprise plans"
+        }
+    ]
+}

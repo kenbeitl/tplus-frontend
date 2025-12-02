@@ -1,0 +1,55 @@
+{
+    "id": "digital",
+    "title": "數碼身份比較",
+    "context": "選擇最適合您需求的數碼身份",
+    "cards": [
+        {
+            "identity": "iAM Smart",
+            "userType": "本地個人",
+            "description": "香港政府為居民提供的數碼身份",
+            "features": [
+                "政府服務訪問",
+                "本地商業驗證",
+                "安全認證"
+            ],
+            "eligibility": "持有香港身份證的香港居民",
+            "processingTime": "1-2 個工作天"
+        },
+        {
+            "identity": "iD-One",
+            "userType": "全球個人",
+            "description": "面向全球用戶的國際數碼身份",
+            "features": [
+                "跨境服務",
+                "國際驗證",
+                "多司法管轄區支持"
+            ],
+            "eligibility": "持有有效護照的國際用戶",
+            "processingTime": "3-5 個工作天"
+        },
+        {
+            "identity": "CorpID",
+            "userType": "本地企業",
+            "description": "香港企業數碼身份",
+            "features": [
+                "本地商業註冊",
+                "政府合規",
+                "企業驗證"
+            ],
+            "eligibility": "在香港註冊的公司",
+            "processingTime": "2-3 個工作天"
+        },
+        {
+            "identity": "iCorp-One",
+            "userType": "全球企業",
+            "description": "國際企業數碼身份",
+            "features": [
+                "全球商業驗證",
+                "跨境合規",
+                "國際標準"
+            ],
+            "eligibility": "在國際上註冊的公司",
+            "processingTime": "5-7 個工作天"
+        }
+    ]
+}

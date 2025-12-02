@@ -1,0 +1,123 @@
+{
+    "title": "Help Centre",
+    "context": "Find answers to your questions about T+ services and features",
+    "searchPlaceholder": "Search help articles...",
+    "pageIndex": [
+        {
+            "id": "digital",
+            "icon": "users",
+            "title": "Digital Identity Guide",
+            "description": "Compare and understand digital identity options"
+        },
+        {
+            "id": "signing",
+            "icon": "file-pen-line",
+            "title": "Signing Platform Guide",
+            "description": "Compare Tradelink, DocuSign, and Fadada"
+        },
+        {
+            "id": "subscription",
+            "icon": "credit-card",
+            "title": "Subscription Plans Guide",
+            "description": "Compare all T+ subscription plans and features"
+        }
+    ],
+    "keyFeatures": "Key Features:",
+    "tableHeaders": {
+        "identity": "Identity",
+        "userType": "User Type",
+        "description": "Description",
+        "processingTime": "Processing Time",
+        "platform": "Platform",
+        "cost": "Cost",
+        "bestFor": "Best For",
+        "availability": "Availability"
+    },    
+    "cards": [
+        {
+            "icon": "help-circle",
+            "title": "Getting Started",
+            "list": [
+                {
+                    "text": "First steps with T+ services",
+                    "link": ""
+                },
+                {
+                    "text": "Setting up your user profile",
+                    "link": ""
+                },
+                {
+                    "text": "Setting up your company profile",
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "icon": "user",
+            "title": "Digital Identities",
+            "list": [
+                {
+                    "text": "Digital Identity Overview",
+                    "link": ""
+                },
+                {
+                    "text": "How to apply for iD-One",
+                    "link": ""
+                },
+                {
+                    "text": "How to apply for iCorp-One",
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "icon": "file-signature",
+            "title": "T+ Services",
+            "list": [
+                {
+                    "text": "SignConnect Overview",
+                    "link": ""
+                },
+                {
+                    "text": "PayConnect Overview",
+                    "link": ""
+                },
+                {
+                    "text": "GovConnect Overview",
+                    "link": ""
+                },
+                {
+                    "text": "SafeConnect Overview",
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "icon": "shield",
+            "title": "Legal & Policy Information",
+            "list": [
+                {
+                    "text": "Terms and Conditions",
+                    "link": ""
+                },
+                {
+                    "text": "Disclaimer",
+                    "link": ""
+                },
+                {
+                    "text": "Copyright Notice",
+                    "link": ""
+                },
+                {
+                    "text": "Privacy Statement",
+                    "link": ""
+                }
+            ]
+        }
+    ],
+    "stillNeedHelp": {
+        "title": "Still need help?",
+        "body": "Can't find what you're looking for? Contact our support team"
+    },
+    "scheduleACall": "Schedule a Call"
+}
