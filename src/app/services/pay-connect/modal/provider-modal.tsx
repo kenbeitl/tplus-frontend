@@ -5,7 +5,7 @@ import { Building, ExternalLink, Eye } from 'lucide-react';
 import { InfoModal, StyledIcon, Spacer, Emoji, ButtonWithModal, ButtonWithFormModal } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
 import ProviderDetails from '@/app/services/pay-connect/modal/provider-details';
-import { substituteSlot } from '@/helpers/utils';
+import { subSlot } from '@/helpers/utils';
 
 interface Provider {
   name: string;
@@ -53,7 +53,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
         </Box>
       </Box>
       <Spacer height={30} />
-      <Typography variant="caption" component="p" sx={{ color: 'text.secondary' }}>{ substituteSlot(t('pages.payConnect.compareSelectProvider'), '{slot}', providerCount) }</Typography>
+      <Typography variant="caption" component="p" sx={{ color: 'text.secondary' }}>{ subSlot(t('pages.payConnect.compareSelectProvider'), '{slot}', providerCount) }</Typography>
       <Spacer height={20} />
       <Grid container spacing={2}>
         {providerList.map((provider: Provider, index: number) => (

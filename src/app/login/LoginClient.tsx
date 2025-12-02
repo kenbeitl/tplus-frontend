@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { ActionButton } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
-import { substituteSlot } from '@/helpers/utils';
+import { subSlot } from '@/helpers/utils';
 
 export default function LoginClient() {
     const { data: session, status } = useSession();
@@ -38,7 +38,7 @@ export default function LoginClient() {
                 <Box className="text-center">
                     <CircularProgress />
                     <Typography variant="body2" sx={{ mt: 2 }}>
-                        {status === 'loading' ? t('common.loading') : substituteSlot(t('common.redirectingTo'), '{page}', t('nav.dashboard'))}
+                        {status === 'loading' ? t('common.loading') : subSlot(t('common.redirectingTo'), '{page}', t('nav.dashboard'))}
                     </Typography>
                 </Box>
             </Container>

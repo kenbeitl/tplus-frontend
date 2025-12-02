@@ -40,6 +40,12 @@
         "currentPlan": "Current Plan",
         "freeTrials": "Free Trials",
         "availableAfterTrialPeriod": "Available after trial period",
+        "billedAsPerYear": "Billed as HK${amount}/year",
+        "savePercentage": "Save {percent}%",
+        "perMonth": "\/month",
+        "selectPlan": "Select Plan",
+        "extraBonus": "+{extra} bonus",
+        "bonusPercentage": "{percent}% bonus",
         "plans": [
             {
                 "id": "",
@@ -130,7 +136,7 @@
         "intro": "Token purchases will be available after your free trial period ends",
         "pointToNote": {
             "title": "Token Purchases During Free Trial",
-            "body": "Token purchases are not available during your 6-month free trial period. You already have 150 tokens included with your Professional plan trial. Additional token purchases will become available when your trial ends in <strong>{days} days</strong>.",
+            "body": "Token purchases are not available during your 6-month free trial period. You already have 150 tokens included with your Professional plan trial. Additional token purchases will become available when your trial ends in ",
             "learnMoreAboutTokenPricing": "Learn more about token pricing"
         }
     }

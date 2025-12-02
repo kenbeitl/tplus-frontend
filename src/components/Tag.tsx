@@ -7,7 +7,7 @@ type ColorVariant = 'yellow';
 interface TagProps {
   variant?: TagVariant;
   color?: ColorVariant;
-  label: string;
+  label: string | React.ReactNode;
   className?: string;
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;

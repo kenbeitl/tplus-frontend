@@ -7,7 +7,7 @@ export function getLucideIcon(iconName: string, size: number = 25, color?: strin
     return IconComponent ? <IconComponent size={size} color={color} /> : null;
 }
 
-export function substituteSlot(search: string, slot: string, value: string | number | React.ReactNode): React.ReactNode {
+export function subSlot(search: string, slot: string, value: string | number | React.ReactNode): React.ReactNode {
     let chunks = search.split(slot);
     if (chunks.length > 1) {
         return chunks.map((chunk, index) => {
@@ -29,4 +29,16 @@ export function getLocalDateString(dateString: string, locale: string = 'en-US')
         month: 'long',
         day: 'numeric',
     });
+}
+
+export function getLocalCurrency(amount: number, locale: string = 'zh-HK', currency: string = 'HKD'): string {
+    let localeOpt: Intl.NumberFormatOptions = {
+        // no decimal places 
+        style: 'currency', 
+        minimumFractionDigits: 0, 
+        maximumFractionDigits: 0, 
+    };
+    if (currency) localeOpt = { ...localeOpt, currency };
+
+    return amount.toLocaleString(locale, localeOpt);
 }

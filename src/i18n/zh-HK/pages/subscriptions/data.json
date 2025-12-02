@@ -40,6 +40,12 @@
         "currentPlan": "當前計劃",
         "freeTrials": "免費試用",
         "availableAfterTrialPeriod": "試用期後可用",
+        "billedAsPerYear": "按年計費，HK${amount}/年",
+        "savePercentage": "節省 {percent}%",
+        "perMonth": "\/月",
+        "selectPlan": "選擇計劃",
+        "extraBonus": "額外+{extra}",
+        "bonusPercentage": "額外{percent}%",     
         "plans": [
             {
                 "id": "",
@@ -129,7 +135,7 @@
         "intro": "需要更多代幣？選擇適合您業務需求的代幣包。",
         "pointToNote":  {
             "title": "代幣包使用說明",
-            "body": "購買的代幣包將立即添加到您的賬戶中，並在購買後 30 天內有效。未使用的代幣將不會累積到下一個計費週期。",
+            "body": "購買的代幣包將立即添加到您的賬戶中，並在購買後 30 天內有效。未使用的代幣將不會累積到下一個計費週期：",
             "learnMoreAboutTokenPricing": "了解有關代幣定價的更多資訊"
         }
     }

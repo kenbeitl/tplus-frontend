@@ -8,10 +8,13 @@ import { Calendar, CircleCheckBig, Coins, Gift, Star } from "lucide-react";
 import { useLanguage, useTranslations } from '@/contexts/AppContext';
 import theme from "@/theme/theme";
 import { Spacer, TabList as MuiTabList, Tab as MuiTab, TabPanel, ActionButton, Emoji, Tag } from "@/components";
-import { getLucideIcon, substituteSlot, getLocalDateString } from "@/helpers/utils";
+import { getLucideIcon, subSlot, getLocalDateString, getLocalCurrency } from "@/helpers/utils";
 
-const PLAN_START_DATE = new Date('2025-06-01');
+const PLAN_START_DATE = new Date('2025-10-23');
 const FREE_TRIAL_DAYS = 180;
+const RESET_TOKEN_DAYS = 30;
+const TOKEN_CAPACITY = 100;
+const USED_TOKENS = 25;
 
 const calculateExpiryDate = (): Date => {
     const expiry = new Date(PLAN_START_DATE);
@@ -24,8 +27,25 @@ const EXPIRY_DATE = calculateExpiryDate();
 const calculateRemainingDays = (): number => {
     const today = new Date();
     const timeDiff = EXPIRY_DATE.getTime() - today.getTime();
-    return timeDiff > 0 ? Math.ceil(timeDiff / (1000 * 3600 * 24)) : 0;
+    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    return Math.max(0, Math.min(FREE_TRIAL_DAYS, daysDiff));
 };
+
+const calculateRemainingDaysPercent: number = Math.round(calculateRemainingDays() / FREE_TRIAL_DAYS * 100);
+
+const USED_DAYS = Math.max(0, FREE_TRIAL_DAYS - calculateRemainingDays());
+
+const calculateDaysToResetTokens = (): number => {
+    const today = new Date();
+    const nextResetDate = new Date(PLAN_START_DATE);
+    nextResetDate.setDate(nextResetDate.getDate() + RESET_TOKEN_DAYS * Math.ceil((USED_DAYS + 1) / RESET_TOKEN_DAYS));
+    const timeDiff = nextResetDate.getTime() - today.getTime();
+    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    return Math.max(0, daysDiff);
+}
+
+const DAYS_TO_RESET_TOKENS = calculateDaysToResetTokens();
+
 
 const TabList = styled(MuiTabList)({
     borderRadius: '8px !important',
@@ -66,18 +86,20 @@ interface SubscriptionPlan {
 interface SubscriptionPlanCardProps {
     plan: SubscriptionPlan;
     isYearly?: boolean;
+    remainingDays?: number;
 }
 
 export function SubscriptionPlanCard ({ 
     plan,
-    isYearly = false
+    isYearly = false,
+    remainingDays = 0
 }: SubscriptionPlanCardProps) {
 
     const t = useTranslations();
 
     const { monthly, yearly } = plan.bill;
 
-    const discountOnYearly: number = useMemo(() => Math.floor(Math.abs(monthly - (yearly / 12)) / monthly * 100), [plan.bill.monthly, plan.bill.yearly]);
+    const discountOnYearly: number = useMemo(() => Math.floor(Math.abs(monthly - (yearly / 12)) / monthly * 100), [monthly, yearly]);
 
     return (
         <Grid size={{ xs: 12, md: 6, lg: 4 }}>
@@ -86,7 +108,7 @@ export function SubscriptionPlanCard ({
                     {getLucideIcon(plan.icon, 30, theme.palette.text[plan.theme as keyof typeof theme.palette.text])}
                     <Typography variant="h6" component="div" color={theme.palette.text.primary} sx={{ fontWeight: 700 }}>{plan.name}</Typography>
                     <Typography variant="h4" component="div" color={theme.palette.text.primary} sx={{ fontWeight: 700 }}>
-                        HK${ isYearly ? plan.bill.yearly / 12 : plan.bill.monthly }
+                        {getLocalCurrency(isYearly ? plan.bill.yearly / 12 : plan.bill.monthly)}
                         <Typography 
                             variant="body2" 
                             component="sub" 
@@ -94,12 +116,12 @@ export function SubscriptionPlanCard ({
                                 display: 'inline-block', 
                                 verticalAlign: 'middle' 
                             }}
-                        >/month</Typography>
+                        >{t('pages.subscriptions.subscriptionPlans.perMonth')}</Typography>
                     </Typography>
                     {isYearly && (
                         <>
-                            <Tag variant="green" label={`Save ${discountOnYearly}%`} />
-                            <Typography variant="caption" component="p" color={theme.palette.text.secondary}>Billed as HK${plan.bill.yearly}/year</Typography>
+                            <Tag variant="green" label={subSlot(t('pages.subscriptions.subscriptionPlans.savePercentage'), '{percent}', discountOnYearly)} />
+                            <Typography variant="caption" component="p" color={theme.palette.text.secondary}>{subSlot(t('pages.subscriptions.subscriptionPlans.billedAsPerYear'), '{amount}', plan.bill.yearly)}</Typography>
                         </>
                     )}
                     <Typography variant="caption" component="p" color={theme.palette.text.secondary}>{plan.description}</Typography>
@@ -118,17 +140,17 @@ export function SubscriptionPlanCard ({
                     </List>
                     <Paper variant="outlined" className="w-full border-amber-200! bg-amber-50! rounded-md!">
                         <Box component="div" className="p-2 flex items-center justify-center gap-2">
-                            <Coins size={16} color={theme.palette.text.gold} />{plan.totalTokens} tokens/month
+                            <Coins size={16} color={theme.palette.text.gold} />{subSlot(t('pages.subscriptions.subscriptionPlans.tokensPerMonth'), '{tokens}', plan.totalTokens)}
                         </Box>
                     </Paper>
                     <ActionButton 
-                        buttonText={t('common.availableSoon') || "Select Plan"}
+                        buttonText={t('common.availableSoon') || t('pages.subscriptions.subscriptionPlans.selectPlan')}
                         variant={plan.isCurrentPlan ? 'gradient' : 'outlined'}
                         color={plan.isCurrentPlan ? 'purple' : 'white' }
                         disabled
                     />
                     <Typography variant="caption" component="p" color={theme.palette.text[plan.isCurrentPlan ? 'purple' : 'primary']}>
-                        {plan.isCurrentPlan ? `Enjoy ${calculateRemainingDays()} more days free!` : "Available after trial period"}
+                        {plan.isCurrentPlan ? subSlot(t('pages.subscriptions.subscriptionPlans.enjoyFreeDays'), '{days}', remainingDays) : t('pages.subscriptions.subscriptionPlans.availableAfterTrialPeriod')}
                     </Typography>
                     <ActionButton
                         buttonText={t('common.learnMore')}
@@ -191,13 +213,13 @@ export function TokenPlanCard({ pack }: TokenPackProps) {
     const bonusPercentage: number = useMemo(() => amount > 0 && bonus ? Math.round(bonus / amount * 100) : 0, [amount, bonus]);
     return (
         <Grid size={{ xs: 12, sm: 6, md: 2.4 }} sx={{ opacity: isActive ? 1 : 0.5, position: 'relative' }}>
-            <Tag variant="outlined" color="yellow" label="Coming Soon" className="absolute top-2 right-2" />
+            <Tag variant="outlined" color="yellow" label={t('common.comingSoon')} className="absolute top-2 right-2" />
             <Paper variant="outlined" className={`p-6 flex flex-col items-center h-full ${isActive ? '' : ''}`}>
                 <Coins size={24} color={theme.palette.text.gold} />
                 <Spacer height={10} />
                 <Typography variant="h6" component="div" sx={{ fontWeight: 700 }}>{amount}</Typography>
                 {bonus && bonus > 0 && (
-                    <Typography variant="caption" component="div" color={theme.palette.text.lightGreen} sx={{ mb: 1 }}>+{bonus} bonus</Typography>
+                    <Typography variant="caption" component="div" color={theme.palette.text.lightGreen} sx={{ mb: 1 }}>{subSlot(t('pages.subscriptions.subscriptionPlans.extraBonus'), '{extra}', bonus)}</Typography>
                 )}
                 <Typography variant="h5" component="div" sx={{ fontWeight: 700 }}>${price}</Typography>
                 <Spacer height={10} />
@@ -209,7 +231,7 @@ export function TokenPlanCard({ pack }: TokenPackProps) {
                 />
                 <Spacer height={10} />
                 {bonusPercentage > 0 &&
-                    <Tag variant="blue" label={`${bonusPercentage}% bonus`} />
+                    <Tag variant="blue" label={subSlot(t('pages.subscriptions.subscriptionPlans.bonusPercentage'), '{percent}', bonusPercentage)} />
                 }
             </Paper>
         </Grid>
@@ -221,6 +243,9 @@ export default function SubscriptionsClient() {
     const { locale } = useLanguage();
     const [plan, setPlan] = React.useState('1');
 
+    const remainingDays = useMemo(() => calculateRemainingDays(), []);
+    const expiryDateString = useMemo(() => getLocalDateString(EXPIRY_DATE.toISOString(), locale), [locale]);
+
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setPlan(newValue);
     }
@@ -229,6 +254,7 @@ export default function SubscriptionsClient() {
         const welcome = t('pages.subscriptions.welcome');
         const currentPlan = t('pages.subscriptions.currentPlan');
         const subscriptionPlans = t('pages.subscriptions.subscriptionPlans');
+        const additionalTokens = t('pages.subscriptions.additionalTokens');
 
         return {
             welcome,
@@ -236,7 +262,11 @@ export default function SubscriptionsClient() {
             currentPlanInfo: currentPlan?.planInfo,
             currentTokenUsage: currentPlan?.tokenUsage,
             trialProgress: currentPlan?.trialProgress,
+            subscriptionPlans,
             subscriptionPlanList: subscriptionPlans?.plans as SubscriptionPlan[] || [],
+            subscriptionPlansPointToNote: subscriptionPlans?.pointToNote,
+            additionalTokens,
+            additionalTokensPointToNote: additionalTokens?.pointToNote,
         }
     }, [t]);    
 
@@ -259,10 +289,10 @@ export default function SubscriptionsClient() {
                             <Box component="div" className="flex gap-2 items-center">
                                 <Calendar size={16} color={theme.palette.text.purple} />
                                 <Typography variant="subtitle1" sx={{ fontWeight: 700}} color={theme.palette.text.darkPurple}>
-                                    { substituteSlot(translations.welcome.daysRemainingSlot, '{days}', calculateRemainingDays()) }
+                                    { subSlot(translations.welcome.daysRemainingSlot, '{days}', remainingDays) }
                                 </Typography>    
                             </Box>
-                            <Typography variant="subtitle1" color={theme.palette.text.purple}>{ substituteSlot(translations.welcome.trialEndsSlot, "{date}", getLocalDateString(EXPIRY_DATE.toISOString(), locale)) }</Typography>
+                            <Typography variant="subtitle1" color={theme.palette.text.purple}>{ subSlot(translations.welcome.trialEndsSlot, "{date}", expiryDateString) }</Typography>
                         </Box>
                     </Box>
                 </Box>
@@ -283,18 +313,18 @@ export default function SubscriptionsClient() {
                                 <Tag variant="purple" label={ translations.currentPlan.label } />
                             </Box>
                             <Box component="div" className="flex gap-3">
-                                <Typography variant="h5" component="div" className="line-through" color={theme.palette.text.secondary}>HK$310</Typography>
+                                <Typography variant="h5" component="div" className="line-through" color={theme.palette.text.secondary}>{getLocalCurrency(310)}</Typography>
                                 <Typography variant="h5" component="div" color={theme.palette.text.lightGreen}>$0</Typography>
                             </Box>
                             <Typography variant="caption" component="p" color={theme.palette.text.secondary}>{ translations.currentPlanInfo.trialPeriod }</Typography>
                             <Spacer height={20} />
                             <Box component="div" className="flex justify-between items-center">
                                 <Typography variant="caption" component="p" color={theme.palette.text.primary}>{ translations.currentPlanInfo.trialEnds }</Typography>
-                                <Typography variant="caption" component="p" color={theme.palette.text.primary} sx={{ fontWeight: 700 }}>{ getLocalDateString(EXPIRY_DATE.toISOString(), locale) }</Typography>
+                                <Typography variant="caption" component="p" color={theme.palette.text.primary} sx={{ fontWeight: 700 }}>{ expiryDateString }</Typography>
                             </Box>
                             <Box component="div" className="flex justify-between items-center">
                                 <Typography variant="caption" component="p" color={theme.palette.text.purple}>{ translations.currentPlanInfo.daysRemaining }</Typography>
-                                <Typography variant="caption" component="p" color={theme.palette.text.purple} sx={{ fontWeight: 700 }}>{ substituteSlot(t('common.days'), '{days}', calculateRemainingDays())}</Typography>
+                                <Typography variant="caption" component="p" color={theme.palette.text.purple} sx={{ fontWeight: 700 }}>{ subSlot(t('common.days'), '{days}', remainingDays)}</Typography>
                             </Box>
                         </Card>
                     </Grid>
@@ -305,11 +335,11 @@ export default function SubscriptionsClient() {
                                 <Typography variant="h6" component="h2">{ translations.currentTokenUsage.title }</Typography>
                             </Box>
                             <Box component="div" className="flex justify-between items-center">
-                                <Typography variant="caption" component="p" color={theme.palette.text.primary}>{ substituteSlot(translations.currentTokenUsage.usedSlot, '{tokens}', 150) }</Typography>
-                                <Typography variant="caption" component="p" color={theme.palette.text.primary}>{ substituteSlot(translations.currentTokenUsage.remainingSlot, '{tokens}', 500) }</Typography>
+                                <Typography variant="caption" component="p" color={theme.palette.text.primary}>{ subSlot(translations.currentTokenUsage.usedSlot, '{tokens}', USED_TOKENS) }</Typography>
+                                <Typography variant="caption" component="p" color={theme.palette.text.primary}>{ subSlot(translations.currentTokenUsage.remainingSlot, '{tokens}', TOKEN_CAPACITY) }</Typography>
                             </Box>
                             <Spacer height={30} />
-                            <Typography variant="caption" component="small" color={theme.palette.text.secondary}>{ substituteSlot(translations.currentTokenUsage.resetDate, '{days}', 15) }</Typography>
+                            <Typography variant="caption" component="small" color={theme.palette.text.secondary}>{ subSlot(translations.currentTokenUsage.resetDate, '{days}', DAYS_TO_RESET_TOKENS) }</Typography>
                         </Card>
                     </Grid>
                     <Grid size={{ xs: 12, md: 6, lg: 4 }}>
@@ -324,18 +354,18 @@ export default function SubscriptionsClient() {
                                 <Typography variant="caption" component="p" color={theme.palette.text.primary}>
                                     { translations.trialProgress.daysUsed }
                                 </Typography>
-                                <Typography variant="caption" component="p" color={theme.palette.text.primary}>180 days</Typography>
+                                <Typography variant="caption" component="p" color={theme.palette.text.primary}>{ subSlot(t('common.days'), '{days}', USED_DAYS) }</Typography>
                             </Box>
                             <Box component="div" className="flex justify-between items-center">
                                 <Typography variant="caption" component="p" color={theme.palette.text.purple} sx={{ fontWeight: 700 }}>
                                     { translations.trialProgress.daysLeft }
                                 </Typography>
                                 <Typography variant="caption" component="p" color={theme.palette.text.purple} sx={{ fontWeight: 700 }}>
-                                    { substituteSlot(t('common.days'), '{days}', calculateRemainingDays())}
+                                    { subSlot(t('common.days'), '{days}', remainingDays)}
                                 </Typography>
                             </Box>
                             <Spacer height={30} />
-                            <Typography variant="caption" component="small" color={theme.palette.text.purple}>0% of trial remaining</Typography>
+                            <Typography variant="caption" component="small" color={theme.palette.text.purple}>{ subSlot(translations.trialProgress.percentTrialRemaining, "{percent}", calculateRemainingDaysPercent) }</Typography>
                         </Card>
                     </Grid>
                 </Grid>
@@ -345,8 +375,8 @@ export default function SubscriptionsClient() {
                 <TabContext value={plan}>
                     <Box component="div" className="flex justify-between items-center gap-15">
                         <Box component="div">
-                            <Typography variant="h6" component="h2" sx={{ fontWeight: 700 }}>Subscription Plans</Typography>
-                            <Typography variant="body2" component="p">Compare plans and choose the best option for your business. You're currently on a 6-month free trial of the Professional plan.</Typography>
+                            <Typography variant="h6" component="h2" sx={{ fontWeight: 700 }}>{ translations.subscriptionPlans.title }</Typography>
+                            <Typography variant="body2" component="p">{ translations.subscriptionPlans.intro }</Typography>
                         </Box>
                         <Box component="div">
                             <TabList onChange={handleChange} variant="fullWidth">
@@ -355,7 +385,7 @@ export default function SubscriptionsClient() {
                                     label={
                                         <Box component="span" sx={{ display: 'flex', alignItems: 'center', gap: 1, whiteSpace: 'nowrap' }}>
                                             {t("common.yearly")}
-                                            <Tag variant="green" label="Save up to 19%" />
+                                            <Tag variant="green" label={subSlot(translations.subscriptionPlans.discountTag, '{percent}', '19')} />
                                         </Box>
                                     } 
                                     value="2" 
@@ -373,6 +403,7 @@ export default function SubscriptionsClient() {
                                         key={`${tabValue === '2' ? 'yearly' : 'monthly'}-plan-${index}`}
                                         plan={subscriptionPlan}
                                         isYearly={tabValue === '2'}
+                                        remainingDays={remainingDays}
                                     />
                                 ))}
                             </Grid>
@@ -380,12 +411,12 @@ export default function SubscriptionsClient() {
                             <Card variant="outlined" className="p-5 bg-blue-50! border-blue-200!">
                                 <Box component="div" className="flex items-center gap-2 mb-2">
                                     <Emoji symbol="💡" size={24} />
-                                    <Typography variant="h6" component="h2" sx={{ fontWeight: 700 }}>After Your Free Trial</Typography>
+                                    <Typography variant="h6" component="h2" sx={{ fontWeight: 700 }}>{ translations.subscriptionPlansPointToNote?.title }</Typography>
                                 </Box>
-                                <Typography variant="caption" component="p" color={theme.palette.text.darkBlue} sx={{ mb: 1 }}>When your 6-month trial ends, you can choose to continue with the Professional plan starting at HK$250/month (yearly billing) or HK$310/month (monthly billing), or switch to another plan that better fits your needs. We'll send you reminders before your trial expires.</Typography>
+                                <Typography variant="caption" component="p" color={theme.palette.text.darkBlue} sx={{ mb: 1 }}>{ translations.subscriptionPlansPointToNote?.body }</Typography>
                                 <Box component="div" className="flex items-center gap-2">
                                     <Emoji symbol="💡" size={24} />
-                                    <Typography variant="body2" component="p" color={theme.palette.text.blue} sx={{ fontWeight: 700 }}>Subscription purchases will be available {calculateRemainingDays()} days from now when your trial period ends.</Typography>
+                                    <Typography variant="body2" component="p" color={theme.palette.text.blue} sx={{ fontWeight: 700 }}>{ subSlot(translations.subscriptionPlansPointToNote?.essential || '', '{days}', remainingDays) }</Typography>
                                 </Box>
                             </Card>
                         </TabPanel>
@@ -396,9 +427,9 @@ export default function SubscriptionsClient() {
             <Card variant="outlined" className="p-6">
                 <Box component="div" className="flex items-center gap-2 mb-1">
                     <Coins size={20} color={theme.palette.text.gold} />
-                    <Typography variant="h6" component="h2">Buy Additional Tokens</Typography>
+                    <Typography variant="h6" component="h2">{ translations.additionalTokens?.title }</Typography>
                 </Box>
-                <Typography variant="body2" component="p">Token purchases will be available after your free trial period ends</Typography>
+                <Typography variant="body2" component="p">{ translations.additionalTokens?.intro }</Typography>
                 <Spacer height={20} />
                 <Grid container spacing={2}>
                     {tokenPacks.map((tokenPack, tp) => 
@@ -412,10 +443,10 @@ export default function SubscriptionsClient() {
                 <Card variant="outlined" className="p-5 bg-amber-50! border-amber-200!">
                     <Box component="div" className="flex items-center gap-2 mb-2">
                         <Calendar size={24} color={theme.palette.text.darkAmber} />
-                        <Typography variant="h6" component="h2" sx={{ fontWeight: 700 }} color={theme.palette.text.darkAmber}>Token Purchases During Free Trial</Typography>
+                        <Typography variant="h6" component="h2" sx={{ fontWeight: 700 }} color={theme.palette.text.darkAmber}>{ translations.additionalTokensPointToNote?.title }</Typography>
                     </Box>
-                    <Typography variant="caption" component="p" color={theme.palette.text.darkAmber} sx={{ mb: 1 }}>Token purchases are not available during your 6-month free trial period. You already have 150 tokens included with your Professional plan trial. Additional token purchases will become available when your trial ends in <strong>{calculateRemainingDays()} days</strong>.</Typography>
-                    <Link variant="caption" href="/help-centre" underline="hover" sx={{ fontWeight: 700 }}>Learn more about token pricing</Link> 
+                    <Typography variant="caption" component="p" color={theme.palette.text.darkAmber} sx={{ mb: 1 }}>{ translations.additionalTokensPointToNote?.body }<strong>{ subSlot(t('common.days'), '{days}', remainingDays) }</strong></Typography>
+                    <Link variant="caption" href="/help-centre" underline="hover" sx={{ fontWeight: 700 }}>{ translations.additionalTokensPointToNote?.learnMoreAboutTokenPricing }</Link> 
                 </Card>
             </Card>
         </>
