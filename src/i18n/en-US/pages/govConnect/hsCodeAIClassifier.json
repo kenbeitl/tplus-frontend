@@ -1,0 +1,17 @@
+{
+    "title": "HS Code AI Classifier",
+    "context": "Get AI-powered HS code classification for your products instantly",
+    "productClassification": {
+        "title": "Product Classification",
+        "context": "Describe your product and our AI will classify it with the appropriate HS code",
+        "selectHSCodeType": "Select HS Code Type",
+        "hkHSCodeLabel": "HK HS Code (Ask Tracie)",
+        "hkHSCode": "hk-hs-code",
+        "chinaHSCodeLabel": "China HS Code (Ask Xiao Cui)",
+        "chinaHSCode": "china-hs-code",
+        "productDescription": "Product Description",
+        "productPlaceholder": "Describe your product in detail (e.g., 'Cotton t-shirts, 100% cotton, knitted, short sleeves, crew neck...')",
+        "productTip": "Tip: Provide as much detail as possible for more accurate classification including material, function, and key characteristics.",
+        "classifyProduct": "Classify Product"
+    }
+}

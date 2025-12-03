@@ -45,12 +45,14 @@
         "language": "語言"
     },
     "common": {
+        "acceptAndContinue": "接受並繼續",
         "apply": "申請",
         "applyNow": "立即申請",
         "availableSoon": "即將推出",
         "comingSoon": "敬請期待",
         "contactSupport": "聯繫支援",
         "days": "{days}天",
+        "decline": "拒絕",
         "error": "錯誤",
         "getNotified": "獲取通知",
         "learnMore": "了解更多",

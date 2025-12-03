@@ -1,0 +1,17 @@
+{
+    "title": "HS編碼AI分類器",
+    "context": "即時取得AI驅動的HS編碼分類服務",
+    "productClassification": {
+        "title": "產品分類",
+        "context": "描述您的產品，我們的AI將為其分類並分配適當的HS編碼",
+        "selectHSCodeType": "選擇HS編碼類型",
+        "hkHSCodeLabel": "香港HS編碼（諮詢Tracie）",
+        "hkHSCode": "hk-hs-code",
+        "chinaHSCodeLabel": "中國HS編碼（諮詢小翠）",
+        "chinaHSCode": "china-hs-code",
+        "productDescription": "產品描述",
+        "productPlaceholder": "詳細描述您的產品（例如：「棉質T卹，100%棉，針織，短袖，圓領…」）",
+        "productTip": "提示：提供盡可能多的細節以獲得更準確的分類，包括材料、功能和主要特徵。",
+        "classifyProduct": "分類產品"
+    }
+}

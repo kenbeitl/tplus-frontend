@@ -1,0 +1,39 @@
+{
+    "title": "AI-Powered Customs Automation",
+    "context": "Automate your customs declarations with AI-powered document processing",
+    "legalNotice": {
+        "title": "Terms of Service & Data Processing Consent",
+        "consent": {
+            "title": "IMPORTANT LEGAL NOTICE - DATA PROCESSING CONSENT",
+            "body": "By proceeding to use the AI-Powered Customs Automation Service (\"the Service\"), you hereby acknowledge and expressly consent to the following:",
+            "points": [
+                "<strong>Automated Data Processing:</strong> You authorize T+ and its AI systems to automatically read, analyze, extract, and process data from all documents you submit through this Service.",
+                "<strong>Document Analysis:</strong> The Service will employ artificial intelligence and machine learning technologies to interpret the content of your submitted documents, including but not limited to commercial invoices, packing lists, bills of lading, certificates of origin, and any other trade-related documentation.",
+                "<strong>Data Extraction and Usage:</strong> Information extracted from your documents may include, but is not limited to, party details, commodity descriptions, quantities, values, shipping information, and other relevant trade data necessary for customs declaration preparation.",
+                "<strong>Processing Purpose:</strong> The extracted data will be utilized solely for the purpose of generating automated customs declarations and facilitating trade compliance processes.",
+                "<strong>Data Security:</strong> While we implement industry-standard security measures to protect your data, you acknowledge the inherent risks associated with electronic data transmission and storage.",
+                "<strong>Your Responsibility:</strong> You confirm that you have the necessary rights and permissions to submit all documents to the Service and authorize their processing as described herein."
+            ],
+            "agreement": "By clicking \"Accept and Continue\" below, you confirm that you have read, understood, and agree to these terms and consent to the automated processing of your documents and data as described above."
+        }
+    },
+    "declaration": {
+        "title": "Select Declaration Type",
+        "context": "Choose whether you're filing an import or export trade declaration",
+        "types": [
+            {
+                "icon": "ship",
+                "label": "Import Declaration",
+                "value": "import",
+                "description": "For goods being imported into the country. Includes customs clearance for incoming shipments."
+            },
+            {
+                "icon": "package",
+                "label": "Export Declaration",
+                "value": "export",
+                "description": "For goods being exported out of the country. Includes export customs clearance and documentation."
+            }
+        ],
+        "buttonText": "Continue to Document Upload"
+    }
+}

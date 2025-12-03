@@ -1,0 +1,17 @@
+{
+    "title": "HS编码AI分类器",
+    "context": "即时获取AI驱动的HS编码分类服务",
+    "productClassification": {
+        "title": "产品分类",
+        "context": "描述您的产品，我们的AI将为其分类并分配适当的HS编码",
+        "selectHSCodeType": "选择HS编码类型",
+        "hkHSCodeLabel": "香港HS编码（咨询Tracie）",
+        "hkHSCode": "hk-hs-code",
+        "chinaHSCodeLabel": "中国HS编码（咨询小翠）",
+        "chinaHSCode": "china-hs-code",
+        "productDescription": "产品描述",
+        "productPlaceholder": "详细描述您的产品（例如：“棉质T恤，100%棉，针织，短袖，圆领……”）",
+        "productTip": "提示：提供尽可能多的细节以获得更准确的分类，包括材料、功能和主要特征。",
+        "classifyProduct": "分类产品"
+    }
+}

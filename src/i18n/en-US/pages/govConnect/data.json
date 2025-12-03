@@ -1,8 +1,10 @@
 {
     "title": "GovConnect",
     "context": "Single Submission for Dual Declaration",
+    "backToGovConnect": "Back to GovConnect",
     "services": [
         {
+            "id": "govconnect-dual-declaration",
             "icon": "file-text",
             "title": "Single Submission for Dual Declaration",
             "description": "Streamline customs declarations with single submission for both import and export requirements",
@@ -10,11 +12,10 @@
                 "Reduce paperwork by 60%",
                 "Faster processing time",
                 "Single point of submission"
-            ],
-            "formTemplateId": "govconnect-dual-declaration",
-            "buttonText": "Apply Now"
+            ]            
         },
         {
+            "id": "hs-code-ai-classifier",
             "icon": "search",
             "title": "HS Code AI Classifier",
             "description": "Get AI-powered HS code classification for your products instantly",
@@ -22,9 +23,11 @@
                 "HK HS Code (Ask Tracie)",
                 "China HS Code (Ask Xiao Cui)",
                 "Instant classification results"
-            ]
+            ],
+            "buttonText": "Launch Classifier"
         },
         {
+            "id": "ai-powered-customs-automation",
             "icon": "brain",
             "title": "AI-Powered Customs Automation",
             "description": "Automate customs declarations with AI-powered document processing",
@@ -32,7 +35,8 @@
                 "Automated data extraction",
                 "Import & export declarations",
                 "Ready in 10 minutes"
-            ]
+            ],
+            "buttonText": "Launch Service"
         }
     ]
 }

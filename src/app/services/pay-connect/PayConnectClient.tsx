@@ -32,16 +32,16 @@ export default function PayConnectClient() {
                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={`payconnect-card-${index}`}>
                         <Card variant="outlined" className="p-6 card-hover" sx={{ height: '100%' }}>
                             <Box className="flex items-center">
-                            <StyledIcon
-                                icon={getLucideIcon(item.icon)} 
-                                variant="blue-gradient"
-                                size={36}
-                                square
-                                className="mr-3 shrink-0"
-                            />
-                            <Box>
-                                <Typography variant="body1" component="h4">{item.title}</Typography>
-                            </Box>
+                                <StyledIcon
+                                    icon={getLucideIcon(item.icon)} 
+                                    variant="blue-gradient"
+                                    size={36}
+                                    square
+                                    className="mr-3 shrink-0"
+                                />
+                                <Box>
+                                    <Typography variant="body1" component="h4">{item.title}</Typography>
+                                </Box>
                             </Box>
                             <Typography sx={{ mt: 2 }} variant="body2" component="p">{item.description}</Typography>
                             <Spacer height={20} />

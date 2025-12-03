@@ -45,12 +45,14 @@
         "language": "语言"
     },
     "common": {
+        "acceptAndContinue": "接受并继续",
         "apply": "申请",
         "applyNow": "立即申请",
         "availableSoon": "即将推出",
         "comingSoon": "敬请期待",
         "contactSupport": "联系支援",
         "days": "{days}天",
+        "decline": "拒绝",
         "error": "错误",
         "getNotified": "获取通知",
         "learnMore": "了解更多",

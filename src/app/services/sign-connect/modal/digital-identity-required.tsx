@@ -13,6 +13,7 @@ import ModalHowToApplyForIdOne from './how-to-apply-for-id-one';
 import { useTranslations } from '@/contexts/AppContext';
 import { getLucideIcon } from '@/helpers/utils';
 import theme from '@/theme/theme';
+import Link from 'next/link';
 
 type ModalProps = {
   open: boolean;
@@ -82,7 +83,7 @@ export default function ModalDigitalIdentityRequired({ open, onClose }: ModalPro
           </Grid>
           <Spacer height={20} />
           <Box component="div" className="flex justify-center gap-4">
-            <Button variant="outlined" onClick={() => router.push('/help-centre')}>{ modalContent.learnMoreAboutDigitalIdentities }</Button>
+            <Button component={Link} variant="outlined" href="/help-centre">{ modalContent.learnMoreAboutDigitalIdentities }</Button>
             <Button variant="gradient" color="blue" onClick={onClose}>{ modalContent.alreadyHaveDigitalID }</Button>
           </Box>
         </Box>      

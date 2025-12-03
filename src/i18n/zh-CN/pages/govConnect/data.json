@@ -1,8 +1,10 @@
 {
     "title": "GovConnect",
     "context": "单一提交双重申报",
+    "backToGovConnect": "返回GovConnect",
     "services": [
         {
+            "id": "govconnect-dual-declaration",
             "icon": "file-text",
             "title": "单一提交双重申报",
             "description": "简化海关申报，单一提交满足进出口要求",
@@ -10,11 +12,10 @@
                 "减少60%的文书工作",
                 "更快的处理时间",
                 "单一提交点"
-            ],
-            "formTemplateId": "govconnect-dual-declaration",
-            "buttonText": "立即申请"
+            ]
         },
         {
+            "id": "hs-code-ai-classifier",
             "icon": "search",
             "title": "HS编码AI分类器",
             "description": "即时获取AI驱动的产品HS编码分类",
@@ -22,9 +23,11 @@
                 "香港HS编码（咨询Tracie）",
                 "中国HS编码（咨询小翠）",
                 "即时分类结果"
-            ]
+            ],
+            "buttonText": "使用分类器"
         },
         {
+            "id": "ai-powered-customs-automation",
             "icon": "brain",
             "title": "AI驱动的海关自动化",
             "description": "利用AI驱动的文档处理自动化海关申报",
@@ -32,7 +35,8 @@
                 "自动数据提取",
                 "进出口申报",
                 "10分钟内完成"
-            ]
+            ],
+            "buttonText": "立即使用"
         }
     ]
 }

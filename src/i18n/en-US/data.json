@@ -45,12 +45,14 @@
         "language": "Language"
     },
     "common": {
+        "acceptAndContinue": "Accept and Continue",
         "apply": "Apply",
         "applyNow": "Apply Now",
         "availableSoon": "Available Soon",
         "comingSoon": "Coming Soon",
         "contactSupport": "Contact Support",
         "days": "{days} Days",
+        "decline": "Decline",
         "error": "Error",
         "getNotified": "Get Notified",
         "learnMore": "Learn More",
