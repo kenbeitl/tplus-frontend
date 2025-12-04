@@ -35,5 +35,45 @@
             }
         ],
         "buttonText": "继续上传文件"
+    },
+    "fileUpload": {
+        "field": {
+            "icon": "upload",
+            "placeholder": "将文件拖放到此处或点击浏览",
+            "formats": "支持的格式：PDF、JPG、PNG、DOC、DOCX（每个文件最大 10MB）",
+            "buttonText": "选择文件"
+        },
+        "documents": [
+            {
+                "id": "shipment",
+                "icon": "ship",
+                "title": "运输文件",
+                "context": "上传与运输相关的文件（例如提单、空运提单、装箱单）"
+            },
+            {
+                "id": "goods",
+                "icon": "package",
+                "title": "货物文件",
+                "context": "上传与货物相关的文件（例如商业发票、原产地证书、产品规格）"
+            }
+        ],
+        "buttonText": "提交并生成申报单"
+    },
+    "submission": {
+        "title": "正在生成您的申报单...",
+        "context": "请稍候，我们的AI正在处理您的文件",
+        "notes": [
+            {
+                "icon": "brain",  
+                "theme": "blue",   
+                "text": "我们的AI助手正在准备您的出口申报单。大约10分钟后即可完成。"   
+            },
+            {  
+                "icon": "circle-check-big",
+                "theme": "lightGreen",
+                "text": "完成后，您可以在TradelinkBox账户的“草稿”部分查看和编辑草稿。"
+            }
+        ],
+        "viewDraft": "在TradelinkBox中查看草稿"
     }
 }

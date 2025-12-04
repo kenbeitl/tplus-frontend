@@ -270,7 +270,7 @@ const theme = createTheme({
           style: {
             color: '#666666',
             backgroundColor: '#FFFFFF',
-            borderColor: '#666666',
+            borderColor: 'rgba(0, 0, 0, 0.12)',
           },
         },
         {

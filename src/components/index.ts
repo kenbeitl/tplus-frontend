@@ -6,6 +6,7 @@ export { default as ButtonWithModal } from './ButtonWithModal';
 export { default as Carousel } from './Carousel';
 export { default as Checklist } from './Checklist';
 export { default as Emoji } from './Emoji';
+export { default as FileDropZone } from './FileDropZone';
 export { default as FluidImage } from './FluidImage';
 export { default as InfoModal } from './InfoModal';
 export { default as Modal } from './Modal';

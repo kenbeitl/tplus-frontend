@@ -16,5 +16,64 @@
             ],
             "agreement": "點擊下方“接受並繼續”，即表示您已閱讀、理解並同意這些條款，並同意如上所述自動處理您的文件和數據。"
         }        
+    },
+    "declaration": {
+        "title": "選擇申報類型",
+        "context": "選擇您是要提交進口還是出口貿易申報",
+        "types": [
+            {
+                "icon": "ship",
+                "label": "進口申報",
+                "value": "import",
+                "description": "適用於進口到本國的貨物。包括進境貨物的清關。"
+            },
+            {
+                "icon": "package",
+                "label": "出口申報",
+                "value": "export",
+                "description": "適用於出口出本國的貨物。包括出口清關和相關文件。"
+            }
+        ],
+        "buttonText": "繼續上傳文件"
+    },
+    "fileUpload": {
+        "field": {
+            "icon": "upload",
+            "placeholder": "將文件拖放到此處或點擊瀏覽",
+            "formats": "支持的格式：PDF、JPG、PNG、DOC、DOCX（每個文件最大 10MB）",
+            "buttonText": "選擇文件"
+        },
+        "documents": [
+            {
+                "id": "shipment",
+                "icon": "ship",
+                "title": "運輸文件",
+                "context": "上傳與運輸相關的文件（例如提單、空運提單、裝箱單）"
+            },
+            {
+                "id": "goods",
+                "icon": "package",
+                "title": "貨物文件",
+                "context": "上傳與貨物相關的文件（例如商業發票、原產地證書、產品規格）"
+            }
+        ],
+        "buttonText": "提交並生成申報單"
+    },
+    "submission": {
+        "title": "正在生成您的申報單...",
+        "context": "請稍候，讓我們的 AI 處理您的文件",
+        "notes": [
+            {
+                "icon": "brain",
+                "theme": "blue",
+                "text": "我們的 AI 助手正在準備您的出口申報單。大約需要 <strong>10 分鐘</strong>。"
+            },
+            {
+                "icon": "circle-check-big",
+                "theme": "lightGreen",
+                "text": "完成後，您可以在您的 TradelinkBox 帳戶的 <strong>草稿</strong> 部分查看和編輯草稿。"
+            }
+        ],
+        "viewDraft": "在 TradelinkBox 查看草稿"
     }
 }

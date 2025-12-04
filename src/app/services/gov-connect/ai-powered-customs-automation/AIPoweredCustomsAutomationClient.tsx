@@ -1,13 +1,15 @@
 'use client';
 
-import { ActionButton, Spacer } from "@/components";
+import { ActionButton, FileDropZone, Spacer } from "@/components";
 import { useTranslations } from "@/contexts/AppContext";
+import { getLucideIcon, subSlot } from "@/helpers/utils";
 import { useFormValidation } from "@/hooks/useFormValidation";
+import { useFileDrop } from "@/hooks/useFileDrop";
 import theme from "@/theme/theme";
-import { Box, Button, Card, FormControl, List, ListItem, ListItemText, Paper, RadioGroup, Typography } from "@mui/material";
-import { ArrowLeft, Brain, CircleAlert } from "lucide-react";
+import { alpha, Box, Button, Card, FormControl, FormControlLabel, List, ListItem, ListItemIcon, ListItemText, Paper, Radio, RadioGroup, Typography } from "@mui/material";
+import { ArrowLeft, Brain, CircleAlert, CircleCheckBig } from "lucide-react";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 export default function AIPoweredCustomsAutomationClient() {
     const t = useTranslations();
@@ -15,17 +17,21 @@ export default function AIPoweredCustomsAutomationClient() {
         const govConnect = t('pages.govConnect');
         const legalNotice = govConnect?.aiPoweredCustomsAutomation?.legalNotice;
         const declaration = govConnect?.aiPoweredCustomsAutomation?.declaration;
+        const fileUpload = govConnect?.aiPoweredCustomsAutomation?.fileUpload;
+        const submission = govConnect?.aiPoweredCustomsAutomation?.submission;
         
         return {
             govConnect,
             aiPoweredCustomsAutomation: govConnect?.aiPoweredCustomsAutomation,
             legalNotice,
             declaration,
+            fileUpload,
+            submission,
         }
     }, [t]);
     const validationRules = useMemo(() => {
         return {
-            declarationType: { required: true }
+            declarationType: { required: true },
         };
     }, []);
 
@@ -34,8 +40,34 @@ export default function AIPoweredCustomsAutomationClient() {
             declarationType: translations.declaration.types[0].value,
         };
     }, []);
-    const form = useFormValidation(initialValues, validationRules)
-    const [agreeConsent, setAgreeConsent] = useState(false);
+    const form = useFormValidation(initialValues, validationRules);
+    const [currentStep, setCurrentStep] = useState(1);
+    const [files, setFiles] = useState<{ shipment?: File; goods?: File }>({});
+
+    const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = event.target;
+        form.handleChange('declarationType', value);
+    };
+
+    // File drop hooks for each document
+    const shipmentFileDrop = useFileDrop({
+        onFileSelect: (file) => setFiles(prev => ({ ...prev, shipment: file }))
+    });
+
+    const goodsFileDrop = useFileDrop({
+        onFileSelect: (file) => setFiles(prev => ({ ...prev, goods: file }))
+    });
+
+    const fileDropHooks = [shipmentFileDrop, goodsFileDrop];
+
+    useEffect(() => {
+        if (currentStep === 3) {
+            setFiles({});
+            shipmentFileDrop.clearFile();
+            goodsFileDrop.clearFile();
+        }
+    }, [currentStep]);
+
     return (
         <>
             <Button
@@ -50,9 +82,11 @@ export default function AIPoweredCustomsAutomationClient() {
             <Spacer height={20} />
             
             <Box component="div" className="max-w-4xl">
-                <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
-                    { !agreeConsent &&
-                    <>
+
+                    {/* Step 1 */}
+
+                    { currentStep === 1 &&
+                    <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
                         <Box component="div" className="flex">
                             <CircleAlert size={20} color={theme.palette.text.blue} className="mr-2" />
                             <Typography variant="body2" component="p">{ translations.legalNotice.title }</Typography>
@@ -84,31 +118,181 @@ export default function AIPoweredCustomsAutomationClient() {
                             <ActionButton
                                 buttonText={ t('common.acceptAndContinue') }
                                 variant="gradient"
-                                onClick={() => setAgreeConsent(true)}
+                                onClick={() => setCurrentStep(currentStep+1)}
                                 autoWidth
                             />
                         </Box>
-                    </>
+                    </Card>
                     }
-                    { agreeConsent && 
-                    <>
+
+                    {/* Step 2 */}
+
+                    { currentStep === 2 && 
+                    <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
                         <Box component="div" className="flex">
                             <Brain size={20} className="mr-2" />
                             <Typography variant="body2" component="p">{ translations.declaration.title }</Typography>
                         </Box>
                         <Typography variant="body2" component="p" sx={{ mt: 1 }}>{ translations.declaration.context }</Typography>
                         <Spacer height={20} />
-                        <FormControl>
+                        <FormControl
+                            fullWidth
+                        >
                             <RadioGroup
+                                row
                                 defaultValue={ translations.declaration.types[0].value }
                                 name="declarationType"
+                                sx={{ flexWrap: 'nowrap', gap: 2 }}
+                                onChange={handleRadioChange}
                             >
-                                
+                                {translations.declaration.types.map((type: any) => (
+                                    <FormControlLabel 
+                                        key={type.value}
+                                        value={type.value}
+                                        control={<Radio sx={{position: 'absolute', left: 5, top: 5}} />}
+                                        label={
+                                            <Box component="div" className="flex flex-col lg:flex-row items-top gap-2">
+                                                <Box component="span">{getLucideIcon(type.icon, 20)}</Box>
+                                                <Typography variant="caption" sx={{ fontWeight: 700, whiteSpace: 'nowrap' }}>{type.label}</Typography>
+                                                <Typography variant="caption">{type.description}</Typography>
+                                            </Box>
+                                        }
+                                        labelPlacement="bottom"
+                                        className={type.value === form.values.declarationType ? `border-blue-600! bg-blue-50` : ''}
+                                        sx={{
+                                            position: 'relative',
+                                            pt: 6, pr: 2, pb: 4, pl: 4,
+                                            m: 0,
+                                            borderWidth: '2px',
+                                            borderStyle: 'solid' ,
+                                            borderColor: alpha(theme.palette.divider, 0.1),
+                                            borderRadius: 1,
+                                            flexBasis: '50%',
+                                            transition: 'border-color .1s ease-in',
+                                            '&:hover': {
+                                                borderColor: alpha(theme.palette.divider, 0.2),
+                                            },
+                                            
+                                        }}
+                                    />
+                                ))}
                             </RadioGroup>
                         </FormControl>
+                        <Spacer height={20} />
+                        <Box component="div" className="flex justify-between gap-4">
+                            <ActionButton
+                                buttonText={ t('common.back') }
+                                variant="outlined"
+                                color="white"
+                                onClick={() => setCurrentStep(currentStep-1)}
+                                autoWidth
+                            />
+                            <ActionButton
+                                buttonText={ translations.declaration.buttonText }
+                                variant="gradient"
+                                onClick={() => setCurrentStep(currentStep+1)}
+                                autoWidth
+                            />
+                        </Box>
+                    </Card>
+                    }
+
+                    {/* Step 3 */}
+
+                    { currentStep === 3 && 
+                    <>
+                        {translations.fileUpload.documents.map((doc: { id: number, icon: string, title: string, context: string }, idx: number) => {
+                            const fileDropHook = fileDropHooks[idx];
+                            return (
+                                <Card key={doc.id || `doc-${idx}`} variant="outlined" className="p-6 mb-4" sx={{ height: '100%' }}>
+                                    <Box component="div" className="flex">
+                                        <Box component="span" sx={{ mr: 2 }}>{ getLucideIcon(doc.icon, 20) }</Box>
+                                        <Typography variant="body2" component="p">{doc.title}</Typography>
+                                    </Box>
+                                    <Typography variant="body2" component="p" sx={{ mt: 1 }}>{doc.context}</Typography>
+                                    <Spacer height={30} />
+                                    <FileDropZone
+                                        isDragging={fileDropHook.isDragging}
+                                        file={fileDropHook.file}
+                                        onDragEnter={fileDropHook.handleDragEnter}
+                                        onDragLeave={fileDropHook.handleDragLeave}
+                                        onDragOver={fileDropHook.handleDragOver}
+                                        onDrop={fileDropHook.handleDrop}
+                                        onFileChange={fileDropHook.handleFileChange}
+                                        placeholder={translations.fileUpload.field.placeholder}
+                                        formats={translations.fileUpload.field.formats}
+                                        buttonText={translations.fileUpload.field.buttonText}
+                                        multiple
+                                    />
+                                </Card>
+                            );
+                        })}
+                        <Box component="div" className="flex justify-between gap-4">
+                            <ActionButton
+                                buttonText={ t('common.back') }
+                                variant="outlined"
+                                color="white"
+                                onClick={() => setCurrentStep(currentStep-1)}
+                                autoWidth
+                            />
+                            <ActionButton
+                                buttonText={ translations.declaration.buttonText }
+                                variant="gradient"
+                                onClick={() => setCurrentStep(currentStep+1)}
+                                autoWidth
+                                disabled={files.shipment === undefined || files.goods === undefined}
+                            />
+                        </Box>
                     </>
-                    }  
-                </Card>
+                    }
+
+                    { currentStep === 4 && 
+                    <Card variant="outlined" className="p-8" sx={{ height: '100%' }}>
+                        <Box component="div" className="flex flex-col items-center">
+                            <Box component="div" className="flex relative animate-pulse">
+                                <Brain size={64} color={theme.palette.text.blue} />
+                                <CircleCheckBig size={24} color={theme.palette.text.lightGreen} className="absolute top-0 left-12" />
+                            </Box>
+                            <Typography variant="h5" component="h2" sx={{ mt: 3, fontWeight: 700 }}>{ translations.submission.title }</Typography>
+                            <Typography variant="h6" component="p" sx={{ mt: 1, mb: 4, textAlign: 'center' }}>{ translations.submission.context }</Typography>
+                        </Box>
+                        <Paper variant="outlined" className="p-3 bg-blue-50! border-blue-200!">
+                            <List dense>
+                            {translations.submission.notes.map((note: {icon: string, theme: string, text: string}, idx: number) => (
+                                <ListItem key={`submission-note-${idx}`} disableGutters>
+                                <ListItemIcon sx={{ minWidth: 12, mr: 2 }}>
+                                    {getLucideIcon(note.icon, 20, theme.palette.text[note.theme as keyof typeof theme.palette.text])}
+                                </ListItemIcon>
+                                <ListItemText
+                                    slotProps={{
+                                        primary: {
+                                            variant: 'body1',
+                                            color: theme.palette.text.darkBlue
+                                        }
+                                    }}
+                                    primary={<span dangerouslySetInnerHTML={{ __html: note.text }} />}
+                                />
+                                </ListItem>
+                            ))}
+                            </List>
+                        </Paper>
+                        <Spacer height={25} />
+                         <Box component="div" className="flex flex-col gap-3">
+                            <ActionButton
+                                startIcon={getLucideIcon('external-link', 20)}
+                                buttonText={ translations.submission.viewDraft }
+                                variant="gradient"
+                                onClick="https://app.tradelinksig.com/auth/realms/tradelinkbox/protocol/openid-connect/auth?client_id=tdec&redirect_uri=https%3A%2F%2Fapp.tradelinksig.com%2Ftdec%2F%3Flocale%3Dzh_TW&state=a58ad935-e0b5-479a-8873-9f11697c9dd7&response_mode=fragment&response_type=code&scope=openid&nonce=994d7247-8466-4684-92a0-299d8aec9750&ui_locales=zh-TW&code_challenge=tQ2CSyOBRh0f7501lNreIq7U44BVUZSr04J8pY2rBpY&code_challenge_method=S256"
+                            />
+                            <Button
+                                component={Link}
+                                variant="outlined"
+                                color="white"
+                                href="/services/gov-connect"
+                            >{subSlot(t('common.returnTo'), '{page}', t('pages.govConnect.title'))}</Button>
+                        </Box>
+                    </Card>
+                    }
             </Box> 
         </>
     )

@@ -35,5 +35,45 @@
             }
         ],
         "buttonText": "Continue to Document Upload"
+    },
+    "fileUpload": {
+        "field": {
+            "icon": "upload",
+            "placeholder": "Drag and drop files here or click to browse",
+            "formats": "Supported formats: PDF, JPG, PNG, DOC, DOCX (Max 10MB per file)",
+            "buttonText": "Choose Files"
+        },
+        "documents": [
+            {
+                "id": "shipment",
+                "icon": "ship",
+                "title": "Shipment Documents",
+                "context": "Upload documents related to the shipment (e.g., Bill of Lading, Air Waybill, Packing List)"
+            },
+            {
+                "id": "goods",
+                "icon": "package",
+                "title": "Goods Documents",
+                "context": "Upload documents related to the goods (e.g., Commercial Invoice, Certificate of Origin, Product Specifications)"
+            }
+        ],
+        "buttonText": "Submit and Generate Declaration"
+    },
+    "submission": {
+        "title": "Generating Your Declaration...",
+        "context": "Please wait while our AI processes your documents",
+        "notes": [
+            {
+                "icon": "brain",
+                "theme": "blue",
+                "text": "Our AI Assistant is preparing your export declaration. It will be ready in approximately <strong>10 minutes</strong>."
+            },
+            {
+                "icon": "circle-check-big",
+                "theme": "lightGreen",
+                "text": "Once completed, you can review and edit the draft in your TradelinkBox account under the <strong>Drafts</strong> section."
+            }
+        ],
+        "viewDraft": "View Drafts in TradelinkBox"
     }
 }
