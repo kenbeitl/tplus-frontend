@@ -5,9 +5,10 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
 // MUI Components
-import { styled, Theme, CSSObject } from '@mui/material/styles';
+import { styled, Theme, CSSObject, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
@@ -38,24 +39,6 @@ interface serviceProps {
   isActive?: boolean;
 }
 
-const openedMixin = (theme: Theme, disableTransition = false): CSSObject => ({
-  width: drawerWidth,
-  transition: disableTransition ? 'none' : theme.transitions.create('width', {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen,
-  }),
-  overflowX: 'hidden',
-});
-
-const closedMixin = (theme: Theme, disableTransition = false): CSSObject => ({
-  transition: disableTransition ? 'none' : theme.transitions.create('width', {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  overflowX: 'hidden',
-  width: `calc(${theme.spacing(8)} + 1px)`,
-});
-
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -69,12 +52,12 @@ interface AppBarProps extends MuiAppBarProps {
 }
 
 const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open' && prop !== 'disableTransition',
-})<AppBarProps & { disableTransition?: boolean }>(({ theme, open, disableTransition }) => ({
+  shouldForwardProp: (prop) => prop !== 'open' && prop !== 'disableTransition' && prop !== 'isDesktop',
+})<AppBarProps & { disableTransition?: boolean }>(({ theme, open, disableTransition, isDesktop }) => ({
   border: 0,
   borderBottom: '1px solid ' + theme.palette.divider,
   marginLeft: open ? drawerWidth : drawerMiniWidth,
-  width: open ? `calc(100% - ${drawerWidth}px)` : `calc(100% - ${drawerMiniWidth}px)`,
+  width: isDesktop ? (open ? `calc(100% - ${drawerWidth}px)` : `calc(100% - ${drawerMiniWidth}px)`) : '100%',
   backgroundColor: theme.palette.background.paper,
   zIndex: theme.zIndex.drawer + 1,
   transition: disableTransition ? 'none' : theme.transitions.create(['width', 'margin'], {
@@ -85,10 +68,28 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
+const openedMixin = (theme: Theme, disableTransition = false, isDesktop = true): CSSObject => ({
+  width: drawerWidth,
+  transition: disableTransition ? 'none' : theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen,
+  }),
+  overflowX: 'hidden',
+});
+
+const closedMixin = (theme: Theme, disableTransition = false, isDesktop = true): CSSObject => ({
+  width: isDesktop ? `calc(${theme.spacing(8)} + 1px)` : 0,
+  transition: disableTransition ? 'none' : theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  overflowX: 'hidden',  
+});
+
 const Drawer = styled(MuiDrawer, { 
-  shouldForwardProp: (prop) => prop !== 'open' && prop !== 'disableTransition' 
-})<{ open?: boolean; disableTransition?: boolean }>(
-  ({ theme, disableTransition }) => ({
+  shouldForwardProp: (prop) => prop !== 'open' && prop !== 'disableTransition' && prop !== 'isDesktop'
+})<{ open?: boolean; disableTransition?: boolean; isDesktop?: boolean }>(
+  ({ theme, disableTransition, isDesktop = true }) => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
@@ -104,8 +105,8 @@ const Drawer = styled(MuiDrawer, {
       {
         props: ({ open }) => !open,
         style: {
-          ...closedMixin(theme, disableTransition),
-          '& .MuiDrawer-paper': closedMixin(theme, disableTransition),
+          ...closedMixin(theme, disableTransition, isDesktop),
+          '& .MuiDrawer-paper': closedMixin(theme, disableTransition, isDesktop),
         },
       },
     ],
@@ -117,14 +118,16 @@ export default function AppWrapper({
 }: { 
   children: React.ReactNode 
 }) {
-  const t = useTranslations();
   const router = useRouter();
   const { data: session, status } = useSession();
   const { locale, setLocale } = useLanguage();
+  const t = useTranslations();
   const { drawerOpen, toggleDrawer } = useDrawer();
+  const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [userMenuAnchorEl, setUserMenuAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isInitialMount, setIsInitialMount] = React.useState(true);
+  const isDesktop = useMediaQuery(theme.breakpoints.up(1024));
 
   const user = session?.user;
   const username = user?.name;
@@ -185,7 +188,7 @@ export default function AppWrapper({
 
   return (
     <SnackbarProvider>
-      <Box component="div" className="app-layout min-h-screen">
+      <div className="app-layout min-h-screen">
         <Box className="flex">
           <AppBar 
             position="fixed"
@@ -193,6 +196,7 @@ export default function AppWrapper({
             elevation={0}
             open={drawerOpen}
             disableTransition={isInitialMount}
+            isDesktop={isDesktop}
           >
           <Toolbar>
             <IconButton
@@ -266,6 +270,7 @@ export default function AppWrapper({
           variant="permanent" 
           open={drawerOpen}
           disableTransition={isInitialMount}
+          isDesktop={isDesktop}
         >
           <DrawerHeader>
             <Logo open={drawerOpen} />
@@ -343,7 +348,7 @@ export default function AppWrapper({
           {children}
         </Box>
       </Box>
-    </Box>
+    </div>
     </SnackbarProvider>
   );
 }
