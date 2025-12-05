@@ -49,6 +49,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
+  isDesktop?: boolean;
 }
 
 const AppBar = styled(MuiAppBar, {
