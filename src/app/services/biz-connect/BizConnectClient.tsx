@@ -1,11 +1,11 @@
 'use client';
 
-import { Tag, Spacer, StyledIcon, ActionButton, ButtonWithFormModal } from "@/components";
-import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
-import { useTranslations } from '@/contexts/AppContext';
-import { ArrowRight, Bell, Briefcase, Building2, CircleCheckBig, Globe, Shield, Sparkles } from "lucide-react";
-import theme from "@/theme/theme";
 import React from "react";
+
+import theme from "@/theme/theme";
+import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
+import { Tag, Spacer, StyledIcon, ActionButton, ButtonWithFormModal } from "@/components";
+import { useTranslations } from '@/contexts/AppContext';
 import { getLucideIcon } from "@/helpers/utils";
 
 export default function BizConnectClient() {
@@ -48,7 +48,7 @@ export default function BizConnectClient() {
                 <Box component="div" className="flex items-top justify-between gap-8">
                     <Box component="div">
                         <Box component="div" className="flex items-center">
-                            <Sparkles size={24} className="mr-2" color={theme.palette.text.blue} />
+                            <Box component="span" sx={{ mr: 1 }}>{ getLucideIcon('sparkles', 24, theme.palette.text.blue) }</Box>
                             <Typography variant="h4" component="h2" color={theme.palette.text.darkBlue}>{translations.prelaunch.title}</Typography>
                         </Box>
                         <Spacer height={10} />
@@ -57,7 +57,7 @@ export default function BizConnectClient() {
                             <ButtonWithFormModal
                                 templateId={GET_NOTIFICATION_ID}
                                 formId="BizConnect"
-                                buttonStartIcon={<Bell size={16} />}
+                                buttonStartIcon={ getLucideIcon('bell', 16) }
                                 buttonText={translations.prelaunch.buttonText}
                                 buttonProps={{
                                     sx:{ width: 'auto' }
@@ -68,13 +68,13 @@ export default function BizConnectClient() {
                                 variant="outlined"
                                 buttonText={t("common.learnMore")}
                                 autoWidth
-                                endIcon={<ArrowRight size={16} />}
+                                endIcon={ getLucideIcon('arrow-right', 16) }
                                 color="white"
                             />
                         </Box>
                     </Box>
                     <StyledIcon
-                        icon={<Building2 size={100} />}
+                        icon={ getLucideIcon('building-2', 100) }
                         variant="blue-inverted"
                         square
                         size={200}
@@ -89,9 +89,9 @@ export default function BizConnectClient() {
                 {Array.isArray(translations.upcomingFeatures) && translations.upcomingFeatures.map((item, w) => (
                     <Grid key={`whats-comming-${w}`} size={{ xs: 12, sm: 6, md: 4 }}>
                         <Card 
-                            variant="outlined" 
-                            className="p-6" 
-                            sx={{ 
+                            variant="outlined"
+                            sx={{
+                                p: 3,
                                 height: '100%',
                                 display: 'flex',
                                 flexDirection: 'column'
@@ -110,7 +110,7 @@ export default function BizConnectClient() {
                                 {item.list.map((point) => (
                                     <ListItem key={`${item.title}-point-${point}`}>
                                         <ListItemIcon>
-                                            <CircleCheckBig size={16} color={theme.palette.icon.green} />
+                                            { getLucideIcon('circle-check-big', 16, theme.palette.icon.green) }
                                         </ListItemIcon>
                                         <ListItemText primary={point} />
                                     </ListItem>
@@ -123,7 +123,7 @@ export default function BizConnectClient() {
             <Spacer height={40} />
             <Card variant="outlined" className="bg-linear-to-r from-slate-50 to-blue-50 p-6">
                 <Box component="div" className="flex items-center gap-4 mb-3">
-                    <Shield size={32} color={theme.palette.text.blue} />
+                    { getLucideIcon('shield', 32, theme.palette.text.blue) }
                     <Typography variant="h6" component="h3">{translations.builtForYourSuccess.title}</Typography>
                 </Box>
                 <Typography variant="body2" component="p">{translations.builtForYourSuccess.context}</Typography>
@@ -151,7 +151,7 @@ export default function BizConnectClient() {
                         <ButtonWithFormModal 
                             templateId={GET_NOTIFICATION_ID}
                             formId="BizConnect"
-                            buttonStartIcon={<Bell size={16} />}
+                            buttonStartIcon={ getLucideIcon('bell', 16) }
                             buttonText={t('common.getNotified')}
                             buttonProps={{
                                 variant: 'outlined',
@@ -163,18 +163,18 @@ export default function BizConnectClient() {
                             buttonText={t('common.contactSupport')}
                             buttonProps={{
                                 variant: 'outlined',
-                                sx: {whiteSpace: 'nowrap'}
+                                sx: { whiteSpace: 'nowrap' }
                             }}
                         />
                     </Box>
                 </Box>
             </Card>
              <Spacer height={40} />
-            <Card variant="outlined" className="p-6">
-                <Box component="div" className="flex items-top gap-4 mb-3">
+            <Card variant="outlined" sx={{ p: 3 }}>
+                <Box component="div" className="flex items-top gap-4">
                     <StyledIcon 
                        variant="amber"
-                       icon={<Sparkles size={24} />}
+                       icon={ getLucideIcon('sparkles', 24) }
                        className="shrink-0"
                     />
                     <Box component="div">

@@ -3,7 +3,7 @@
 import React from "react";
 import { Badge, Box, Button, Card, FormControlLabel, FormGroup, Grid, List, ListItem, ListItemText, Paper, Switch, Typography } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
-import { AlertTriangle, CircleCheckBig, Download, ExternalLink, Eye, Mail, Search, Shield, ShieldAlert, Smartphone, Star, Users } from "lucide-react";
+import { Eye, Mail, Search, Shield, Star, Users } from "lucide-react";
 
 import { Tag, Spacer, TabList, Tab, TabPanel, StyledIcon, FormField, ButtonWithFormModal } from "@/components";
 import theme from "@/theme/theme";
@@ -85,7 +85,7 @@ export default function SafeConnectClient() {
     <Box component="div" className="relative">
       <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.safeConnect.title") }</Typography>
       <Typography variant="body2" component="p">{ t("pages.safeConnect.context") }</Typography>
-      <Tag label={t('common.servicesAvailable')} className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
+      <Tag label={t('common.servicesAvailable')} className="absolute top-4 right-4" startIcon={ getLucideIcon('circle-check-big') } variant="green" />
       <Spacer height={20} />
       <TabContext value={value}>
         <Box>
@@ -102,7 +102,7 @@ export default function SafeConnectClient() {
                   className="font-bold! text-only text-base!"
                   label={translations.tGuard.title}
                   variant="transparent"
-                  startIcon={<Smartphone />}
+                  startIcon={ getLucideIcon('smartphone') }
                 />
                 <Typography variant="body2" component="p">{translations.tGuard.context}</Typography>
                 <Spacer height={20} />
@@ -134,7 +134,7 @@ export default function SafeConnectClient() {
                     </Box>
                   </Box>
                   <Spacer height={20} />
-                  <Button variant="gradient" color="blue" startIcon={<Download size={16} />} sx={{ width: "100%" }} onClick={() => window.open(translations.tGuardApp.link, "_blank")}>{translations.tGuardApp.buttonText}</Button>
+                  <Button variant="gradient" color="blue" startIcon={ getLucideIcon('download', 16) } sx={{ width: "100%" }} onClick={() => window.open(translations.tGuardApp.link, "_blank")}>{translations.tGuardApp.buttonText}</Button>
                 </Paper>
                 <Spacer height={20} />
                 <Box component="div" className="grid grid-cols-2 gap-3">
@@ -195,16 +195,20 @@ export default function SafeConnectClient() {
                           : 'bg-green-50 border-green-200'
                       }`}>
                         <div className="flex items-start space-x-3">
-                          {darkWebResult.found ? (
-                            <AlertTriangle size={20} className="text-red-600 mt-0.5" />
-                          ) : (
-                            <CircleCheckBig size={20} className="text-green-600 mt-0.5" />
-                          )}
+                          <Box component="div">
+                            { 
+                              getLucideIcon(
+                                darkWebResult.found ? 'alert-triangle' : 'circle-check-big', 
+                                20, 
+                                darkWebResult.found ? '#DC2626' : '#16A34A'
+                              ) 
+                            }
+                          </Box>
                           <div className="flex-1">
                             <h4 className={`font-medium ${
                               darkWebResult.found ? 'text-red-900' : 'text-green-900'
                             }`}>
-                              {darkWebResult.found ? 'Breaches Found' : 'No Breaches Found'}
+                              {darkWebResult.found ? t('pages.safeConnect.breachFound') : t('pages.safeConnect.noBreachFound')}
                             </h4>
                             <p className={`text-sm mt-1 ${
                               darkWebResult.found ? 'text-red-700' : 'text-green-700'
@@ -221,11 +225,11 @@ export default function SafeConnectClient() {
                                         <p className="text-xs text-muted-foreground">{breach.date}</p>
                                       </div>
                                       <Badge badgeContent={breach.compromisedData.length} color="error">
-                                        <ShieldAlert />
+                                        { getLucideIcon('shield-alert') }
                                       </Badge>
                                     </div>
                                     <p className="text-xs mt-2 text-muted-foreground">
-                                      Compromised: {breach.compromisedData.join(', ')}
+                                      {`${t('pages.safeConnect.compromised')} ${breach.compromisedData.join(', ')}`}
                                     </p>
                                   </div>
                                 ))}
@@ -271,7 +275,7 @@ export default function SafeConnectClient() {
                     className="font-bold! text-only text-base!"
                     label={translations.webVulnerability.freeAnnual.title}
                     variant="transparent"
-                    startIcon={<CircleCheckBig />}
+                    startIcon={ getLucideIcon('circle-check-big') }
                   />
                   <Typography variant="caption" component="p">{translations.webVulnerability.freeAnnual.body}</Typography>
                 </Card>
@@ -342,7 +346,7 @@ export default function SafeConnectClient() {
                         }}                        
                         templateId={NETWORK_BOX_CYBERSECURITY_TEMPLATE_ID}
                         buttonText={t('common.learnMore')}
-                        buttonStartIcon={<ExternalLink size={16} />}
+                        buttonStartIcon={ getLucideIcon('external-link', 16) }
                       />
                     </Box>
                     <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700, mb: 1 }}>{translations.networkBoxForSMEs.key.title}</Typography>

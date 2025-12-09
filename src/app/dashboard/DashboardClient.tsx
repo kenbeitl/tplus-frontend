@@ -1,14 +1,15 @@
 'use client';
 
-import { useRouter } from "next/navigation";
-import { Box, Card, Grid, Link, Paper, Typography } from "@mui/material";
-import { ArrowRight, Calendar, CircleCheckBig } from "lucide-react";
-
-import { Carousel, Spacer, StyledIcon, Emoji, ButtonWithFormModal, ActionButton } from "@/components";
-import theme from "@/theme/theme";
-import { useTranslations } from "@/contexts/AppContext";
 import React from "react";
+import { useRouter } from "next/navigation";
+
+import theme from "@/theme/theme";
+import { Box, Card, Grid, Link, Paper, Typography } from "@mui/material";
+import { Carousel, Spacer, StyledIcon, Emoji, ButtonWithFormModal, ActionButton } from "@/components";
+import { useTranslations } from "@/contexts/AppContext";
 import { getLucideIcon } from "@/helpers/utils";
+
+type themeColorType = Record<string, { border: string; from: string; to: string }>;
 
 export default function DashboardClient() {
     const t = useTranslations();
@@ -31,7 +32,7 @@ export default function DashboardClient() {
                     component="div"
                 >
                     <StyledIcon 
-                        icon={<CircleCheckBig size={32} />} 
+                        icon={ getLucideIcon('circle-check-big', 32) } 
                         variant="green"
                         size={64}
                     />
@@ -61,7 +62,7 @@ export default function DashboardClient() {
                         <Grid container spacing={2}>
                             {Array.isArray(GET_STARTED_STEPS) && GET_STARTED_STEPS.map((step, index) => {
                                 const getThemeColors = (themeName: string) => {
-                                    const colors: Record<string, { border: string; from: string; to: string }> = {
+                                    const colors: themeColorType = {
                                         blue: { border: '#BFDBFE', from: '#EFF6FF', to: '#DBEAFE' },
                                         purple: { border: '#E9D5FF', from: '#FAF5FF', to: '#F3E8FF' },
                                         indigo: { border: '#C7D2FE', from: '#EEF2FF', to: '#E0E7FF' },
@@ -100,7 +101,7 @@ export default function DashboardClient() {
                                     {index < GET_STARTED_STEPS.length - 1 && (
                                     <Grid size={1} sx={{ alignSelf: 'center' }}>
                                         <Card elevation={0} className="center-layout">
-                                            <ArrowRight style={{ color: themeColors.border }} />
+                                            { getLucideIcon('arrow-right', undefined, themeColors.border) }
                                         </Card>
                                     </Grid>
                                     )}
@@ -118,9 +119,9 @@ export default function DashboardClient() {
                 <>
                     <Card variant="outlined" className="p-6">
                         <Box className="flex items-center">
-                            <CircleCheckBig size="20" color="#016630" className="mr-2" />
+                            <Box component="span" sx={{ mr: 1 }}>{ getLucideIcon('circle-check-big', 20, theme.palette.text.green) }</Box>
                             <Emoji symbol="🆓" size={25} sx={{ mr: 1 }} />
-                            <Typography variant="body1" component="h3" color="#016630">{ t('pages.dashboard.freeTrialFeatures.title') }</Typography>
+                            <Typography variant="body1" component="h3" color={theme.palette.text.green}>{ t('pages.dashboard.freeTrialFeatures.title') }</Typography>
                         </Box>
                         <Typography variant="body2" component="p" sx={{ mt: 2 }}>{ t('pages.dashboard.freeTrialFeatures.context') }</Typography>
                         <Spacer height={20} />
@@ -138,7 +139,7 @@ export default function DashboardClient() {
                                             />
                                             <Box>
                                                 <Typography variant="body1" component="h4">{ feature.title }</Typography>
-                                                <Typography variant="caption" component="p" color="#016630">{ feature.context }</Typography>
+                                                <Typography variant="caption" component="p" color={theme.palette.text.green}>{ feature.context }</Typography>
                                             </Box>
                                         </Box>
                                     </Paper>
@@ -163,7 +164,7 @@ export default function DashboardClient() {
                 <>
                     <Card variant="outlined" className="p-6">
                         <Box className="flex items-center">
-                            <Calendar size="20" color="#c05621" className="mr-2" />
+                            <Box component="span" sx={{ mr: 1 }}>{ getLucideIcon('calendar', 20, '#c05621') }</Box>
                             <Emoji symbol="🔐" size={25} sx={{ mr: 1 }} />
                             <Typography variant="body1" component="h3" color="#c05621">{ t('pages.dashboard.featuresTBC.title') }</Typography>
                         </Box>
@@ -230,7 +231,6 @@ export default function DashboardClient() {
                         <ButtonWithFormModal
                             textOnly={true}
                             templateId={CONTACT_SUPPORT_TEMPLATE_ID} 
-                            buttonEndIcon={<ArrowRight />}
                             buttonText={ t('common.contactSupport') }
                         />
                     </Box>

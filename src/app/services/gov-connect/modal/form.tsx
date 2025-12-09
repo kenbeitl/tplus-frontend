@@ -1,8 +1,9 @@
 
 'use client';
 
-import { Modal, FormBase } from '@/components';
 import { useState, useEffect } from 'react';
+
+import { Modal, FormBase } from '@/components';
 import { formConfigService, type FormTemplate } from '@/services/formConfigService';
 
 interface GovConnectFormModalProps {

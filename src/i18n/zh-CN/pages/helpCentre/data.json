@@ -24,6 +24,7 @@
     ],
     "keyFeatures": "主要功能：",
     "tableHeaders": {
+        "eligibility": "资格",
         "identity": "身份",
         "userType": "用户类型",
         "description": "描述",

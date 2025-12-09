@@ -5,10 +5,9 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
 // MUI Components
-import { styled, Theme, CSSObject, useTheme } from '@mui/material/styles';
+import { styled, Theme, CSSObject } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
@@ -27,12 +26,13 @@ import { SnackbarProvider } from '@/contexts/SnackbarContext';
 import StyledIcon from '@/components/StyledIcon';
 import { useLogout } from '@/lib/logout';
 import { getLucideIcon } from '@/helpers/utils';
+import { useBreakpoint } from '@/hooks/useBreakpoint';
+import theme from '@/theme/theme';
 
 const drawerWidth = 240;
 const drawerMiniWidth = 64;
 
 interface serviceProps {
-  // id: number;
   serviceName: string;
   icon: React.ReactNode;
   path: string;
@@ -57,8 +57,8 @@ const AppBar = styled(MuiAppBar, {
 })<AppBarProps & { disableTransition?: boolean }>(({ theme, open, disableTransition, isDesktop }) => ({
   border: 0,
   borderBottom: '1px solid ' + theme.palette.divider,
-  marginLeft: open ? drawerWidth : drawerMiniWidth,
-  width: isDesktop ? (open ? `calc(100% - ${drawerWidth}px)` : `calc(100% - ${drawerMiniWidth}px)`) : '100%',
+  marginLeft: open ? drawerWidth : (isDesktop ? drawerMiniWidth : 0),
+  width: open ? `calc(100% - ${drawerWidth}px)` : (isDesktop ? `calc(100% - ${drawerMiniWidth}px)` : '100%' ),
   backgroundColor: theme.palette.background.paper,
   zIndex: theme.zIndex.drawer + 1,
   transition: disableTransition ? 'none' : theme.transitions.create(['width', 'margin'], {
@@ -69,50 +69,48 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const openedMixin = (theme: Theme, disableTransition = false, isDesktop = true): CSSObject => ({
-  width: drawerWidth,
+const drawerMixin = (theme: Theme, open: boolean, disableTransition = false, isDesktop = true): CSSObject => ({
+  width: open ? drawerWidth : (isDesktop ? `calc(${theme.spacing(8)} + 1px)` : 0),
+  height: '100%',
   transition: disableTransition ? 'none' : theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen,
+    duration: open 
+      ? theme.transitions.duration.enteringScreen 
+      : theme.transitions.duration.leavingScreen,
   }),
   overflowX: 'hidden',
-});
-
-const closedMixin = (theme: Theme, disableTransition = false, isDesktop = true): CSSObject => ({
-  width: isDesktop ? `calc(${theme.spacing(8)} + 1px)` : 0,
-  transition: disableTransition ? 'none' : theme.transitions.create('width', {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  overflowX: 'hidden',  
+  zIndex: theme.zIndex.drawer,
+  top: 0,
 });
 
 const Drawer = styled(MuiDrawer, { 
   shouldForwardProp: (prop) => prop !== 'open' && prop !== 'disableTransition' && prop !== 'isDesktop'
 })<{ open?: boolean; disableTransition?: boolean; isDesktop?: boolean }>(
-  ({ theme, disableTransition, isDesktop = true }) => ({
+  ({ theme, open = false, disableTransition, isDesktop = true }) => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
-    variants: [
-      {
-        props: ({ open }) => open,
-        style: {
-          ...openedMixin(theme, disableTransition),
-          '& .MuiDrawer-paper': openedMixin(theme, disableTransition),
-        },
-      },
-      {
-        props: ({ open }) => !open,
-        style: {
-          ...closedMixin(theme, disableTransition, isDesktop),
-          '& .MuiDrawer-paper': closedMixin(theme, disableTransition, isDesktop),
-        },
-      },
-    ],
+    ...drawerMixin(theme, open, disableTransition, isDesktop),
+    '& .MuiDrawer-paper': drawerMixin(theme, open, disableTransition, isDesktop),
   }),
 );
+
+// Add this styled component with the other styled components
+const Overlay = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'show'
+})<{ show: boolean }>(({ show }) => ({
+  display: show ? 'block' : 'none',
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  backgroundColor: 'rgba(0, 0, 0, 0.8)',
+  zIndex: theme.zIndex.drawer - 1,
+  transition: 'opacity 0.3s ease-in-out',
+  opacity: show ? 1 : 0,
+}));
 
 export default function AppWrapper({ 
   children 
@@ -124,11 +122,10 @@ export default function AppWrapper({
   const { locale, setLocale } = useLanguage();
   const t = useTranslations();
   const { drawerOpen, toggleDrawer } = useDrawer();
-  const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [userMenuAnchorEl, setUserMenuAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isInitialMount, setIsInitialMount] = React.useState(true);
-  const isDesktop = useMediaQuery(theme.breakpoints.up(1024));
+  const isDesktop = useBreakpoint('desktop');
 
   const user = session?.user;
   const username = user?.name;
@@ -262,7 +259,7 @@ export default function AppWrapper({
             >
               <MenuItem onClick={handleLogout}>
                 <LogOut size={16} style={{ marginRight: 8 }} />
-                Logout
+                { t('common.logout') }
               </MenuItem>
             </Menu>
           </Toolbar>
@@ -344,7 +341,17 @@ export default function AppWrapper({
             
           </List>
         </Drawer>
-        <Box component="main" sx={{ width: '100%' }}>
+        {/* Overlay component */}
+        <Overlay 
+          show={!isDesktop && drawerOpen}
+          onClick={handleDrawerClick}
+        />
+        <Box component="main" sx={{ 
+          width: '100%', 
+          height: drawerOpen && !isDesktop ? '100vh' : 'auto',
+          position: drawerOpen && !isDesktop ? 'absolute': 'relative',
+          overflowY: drawerOpen && !isDesktop ? 'hidden' : 'auto',
+        }}>
           <DrawerHeader />
           {children}
         </Box>

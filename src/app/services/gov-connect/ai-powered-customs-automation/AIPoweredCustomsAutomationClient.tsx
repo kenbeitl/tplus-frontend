@@ -1,15 +1,15 @@
 'use client';
 
+import Link from "next/link";
+import { useMemo, useState, useEffect } from "react";
+
+import theme from "@/theme/theme";
+import { alpha, Box, Button, Card, FormControl, FormControlLabel, List, ListItem, ListItemIcon, ListItemText, Paper, Radio, RadioGroup, Typography } from "@mui/material";
 import { ActionButton, FileDropZone, Spacer } from "@/components";
 import { useTranslations } from "@/contexts/AppContext";
 import { getLucideIcon, subSlot } from "@/helpers/utils";
 import { useFormValidation } from "@/hooks/useFormValidation";
 import { useFileDrop } from "@/hooks/useFileDrop";
-import theme from "@/theme/theme";
-import { alpha, Box, Button, Card, FormControl, FormControlLabel, List, ListItem, ListItemIcon, ListItemText, Paper, Radio, RadioGroup, Typography } from "@mui/material";
-import { ArrowLeft, Brain, CircleAlert, CircleCheckBig } from "lucide-react";
-import Link from "next/link";
-import { useMemo, useState, useEffect } from "react";
 
 export default function AIPoweredCustomsAutomationClient() {
     const t = useTranslations();
@@ -72,7 +72,7 @@ export default function AIPoweredCustomsAutomationClient() {
         <>
             <Button
                 component={Link}
-                startIcon={<ArrowLeft size={16} />}
+                startIcon={ getLucideIcon('arrow-left', 16) }
                 variant="outlined"
                 href="/services/gov-connect"
             >{ translations.govConnect.backToGovConnect }</Button>
@@ -88,12 +88,12 @@ export default function AIPoweredCustomsAutomationClient() {
                     { currentStep === 1 &&
                     <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
                         <Box component="div" className="flex">
-                            <CircleAlert size={20} color={theme.palette.text.blue} className="mr-2" />
+                            <Box component="span" sx={{ mr: 1}}>{ getLucideIcon('circle-alert', 20, theme.palette.text.blue) }</Box>
                             <Typography variant="body2" component="p">{ translations.legalNotice.title }</Typography>
                         </Box>
                         <Spacer height={20} />
                         <Paper variant="outlined" className="px-12 py-6 bg-blue-50! border-blue-200! relative">
-                            <CircleAlert size={16} className="top-5 left-4 absolute" />
+                            <Box component="span" className="top-5 left-4 absolute">{ getLucideIcon('circle-alert', 16) }</Box>
                             <Typography variant="h6" component="p" color={theme.palette.text.darkBlue} sx={{ fontWeight: 700 }}>{ translations.legalNotice.consent.title }</Typography>
                             <Spacer height={10} />
                             <Typography variant="caption" component="p" color={theme.palette.text.darkBlue}>{ translations.legalNotice.consent.body }</Typography>
@@ -130,7 +130,7 @@ export default function AIPoweredCustomsAutomationClient() {
                     { currentStep === 2 && 
                     <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
                         <Box component="div" className="flex">
-                            <Brain size={20} className="mr-2" />
+                            <Box component="span" sx={{ mr: 1}}>{ getLucideIcon('brain', 20) }</Box>
                             <Typography variant="body2" component="p">{ translations.declaration.title }</Typography>
                         </Box>
                         <Typography variant="body2" component="p" sx={{ mt: 1 }}>{ translations.declaration.context }</Typography>
@@ -250,8 +250,8 @@ export default function AIPoweredCustomsAutomationClient() {
                     <Card variant="outlined" className="p-8" sx={{ height: '100%' }}>
                         <Box component="div" className="flex flex-col items-center">
                             <Box component="div" className="flex relative animate-pulse">
-                                <Brain size={64} color={theme.palette.text.blue} />
-                                <CircleCheckBig size={24} color={theme.palette.text.lightGreen} className="absolute top-0 left-12" />
+                                { getLucideIcon('brain', 64, theme.palette.text.blue) }
+                                <Box component="span" className="absolute top-0 left-12">{ getLucideIcon('circle-check-big', 24, theme.palette.text.lightGreen) }</Box>
                             </Box>
                             <Typography variant="h5" component="h2" sx={{ mt: 3, fontWeight: 700 }}>{ translations.submission.title }</Typography>
                             <Typography variant="h6" component="p" sx={{ mt: 1, mb: 4, textAlign: 'center' }}>{ translations.submission.context }</Typography>

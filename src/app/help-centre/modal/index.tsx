@@ -1,21 +1,12 @@
 'use client';
 
-import {
-  Box,
-  Card, CardContent,
-  Grid,
-  List, ListItem, ListItemIcon, ListItemText,
-  Paper,
-  Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
-  Typography,
-} from '@mui/material';
-import Spacer from '@/components/ui/Spacer';
-import InfoModal from '@/components/InfoModal';
-import { CircleCheckBig } from 'lucide-react';
-import Tag from '@/components/Tag';
-import theme from '@/theme/theme';
-import { useTranslations } from '@/contexts/AppContext';
 import { useMemo } from 'react';
+
+import theme from '@/theme/theme';
+import { Box, Card, CardContent, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { InfoModal, Spacer, Tag } from '@/components';
+import { useTranslations } from '@/contexts/AppContext';
+import { getLucideIcon } from '@/helpers/utils';
 
 interface CardItem {
   id?: string;
@@ -140,7 +131,7 @@ export default function HelpCentreModal({open, onClose, content}: ModalProps) {
                         {item.features.map((f: string, idx) => (
                           <ListItem key={`feature-${idx}`} disableGutters>
                             <ListItemIcon sx={{ minWidth: 12 }}>
-                              <CircleCheckBig size={12} color={theme.palette.icon.green} />
+                              { getLucideIcon('circle-check-big', 12, theme.palette.icon.green) }
                             </ListItemIcon>
                             <ListItemText
                               slotProps={{
@@ -159,35 +150,35 @@ export default function HelpCentreModal({open, onClose, content}: ModalProps) {
 
                   {item.eligibility && (
                     <Typography sx={{ fontSize: 12, mt: 1 }} variant="body2">
-                      <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>Eligibility:</Box>
+                      <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>{`${translations.eligibility}:`}</Box>
                       {item.eligibility}
                     </Typography>
                   )}
 
                   {item.processingTime && (
                     <Typography sx={{ fontSize: 12, mb: 0 }} variant="body2">
-                      <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>Processing:</Box>
+                      <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>{`${translations.processingTime}:`}</Box>
                       {item.processingTime}
                     </Typography>
                   )}
 
                   {item.bestFor && (
                     <Typography sx={{ fontSize: 12, mt: 1 }} variant="body2">
-                      <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>Best For:</Box>
+                      <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>{`${translations.bestFor}:`}</Box>
                       {item.bestFor}
                     </Typography>
                   )}
 
                   {item.availability && (
                     <Typography sx={{ fontSize: 12, mb: 0 }} variant="body2">
-                      <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>Availability:</Box>
+                      <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>{`${translations.availability}:`}</Box>
                       {item.availability}
                     </Typography>
                   )}
 
                   {item.cost && (
                     <Typography sx={{ fontSize: 12, mt: 1 }} variant="body2">
-                      <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>Cost:</Box>
+                      <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>{`${translations.cost}:`}</Box>
                       {item.cost}
                     </Typography>
                   )}

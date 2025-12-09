@@ -1,11 +1,10 @@
 'use client';
 
 import { Box, Card, Grid, List, ListItem, ListItemText, Typography } from '@mui/material';
-import { Building, ExternalLink, Eye } from 'lucide-react';
 import { InfoModal, StyledIcon, Spacer, Emoji, ButtonWithModal, ButtonWithFormModal } from '@/components';
-import { useTranslations } from '@/contexts/AppContext';
 import ProviderDetails from '@/app/services/pay-connect/modal/provider-details';
-import { subSlot } from '@/helpers/utils';
+import { useTranslations } from '@/contexts/AppContext';
+import { getLucideIcon, subSlot } from '@/helpers/utils';
 
 interface Provider {
   name: string;
@@ -20,14 +19,14 @@ interface Provider {
   formId?: string; // Optional: specific formId for this provider
 }
 
-type Props = {
+type ModalProps = {
   open: boolean;
   onClose: () => void;
   type: string;
   emoji: string;
 };
 
-export default function ProviderModal({ open, onClose, type, emoji }: Props) {
+export default function ProviderModal({ open, onClose, type, emoji }: ModalProps) {
   const t = useTranslations();
   const modalNode = `pages.payConnect.modal.${type}`;
   const providerList = Array.isArray(t(`${modalNode}.providers`)) ? t(`${modalNode}.providers`) : [];
@@ -41,7 +40,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
     >
       <Box className="flex items-center">
         <StyledIcon
-          icon={<Building size={18} />} 
+          icon={ getLucideIcon('building', 18) } 
           variant="blue-gradient"
           size={36}
           square
@@ -137,7 +136,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
                       variant: 'outlined',
                       sx: { width: '100%' }
                     }}
-                    buttonStartIcon={<Eye size={16} />}
+                    buttonStartIcon={ getLucideIcon('eye', 16) }
                     modalContent={(open: boolean, onClose: () => void) => <ProviderDetails open={open} onClose={onClose} name={provider.name} emoji={emoji} source={provider.details || ''} />}
                   />
                 </>
@@ -151,7 +150,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: Props) {
                     variant: 'gradient',
                     sx: { width: '100%' }
                   }}
-                  buttonStartIcon={<ExternalLink size={16} />}
+                  buttonStartIcon={ getLucideIcon('external-link', 16) }
                 />
             </Card>
           </Grid>

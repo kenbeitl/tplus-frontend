@@ -1,15 +1,13 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Box, Button, Card, Grid, InputAdornment, Stack, TextField as MuiTextField, Typography, styled } from '@mui/material';
-import { Search } from 'lucide-react';
-
-// modals
 import HelpCentreModal from './modal';
+
+import theme from '@/theme/theme';
+import { Box, Button, Card, Grid, InputAdornment, Stack, TextField as MuiTextField, Typography, styled } from '@mui/material';
 import { Spacer, ButtonWithFormModal } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
 import { getLucideIcon } from '@/helpers/utils';
-import theme from '@/theme/theme';
 
 type CardId = 'digital' | 'signing' | 'subscription' | null;
 const CONTACT_SUPPORT_TEMPLATE_ID = 'contact-support';
@@ -30,9 +28,11 @@ export default function HelpCentreClient() {
   const handleClose = () => setOpenCard(null);
 
   const translations = useMemo(() => {
+    const helpCentre = t('pages.helpCentre');
+
     return {
-      pageIndex: t('pages.helpCentre.pageIndex'),
-      cards: t('pages.helpCentre.cards'),
+      pageIndex: helpCentre.pageIndex,
+      cards: helpCentre.cards,
     }
   }, [t])
 
@@ -52,7 +52,7 @@ export default function HelpCentreClient() {
           input: {
             startAdornment: (
               <InputAdornment position="start">
-                <Search size={16} style={{ color: '#8a8d91' }} />
+                { getLucideIcon('search', 16, '#8a8d91') }
               </InputAdornment>
             ),
           }

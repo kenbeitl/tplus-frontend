@@ -24,6 +24,7 @@
     ],
     "keyFeatures": "Key Features:",
     "tableHeaders": {
+        "eligibility": "Eligibility",
         "identity": "Identity",
         "userType": "User Type",
         "description": "Description",

@@ -1,13 +1,13 @@
 'use client';
 
-import { useTranslations } from "@/contexts/AppContext";
+import { useMemo } from "react";
+import Link from "next/link";
 
-import { ArrowLeft, Bot, Search } from 'lucide-react';
 import { Box, Button, Card, FormControl, FormControlLabel, Radio, RadioGroup, Typography } from "@mui/material";
 import { ActionButton, FormField, Spacer } from "@/components";
-import { useMemo } from "react";
 import { useFormValidation } from "@/hooks/useFormValidation";
-import Link from "next/link";
+import { useTranslations } from "@/contexts/AppContext";
+import { getLucideIcon } from "@/helpers/utils";
 
 export default function HSCodeAIClassifierClient() {
     const t = useTranslations();
@@ -47,7 +47,7 @@ export default function HSCodeAIClassifierClient() {
         <Box component="div" className="relative">
             <Button 
                 component={Link}
-                startIcon={<ArrowLeft size={16} />}
+                startIcon={ getLucideIcon('arrow-left', 16) }
                 variant="outlined"
                 href="/services/gov-connect"
             >{ translations.govConnect.backToGovConnect }</Button>
@@ -58,7 +58,7 @@ export default function HSCodeAIClassifierClient() {
             <Box component="div" className="max-w-3xl">
                 <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
                     <Box className="flex items-center mb-2">
-                        <Search size="20" className="mr-2" />
+                        <Box component="span" sx={{ mr: 1 }}>{ getLucideIcon('search', 20) }</Box>
                         <Typography variant="body1" component="h2" sx={{ fontWeight: 600 }}>{ translations.productClassification.title }</Typography>
                     </Box>
                     <Typography variant="body2" component="p" sx={{ marginBottom: 2 }}>{ translations.productClassification.context }</Typography>
@@ -104,9 +104,10 @@ export default function HSCodeAIClassifierClient() {
                     <Spacer height={20} />
                     <ActionButton
                         buttonText={ translations.productClassification.classifyProduct }
-                        startIcon={<Bot size={16} />}
+                        startIcon={ getLucideIcon('bot', 16) }
                         variant="gradient"
                         onClick={() => {}}
+                        disabled={form.values.productDescription === ''}
                     />
                 </Card>
             </Box>

@@ -1,4 +1,7 @@
 {
     "title": "SafeConnect",
-    "context": "為個人和企業提供全面的網絡安全工具和服務"
+    "context": "為個人和企業提供全面的網絡安全工具和服務",
+    "compromised": "已洩露：",
+    "breachFound": "發現洩露",
+    "noBreachFound": "未發現洩露"
 }

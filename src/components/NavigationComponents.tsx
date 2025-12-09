@@ -3,12 +3,12 @@
 import * as React from 'react';
 import { usePathname } from 'next/navigation';
 import { styled } from '@mui/material/styles';
-import { Collapse, List, ListItemText, ListItemButton as MuiListItemButton, ListItemIcon as MuiListItemIcon  } from '@mui/material';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { Box, Collapse, List, ListItemText, ListItemButton as MuiListItemButton, ListItemIcon as MuiListItemIcon  } from '@mui/material';
 
 // Local Components & Contexts
 import { useTranslations, useDrawer } from '@/contexts/AppContext';
 import Tag from './Tag';
+import { getLucideIcon } from '@/helpers/utils';
 
 // Styled ListItemButton with active state support
 export const ListItemIcon = styled(MuiListItemIcon)(() => ({
@@ -123,7 +123,15 @@ export function DropdownListItem({
                 isDrawerOpen &&
                 <>
                     <ListItemText primary={primary} />
-                    {open ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                    <Box 
+                      component="div"
+                      className="transition-transform"
+                      sx={{
+                        transform: open ? 'rotate(90deg)' : 'rotate(0deg)',
+                      }}
+                    >
+                      { getLucideIcon('chevron-right', 20) }
+                    </Box>
                 </> 
             }
         </div>

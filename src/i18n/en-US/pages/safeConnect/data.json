@@ -1,4 +1,7 @@
 {
     "title": "SafeConnect",
-    "context": "Comprehensive cybersecurity tools and services for individuals and corporations"
+    "context": "Comprehensive cybersecurity tools and services for individuals and corporations",
+    "compromised": "Compromised:",
+    "breachFound": "Breach Found",
+    "noBreachFound": "No Breach Found"
 }

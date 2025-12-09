@@ -1,10 +1,38 @@
 import React from "react";
 
+const iconComponentCache = new Map<string, React.ComponentType<{ size?: number, color?: string }>>();
+const renderedIconCache = new Map<string, React.ReactNode>();
+
 export function getLucideIcon(iconName: string, size: number = 25, color?: string): React.ReactNode {
-    const pascalCase = iconName.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
-    const icons = require('lucide-react');
-    const IconComponent = icons[pascalCase] as React.ComponentType<{ size?: number, color?: string }>;
-    return IconComponent ? <IconComponent size={size} color={color} /> : null;
+    const cacheKey = `${iconName}-${size}-${color || 'default'}`;
+    
+    if (renderedIconCache.has(cacheKey)) {
+        return renderedIconCache.get(cacheKey)!;
+    }
+    
+    let IconComponent = iconComponentCache.get(iconName);
+    
+    if (!IconComponent) {
+        const pascalCase = iconName.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
+        const icons = require('lucide-react');
+        IconComponent = icons[pascalCase] as React.ComponentType<{ size?: number, color?: string }>;
+        
+        if (IconComponent) {
+            iconComponentCache.set(iconName, IconComponent);
+        } else {
+            return null;
+        }
+    }
+    
+    const renderedIcon = <IconComponent size={size} color={color} />;
+    renderedIconCache.set(cacheKey, renderedIcon);
+    
+    return renderedIcon;
+}
+
+export function clearIconCache() {
+    iconComponentCache.clear();
+    renderedIconCache.clear();
 }
 
 export function subSlot(search: string, slot: string, value: string | number | React.ReactNode): React.ReactNode {

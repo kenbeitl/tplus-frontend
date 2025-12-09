@@ -1,16 +1,13 @@
 'use client';
 
-import { useSession, signIn } from 'next-auth/react';
-import {
-  Box,
-  Card,
-  Container,
-  Typography,
-  CircularProgress,
-} from '@mui/material';
-import Logo from '@/assets/svg/Logo';
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useSession, signIn } from 'next-auth/react';
+
+import { Box, Card, Container, Typography, CircularProgress } from '@mui/material';
+import Logo from '@/assets/svg/Logo';
+
+
 import { ActionButton } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
 import { subSlot } from '@/helpers/utils';

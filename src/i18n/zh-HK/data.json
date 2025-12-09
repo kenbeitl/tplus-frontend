@@ -58,6 +58,7 @@
         "getNotified": "獲取通知",
         "learnMore": "了解更多",
         "loading": "載入中...",
+        "logout": "登出",
         "monthly": "每月",
         "redirectingTo": "正在重定向到{page}...",
         "returnTo": "返回{page}",

@@ -1,12 +1,12 @@
 'use client';
 
-import { Spacer, Tag, ActionButton, ButtonWithFormModal, Checklist } from '@/components';
-import { Box, Card, Grid, Typography } from '@mui/material';
-import { ArrowRight, CircleCheckBig } from 'lucide-react';
-import { useTranslations } from '@/contexts/AppContext';
-import { getLucideIcon } from '@/helpers/utils';
 import { useMemo } from 'react';
 import { usePathname } from 'next/navigation';
+
+import { Box, Card, Grid, Typography } from '@mui/material';
+import { Spacer, Tag, ActionButton, ButtonWithFormModal, Checklist } from '@/components';
+import { useTranslations } from '@/contexts/AppContext';
+import { getLucideIcon } from '@/helpers/utils';
 
 export default function GovConnectClient() {
     const t = useTranslations();
@@ -22,7 +22,7 @@ export default function GovConnectClient() {
         <Box component="div" className="relative">
             <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.govConnect.title") }</Typography>
             <Typography variant="body2" component="p">{ t("pages.govConnect.context") }</Typography>
-            <Tag label={ t('common.servicesAvailable') } className="absolute top-4 right-4" startIcon={<CircleCheckBig />} variant="green" />
+            <Tag label={ t('common.servicesAvailable') } className="absolute top-4 right-4" startIcon={ getLucideIcon('circle-check-big') } variant="green" />
             <Spacer height={20} />
             <Grid container spacing={2}>
                 {Array.isArray(GOV_SERVICES) && GOV_SERVICES.map((service, index: number) => (
@@ -46,12 +46,12 @@ export default function GovConnectClient() {
                                 service.id === 'govconnect-dual-declaration' 
                                 ? <ButtonWithFormModal
                                         templateId={service.id}
-                                        buttonEndIcon={<ArrowRight />}
+                                        buttonEndIcon={ getLucideIcon('arrow-right') }
                                         buttonText={t('common.applyNow')}
                                     />
                                 : <ActionButton
                                         buttonText={service.buttonText}
-                                        endIcon={<ArrowRight />}
+                                        endIcon={ getLucideIcon('arrow-right') }
                                         variant="gradient"
                                         onClick={`${pathname}/${service.id}`}
                                     />
