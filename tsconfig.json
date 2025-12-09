@@ -33,9 +33,9 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts",
-    ".next\\dev/types/**/*.ts",
-    ".next\\dev/types/**/*.ts"
-, "src/i18n/en/pages/payConnect/json", "src/app/help-centre/layout.tsx"  ],
+    "src/i18n/en/pages/payConnect/json",
+    "src/app/help-centre/layout.tsx"
+  ],
   "exclude": [
     "node_modules"
   ]

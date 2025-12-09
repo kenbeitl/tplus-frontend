@@ -1,19 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import {
-  Box,
-  Button,
-  Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography,
-} from '@mui/material';
+import Link from 'next/link';
+
+import theme from '@/theme/theme';
+import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { InfoModal, Spacer, StyledIcon, ActionButton } from '@/components';
-import { CircleCheckBig } from 'lucide-react';
 import ModalHowToApplyForIdOne from './how-to-apply-for-id-one';
 import { useTranslations } from '@/contexts/AppContext';
 import { getLucideIcon } from '@/helpers/utils';
-import theme from '@/theme/theme';
-import Link from 'next/link';
 
 type ModalProps = {
   open: boolean;
@@ -22,7 +17,6 @@ type ModalProps = {
 
 export default function ModalDigitalIdentityRequired({ open, onClose }: ModalProps) {
   const t = useTranslations();
-  const router = useRouter();
   const [showIdOneModal, setShowIdOneModal] = useState(false);
 
   const handleAction = (action: string) => {
@@ -66,7 +60,7 @@ export default function ModalDigitalIdentityRequired({ open, onClose }: ModalPro
                     {option.list.map((point: string, p: number) => (
                       <ListItem key={`point-${p}`}>
                         <ListItemIcon>
-                          <CircleCheckBig size={16} color={theme.palette.icon.green} />
+                          { getLucideIcon('circle-check-big', 16, theme.palette.icon.green) }
                         </ListItemIcon>
                         <ListItemText primary={point} />
                       </ListItem>
@@ -84,7 +78,7 @@ export default function ModalDigitalIdentityRequired({ open, onClose }: ModalPro
           <Spacer height={20} />
           <Box component="div" className="flex justify-center gap-4">
             <Button component={Link} variant="outlined" href="/help-centre">{ modalContent.learnMoreAboutDigitalIdentities }</Button>
-            <Button variant="gradient" color="blue" onClick={onClose}>{ modalContent.alreadyHaveDigitalID }</Button>
+            <Button variant="contained" color="primary" onClick={onClose}>{ modalContent.alreadyHaveDigitalID }</Button>
           </Box>
         </Box>      
       </InfoModal>

@@ -13,9 +13,8 @@ import { applicationService } from '@/services';
 
 // Import the types from formConfigService
 import { FormTemplate } from '@/services/formConfigService';
-import { Check } from 'lucide-react';
 import Tag from '../Tag';
-import theme from '@/theme/theme';
+import { getLucideIcon } from '@/helpers/utils';
 
 interface FormBaseProps {
   data: (FormTemplate & { formId: string }) | null;
@@ -124,7 +123,7 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
             className='text-only text-blue-700!'
             variant="transparent"
             label="Some fields have been pre-filled with your profile information."
-            startIcon={<Check size={16} color={theme.palette.text.blue} />}
+            startIcon={ getLucideIcon('check', 16) }
           />
         </Box>
       </Card>

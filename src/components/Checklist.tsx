@@ -1,6 +1,8 @@
+'use client';
+
 import theme from '@/theme/theme';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import { CircleCheckBig } from 'lucide-react';
+import { getLucideIcon } from '@/helpers/utils';
 
 interface ChecklistProps {
     items: string[];
@@ -12,7 +14,7 @@ export default function Checklist({ items }: ChecklistProps) {
             {items.map((text, index) => (
                 <ListItem key={index}>
                     <ListItemIcon>
-                        <CircleCheckBig size={16} color={theme.palette.icon.green} />
+                        { getLucideIcon('circle-check-big', 16, theme.palette.icon.green) }
                     </ListItemIcon>
                     <ListItemText primary={text} />
                 </ListItem>

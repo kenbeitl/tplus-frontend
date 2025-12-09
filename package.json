@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "populate": "node ./src/scripts/build-i18n.js",
-    "dev": "node ./src/scripts/build-i18n.js && next dev -p 8081",
-    "build": "next build",
-    "start": "next start -p 8081",
+    "dev": "npm run populate && next dev -p 8081",
+    "build": "npm run populate && next build",
+    "start": "npm run populate && next start -p 8081",
     "lint": "eslint"
   },
   "dependencies": {

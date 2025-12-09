@@ -1,12 +1,11 @@
 'use client';
 
 import React from "react";
+
+import theme from "@/theme/theme";
 import { Badge, Box, Button, Card, FormControlLabel, FormGroup, Grid, List, ListItem, ListItemText, Paper, Switch, Typography } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
-import { Eye, Mail, Search, Shield, Star, Users } from "lucide-react";
-
 import { Tag, Spacer, TabList, Tab, TabPanel, StyledIcon, FormField, ButtonWithFormModal } from "@/components";
-import theme from "@/theme/theme";
 import { useTranslations } from '@/contexts/AppContext';
 import { getLucideIcon } from "@/helpers/utils";
 
@@ -112,7 +111,7 @@ export default function SafeConnectClient() {
                 >
                   <Box className="flex items-center">
                     <StyledIcon 
-                      icon={<Shield size={32} />} 
+                      icon={getLucideIcon('shield', 32)} 
                       variant="custom"
                       textColor={theme.palette.icon.green}
                       bgColor="white"
@@ -126,7 +125,7 @@ export default function SafeConnectClient() {
                       <Box component="div" className="flex gap-4 mt-3">
                         <Tag label={translations.tGuardApp.freeDownload} variant="green" />
                         <Box component="div" className="flex">
-                          <Star className="h-4 w-4 mr-1 text-yellow-500 fill-current" />
+                          { getLucideIcon('star', 16, '#EAB308') }
                           <span className="text-sm font-medium">4.8</span>
                           <span className="text-sm text-muted-foreground">(12,847)</span>
                         </Box>  
@@ -163,7 +162,7 @@ export default function SafeConnectClient() {
                   className="font-bold! text-only text-base!"
                   label={translations.darkWeb.title}
                   variant="transparent"
-                  startIcon={<Eye />}
+                  startIcon={ getLucideIcon('eye') }
                 />
                 <Typography variant="body2" component="p">{translations.darkWeb.context}</Typography>
                 <Spacer height={20} />
@@ -193,7 +192,7 @@ export default function SafeConnectClient() {
                     <Button 
                       variant="contained" 
                       color="primary" 
-                      startIcon={<Search size={16} />} 
+                      startIcon={getLucideIcon('search', 16)} 
                       sx={{ width: "100%", mt: 1 }} onClick={handleDarkWebCheck} disabled={!darkWebEmail || !darkWebEmail.includes('@')}
                     >
                       {translations.darkWeb.emailBreachCheck.buttonText}
@@ -280,7 +279,7 @@ export default function SafeConnectClient() {
                   className="font-bold! text-only text-base!"
                   label={translations.webVulnerability.title}
                   variant="transparent"
-                  startIcon={<Search />}
+                  startIcon={getLucideIcon('search')}
                 />
                 <Typography variant="body2" component="p">{translations.webVulnerability.context}</Typography>
                 <Spacer height={20} />
@@ -304,19 +303,18 @@ export default function SafeConnectClient() {
                 </Box>
                 <ButtonWithFormModal
                   templateId={WEB_VULNERABILITY_ASSESSMENT_TEMPLATE_ID} 
-                  buttonStartIcon={<Search size={20} />}
+                  buttonStartIcon={getLucideIcon('search', 20)}
                   buttonText={translations.webVulnerability.newRequest.buttonText}
                 />
                 <Spacer height={40} />
                 <Card variant="outlined" className="p-5 bg-blue-50! border-blue-200!">
                   <Box component="div" className="flex">
-                    <Mail size={24} className="text-blue-600 mr-3 shrink-0" />
-                    <Box>
+                    { getLucideIcon('mail', 24, '#2563EB') }
+                    <Box sx={{ ml: 1.5 }}>
                       <Typography variant="subtitle1" component="p" color={theme.palette.text.darkBlue} sx={{ fontWeight: 700 }}>
                         {translations.webVulnerability.reportsViaEmail.title}
                       </Typography>
                       <Typography variant="caption" component="p" color={theme.palette.text.blue}>
-                        {/* TODO: Replace by rich text block */}
                         {translations.webVulnerability.reportsViaEmail.line1}<br/><br/>
                         {translations.webVulnerability.reportsViaEmail.line2}
                       </Typography>
@@ -331,7 +329,7 @@ export default function SafeConnectClient() {
                   className="font-bold! text-only text-base!"
                   label={translations.consultingServices.title}
                   variant="transparent"
-                  startIcon={<Users />}
+                  startIcon={getLucideIcon('users')}
                 />
                 <Typography variant="body2" component="p">{translations.consultingServices.context}</Typography>
                 <Spacer height={20} />
@@ -344,7 +342,7 @@ export default function SafeConnectClient() {
                         label={translations.networkBoxForSMEs.tag}
                       />
                       <Box component="div" className="flex items-center">
-                        <Star className="h-4 w-4 mr-1 text-yellow-500 fill-current" />
+                        { getLucideIcon('star', 16, '#EAB308') }
                         <span className="text-sm font-medium">4.8</span>
                       </Box>
                     </Box>

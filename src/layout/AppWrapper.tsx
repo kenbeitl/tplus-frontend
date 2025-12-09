@@ -15,9 +15,6 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import { Menu, MenuItem } from '@mui/material';
 
-// Icons
-import { Building2, Globe, HelpCircleIcon, House, LogOut, PanelLeft, Settings, ShoppingCart } from 'lucide-react';
-
 // Local Components & Contexts
 import Logo from '@/assets/svg/Logo';
 import { DropdownListItem, NavigationListItem } from '@/components/NavigationComponents';
@@ -203,7 +200,7 @@ export default function AppWrapper({
               color="inherit"
               onClick={handleDrawerClick}
             >
-              <PanelLeft size={20} color={'#000000'} />
+              { getLucideIcon('panel-left', 20, 'black') }
             </IconButton>
             <div className="grow" />
             <IconButton
@@ -213,7 +210,7 @@ export default function AppWrapper({
               onClick={handleMenu}
               color="inherit"
             >
-              <Globe size={20} color={'#000000'} />
+              { getLucideIcon('globe', 20, 'black') }
             </IconButton>
             <Menu
               id="language-menu"
@@ -258,7 +255,7 @@ export default function AppWrapper({
               transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
               <MenuItem onClick={handleLogout}>
-                <LogOut size={16} style={{ marginRight: 8 }} />
+                <Box component="span" sx={{ mr: 4 }}>{ getLucideIcon('log-out', 16) }</Box>
                 { t('common.logout') }
               </MenuItem>
             </Menu>
@@ -280,7 +277,7 @@ export default function AppWrapper({
             {/* Dashboard Navigation */}
             <NavigationListItem
               level={1}
-              icon={<House />}
+              icon={ getLucideIcon('house') }
               primary={t('nav.dashboard')}
               path="/"
               onClick={handleNavigation}
@@ -288,7 +285,7 @@ export default function AppWrapper({
             
             {/* Services Dropdown */}
             <DropdownListItem
-              icon={<Building2 />}
+              icon={ getLucideIcon('building2') }
               primary={t('nav.services')}
               storageKey="dropdown_services"
             >
@@ -315,7 +312,7 @@ export default function AppWrapper({
             {/* Subscription Navigation */}
             <NavigationListItem
               level={1}
-              icon={<ShoppingCart />}
+              icon={ getLucideIcon('shopping-cart') }
               primary={t('nav.subscriptions')}
               path="/subscriptions"
               onClick={handleNavigation}
@@ -324,7 +321,7 @@ export default function AppWrapper({
             {/* Settings Navigation */}
             <NavigationListItem
               level={1}
-              icon={<Settings />}
+              icon={ getLucideIcon('settings') }
               primary={t('nav.settings')}
               path="/settings"
               onClick={handleNavigation}
@@ -333,7 +330,7 @@ export default function AppWrapper({
             {/* Help Centre Navigation */}
             <NavigationListItem
               level={1}
-              icon={<HelpCircleIcon />}
+              icon={ getLucideIcon('help-circle-icon') }
               primary={t('nav.helpCentre')}
               path="/help-centre"
               onClick={handleNavigation}

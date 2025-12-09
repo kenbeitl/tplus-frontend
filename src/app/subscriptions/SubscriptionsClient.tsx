@@ -1,12 +1,11 @@
 'use client';
 
 import React, { useMemo } from "react";
+
+import theme from "@/theme/theme";
 import { Box, Card, Grid, Link, List, ListItem, ListItemIcon, ListItemText, Paper, styled, Typography } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
-import { Calendar, CircleCheckBig, Coins, Gift, Star } from "lucide-react";
-
 import { useLanguage, useTranslations } from '@/contexts/AppContext';
-import theme from "@/theme/theme";
 import { Spacer, TabList as MuiTabList, Tab as MuiTab, TabPanel, ActionButton, Emoji, Tag } from "@/components";
 import { getLucideIcon, subSlot, getLocalDateString, getLocalCurrency } from "@/helpers/utils";
 
@@ -129,7 +128,7 @@ export function SubscriptionPlanCard ({
                         {plan.featureList?.map((f) => (
                             <ListItem key={f} disableGutters>
                                 <ListItemIcon>
-                                    <CircleCheckBig size={16} color={theme.palette.icon.green} />
+                                    { getLucideIcon('circle-check-big', 16, theme.palette.icon.green) }
                                 </ListItemIcon>
                                 <ListItemText
                                     slotProps={{ primary: { variant: 'body2', sx: { fontSize: '12px' } }}}
@@ -140,7 +139,8 @@ export function SubscriptionPlanCard ({
                     </List>
                     <Paper variant="outlined" className="w-full border-amber-200! bg-amber-50! rounded-md!">
                         <Box component="div" className="p-2 flex items-center justify-center gap-2">
-                            <Coins size={16} color={theme.palette.text.gold} />{subSlot(t('pages.subscriptions.subscriptionPlans.tokensPerMonth'), '{tokens}', plan.totalTokens)}
+                            { getLucideIcon('coins', 16, theme.palette.text.gold) }
+                            { subSlot(t('pages.subscriptions.subscriptionPlans.tokensPerMonth'), '{tokens}', plan.totalTokens) }
                         </Box>
                     </Paper>
                     <ActionButton 
@@ -215,7 +215,7 @@ export function TokenPlanCard({ pack }: TokenPackProps) {
         <Grid size={{ xs: 12, sm: 6, md: 2.4 }} sx={{ opacity: isActive ? 1 : 0.5, position: 'relative' }}>
             <Tag variant="outlined" color="yellow" label={t('common.comingSoon')} className="absolute top-2 right-2" />
             <Paper variant="outlined" className={`p-6 flex flex-col items-center h-full ${isActive ? '' : ''}`}>
-                <Coins size={24} color={theme.palette.text.gold} />
+                { getLucideIcon('coins', 24, theme.palette.text.gold) }
                 <Spacer height={10} />
                 <Typography variant="h6" component="div" sx={{ fontWeight: 700 }}>{amount}</Typography>
                 {bonus && bonus > 0 && (
@@ -277,7 +277,7 @@ export default function SubscriptionsClient() {
             <Spacer height={20} />
             <Card variant="outlined" className="p-6 bg-linear-to-r! from-purple-50 to-indigo-50 border-2! border-purple-200! rounded-lg">
                 <Box component="div" className="flex gap-2">
-                    <Gift size={24} color={theme.palette.text.purple} />
+                    { getLucideIcon('gift', 24, theme.palette.text.purple) }
                     <Box component="div" className="flex flex-col">
                         <Box component="div" className="flex gap-1">
                             <Emoji symbol="🎉" size={24} />
@@ -287,7 +287,7 @@ export default function SubscriptionsClient() {
                         <Spacer height={10} />
                         <Box component="div" className="flex items-center gap-5">
                             <Box component="div" className="flex gap-2 items-center">
-                                <Calendar size={16} color={theme.palette.text.purple} />
+                                { getLucideIcon('calendar', 16, theme.palette.text.purple) }
                                 <Typography variant="subtitle1" sx={{ fontWeight: 700}} color={theme.palette.text.darkPurple}>
                                     { subSlot(translations.welcome.daysRemainingSlot, '{days}', remainingDays) }
                                 </Typography>    
@@ -300,7 +300,7 @@ export default function SubscriptionsClient() {
             <Spacer height={20} />
             <Card variant="outlined" className="p-6">
                 <Box component="div" className="flex items-center gap-2 mb-1">
-                    <Star size={20} color={theme.palette.text.purple} />
+                    { getLucideIcon('star', 20, theme.palette.text.purple) }
                     <Typography variant="h6" component="h2">{ translations.currentPlan.title }</Typography>
                 </Box>
                 <Typography variant="body2" component="p">{ translations.currentPlan.intro }</Typography>
@@ -331,7 +331,7 @@ export default function SubscriptionsClient() {
                     <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                         <Card variant="outlined" className="p-4 bg-blue-50! border-0! h-full">
                             <Box component="div" className="flex items-center gap-2 mb-2">
-                                <Coins size={20} color={theme.palette.text.gold} />
+                                { getLucideIcon('coins', 20, theme.palette.text.gold) }
                                 <Typography variant="h6" component="h2">{ translations.currentTokenUsage.title }</Typography>
                             </Box>
                             <Box component="div" className="flex justify-between items-center">
@@ -345,7 +345,7 @@ export default function SubscriptionsClient() {
                     <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                         <Card variant="outlined" className="p-4 bg-purple-50! border-2! border-purple-200! rounded-lg h-full">
                             <Box component="div" className="flex items-center gap-2 mb-2">
-                                <Calendar size={20} color={theme.palette.text.purple} />
+                                { getLucideIcon('calendar', 20, theme.palette.text.purple) }
                                 <Typography variant="h6" component="h2">
                                     { translations.trialProgress.title }
                                 </Typography>
@@ -426,7 +426,7 @@ export default function SubscriptionsClient() {
             <Spacer height={20} />
             <Card variant="outlined" className="p-6">
                 <Box component="div" className="flex items-center gap-2 mb-1">
-                    <Coins size={20} color={theme.palette.text.gold} />
+                    { getLucideIcon('coins', 20, theme.palette.text.gold) }
                     <Typography variant="h6" component="h2">{ translations.additionalTokens?.title }</Typography>
                 </Box>
                 <Typography variant="body2" component="p">{ translations.additionalTokens?.intro }</Typography>
@@ -442,7 +442,7 @@ export default function SubscriptionsClient() {
                 <Spacer height={10} />
                 <Card variant="outlined" className="p-5 bg-amber-50! border-amber-200!">
                     <Box component="div" className="flex items-center gap-2 mb-2">
-                        <Calendar size={24} color={theme.palette.text.darkAmber} />
+                        { getLucideIcon('calendar', 24, theme.palette.text.darkAmber) }
                         <Typography variant="h6" component="h2" sx={{ fontWeight: 700 }} color={theme.palette.text.darkAmber}>{ translations.additionalTokensPointToNote?.title }</Typography>
                     </Box>
                     <Typography variant="caption" component="p" color={theme.palette.text.darkAmber} sx={{ mb: 1 }}>{ translations.additionalTokensPointToNote?.body }<strong>{ subSlot(t('common.days'), '{days}', remainingDays) }</strong></Typography>

@@ -1,18 +1,19 @@
 'use client';
 
 import React, { useMemo } from "react";
+import { useSession } from "next-auth/react";
+
+import theme from "@/theme/theme";
 import { Spacer, TabList, Tab, TabPanel, Form, FormField, FormSelect, ActionButton, Tag } from "@/components";
-import { useTranslations } from '@/contexts/AppContext';
-import { useFormValidation } from "@/hooks/useFormValidation";
 import { Box, Card, Divider, Grid, Paper, Switch, TextField, Typography } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import { SelectChangeEvent } from '@mui/material';
-import { Building, CircleCheck, CircleCheckBig, Eye, User } from "lucide-react";
-import { useSession } from "next-auth/react";
-import theme from "@/theme/theme";
+import { useTranslations } from '@/contexts/AppContext';
+import { useFormValidation } from "@/hooks/useFormValidation";
+import { getLucideIcon } from "@/helpers/utils";
 
 export default function SettingsClient() {
-    const { data: session, status } = useSession();
+    const { data: session } = useSession();
     const t = useTranslations();
     const [value, setValue] = React.useState('1');
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -101,7 +102,7 @@ export default function SettingsClient() {
                 <TabPanel value="1">
                     <Card variant="outlined" className="p-6">
                         <Box component="div" className="flex items-center gap-2 mb-1">
-                            <User size={20} />
+                            { getLucideIcon('user', 20) }
                             <Typography variant="h6" component="h2">{t("pages.settings.userProfile.title")}</Typography>
                         </Box>
                         <Typography variant="body2" component="p">{t("pages.settings.userProfile.context")}</Typography>
@@ -229,14 +230,14 @@ export default function SettingsClient() {
                 <TabPanel value="2">
                     <Card variant="outlined" className="p-6">
                         <Box component="div" className="flex items-center gap-2 mb-1">
-                            <Building size={20} />
+                            { getLucideIcon('building', 20) }
                             <Typography variant="h6" component="h2">{t("pages.settings.companyProfile.title")}</Typography>
                         </Box>
                         <Typography variant="body2" component="p">{t("pages.settings.companyProfile.context")}</Typography>
                         <Spacer height={20} />
                         <Card variant="outlined" className="p-3 bg-amber-50! border-amber-200!">
                             <Box component="div" className="flex items-center gap-2 mb-1">
-                                <Eye size={20} color={theme.palette.text.gold} />
+                                { getLucideIcon('eye', 20, theme.palette.text.gold) }
                                 <Typography variant="h6" component="h2" color={theme.palette.text.darkAmber}>{t("pages.settings.companyProfile.viewOnly.title")}</Typography>
                             </Box>
                             <Typography variant="caption" component="h2" color={theme.palette.text.darkAmber}>{t("pages.settings.companyProfile.viewOnly.description")}</Typography>
@@ -344,9 +345,7 @@ export default function SettingsClient() {
                                             disabled
                                             sx={{ flexGrow: 1 }}
                                         />
-                                        {identifier.verified && (
-                                            <CircleCheckBig size={20} color={theme.palette.text.lightGreen} />
-                                        )}
+                                        {identifier.verified && getLucideIcon('circle-check-big', 20, theme.palette.text.lightGreen) }
                                     </Box>
                                 </Paper>
                             ))}                            

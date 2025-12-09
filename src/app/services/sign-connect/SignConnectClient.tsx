@@ -2,10 +2,9 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material';
-import { CircleCheckBig, FilePenLine } from 'lucide-react';
 
 import theme from '@/theme/theme';
+import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material';
 import { Spacer, StyledIcon, ActionButton } from '@/components';
 import { useModal } from '@/hooks/useModal';
 import { useTranslations } from '@/contexts/AppContext';
@@ -31,7 +30,7 @@ export default function SignConnectClient() {
       <Spacer height={20} />
       <Paper variant="outlined" className="flex flex-col items-center p-6 h-full">
         <StyledIcon 
-          icon={<FilePenLine size={64} />} 
+          icon={ getLucideIcon('file-pen-line', 64) } 
           variant="custom"
           bgColor="transparent"
           textColor={theme.palette.text.secondary}
@@ -59,7 +58,7 @@ export default function SignConnectClient() {
                     {platform.list.map((point: string, p: number) => (
                       <ListItem key={p}>
                         <ListItemIcon>
-                          <CircleCheckBig size={16} color={theme.palette.icon.green} />
+                          { getLucideIcon('circle-check-big', 16, theme.palette.icon.green) }
                         </ListItemIcon>
                         <ListItemText primary={point} />
                       </ListItem>

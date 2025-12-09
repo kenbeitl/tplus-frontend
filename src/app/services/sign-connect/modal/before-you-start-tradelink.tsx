@@ -1,9 +1,10 @@
 'use client';
 import { Box, Card, Typography } from '@mui/material';
-import { InfoModal, Spacer, StyledIcon, Tag, ActionButton } from '@/components';
+
 import theme from '@/theme/theme';
-import { TriangleAlert } from 'lucide-react';
+import { InfoModal, Spacer, StyledIcon, Tag, ActionButton } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
+import { getLucideIcon } from '@/helpers/utils';
 
 type ModalProps = {
   open: boolean;
@@ -42,7 +43,7 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
             className='text-only text-orange-700!'
             variant="transparent"
             label={ t('pages.signConnect.modal.beforeYouStartTradelink.warning') }
-            startIcon={<TriangleAlert size={16} color={theme.palette.text.orange} />}
+            startIcon={ getLucideIcon('triangle-alert', 16, theme.palette.text.orange) }
           />
         </Box>
       </Card>
