@@ -134,7 +134,14 @@ export default function SafeConnectClient() {
                     </Box>
                   </Box>
                   <Spacer height={20} />
-                  <Button variant="gradient" color="blue" startIcon={ getLucideIcon('download', 16) } sx={{ width: "100%" }} onClick={() => window.open(translations.tGuardApp.link, "_blank")}>{translations.tGuardApp.buttonText}</Button>
+                  <Button 
+                    variant="contained" 
+                    color="primary" 
+                    startIcon={ getLucideIcon('download', 16) } 
+                    sx={{ width: "100%" }} onClick={() => window.open(translations.tGuardApp.link, "_blank")}
+                  >
+                    {translations.tGuardApp.buttonText}
+                  </Button>
                 </Paper>
                 <Spacer height={20} />
                 <Box component="div" className="grid grid-cols-2 gap-3">
@@ -183,7 +190,14 @@ export default function SafeConnectClient() {
                       onBlur={() => {}}
                       size="small"
                     />
-                    <Button variant="gradient" color="blue" startIcon={<Search size={16} />} sx={{ width: "100%", mt: 1 }} onClick={handleDarkWebCheck} disabled={!darkWebEmail || !darkWebEmail.includes('@')}>{translations.darkWeb.emailBreachCheck.buttonText}</Button>
+                    <Button 
+                      variant="contained" 
+                      color="primary" 
+                      startIcon={<Search size={16} />} 
+                      sx={{ width: "100%", mt: 1 }} onClick={handleDarkWebCheck} disabled={!darkWebEmail || !darkWebEmail.includes('@')}
+                    >
+                      {translations.darkWeb.emailBreachCheck.buttonText}
+                    </Button>
                   </div>
                   <Typography variant="caption" component="p" sx={{ mt: 1 }}>{translations.darkWeb.emailBreachCheck.remarks}</Typography>
                   <Spacer height={20} />
