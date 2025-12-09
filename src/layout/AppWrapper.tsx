@@ -13,7 +13,7 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import { Menu, MenuItem } from '@mui/material';
+import { ListItemIcon, ListItemText, Menu, MenuItem, Typography } from '@mui/material';
 
 // Local Components & Contexts
 import Logo from '@/assets/svg/Logo';
@@ -25,6 +25,7 @@ import { useLogout } from '@/lib/logout';
 import { getLucideIcon } from '@/helpers/utils';
 import { useBreakpoint } from '@/hooks/useBreakpoint';
 import theme from '@/theme/theme';
+import { Tag } from '@/components';
 
 const drawerWidth = 240;
 const drawerMiniWidth = 64;
@@ -125,7 +126,6 @@ export default function AppWrapper({
   const isDesktop = useBreakpoint('desktop');
 
   const user = session?.user;
-  const username = user?.name;
   const logout = useLogout();
   
   const serviceList: serviceProps[] = t('nav.serviceList');
@@ -173,6 +173,13 @@ export default function AppWrapper({
 
   // Navigation handler
   const handleNavigation = (path: string) => {
+    // Close drawer on mobile when navigating
+    if (!isDesktop && drawerOpen) {
+      toggleDrawer();
+    }
+    // Close menus if open
+    handleClose();
+    handleUserMenuClose();
     router.push(path);
   };
 
@@ -239,7 +246,7 @@ export default function AppWrapper({
                 sx={{ p: 0, ml: 1 }}
               >
                 <StyledIcon 
-                  icon={getInitials(username)} 
+                  icon={<Box component="span" className="text-base">{getInitials(user?.name)}</Box>} 
                   variant="gray"
                   size={40}
                 />
@@ -253,10 +260,39 @@ export default function AppWrapper({
               onClose={handleUserMenuClose}
               anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
               transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+              sx={{
+                '& .MuiPaper-root': {
+                  width: 224
+                }
+              }}
             >
+              { user && 
+                <Box component="div" sx={{ px: 2, py: 1 }}>
+                  <Box component="div"><Typography variant="subtitle1" sx={{ fontWeight: 700 }}>{user?.name}</Typography></Box>
+                  <Box component="div"><Typography variant="caption">{user?.email}</Typography></Box>
+                  <Box component="div"><Typography variant="caption">Demo company</Typography></Box>
+                  <Tag variant="white" label="Users" />
+                </Box>
+              }
+              <Divider sx={{ m: '0 !important' }} />
+              <MenuItem onClick={() => handleNavigation('/settings')}>
+                <ListItemIcon sx={{ minWidth: '24px !important' }}>
+                  { getLucideIcon('user', 16) }
+                </ListItemIcon>
+                <ListItemText primary={t('common.profile')} />
+              </MenuItem>
+              <MenuItem onClick={() => handleNavigation('/settings')}>
+                <ListItemIcon sx={{ minWidth: '24px !important' }}>
+                  { getLucideIcon('settings', 16) }
+                </ListItemIcon>
+                <ListItemText primary={t('nav.settings')} />
+              </MenuItem>
+              <Divider sx={{ m: '0 !important' }} />
               <MenuItem onClick={handleLogout}>
-                <Box component="span" sx={{ mr: 4 }}>{ getLucideIcon('log-out', 16) }</Box>
-                { t('common.logout') }
+                <ListItemIcon sx={{ minWidth: '24px !important' }}>
+                  { getLucideIcon('log-out', 16) }
+                </ListItemIcon>
+                <ListItemText primary={t('common.signOut')} slotProps={{ primary: { color: theme.palette.text.red } }} />
               </MenuItem>
             </Menu>
           </Toolbar>

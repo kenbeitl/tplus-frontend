@@ -79,7 +79,7 @@ const theme = createTheme({
     text: {
       primary: '#333333',
       secondary: '#919191',
-      red: '#d32f2f',
+      red: '#ef4444',
       darkAmber: '#78350F',
       blue: '#2563eb',
       darkBlue: '#1C398E',
