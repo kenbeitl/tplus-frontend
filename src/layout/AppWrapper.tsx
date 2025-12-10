@@ -77,8 +77,10 @@ const drawerMixin = (theme: Theme, open: boolean, disableTransition = false, isD
       : theme.transitions.duration.leavingScreen,
   }),
   overflowX: 'hidden',
+  position: !isDesktop && open ? 'fixed' : undefined,
   zIndex: theme.zIndex.drawer,
   top: 0,
+  borderRight: (!open && !isDesktop) ? 'none' : `1px solid ${theme.palette.divider}`
 });
 
 const Drawer = styled(MuiDrawer, { 
@@ -225,6 +227,8 @@ export default function AppWrapper({
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
               onClose={handleClose}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
               {Object.entries(localeLabels).map(([localeKey, label]) => (
                 <MenuItem 
@@ -380,13 +384,21 @@ export default function AppWrapper({
           onClick={handleDrawerClick}
         />
         <Box component="main" sx={{ 
-          width: '100%', 
-          height: drawerOpen && !isDesktop ? '100vh' : 'auto',
-          position: drawerOpen && !isDesktop ? 'absolute': 'relative',
-          overflowY: drawerOpen && !isDesktop ? 'hidden' : 'auto',
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          width: isDesktop 
+            ? (drawerOpen ? `calc(100% - ${drawerWidth}px)` : `calc(100% - ${drawerMiniWidth}px)`)
+            : '100%',
+          transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: drawerOpen 
+              ? theme.transitions.duration.enteringScreen 
+              : theme.transitions.duration.leavingScreen,
+          }),
         }}>
           <DrawerHeader />
-          {children}
+          { children }
         </Box>
       </Box>
     </div>
