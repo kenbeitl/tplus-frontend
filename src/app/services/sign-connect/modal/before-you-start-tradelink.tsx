@@ -4,7 +4,7 @@ import { Box, Card, Typography } from '@mui/material';
 import theme from '@/theme/theme';
 import { InfoModal, Spacer, StyledIcon, Tag, ActionButton } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
-import { getLucideIcon } from '@/helpers/utils';
+import { getSVGIcon } from '@/helpers/utils';
 
 type ModalProps = {
   open: boolean;
@@ -29,7 +29,7 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
             icon={s + 1} 
             variant="blue"
             size={24}
-            className="mr-3"
+            className="mr-3 shrink-0"
           />
           <Box>
             <Typography variant="body1" component="h4">{note.text}</Typography>
@@ -43,7 +43,7 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
             className='text-only text-orange-700!'
             variant="transparent"
             label={ t('pages.signConnect.modal.beforeYouStartTradelink.warning') }
-            startIcon={ getLucideIcon('triangle-alert', 16, theme.palette.text.orange) }
+            startIcon={ getSVGIcon('triangle-alert', 16, theme.palette.text.orange) }
           />
         </Box>
       </Card>

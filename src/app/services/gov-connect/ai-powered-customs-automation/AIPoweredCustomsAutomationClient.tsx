@@ -7,7 +7,7 @@ import theme from "@/theme/theme";
 import { alpha, Box, Button, Card, FormControl, FormControlLabel, List, ListItem, ListItemIcon, ListItemText, Paper, Radio, RadioGroup, Typography } from "@mui/material";
 import { ActionButton, FileDropZone, Spacer } from "@/components";
 import { useTranslations } from "@/contexts/AppContext";
-import { getLucideIcon, subSlot } from "@/helpers/utils";
+import { getSVGIcon, subSlot } from "@/helpers/utils";
 import { useFormValidation } from "@/hooks/useFormValidation";
 import { useFileDrop } from "@/hooks/useFileDrop";
 
@@ -72,7 +72,7 @@ export default function AIPoweredCustomsAutomationClient() {
         <>
             <Button
                 component={Link}
-                startIcon={ getLucideIcon('arrow-left', 16) }
+                startIcon={ getSVGIcon('arrow-left', 16) }
                 variant="outlined"
                 href="/services/gov-connect"
             >{ translations.govConnect.backToGovConnect }</Button>
@@ -88,12 +88,12 @@ export default function AIPoweredCustomsAutomationClient() {
                     { currentStep === 1 &&
                     <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
                         <Box component="div" className="flex">
-                            <Box component="span" sx={{ mr: 1}}>{ getLucideIcon('circle-alert', 20, theme.palette.text.blue) }</Box>
+                            <Box component="span" sx={{ mr: 1}}>{ getSVGIcon('circle-alert', 20, theme.palette.text.blue) }</Box>
                             <Typography variant="body2" component="p">{ translations.legalNotice.title }</Typography>
                         </Box>
                         <Spacer height={20} />
                         <Paper variant="outlined" className="px-12 py-6 bg-blue-50! border-blue-200! relative">
-                            <Box component="span" className="top-5 left-4 absolute">{ getLucideIcon('circle-alert', 16) }</Box>
+                            <Box component="span" className="top-5 left-4 absolute">{ getSVGIcon('circle-alert', 16) }</Box>
                             <Typography variant="h6" component="p" color={theme.palette.text.darkBlue} sx={{ fontWeight: 700 }}>{ translations.legalNotice.consent.title }</Typography>
                             <Spacer height={10} />
                             <Typography variant="caption" component="p" color={theme.palette.text.darkBlue}>{ translations.legalNotice.consent.body }</Typography>
@@ -130,7 +130,7 @@ export default function AIPoweredCustomsAutomationClient() {
                     { currentStep === 2 && 
                     <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
                         <Box component="div" className="flex">
-                            <Box component="span" sx={{ mr: 1}}>{ getLucideIcon('brain', 20) }</Box>
+                            <Box component="span" sx={{ mr: 1}}>{ getSVGIcon('brain', 20) }</Box>
                             <Typography variant="body2" component="p">{ translations.declaration.title }</Typography>
                         </Box>
                         <Typography variant="body2" component="p" sx={{ mt: 1 }}>{ translations.declaration.context }</Typography>
@@ -152,7 +152,7 @@ export default function AIPoweredCustomsAutomationClient() {
                                         control={<Radio sx={{position: 'absolute', left: 5, top: 5}} />}
                                         label={
                                             <Box component="div" className="flex flex-col lg:flex-row items-top gap-2">
-                                                <Box component="span">{getLucideIcon(type.icon, 20)}</Box>
+                                                <Box component="span">{getSVGIcon(type.icon, 20)}</Box>
                                                 <Typography variant="caption" sx={{ fontWeight: 700, whiteSpace: 'nowrap' }}>{type.label}</Typography>
                                                 <Typography variant="caption">{type.description}</Typography>
                                             </Box>
@@ -206,7 +206,7 @@ export default function AIPoweredCustomsAutomationClient() {
                             return (
                                 <Card key={doc.id || `doc-${idx}`} variant="outlined" className="p-6 mb-4" sx={{ height: '100%' }}>
                                     <Box component="div" className="flex">
-                                        <Box component="span" sx={{ mr: 2 }}>{ getLucideIcon(doc.icon, 20) }</Box>
+                                        <Box component="span" sx={{ mr: 2 }}>{ getSVGIcon(doc.icon, 20) }</Box>
                                         <Typography variant="body2" component="p">{doc.title}</Typography>
                                     </Box>
                                     <Typography variant="body2" component="p" sx={{ mt: 1 }}>{doc.context}</Typography>
@@ -250,8 +250,8 @@ export default function AIPoweredCustomsAutomationClient() {
                     <Card variant="outlined" className="p-8" sx={{ height: '100%' }}>
                         <Box component="div" className="flex flex-col items-center">
                             <Box component="div" className="flex relative animate-pulse">
-                                { getLucideIcon('brain', 64, theme.palette.text.blue) }
-                                <Box component="span" className="absolute top-0 left-12">{ getLucideIcon('circle-check-big', 24, theme.palette.text.lightGreen) }</Box>
+                                { getSVGIcon('brain', 64, theme.palette.text.blue) }
+                                <Box component="span" className="absolute top-0 left-12">{ getSVGIcon('circle-check-big', 24, theme.palette.text.lightGreen) }</Box>
                             </Box>
                             <Typography variant="h5" component="h2" sx={{ mt: 3, fontWeight: 700 }}>{ translations.submission.title }</Typography>
                             <Typography variant="h6" component="p" sx={{ mt: 1, mb: 4, textAlign: 'center' }}>{ translations.submission.context }</Typography>
@@ -261,7 +261,7 @@ export default function AIPoweredCustomsAutomationClient() {
                             {translations.submission.notes.map((note: {icon: string, theme: string, text: string}, idx: number) => (
                                 <ListItem key={`submission-note-${idx}`} disableGutters>
                                 <ListItemIcon sx={{ minWidth: 12, mr: 2 }}>
-                                    {getLucideIcon(note.icon, 20, theme.palette.text[note.theme as keyof typeof theme.palette.text])}
+                                    {getSVGIcon(note.icon, 20, theme.palette.text[note.theme as keyof typeof theme.palette.text])}
                                 </ListItemIcon>
                                 <ListItemText
                                     slotProps={{
@@ -279,7 +279,7 @@ export default function AIPoweredCustomsAutomationClient() {
                         <Spacer height={25} />
                          <Box component="div" className="flex flex-col gap-3">
                             <ActionButton
-                                startIcon={getLucideIcon('external-link', 20)}
+                                startIcon={getSVGIcon('external-link', 20)}
                                 buttonText={ translations.submission.viewDraft }
                                 variant="gradient"
                                 onClick="https://app.tradelinksig.com/auth/realms/tradelinkbox/protocol/openid-connect/auth?client_id=tdec&redirect_uri=https%3A%2F%2Fapp.tradelinksig.com%2Ftdec%2F%3Flocale%3Dzh_TW&state=a58ad935-e0b5-479a-8873-9f11697c9dd7&response_mode=fragment&response_type=code&scope=openid&nonce=994d7247-8466-4684-92a0-299d8aec9750&ui_locales=zh-TW&code_challenge=tQ2CSyOBRh0f7501lNreIq7U44BVUZSr04J8pY2rBpY&code_challenge_method=S256"

@@ -16,13 +16,13 @@ import IconButton from '@mui/material/IconButton';
 import { ListItemIcon, ListItemText, Menu, MenuItem, Typography } from '@mui/material';
 
 // Local Components & Contexts
-import Logo from '@/assets/svg/Logo';
+import Logo from '@/assets/images/Logo';
 import { DropdownListItem, NavigationListItem } from '@/components/NavigationComponents';
 import { useLanguage, useTranslations, useDrawer, localeLabels, type Locale } from '@/contexts/AppContext';
 import { SnackbarProvider } from '@/contexts/SnackbarContext';
 import StyledIcon from '@/components/StyledIcon';
 import { useLogout } from '@/lib/logout';
-import { getLucideIcon } from '@/helpers/utils';
+import { getSVGIcon } from '@/helpers/utils';
 import { useBreakpoint } from '@/hooks/useBreakpoint';
 import theme from '@/theme/theme';
 import { Tag } from '@/components';
@@ -47,16 +47,16 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
-  isDesktop?: boolean;
+  isAboveDesktop?: boolean;
 }
 
 const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open' && prop !== 'disableTransition' && prop !== 'isDesktop',
-})<AppBarProps & { disableTransition?: boolean }>(({ theme, open, disableTransition, isDesktop }) => ({
+  shouldForwardProp: (prop) => prop !== 'open' && prop !== 'disableTransition' && prop !== 'isAboveDesktop',
+})<AppBarProps & { disableTransition?: boolean }>(({ theme, open, disableTransition, isAboveDesktop }) => ({
   border: 0,
   borderBottom: '1px solid ' + theme.palette.divider,
-  marginLeft: open ? drawerWidth : (isDesktop ? drawerMiniWidth : 0),
-  width: open ? `calc(100% - ${drawerWidth}px)` : (isDesktop ? `calc(100% - ${drawerMiniWidth}px)` : '100%' ),
+  marginLeft: open ? drawerWidth : (isAboveDesktop ? drawerMiniWidth : 0),
+  width: open ? `calc(100% - ${drawerWidth}px)` : (isAboveDesktop ? `calc(100% - ${drawerMiniWidth}px)` : '100%' ),
   backgroundColor: theme.palette.background.paper,
   zIndex: theme.zIndex.drawer + 1,
   transition: disableTransition ? 'none' : theme.transitions.create(['width', 'margin'], {
@@ -67,8 +67,8 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const drawerMixin = (theme: Theme, open: boolean, disableTransition = false, isDesktop = true): CSSObject => ({
-  width: open ? drawerWidth : (isDesktop ? `calc(${theme.spacing(8)} + 1px)` : 0),
+const drawerMixin = (theme: Theme, open: boolean, disableTransition = false, isAboveDesktop = true): CSSObject => ({
+  width: open ? drawerWidth : (isAboveDesktop ? `calc(${theme.spacing(8)} + 1px)` : 0),
   height: '100%',
   transition: disableTransition ? 'none' : theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
@@ -77,22 +77,22 @@ const drawerMixin = (theme: Theme, open: boolean, disableTransition = false, isD
       : theme.transitions.duration.leavingScreen,
   }),
   overflowX: 'hidden',
-  position: !isDesktop && open ? 'fixed' : undefined,
+  position: !isAboveDesktop && open ? 'fixed' : undefined,
   zIndex: theme.zIndex.drawer,
   top: 0,
-  borderRight: (!open && !isDesktop) ? 'none' : `1px solid ${theme.palette.divider}`
+  borderRight: (!open && !isAboveDesktop) ? 'none' : `1px solid ${theme.palette.divider}`
 });
 
 const Drawer = styled(MuiDrawer, { 
-  shouldForwardProp: (prop) => prop !== 'open' && prop !== 'disableTransition' && prop !== 'isDesktop'
-})<{ open?: boolean; disableTransition?: boolean; isDesktop?: boolean }>(
-  ({ theme, open = false, disableTransition, isDesktop = true }) => ({
+  shouldForwardProp: (prop) => prop !== 'open' && prop !== 'disableTransition' && prop !== 'isAboveDesktop'
+})<{ open?: boolean; disableTransition?: boolean; isAboveDesktop?: boolean }>(
+  ({ theme, open = false, disableTransition, isAboveDesktop = true }) => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
-    ...drawerMixin(theme, open, disableTransition, isDesktop),
-    '& .MuiDrawer-paper': drawerMixin(theme, open, disableTransition, isDesktop),
+    ...drawerMixin(theme, open, disableTransition, isAboveDesktop),
+    '& .MuiDrawer-paper': drawerMixin(theme, open, disableTransition, isAboveDesktop),
   }),
 );
 
@@ -100,7 +100,7 @@ const Drawer = styled(MuiDrawer, {
 const Overlay = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'show'
 })<{ show: boolean }>(({ show }) => ({
-  display: show ? 'block' : 'none',
+  visibility: show ? 'visible' : 'hidden',
   position: 'fixed',
   top: 0,
   left: 0,
@@ -125,7 +125,7 @@ export default function AppWrapper({
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [userMenuAnchorEl, setUserMenuAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isInitialMount, setIsInitialMount] = React.useState(true);
-  const isDesktop = useBreakpoint('desktop');
+  const isAboveDesktop = useBreakpoint('desktop');
 
   const user = session?.user;
   const logout = useLogout();
@@ -142,6 +142,13 @@ export default function AppWrapper({
     
     return () => clearTimeout(timer);
   }, []);
+
+  // Close drawer when resizing to mobile
+  React.useEffect(() => {
+    if (!isAboveDesktop && drawerOpen) {
+      toggleDrawer();
+    }
+  }, [isAboveDesktop]);
 
   const handleDrawerClick = () => {
     toggleDrawer();
@@ -176,7 +183,7 @@ export default function AppWrapper({
   // Navigation handler
   const handleNavigation = (path: string) => {
     // Close drawer on mobile when navigating
-    if (!isDesktop && drawerOpen) {
+    if (!isAboveDesktop && drawerOpen) {
       toggleDrawer();
     }
     // Close menus if open
@@ -200,7 +207,7 @@ export default function AppWrapper({
             elevation={0}
             open={drawerOpen}
             disableTransition={isInitialMount}
-            isDesktop={isDesktop}
+            isAboveDesktop={isAboveDesktop}
           >
           <Toolbar>
             <IconButton
@@ -209,7 +216,7 @@ export default function AppWrapper({
               color="inherit"
               onClick={handleDrawerClick}
             >
-              { getLucideIcon('panel-left', 20, 'black') }
+              { getSVGIcon('panel-left', 20, 'black') }
             </IconButton>
             <div className="grow" />
             <IconButton
@@ -219,7 +226,7 @@ export default function AppWrapper({
               onClick={handleMenu}
               color="inherit"
             >
-              { getLucideIcon('globe', 20, 'black') }
+              { getSVGIcon('globe', 20, 'black') }
             </IconButton>
             <Menu
               id="language-menu"
@@ -281,20 +288,20 @@ export default function AppWrapper({
               <Divider sx={{ m: '0 !important' }} />
               <MenuItem onClick={() => handleNavigation('/settings')}>
                 <ListItemIcon sx={{ minWidth: '24px !important' }}>
-                  { getLucideIcon('user', 16) }
+                  { getSVGIcon('user', 16) }
                 </ListItemIcon>
                 <ListItemText primary={t('common.profile')} />
               </MenuItem>
               <MenuItem onClick={() => handleNavigation('/settings')}>
                 <ListItemIcon sx={{ minWidth: '24px !important' }}>
-                  { getLucideIcon('settings', 16) }
+                  { getSVGIcon('settings', 16) }
                 </ListItemIcon>
                 <ListItemText primary={t('nav.settings')} />
               </MenuItem>
               <Divider sx={{ m: '0 !important' }} />
               <MenuItem onClick={handleLogout}>
                 <ListItemIcon sx={{ minWidth: '24px !important' }}>
-                  { getLucideIcon('log-out', 16) }
+                  { getSVGIcon('log-out', 16) }
                 </ListItemIcon>
                 <ListItemText primary={t('common.signOut')} slotProps={{ primary: { color: theme.palette.text.red } }} />
               </MenuItem>
@@ -305,7 +312,7 @@ export default function AppWrapper({
           variant="permanent" 
           open={drawerOpen}
           disableTransition={isInitialMount}
-          isDesktop={isDesktop}
+          isAboveDesktop={isAboveDesktop}
         >
           <DrawerHeader>
             <Logo open={drawerOpen} />
@@ -317,7 +324,7 @@ export default function AppWrapper({
             {/* Dashboard Navigation */}
             <NavigationListItem
               level={1}
-              icon={ getLucideIcon('house') }
+              icon={ getSVGIcon('house') }
               primary={t('nav.dashboard')}
               path="/"
               onClick={handleNavigation}
@@ -325,7 +332,7 @@ export default function AppWrapper({
             
             {/* Services Dropdown */}
             <DropdownListItem
-              icon={ getLucideIcon('building2') }
+              icon={ getSVGIcon('building2') }
               primary={t('nav.services')}
               storageKey="dropdown_services"
             >
@@ -334,7 +341,7 @@ export default function AppWrapper({
                     <NavigationListItem
                       key={index}
                       level={2}
-                      icon={getLucideIcon(service.icon)}
+                      icon={getSVGIcon(service.icon)}
                       primary={service.name}
                       path={service.path}
                       isComingSoon={!service.isActive}
@@ -352,7 +359,7 @@ export default function AppWrapper({
             {/* Subscription Navigation */}
             <NavigationListItem
               level={1}
-              icon={ getLucideIcon('shopping-cart') }
+              icon={ getSVGIcon('shopping-cart') }
               primary={t('nav.subscriptions')}
               path="/subscriptions"
               onClick={handleNavigation}
@@ -361,7 +368,7 @@ export default function AppWrapper({
             {/* Settings Navigation */}
             <NavigationListItem
               level={1}
-              icon={ getLucideIcon('settings') }
+              icon={ getSVGIcon('settings') }
               primary={t('nav.settings')}
               path="/settings"
               onClick={handleNavigation}
@@ -370,7 +377,7 @@ export default function AppWrapper({
             {/* Help Centre Navigation */}
             <NavigationListItem
               level={1}
-              icon={ getLucideIcon('help-circle-icon') }
+              icon={ getSVGIcon('help-circle-icon') }
               primary={t('nav.helpCentre')}
               path="/help-centre"
               onClick={handleNavigation}
@@ -380,14 +387,14 @@ export default function AppWrapper({
         </Drawer>
         {/* Overlay component */}
         <Overlay 
-          show={!isDesktop && drawerOpen}
+          show={!isAboveDesktop && drawerOpen}
           onClick={handleDrawerClick}
         />
         <Box component="main" sx={{ 
           position: 'absolute',
           top: 0,
           right: 0,
-          width: isDesktop 
+          width: isAboveDesktop 
             ? (drawerOpen ? `calc(100% - ${drawerWidth}px)` : `calc(100% - ${drawerMiniWidth}px)`)
             : '100%',
           transition: theme.transitions.create('width', {

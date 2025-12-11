@@ -6,7 +6,7 @@ import theme from '@/theme/theme';
 import { Box, Card, CardContent, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { InfoModal, Spacer, Tag } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
-import { getLucideIcon } from '@/helpers/utils';
+import { getSVGIcon } from '@/helpers/utils';
 
 interface CardItem {
   id?: string;
@@ -131,7 +131,7 @@ export default function HelpCentreModal({open, onClose, content}: ModalProps) {
                         {item.features.map((f: string, idx) => (
                           <ListItem key={`feature-${idx}`} disableGutters>
                             <ListItemIcon sx={{ minWidth: 12 }}>
-                              { getLucideIcon('circle-check-big', 12, theme.palette.icon.green) }
+                              { getSVGIcon('circle-check-big', 12, theme.palette.icon.green) }
                             </ListItemIcon>
                             <ListItemText
                               slotProps={{

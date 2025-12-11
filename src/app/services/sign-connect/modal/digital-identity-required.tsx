@@ -8,7 +8,7 @@ import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Ty
 import { InfoModal, Spacer, StyledIcon, ActionButton } from '@/components';
 import ModalHowToApplyForIdOne from './how-to-apply-for-id-one';
 import { useTranslations } from '@/contexts/AppContext';
-import { getLucideIcon } from '@/helpers/utils';
+import { getSVGIcon } from '@/helpers/utils';
 
 type ModalProps = {
   open: boolean;
@@ -47,7 +47,7 @@ export default function ModalDigitalIdentityRequired({ open, onClose }: ModalPro
               <Grid key={`dio-${option.id}`} size={{ xs: 12, sm: 6 }}>
                 <Card variant="outlined" className="border-2! hover:border-blue-300! transition-colors! flex flex-col items-center p-6 h-full">
                   <StyledIcon 
-                    icon={getLucideIcon(option.icon)} 
+                    icon={getSVGIcon(option.icon)} 
                     variant={option.iconColor as "green" | "blue"}
                     size={64}
                     square
@@ -60,7 +60,7 @@ export default function ModalDigitalIdentityRequired({ open, onClose }: ModalPro
                     {option.list.map((point: string, p: number) => (
                       <ListItem key={`point-${p}`}>
                         <ListItemIcon>
-                          { getLucideIcon('circle-check-big', 16, theme.palette.icon.green) }
+                          { getSVGIcon('circle-check-big', 16, theme.palette.icon.green) }
                         </ListItemIcon>
                         <ListItemText primary={point} />
                       </ListItem>
@@ -76,7 +76,7 @@ export default function ModalDigitalIdentityRequired({ open, onClose }: ModalPro
             ))}
           </Grid>
           <Spacer height={20} />
-          <Box component="div" className="flex justify-center gap-4">
+          <Box component="div" className="flex flex-col sm:flex-row justify-center gap-4">
             <Button component={Link} variant="outlined" href="/help-centre">{ modalContent.learnMoreAboutDigitalIdentities }</Button>
             <Button variant="contained" color="primary" onClick={onClose}>{ modalContent.alreadyHaveDigitalID }</Button>
           </Box>

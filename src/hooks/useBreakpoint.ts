@@ -4,16 +4,10 @@ import { useMediaQuery } from "@mui/material";
 const breakpointLabels = ['sm', 'md', 'lg'] as const;
 type Breakpoint = typeof breakpointLabels[number];
 
-const breakpoints = {
-    mobile: 768,
-    tablet: 1024,
-    desktop: 1200
-};
-
 const breakpointMap = {
-    sm: theme.breakpoints.up(breakpoints.mobile),
-    md: theme.breakpoints.up(breakpoints.tablet),
-    lg: theme.breakpoints.up(breakpoints.desktop),
+    sm: theme.breakpoints.up('sm'),
+    md: theme.breakpoints.up('md'),
+    lg: theme.breakpoints.up('lg'),
 }
 
 const deviceToBreakpoint: Record<string, Breakpoint> = {

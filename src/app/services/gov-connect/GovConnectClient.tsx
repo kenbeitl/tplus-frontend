@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Box, Card, Grid, Typography } from '@mui/material';
 import { Spacer, Tag, ActionButton, ButtonWithFormModal, Checklist } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
-import { getLucideIcon } from '@/helpers/utils';
+import { getSVGIcon } from '@/helpers/utils';
 
 export default function GovConnectClient() {
     const t = useTranslations();
@@ -20,9 +20,11 @@ export default function GovConnectClient() {
 
     return (
         <Box component="div" className="relative">
+            <Box component="div" className="flex items-baseline justify-between">
             <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.govConnect.title") }</Typography>
+            <Tag label={ t('common.servicesAvailable') } startIcon={ getSVGIcon('circle-check-big') } variant="green" />
+            </Box>
             <Typography variant="body2" component="p">{ t("pages.govConnect.context") }</Typography>
-            <Tag label={ t('common.servicesAvailable') } className="absolute top-4 right-4" startIcon={ getLucideIcon('circle-check-big') } variant="green" />
             <Spacer height={20} />
             <Grid container spacing={2}>
                 {Array.isArray(GOV_SERVICES) && GOV_SERVICES.map((service, index: number) => (
@@ -37,7 +39,7 @@ export default function GovConnectClient() {
                             }}
                         >
                             <Box sx={{ display: 'flex', alignItems: 'top', gap: 1 }}>
-                                {getLucideIcon(service.icon, 24)}
+                                {getSVGIcon(service.icon, 24)}
                                 <Typography variant="h6" component="h2">{service.title}</Typography>
                             </Box>
                             <Typography sx={{ mt: 2 }} variant="body2" component="p">{service.description}</Typography>
@@ -46,12 +48,12 @@ export default function GovConnectClient() {
                                 service.id === 'govconnect-dual-declaration' 
                                 ? <ButtonWithFormModal
                                         templateId={service.id}
-                                        buttonEndIcon={ getLucideIcon('arrow-right') }
+                                        buttonEndIcon={ getSVGIcon('arrow-right') }
                                         buttonText={t('common.applyNow')}
                                     />
                                 : <ActionButton
                                         buttonText={service.buttonText}
-                                        endIcon={ getLucideIcon('arrow-right') }
+                                        endIcon={ getSVGIcon('arrow-right') }
                                         variant="gradient"
                                         onClick={`${pathname}/${service.id}`}
                                     />

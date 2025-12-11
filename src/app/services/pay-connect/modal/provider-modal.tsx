@@ -4,7 +4,7 @@ import { Box, Card, Grid, List, ListItem, ListItemText, Typography } from '@mui/
 import { InfoModal, StyledIcon, Spacer, Emoji, ButtonWithModal, ButtonWithFormModal } from '@/components';
 import ProviderDetails from '@/app/services/pay-connect/modal/provider-details';
 import { useTranslations } from '@/contexts/AppContext';
-import { getLucideIcon, subSlot } from '@/helpers/utils';
+import { getSVGIcon, subSlot } from '@/helpers/utils';
 
 interface Provider {
   name: string;
@@ -40,7 +40,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: ModalProps
     >
       <Box className="flex items-center">
         <StyledIcon
-          icon={ getLucideIcon('building', 18) } 
+          icon={ getSVGIcon('building', 18) } 
           variant="blue-gradient"
           size={36}
           square
@@ -136,7 +136,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: ModalProps
                       variant: 'outlined',
                       sx: { width: '100%' }
                     }}
-                    buttonStartIcon={ getLucideIcon('eye', 16) }
+                    buttonStartIcon={ getSVGIcon('eye', 16) }
                     modalContent={(open: boolean, onClose: () => void) => <ProviderDetails open={open} onClose={onClose} name={provider.name} emoji={emoji} source={provider.details || ''} />}
                   />
                 </>
@@ -150,7 +150,7 @@ export default function ProviderModal({ open, onClose, type, emoji }: ModalProps
                     variant: 'gradient',
                     sx: { width: '100%' }
                   }}
-                  buttonStartIcon={ getLucideIcon('external-link', 16) }
+                  buttonStartIcon={ getSVGIcon('external-link', 16) }
                 />
             </Card>
           </Grid>

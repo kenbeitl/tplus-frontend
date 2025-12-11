@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useSession, signIn } from 'next-auth/react';
 
 import { Box, Card, Container, Typography, CircularProgress } from '@mui/material';
-import Logo from '@/assets/svg/Logo';
+import Logo from '@/assets/images/Logo';
 
 
 import { ActionButton } from '@/components';

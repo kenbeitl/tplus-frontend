@@ -14,7 +14,7 @@ import { applicationService } from '@/services';
 // Import the types from formConfigService
 import { FormTemplate } from '@/services/formConfigService';
 import Tag from '../Tag';
-import { getLucideIcon } from '@/helpers/utils';
+import { getSVGIcon } from '@/helpers/utils';
 
 interface FormBaseProps {
   data: (FormTemplate & { formId: string }) | null;
@@ -123,7 +123,7 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
             className='text-only text-blue-700!'
             variant="transparent"
             label="Some fields have been pre-filled with your profile information."
-            startIcon={ getLucideIcon('check', 16) }
+            startIcon={ getSVGIcon('check', 16) }
           />
         </Box>
       </Card>

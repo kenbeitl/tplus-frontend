@@ -8,7 +8,7 @@ import { Box, Collapse, List, ListItemText, ListItemButton as MuiListItemButton,
 // Local Components & Contexts
 import { useTranslations, useDrawer } from '@/contexts/AppContext';
 import Tag from './Tag';
-import { getLucideIcon } from '@/helpers/utils';
+import { getSVGIcon } from '@/helpers/utils';
 
 // Styled ListItemButton with active state support
 export const ListItemIcon = styled(MuiListItemIcon)(() => ({
@@ -130,7 +130,7 @@ export function DropdownListItem({
                         transform: open ? 'rotate(90deg)' : 'rotate(0deg)',
                       }}
                     >
-                      { getLucideIcon('chevron-right', 20) }
+                      { getSVGIcon('chevron-right', 20) }
                     </Box>
                 </> 
             }
@@ -182,27 +182,11 @@ export function NavigationListItem({
   const displayText = React.useMemo(() => {
     if (!mounted) return primary; // Consistent initial render
     return isComingSoon ? (
-      <>
+      <Box component="div" className="flex items-center gap-2">
         {primary} <Tag variant="orange" label={t('common.comingSoon')} />
-      </>
+      </Box>
     ) : primary;
   }, [primary, isComingSoon, t, mounted]);
-  
-  // Prevent hydration mismatch by using consistent initial state
-  if (!mounted) {
-    return (
-      <ListItemButton
-          className={`lv${level}`}
-          isActive={false} // Use consistent initial state
-          isDrawerOpen={false} // Use consistent initial state
-          onClick={() => onClick?.(path)}
-      >
-          <div className="flex justify-center items-center real-btn">
-              <ListItemIcon>{icon}</ListItemIcon>
-          </div>
-      </ListItemButton>
-    );
-  }
   
   return (
     <ListItemButton
@@ -211,10 +195,10 @@ export function NavigationListItem({
         isDrawerOpen={isDrawerOpen}
         onClick={() => onClick?.(path)}
     >
-        <div className="flex justify-center items-center real-btn">
+        <Box component="div" className="flex justify-center items-center real-btn">
             <ListItemIcon>{icon}</ListItemIcon>
             { isDrawerOpen && <ListItemText primary={displayText} /> }
-        </div>
+        </Box>
     </ListItemButton>
   );
 }

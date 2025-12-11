@@ -6,10 +6,12 @@ import theme from "@/theme/theme";
 import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import { Tag, Spacer, StyledIcon, ActionButton, ButtonWithFormModal } from "@/components";
 import { useTranslations } from '@/contexts/AppContext';
-import { getLucideIcon } from "@/helpers/utils";
+import { getSVGIcon } from "@/helpers/utils";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 export default function BizConnectClient() {
     const t = useTranslations();
+    const isAboveMobile = useBreakpoint('mobile');
 
     const CONTACT_SUPPORT_TEMPLATE_ID = 'contact-support';
     const GET_NOTIFICATION_ID = "get-notification";
@@ -45,36 +47,35 @@ export default function BizConnectClient() {
             <Typography variant="body2" component="p">{ t("pages.bizConnect.context") }</Typography>
             <Spacer height={40} />
             <Card variant="outlined" className="p-6 bg-blue-50! border-2! border-blue-200!">
-                <Box component="div" className="flex items-top justify-between gap-8">
+                <Box component="div" className="flex flex-col md:flex-row items-top justify-between gap-8">
                     <Box component="div">
                         <Box component="div" className="flex items-center">
-                            <Box component="span" sx={{ mr: 1 }}>{ getLucideIcon('sparkles', 24, theme.palette.text.blue) }</Box>
+                            <Box component="span" sx={{ mr: 1 }}>{ getSVGIcon('sparkles', 24, theme.palette.text.blue) }</Box>
                             <Typography variant="h4" component="h2" color={theme.palette.text.darkBlue}>{translations.prelaunch.title}</Typography>
                         </Box>
                         <Spacer height={10} />
                         <Typography variant="body2" component="p" className="mt-4">{translations.prelaunch.body}</Typography>
-                        <Box component="div" className="flex items-center gap-2 mt-6">
+                        <Box component="div" className="flex flex-col sm:flex-row items-center gap-2 mt-6">
                             <ButtonWithFormModal
                                 templateId={GET_NOTIFICATION_ID}
                                 formId="BizConnect"
-                                buttonStartIcon={ getLucideIcon('bell', 16) }
+                                buttonStartIcon={ getSVGIcon('bell', 16) }
                                 buttonText={translations.prelaunch.buttonText}
                                 buttonProps={{
-                                    sx:{ width: 'auto' }
+                                    sx:{ width: isAboveMobile ? 'auto' : '100%' }
                                 }}
-                                
                             />
                             <ActionButton 
                                 variant="outlined"
                                 buttonText={t("common.learnMore")}
-                                autoWidth
-                                endIcon={ getLucideIcon('arrow-right', 16) }
+                                autoWidth={isAboveMobile ? true : false}
+                                endIcon={ getSVGIcon('arrow-right', 16) }
                                 color="white"
                             />
                         </Box>
                     </Box>
                     <StyledIcon
-                        icon={ getLucideIcon('building-2', 100) }
+                        icon={ getSVGIcon('building-2', 100) }
                         variant="blue-inverted"
                         square
                         size={200}
@@ -98,7 +99,7 @@ export default function BizConnectClient() {
                             }}
                         >
                             <StyledIcon 
-                                icon={getLucideIcon(item.icon)}
+                                icon={getSVGIcon(item.icon)}
                                 square
                                 variant={item.variant as any}
                                 size={48}
@@ -110,7 +111,7 @@ export default function BizConnectClient() {
                                 {item.list.map((point) => (
                                     <ListItem key={`${item.title}-point-${point}`}>
                                         <ListItemIcon>
-                                            { getLucideIcon('circle-check-big', 16, theme.palette.icon.green) }
+                                            { getSVGIcon('circle-check-big', 16, theme.palette.icon.green) }
                                         </ListItemIcon>
                                         <ListItemText primary={point} />
                                     </ListItem>
@@ -123,16 +124,16 @@ export default function BizConnectClient() {
             <Spacer height={40} />
             <Card variant="outlined" className="bg-linear-to-r from-slate-50 to-blue-50 p-6">
                 <Box component="div" className="flex items-center gap-4 mb-3">
-                    { getLucideIcon('shield', 32, theme.palette.text.blue) }
+                    { getSVGIcon('shield', 32, theme.palette.text.blue) }
                     <Typography variant="h6" component="h3">{translations.builtForYourSuccess.title}</Typography>
                 </Box>
                 <Typography variant="body2" component="p">{translations.builtForYourSuccess.context}</Typography>
                 <Spacer height={20} />
                 <Grid container spacing={2}>
                     {Array.isArray(translations.builtForYourSuccessFeatures) && translations.builtForYourSuccessFeatures.map((feature, f) => (
-                        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={`built-for-your-success-feature-${f}`}>
                             <Box component="div" className="flex items-center gap-4 mb-3">
-                                { getLucideIcon(feature.icon, 24, theme.palette.text.blue) }
+                                { getSVGIcon(feature.icon, 24, theme.palette.text.blue) }
                                 <Typography variant="h6" component="h3" sx={{ fontWeight: 700 }}>{feature.title}</Typography>
                             </Box>
                             <Typography variant="caption" component="p">{feature.description}</Typography>
@@ -142,20 +143,24 @@ export default function BizConnectClient() {
             </Card>
             <Spacer height={40} />
             <Card variant="outlined" className="p-6 bg-blue-600! border-2! border-blue-200!">
-                <Box component="div" className="flex items-top justify-between gap-6">
+                <Box component="div" className="flex flex-col sm:flex-row items-top justify-between gap-6">
                     <Box component="div">
                         <Typography variant="h4" component="h2" color={theme.palette.text.white}>{translations.stayInformed.title}</Typography>
                         <Typography variant="body2" component="p" color={theme.palette.text.white} className="mt-4">{translations.stayInformed.body}</Typography>
                     </Box>
-                    <Box component="div" className="flex gap-2 items-center">
+                    <Box component="div" className="flex flex-col sm:flex-row gap-2 items-center">
                         <ButtonWithFormModal 
                             templateId={GET_NOTIFICATION_ID}
                             formId="BizConnect"
-                            buttonStartIcon={ getLucideIcon('bell', 16) }
+                            buttonStartIcon={ getSVGIcon('bell', 16) }
                             buttonText={t('common.getNotified')}
                             buttonProps={{
                                 variant: 'outlined',
-                                sx: { whiteSpace: 'nowrap', margin: 0 }
+                                sx: { 
+                                    whiteSpace: 'nowrap', 
+                                    margin: 0,
+                                    width: isAboveMobile ? 'auto' : '100%',
+                                }
                             }}
                         />
                         <ButtonWithFormModal 
@@ -163,7 +168,10 @@ export default function BizConnectClient() {
                             buttonText={t('common.contactSupport')}
                             buttonProps={{
                                 variant: 'outlined',
-                                sx: { whiteSpace: 'nowrap' }
+                                sx: { 
+                                    whiteSpace: 'nowrap',
+                                    width: isAboveMobile ? 'auto' : '100%',
+                                }
                             }}
                         />
                     </Box>
@@ -174,7 +182,7 @@ export default function BizConnectClient() {
                 <Box component="div" className="flex items-top gap-4">
                     <StyledIcon 
                        variant="amber"
-                       icon={ getLucideIcon('sparkles', 24) }
+                       icon={ getSVGIcon('sparkles', 24) }
                        className="shrink-0"
                     />
                     <Box component="div">

@@ -17,15 +17,14 @@ const TagRoot = styled('span', {
   shouldForwardProp: (prop) => prop !== 'variant',
 })<{ variant?: TagVariant }>(({ theme, variant, color }) => ({
   background: '#FFFFFF',
-  display: 'inline-flex',
+  display: 'flex',
+  justifyContent: 'center',
   alignItems: 'center',
   borderRadius: '10px',
   padding: '0 8px',
   fontSize: '0.75rem',
   fontWeight: 500,
   lineHeight: 1.5,
-  textAlign: 'center',
-  whiteSpace: 'nowrap',
   
   '&.text-only': {
     padding: 0

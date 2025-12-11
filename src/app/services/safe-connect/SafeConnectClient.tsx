@@ -7,7 +7,7 @@ import { Badge, Box, Button, Card, FormControlLabel, FormGroup, Grid, List, List
 import TabContext from '@mui/lab/TabContext';
 import { Tag, Spacer, TabList, Tab, TabPanel, StyledIcon, FormField, ButtonWithFormModal } from "@/components";
 import { useTranslations } from '@/contexts/AppContext';
-import { getLucideIcon } from "@/helpers/utils";
+import { getSVGIcon } from "@/helpers/utils";
 
 const WEB_VULNERABILITY_ASSESSMENT_TEMPLATE_ID = 'safeconnect-web-vulnerability-assessment';
 const NETWORK_BOX_CYBERSECURITY_TEMPLATE_ID = 'safeconnect-network-box-cybersecurity';
@@ -82,9 +82,14 @@ export default function SafeConnectClient() {
 
   return (
     <Box component="div" className="relative">
-      <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.safeConnect.title") }</Typography>
+      <Box component="div" className="flex items-baseline justify-between">
+        <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.safeConnect.title") }</Typography>
+        <Tag label={t('common.servicesAvailable')} startIcon={ getSVGIcon('circle-check-big') } variant="green" />
+      </Box>
+      
+      
       <Typography variant="body2" component="p">{ t("pages.safeConnect.context") }</Typography>
-      <Tag label={t('common.servicesAvailable')} className="absolute top-4 right-4" startIcon={ getLucideIcon('circle-check-big') } variant="green" />
+      
       <Spacer height={20} />
       <TabContext value={value}>
         <Box>
@@ -97,37 +102,34 @@ export default function SafeConnectClient() {
           <Grid container spacing={2}>
             <Grid size={{ xs: 12, sm: 6 }}>
               <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
-                <Tag 
-                  className="font-bold! text-only text-base!"
-                  label={translations.tGuard.title}
-                  variant="transparent"
-                  startIcon={ getLucideIcon('smartphone') }
-                />
+                <Box component="div" className="flex items-center mb-3">
+                  <Box component="span" className="mr-2">{ getSVGIcon('smartphone', 16) }</Box>
+                  <Typography variant="body1" component="h4" className="font-bold!">{translations.tGuard.title}</Typography>
+                </Box>
                 <Typography variant="body2" component="p">{translations.tGuard.context}</Typography>
                 <Spacer height={20} />
                 <Paper
                   className="p-6 bg-linear-to-r from-blue-50 to-green-50"
                   variant="outlined"
                 >
-                  <Box className="flex items-center">
+                  <Box className="flex sm:max-md:flex-col items-top">
                     <StyledIcon 
-                      icon={getLucideIcon('shield', 32)} 
+                      icon={getSVGIcon('shield', 32)} 
                       variant="custom"
                       textColor={theme.palette.icon.green}
                       bgColor="white"
                       size={64}
                       square
-                      className="mr-3"
+                      className="mr-3 sm:max-md:mb-3 shrink-0"
                     />
                     <Box component="div">
                       <Typography variant="body1" component="h4" sx={{ fontWeight: 700 }}>{translations.tGuardApp.name}</Typography>
                       <Typography variant="caption" component="p">{translations.tGuardApp.description}</Typography>
-                      <Box component="div" className="flex gap-4 mt-3">
+                      <Box component="div" className="flex flex-col-reverse md:flex-row gap-2 mt-3">
                         <Tag label={translations.tGuardApp.freeDownload} variant="green" />
                         <Box component="div" className="flex">
-                          { getLucideIcon('star', 16, '#EAB308') }
-                          <span className="text-sm font-medium">4.8</span>
-                          <span className="text-sm text-muted-foreground">(12,847)</span>
+                          { getSVGIcon('star', 16, '#EAB308') }
+                          <span className="text-sm font-medium whitespace-nowrap">4.8 (12,847)</span>
                         </Box>  
                       </Box>
                     </Box>
@@ -136,18 +138,18 @@ export default function SafeConnectClient() {
                   <Button 
                     variant="contained" 
                     color="primary" 
-                    startIcon={ getLucideIcon('download', 16) } 
+                    startIcon={ getSVGIcon('download', 16) } 
                     sx={{ width: "100%" }} onClick={() => window.open(translations.tGuardApp.link, "_blank")}
                   >
                     {translations.tGuardApp.buttonText}
                   </Button>
                 </Paper>
                 <Spacer height={20} />
-                <Box component="div" className="grid grid-cols-2 gap-3">
+                <Box component="div" className="grid sm:grid-cols-2 gap-3">
                   {translations.tGuardFeatures.map((feature, index: number) => (
                     <Box key={`tg-${index}`} component="div" className="text-center p-3 bg-gray-50 rounded-lg">
                       <Box component="div" className="h-8 w-8 text-blue-600 mx-auto mb-2">
-                        { getLucideIcon(feature.icon, 32) }
+                        { getSVGIcon(feature.icon, 32) }
                       </Box>
                       <Box component="div" className="font-medium text-sm mb-1">{feature.title}</Box>
                       <Box component="div" className="text-xs text-muted-foreground text-gray-400">{feature.description}</Box>
@@ -158,15 +160,13 @@ export default function SafeConnectClient() {
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
               <Card variant="outlined" sx={{ px: 3, pt: 3, pb: 6, height: '100%' }}>
-                <Tag 
-                  className="font-bold! text-only text-base!"
-                  label={translations.darkWeb.title}
-                  variant="transparent"
-                  startIcon={ getLucideIcon('eye') }
-                />
+                <Box component="div" className="flex items-center mb-3">
+                  <Box component="span" className="mr-2">{ getSVGIcon('eye', 16) }</Box>
+                  <Typography variant="body1" component="h4" className="font-bold!">{translations.darkWeb.title}</Typography>
+                </Box>
                 <Typography variant="body2" component="p">{translations.darkWeb.context}</Typography>
                 <Spacer height={20} />
-                  <Box component="div" className="flex justify-between items-center">
+                  <Box component="div" className="flex flex-col md:flex-row justify-between items-start md:items-center">
                     <Typography variant="body1" component="h4" className="font-bold! mb-3">{translations.darkWeb.emailBreachCheck.title}</Typography>
                     <FormGroup>
                       <FormControlLabel 
@@ -192,7 +192,7 @@ export default function SafeConnectClient() {
                     <Button 
                       variant="contained" 
                       color="primary" 
-                      startIcon={getLucideIcon('search', 16)} 
+                      startIcon={getSVGIcon('search', 16)} 
                       sx={{ width: "100%", mt: 1 }} onClick={handleDarkWebCheck} disabled={!darkWebEmail || !darkWebEmail.includes('@')}
                     >
                       {translations.darkWeb.emailBreachCheck.buttonText}
@@ -210,7 +210,7 @@ export default function SafeConnectClient() {
                         <div className="flex items-start space-x-3">
                           <Box component="div">
                             { 
-                              getLucideIcon(
+                              getSVGIcon(
                                 darkWebResult.found ? 'alert-triangle' : 'circle-check-big', 
                                 20, 
                                 darkWebResult.found ? '#DC2626' : '#16A34A'
@@ -238,7 +238,7 @@ export default function SafeConnectClient() {
                                         <p className="text-xs text-muted-foreground">{breach.date}</p>
                                       </div>
                                       <Badge badgeContent={breach.compromisedData.length} color="error">
-                                        { getLucideIcon('shield-alert') }
+                                        { getSVGIcon('shield-alert') }
                                       </Badge>
                                     </div>
                                     <p className="text-xs mt-2 text-muted-foreground">
@@ -275,25 +275,21 @@ export default function SafeConnectClient() {
           <Grid container spacing={2}>
             <Grid size={{ xs: 12, sm: 6 }}>
               <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
-                <Tag 
-                  className="font-bold! text-only text-base!"
-                  label={translations.webVulnerability.title}
-                  variant="transparent"
-                  startIcon={getLucideIcon('search')}
-                />
+                <Box component="div" className="flex items-center mb-3">
+                  <Box component="span" className="mr-2">{ getSVGIcon('search', 16) }</Box>
+                  <Typography variant="body1" component="h4" className="font-bold!">{translations.webVulnerability.title}</Typography>
+                </Box>
                 <Typography variant="body2" component="p">{translations.webVulnerability.context}</Typography>
                 <Spacer height={20} />
                 <Card variant="outlined" className="p-3 bg-green-50! border-green-200!">
-                  <Tag 
-                    className="font-bold! text-only text-base!"
-                    label={translations.webVulnerability.freeAnnual.title}
-                    variant="transparent"
-                    startIcon={ getLucideIcon('circle-check-big') }
-                  />
+                  <Box component="div" className="flex items-center mb-3">
+                    <Box component="span" className="mr-2">{ getSVGIcon('circle-check-big', 16) }</Box>
+                    <Typography variant="body1" component="h4" className="font-bold!">{translations.webVulnerability.freeAnnual.title}</Typography>
+                  </Box>
                   <Typography variant="caption" component="p">{translations.webVulnerability.freeAnnual.body}</Typography>
                 </Card>
                 <Spacer height={20} />
-                <Box component="div" className="flex items-center justify-between mb-3">
+                <Box component="div" className="flex sm:max-md:flex-col items-start md:items-center justify-between gap-2 mb-3">
                   <Typography variant="body1" component="h4" className="font-bold!">{translations.webVulnerability.newRequest.title}</Typography>
                   <Tag
                     variant="green" 
@@ -303,13 +299,13 @@ export default function SafeConnectClient() {
                 </Box>
                 <ButtonWithFormModal
                   templateId={WEB_VULNERABILITY_ASSESSMENT_TEMPLATE_ID} 
-                  buttonStartIcon={getLucideIcon('search', 20)}
+                  buttonStartIcon={getSVGIcon('search', 20)}
                   buttonText={translations.webVulnerability.newRequest.buttonText}
                 />
                 <Spacer height={40} />
                 <Card variant="outlined" className="p-5 bg-blue-50! border-blue-200!">
                   <Box component="div" className="flex">
-                    { getLucideIcon('mail', 24, '#2563EB') }
+                    { getSVGIcon('mail', 24, '#2563EB') }
                     <Box sx={{ ml: 1.5 }}>
                       <Typography variant="subtitle1" component="p" color={theme.palette.text.darkBlue} sx={{ fontWeight: 700 }}>
                         {translations.webVulnerability.reportsViaEmail.title}
@@ -325,25 +321,25 @@ export default function SafeConnectClient() {
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
               <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
-                <Tag 
-                  className="font-bold! text-only text-base!"
-                  label={translations.consultingServices.title}
-                  variant="transparent"
-                  startIcon={getLucideIcon('users')}
-                />
+                <Box component="div" className="flex items-center mb-3">
+                  <Box component="span" className="mr-2">{ getSVGIcon('users', 16) }</Box>
+                  <Typography variant="body1" component="h4" className="font-bold!">{translations.consultingServices.title}</Typography>
+                </Box>
                 <Typography variant="body2" component="p">{translations.consultingServices.context}</Typography>
                 <Spacer height={20} />
                 <Card variant="outlined" className="px-5 py-7 card-hover">
-                    <Box component="div" className="flex items-center mb-3">
+                    <Box component="div" className="flex flex-row flex-wrap items-center gap-2 mb-3">
                       <Typography variant="body1" component="h4" className="font-bold!">{translations.networkBoxForSMEs.title}</Typography>
-                      <Tag
-                        variant="white" 
-                        className="text-xs! mx-2"
-                        label={translations.networkBoxForSMEs.tag}
-                      />
-                      <Box component="div" className="flex items-center">
-                        { getLucideIcon('star', 16, '#EAB308') }
-                        <span className="text-sm font-medium">4.8</span>
+                      <Box component="div" className="flex flex-row items-center gap-2">
+                        <Tag
+                          variant="white" 
+                          className="text-xs!"
+                          label={translations.networkBoxForSMEs.tag}
+                        />
+                        <Box component="div" className="flex items-center">
+                          { getSVGIcon('star', 16, '#EAB308') }
+                          <span className="text-sm font-medium">4.8</span>
+                        </Box>
                       </Box>
                     </Box>
                     <Typography variant="caption" component="p" sx={{ mb: 3 }}>{translations.networkBoxForSMEs.body}</Typography>
@@ -358,7 +354,7 @@ export default function SafeConnectClient() {
                         }}                        
                         templateId={NETWORK_BOX_CYBERSECURITY_TEMPLATE_ID}
                         buttonText={t('common.learnMore')}
-                        buttonStartIcon={ getLucideIcon('external-link', 16) }
+                        buttonStartIcon={ getSVGIcon('external-link', 16) }
                       />
                     </Box>
                     <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700, mb: 1 }}>{translations.networkBoxForSMEs.key.title}</Typography>

@@ -9,7 +9,7 @@ import { Spacer, StyledIcon, ActionButton } from '@/components';
 import { useModal } from '@/hooks/useModal';
 import { useTranslations } from '@/contexts/AppContext';
 import { ModalBeforeYouStartTradelink, ModalDigitalIdentityRequired } from './modal';
-import { getLucideIcon } from '@/helpers/utils';
+import { getSVGIcon } from '@/helpers/utils';
 
 export default function SignConnectClient() {
   const t = useTranslations();
@@ -30,7 +30,7 @@ export default function SignConnectClient() {
       <Spacer height={20} />
       <Paper variant="outlined" className="flex flex-col items-center p-6 h-full">
         <StyledIcon 
-          icon={ getLucideIcon('file-pen-line', 64) } 
+          icon={ getSVGIcon('file-pen-line', 64) } 
           variant="custom"
           bgColor="transparent"
           textColor={theme.palette.text.secondary}
@@ -46,7 +46,7 @@ export default function SignConnectClient() {
             <Grid key={`dsp-${i}`} size={{ xs: 12, sm: 6, md: 4 }}>
               <Card variant="outlined" className={`p-6 h-full flex flex-col items-center ${platform.isActive ? 'border-2! border-blue-300!' : ''}`}>
                 <StyledIcon 
-                  icon={getLucideIcon(platform.icon)} 
+                  icon={getSVGIcon(platform.icon)} 
                   variant={platform.isActive ? 'blue' : 'gray'}
                   square
                   size={50}
@@ -58,7 +58,7 @@ export default function SignConnectClient() {
                     {platform.list.map((point: string, p: number) => (
                       <ListItem key={p}>
                         <ListItemIcon>
-                          { getLucideIcon('circle-check-big', 16, theme.palette.icon.green) }
+                          { getSVGIcon('circle-check-big', 16, theme.palette.icon.green) }
                         </ListItemIcon>
                         <ListItemText primary={point} />
                       </ListItem>

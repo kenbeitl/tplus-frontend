@@ -4,7 +4,7 @@ import { Box, Card, Grid, Typography } from '@mui/material';
 import { ButtonWithModal, Carousel, Tag, Spacer, StyledIcon } from '@/components';
 import ProviderModal from './modal/provider-modal';
 import { useTranslations } from '@/contexts/AppContext';
-import { getLucideIcon } from '@/helpers/utils';
+import { getSVGIcon } from '@/helpers/utils';
 
 export default function PayConnectClient() {
 
@@ -22,7 +22,7 @@ export default function PayConnectClient() {
             <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.payConnect.title") }</Typography>
             <Typography variant="body2" component="p">{ t("pages.payConnect.context") }</Typography>
             <Spacer height={20} />
-            <Tag label={ t('pages.payConnect.sponsoredPartnerOffers') } className="text-base! text-only" startIcon={ getLucideIcon('sparkles', undefined, '#fd9a00') } />
+            <Tag label={ t('pages.payConnect.sponsoredPartnerOffers') } className="text-base! text-only" startIcon={ getSVGIcon('sparkles', undefined, '#fd9a00') } />
             <Spacer height={20} />
             <Carousel slideNum={2} />
             <Spacer height={40} />
@@ -32,7 +32,7 @@ export default function PayConnectClient() {
                         <Card variant="outlined" className="p-6 card-hover" sx={{ height: '100%' }}>
                             <Box className="flex items-center">
                                 <StyledIcon
-                                    icon={ getLucideIcon(item.icon) } 
+                                    icon={ getSVGIcon(item.icon) } 
                                     variant="blue-gradient"
                                     size={36}
                                     square
@@ -59,7 +59,7 @@ export default function PayConnectClient() {
                                     className: 'w-full',
                                 }}
                                 buttonText={ t('pages.payConnect.viewAllProviders') }
-                                buttonEndIcon={ getLucideIcon('arrow-right') }
+                                buttonEndIcon={ getSVGIcon('arrow-right') }
                                 modalContent={(open: boolean, onClose: () => void) => 
                                     <ProviderModal 
                                         open={open} 

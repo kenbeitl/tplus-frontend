@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Modal as MuiModal, Box, IconButton } from '@mui/material';
-import { getLucideIcon } from '@/helpers/utils';
+import { getSVGIcon } from '@/helpers/utils';
 
 interface ModalProps {
   open: boolean;
@@ -60,7 +60,7 @@ export default function Modal({
             top: 8,
           }}
         >
-          { getLucideIcon('x', 20) }
+          { getSVGIcon('x', 20) }
         </IconButton>
         {children}
       </Box>

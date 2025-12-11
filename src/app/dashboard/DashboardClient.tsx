@@ -7,13 +7,15 @@ import theme from "@/theme/theme";
 import { Box, Card, Grid, Link, Paper, Typography } from "@mui/material";
 import { Carousel, Spacer, StyledIcon, Emoji, ButtonWithFormModal, ActionButton } from "@/components";
 import { useTranslations } from "@/contexts/AppContext";
-import { getLucideIcon } from "@/helpers/utils";
+import { getSVGIcon } from "@/helpers/utils";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 type themeColorType = Record<string, { border: string; from: string; to: string }>;
 
 export default function DashboardClient() {
     const t = useTranslations();
     const router = useRouter();
+    const isAboveMobile = useBreakpoint('mobile');
     
     const GET_STARTED_STEPS = t('pages.dashboard.getStartedTips.steps');
     const FREE_TRIAL_FEATURES = t('pages.dashboard.freeTrialFeatures.list');
@@ -32,7 +34,7 @@ export default function DashboardClient() {
                     component="div"
                 >
                     <StyledIcon 
-                        icon={ getLucideIcon('circle-check-big', 32) } 
+                        icon={ getSVGIcon('circle-check-big', 32) } 
                         variant="green"
                         size={64}
                     />
@@ -73,7 +75,7 @@ export default function DashboardClient() {
                                 
                                 return (
                                 <React.Fragment key={index}>
-                                    <Grid size="grow">
+                                    <Grid size={{ xs: 12, sm: 'grow' }} >
                                         <Card 
                                             variant="outlined" 
                                             className="p-3 lg:p-6 gap-4 center-layout h-full"
@@ -85,7 +87,7 @@ export default function DashboardClient() {
                                             }}
                                         >
                                             <StyledIcon 
-                                                icon={getLucideIcon(step.icon, 25)} 
+                                                icon={getSVGIcon(step.icon, 25)} 
                                                 variant={`${step.theme}-inverted` as any}
                                                 size={50}
                                             />
@@ -99,9 +101,9 @@ export default function DashboardClient() {
                                         </Card>
                                     </Grid>
                                     {index < GET_STARTED_STEPS.length - 1 && (
-                                    <Grid size={1} sx={{ alignSelf: 'center' }}>
+                                    <Grid size={{ xs: 12, sm: 1 }} sx={{ alignSelf: 'center' }}>
                                         <Card elevation={0} className="center-layout">
-                                            { getLucideIcon('arrow-right', undefined, themeColors.border) }
+                                            { getSVGIcon(`arrow-${isAboveMobile ? 'right' : 'down'}`, undefined, themeColors.border) }
                                         </Card>
                                     </Grid>
                                     )}
@@ -119,7 +121,7 @@ export default function DashboardClient() {
                 <>
                     <Card variant="outlined" className="p-6">
                         <Box className="flex items-center">
-                            <Box component="span" sx={{ mr: 1 }}>{ getLucideIcon('circle-check-big', 20, theme.palette.text.green) }</Box>
+                            <Box component="span" sx={{ mr: 1 }}>{ getSVGIcon('circle-check-big', 20, theme.palette.text.green) }</Box>
                             <Emoji symbol="🆓" size={25} sx={{ mr: 1 }} />
                             <Typography variant="body1" component="h3" color={theme.palette.text.green}>{ t('pages.dashboard.freeTrialFeatures.title') }</Typography>
                         </Box>
@@ -129,13 +131,13 @@ export default function DashboardClient() {
                             {Array.isArray(FREE_TRIAL_FEATURES) && FREE_TRIAL_FEATURES.map((feature: any, index: number) => (
                                 <Grid size={12} key={`ftf-${index}`}>
                                     <Paper elevation={0} className="p-3 bg-green-50!">
-                                        <Box className="flex items-top">
+                                        <Box className="flex flex-col sm:flex-row items-top">
                                             <StyledIcon 
-                                                icon={getLucideIcon(feature.icon, 18)} 
+                                                icon={getSVGIcon(feature.icon, 18)} 
                                                 variant="green"
                                                 size={36}
                                                 square
-                                                className="mr-3"
+                                                className={`mr-${isAboveMobile ? '3' : '0'} mb-${isAboveMobile ? '0' : '3'}`}
                                             />
                                             <Box>
                                                 <Typography variant="body1" component="h4">{ feature.title }</Typography>
@@ -164,7 +166,7 @@ export default function DashboardClient() {
                 <>
                     <Card variant="outlined" className="p-6">
                         <Box className="flex items-center">
-                            <Box component="span" sx={{ mr: 1 }}>{ getLucideIcon('calendar', 20, '#c05621') }</Box>
+                            <Box component="span" sx={{ mr: 1 }}>{ getSVGIcon('calendar', 20, '#c05621') }</Box>
                             <Emoji symbol="🔐" size={25} sx={{ mr: 1 }} />
                             <Typography variant="body1" component="h3" color="#c05621">{ t('pages.dashboard.featuresTBC.title') }</Typography>
                         </Box>
@@ -174,13 +176,13 @@ export default function DashboardClient() {
                             { Array.isArray(TBC_FEATURES) && TBC_FEATURES.map((feature: any, index: number) => 
                                 <Grid size={12} key={`ftbc-${index}`}>
                                     <Paper elevation={0} className={`p-3 ${feature.isActive ? 'bg-orange-50!' : 'bg-amber-50!'}`}>
-                                        <Box className="flex items-top">
+                                        <Box className="flex flex-col sm:flex-row items-top">
                                             <StyledIcon 
-                                                icon={getLucideIcon(feature.icon, 18)} 
+                                                icon={getSVGIcon(feature.icon, 18)} 
                                                 variant={feature.isActive ? 'orange' : 'amber'}
                                                 size={36}
                                                 square
-                                                className="mr-3"
+                                                className={`mr-${isAboveMobile ? '3' : '0'} mb-${isAboveMobile ? '0' : '3'}`}
                                             />
                                             <Box>
                                                 <Typography variant="body1" component="h4">{ feature.title }</Typography>

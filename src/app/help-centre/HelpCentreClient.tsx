@@ -7,7 +7,8 @@ import theme from '@/theme/theme';
 import { Box, Button, Card, Grid, InputAdornment, Stack, TextField as MuiTextField, Typography, styled } from '@mui/material';
 import { Spacer, ButtonWithFormModal } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
-import { getLucideIcon } from '@/helpers/utils';
+import { getSVGIcon } from '@/helpers/utils';
+import { useBreakpoint } from '@/hooks/useBreakpoint';
 
 type CardId = 'digital' | 'signing' | 'subscription' | null;
 const CONTACT_SUPPORT_TEMPLATE_ID = 'contact-support';
@@ -26,6 +27,7 @@ export default function HelpCentreClient() {
   const [openCard, setOpenCard] = useState<CardId>(null);
   const handleOpen = (id: CardId) => setOpenCard(id);
   const handleClose = () => setOpenCard(null);
+  const isAboveMobile = useBreakpoint('mobile');
 
   const translations = useMemo(() => {
     const helpCentre = t('pages.helpCentre');
@@ -42,7 +44,7 @@ export default function HelpCentreClient() {
     <Spacer height={10} />
     <Typography variant="body2" component="p">{ t('pages.helpCentre.context') }</Typography>
     <Spacer height={15} />
-    <Box sx={{ width: '100%', maxWidth: 450 }}>
+    <Box className="w-full max-w-[450px]">
       <TextField
         fullWidth
         placeholder={ t('pages.helpCentre.searchPlaceholder') }
@@ -52,7 +54,7 @@ export default function HelpCentreClient() {
           input: {
             startAdornment: (
               <InputAdornment position="start">
-                { getLucideIcon('search', 16, '#8a8d91') }
+                { getSVGIcon('search', 16, '#8a8d91') }
               </InputAdornment>
             ),
           }
@@ -66,8 +68,8 @@ export default function HelpCentreClient() {
       {Array.isArray(translations.pageIndex) && translations.pageIndex.map((item, index) => (
         <Grid key={`hc-index-${index}`} size={{ xs: 12, sm: 6, md: 4 }}>
           <Card variant="outlined" className="p-6 card-hover" sx={{ height: '100%' }} onClick={() => handleOpen(item.id as CardId)}>
-            <Box sx={{ display: 'flex', alignItems: 'top', gap: 1 }}>
-              { getLucideIcon(item.icon, 24) }
+            <Box className="flex items-top gap-2">
+              <Box component="div" className="shrink-0">{ getSVGIcon(item.icon, 24) }</Box>
               <Typography variant="h6" component="h2">{item.title}</Typography>
             </Box>
             <Typography sx={{ mt: 2 }} variant="body2" component="p">
@@ -81,7 +83,7 @@ export default function HelpCentreClient() {
         <Grid size={{ xs: 12, sm: 6, md: 4 }} key={`hc-card-${index}`}>
           <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
             <Box sx={{ display: 'flex', alignItems: 'top', gap: 1 }}>
-              { getLucideIcon(item.icon, 24) }
+              <Box component="div" className="shrink-0">{ getSVGIcon(item.icon, 24) }</Box>
               <Typography variant="h6" component="h2">{item.title}</Typography>
             </Box>
             <Spacer height={10} />
@@ -89,7 +91,7 @@ export default function HelpCentreClient() {
               {Array.isArray(item.list) && item.list.map((point: {text: string, link: string}, p: number) => (
                 <Button
                   key={`hc-card-${index}-point-${p}`} 
-                  endIcon={ getLucideIcon('square-arrow-out-up-right', 16, theme.palette.text.secondary) }
+                  endIcon={ getSVGIcon('square-arrow-out-up-right', 16, theme.palette.text.secondary) }
                   // href={point.link}
                   sx={{ 
                     justifyContent: 'flex-start', 
@@ -105,7 +107,7 @@ export default function HelpCentreClient() {
       ))}
       <Grid size={{ xs: 12, sm: 12, md: 12 }}>
         <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
-          <Box sx={{ display: 'flex', alignItems: 'top', gap: 1 }}>
+          <Box component="div" className="flex flex-row items-center gap-1">
             <Typography variant="h6" component="h2">{ t('pages.helpCentre.stillNeedHelp.title') }</Typography>
           </Box >
           <Spacer height={5} />
@@ -113,25 +115,17 @@ export default function HelpCentreClient() {
             { t('pages.helpCentre.stillNeedHelp.body') }
           </Typography>
           <Spacer height={20} />
-          <Box sx={{ display: 'flex', alignItems: 'top', gap: 1 }}>
+          <Box component="div" className="flex flex-col sm:flex-row items-center gap-1">
             <ButtonWithFormModal
                 templateId={CONTACT_SUPPORT_TEMPLATE_ID} 
                 buttonText={t('common.contactSupport')}
                 buttonProps={{
-                  sx:{ width: 'auto' }
+                  sx:{ width: isAboveMobile ? 'auto' : '100%' }
                 }}                
             />
-            <Button 
-              sx={{ 
-                width: 'auto',
-                color: '#000000',
-                borderColor: '#C4C4C4',
-                borderWidth: '1px',
-                borderStyle: 'solid',
-                '&:hover': {
-                  backgroundColor: 'transparent'
-                }
-              }}
+            <Button
+              variant="outlined"
+              sx={{ width: isAboveMobile ? 'auto' : '100%' }}
             >{t('pages.helpCentre.scheduleACall')}</Button>
           </Box>
         </Card>

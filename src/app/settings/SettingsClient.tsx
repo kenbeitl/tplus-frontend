@@ -10,7 +10,8 @@ import TabContext from '@mui/lab/TabContext';
 import { SelectChangeEvent } from '@mui/material';
 import { useTranslations } from '@/contexts/AppContext';
 import { useFormValidation } from "@/hooks/useFormValidation";
-import { getLucideIcon } from "@/helpers/utils";
+import { getSVGIcon } from "@/helpers/utils";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 export default function SettingsClient() {
     const { data: session } = useSession();
@@ -19,7 +20,7 @@ export default function SettingsClient() {
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
     }
-
+    const isAboveMobile = useBreakpoint('mobile');
     const formConfig = React.useMemo(() => {
         const form = t('pages.settings.form');
         return {
@@ -97,12 +98,13 @@ export default function SettingsClient() {
                     <TabList onChange={handleChange} variant="fullWidth">
                         <Tab label={t("pages.settings.userProfile.title")} value="1" disableRipple />
                         <Tab label={t("pages.settings.companyProfile.title")} value="2" disableRipple />
+                        <Tab label={t("pages.settings.manageUsers.title")} value="3" disableRipple />
                     </TabList>
                 </Box>
                 <TabPanel value="1">
                     <Card variant="outlined" className="p-6">
                         <Box component="div" className="flex items-center gap-2 mb-1">
-                            { getLucideIcon('user', 20) }
+                            { getSVGIcon('user', 20) }
                             <Typography variant="h6" component="h2">{t("pages.settings.userProfile.title")}</Typography>
                         </Box>
                         <Typography variant="body2" component="p">{t("pages.settings.userProfile.context")}</Typography>
@@ -203,7 +205,7 @@ export default function SettingsClient() {
                         <Divider sx={{ my: 3 }} />
                         <Typography variant="h6" component="h2" sx={{ mb: 3, color: theme.palette.text.red }}>{t("pages.settings.userProfile.dangerZone")}</Typography>
                         <Card variant="outlined" className="p-3 bg-red-50! border-red-200!">
-                            <Box component="div" className="flex items-center justify-between mb-2">
+                            <Box component="div" className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                                 <Box component="div" className="flex flex-col gap-1">
                                     <Typography variant="h6" component="p">{t("pages.settings.userProfile.deleteAccount.title")}</Typography>
                                     <Typography variant="caption" component="p">{t("pages.settings.userProfile.deleteAccount.description")}</Typography>
@@ -230,25 +232,25 @@ export default function SettingsClient() {
                 <TabPanel value="2">
                     <Card variant="outlined" className="p-6">
                         <Box component="div" className="flex items-center gap-2 mb-1">
-                            { getLucideIcon('building', 20) }
+                            { getSVGIcon('building', 20) }
                             <Typography variant="h6" component="h2">{t("pages.settings.companyProfile.title")}</Typography>
                         </Box>
                         <Typography variant="body2" component="p">{t("pages.settings.companyProfile.context")}</Typography>
                         <Spacer height={20} />
                         <Card variant="outlined" className="p-3 bg-amber-50! border-amber-200!">
                             <Box component="div" className="flex items-center gap-2 mb-1">
-                                { getLucideIcon('eye', 20, theme.palette.text.gold) }
+                                { getSVGIcon('eye', 20, theme.palette.text.gold) }
                                 <Typography variant="h6" component="h2" color={theme.palette.text.darkAmber}>{t("pages.settings.companyProfile.viewOnly.title")}</Typography>
                             </Box>
                             <Typography variant="caption" component="h2" color={theme.palette.text.darkAmber}>{t("pages.settings.companyProfile.viewOnly.description")}</Typography>
                         </Card>
                         <Spacer height={20} />
-                        <Card variant="outlined" className="p-3 bg-amber-50! border-amber-200!">
+                        <Card variant="outlined" className="p-3 bg-amber-50! border-amber-200! relative">
                             <Box component="div" className="flex justify-between items-center">
                                 <Box component="div">
                                     <Box component="div" className="flex items-center gap-2 mb-1">
                                         <Typography variant="h6" component="h2">{t("pages.settings.companyProfile.publicProfile.title")}</Typography>
-                                        <Tag variant="orange" label="Coming Soon" />
+                                        <Tag variant="orange" label="Coming Soon" className="absolute sm:static right-2 sm:right-auto top-4 sm:top-auto"  />
                                     </Box>
                                     <Typography variant="caption" component="h2">{t("pages.settings.companyProfile.publicProfile.body")}</Typography>
                                 </Box>                                
@@ -327,30 +329,35 @@ export default function SettingsClient() {
                             <Typography variant="subtitle1" component="h2" sx={{ mb: 2 }}>{t("pages.settings.companyProfile.businessIdentifiers")}</Typography>
                             {companyForm.businessIdentifierList.map((identifier, index) => (
                                 <Paper key={`bizId-${index}`} variant="outlined" className="p-3" sx={{ mb: 2 }}>
-                                    <Box component="div" className="flex items-center gap-2">
-                                        <FormSelect 
-                                            name={`businessIdentifierType-${index+1}`}
-                                            label={""}
-                                            value={identifier.type}
-                                            onChange={handleSelectChange}
-                                            options={formConfig.businessIdentifierTypeOptions}
-                                            disabled
-                                            fullWidth={false}
-                                            sx={{ width: '20vw' }}
-                                        />
-                                        <TextField
-                                            name={`businessIdentifierValue-${index+1}`}
-                                            label={""}
-                                            value={identifier.value}
-                                            disabled
-                                            sx={{ flexGrow: 1 }}
-                                        />
-                                        {identifier.verified && getLucideIcon('circle-check-big', 20, theme.palette.text.lightGreen) }
+                                    <Box component="div" className="flex flex-row items-center gap-2">
+                                        <Box component="div" className="flex flex-col sm:flex-row items-center gap-2 w-full">
+                                            <FormSelect 
+                                                name={`businessIdentifierType-${index+1}`}
+                                                label={""}
+                                                value={identifier.type}
+                                                onChange={handleSelectChange}
+                                                options={formConfig.businessIdentifierTypeOptions}
+                                                disabled
+                                                fullWidth={true}
+                                                sx={{ width: '100%' }}
+                                            />
+                                            <TextField
+                                                name={`businessIdentifierValue-${index+1}`}
+                                                label={""}
+                                                value={identifier.value}
+                                                disabled
+                                                sx={{ width: '100%' }}
+                                            />
+                                        </Box>
+                                        {identifier.verified && getSVGIcon('circle-check-big', 20, theme.palette.text.lightGreen) }
                                     </Box>
                                 </Paper>
                             ))}                            
                         </Form>
                     </Card>
+                </TabPanel>
+                <TabPanel value="3">
+
                 </TabPanel>
             </TabContext>
         </>

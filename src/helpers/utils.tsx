@@ -3,7 +3,7 @@ import React from "react";
 const iconComponentCache = new Map<string, React.ComponentType<{ size?: number, color?: string }>>();
 const renderedIconCache = new Map<string, React.ReactNode>();
 
-export function getLucideIcon(iconName: string, size: number = 25, color?: string): React.ReactNode {
+export function getSVGIcon(iconName: string, size: number = 25, color?: string, lucide: boolean = true): React.ReactNode {
     const cacheKey = `${iconName}-${size}-${color || 'default'}`;
     
     if (renderedIconCache.has(cacheKey)) {
@@ -14,8 +14,12 @@ export function getLucideIcon(iconName: string, size: number = 25, color?: strin
     
     if (!IconComponent) {
         const pascalCase = iconName.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
-        const icons = require('lucide-react');
-        IconComponent = icons[pascalCase] as React.ComponentType<{ size?: number, color?: string }>;
+
+        if (lucide) {
+            const icons = require('lucide-react');
+            IconComponent = icons[pascalCase] as React.ComponentType<{ size?: number, color?: string }>;
+        }
+        
         
         if (IconComponent) {
             iconComponentCache.set(iconName, IconComponent);

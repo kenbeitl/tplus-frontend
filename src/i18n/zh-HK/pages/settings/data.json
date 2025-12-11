@@ -24,6 +24,21 @@
         },
         "businessIdentifiers": "商業識別碼"
     },
+    "manageUsers": {
+        "title": "管理用戶",
+        "context": "管理您組織中的所有用戶",
+        "placeholder": "搜尋用戶...",
+        "name": "名稱",
+        "allRoles": "所有角色",
+        "tableHeaders": {
+            "name": "名稱",
+            "email": "電郵地址",
+            "role": "角色",
+            "serviceAccess": "服務存取權",
+            "status": "狀態",
+            "actions": "操作"
+        }
+    },
     "form": {
         "labels": {
             "firstName": "名字",

@@ -251,6 +251,13 @@ const theme = createTheme({
           },
         },
         {
+          props: { variant: 'gradient', color: 'orange' },
+          style: {
+            color: '#FFFFFF !important',
+            background: GRADIENTS.orange,
+          },
+        },
+        {
           props: { variant: 'outlined' },
           style: {
             color: '#666666',
@@ -274,7 +281,7 @@ const theme = createTheme({
           },
         },
         {
-          props: { variant: 'contained' },
+          props: { variant: 'contained', color: 'primary' },
           style: {
             color: '#FFFFFF',
             backgroundColor: '#2b7fff',

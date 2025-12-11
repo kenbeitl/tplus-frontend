@@ -24,6 +24,21 @@
         },
         "businessIdentifiers": "Business Identifiers"
     },
+    "manageUsers": {
+        "title": "Manage Users",
+        "context": "Manage all users in your organisation",
+        "placeholder": "Search users...",
+        "name": "Name",
+        "allRoles": "All Roles",
+        "tableHeaders": {
+            "name": "Name",
+            "email": "Email",
+            "role": "Role",
+            "serviceAccess": "Service Access",
+            "status": "Status",
+            "actions": "Actions"
+        }
+    }, 
     "form": {
         "labels": {
             "firstName": "First Name",
