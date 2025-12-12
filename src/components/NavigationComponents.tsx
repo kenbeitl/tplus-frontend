@@ -95,47 +95,30 @@ export function DropdownListItem({
     setOpen(!open);
   };
 
-  // Prevent hydration mismatch by not rendering dynamic content until mounted
-  if (!mounted) {
-    return (
-      <ListItemButton 
-        onClick={handleClick} 
-        isActive={isActive}
-        isDrawerOpen={false} // Use consistent initial state
-      >
-        <div className="flex justify-center items-center real-btn">
-          <ListItemIcon>{icon}</ListItemIcon>
-        </div>
-      </ListItemButton>
-    );
-  }
-
   return (
     <>
-      <ListItemButton 
-        onClick={handleClick} 
-        isActive={isActive}
-        isDrawerOpen={isDrawerOpen}
-      >
-        <div className="flex justify-center items-center real-btn">
+      { 
+        isDrawerOpen &&
+        <ListItemButton 
+          onClick={handleClick} 
+          isActive={isActive}
+          isDrawerOpen={isDrawerOpen}
+        >
+          <Box component="div" className="flex justify-center items-center real-btn">
             <ListItemIcon>{icon}</ListItemIcon>
-            { 
-                isDrawerOpen &&
-                <>
-                    <ListItemText primary={primary} />
-                    <Box 
-                      component="div"
-                      className="transition-transform"
-                      sx={{
-                        transform: open ? 'rotate(90deg)' : 'rotate(0deg)',
-                      }}
-                    >
-                      { getSVGIcon('chevron-right', 20) }
-                    </Box>
-                </> 
-            }
-        </div>
-      </ListItemButton>
+            <ListItemText primary={primary} />
+            <Box 
+              component="div"
+              className="transition-transform"
+              sx={{
+                transform: open ? 'rotate(90deg)' : 'rotate(0deg)',
+              }}
+            >
+              { getSVGIcon('chevron-right', 20) }
+            </Box>
+          </Box>
+        </ListItemButton>
+      }
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           {children}

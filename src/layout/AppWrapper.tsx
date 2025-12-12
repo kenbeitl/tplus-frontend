@@ -226,7 +226,7 @@ export default function AppWrapper({
               onClick={handleMenu}
               color="inherit"
             >
-              { getSVGIcon('globe', 20, 'black', 'custom') }
+              { getSVGIcon('globe', 20, 'black') }
             </IconButton>
             <Menu
               id="language-menu"
@@ -257,7 +257,7 @@ export default function AppWrapper({
                 sx={{ p: 0, ml: 1 }}
               >
                 <StyledIcon 
-                  icon={<Box component="span" className="text-base">{getInitials(user?.name)}</Box>} 
+                  icon={<Box component="span" className="text-base">{ getInitials(user?.name) }</Box>} 
                   variant="gray"
                   size={40}
                 />
@@ -282,7 +282,7 @@ export default function AppWrapper({
                   <Box component="div"><Typography variant="subtitle1" sx={{ fontWeight: 700 }}>{user?.name}</Typography></Box>
                   <Box component="div"><Typography variant="caption">{user?.email}</Typography></Box>
                   <Box component="div"><Typography variant="caption">Demo company</Typography></Box>
-                  <Tag variant="white" label="Users" />
+                  <Tag variant="white" label="Users" className="!inline-flex" />
                 </Box>
               }
               <Divider sx={{ m: '0 !important' }} />
@@ -301,7 +301,7 @@ export default function AppWrapper({
               <Divider sx={{ m: '0 !important' }} />
               <MenuItem onClick={handleLogout}>
                 <ListItemIcon sx={{ minWidth: '24px !important' }}>
-                  { getSVGIcon('log-out', 16) }
+                  { getSVGIcon('arrow-right-bracket', 16) }
                 </ListItemIcon>
                 <ListItemText primary={t('common.signOut')} slotProps={{ primary: { color: theme.palette.text.red } }} />
               </MenuItem>
@@ -324,7 +324,7 @@ export default function AppWrapper({
             {/* Dashboard Navigation */}
             <NavigationListItem
               level={1}
-              icon={ getSVGIcon('house') }
+              icon={ getSVGIcon('home', 20) }
               primary={t('nav.dashboard')}
               path="/"
               onClick={handleNavigation}
@@ -341,7 +341,7 @@ export default function AppWrapper({
                     <NavigationListItem
                       key={index}
                       level={2}
-                      icon={getSVGIcon(service.icon)}
+                      icon={getSVGIcon(service.icon, 20)}
                       primary={service.name}
                       path={service.path}
                       isComingSoon={!service.isActive}
@@ -359,7 +359,7 @@ export default function AppWrapper({
             {/* Subscription Navigation */}
             <NavigationListItem
               level={1}
-              icon={ getSVGIcon('shopping-cart') }
+              icon={ getSVGIcon('shopping-cart', 20) }
               primary={t('nav.subscriptions')}
               path="/subscriptions"
               onClick={handleNavigation}
@@ -368,7 +368,7 @@ export default function AppWrapper({
             {/* Settings Navigation */}
             <NavigationListItem
               level={1}
-              icon={ getSVGIcon('settings') }
+              icon={ getSVGIcon('settings', 20) }
               primary={t('nav.settings')}
               path="/settings"
               onClick={handleNavigation}
@@ -377,7 +377,7 @@ export default function AppWrapper({
             {/* Help Centre Navigation */}
             <NavigationListItem
               level={1}
-              icon={ getSVGIcon('help-circle-icon') }
+              icon={ getSVGIcon('help-circle-icon', 20) }
               primary={t('nav.helpCentre')}
               path="/help-centre"
               onClick={handleNavigation}

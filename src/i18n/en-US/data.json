@@ -11,7 +11,7 @@
             },
             {
                 "name": "BizConnect",
-                "icon": "building2",
+                "icon": "briefcase",
                 "path": "/services/biz-connect",
                 "isActive": false
             },

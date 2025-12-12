@@ -1,39 +1,35 @@
 import { SvgIcon } from "@mui/material";
 import React from "react";
 
-type IconSource = 'lucide' | 'custom';
-
 const iconComponentCache = new Map<string, React.ComponentType<{ size?: number, color?: string }>>();
 const renderedIconCache = new Map<string, React.ReactNode>();
 
-export function getSVGIcon(iconName: string, size: number = 25, color?: string, source: IconSource = 'lucide'): React.ReactNode {
+export function getSVGIcon(iconName: string, size: number = 25, color?: string): React.ReactNode {
     const cacheKey = `${iconName}-${size}-${color || 'default'}`;
     
     if (renderedIconCache.has(cacheKey)) {
         return renderedIconCache.get(cacheKey)!;
     }
     
-    const componentCacheKey = `${iconName}-${source}`;
-    let IconComponent = iconComponentCache.get(componentCacheKey);
+    let IconComponent = iconComponentCache.get(iconName);
     
     if (!IconComponent) {
         const pascalCase = iconName.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
-
-        if (source === 'lucide') {
-            const icons = require('lucide-react');
-            IconComponent = icons[pascalCase] as React.ComponentType<{ size?: number, color?: string }>;
-        } else {
+        try {
             const icon = require(`../assets/icons/${pascalCase}.svg`).default;
             IconComponent = ({ size, color }: { size?: number, color?: string }) => (
                 <SvgIcon 
                     component={icon} 
                     viewBox="0 0 24 24"
                     sx={{ 
-                    fontSize: size, 
-                    color: color 
+                        fontSize: size, 
+                        color: color 
                     }} 
                 />
             );
+        } catch (e) {
+            const icons = require('lucide-react');
+            IconComponent = icons[pascalCase] as React.ComponentType<{ size?: number, color?: string }>;
         }
         
         if (IconComponent) {

@@ -121,7 +121,7 @@ const theme = createTheme({
   },
   typography: {
     fontSize: 12,
-    fontFamily: 'sans-serif',
+    fontFamily: 'Roboto, Arial, sans-serif',
     body1: {
       fontSize: '1rem',
     },
