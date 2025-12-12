@@ -226,7 +226,7 @@ export default function AppWrapper({
               onClick={handleMenu}
               color="inherit"
             >
-              { getSVGIcon('globe', 20, 'black') }
+              { getSVGIcon('globe', 20, 'black', 'custom') }
             </IconButton>
             <Menu
               id="language-menu"
