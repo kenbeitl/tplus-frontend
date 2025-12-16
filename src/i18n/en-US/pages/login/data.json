@@ -1,0 +1,33 @@
+{
+    "title": "Welcome to T+",
+    "context": "Your All-in-One AI-Powered for Business Innovation",
+    "login": {
+        "label": "Login",
+        "userId": "Email Address/CETS ID",
+        "userIdPlaceholder": "Enter your email/CETS ID",
+        "userIdRequired": "Email/CETS ID is required",
+        "password": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "passwordRequired": "Password is required",
+        "signIn": "Sign In",
+        "signingIn": "Signing in...",
+        "feature": [
+            {
+                "title": "Enterprise-grade security",
+                "icon": "shield"
+            },
+            {
+                "title": "AI-powered automation",
+                "icon": "lightning"
+            },
+            {
+                "title": "Global business connectivity",
+                "icon": "globe"
+            }
+        ]
+    },
+    "signUp": {
+        "label": "Sign Up"
+    },
+    "instruction": "Sign in to access your business services"
+}

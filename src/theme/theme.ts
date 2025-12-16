@@ -166,6 +166,25 @@ const theme = createTheme({
           '& .bg-overlay-heavy::before': {
             backgroundColor: 'rgba(0, 0, 0, 0.6)',
           },
+          // Gradient text styles
+          '& .gradient-text-blue': {
+            background: GRADIENTS.blue,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          },
+          '& .gradient-text-orange': {
+            background: GRADIENTS.orange,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          },
+          '& .gradient-text-purple': {
+            background: GRADIENTS.purple,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          },
         },
       }),
     },

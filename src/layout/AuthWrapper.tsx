@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 
 export default function AuthWrapper({ 
   children 
@@ -7,9 +7,9 @@ export default function AuthWrapper({
 }) {
   return (
     <Box component="div" className="auth-layout min-h-screen flex items-center justify-center bg-gray-50">
-      <Box component="div" className="w-full max-w-md">
+      <Container maxWidth="lg">
         {children}
-      </Box>
+      </Container>
     </Box>
   );
 }

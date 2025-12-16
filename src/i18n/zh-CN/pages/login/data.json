@@ -1,0 +1,19 @@
+{
+    "title": "欢迎使用T+",
+    "context": "您的全方位AI驱动业务创新平台",
+    "login": {
+        "label": "登录",
+        "userId": "电子邮箱/CETS ID",
+        "userIdPlaceholder": "输入您的电子邮箱/CETS ID",
+        "userIdRequired": "电子邮箱/CETS ID为必填项",
+        "password": "密码",
+        "passwordPlaceholder": "输入您的密码",
+        "passwordRequired": "密码为必填项",
+        "signIn": "登录",
+        "signingIn": "正在登录..."
+    },
+    "signUp": {
+        "label": "注册"
+    },
+    "instruction": "登录以访问您的业务服务"
+}

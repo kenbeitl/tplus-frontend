@@ -1,22 +1,45 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession, signIn } from 'next-auth/react';
 
-import { Box, Card, Container, Typography, CircularProgress } from '@mui/material';
+import { Box, Card, Container, Typography, CircularProgress, Grid } from '@mui/material';
 import Logo from '@/assets/images/Logo';
 
-
-import { ActionButton } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
-import { subSlot } from '@/helpers/utils';
+import { getSVGIcon, subSlot } from '@/helpers/utils';
+import { ActionButton, Carousel, FormField, Spacer } from '@/components';
+import theme from '@/theme/theme';
+import { TabContext } from '@mui/lab';
+import { TabList, Tab, TabPanel } from '@/components/ui/StyledTabs';
+import { useFormValidation } from '@/hooks/useFormValidation';
 
 export default function LoginClient() {
+    const t = useTranslations();
     const { data: session, status } = useSession();
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
-    const t = useTranslations();
+    
+    const [value, setValue] = React.useState('login');
+    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+        setValue(newValue);
+    }
+    const validationRules = useMemo(() => {
+        return {
+            userId: { required: true, message: t('pages.login.login.userIdRequired') },
+            password: { required: true, message: t('pages.login.login.passwordRequired') },
+        };
+    }, []);
+    const initialValues = useMemo(() => {
+        return {
+            userId: '',
+            password: '',
+        };
+    }, []);
+    const form = useFormValidation(initialValues, validationRules);
+    
+    
 
     // Check if user is already logged in
     useEffect(() => {
@@ -53,24 +76,68 @@ export default function LoginClient() {
     };
 
     return (
-        <>
-            <Container 
-                maxWidth="md"
-                className="flex items-center justify-center min-h-screen">
-                <Card variant="outlined" className="w-100 py-30 px-6 text-center">
-                    <Box component="div" className="flex justify-center mb-6">
-                        <Logo open={true} />
-                    </Box>
-                    <Typography sx={{ mb: 3 }} variant="h4" component="p" color="text.secondary">Sign in to access your business services</Typography>
-                    <ActionButton
-                        buttonText={isLoading ? "Signing in..." : "Login"}
-                        variant="gradient"
-                        onClick={handleLogin}
-                        disabled={isLoading}
-                        startIcon={isLoading ? <CircularProgress size={20} color="inherit" /> : undefined}
-                    />
-                </Card>
-            </Container>
-        </>
+        <Grid container spacing={6}>
+            <Grid size={{xs: 12, sm: 7}}>
+                <Typography variant="h2" component="h1" className="gradient-text-blue" sx={{ mb: 2 }}>{ t('pages.login.title') }</Typography>
+                <Typography variant="h5" component="p" color={theme.palette.text.secondary} sx={{ mb: 3 }}>{ t('pages.login.context') }</Typography>
+                { value === 'login' &&
+                    <></>
+                }
+                { value === 'signUp' &&
+                    <Carousel slideNum={2} />
+                }
+            </Grid>
+            <Grid size={{xs: 12, sm: 5}}>
+                <Card variant="outlined" className="flex flex-col justify-center items-center h-full">
+                    <Logo open={true} width={100} className="my-8" />
+                    <Typography variant="body1" component="p" color="text.secondary"></Typography>
+                    <TabContext value={value}>
+                        <Box>
+                            <TabList onChange={handleChange} variant="fullWidth">
+                                <Tab label={t("pages.login.login.label")} value="login" disableRipple />
+                                <Tab label={t("pages.login.signUp.label")} value="signUp" disableRipple />
+                            </TabList>
+                        </Box>
+                        <TabPanel value="login" sx={{ width: '100%', py: 5, px: 3 }}>
+                            <FormField
+                                name="userId"
+                                label={ t('pages.login.login.userId') }
+                                placeholder={ t('pages.login.login.userIdPlaceholder') }
+                                value={form.values.userId || ''}
+                                onChange={form.handleChange}
+                                onBlur={form.handleBlur}
+                                error={form.touched.name ? (form.errors.name as string) : ''}
+                                required
+                                fullWidth
+                            />
+                            <Spacer height={30} />
+                            <FormField
+                                name="password"
+                                label={ t('pages.login.login.password') }
+                                placeholder={ t('pages.login.login.passwordPlaceholder') }
+                                value={form.values.password || ''}
+                                onChange={form.handleChange}
+                                onBlur={form.handleBlur}
+                                error={form.touched.name ? (form.errors.name as string) : ''}
+                                required
+                                fullWidth
+                            />
+                            <Spacer height={30} />
+                            <ActionButton
+                                buttonText={isLoading ? t('pages.login.login.signingIn') : t('pages.login.login.signIn')}
+                                variant="gradient"
+                                onClick={handleLogin}
+                                disabled={isLoading}
+                                startIcon={isLoading ? getSVGIcon("circular-progress") : undefined}
+                                endIcon={ getSVGIcon("arrow-right", 20) }
+                            />
+                        </TabPanel>
+                        <TabPanel value="signUp">
+
+                        </TabPanel>
+                    </TabContext>
+                </Card>    
+            </Grid>            
+        </Grid>
     )
 }

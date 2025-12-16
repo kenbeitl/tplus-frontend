@@ -2,13 +2,19 @@ import * as React from "react";
 
 interface LogoProps extends React.SVGProps<SVGSVGElement> {
   open?: boolean;
-  sx?: React.CSSProperties;
+  width?: number;
+  height?: number;
 }
 
-const Logo = ({ open, sx, ...props }: LogoProps) => {
-  // Adjust size based on open state
-  const logoWidth = open ? 60 : 32;
-  const logoHeight = open ? (60 * 464) / 960 : 32; // Maintain aspect ratio
+const Logo = ({ 
+  open,
+  width,
+  height,
+  ...props 
+}: LogoProps) => {
+  const logoRatio = 960 / 464;
+  const logoWidth = width ?? (open ? 60 : 32);
+  const logoHeight = height ?? (logoWidth / logoRatio);
   
   return (
     <svg 
@@ -16,7 +22,6 @@ const Logo = ({ open, sx, ...props }: LogoProps) => {
       width={logoWidth} 
       height={logoHeight} 
       viewBox="0 0 960 464"
-      style={sx}
       {...props}
     >
     <path

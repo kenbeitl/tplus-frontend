@@ -35,7 +35,7 @@
     "**/*.mts",
     "src/i18n/en/pages/payConnect/json",
     "src/app/help-centre/layout.tsx"
-  ],
+, "src/app/login/LoginClient.tsx.bak"  ],
   "exclude": [
     "node_modules"
   ]
