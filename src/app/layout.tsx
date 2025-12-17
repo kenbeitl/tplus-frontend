@@ -8,6 +8,7 @@ import AppWrapper from "@/layout/AppWrapper";
 import { usePathname } from "next/navigation";
 import { AppProvider } from "@/contexts/AppContext";
 import { SessionProvider } from "next-auth/react";
+import { Box } from "@mui/material";
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -35,7 +36,7 @@ export default function RootLayout({
                 <AuthWrapper>{children}</AuthWrapper>
               ) : (
                 <AppWrapper>
-                  <div className="p-4 sm:p-6">{children}</div>
+                  <Box component="div" className="p-4 sm:p-6">{children}</Box>
                 </AppWrapper>
               )}
             </MUIThemeProvider>

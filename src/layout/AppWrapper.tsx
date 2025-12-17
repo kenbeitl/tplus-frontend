@@ -199,7 +199,7 @@ export default function AppWrapper({
 
   return (
     <SnackbarProvider>
-      <div className="app-layout min-h-screen">
+      <Box component="div" className="app-layout min-h-screen">
         <Box className="flex">
           <AppBar 
             position="fixed"
@@ -408,7 +408,7 @@ export default function AppWrapper({
           { children }
         </Box>
       </Box>
-    </div>
+    </Box>
     </SnackbarProvider>
   );
 }

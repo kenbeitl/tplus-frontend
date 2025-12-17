@@ -1,5 +1,6 @@
 'use client';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+import { createTheme } from '@mui/material/styles';
 
 type ColorConfig = {
   background: string;
@@ -11,7 +12,7 @@ const GRADIENTS = {
   blue: 'linear-gradient(90deg, rgba(0, 73, 220, 1) 0%, rgba(0, 150, 220, 1) 100%)',
   orange: 'linear-gradient(90deg, rgba(255, 176, 102, 1) 0%, rgba(255, 92, 51, 1) 100%)',
   purple: 'linear-gradient(90deg, rgba(168, 85, 247, 1) 0%, rgba(99, 102, 241, 1) 100%)',
-} as const;
+};
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -249,6 +250,7 @@ const theme = createTheme({
           padding: 0,
           flexGrow: 1,
           color: '#000000',
+          minHeight: 32,
           fontSize: 14,
           fontWeight: 600,
           textTransform: 'none',  
