@@ -169,6 +169,7 @@ export default function LoginClient() {
                             />
                             <Spacer height={30} />
                             <FormField
+                                type="password"
                                 name="password"
                                 label={ t('pages.login.login.password') }
                                 placeholder={ t('pages.login.login.passwordPlaceholder') }
