@@ -3,10 +3,10 @@
 import React, { useMemo } from "react";
 
 import theme from "@/theme/theme";
-import { Box, Card, Grid, Link, List, ListItem, ListItemIcon, ListItemText, Paper, styled, Typography } from "@mui/material";
+import { Box, Card, Grid, Link, List, ListItem, ListItemIcon, ListItemText, Paper, styled, Tab as MuiTab, Typography } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import { useLanguage, useTranslations } from '@/contexts/AppContext';
-import { Spacer, TabList as MuiTabList, Tab as MuiTab, TabPanel, ActionButton, Emoji, Tag } from "@/components";
+import { Spacer, TabList as MuiTabList, TabPanel, ActionButton, Emoji, Tag } from "@/components";
 import { getSVGIcon, subSlot, getLocalDateString, getLocalCurrency } from "@/helpers/utils";
 
 const PLAN_START_DATE = new Date('2025-10-23');

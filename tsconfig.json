@@ -34,8 +34,9 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts",
     "src/i18n/en/pages/payConnect/json",
-    "src/app/help-centre/layout.tsx"
-, "src/app/login/LoginClient.tsx.bak"  ],
+    "src/app/help-centre/layout.tsx", 
+    "src/app/login/LoginClient.tsx" 
+  ],
   "exclude": [
     "node_modules"
   ]

@@ -81,5 +81,8 @@
         "websiteURL": "网站网址",
         "cetsId": "CETS ID",
         "employeeCount": "选择范围"
+    },
+    "wiki": {
+        "cetsId": "CETS ID 是分配给所有 Tradelink 政府电子交易服务 (GETS) 客户的唯一身份号码。"
     }
 }

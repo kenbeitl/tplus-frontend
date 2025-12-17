@@ -243,6 +243,25 @@ const theme = createTheme({
         }
       }
     },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          padding: 0,
+          flexGrow: 1,
+          color: '#000000',
+          fontSize: 14,
+          fontWeight: 600,
+          textTransform: 'none',  
+          
+          '&.Mui-selected': {
+            color: '#000000',
+            backgroundColor: '#FFFFFF',
+            borderRadius: '5rem',
+            borderBottom: 0,
+          },
+        }
+      }
+    },
     MuiButton: {
       styleOverrides: {
         root: {

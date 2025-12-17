@@ -81,5 +81,8 @@
         "websiteURL": "Website URL",
         "cetsId": "CETS ID",
         "employeeCount": "Select range"
+    },
+    "wiki": {
+        "cetsId": "CETS ID is a unique identity number assigned to all Tradelink Government Electronic Trading Service (GETS) customers."
     }
 }

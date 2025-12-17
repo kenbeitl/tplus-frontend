@@ -1,2 +1,2 @@
 export { default as Spacer } from './Spacer';
-export * from './StyledTabs';
+export * from './CustomStyled';

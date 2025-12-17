@@ -3,9 +3,9 @@
 import React from "react";
 
 import theme from "@/theme/theme";
-import { Badge, Box, Button, Card, FormControlLabel, FormGroup, Grid, List, ListItem, ListItemText, Paper, Switch, Typography } from "@mui/material";
+import { Badge, Box, Button, Card, FormControlLabel, FormGroup, Grid, List, ListItem, ListItemText, Paper, Switch, Tab, Typography } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
-import { Tag, Spacer, TabList, Tab, TabPanel, StyledIcon, FormField, ButtonWithFormModal } from "@/components";
+import { Tag, Spacer, TabList, TabPanel, StyledIcon, FormField, ButtonWithFormModal } from "@/components";
 import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon } from "@/helpers/utils";
 
