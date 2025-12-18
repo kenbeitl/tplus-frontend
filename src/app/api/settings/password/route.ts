@@ -81,8 +81,8 @@ export async function POST(request: NextRequest) {
                    JSON.parse(Buffer.from(session.accessToken!.split('.')[1], 'base64').toString()).sub;
 
     // Update password using Keycloak Admin REST API with admin token
-    const keycloakBaseUrl = process.env.KEYCLOAK_ISSUER!.replace('/realms/tplus-realm', '');
-    const adminApiUrl = `${keycloakBaseUrl}/admin/realms/tplus-realm/users/${userId}/reset-password`;
+    const keycloakBaseUrl = process.env.KEYCLOAK_ISSUER!.replace('/realms/tplus', '');
+    const adminApiUrl = `${keycloakBaseUrl}/admin/realms/tplus/users/${userId}/reset-password`;
     
     console.log("Account API URL:", adminApiUrl);
     

@@ -21,7 +21,7 @@ export async function PUT(request: NextRequest) {
     // Update user info in Keycloak
     const userId = (session.user as any).sub;
     const response = await fetch(
-      `${process.env.KEYCLOAK_ISSUER}/admin/realms/tplus-realm/users/${userId}`,
+      `${process.env.KEYCLOAK_ISSUER}/admin/realms/tplus/users/${userId}`,
       {
         method: "PUT",
         headers: {
@@ -66,7 +66,7 @@ export async function DELETE(request: NextRequest) {
 
     const userId = (session.user as any).sub;
     const response = await fetch(
-      `${process.env.KEYCLOAK_ISSUER}/admin/realms/tplus-realm/users/${userId}`,
+      `${process.env.KEYCLOAK_ISSUER}/admin/realms/tplus/users/${userId}`,
       {
         method: "DELETE",
         headers: {
