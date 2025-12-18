@@ -10,7 +10,21 @@
         "passwordPlaceholder": "輸入您的密碼",
         "passwordRequired": "密碼為必填",
         "signIn": "登錄",
-        "signingIn": "正在登錄..."
+        "signingIn": "正在登錄...",
+        "feature": [
+            {
+                "title": "企業級安全保障",
+                "icon": "shield"
+            },
+            {
+                "title": "AI驅動自動化",
+                "icon": "zap"
+            },
+            {
+                "title": "全球業務互聯",
+                "icon": "globe"
+            }
+        ]
     },
     "signUp": { 
         "label": "註冊"

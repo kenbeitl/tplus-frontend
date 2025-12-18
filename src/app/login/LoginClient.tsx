@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useSession, signIn } from 'next-auth/react';
 
 import theme from '@/theme/theme';
-import { Box, Card, Container, Tab as MuiTab, Typography, CircularProgress, Grid, styled, Tooltip as MuiTooltip, InputAdornment, IconButton } from '@mui/material';
+import { Box, Card, Container, Paper, Tab as MuiTab, Typography, CircularProgress, Grid, styled, Tooltip, InputAdornment, IconButton } from '@mui/material';
 import Logo from '@/assets/images/Logo';
 import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon, subSlot } from '@/helpers/utils';
@@ -22,10 +22,6 @@ const Tab = styled(MuiTab)({
         background: theme.palette.gradient.blue
     }
 });
-
-const Tooltip = styled(MuiTooltip)({
-
-})
 
 export default function LoginClient() {
     const t = useTranslations();
@@ -101,11 +97,14 @@ export default function LoginClient() {
             <Grid size={{xs: 12, sm: 7}}>
                 <Typography variant="h2" component="h1" className="gradient-text-blue" sx={{ mb: 2 }}>{ t('pages.login.title') }</Typography>
                 <Typography variant="h5" component="p" color={theme.palette.text.secondary} sx={{ mb: 3 }}>{ t('pages.login.context') }</Typography>
-                { value === 'login' &&
-                    <></>
-                }
-                { value === 'signUp' &&
-                    <Carousel slideNum={2} />
+                {
+                    t('pages.login.login.feature') && Array.isArray(t('pages.login.login.feature')) &&
+                    t('pages.login.login.feature').map((feature: {title: string, icon: string}, index: number) => (
+                        <Paper variant="elevation" elevation={1} key={index} className="flex items-center gap-5 px-5 py-3 mb-8">
+                            <Paper variant="outlined" sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: 50, height: 50 }}>{ getSVGIcon(feature.icon, 20, theme.palette.primary.main) }</Paper>
+                            <Typography variant="h5" component="p">{ feature.title }</Typography>
+                        </Paper>
+                    ))
                 }
             </Grid>
             <Grid size={{xs: 12, sm: 5}}>
@@ -122,10 +121,10 @@ export default function LoginClient() {
                         height: '100%',
                     }}
                 >
-                    <Logo open={true} width={100} className="my-8" />
-                    <Typography variant="body1" component="p" color="text.secondary"></Typography>
+                    <Logo open={true} width={100} className="mt-8 mb-2" />
+                    <Typography variant="body1" component="p" color="text.secondary" sx={{ mb: 1 }}>{ t('pages.login.instruction') }</Typography>
                     <TabContext value={value}>
-                        <Box>
+                        <Box component="div" sx={{ width: '80%' }}>
                             <TabList onChange={handleChange} variant="fullWidth">
                                 <Tab label={t("pages.login.login.label")} value="login" disableRipple />
                                 <Tab label={t("pages.login.signUp.label")} value="signUp" disableRipple />
