@@ -1,243 +1,82 @@
 'use client';
 
 import React from "react";
-import { useRouter } from "next/navigation";
-
-import theme from "@/theme/theme";
-import { Box, Card, Grid, Link, Paper, Typography } from "@mui/material";
-import { Carousel, Spacer, StyledIcon, Emoji, ButtonWithFormModal, ActionButton } from "@/components";
+import { Carousel, Spacer } from "@/components";
 import { useTranslations } from "@/contexts/AppContext";
-import { getSVGIcon } from "@/helpers/utils";
-import { useBreakpoint } from "@/hooks/useBreakpoint";
-
-type themeColorType = Record<string, { border: string; from: string; to: string }>;
+import WelcomeSection from "./components/WelcomeSection";
+import GetStartedTipsSection from "./components/GetStartedTipsSection";
+import FreeTrialFeaturesSection from "./components/FreeTrialFeaturesSection";
+import FeaturesTBCSection from "./components/FeaturesTBCSection";
+import NeedHelpSection from "./components/NeedHelpSection";
 
 export default function DashboardClient() {
     const t = useTranslations();
-    const router = useRouter();
-    const isAboveMobile = useBreakpoint('mobile');
     
-    const GET_STARTED_STEPS = t('pages.dashboard.getStartedTips.steps');
-    const FREE_TRIAL_FEATURES = t('pages.dashboard.freeTrialFeatures.list');
-    const TBC_FEATURES = t('pages.dashboard.featuresTBC.list');
+    const welcome = t('pages.dashboard.welcome');
+    const getStartedTips = t('pages.dashboard.getStartedTips');
+    const freeTrialFeatures = t('pages.dashboard.freeTrialFeatures');
+    const featuresTBC = t('pages.dashboard.featuresTBC');
+    const needHelp = t('pages.dashboard.needHelp');
 
-    const CONTACT_SUPPORT_TEMPLATE_ID = 'contact-support';
     return (
         <>
             <Carousel slideNum={2} />
 
-            { /* Welcome Section */ }
-
-            { t('pages.dashboard.welcome') && 
-                <Box
-                    className="flex flex-col items-center text-center py-8"
-                    component="div"
-                >
-                    <StyledIcon 
-                        icon={ getSVGIcon('circle-check-big', 32) } 
-                        variant="green"
-                        size={64}
+            {welcome && (
+                <>
+                    <WelcomeSection 
+                        title={welcome.title}
+                        line1={welcome.line1}
+                        line2={welcome.line2}
                     />
-                    <Spacer height={10} />
-                    <Box className="flex items-center">
-                        <Emoji symbol="🎉" size={40} sx={{ mr: 1 }} />
-                        <Typography variant="h4" component="h2">{ t('pages.dashboard.welcome.title') }</Typography>
-                    </Box>
-                    <Spacer height={20} />
-                    <Typography variant="body2" component="p">{ t('pages.dashboard.welcome.line1') }</Typography>
-                    <Spacer height={20} />
-                    <Typography variant="body2" component="p" dangerouslySetInnerHTML={{ __html: t('pages.dashboard.welcome.line2') }} />
-                </Box>
-            }
+                </>
+            )}
         
-            {/* Get Started Tips */}
-
-            { t('pages.dashboard.getStartedTips') &&
+            {getStartedTips && (
                 <>
-                    <Card variant="outlined" className="p-6">
-                        <Box className="flex items-center">
-                            <Emoji symbol="🚀" size={25} sx={{ mr: 1 }} />
-                            <Typography variant="body1" component="h3">{ t('pages.dashboard.getStartedTips.title') }</Typography>
-                        </Box>
-                        <Typography variant="body2" component="p" sx={{ mt: 2 }}>{ t('pages.dashboard.getStartedTips.context') }</Typography>
-                        <Spacer height={20} />
-                        <Grid container spacing={2}>
-                            {Array.isArray(GET_STARTED_STEPS) && GET_STARTED_STEPS.map((step, index) => {
-                                const getThemeColors = (themeName: string) => {
-                                    const colors: themeColorType = {
-                                        blue: { border: '#BFDBFE', from: '#EFF6FF', to: '#DBEAFE' },
-                                        purple: { border: '#E9D5FF', from: '#FAF5FF', to: '#F3E8FF' },
-                                        indigo: { border: '#C7D2FE', from: '#EEF2FF', to: '#E0E7FF' },
-                                    } as const;
-                                    return colors[themeName] || colors.blue;
-                                };
-                                const themeColors = getThemeColors(step.theme);
-                                
-                                return (
-                                <React.Fragment key={index}>
-                                    <Grid size={{ xs: 12, sm: 'grow' }} >
-                                        <Card 
-                                            variant="outlined" 
-                                            className="p-3 lg:p-6 gap-4 center-layout h-full"
-                                            sx={{ 
-                                                height: '100%',
-                                                borderWidth: '2px',
-                                                borderColor: themeColors.border,
-                                                background: `linear-gradient(to bottom right, ${themeColors.from}, ${themeColors.to})`
-                                            }}
-                                        >
-                                            <StyledIcon 
-                                                icon={getSVGIcon(step.icon, 25)} 
-                                                variant={`${step.theme}-inverted` as any}
-                                                size={50}
-                                            />
-                                            <StyledIcon 
-                                                icon={index+1} 
-                                                variant={`${step.theme}-inverted` as any}
-                                                size={32}
-                                            />
-                                            <Typography variant="body2" component="h4">{step.title}</Typography>
-                                            <Typography variant="caption" component="p" color={theme.palette.text[step.theme as keyof typeof theme.palette.text]}>{step.description}</Typography>
-                                        </Card>
-                                    </Grid>
-                                    {index < GET_STARTED_STEPS.length - 1 && (
-                                    <Grid size={{ xs: 12, sm: 1 }} sx={{ alignSelf: 'center' }}>
-                                        <Card elevation={0} className="center-layout">
-                                            { getSVGIcon(`arrow-${isAboveMobile ? 'right' : 'down'}`, undefined, themeColors.border) }
-                                        </Card>
-                                    </Grid>
-                                    )}
-                                </React.Fragment>
-                            )})}
-                        </Grid>
-                    </Card>
+                    <GetStartedTipsSection
+                        title={getStartedTips.title}
+                        context={getStartedTips.context}
+                        steps={getStartedTips.steps}
+                    />
                     <Spacer height={20} />
                 </>
-            }
+            )}
 
-            {/* Free Trial Features */}
-
-            { t('pages.dashboard.freeTrialFeatures') && 
+            {freeTrialFeatures && (
                 <>
-                    <Card variant="outlined" className="p-6">
-                        <Box className="flex items-center">
-                            <Box component="span" sx={{ mr: 1 }}>{ getSVGIcon('circle-check-big', 20, theme.palette.text.green) }</Box>
-                            <Emoji symbol="🆓" size={25} sx={{ mr: 1 }} />
-                            <Typography variant="body1" component="h3" color={theme.palette.text.green}>{ t('pages.dashboard.freeTrialFeatures.title') }</Typography>
-                        </Box>
-                        <Typography variant="body2" component="p" sx={{ mt: 2 }}>{ t('pages.dashboard.freeTrialFeatures.context') }</Typography>
-                        <Spacer height={20} />
-                        <Grid container spacing={2}>
-                            {Array.isArray(FREE_TRIAL_FEATURES) && FREE_TRIAL_FEATURES.map((feature: any, index: number) => (
-                                <Grid size={12} key={`ftf-${index}`}>
-                                    <Paper elevation={0} className="p-3 bg-green-50!">
-                                        <Box className="flex flex-col sm:flex-row items-top">
-                                            <StyledIcon 
-                                                icon={getSVGIcon(feature.icon, 18)} 
-                                                variant="green"
-                                                size={36}
-                                                square
-                                                className={`mr-${isAboveMobile ? '3' : '0'} mb-${isAboveMobile ? '0' : '3'}`}
-                                            />
-                                            <Box>
-                                                <Typography variant="body1" component="h4">{ feature.title }</Typography>
-                                                <Typography variant="caption" component="p" color={theme.palette.text.green}>{ feature.context }</Typography>
-                                            </Box>
-                                        </Box>
-                                    </Paper>
-                                </Grid>
-                            ))}
-                            { t('pages.dashboard.freeTrialFeatures.remarks') && (
-                                <Grid size={12}>
-                                    <Card variant="outlined" className="p-3 bg-blue-50! border-blue-200!">
-                                        <Typography variant="caption" component="h4" color="#2b7fff"><em>{ t('pages.dashboard.freeTrialFeatures.remarks.body') }</em></Typography>
-                                    </Card>
-                                </Grid>
-                            )}       
-                        </Grid>                
-                    </Card>
+                    <FreeTrialFeaturesSection
+                        title={freeTrialFeatures.title}
+                        context={freeTrialFeatures.context}
+                        features={freeTrialFeatures.list}
+                        remarksBody={freeTrialFeatures.remarks?.body}
+                    />
                     <Spacer height={20} />
                 </>
-            }
+            )}
             
-            {/* Features Available Soon */}
-            
-            { t('pages.dashboard.featuresTBC') && 
+            {featuresTBC && (
                 <>
-                    <Card variant="outlined" className="p-6">
-                        <Box className="flex items-center">
-                            <Box component="span" sx={{ mr: 1 }}>{ getSVGIcon('calendar', 20, '#c05621') }</Box>
-                            <Emoji symbol="🔐" size={25} sx={{ mr: 1 }} />
-                            <Typography variant="body1" component="h3" color="#c05621">{ t('pages.dashboard.featuresTBC.title') }</Typography>
-                        </Box>
-                        <Typography variant="body2" component="p" sx={{ mt: 2 }}>{ t('pages.dashboard.featuresTBC.context') }</Typography>
-                        <Spacer height={20} />
-                        <Grid container spacing={2}>
-                            { Array.isArray(TBC_FEATURES) && TBC_FEATURES.map((feature: any, index: number) => 
-                                <Grid size={12} key={`ftbc-${index}`}>
-                                    <Paper elevation={0} className={`p-3 ${feature.isActive ? 'bg-orange-50!' : 'bg-amber-50!'}`}>
-                                        <Box className="flex flex-col sm:flex-row items-top">
-                                            <StyledIcon 
-                                                icon={getSVGIcon(feature.icon, 18)} 
-                                                variant={feature.isActive ? 'orange' : 'amber'}
-                                                size={36}
-                                                square
-                                                className={`mr-${isAboveMobile ? '3' : '0'} mb-${isAboveMobile ? '0' : '3'}`}
-                                            />
-                                            <Box>
-                                                <Typography variant="body1" component="h4">{ feature.title }</Typography>
-                                                <Typography variant="caption" component="p" color={feature.isActive ? '#C05621' : '#B45309'}>{ feature.context }</Typography>
-                                            </Box>
-                                        </Box>
-                                    </Paper>
-                                </Grid>
-                            )}
-
-                            { t('pages.dashboard.featuresTBC.remarks') && 
-                                <Grid size={12}>
-                                    <Card variant="outlined" className="p-3 bg-blue-50! border-blue-200!">
-                                        <Typography variant="body1" component="h4">{ t('pages.dashboard.featuresTBC.remarks.title') }</Typography>
-                                        <Typography variant="caption" component="h4" color="#2b7fff">{ t('pages.dashboard.featuresTBC.remarks.context') }</Typography>
-                                        <ActionButton
-                                            autoWidth
-                                            variant="outlined" 
-                                            color="blue" 
-                                            buttonText={ t('pages.dashboard.viewSubscriptionPlans') }
-                                            onClick={() => router.push("/subscriptions")}
-                                        />
-                                    </Card>
-                                </Grid>
-                            }                            
-                        </Grid>
-                    </Card>
+                    <FeaturesTBCSection
+                        title={featuresTBC.title}
+                        context={featuresTBC.context}
+                        features={featuresTBC.list}
+                        remarksTitle={featuresTBC.remarks?.title}
+                        remarksContext={featuresTBC.remarks?.context}
+                        viewSubscriptionPlansText={t('pages.dashboard.viewSubscriptionPlans')}
+                    />
                     <Spacer height={20} />
                 </>
-            }
+            )}
             
-            {/* Need help getting started? */}
-
-            { t('pages.dashboard.getHelp') && 
-                <Card variant="outlined" className="p-6">
-                    <Box className="flex items-center">
-                        <Emoji symbol="🛠️" size={25} sx={{ mr: 1 }} />
-                        <Typography variant="body1" component="h3" fontWeight={500}>{ t('pages.dashboard.needHelp.title') }</Typography>
-                    </Box>
-                    <Typography variant="body2" component="p" sx={{ mt: 2 }}>{ t('pages.dashboard.needHelp.context') }</Typography>
-                    <Spacer height={20} />
-                    <Box
-                        className="flex flex-row gap-5 justify-center items-center"
-                        component="div"
-                    >
-                        <Link variant="caption" href="/help-centre" underline="hover">{ t('nav.helpCentre') }</Link> 
-                        | 
-                        <ButtonWithFormModal
-                            textOnly={true}
-                            templateId={CONTACT_SUPPORT_TEMPLATE_ID} 
-                            buttonText={ t('common.contactSupport') }
-                        />
-                    </Box>
-                </Card>   
-            }
+            {needHelp && (
+                <NeedHelpSection
+                    title={needHelp.title}
+                    context={needHelp.context}
+                    helpCentreText={t('nav.helpCentre')}
+                    contactSupportText={t('common.contactSupport')}
+                />
+            )}
         </>
     );
 }

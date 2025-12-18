@@ -1,0 +1,48 @@
+'use client';
+
+import React from "react";
+import { useTranslations } from '@/contexts/AppContext';
+import { ActionButton } from "@/components";
+import { Box, Card, Typography } from "@mui/material";
+import theme from "@/theme/theme";
+
+interface DangerZoneSectionProps {
+    onDelete: () => void;
+}
+
+export default function DangerZoneSection({ onDelete }: DangerZoneSectionProps) {
+    const t = useTranslations();
+
+    const handleDelete = () => {
+        if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+            onDelete();
+        }
+    };
+
+    return (
+        <>
+            <Typography variant="h6" component="h2" sx={{ mb: 3, color: theme.palette.text.red }}>
+                {t("pages.settings.userProfile.dangerZone")}
+            </Typography>
+            <Card variant="outlined" className="p-3 bg-red-50! border-red-200!">
+                <Box component="div" className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <Box component="div" className="flex flex-col gap-1">
+                        <Typography variant="h6" component="p">
+                            {t("pages.settings.userProfile.deleteAccount.title")}
+                        </Typography>
+                        <Typography variant="caption" component="p">
+                            {t("pages.settings.userProfile.deleteAccount.description")}
+                        </Typography>
+                    </Box>
+                    <ActionButton
+                        buttonText={t("pages.settings.userProfile.deleteAccount.buttonText")}
+                        variant="contained"
+                        color="error"
+                        onClick={handleDelete}
+                        autoWidth
+                    />
+                </Box>
+            </Card>
+        </>
+    );
+}
