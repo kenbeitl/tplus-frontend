@@ -14,35 +14,35 @@ const GRADIENTS = {
   purple: 'linear-gradient(90deg, rgba(168, 85, 247, 1) 0%, rgba(99, 102, 241, 1) 100%)',
 };
 
+// Custom palette extensions
+type CustomPaletteExtension = {
+  icon: {
+    green: string;
+    black: string;
+  };
+  gradient: typeof GRADIENTS;
+  tag: {
+    green: ColorConfig;
+    blue: ColorConfig;
+    white: ColorConfig;
+    grey: ColorConfig;
+  };
+};
+
 declare module '@mui/material/styles' {
-  interface Palette {
-    icon: {
-      green: string;
-    };
-    gradient: typeof GRADIENTS;
-    tag: {
-      green: ColorConfig;
-      blue: ColorConfig;
-      white: ColorConfig;
-      grey: ColorConfig;
-    };
-  }
+  interface Palette extends CustomPaletteExtension {}
+  
   interface PaletteOptions {
-    icon: {
-      green?: string;
-    };
-    gradient?: Partial<typeof GRADIENTS>;
-    tag?: {
-      green?: ColorConfig;
-      blue: ColorConfig;
-      white?: ColorConfig;
-      grey?: ColorConfig;
-    };
+    icon?: Partial<CustomPaletteExtension['icon']>;
+    gradient?: Partial<CustomPaletteExtension['gradient']>;
+    tag?: Partial<CustomPaletteExtension['tag']>;
   }
+  
   interface TypeBackground {
     lightblue: string;
     red: string;
   }
+  
   interface TypeText {
     red: string;
     darkAmber: string;
@@ -56,6 +56,7 @@ declare module '@mui/material/styles' {
     purple: string;
     darkPurple: string;
     white: string;
+    black: string;
   }
 }
 
@@ -92,9 +93,11 @@ const theme = createTheme({
       purple: '#9333ea',
       darkPurple: '#6B21A8',
       white: '#FFFFFF',
+      black: '#000000',
     },
     icon: {
-      green: '#43A047'
+      green: '#43A047',
+      black: '#000000',
     },
     background: {
       lightblue: '#eff6ff',

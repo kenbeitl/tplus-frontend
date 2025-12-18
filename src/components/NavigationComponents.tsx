@@ -7,14 +7,16 @@ import { Box, Collapse, List, ListItemText, ListItemButton as MuiListItemButton,
 
 // Local Components & Contexts
 import { useTranslations, useDrawer } from '@/contexts/AppContext';
+import { menuIconSize } from '@/helpers/constants'
 import Tag from './Tag';
-import { getSVGIcon } from '@/helpers/utils';
+import { getSVGIcon } from '@/helpers/utils';import theme from '@/theme/theme';
+;
 
 // Styled ListItemButton with active state support
 export const ListItemIcon = styled(MuiListItemIcon)(() => ({
     minWidth: 'auto',
-    width: '20px',
-    color: 'black'
+    width: menuIconSize,
+    color: theme.palette.text.black
 }));
 
 export const ListItemButton = styled(MuiListItemButton, {
@@ -32,7 +34,7 @@ export const ListItemButton = styled(MuiListItemButton, {
     // Button wrapper styles
     '& .real-btn': {
         width: '100%',
-        padding: theme.spacing(0.5, 1),
+        padding: theme.spacing(0.75, 1),
         background: isActive ? theme.palette.gradient.blue : 'transparent',
         color: isActive ? theme.palette.primary.contrastText : 'inherit',
         borderRadius: isActive ? theme.shape.borderRadius : 0,
@@ -114,7 +116,7 @@ export function DropdownListItem({
                 transform: open ? 'rotate(90deg)' : 'rotate(0deg)',
               }}
             >
-              { getSVGIcon('chevron-right', 20) }
+              { getSVGIcon('chevron-right', menuIconSize) }
             </Box>
           </Box>
         </ListItemButton>

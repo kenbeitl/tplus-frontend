@@ -50,34 +50,59 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Update password using Keycloak Account API
-    // First, get the user ID from the session
-    const userId = (session as any).user?.sub || 
-                   JSON.parse(Buffer.from(session.accessToken!.split('.')[1], 'base64').toString()).sub;
-    
-    console.log("User ID:", userId);
-    
-    const updateResponse = await fetch(
-      `${process.env.KEYCLOAK_ISSUER}/admin/realms/tplus-realm/users/${userId}/reset-password`,
+    // Get admin access token using client credentials
+    const adminTokenResponse = await fetch(
+      `${process.env.KEYCLOAK_ISSUER}/protocol/openid-connect/token`,
       {
-        method: "PUT",
+        method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${session.accessToken}`,
+          "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify({
-          type: "password",
-          value: newPassword,
-          temporary: false,
+        body: new URLSearchParams({
+          client_id: process.env.KEYCLOAK_CLIENT_ID!,
+          client_secret: process.env.KEYCLOAK_CLIENT_SECRET!,
+          grant_type: "client_credentials",
         }),
       }
     );
+
+    if (!adminTokenResponse.ok) {
+      console.error("Failed to get admin token");
+      return NextResponse.json(
+        { error: "Failed to authenticate with admin API" },
+        { status: 500 }
+      );
+    }
+
+    const { access_token: adminToken } = await adminTokenResponse.json();
+
+    // Get user ID from the user's access token
+    const userId = (session as any).user?.sub || 
+                   JSON.parse(Buffer.from(session.accessToken!.split('.')[1], 'base64').toString()).sub;
+
+    // Update password using Keycloak Admin REST API with admin token
+    const keycloakBaseUrl = process.env.KEYCLOAK_ISSUER!.replace('/realms/tplus-realm', '');
+    const adminApiUrl = `${keycloakBaseUrl}/admin/realms/tplus-realm/users/${userId}/reset-password`;
+    
+    console.log("Account API URL:", adminApiUrl);
+    
+    const updateResponse = await fetch(adminApiUrl, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${adminToken}`,
+      },
+      body: JSON.stringify({
+        type: "password",
+        value: newPassword,
+        temporary: false,
+      }),
+    });
 
     if (!updateResponse.ok) {
       const errorText = await updateResponse.text();
       console.error("Password update failed:", errorText);
       console.error("Status:", updateResponse.status);
-      console.error("Admin API URL:", `${process.env.KEYCLOAK_ISSUER}/admin/realms/tplus-realm/users/${userId}/reset-password`);
       return NextResponse.json(
         { error: "Failed to update password" },
         { status: updateResponse.status }

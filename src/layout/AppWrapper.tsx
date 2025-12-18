@@ -24,6 +24,7 @@ import StyledIcon from '@/components/StyledIcon';
 import { useLogout } from '@/lib/logout';
 import { getSVGIcon } from '@/helpers/utils';
 import { useBreakpoint } from '@/hooks/useBreakpoint';
+import { menuIconSize } from '@/helpers/constants'
 import theme from '@/theme/theme';
 import { Tag } from '@/components';
 
@@ -216,7 +217,7 @@ export default function AppWrapper({
               color="inherit"
               onClick={handleDrawerClick}
             >
-              { getSVGIcon('panel-left', 20, 'black') }
+              { getSVGIcon('panel-left', menuIconSize, 'black') }
             </IconButton>
             <div className="grow" />
             <IconButton
@@ -226,7 +227,7 @@ export default function AppWrapper({
               onClick={handleMenu}
               color="inherit"
             >
-              { getSVGIcon('globe', 20, 'black') }
+              { getSVGIcon('globe', menuIconSize, 'black') }
             </IconButton>
             <Menu
               id="language-menu"
@@ -324,7 +325,7 @@ export default function AppWrapper({
             {/* Dashboard Navigation */}
             <NavigationListItem
               level={1}
-              icon={ getSVGIcon('home', 20) }
+              icon={ getSVGIcon('home', menuIconSize) }
               primary={t('nav.dashboard')}
               path="/"
               onClick={handleNavigation}
@@ -341,7 +342,7 @@ export default function AppWrapper({
                     <NavigationListItem
                       key={index}
                       level={2}
-                      icon={getSVGIcon(service.icon, 20)}
+                      icon={getSVGIcon(service.icon, menuIconSize)}
                       primary={service.name}
                       path={service.path}
                       isComingSoon={!service.isActive}
@@ -359,7 +360,7 @@ export default function AppWrapper({
             {/* Subscription Navigation */}
             <NavigationListItem
               level={1}
-              icon={ getSVGIcon('shopping-cart', 20) }
+              icon={ getSVGIcon('shopping-cart', menuIconSize) }
               primary={t('nav.subscriptions')}
               path="/subscriptions"
               onClick={handleNavigation}
@@ -368,7 +369,7 @@ export default function AppWrapper({
             {/* Settings Navigation */}
             <NavigationListItem
               level={1}
-              icon={ getSVGIcon('settings', 20) }
+              icon={ getSVGIcon('settings', menuIconSize) }
               primary={t('nav.settings')}
               path="/settings"
               onClick={handleNavigation}
@@ -377,7 +378,7 @@ export default function AppWrapper({
             {/* Help Centre Navigation */}
             <NavigationListItem
               level={1}
-              icon={ getSVGIcon('help-circle-icon', 20) }
+              icon={ getSVGIcon('help-circle-icon', menuIconSize) }
               primary={t('nav.helpCentre')}
               path="/help-centre"
               onClick={handleNavigation}

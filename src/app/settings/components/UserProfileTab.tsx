@@ -38,8 +38,8 @@ export default function UserProfileTab({ session }: UserProfileTabProps) {
             companyName: { required: false },
             userRole: { required: false },
             email: { required: true, email: true, message: validation.emailRequired || '' },
-            currentPassword: { required: false, minLength: 6, message: validation.currentPasswordMinLength || '' },
-            newPassword: { required: false, minLength: 6, message: validation.newPasswordMinLength || '' },
+            currentPassword: { required: false, minLength: 4, message: validation.currentPasswordMinLength || '' },
+            newPassword: { required: false, minLength: 4, message: validation.newPasswordMinLength || '' },
         };
     }, [formConfig]);
 
