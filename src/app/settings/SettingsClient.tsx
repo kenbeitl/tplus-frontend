@@ -5,22 +5,22 @@ import { useSession } from "next-auth/react";
 
 import theme from "@/theme/theme";
 import { Spacer, TabList, TabPanel, Form, FormField, FormSelect, ActionButton, Tag } from "@/components";
-import { Box, Card, Divider, Grid, Paper, Switch, Tab, TextField, Typography } from "@mui/material";
+import { Box, Card, Divider, Grid, IconButton, InputAdornment, Paper, Switch, Tab, TextField, Typography } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import { SelectChangeEvent } from '@mui/material';
 import { useTranslations } from '@/contexts/AppContext';
 import { useFormValidation } from "@/hooks/useFormValidation";
 import { getSVGIcon } from "@/helpers/utils";
-import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 export default function SettingsClient() {
     const { data: session } = useSession();
     const t = useTranslations();
     const [value, setValue] = React.useState('1');
+    const [showCurrentPassword, setShowCurrentPassword] = React.useState(false);
+    const [showNewPassword, setShowNewPassword] = React.useState(false);
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
     }
-    const isAboveMobile = useBreakpoint('mobile');
     const formConfig = React.useMemo(() => {
         const form = t('pages.settings.form');
         return {
@@ -46,19 +46,34 @@ export default function SettingsClient() {
     }, [formConfig]);
 
     const initialValues = useMemo(() => {
-    return {
-        firstName: (session?.user as any)?.firstName || '',
-        lastName: (session?.user as any)?.lastName || '',
-        companyName: (session?.user as any)?.companyName || '',
-        userRole: (session?.user as any)?.role || '',
-        email: (session?.user as any)?.email || '',
-        currentPassword: '',
-        newPassword: '',
-    };
+        return {
+            firstName: (session?.user as any)?.firstName || '',
+            lastName: (session?.user as any)?.lastName || '',
+            companyName: (session?.user as any)?.companyName || '',
+            userRole: (session?.user as any)?.role || '',
+            email: (session?.user as any)?.email || '',
+            currentPassword: '',
+            newPassword: '',
+        };
     }, [session?.user]);
     
     // Initialize user profile form validation
     const userForm = useFormValidation(initialValues, validationRules);
+
+    // Update form values when session loads
+    React.useEffect(() => {
+        if (session?.user) {
+            userForm.setValues({
+                firstName: (session?.user as any)?.firstName || '',
+                lastName: (session?.user as any)?.lastName || '',
+                companyName: (session?.user as any)?.companyName || '',
+                userRole: (session?.user as any)?.role || '',
+                email: (session?.user as any)?.email || '',
+                currentPassword: '',
+                newPassword: '',
+            });
+        }
+    }, [session?.user]);
 
     type businessIdentfierProps = {
         type: string;
@@ -86,8 +101,123 @@ export default function SettingsClient() {
         });
     }
 
+    // Handle form submission
     const handleSubmit = async() => {
-        console.log('form submitted');
+        // Validate user form
+        const isUserFormValid = userForm.validateAll();
+    };
+
+    const handleUpdateProfile = async() => {
+        // Clear previous errors
+        userForm.clearFieldError('firstName');
+        userForm.clearFieldError('lastName');
+        userForm.clearFieldError('email');
+
+        // Validate form first
+        if (!userForm.validateAll()) {
+            return;
+        }
+
+        try {
+            // Update profile
+            const profileResponse = await fetch('/api/settings', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    firstName: userForm.values.firstName,
+                    lastName: userForm.values.lastName,
+                    email: userForm.values.email,
+                }),
+            });
+
+            if (!profileResponse.ok) {
+                const data = await profileResponse.json();
+                // Set error on email field as a general profile error location
+                userForm.setFieldError('email', data.error || 'Failed to update profile');
+                return;
+            }
+
+            alert('Profile updated successfully!');
+        } catch (error) {
+            console.error('Update error:', error);
+            userForm.setFieldError('email', 'An error occurred while updating profile');
+        }
+    }
+
+    const handleUpdateLoginDetails = async() => {
+        // Clear previous errors
+        userForm.clearFieldError('currentPassword');
+        userForm.clearFieldError('newPassword');
+
+        // Update password if provided
+        if (userForm.values.currentPassword && userForm.values.newPassword) {
+            try {
+                const passwordResponse = await fetch('/api/settings/password', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        currentPassword: userForm.values.currentPassword,
+                        newPassword: userForm.values.newPassword,
+                    }),
+                });
+
+                const passwordData = await passwordResponse.json();
+
+                if (!passwordResponse.ok) {
+                    userForm.setFieldError('currentPassword', passwordData.error || 'Failed to update password');
+                    return;
+                }
+
+                // Clear password fields on success
+                userForm.setValues({
+                    ...userForm.values,
+                    currentPassword: '',
+                    newPassword: '',
+                });
+
+                alert('Password updated successfully!');
+            } catch (error) {
+                console.error('Password update error:', error);
+                userForm.setFieldError('currentPassword', 'An error occurred while updating password');
+            }
+        } else {
+            if (!userForm.values.currentPassword) {
+                userForm.setFieldError('currentPassword', 'Current password is required');
+            }
+            if (!userForm.values.newPassword) {
+                userForm.setFieldError('newPassword', 'New password is required');
+            }
+        }
+    }
+
+    const handleDeleteAccount = async() => {
+        if (!confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/settings', {
+                method: 'DELETE',
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                alert(data.error || 'Failed to delete account');
+                return;
+            }
+
+            // Sign out and redirect
+            alert('Account deleted successfully');
+            window.location.href = '/login';
+        } catch (error) {
+            console.error('Delete error:', error);
+            alert('An error occurred while deleting account');
+        }
     }
     return (
         <>
@@ -109,99 +239,144 @@ export default function SettingsClient() {
                         </Box>
                         <Typography variant="body2" component="p">{t("pages.settings.userProfile.context")}</Typography>
                         <Spacer height={20} />
-                        <Form onSubmit={handleSubmit}>
-                            <Grid container spacing={2}>
-                                <Grid size={{xs: 12, sm: 6}}>
-                                    <FormField
-                                        name="firstName"
-                                        label={formConfig.labels.firstName}
-                                        value={userForm.values.firstName || ''}
-                                        onChange={userForm.handleChange}
-                                        onBlur={userForm.handleBlur}
-                                        error={userForm.touched.firstName ? (userForm.errors.firstName as string) : ''}
-                                        required
-                                        fullWidth
-                                    />
-                                </Grid>
-                                <Grid size={{xs: 12, sm: 6}}>
-                                    <FormField
-                                        name="lastName"
-                                        label={formConfig.labels.lastName}
-                                        value={userForm.values.lastName || ''}
-                                        onChange={userForm.handleChange}
-                                        onBlur={userForm.handleBlur}
-                                        error={userForm.touched.lastName ? (userForm.errors.lastName as string) : ''}
-                                        required
-                                        fullWidth
-                                    />
-                                </Grid>
-                                <Grid size={{xs: 12, sm: 6}}>
-                                    <FormField
-                                        name="companyName"
-                                        label={formConfig.labels.companyName}
-                                        value={userForm.values.companyName || ''}
-                                        onChange={userForm.handleChange}
-                                        onBlur={userForm.handleBlur}
-                                        error={userForm.touched.companyName ? (userForm.errors.companyName as string) : ''}
-                                        required
-                                        fullWidth
-                                    />
-                                </Grid>
-                                <Grid size={{xs: 12, sm: 6}}>
-                                    <FormField
-                                        name="userRole"
-                                        label={formConfig.labels.userRole}
-                                        value={userForm.values.userRole || ''}
-                                        onChange={userForm.handleChange}
-                                        onBlur={userForm.handleBlur}
-                                        error={userForm.touched.userRole ? (userForm.errors.userRole as string) : ''}
-                                        required
-                                        fullWidth
-                                        disabled
-                                    />
-                                </Grid>
+                        <Grid container spacing={2}>
+                            <Grid size={{xs: 12, sm: 6}}>
+                                <FormField
+                                    name="firstName"
+                                    label={formConfig.labels.firstName}
+                                    value={userForm.values.firstName || ''}
+                                    onChange={userForm.handleChange}
+                                    onBlur={userForm.handleBlur}
+                                    error={userForm.touched.firstName ? (userForm.errors.firstName as string) : ''}
+                                    required
+                                    fullWidth
+                                />
                             </Grid>
-                            <Divider sx={{ my: 3 }} />
-                            <Typography variant="h6" component="h2" sx={{ mb: 3 }}>{t("pages.settings.userProfile.loginDetails")}</Typography>
-                            <Grid container spacing={2}>
-                                <Grid size={{ xs: 12 }}>
-                                    <FormField
-                                        name="email"
-                                        label={formConfig.labels.email}
-                                        value={userForm.values.email || ''}
-                                        onChange={userForm.handleChange}
-                                        onBlur={userForm.handleBlur}
-                                        error={userForm.touched.email ? (userForm.errors.email as string) : ''}
-                                        required
-                                        fullWidth
-                                    />
-                                </Grid>
-                                <Grid size={{xs: 12, sm: 6}}>
-                                    <FormField
-                                        name="currentPassword"
-                                        label={formConfig.labels.currentPassword}
-                                        value={userForm.values.currentPassword || ''}
-                                        onChange={userForm.handleChange}
-                                        onBlur={userForm.handleBlur}
-                                        error={userForm.touched.currentPassword ? (userForm.errors.currentPassword as string) : ''}
-                                        required
-                                        fullWidth
-                                    />
-                                </Grid>
-                                <Grid size={{xs: 12, sm: 6}}>
-                                    <FormField
-                                        name="newPassword"
-                                        label={formConfig.labels.newPassword}
-                                        value={userForm.values.newPassword || ''}
-                                        onChange={userForm.handleChange}
-                                        onBlur={userForm.handleBlur}
-                                        error={userForm.touched.newPassword ? (userForm.errors.newPassword as string) : ''}
-                                        required
-                                        fullWidth
-                                    />
-                                </Grid>
+                            <Grid size={{xs: 12, sm: 6}}>
+                                <FormField
+                                    name="lastName"
+                                    label={formConfig.labels.lastName}
+                                    value={userForm.values.lastName || ''}
+                                    onChange={userForm.handleChange}
+                                    onBlur={userForm.handleBlur}
+                                    error={userForm.touched.lastName ? (userForm.errors.lastName as string) : ''}
+                                    required
+                                    fullWidth
+                                />
                             </Grid>
-                        </Form>
+                            <Grid size={{xs: 12, sm: 6}}>
+                                <FormField
+                                    name="companyName"
+                                    label={formConfig.labels.companyName}
+                                    value={userForm.values.companyName || ''}
+                                    onChange={userForm.handleChange}
+                                    onBlur={userForm.handleBlur}
+                                    error={userForm.touched.companyName ? (userForm.errors.companyName as string) : ''}
+                                    required
+                                    fullWidth
+                                />
+                            </Grid>
+                            <Grid size={{xs: 12, sm: 6}}>
+                                <FormField
+                                    name="userRole"
+                                    label={formConfig.labels.userRole}
+                                    value={userForm.values.userRole || ''}
+                                    onChange={userForm.handleChange}
+                                    onBlur={userForm.handleBlur}
+                                    error={userForm.touched.userRole ? (userForm.errors.userRole as string) : ''}
+                                    required
+                                    fullWidth
+                                    disabled
+                                />
+                            </Grid>
+                        </Grid>
+                        <Box component="div" className="flex justify-end mt-4">
+                            <ActionButton
+                                buttonText={t('common.updateProfile')}
+                                variant="gradient"
+                                onClick={handleUpdateProfile}
+                                autoWidth
+                            />
+                        </Box>
+                        <Divider sx={{ my: 3 }} />
+                        <Typography variant="h6" component="h2" sx={{ mb: 3 }}>{t("pages.settings.userProfile.loginDetails")}</Typography>
+                        <Grid container spacing={2}>
+                            <Grid size={{ xs: 12 }}>
+                                <FormField
+                                    name="email"
+                                    label={formConfig.labels.email}
+                                    value={userForm.values.email || ''}
+                                    onChange={userForm.handleChange}
+                                    onBlur={userForm.handleBlur}
+                                    error={userForm.touched.email ? (userForm.errors.email as string) : ''}
+                                    autoComplete="off"
+                                    required
+                                    fullWidth
+                                />
+                            </Grid>
+                            <Grid size={{xs: 12, sm: 6}}>
+                                <FormField
+                                    name="currentPassword"
+                                    label={formConfig.labels.currentPassword}
+                                    type={showCurrentPassword ? "text" : "password"}
+                                    value={userForm.values.currentPassword || ''}
+                                    onChange={userForm.handleChange}
+                                    onBlur={userForm.handleBlur}
+                                    error={userForm.touched.currentPassword ? (userForm.errors.currentPassword as string) : ''}
+                                    autoComplete="new-password"
+                                    fullWidth
+                                    slotProps={{
+                                        input: {
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                    <IconButton
+                                                        onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                                                        edge="end"
+                                                    >
+                                                        {getSVGIcon(showCurrentPassword ? 'eye-off' : 'eye', 20)}
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            ),
+                                        },
+                                    }}
+                                />
+                            </Grid>
+                            <Grid size={{xs: 12, sm: 6}}>
+                                <FormField
+                                    name="newPassword"
+                                    label={formConfig.labels.newPassword}
+                                    type={showNewPassword ? "text" : "password"}
+                                    value={userForm.values.newPassword || ''}
+                                    onChange={userForm.handleChange}
+                                    onBlur={userForm.handleBlur}
+                                    error={userForm.touched.newPassword ? (userForm.errors.newPassword as string) : ''}
+                                    autoComplete="new-password"
+                                    fullWidth
+                                    slotProps={{
+                                        input: {
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                    <IconButton
+                                                        onClick={() => setShowNewPassword(!showNewPassword)}
+                                                        edge="end"
+                                                    >
+                                                        {getSVGIcon(showNewPassword ? 'eye-off' : 'eye', 20)}
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            ),
+                                        },
+                                    }}
+                                />
+                            </Grid>
+                        </Grid>
+                        <Box component="div" className="flex justify-end mt-4">
+                            <ActionButton
+                                buttonText={t('common.updatePassword')}
+                                variant="gradient"
+                                onClick={handleUpdateLoginDetails}
+                                autoWidth
+                            />
+                        </Box>
                         <Divider sx={{ my: 3 }} />
                         <Typography variant="h6" component="h2" sx={{ mb: 3, color: theme.palette.text.red }}>{t("pages.settings.userProfile.dangerZone")}</Typography>
                         <Card variant="outlined" className="p-3 bg-red-50! border-red-200!">
@@ -214,6 +389,7 @@ export default function SettingsClient() {
                                     buttonText={t("pages.settings.userProfile.deleteAccount.buttonText")}
                                     variant="contained"
                                     color="error"
+                                    onClick={handleDeleteAccount}
                                     autoWidth
                                 />
                             </Box>                           

@@ -66,6 +66,8 @@
         "servicesAvailable": "服務已推出",
         "signOut": "登出",
         "success": "成功",
+        "updatePassword": "更新密碼",
+        "updateProfile": "更新個人資料",
         "yearly": "每年"
     },
     "form": {

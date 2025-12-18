@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useSession, signIn } from 'next-auth/react';
 
 import theme from '@/theme/theme';
-import { Box, Card, Container, Tab as MuiTab, Typography, CircularProgress, Grid, styled, Tooltip as MuiTooltip } from '@mui/material';
+import { Box, Card, Container, Tab as MuiTab, Typography, CircularProgress, Grid, styled, Tooltip as MuiTooltip, InputAdornment, IconButton } from '@mui/material';
 import Logo from '@/assets/images/Logo';
 import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon, subSlot } from '@/helpers/utils';
@@ -13,6 +13,7 @@ import { ActionButton, Carousel, FormField, Spacer } from '@/components';
 import { TabContext } from '@mui/lab';
 import { TabList, TabPanel } from '@/components/ui/CustomStyled';
 import { useFormValidation } from '@/hooks/useFormValidation';
+import { useLogin } from '@/hooks/useLogin';
 import { Info } from 'lucide-react';
 
 const Tab = styled(MuiTab)({
@@ -30,18 +31,24 @@ export default function LoginClient() {
     const t = useTranslations();
     const { data: session, status } = useSession();
     const router = useRouter();
-    const [isLoading, setIsLoading] = useState(false);
-    
     const [value, setValue] = React.useState('login');
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
     }
+    const [showPassword, setShowPassword] = useState(false);
+
+    const { login, isLoading, error: loginError } = useLogin({
+        onError: (error) => {
+            form.setFieldError('password', error);
+        }
+    });
+
     const validationRules = useMemo(() => {
         return {
             userId: { required: true, message: t('pages.login.login.userIdRequired') },
             password: { required: true, message: t('pages.login.login.passwordRequired') },
         };
-    }, []);
+    }, [t]);
     const initialValues = useMemo(() => {
         return {
             userId: '',
@@ -49,8 +56,6 @@ export default function LoginClient() {
         };
     }, []);
     const form = useFormValidation(initialValues, validationRules);
-    
-    
 
     // Check if user is already logged in
     useEffect(() => {
@@ -88,25 +93,7 @@ export default function LoginClient() {
             return;
         }
 
-        setIsLoading(true);
-        try {
-            const result = await signIn('credentials', {
-                username: form.values.userId,
-                password: form.values.password,
-                redirect: false,
-            });
-
-            if (result?.error) {
-                console.error('Login failed:', result.error);
-                setIsLoading(false);
-                alert('Invalid username or password');
-            } else {
-                router.push('/dashboard');
-            }
-        } catch (error) {
-            console.error('Login error:', error);
-            setIsLoading(false);
-        }
+        await login(form.values.userId, form.values.password);
     };
 
     return (
@@ -145,50 +132,67 @@ export default function LoginClient() {
                             </TabList>
                         </Box>
                         <TabPanel value="login" sx={{ width: '100%', py: 5, px: 3 }}>
-                            <FormField
-                                name="userId"
-                                label={ 
-                                    <Box component="div" sx={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                                        { t('pages.login.login.userId') }
-                                        <Tooltip 
-                                            title={ <Typography fontSize={14}>{t('wiki.cetsId')}</Typography> }
-                                            placement="top"
-                                            arrow
-                                        >
-                                            <Info size={16} />
-                                        </Tooltip>
-                                    </Box>
-                                }
-                                placeholder={ t('pages.login.login.userIdPlaceholder') }
-                                value={form.values.userId || ''}
-                                onChange={form.handleChange}
-                                onBlur={form.handleBlur}
-                                error={form.touched.userId ? (form.errors.userId as string) : ''}
-                                required
-                                fullWidth
-                            />
-                            <Spacer height={30} />
-                            <FormField
-                                type="password"
-                                name="password"
-                                label={ t('pages.login.login.password') }
-                                placeholder={ t('pages.login.login.passwordPlaceholder') }
-                                value={form.values.password || ''}
-                                onChange={form.handleChange}
-                                onBlur={form.handleBlur}
-                                error={form.touched.password ? (form.errors.password as string) : ''}
-                                required
-                                fullWidth
-                            />
-                            <Spacer height={30} />
-                            <ActionButton
-                                buttonText={isLoading ? t('pages.login.login.signingIn') : t('pages.login.login.signIn')}
-                                variant="gradient"
-                                onClick={handleLogin}
-                                disabled={isLoading}
-                                startIcon={isLoading ? getSVGIcon("circular-progress") : undefined}
-                                endIcon={ getSVGIcon("arrow-right", 20) }
-                            />
+                            <Box component="form" onSubmit={(e) => { e.preventDefault(); handleLogin(); }}>
+                                <FormField
+                                    name="userId"
+                                    label={ 
+                                        <Box component="div" sx={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                                            { t('pages.login.login.userId') }
+                                            <Tooltip 
+                                                title={ <Typography fontSize={14}>{t('wiki.cetsId')}</Typography> }
+                                                placement="top"
+                                                arrow
+                                            >
+                                                <Info size={16} />
+                                            </Tooltip>
+                                        </Box>
+                                    }
+                                    placeholder={ t('pages.login.login.userIdPlaceholder') }
+                                    value={form.values.userId || ''}
+                                    onChange={form.handleChange}
+                                    onBlur={form.handleBlur}
+                                    error={form.touched.userId ? (form.errors.userId as string) : ''}
+                                    required
+                                    fullWidth
+                                />
+                                <Spacer height={30} />
+                                <FormField
+                                    name="password"
+                                    label={ t('pages.login.login.password') }
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder={ t('pages.login.login.passwordPlaceholder') }
+                                    value={form.values.password || ''}
+                                    onChange={form.handleChange}
+                                    onBlur={form.handleBlur}
+                                    error={form.touched.password ? (form.errors.password as string) : ''}
+                                    required
+                                    fullWidth
+                                    autoComplete="new-password"
+                                    slotProps={{
+                                        input: {
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                    <IconButton
+                                                        onClick={() => setShowPassword(!showPassword)}
+                                                        edge="end"
+                                                    >
+                                                        {getSVGIcon(showPassword ? 'eye-off' : 'eye', 20)}
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            ),
+                                        },
+                                    }}
+                                />
+                                <Spacer height={30} />
+                                <ActionButton
+                                    buttonText={isLoading ? t('pages.login.login.signingIn') : t('pages.login.login.signIn')}
+                                    variant="gradient"
+                                    type="submit"
+                                    disabled={isLoading}
+                                    startIcon={isLoading ? getSVGIcon("circular-progress") : undefined}
+                                    endIcon={ getSVGIcon("arrow-right", 20) }
+                                />
+                            </Box>
                         </TabPanel>
                         <TabPanel value="signUp">
 

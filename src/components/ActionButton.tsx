@@ -13,10 +13,11 @@ interface ActionButtonProps {
   endIcon?: React.ReactNode;
   noIcon?: boolean;
   disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
   onClick?: (() => void) | string; // Function or URL string
 }
 
-export default function ActionButton({ buttonText, buttonProps, variant = 'gradient', autoWidth = false, color = 'blue', startIcon, endIcon, noIcon, disabled = false, onClick }: ActionButtonProps) {
+export default function ActionButton({ buttonText, buttonProps, variant = 'gradient', autoWidth = false, color = 'blue', startIcon, endIcon, noIcon, disabled = false, type, onClick }: ActionButtonProps) {
   const router = useRouter();
   const handleClick = () => {
     if (typeof onClick === 'string') {
@@ -37,9 +38,10 @@ export default function ActionButton({ buttonText, buttonProps, variant = 'gradi
       variant={variant} 
       color={color}
       disabled={disabled}
+      type={type}
       startIcon={!noIcon ? startIcon : null}
       endIcon={!noIcon ? endIcon : null}
-      onClick={handleClick}
+      onClick={type !== 'submit' ? handleClick : undefined}
       {...buttonProps}
     >
       {buttonText}

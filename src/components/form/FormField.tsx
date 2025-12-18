@@ -22,6 +22,7 @@ export default function FormField({
   touched,
   shrinkLabel = true,
   hidden = false,
+  slotProps,
   ...textFieldProps
 }: FormFieldProps) {
   // If hidden, render a hidden input
@@ -36,14 +37,24 @@ export default function FormField({
     );
   }
 
+  // Merge slotProps with default shrinkLabel
+  const mergedSlotProps = {
+    inputLabel: { 
+      shrink: shrinkLabel,
+      ...slotProps?.inputLabel,
+    },
+    input: slotProps?.input,
+    ...slotProps,
+  };
+
   return (
     <TextField
       value={value}
       onChange={(e) => onChange(name, e.target.value)}
       onBlur={() => onBlur(name)}
-      error={touched && !!error}
-      helperText={touched && error}
-      slotProps={{ inputLabel: { shrink: shrinkLabel } }}
+      error={!!error}
+      helperText={error}
+      slotProps={mergedSlotProps}
       fullWidth
       {...textFieldProps}
     />

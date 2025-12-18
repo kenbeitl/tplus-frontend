@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 type ValidationRule = {
   required?: boolean;
+  email?: boolean;
   minLength?: number;
   maxLength?: number;
   pattern?: RegExp;
@@ -36,6 +37,14 @@ export function useFormValidation<T extends Record<string, any>>(
 
     // Skip other validations if field is empty and not required
     if (!value) return '';
+
+    // Email validation
+    if (rule.email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value.toString())) {
+        return rule.message || 'Invalid email format';
+      }
+    }
 
     // Min length validation
     if (rule.minLength && value.toString().length < rule.minLength) {
@@ -98,6 +107,19 @@ export function useFormValidation<T extends Record<string, any>>(
     setTouched({});
   };
 
+  const setFieldError = (name: string, error: string) => {
+    setErrors((prev) => ({ ...prev, [name]: error }));
+    setTouched((prev) => ({ ...prev, [name]: true }));
+  };
+
+  const clearFieldError = (name: string) => {
+    setErrors((prev) => {
+      const newErrors = { ...prev };
+      delete newErrors[name];
+      return newErrors;
+    });
+  };
+
   return {
     values,
     errors,
@@ -107,5 +129,8 @@ export function useFormValidation<T extends Record<string, any>>(
     validateAll,
     reset,
     setValues,
+    setErrors,
+    setFieldError,
+    clearFieldError,
   };
 }

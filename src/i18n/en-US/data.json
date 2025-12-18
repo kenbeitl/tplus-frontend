@@ -66,6 +66,8 @@
         "servicesAvailable": "Services Available",
         "signOut": "Sign Out",
         "success": "Success",
+        "updatePassword": "Update Password",
+        "updateProfile": "Update Profile",
         "yearly": "Yearly"
     },
     "form": {
