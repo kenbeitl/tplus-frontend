@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { signIn } from 'next-auth/react';
 
 interface CreateUserData {
     firstName: string;
     lastName: string;
     email: string;
+    username: string;
     password: string;
     companyName: string;
-    cetsId?: string;
+    cetsID?: string;
 }
 
 interface UseCreateUserProps {

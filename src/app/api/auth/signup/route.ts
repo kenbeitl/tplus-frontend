@@ -4,7 +4,7 @@ import { createKeycloakUser } from '@/lib/keycloak-admin';
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
-        const { firstName, lastName, email, password, companyName, cetsId } = body;
+        const { firstName, lastName, email, password, companyName, cetsID } = body;
 
         // Validate required fields
         if (!firstName || !lastName || !email || !password) {
@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
             email,
             password,
             companyName,
-            cetsId,
+            cetsID,
         });
 
         if (!result.success) {

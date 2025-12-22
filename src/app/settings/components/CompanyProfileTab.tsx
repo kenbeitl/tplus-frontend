@@ -37,7 +37,7 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
         industry: ((session?.user as any)?.company as any)?.industry || '',
         location: ((session?.user as any)?.company as any)?.location || '',
         websiteURL: ((session?.user as any)?.company as any)?.websiteURL || '',
-        cetsId: ((session?.user as any)?.company as any)?.cetsId || '',
+        cetsID: ((session?.user as any)?.company as any)?.cetsID || '',
         employeeCount: ((session?.user as any)?.company as any)?.employeeCount || '',
         businessIdentifierList: [
             { type: 'business_registration_no', value: '123456789', verified: true },
@@ -148,9 +148,9 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
                     <TextField
-                        name="cetsId"
-                        label={formConfig.labels.cetsId}
-                        value={companyForm.cetsId}
+                        name="cetsID"
+                        label={formConfig.labels.cetsID}
+                        value={companyForm.cetsID}
                         placeholder="Enter CETS"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth

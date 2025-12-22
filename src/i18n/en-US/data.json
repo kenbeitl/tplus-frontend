@@ -81,7 +81,7 @@
         "industry": "Select industry",
         "location": "Location",
         "websiteURL": "Website URL",
-        "cetsId": "CETS ID",
+        "cetsID": "CETS ID",
         "employeeCount": "Select range",
         "error": {
             "required": "{field} is required",
@@ -93,6 +93,6 @@
         }
     },
     "wiki": {
-        "cetsId": "CETS ID is a unique identity number assigned to all Tradelink Government Electronic Trading Service (GETS) customers."
+        "cetsID": "CETS ID is a unique identity number assigned to all Tradelink Government Electronic Trading Service (GETS) customers."
     }
 }

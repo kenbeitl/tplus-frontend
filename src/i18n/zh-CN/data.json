@@ -81,7 +81,7 @@
         "industry": "选择行业",
         "location": "地点",
         "websiteURL": "网站网址",
-        "cetsId": "CETS ID",
+        "cetsID": "CETS ID",
         "employeeCount": "选择范围",
         "error": {
             "required": "{field}为必填项",
@@ -93,6 +93,6 @@
         }
     },
     "wiki": {
-        "cetsId": "CETS ID 是分配给所有 Tradelink 政府电子交易服务 (GETS) 客户的唯一身份号码。"
+        "cetsID": "CETS ID 是分配给所有 Tradelink 政府电子交易服务 (GETS) 客户的唯一身份号码。"
     }
 }

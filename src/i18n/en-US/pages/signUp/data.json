@@ -7,6 +7,8 @@
         "companyNamePlaceholder": "Enter your company name",
         "email": "Email",
         "emailPlaceholder": "Enter your email",
+        "username": "Username",
+        "usernamePlaceholder": "Create username",
         "password": "Password",
         "passwordPlaceholder": "Create password",
         "confirmPassword": "Confirm Password",
@@ -14,7 +16,7 @@
         "areYouGETS": "Are you an existing Tradelink GETS customer?",
         "yesGETS": "Yes; CETS ID",
         "noGETS": "No",
-        "cetsIdPlaceholder": "Enter your CETS ID",
+        "cetsIDPlaceholder": "Enter your CETS ID",
         "createAccount": "Create Account",
         "agreement": "By continuing, you confirm that the information provided is accurate and that you are authorised to act on behalf of your business. You also acknowledge and agree to our Privacy Policy and Terms of Use. Use of this platform is subject to all applicable laws and regulations."
     }

@@ -51,7 +51,7 @@
             "industry": "選擇行業",
             "location": "地點",
             "websiteURL": "網站網址",
-            "cetsId": "CETS ID",
+            "cetsID": "CETS ID",
             "employeeCount": "選擇範圍",
             "saveChanges": "儲存變更"
         },

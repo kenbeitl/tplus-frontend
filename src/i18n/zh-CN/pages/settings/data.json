@@ -51,7 +51,7 @@
             "industry": "选择行业",
             "location": "地点",
             "websiteURL": "网站网址",
-            "cetsId": "CETS ID",
+            "cetsID": "CETS ID",
             "employeeCount": "选择范围",
             "saveChanges": "保存更改"
         },

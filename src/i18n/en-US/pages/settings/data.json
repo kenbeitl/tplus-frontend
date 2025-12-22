@@ -51,7 +51,7 @@
             "industry": "Select industry",
             "location": "Location",
             "websiteURL": "Website URL",
-            "cetsId": "CETS ID",
+            "cetsID": "CETS ID",
             "employeeCount": "Select range",
             "saveChanges": "Save Changes"
         },

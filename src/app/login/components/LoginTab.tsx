@@ -56,7 +56,7 @@ export function LoginTab() {
                             <Box component="div" sx={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
                                 { t('pages.login.form.userId') }
                                 <Tooltip 
-                                    title={ <Typography fontSize={14}>{t('wiki.cetsId')}</Typography> }
+                                    title={ <Typography fontSize={14}>{t('wiki.cetsID')}</Typography> }
                                     placement="top"
                                     arrow
                                 >
