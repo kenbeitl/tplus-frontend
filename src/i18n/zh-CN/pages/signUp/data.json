@@ -1,0 +1,21 @@
+{
+    "form": {
+        "label": "注册",
+        "firstName": "名",
+        "lastName": "姓",
+        "companyName": "公司名称",
+        "companyNamePlaceholder": "输入您的公司名称",
+        "email": "电子邮件",
+        "emailPlaceholder": "输入您的电子邮件",
+        "password": "密码",
+        "passwordPlaceholder": "创建密码",
+        "confirmPassword": "确认密码",
+        "confirmPasswordPlaceholder": "重新输入密码",
+        "areYouGETS": "您是现有的Tradelink GETS客户吗？",
+        "yesGETS": "是的；CETS ID",
+        "noGETS": "不是",
+        "cetsPlaceholder": "输入您的CETS ID",
+        "createAccount": "创建账户",
+        "agreement": "继续即表示您确认所提供的信息是准确的，并且您有权代表您的企业行事。您还承认并同意我们的隐私政策和使用条款。使用此平台须遵守所有适用的法律法规。"
+    }
+}

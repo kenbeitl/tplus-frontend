@@ -82,7 +82,14 @@
         "location": "地点",
         "websiteURL": "网站网址",
         "cetsId": "CETS ID",
-        "employeeCount": "选择范围"
+        "employeeCount": "选择范围",
+        "error": {
+            "required": "{field}为必填项",
+            "invalidEmail": "请输入有效的电子邮件地址",
+            "passwordMinLength": "密码长度至少为{min}个字符",
+            "passwordMismatch": "密码不匹配",
+            "invalidURL": "请输入有效的网址"
+        }
     },
     "wiki": {
         "cetsId": "CETS ID 是分配给所有 Tradelink 政府电子交易服务 (GETS) 客户的唯一身份号码。"

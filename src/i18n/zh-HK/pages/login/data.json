@@ -1,14 +1,12 @@
 {
     "title": "歡迎使用T+",
     "context": "您的全方位AI驅動業務創新平台",
-    "login": {
+    "form": {
         "label": "登錄",
         "userId": "電子郵箱/CETS ID",
         "userIdPlaceholder": "輸入您的電子郵箱/CETS ID",
-        "userIdRequired": "電子郵箱/CETS ID為必填",
         "password": "密碼",
         "passwordPlaceholder": "輸入您的密碼",
-        "passwordRequired": "密碼為必填",
         "signIn": "登錄",
         "signingIn": "正在登錄...",
         "feature": [
@@ -25,9 +23,6 @@
                 "icon": "globe"
             }
         ]
-    },
-    "signUp": { 
-        "label": "註冊"
     },
     "instruction": "登錄以訪問您的業務服務"
 }

@@ -9,7 +9,6 @@ export const TabList = styled(MuiTabList)(({ theme }) => ({
   backgroundColor: '#f5f5f5',
   width: '100%',
   borderRadius: '5rem',
-  padding: '.25rem',
   '& .MuiTabs-indicator': {
     display: 'none',
   },

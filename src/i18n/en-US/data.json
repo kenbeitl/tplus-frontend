@@ -82,7 +82,14 @@
         "location": "Location",
         "websiteURL": "Website URL",
         "cetsId": "CETS ID",
-        "employeeCount": "Select range"
+        "employeeCount": "Select range",
+        "error": {
+            "required": "{field} is required",
+            "invalidEmail": "Please enter a valid email address",
+            "passwordMinLength": "Password must be at least {min} characters",
+            "passwordMismatch": "Passwords do not match",
+            "invalidURL": "Please enter a valid URL"
+        }
     },
     "wiki": {
         "cetsId": "CETS ID is a unique identity number assigned to all Tradelink Government Electronic Trading Service (GETS) customers."

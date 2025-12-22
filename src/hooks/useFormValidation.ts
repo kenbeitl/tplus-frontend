@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 type ValidationRule = {
   required?: boolean;
+  matchField?: string;
   email?: boolean;
   minLength?: number;
   maxLength?: number;
@@ -33,6 +34,14 @@ export function useFormValidation<T extends Record<string, any>>(
     // Required validation
     if (rule.required && (!value || value.toString().trim() === '')) {
       return rule.message || `${name} is required`;
+    }
+
+    // Match field validation
+    if (rule.matchField) {
+      const matchValue = values[rule.matchField];
+      if (value !== matchValue) {
+        return rule.message || `${name} must match ${rule.matchField}`;
+      }
     }
 
     // Skip other validations if field is empty and not required

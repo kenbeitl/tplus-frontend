@@ -85,3 +85,11 @@ export function getLocalCurrency(amount: number, locale: string = 'zh-HK', curre
 
     return amount.toLocaleString(locale, localeOpt);
 }
+
+export function toHyphenCase(pascalString: string): string {
+    return pascalString.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+export function toPascalCase(hyphenString: string): string {
+    return hyphenString.split('-').map((word, i) => i === 0 ? word : word[0].toUpperCase() + word.slice(1)).join('');
+}

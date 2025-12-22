@@ -1,7 +1,7 @@
 import { ActionButton, FormField, Spacer } from "@/components";
-import { Box, Tooltip, Typography } from "@mui/material";
+import { Box, Grid, Tooltip, Typography } from "@mui/material";
 import { Info } from "lucide-react";
-import { getSVGIcon } from "@/helpers/utils";
+import { getSVGIcon, subSlot } from "@/helpers/utils";
 import React, { useMemo } from "react";
 import { InputAdornment, IconButton } from "@mui/material";
 import { useTranslations } from "@/contexts/AppContext";
@@ -20,8 +20,8 @@ export function LoginTab() {
 
     const validationRules = useMemo(() => {
         return {
-            userId: { required: true, message: t('pages.login.login.userIdRequired') },
-            password: { required: true, message: t('pages.login.login.passwordRequired') },
+            userId: { required: true, message: subSlot(t('form.error.required'), '{field}', t('pages.login.form.userId')) as string },
+            password: { required: true, message: subSlot(t('form.error.required'), '{field}', t('pages.login.form.password')) as string },
         };
     }, [t]);
     const initialValues = useMemo(() => {
@@ -48,59 +48,64 @@ export function LoginTab() {
     };
     return (
         <Box component="form" onSubmit={(e) => { e.preventDefault(); handleLogin(); }}>
-            <FormField
-                name="userId"
-                label={ 
-                    <Box component="div" sx={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                        { t('pages.login.login.userId') }
-                        <Tooltip 
-                            title={ <Typography fontSize={14}>{t('wiki.cetsId')}</Typography> }
-                            placement="top"
-                            arrow
-                        >
-                            <Info size={16} />
-                        </Tooltip>
-                    </Box>
-                }
-                placeholder={ t('pages.login.login.userIdPlaceholder') }
-                value={form.values.userId || ''}
-                onChange={form.handleChange}
-                onBlur={form.handleBlur}
-                error={form.touched.userId ? (form.errors.userId as string) : ''}
-                required
-                fullWidth
-            />
-            <Spacer height={30} />
-            <FormField
-                name="password"
-                label={ t('pages.login.login.password') }
-                type={showPassword ? "text" : "password"}
-                placeholder={ t('pages.login.login.passwordPlaceholder') }
-                value={form.values.password || ''}
-                onChange={form.handleChange}
-                onBlur={form.handleBlur}
-                error={form.touched.password ? (form.errors.password as string) : ''}
-                required
-                fullWidth
-                autoComplete="new-password"
-                slotProps={{
-                    input: {
-                        endAdornment: (
-                            <InputAdornment position="end">
-                                <IconButton
-                                    onClick={() => setShowPassword(!showPassword)}
-                                    edge="end"
+            <Grid container spacing={2}>
+                <Grid size={{ xs: 12 }}>
+                     <FormField
+                        name="userId"
+                        label={ 
+                            <Box component="div" sx={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                                { t('pages.login.form.userId') }
+                                <Tooltip 
+                                    title={ <Typography fontSize={14}>{t('wiki.cetsId')}</Typography> }
+                                    placement="top"
+                                    arrow
                                 >
-                                    {getSVGIcon(showPassword ? 'eye-off' : 'eye', 20)}
-                                </IconButton>
-                            </InputAdornment>
-                        ),
-                    },
-                }}
-            />
+                                    <Info size={16} />
+                                </Tooltip>
+                            </Box>
+                        }
+                        placeholder={ t('pages.login.form.userIdPlaceholder') }
+                        value={form.values.userId || ''}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                        error={form.touched.userId ? (form.errors.userId as string) : ''}
+                        required
+                        fullWidth
+                    />
+                </Grid>
+                <Grid size={{ xs: 12 }}>
+                    <FormField
+                        name="password"
+                        label={ t('pages.login.form.password') }
+                        type={showPassword ? "text" : "password"}
+                        placeholder={ t('pages.login.form.passwordPlaceholder') }
+                        value={form.values.password || ''}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                        error={form.touched.password ? (form.errors.password as string) : ''}
+                        required
+                        fullWidth
+                        autoComplete="new-password"
+                        slotProps={{
+                            input: {
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            onClick={() => setShowPassword(!showPassword)}
+                                            edge="end"
+                                        >
+                                            {getSVGIcon(showPassword ? 'eye-off' : 'eye', 20)}
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            },
+                        }}
+                    />
+                </Grid>
+            </Grid>
             <Spacer height={30} />
             <ActionButton
-                buttonText={isLoading ? t('pages.login.login.signingIn') : t('pages.login.login.signIn')}
+                buttonText={isLoading ? t('pages.login.form.signingIn') : t('pages.login.form.signIn')}
                 variant="gradient"
                 type="submit"
                 disabled={isLoading}

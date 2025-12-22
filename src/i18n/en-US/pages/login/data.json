@@ -1,14 +1,12 @@
 {
     "title": "Welcome to T+",
     "context": "Your All-in-One AI-Powered for Business Innovation",
-    "login": {
+    "form": {
         "label": "Login",
         "userId": "Email Address/CETS ID",
         "userIdPlaceholder": "Enter your email/CETS ID",
-        "userIdRequired": "Email/CETS ID is required",
         "password": "Password",
         "passwordPlaceholder": "Enter your password",
-        "passwordRequired": "Password is required",
         "signIn": "Sign In",
         "signingIn": "Signing in...",
         "feature": [
@@ -25,9 +23,6 @@
                 "icon": "globe"
             }
         ]
-    },
-    "signUp": {
-        "label": "Sign Up"
     },
     "instruction": "Sign in to access your business services"
 }
