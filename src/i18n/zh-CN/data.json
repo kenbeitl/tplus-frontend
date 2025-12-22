@@ -88,7 +88,8 @@
             "invalidEmail": "请输入有效的电子邮件地址",
             "passwordMinLength": "密码长度至少为{min}个字符",
             "passwordMismatch": "密码不匹配",
-            "invalidURL": "请输入有效的网址"
+            "invalidURL": "请输入有效的网址",
+            "minLength": "{field}长度至少为6个字符"
         }
     },
     "wiki": {

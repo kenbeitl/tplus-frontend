@@ -88,7 +88,8 @@
             "invalidEmail": "請輸入有效的電子郵件地址",
             "passwordMinLength": "密碼長度至少為{min}個字符",
             "passwordMismatch": "密碼不匹配",
-            "invalidURL": "請輸入有效的網址"
+            "invalidURL": "請輸入有效的網址",
+            "minLength": "{field}長度至少為6個字符"
         }
     },
     "wiki": {

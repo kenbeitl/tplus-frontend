@@ -7,6 +7,7 @@ import AuthWrapper from "@/layout/AuthWrapper";
 import AppWrapper from "@/layout/AppWrapper";
 import { usePathname } from "next/navigation";
 import { AppProvider } from "@/contexts/AppContext";
+import { SnackbarProvider } from "@/contexts/SnackbarContext";
 import { SessionProvider } from "next-auth/react";
 import { Box } from "@mui/material";
 
@@ -31,15 +32,17 @@ export default function RootLayout({
       >
         <SessionProvider>
           <AppProvider>
-            <MUIThemeProvider>
-              {isAuth ? (
-                <AuthWrapper>{children}</AuthWrapper>
-              ) : (
-                <AppWrapper>
-                  <Box component="div" className="p-4 sm:p-6">{children}</Box>
-                </AppWrapper>
-              )}
-            </MUIThemeProvider>
+            <SnackbarProvider>
+              <MUIThemeProvider>
+                {isAuth ? (
+                  <AuthWrapper>{children}</AuthWrapper>
+                ) : (
+                  <AppWrapper>
+                    <Box component="div" className="p-4 sm:p-6">{children}</Box>
+                  </AppWrapper>
+                )}
+              </MUIThemeProvider>
+            </SnackbarProvider>
           </AppProvider>
         </SessionProvider>
       </body>
