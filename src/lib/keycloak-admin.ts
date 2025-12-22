@@ -4,6 +4,7 @@ export interface CreateUserData {
     firstName: string;
     lastName: string;
     email: string;
+    username: string;
     password: string;
     companyName?: string;
     cetsID?: string;
@@ -26,7 +27,7 @@ export async function createKeycloakUser(userData: CreateUserData) {
         // Create user
         const user = await kcAdminClient.users.create({
             realm: process.env.KEYCLOAK_REALM,
-            username: userData.email,
+            username: userData.username,
             email: userData.email,
             firstName: userData.firstName,
             lastName: userData.lastName,

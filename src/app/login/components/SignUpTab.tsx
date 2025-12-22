@@ -235,14 +235,16 @@ export function SignUpTab() {
                         autoComplete="off"
                         required
                         fullWidth
-                        InputProps={{
-                            endAdornment: emailChecking ? (
-                                <CircularProgress size={20} />
-                            ) : emailAvailable === true ? (
-                                getSVGIcon('check', 20, 'green')
-                            ) : emailAvailable === false ? (
-                                getSVGIcon('close', 20, 'red')
-                            ) : null
+                        slotProps={{
+                            input: {
+                                endAdornment: emailChecking ? (
+                                    <CircularProgress size={20} />
+                                ) : emailAvailable === true ? (
+                                    getSVGIcon('check', 20, 'green')
+                                ) : emailAvailable === false ? (
+                                    getSVGIcon('close', 20, 'red')
+                                ) : null
+                            }
                         }}
                     />
                 </Grid>
@@ -260,14 +262,16 @@ export function SignUpTab() {
                             autoComplete="off"
                             required
                             fullWidth
-                            InputProps={{
-                                endAdornment: usernameChecking ? (
-                                    <CircularProgress size={20} />
-                                ) : usernameAvailable === true ? (
-                                    getSVGIcon('check', 20, 'green')
-                                ) : usernameAvailable === false ? (
-                                    getSVGIcon('close', 20, 'red')
-                                ) : null
+                            slotProps={{
+                                input: {
+                                    endAdornment: usernameChecking ? (
+                                        <CircularProgress size={20} />
+                                    ) : usernameAvailable === true ? (
+                                        getSVGIcon('check', 20, 'green')
+                                    ) : usernameAvailable === false ? (
+                                        getSVGIcon('close', 20, 'red')
+                                    ) : null
+                                }
                             }}
                         />
                     </Grid>

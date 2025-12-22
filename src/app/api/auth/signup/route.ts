@@ -4,10 +4,10 @@ import { createKeycloakUser } from '@/lib/keycloak-admin';
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
-        const { firstName, lastName, email, password, companyName, cetsID } = body;
+        const { firstName, lastName, email, username, password, companyName, cetsID } = body;
 
         // Validate required fields
-        if (!firstName || !lastName || !email || !password) {
+        if (!firstName || !lastName || !email || !username || !password) {
             return NextResponse.json(
                 { error: 'Missing required fields' },
                 { status: 400 }
@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
             firstName,
             lastName,
             email,
+            username,
             password,
             companyName,
             cetsID,
