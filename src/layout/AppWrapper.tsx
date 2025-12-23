@@ -26,7 +26,7 @@ import { getSVGIcon } from '@/helpers/utils';
 import { useBreakpoint } from '@/hooks/useBreakpoint';
 import { menuIconSize } from '@/helpers/constants'
 import theme from '@/theme/theme';
-import { Tag } from '@/components';
+import { ActionButton, Tag } from '@/components';
 
 const drawerWidth = 240;
 const drawerMiniWidth = 64;
@@ -220,34 +220,38 @@ export default function AppWrapper({
               { getSVGIcon('panel-left', menuIconSize, 'black') }
             </IconButton>
             <div className="grow" />
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleMenu}
-              color="inherit"
-            >
-              { getSVGIcon('globe', menuIconSize, 'black') }
-            </IconButton>
-            <Menu
-              id="language-menu"
-              keepMounted
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-            >
-              {Object.entries(localeLabels).map(([localeKey, label]) => (
-                <MenuItem 
-                  key={localeKey}
-                  onClick={() => handleLanguageChange(localeKey as Locale)}
-                  selected={locale === localeKey}
-                >
-                  {label}
-                </MenuItem>
-              ))}
-            </Menu>
+            <Box component="div">
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                { getSVGIcon('globe', menuIconSize, 'black') }
+              </IconButton>
+              <Menu
+                id="language-menu"
+                keepMounted
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+              >
+                {Object.entries(localeLabels).map(([localeKey, label]) => (
+                  <MenuItem 
+                    key={localeKey}
+                    onClick={() => handleLanguageChange(localeKey as Locale)}
+                    selected={locale === localeKey}
+                    sx={{ justifyContent: 'center', px: 1 }}
+                  >
+                    {label}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+            
             {status === 'authenticated' && session && 
               <IconButton
                 aria-label="user menu"
@@ -300,11 +304,14 @@ export default function AppWrapper({
                 <ListItemText primary={t('nav.settings')} />
               </MenuItem>
               <Divider sx={{ m: '0 !important' }} />
-              <MenuItem onClick={handleLogout}>
-                <ListItemIcon sx={{ minWidth: '24px !important' }}>
-                  { getSVGIcon('arrow-right-bracket', 16) }
-                </ListItemIcon>
-                <ListItemText primary={t('common.signOut')} slotProps={{ primary: { color: theme.palette.text.red } }} />
+              <MenuItem sx={{ justifyContent: 'center', mt: 1 }}>
+                <ActionButton
+                  variant="gradient"
+                  startIcon={getSVGIcon('arrow-right-bracket', 12, 'white')}
+                  buttonText={t('common.signOut')}
+                  onClick={handleLogout}
+                  autoWidth
+                />
               </MenuItem>
             </Menu>
           </Toolbar>

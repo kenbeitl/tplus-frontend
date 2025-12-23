@@ -1,20 +1,35 @@
 import { ActionButton, FormField, Spacer } from "@/components";
-import { Box, Grid, Tooltip, Typography } from "@mui/material";
+import { Box, Button, Grid, Link, Tooltip, Typography } from "@mui/material";
 import { Info } from "lucide-react";
 import { getSVGIcon, subSlot } from "@/helpers/utils";
 import React, { useMemo } from "react";
 import { InputAdornment, IconButton } from "@mui/material";
 import { useTranslations } from "@/contexts/AppContext";
+import { useSnackbar } from "@/contexts/SnackbarContext";
 import { useLogin } from "@/hooks/useLogin";
+import { useForgotPassword } from "@/hooks/useForgotPassword";
 import { useFormValidation } from "@/hooks/useFormValidation";
 
 
 export function LoginTab() {
     const t = useTranslations();
+    const { showSuccess, showError } = useSnackbar();
     const [showPassword, setShowPassword] = React.useState(false);
+    const [forgotPassword, setForgotPassword] = React.useState(false);
     const { login, isLoading, error: loginError } = useLogin({
         onError: (error) => {
             form.setFieldError('password', error);
+        }
+    });
+    const { sendResetEmail, isLoading: resetLoading } = useForgotPassword({
+        onSuccess: () => {
+            showSuccess('Password reset email sent successfully! Please check your inbox.', 8000);
+            setForgotPassword(false);
+            form.handleChange('userId', '');
+            form.handleChange('password', '');
+        },
+        onError: (error) => {
+            showError(error);
         }
     });
 
@@ -32,22 +47,34 @@ export function LoginTab() {
     }, []);
     const form = useFormValidation(initialValues, validationRules);
 
-    const handleLogin = async () => {
-        // Mark fields as touched first
-        form.handleBlur('userId');
-        form.handleBlur('password');
+    const handleFormSubmit = async () => {
         
-        // Then validate
-        const isValid = form.validateAll();
+        form.handleBlur('userId');
+        if (!forgotPassword) {
+            form.handleBlur('password');
+        }
+        
+        // Validate based on forgot password state
+        let isValid = false;
+        if (forgotPassword) {
+            // Only validate userId for forgot password
+            isValid = !form.errors.userId;
+        } else {
+            // Validate all fields for login
+            isValid = form.validateAll();
+        }
         
         if (!isValid) {
             return;
         }
-
-        await login(form.values.userId, form.values.password);
+        if (!forgotPassword) {
+            await login(form.values.userId, form.values.password);
+        } else {
+            await sendResetEmail(form.values.userId);
+        }
     };
     return (
-        <Box component="form" onSubmit={(e) => { e.preventDefault(); handleLogin(); }}>
+        <Box component="form" onSubmit={(e) => { e.preventDefault(); handleFormSubmit(); }}>
             <Grid container spacing={2}>
                 <Grid size={{ xs: 12 }}>
                      <FormField
@@ -73,45 +100,50 @@ export function LoginTab() {
                         fullWidth
                     />
                 </Grid>
-                <Grid size={{ xs: 12 }}>
-                    <FormField
-                        name="password"
-                        label={ t('pages.login.form.password') }
-                        type={showPassword ? "text" : "password"}
-                        placeholder={ t('pages.login.form.passwordPlaceholder') }
-                        value={form.values.password || ''}
-                        onChange={form.handleChange}
-                        onBlur={form.handleBlur}
-                        error={form.touched.password ? (form.errors.password as string) : ''}
-                        required
-                        fullWidth
-                        autoComplete="new-password"
-                        slotProps={{
-                            input: {
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            onClick={() => setShowPassword(!showPassword)}
-                                            edge="end"
-                                        >
-                                            {getSVGIcon(showPassword ? 'eye-off' : 'eye', 20)}
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
-                            },
-                        }}
-                    />
-                </Grid>
+                { !forgotPassword && (
+                    <Grid size={{ xs: 12 }}>
+                        <FormField
+                            name="password"
+                            label={ t('pages.login.form.password') }
+                            type={showPassword ? "text" : "password"}
+                            placeholder={ t('pages.login.form.passwordPlaceholder') }
+                            value={form.values.password || ''}
+                            onChange={form.handleChange}
+                            onBlur={form.handleBlur}
+                            error={form.touched.password ? (form.errors.password as string) : ''}
+                            required
+                            fullWidth
+                            autoComplete="new-password"
+                            slotProps={{
+                                input: {
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                onClick={() => setShowPassword(!showPassword)}
+                                                edge="end"
+                                            >
+                                                {getSVGIcon(showPassword ? 'eye-off' : 'eye', 20)}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    ),
+                                },
+                            }}
+                        />
+                    </Grid>
+                ) }
             </Grid>
             <Spacer height={30} />
             <ActionButton
-                buttonText={isLoading ? t('pages.login.form.signingIn') : t('pages.login.form.signIn')}
+                buttonText={ forgotPassword ? t('pages.login.form.sendResetLink') : t('pages.login.form.signIn') }
                 variant="gradient"
                 type="submit"
-                disabled={isLoading}
-                startIcon={isLoading ? getSVGIcon("circular-progress") : undefined}
                 endIcon={ getSVGIcon("arrow-right", 20) }
+                disabled={forgotPassword ? resetLoading : isLoading}
             />
+            <Box component="div" className="flex justify-center">
+                { !forgotPassword && <Link component="button" variant="caption" sx={{ mt: 2 }} onClick={() => setForgotPassword(true)}>{ t('pages.login.form.forgotPassword') }</Link> }
+                { forgotPassword && <Button variant="text" sx={{ mt: 2 }} onClick={() => setForgotPassword(false)}>{ t('pages.login.form.backToSignIn') }</Button> }
+            </Box>
         </Box>
     )
 }

@@ -11,7 +11,6 @@ import TabContext from '@mui/lab/TabContext';
 // Import tab components
 import UserProfileTab from './components/UserProfileTab';
 import CompanyProfileTab from './components/CompanyProfileTab';
-import ManageUsersTab from './components/ManageUsersTab';
 
 export default function SettingsClient() {
     const { data: session } = useSession();
@@ -33,7 +32,6 @@ export default function SettingsClient() {
                     <TabList onChange={handleChange} variant="fullWidth">
                         <Tab label={t("pages.settings.userProfile.title")} value="1" disableRipple />
                         <Tab label={t("pages.settings.companyProfile.title")} value="2" disableRipple />
-                        <Tab label={t("pages.settings.manageUsers.title")} value="3" disableRipple />
                     </TabList>
                 </Box>
                 <TabPanel value="1">
@@ -41,9 +39,6 @@ export default function SettingsClient() {
                 </TabPanel>
                 <TabPanel value="2">
                     <CompanyProfileTab session={session} />
-                </TabPanel>
-                <TabPanel value="3">
-                    <ManageUsersTab />
                 </TabPanel>
             </TabContext>
         </>

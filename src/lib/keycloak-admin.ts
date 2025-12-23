@@ -101,3 +101,63 @@ export async function checkUserExists(
         };
     }
 }
+
+// Keep backward compatibility
+export const checkUsernameExists = (username: string) => checkUserExists(username, 'username');
+export const checkEmailExists = (email: string) => checkUserExists(email, 'email');
+
+export async function sendPasswordResetEmail(userId: string): Promise<{ success: boolean; error?: string }> {
+    const kcAdminClient = new KcAdminClient({
+        baseUrl: process.env.KEYCLOAK_ISSUER?.replace('/realms/' + process.env.KEYCLOAK_REALM, ''),
+        realmName: process.env.KEYCLOAK_REALM || 'master',
+    });
+
+    try {
+        // Authenticate with admin credentials
+        await kcAdminClient.auth({
+            grantType: 'client_credentials',
+            clientId: process.env.KEYCLOAK_CLIENT_ID!,
+            clientSecret: process.env.KEYCLOAK_CLIENT_SECRET!,
+        });
+
+        // Search for user by username or email
+        const users = await kcAdminClient.users.find({
+            realm: process.env.KEYCLOAK_REALM,
+            search: userId,
+            exact: false,
+        });
+
+        if (users.length === 0) {
+            return {
+                success: false,
+                error: 'User not found'
+            };
+        }
+
+        // Find the exact match (could be username or email)
+        const user = users.find(u => u.username === userId || u.email === userId);
+
+        if (!user || !user.id) {
+            return {
+                success: false,
+                error: 'User not found'
+            };
+        }
+
+        // Send password reset email
+        await kcAdminClient.users.executeActionsEmail({
+            id: user.id,
+            realm: process.env.KEYCLOAK_REALM,
+            actions: ['UPDATE_PASSWORD'],
+            lifespan: 43200, // 12 hours in seconds
+        });
+
+        return { success: true };
+    } catch (error: any) {
+        console.error('Error sending password reset email:', error);
+        return { 
+            success: false, 
+            error: error.response?.data?.errorMessage || error.message || 'Failed to send password reset email' 
+        };
+    }
+}

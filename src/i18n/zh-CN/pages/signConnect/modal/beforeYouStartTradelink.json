@@ -17,5 +17,5 @@
     ],
     "warning": "如果您使用iAM Smart注册DMSS，则无法使用SSO。",
     "buttonText": "继续签署文件",
-    "link": "https://dmss.tradelink.com.hk/dmss/web/login?lang=zh_CN"
+    "link": "https://rssp-test.tradelink.com.hk/dmss/web/secure"
 }

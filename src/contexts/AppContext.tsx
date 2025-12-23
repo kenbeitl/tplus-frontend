@@ -12,9 +12,9 @@ export type Locale = 'en-US' | 'zh-HK' | 'zh-CN';
 export const locales: Locale[] = ['en-US', 'zh-HK', 'zh-CN'];
 
 export const localeLabels: Record<Locale, string> = {
-  'en-US': 'English',
-  'zh-HK': '繁體中文',
-  'zh-CN': '简体中文'
+  'en-US': 'EN',
+  'zh-HK': '繁',
+  'zh-CN': '简'
 };
 
 // Translation map for instant access

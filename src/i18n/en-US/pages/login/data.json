@@ -3,24 +3,32 @@
     "context": "Your All-in-One AI-Powered for Business Innovation",
     "form": {
         "label": "Login",
-        "userId": "Email Address/CETS ID",
-        "userIdPlaceholder": "Enter your email/CETS ID",
+        "email": "Email Address",
+        "emailPlaceholder": "Enter your email",
+        "userId": "Email Address/Tradelink CETS ID",
+        "userIdPlaceholder": "Enter your email/Tradelink CETS ID",
         "password": "Password",
         "passwordPlaceholder": "Enter your password",
         "signIn": "Sign In",
         "signingIn": "Signing in...",
+        "forgotPassword": "Forgot password?",
+        "sendResetLink": "Send Reset Link",
+        "backToSignIn": "Back to Sign In",
         "feature": [
             {
                 "title": "Enterprise-grade security",
-                "icon": "shield"
+                "icon": "shield",
+                "color": "from-blue-500 to-cyan-500"
             },
             {
                 "title": "AI-powered automation",
-                "icon": "zap"
+                "icon": "zap",
+                "color": "from-purple-500 to-pink-500"
             },
             {
                 "title": "Global business connectivity",
-                "icon": "globe"
+                "icon": "globe",
+                "color": "from-green-500 to-emerald-500"
             }
         ]
     },

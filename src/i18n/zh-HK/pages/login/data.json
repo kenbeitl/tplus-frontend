@@ -3,8 +3,8 @@
     "context": "您的全方位AI驅動業務創新平台",
     "form": {
         "label": "登錄",
-        "userId": "電子郵箱/CETS ID",
-        "userIdPlaceholder": "輸入您的電子郵箱/CETS ID",
+        "userId": "電子郵箱/Tradelink CETS ID",
+        "userIdPlaceholder": "輸入您的電子郵箱/Tradelink CETS ID",
         "password": "密碼",
         "passwordPlaceholder": "輸入您的密碼",
         "signIn": "登錄",
@@ -12,15 +12,18 @@
         "feature": [
             {
                 "title": "企業級安全保障",
-                "icon": "shield"
+                "icon": "shield",
+                "color": "from-blue-500 to-cyan-500"
             },
             {
                 "title": "AI驅動自動化",
-                "icon": "zap"
+                "icon": "zap",
+                "color": "from-purple-500 to-pink-500"
             },
             {
                 "title": "全球業務互聯",
-                "icon": "globe"
+                "icon": "globe",
+                "color": "from-green-500 to-emerald-500"
             }
         ]
     },

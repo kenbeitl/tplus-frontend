@@ -3,8 +3,10 @@
     "context": "您的全方位AI驱动业务创新平台",
     "form": {
         "label": "登录",
-        "userId": "电子邮箱/CETS ID",
-        "userIdPlaceholder": "输入您的电子邮箱/CETS ID",
+        "email": "电子邮箱",
+        "emailPlaceholder": "输入您的电子邮箱",
+        "userId": "电子邮箱/Tradelink CETS ID",
+        "userIdPlaceholder": "输入您的电子邮箱/Tradelink CETS ID",
         "password": "密码",
         "passwordPlaceholder": "输入您的密码",
         "signIn": "登录",
@@ -12,15 +14,18 @@
         "feature": [
             {
                 "title": "企业级安全保障",
-                "icon": "shield"
+                "icon": "shield",
+                "color": "from-blue-500 to-cyan-500"
             },
             {
                 "title": "AI驱动自动化",
-                "icon": "zap"
+                "icon": "zap",
+                "color": "from-purple-500 to-pink-500"
             },
             {
                 "title": "全球业务互联",
-                "icon": "globe"
+                "icon": "globe",
+                "color": "from-green-500 to-emerald-500"
             }
         ]
     },

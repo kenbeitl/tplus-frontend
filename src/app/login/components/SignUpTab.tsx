@@ -24,7 +24,6 @@ export function SignUpTab() {
     const [emailAvailable, setEmailAvailable] = useState<boolean | null>(null);
     const [emailError, setEmailError] = useState('');
     const debounceTimer = useRef<NodeJS.Timeout | null>(null);
-    const emailDebounceTimer = useRef<NodeJS.Timeout | null>(null);
 
     const validationRules = useMemo(() => {
         return {
@@ -116,41 +115,30 @@ export function SignUpTab() {
         }
     }, []);
 
-    const handleUsernameChange = useCallback((name: string, value: any) => {
+    const handleCheckUser = useCallback((name: string, value: any) => {
         form.handleChange(name, value);
-        
+
         // Clear previous timer
         if (debounceTimer.current) {
             clearTimeout(debounceTimer.current);
         }
 
-        // Set new timer for debounced check
         debounceTimer.current = setTimeout(() => {
-            checkUsername(value);
+            if (name === 'username') {
+                checkUsername(value);
+            } else if (name === 'email') {
+                checkEmail(value);
+            }
         }, 500);
-    }, [form, checkUsername]);
 
-    const handleEmailChange = useCallback((name: string, value: any) => {
-        form.handleChange(name, value);
-        
-        // Clear previous timer
-        if (emailDebounceTimer.current) {
-            clearTimeout(emailDebounceTimer.current);
-        }
+    }, [form, checkUsername, checkEmail]);
 
-        // Set new timer for debounced check
-        emailDebounceTimer.current = setTimeout(() => {
-            checkEmail(value);
-        }, 500);
-    }, [form, checkEmail]);
+
 
     useEffect(() => {
         return () => {
             if (debounceTimer.current) {
                 clearTimeout(debounceTimer.current);
-            }
-            if (emailDebounceTimer.current) {
-                clearTimeout(emailDebounceTimer.current);
             }
         };
     }, []);
@@ -229,7 +217,7 @@ export function SignUpTab() {
                         label={ t("pages.signUp.form.email") }
                         placeholder={ t("pages.signUp.form.emailPlaceholder") }
                         value={form.values.email || ''}
-                        onChange={handleEmailChange}
+                        onChange={handleCheckUser}
                         onBlur={form.handleBlur}
                         error={form.touched.email ? (form.errors.email as string) || emailError : ''}
                         autoComplete="off"
@@ -256,7 +244,7 @@ export function SignUpTab() {
                             label={ t("pages.signUp.form.username") }
                             placeholder={ t("pages.signUp.form.usernamePlaceholder") }
                             value={form.values.username || ''}
-                            onChange={handleUsernameChange}
+                            onChange={handleCheckUser}
                             onBlur={form.handleBlur}
                             error={form.touched.username ? (form.errors.username as string) || usernameError : ''}
                             autoComplete="off"
@@ -377,7 +365,7 @@ export function SignUpTab() {
                 autoWidth={false}
                 disabled={isLoading}
             />
-            <Typography variant="caption" component="p" sx={{ mt: 1 }}>{ t('pages.signUp.form.agreement') }</Typography>
+            <Typography variant="body2" component="p" sx={{ mt: 1, fontSize: 11 }}>{ t('pages.signUp.form.agreement') }</Typography>
         </Box>
     );
 }
