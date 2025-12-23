@@ -1,5 +1,6 @@
 'use client';
 import { Box, Card, Typography } from '@mui/material';
+import { useSession } from 'next-auth/react';
 
 import theme from '@/theme/theme';
 import { InfoModal, Spacer, StyledIcon, Tag, ActionButton } from '@/components';
@@ -13,7 +14,24 @@ type ModalProps = {
 
 export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalProps) {
   const t = useTranslations();
+  const { data: session } = useSession();
   const TRADELINK_NOTES = t('pages.signConnect.modal.beforeYouStartTradelink.notes');
+  
+  const handleContinue = () => {
+    const accessToken = (session as any)?.accessToken;
+    const idToken = (session as any)?.idToken;
+    
+    console.log('=== SSO Token Information ===');
+    console.log('Access Token:', accessToken);
+    console.log('ID Token:', idToken);
+    console.log('Full Session:', session);
+    console.log('===========================');
+    
+    // Open the Tradelink URL
+    const url = t('pages.signConnect.modal.beforeYouStartTradelink.link');
+    window.open(url, '_blank');
+  };
+  
   return (
     <InfoModal
       open={open}
@@ -53,7 +71,7 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
           autoWidth 
           noIcon
           buttonText={ t('pages.signConnect.modal.beforeYouStartTradelink.buttonText') }
-          onClick={ t('pages.signConnect.modal.beforeYouStartTradelink.link') }
+          onClick={ handleContinue }
         />
       </Box>
     </InfoModal>

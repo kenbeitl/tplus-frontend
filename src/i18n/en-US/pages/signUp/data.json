@@ -13,10 +13,8 @@
         "passwordPlaceholder": "Create password",
         "confirmPassword": "Confirm Password",
         "confirmPasswordPlaceholder": "Re-enter password",
-        "areYouGETS": "Are you an existing Tradelink GETS customer?",
-        "yesGETS": "Yes; CETS ID",
-        "noGETS": "No",
-        "cetsIDPlaceholder": "Enter your CETS ID",
+        "cetsID": "Tradelink CETS ID (Optional)",
+        "cetsIDPlaceholder": "Enter your Tradelink CETS ID",
         "createAccount": "Create Account",
         "agreement": "By continuing, you confirm that the information provided is accurate and that you are authorised to act on behalf of your business. You also acknowledge and agree to our Privacy Policy and Terms of Use. Use of this platform is subject to all applicable laws and regulations."
     }

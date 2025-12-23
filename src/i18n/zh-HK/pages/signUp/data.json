@@ -13,10 +13,8 @@
         "passwordPlaceholder": "創建密碼",
         "confirmPassword": "確認密碼",
         "confirmPasswordPlaceholder": "重新輸入密碼",
-        "areYouGETS": "您是現有的Tradelink GETS客戶嗎？",
-        "yesGETS": "是的；CETS ID",
-        "noGETS": "不是",
-        "cetsIDPlaceholder": "輸入您的CETS ID",
+        "cetsID": "Tradelink CETS ID（選填）",
+        "cetsIDPlaceholder": "輸入您的Tradelink CETS ID",
         "createAccount": "創建賬戶",
         "agreement": "繼續即表示您確認所提供的信息是準確的，並且您有權代表您的企業行事。您還承認並同意我們的隱私政策和使用條款。使用此平台須遵守所有適用的法律法規。"
     }
