@@ -1,9 +1,12 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import KeycloakProvider from "next-auth/providers/keycloak";
 
 export const authOptions: AuthOptions = {
   providers: [
+    // Option 1: Embedded username/password login (no SSO to external apps like DMSS)
     CredentialsProvider({
+      id: "credentials",
       name: "Credentials",
       credentials: {
         username: { label: "Username", type: "text" },
@@ -71,17 +74,30 @@ export const authOptions: AuthOptions = {
         }
       },
     }),
+    // Option 2: Keycloak SSO redirect (enables true SSO to external apps like DMSS)
+    KeycloakProvider({
+      id: "keycloak",
+      clientId: process.env.KEYCLOAK_CLIENT_ID!,
+      clientSecret: process.env.KEYCLOAK_CLIENT_SECRET!,
+      issuer: process.env.KEYCLOAK_ISSUER,
+    }),
   ],
   session: {
     strategy: "jwt",
   },
   callbacks: {
-    async jwt({ token, user }) {
-      // Handle credentials provider
+    async jwt({ token, user, account }) {
+      // Handle credentials provider (user object contains tokens)
       if (user) {
         token.accessToken = (user as any).accessToken;
         token.idToken = (user as any).idToken;
         token.refreshToken = (user as any).refreshToken;
+      }
+      // Handle Keycloak provider (account object contains tokens)
+      if (account) {
+        token.accessToken = account.access_token;
+        token.idToken = account.id_token;
+        token.refreshToken = account.refresh_token;
       }
       return token;
     },

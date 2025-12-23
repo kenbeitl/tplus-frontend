@@ -144,6 +144,23 @@ export function LoginTab() {
                 { !forgotPassword && <Link component="button" variant="caption" sx={{ mt: 2 }} onClick={() => setForgotPassword(true)}>{ t('pages.login.form.forgotPassword') }</Link> }
                 { forgotPassword && <Button variant="text" sx={{ mt: 2 }} onClick={() => setForgotPassword(false)}>{ t('pages.login.form.backToSignIn') }</Button> }
             </Box>
+            
+            { !forgotPassword && (
+                <>
+                    <Divider sx={{ my: 3 }}>
+                        <Typography variant="caption" color="text.secondary">OR</Typography>
+                    </Divider>
+                    <Button
+                        variant="outlined"
+                        fullWidth
+                        onClick={loginWithKeycloak}
+                        disabled={isLoading}
+                        sx={{ textTransform: 'none' }}
+                    >
+                        Sign in with SSO
+                    </Button>
+                </>
+            ) }
         </Box>
     )
 }

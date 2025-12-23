@@ -1,7 +1,6 @@
 'use client';
-import { Box, Card, Typography, CircularProgress } from '@mui/material';
+import { Box, Card, Typography } from '@mui/material';
 import { useSession } from 'next-auth/react';
-import { useState } from 'react';
 
 import theme from '@/theme/theme';
 import { InfoModal, Spacer, StyledIcon, Tag, ActionButton } from '@/components';
@@ -17,51 +16,20 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
   const t = useTranslations();
   const { data: session } = useSession();
   const TRADELINK_NOTES = t('pages.signConnect.modal.beforeYouStartTradelink.notes');
-  const [isEstablishingSession, setIsEstablishingSession] = useState(false);
   
   const handleContinue = () => {
     const accessToken = (session as any)?.accessToken;
     const idToken = (session as any)?.idToken;
     
-    if (!accessToken) {
-      console.error('No access token available');
-      window.open(t('pages.signConnect.modal.beforeYouStartTradelink.link'), '_blank');
-      return;
-    }
-
-    setIsEstablishingSession(true);
-
-    // Build Keycloak auth endpoint URL to establish session
-    const keycloakBaseUrl = process.env.NEXT_PUBLIC_KEYCLOAK_ISSUER || '';
-    const dmssUrl = t('pages.signConnect.modal.beforeYouStartTradelink.link');
-    const redirectUri = encodeURIComponent(dmssUrl);
+    console.log('=== SSO Token Information ===');
+    console.log('Access Token:', accessToken);
+    console.log('ID Token:', idToken);
+    console.log('Full Session:', session);
+    console.log('===========================');
     
-    // Use Keycloak's silent authentication to establish session cookie
-    // This will redirect directly to DMSS after establishing the session
-    const authUrl = `${keycloakBaseUrl}/protocol/openid-connect/auth?` +
-      `client_id=${process.env.NEXT_PUBLIC_KEYCLOAK_CLIENT_ID}` +
-      `&redirect_uri=${redirectUri}` +
-      `&response_type=code` +
-      `&scope=openid` +
-      `&prompt=none` +
-      `&id_token_hint=${idToken}`;
-    
-    // Open popup to establish Keycloak session, then it auto-redirects to DMSS
-    const popup = window.open(authUrl, '_blank', 'width=600,height=600');
-    
-    // Monitor popup - if it successfully redirects to DMSS, we're done
-    const checkPopup = setInterval(() => {
-      if (!popup || popup.closed) {
-        clearInterval(checkPopup);
-        setIsEstablishingSession(false);
-      }
-    }, 500);
-
-    // Reset loading state after 3 seconds regardless
-    setTimeout(() => {
-      setIsEstablishingSession(false);
-      clearInterval(checkPopup);
-    }, 3000);
+    // Open the Tradelink URL
+    const url = t('pages.signConnect.modal.beforeYouStartTradelink.link');
+    window.open(url, '_blank');
   };
   
   return (
@@ -102,10 +70,8 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
         <ActionButton
           autoWidth 
           noIcon
-          buttonText={ isEstablishingSession ? 'Connecting to DMSS...' : t('pages.signConnect.modal.beforeYouStartTradelink.buttonText') }
+          buttonText={ t('pages.signConnect.modal.beforeYouStartTradelink.buttonText') }
           onClick={ handleContinue }
-          disabled={ isEstablishingSession }
-          startIcon={ isEstablishingSession ? <CircularProgress size={16} /> : undefined }
         />
       </Box>
     </InfoModal>

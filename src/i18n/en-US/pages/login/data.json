@@ -12,6 +12,8 @@
         "signIn": "Sign In",
         "signingIn": "Signing in...",
         "forgotPassword": "Forgot password?",
+        "or": "OR",
+        "signInWithSSO": "Sign in with SSO",
         "sendResetLink": "Send Reset Link",
         "backToSignIn": "Back to Sign In",
         "feature": [
