@@ -21,6 +21,7 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
   
   const handleContinue = () => {
     const accessToken = (session as any)?.accessToken;
+    const idToken = (session as any)?.idToken;
     
     if (!accessToken) {
       console.error('No access token available');
@@ -30,45 +31,37 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
 
     setIsEstablishingSession(true);
 
-    // Create hidden iframe to establish Keycloak session
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    
-    // Build Keycloak auth endpoint URL with token
+    // Build Keycloak auth endpoint URL to establish session
     const keycloakBaseUrl = process.env.NEXT_PUBLIC_KEYCLOAK_ISSUER || '';
-    const redirectUri = encodeURIComponent(t('pages.signConnect.modal.beforeYouStartTradelink.link'));
+    const dmssUrl = t('pages.signConnect.modal.beforeYouStartTradelink.link');
+    const redirectUri = encodeURIComponent(dmssUrl);
     
-    // Use Keycloak's token exchange or session establishment endpoint
-    // This creates a Keycloak session cookie in the browser
-    iframe.src = `${keycloakBaseUrl}/protocol/openid-connect/auth?` +
+    // Use Keycloak's silent authentication to establish session cookie
+    // This will redirect directly to DMSS after establishing the session
+    const authUrl = `${keycloakBaseUrl}/protocol/openid-connect/auth?` +
       `client_id=${process.env.NEXT_PUBLIC_KEYCLOAK_CLIENT_ID}` +
       `&redirect_uri=${redirectUri}` +
       `&response_type=code` +
       `&scope=openid` +
       `&prompt=none` +
-      `&id_token_hint=${accessToken}`;
+      `&id_token_hint=${idToken}`;
     
-    document.body.appendChild(iframe);
-
-    // Wait for iframe to load (session established), then open DMSS
-    iframe.onload = () => {
-      setTimeout(() => {
-        // Session should now be established, open DMSS
-        window.open(t('pages.signConnect.modal.beforeYouStartTradelink.link'), '_blank');
-        
-        // Cleanup
-        document.body.removeChild(iframe);
+    // Open popup to establish Keycloak session, then it auto-redirects to DMSS
+    const popup = window.open(authUrl, '_blank', 'width=600,height=600');
+    
+    // Monitor popup - if it successfully redirects to DMSS, we're done
+    const checkPopup = setInterval(() => {
+      if (!popup || popup.closed) {
+        clearInterval(checkPopup);
         setIsEstablishingSession(false);
-      }, 500); // Small delay to ensure session is fully established
-    };
+      }
+    }, 500);
 
-    // Fallback in case iframe fails to load
-    iframe.onerror = () => {
-      console.error('Failed to establish Keycloak session');
-      window.open(t('pages.signConnect.modal.beforeYouStartTradelink.link'), '_blank');
-      document.body.removeChild(iframe);
+    // Reset loading state after 3 seconds regardless
+    setTimeout(() => {
       setIsEstablishingSession(false);
-    };
+      clearInterval(checkPopup);
+    }, 3000);
   };
   
   return (
