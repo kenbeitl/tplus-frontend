@@ -19,16 +19,9 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
   
   const handleContinue = () => {
     const accessToken = (session as any)?.accessToken;
-    const idToken = (session as any)?.idToken;
     
-    console.log('=== SSO Token Information ===');
-    console.log('Access Token:', accessToken);
-    console.log('ID Token:', idToken);
-    console.log('Full Session:', session);
-    console.log('===========================');
-    
-    // Open the Tradelink URL
-    const url = t('pages.signConnect.modal.beforeYouStartTradelink.link');
+    // Pass token to DMSS via URL or POST
+    const url = `${t('pages.signConnect.modal.beforeYouStartTradelink.link')}?token=${accessToken}`;
     window.open(url, '_blank');
   };
   
