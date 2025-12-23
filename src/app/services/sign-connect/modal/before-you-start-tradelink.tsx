@@ -1,6 +1,7 @@
 'use client';
-import { Box, Card, Typography } from '@mui/material';
+import { Box, Card, Typography, CircularProgress } from '@mui/material';
 import { useSession } from 'next-auth/react';
+import { useState } from 'react';
 
 import theme from '@/theme/theme';
 import { InfoModal, Spacer, StyledIcon, Tag, ActionButton } from '@/components';
@@ -16,13 +17,58 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
   const t = useTranslations();
   const { data: session } = useSession();
   const TRADELINK_NOTES = t('pages.signConnect.modal.beforeYouStartTradelink.notes');
+  const [isEstablishingSession, setIsEstablishingSession] = useState(false);
   
   const handleContinue = () => {
     const accessToken = (session as any)?.accessToken;
     
-    // Pass token to DMSS via URL or POST
-    const url = `${t('pages.signConnect.modal.beforeYouStartTradelink.link')}?token=${accessToken}`;
-    window.open(url, '_blank');
+    if (!accessToken) {
+      console.error('No access token available');
+      window.open(t('pages.signConnect.modal.beforeYouStartTradelink.link'), '_blank');
+      return;
+    }
+
+    setIsEstablishingSession(true);
+
+    // Create hidden iframe to establish Keycloak session
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    
+    // Build Keycloak auth endpoint URL with token
+    const keycloakBaseUrl = process.env.NEXT_PUBLIC_KEYCLOAK_ISSUER || '';
+    const redirectUri = encodeURIComponent(t('pages.signConnect.modal.beforeYouStartTradelink.link'));
+    
+    // Use Keycloak's token exchange or session establishment endpoint
+    // This creates a Keycloak session cookie in the browser
+    iframe.src = `${keycloakBaseUrl}/protocol/openid-connect/auth?` +
+      `client_id=${process.env.NEXT_PUBLIC_KEYCLOAK_CLIENT_ID}` +
+      `&redirect_uri=${redirectUri}` +
+      `&response_type=code` +
+      `&scope=openid` +
+      `&prompt=none` +
+      `&id_token_hint=${accessToken}`;
+    
+    document.body.appendChild(iframe);
+
+    // Wait for iframe to load (session established), then open DMSS
+    iframe.onload = () => {
+      setTimeout(() => {
+        // Session should now be established, open DMSS
+        window.open(t('pages.signConnect.modal.beforeYouStartTradelink.link'), '_blank');
+        
+        // Cleanup
+        document.body.removeChild(iframe);
+        setIsEstablishingSession(false);
+      }, 500); // Small delay to ensure session is fully established
+    };
+
+    // Fallback in case iframe fails to load
+    iframe.onerror = () => {
+      console.error('Failed to establish Keycloak session');
+      window.open(t('pages.signConnect.modal.beforeYouStartTradelink.link'), '_blank');
+      document.body.removeChild(iframe);
+      setIsEstablishingSession(false);
+    };
   };
   
   return (
@@ -63,8 +109,10 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
         <ActionButton
           autoWidth 
           noIcon
-          buttonText={ t('pages.signConnect.modal.beforeYouStartTradelink.buttonText') }
+          buttonText={ isEstablishingSession ? 'Connecting to DMSS...' : t('pages.signConnect.modal.beforeYouStartTradelink.buttonText') }
           onClick={ handleContinue }
+          disabled={ isEstablishingSession }
+          startIcon={ isEstablishingSession ? <CircularProgress size={16} /> : undefined }
         />
       </Box>
     </InfoModal>
