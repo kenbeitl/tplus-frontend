@@ -1,5 +1,5 @@
 import { ActionButton, FormField, Spacer } from "@/components";
-import { Box, Button, Grid, Link, Tooltip, Typography } from "@mui/material";
+import { Box, Button, Grid, Link, Tooltip, Typography, Divider } from "@mui/material";
 import { Info } from "lucide-react";
 import { getSVGIcon, subSlot } from "@/helpers/utils";
 import React, { useMemo } from "react";
@@ -16,7 +16,7 @@ export function LoginTab() {
     const { showSuccess, showError } = useSnackbar();
     const [showPassword, setShowPassword] = React.useState(false);
     const [forgotPassword, setForgotPassword] = React.useState(false);
-    const { login, isLoading, error: loginError } = useLogin({
+    const { login, loginWithKeycloak, isLoading, error: loginError } = useLogin({
         onError: (error) => {
             form.setFieldError('password', error);
         }
