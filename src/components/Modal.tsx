@@ -7,13 +7,15 @@ interface ModalProps {
   onClose: () => void;
   children: React.ReactNode;
   maxWidth?: string | number;
+  sx?: object;
 }
 
 export default function Modal({ 
   open, 
   onClose,
   children, 
-  maxWidth = 600 
+  maxWidth = 600,
+  sx = {}
 }: ModalProps) {
   return (
     <MuiModal
@@ -50,6 +52,7 @@ export default function Modal({
           '&::-webkit-scrollbar-thumb:hover': {
             backgroundColor: 'rgba(0, 0, 0, 0.3)',
           },
+          ...sx
         }}
       >
         <IconButton
@@ -58,6 +61,7 @@ export default function Modal({
             position: 'absolute',
             right: 8,
             top: 8,
+            zIndex: 1,
           }}
         >
           { getSVGIcon('x', 20) }

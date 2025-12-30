@@ -34,6 +34,9 @@ interface AppContextType {
   drawerOpen: boolean;
   setDrawerOpen: (open: boolean) => void;
   toggleDrawer: () => void;
+  // Dashboard Welcome Modal
+  showDashboardWelcomeModal: boolean;
+  setShowDashboardWelcomeModal: (show: boolean) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -47,6 +50,7 @@ export function AppProvider({ children, defaultLocale = 'en-US' }: AppProviderPr
   const [locale, setLocale] = useState<Locale>(defaultLocale);
   const [messages, setMessages] = useState<Record<string, any>>(translationMap[defaultLocale]);
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+  const [showDashboardWelcomeModal, setShowDashboardWelcomeModal] = useState<boolean>(true);
   const [isClient, setIsClient] = useState(false);
 
   // Load saved locale from localStorage on mount
@@ -61,6 +65,12 @@ export function AppProvider({ children, defaultLocale = 'en-US' }: AppProviderPr
     const savedDrawerState = localStorage.getItem('drawerOpen');
     if (savedDrawerState !== null) {
       setDrawerOpen(savedDrawerState === 'true');
+    }
+    
+    // Load saved dashboard welcome modal preference from localStorage
+    const savedDashboardWelcomeModal = localStorage.getItem('showDashboardWelcomeModal');
+    if (savedDashboardWelcomeModal !== null) {
+      setShowDashboardWelcomeModal(savedDashboardWelcomeModal === 'true');
     }
   }, [defaultLocale]);
 
@@ -78,6 +88,13 @@ export function AppProvider({ children, defaultLocale = 'en-US' }: AppProviderPr
       localStorage.setItem('drawerOpen', drawerOpen.toString());
     }
   }, [drawerOpen, isClient]);
+
+  // Save dashboard welcome modal preference to localStorage when it changes
+  useEffect(() => {
+    if (isClient) {
+      localStorage.setItem('showDashboardWelcomeModal', showDashboardWelcomeModal.toString());
+    }
+  }, [showDashboardWelcomeModal, isClient]);
 
   // Translation function that works with nested objects
   const t = (key: string, params?: Record<string, string | number>): any => {
@@ -128,7 +145,9 @@ export function AppProvider({ children, defaultLocale = 'en-US' }: AppProviderPr
     messages,
     drawerOpen,
     setDrawerOpen,
-    toggleDrawer
+    toggleDrawer,
+    showDashboardWelcomeModal,
+    setShowDashboardWelcomeModal
   };
 
   return (

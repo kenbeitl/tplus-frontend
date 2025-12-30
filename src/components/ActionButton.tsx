@@ -6,18 +6,19 @@ import { useRouter } from 'next/navigation';
 interface ActionButtonProps {
   buttonText: string;
   buttonProps?: Partial<ButtonProps>;
-  variant?: 'text' | 'outlined' | 'contained' | 'gradient';
+  variant?: 'text' | 'outlined' | 'contained' | 'gradient' | 'green-gradient';
   autoWidth?: boolean;
-  color?: 'blue' | 'purple' | 'white' | 'error';
+  color?: 'blue' | 'green' | 'purple' | 'white' | 'error';
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   noIcon?: boolean;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
   onClick?: (() => void) | string; // Function or URL string
+  border?: string;
 }
 
-export default function ActionButton({ buttonText, buttonProps, variant = 'gradient', autoWidth = false, color = 'blue', startIcon, endIcon, noIcon, disabled = false, type, onClick }: ActionButtonProps) {
+export default function ActionButton({ buttonText, buttonProps, variant = 'gradient', autoWidth = false, color = 'blue', startIcon, endIcon, noIcon, disabled = false, type, onClick, border }: ActionButtonProps) {
   const router = useRouter();
   const handleClick = () => {
     if (typeof onClick === 'string') {
@@ -32,10 +33,26 @@ export default function ActionButton({ buttonText, buttonProps, variant = 'gradi
     }
   };
 
+  // Handle green-gradient variant
+  const buttonVariant = variant === 'green-gradient' ? 'contained' : variant;
+  const sx = {
+    width: autoWidth ? 'auto' : '100%',
+    mt: 'auto',
+    ...(variant === 'green-gradient' && {
+      background: 'linear-gradient(to right, #ECFDF5, #D1FAE5)',
+      color: '#059669',
+      border: border || '1px solid #10B981',
+      '&:hover': {
+        background: 'linear-gradient(to right, #D1FAE5, #A7F3D0)',
+      },
+    }),
+    ...(border && variant !== 'green-gradient' && { border }),
+  };
+
   return (
     <Button 
-      sx={{ width: autoWidth ? 'auto' : '100%', mt: 'auto' }}
-      variant={variant} 
+      sx={sx}
+      variant={buttonVariant} 
       color={color}
       disabled={disabled}
       type={type}

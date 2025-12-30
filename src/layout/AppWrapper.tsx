@@ -183,8 +183,8 @@ export default function AppWrapper({
 
   // Navigation handler
   const handleNavigation = (path: string) => {
-    // Close drawer on mobile when navigating
-    if (!isAboveDesktop && drawerOpen) {
+    // Close drawer when navigating
+    if (drawerOpen) {
       toggleDrawer();
     }
     // Close menus if open
@@ -334,7 +334,7 @@ export default function AppWrapper({
               level={1}
               icon={ getSVGIcon('home', menuIconSize) }
               primary={t('nav.dashboard')}
-              path="/"
+              path="/dashboard"
               onClick={handleNavigation}
             />
             

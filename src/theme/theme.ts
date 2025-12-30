@@ -53,6 +53,7 @@ declare module '@mui/material/styles' {
     indigo: string;
     orange: string;
     gold: string;
+    yellow: string;
     purple: string;
     darkPurple: string;
     white: string;
@@ -90,6 +91,7 @@ const theme = createTheme({
       lightGreen: '#00a63e',
       orange: '#D35400',
       gold: '#ca8a04',
+      yellow: '#FCD34D',
       purple: '#9333ea',
       darkPurple: '#6B21A8',
       white: '#FFFFFF',

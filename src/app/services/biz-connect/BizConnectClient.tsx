@@ -1,6 +1,6 @@
 'use client';
 
-import React from "react";
+import { useMemo } from "react";
 
 import theme from "@/theme/theme";
 import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
@@ -24,7 +24,7 @@ export default function BizConnectClient() {
         list: string[];
     }
 
-    const translations = React.useMemo(() => {
+    const translations = useMemo(() => {
         const bizConnect = t('pages.bizConnect');
         return {
             prelaunch: bizConnect.prelaunch,

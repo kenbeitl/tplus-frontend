@@ -1,16 +1,20 @@
 'use client';
 
-import React from "react";
+import { useEffect, useState } from "react";
 import { Carousel, Spacer } from "@/components";
-import { useTranslations } from "@/contexts/AppContext";
+import { useTranslations, useApp } from "@/contexts/AppContext";
 import WelcomeSection from "./components/WelcomeSection";
 import GetStartedTipsSection from "./components/GetStartedTipsSection";
 import FreeTrialFeaturesSection from "./components/FreeTrialFeaturesSection";
 import FeaturesTBCSection from "./components/FeaturesTBCSection";
 import NeedHelpSection from "./components/NeedHelpSection";
+import ModalWelcome from "./modal/welcome";
 
 export default function DashboardClient() {
+
     const t = useTranslations();
+    const { showDashboardWelcomeModal, setShowDashboardWelcomeModal } = useApp();
+    const [modalOpen, setModalOpen] = useState(false);
     
     const welcome = t('pages.dashboard.welcome');
     const getStartedTips = t('pages.dashboard.getStartedTips');
@@ -18,8 +22,31 @@ export default function DashboardClient() {
     const featuresTBC = t('pages.dashboard.featuresTBC');
     const needHelp = t('pages.dashboard.needHelp');
 
+    useEffect(() => {
+        // Show modal if user preference is set to show it
+        if (showDashboardWelcomeModal) {
+            setModalOpen(true);
+        }
+    }, [showDashboardWelcomeModal]);
+
+    const handleCloseModal = () => {
+        setModalOpen(false);
+    };
+
+    const handleDontShowAgain = (dontShow: boolean) => {
+        if (dontShow) {
+            setShowDashboardWelcomeModal(false);
+        }
+    };
+
     return (
         <>
+            <ModalWelcome 
+                open={modalOpen}
+                onClose={handleCloseModal}
+                onDontShowAgain={handleDontShowAgain}
+            />
+            
             <Carousel slideNum={2} />
 
             {welcome && (

@@ -1,0 +1,21 @@
+{
+    "title": "Welcome to T+!",
+    "context": "Get started in 2 quick steps",
+    "step1": {
+        "title": "Complete Your Profile",
+        "description": "Fill in your user and company profile to access all T+ platform features",
+        "check": "Unlock personalized services and enhanced features",
+        "button": "Set up My Profile"
+    },
+    "step2": {
+        "title": "Start Exploring",
+        "description": "Use the menu bar to browse and try out all available services",
+        "check": "Discover powerful tools designed for your business",
+        "goal": "You're all set!"
+    },
+    "proTip": {
+        "title": "💡 Pro Tip",
+        "description": "Complete your profile today to enjoy your <strong>3-month free trial</strong> with access to core services. Don't miss out on exclusive member benefits!"
+    },
+    "dontShowAgain": "Don't show this again"
+}

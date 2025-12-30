@@ -2,7 +2,7 @@ import React from 'react';
 
 type ColorVariant = 'transparent' | 'red' | 'green' | 'blue' | 'orange' | 'amber' | 'indigo' | 'purple' | 'gray';
 type InvertedVariant = `${Exclude<ColorVariant, 'transparent' | 'gray'>}-inverted`;
-type Variant = ColorVariant | InvertedVariant | 'blue-gradient' | 'custom';
+type Variant = ColorVariant | InvertedVariant | 'blue-gradient' | 'opacity' | 'custom';
 type Elevation = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 interface StyledIconProps {
@@ -60,6 +60,10 @@ export default function StyledIcon({
     'blue-gradient': {
       bg: 'bg-linear-to-r from-blue-500 to-blue-700',
       text: 'text-white',
+    },
+    opacity: {
+      bg: 'bg-white/20 backdrop-blur-sm',
+      text: 'text-inherit',
     },
     orange: {
       bg: 'bg-orange-100',
