@@ -10,6 +10,7 @@ import { AppProvider } from "@/contexts/AppContext";
 import { SnackbarProvider } from "@/contexts/SnackbarContext";
 import { SessionProvider } from "next-auth/react";
 import { Box } from "@mui/material";
+import theme from "@/theme/theme";
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -38,7 +39,7 @@ export default function RootLayout({
                   <AuthWrapper>{children}</AuthWrapper>
                 ) : (
                   <AppWrapper>
-                    <Box component="div" className="p-4 sm:p-6">{children}</Box>
+                    <Box component="div" className={`p-4 sm:p-6 ${theme.palette.gradientClasses.slateBlueIndigoLight}`}>{children}</Box>
                   </AppWrapper>
                 )}
               </MUIThemeProvider>

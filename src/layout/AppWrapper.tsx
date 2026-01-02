@@ -58,7 +58,7 @@ const AppBar = styled(MuiAppBar, {
   borderBottom: '1px solid ' + theme.palette.divider,
   marginLeft: open ? drawerWidth : (isAboveDesktop ? drawerMiniWidth : 0),
   width: open ? `calc(100% - ${drawerWidth}px)` : (isAboveDesktop ? `calc(100% - ${drawerMiniWidth}px)` : '100%' ),
-  backgroundColor: theme.palette.background.paper,
+  backgroundColor: '#F8FAFC',
   zIndex: theme.zIndex.drawer + 1,
   transition: disableTransition ? 'none' : theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,

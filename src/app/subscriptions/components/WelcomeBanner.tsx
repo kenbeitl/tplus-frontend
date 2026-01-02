@@ -27,7 +27,7 @@ export default function WelcomeBanner({ expiryDate, remainingDays }: WelcomeBann
     }, [t]);
 
     return (
-        <Card variant="outlined" className="p-6 bg-linear-to-r! from-purple-50 to-indigo-50 border-2! border-purple-200! rounded-lg">
+        <Card variant="outlined" className={`p-6 ${theme.palette.gradientClasses.purpleIndigoLight}! border-2! border-purple-200! rounded-lg`}>
             <Box component="div" className="flex gap-2">
                 <Box component="div" className="shrink-0">
                     {getSVGIcon('gift', 24, theme.palette.text.purple)}

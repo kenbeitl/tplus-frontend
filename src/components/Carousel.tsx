@@ -33,7 +33,7 @@ export default function Carousel({ slideNum }: { slideNum: number }) {
                     elevation={3}
                     className="bg-overlay-heavy"
                     sx={{
-                        padding: 6,
+                        // padding: 6,
                         height: '100%',
                         borderRadius: 1,
                         background: `url('/slide-${index+1}.webp') center / cover no-repeat`,

@@ -2,33 +2,83 @@
     "title": "儀表板",
     "welcome": {
         "title": "歡迎使用 T+",
-        "line1": "您的賬戶已成功創建——歡迎加入！",
-        "line2": "為了幫助您快速上手，我們已為您激活了<strong>3 個月免費試用</strong>，讓您立即<br />訪問一系列核心服務。立即探索，發現 T+ 如何支持<br />您的業務發展。"
+        "context": "通過快捷操作和個性化推薦，高效管理您的業務。"
     },
-    "getStartedTips": {
-        "title": "入門提示",
-        "context": "按照以下 3 個步驟，釋放 T+ 的全部潛力",
-        "steps": [
+    "quickActions": {
+        "title": "快捷操作",
+        "context": "強大的工具，觸手可及",
+        "list": [
             {
-                "theme": "blue",
-                "icon": "user",
-                "step": "1",
-                "title": "完善您的資料",
-                "description": "填寫您的用戶和公司資料，以訪問所有 T+ 平台功能"
+                "icon": "file-check",
+                "iconStyle": "bg-linear-to-br from-blue-500 to-blue-700",
+                "title": "AI 驅動的通關自動化",
+                "tag": "AI",
+                "tagStyle": "bg-blue-100 text-blue-700",
+                "context": "使用智能 AI 自動化通關申報",
+                "ctaLabel": "立即開始",
+                "ctaStyle": "text-blue-600",
+                "ctaLink": "/services/gov-connect/ai-powered-customs-automation"
             },
             {
-                "theme": "purple",
-                "icon": "id-card",
-                "step": "2",
-                "title": "申請數碼身份",
-                "description": "創建經過驗證的數碼身份，安全訪問 T+ 服務"
+                "icon": "file-text",
+                "iconStyle": "bg-linear-to-br from-indigo-500 to-purple-700",
+                "title": "單次提交雙重申報",
+                "tag": "熱門",
+                "tagStyle": "bg-indigo-100 text-indigo-700",
+                "context": "一次提交，同時向香港和中國海關申報",
+                "ctaLabel": "立即申請",
+                "ctaStyle": "text-indigo-600",
+                "ctaLink": "/services/gov-connect"
             },
             {
-                "theme": "indigo",
-                "icon": "sparkles",
-                "step": "3",
-                "title": "探索服務",
-                "description": "使用菜單欄瀏覽並嘗試所有可用服務"
+                "icon": "file-signature",
+                "iconStyle": "bg-linear-to-br from-cyan-500 to-teal-700",
+                "title": "數碼文件簽署",
+                "tag": "安全",
+                "tagStyle": "bg-cyan-100 text-cyan-700",
+                "context": "使用經過認證的數碼簽名安全地簽署文件",
+                "ctaLabel": "立即簽署",
+                "ctaStyle": "text-cyan-600",
+                "ctaLink": "/services/sign-connect"
+            }
+        ]
+    },
+    "recommendedForYou": {
+        "title": "為您推薦",
+        "context": "根據您的需求個性化推薦",
+        "list": [
+            {
+                "icon": "shield-check",
+                "iconStyle": "bg-linear-to-br from-purple-500 to-pink-700",
+                "title": "獲取您的數碼身份",
+                "tag": "新",
+                "tagStyle": "bg-purple-500 text-white",
+                "context": "驗證身份，解鎖所有平台功能",
+                "ctaLabel": "開始驗證",
+                "ctaStyle": "text-purple-600",
+                "ctaLink": "/services/get-your-digital-id"
+            },
+            {
+                "icon": "search",
+                "iconStyle": "bg-linear-to-br from-pink-500 to-rose-700",
+                "title": "網絡漏洞評估",
+                "tag": "熱門",
+                "tagStyle": "bg-pink-100 text-pink-700",
+                "context": "識別並修復您的網站安全漏洞",
+                "ctaLabel": "立即評估",
+                "ctaStyle": "text-pink-600",
+                "ctaLink": "/services/safe-connect/web-vulnerability-assessment"
+            },
+            {
+                "icon": "hash",
+                "iconStyle": "bg-linear-to-br from-fuchsia-500 to-purple-700",
+                "title": "HS編碼AI分類器",
+                "tag": "AI",
+                "tagStyle": "bg-fuchsia-500 text-white",
+                "context": "利用人工智慧技術為您的產品進行HS編碼分類",
+                "ctaLabel": "嘗試分類器",
+                "ctaStyle": "text-fuchsia-600",
+                "ctaLink": "/services/gov-connect/hs-code-ai-classifier"
             }
         ]
     },

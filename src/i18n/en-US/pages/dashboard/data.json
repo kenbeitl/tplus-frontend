@@ -2,63 +2,227 @@
     "title": "Dashboard",
     "welcome": {
         "title": "Welcome to T+",
-        "line1": "Your account has been successfully created — welcome aboard!",
-        "line2": "To help you get started, we've activated a <strong>3-month free trial</strong>, giving you immediate<br /> access to a selection of core services. Explore now and discover how T+ can support<br /> your business."  
+        "context": "Manage your business efficiently with quick actions and personalised recommendations."
     },
-    "getStartedTips": {
-        "title": "Get Started Tips",
-        "context": "Follow these 3 steps to unlock the full potential of T+",
-        "steps": [
+    "quickActions": {
+        "title": "Quick Actions",
+        "context": "Powerful tools at your fingertips",
+        "list": [
             {
-                "theme": "blue",
-                "icon": "user",
-                "step": "1",
-                "title": "Complete Your Profile",
-                "description": "Fill in your user and company profile to access all T+ platform features"
+                "icon": "file-check",
+                "iconStyle": "bg-linear-to-br from-blue-500 to-blue-700",
+                "title": "AI-Powered Customs Automation",
+                "tag": "AI",
+                "tagStyle": "bg-blue-100 text-blue-700",
+                "context": "Automate customs declarations with intelligent AI",
+                "ctaLabel": "Get Started",
+                "ctaStyle": "text-blue-600",
+                "ctaLink": "/services/gov-connect/ai-powered-customs-automation"
             },
             {
-                "theme": "purple",
-                "icon": "id-card",
-                "step": "2",
-                "title": "Apply for Digital Identity",
-                "description": "Create your verified digital identity to securely access T+ services"
+                "icon": "file-text",
+                "iconStyle": "bg-linear-to-br from-indigo-500 to-purple-700",
+                "title": "Single Submission Dual Declaration",
+                "tag": "Hot",
+                "tagStyle": "bg-indigo-100 text-indigo-700",
+                "context": "Submit once to HK and China customs simultaneously",
+                "ctaLabel": "Apply Now",
+                "ctaStyle": "text-indigo-600",
+                "ctaLink": "/services/gov-connect"
             },
             {
-                "theme": "indigo",
-                "icon": "sparkles",
-                "step": "3",
-                "title": "Explore Services",
-                "description": "Use the menu bar to browse and try out all available services"
+                "icon": "file-signature",
+                "iconStyle": "bg-linear-to-br from-cyan-500 to-teal-700",
+                "title": "Digital Document Signing",
+                "tag": "Secure",
+                "tagStyle": "bg-cyan-100 text-cyan-700",
+                "context": "Sign documents securely with certified digital signatures",
+                "ctaLabel": "Sign Now",
+                "ctaStyle": "text-cyan-600",
+                "ctaLink": "/services/sign-connect"
+            }
+        ]
+    },
+    "recommendedForYou": {
+        "title": "Recommended For You",
+        "context": "Personalized picks based on your needs",
+        "list": [
+            {
+                "icon": "shield-check",
+                "iconStyle": "bg-linear-to-br from-purple-500 to-pink-700",
+                "title": "Get Your Digital ID",
+                "tag": "New",
+                "tagStyle": "bg-purple-500 text-white",
+                "context": "Verify identity and unlock all platform features",
+                "ctaLabel": "Start Verification",
+                "ctaStyle": "text-purple-600",
+                "ctaLink": "/services/get-your-digital-id"
+            },
+            {
+                "icon": "search",
+                "iconStyle": "bg-linear-to-br from-pink-500 to-rose-700",
+                "title": "Web Vulnerability Assessment",
+                "tag": "Popular",
+                "tagStyle": "bg-amber-500 text-white",
+                "context": "Scan your website for security vulnerabilities",
+                "ctaLabel": "Run Assessment",
+                "ctaStyle": "text-pink-600",
+                "ctaLink": "/services/safe-connect"
+            },
+            {
+                "icon": "hash",
+                "iconStyle": "bg-linear-to-br from-fuchsia-500 to-purple-700",
+                "title": "HS Code AI Classifier",
+                "tag": "AI",
+                "tagStyle": "bg-fuchsia-500 text-white",
+                "context": "AI-powered HS code classification for your products",
+                "ctaLabel": "Try Classifier",
+                "ctaStyle": "text-fuchsia-600",
+                "ctaLink": "/services/gov-connect/hs-code-ai-classifier"
             }
         ]
     },
     "freeTrialFeatures": {
         "title": "Free Trial Features",
-        "context": "You can start using these features right away (some with limited access):",
-        "list": [
+        "context": "Start exploring powerful business tools at no cost",
+        "features": [
             {
-                    "icon": "file-pen-line",
-                    "title": "SignConnect",
-                    "context": "Sign documents via Tradelink's DMSS using a certified digital identity (limited signing quota)."
+                    "icon": "id-card",
+                    "iconStyle": "bg-linear-to-br from-violet-500 to-purple-700 group-hover/parent:shadow-violet-300",
+                    "title": "Apply for Digital Identity",
+                    "context": "Secure verification for all digital services",
+                    "cardStyle": "border-violet-200 hover:border-violet-400",
+                    "linkStyle": "text-violet-700 hover:text-violet-900 hover:bg-violet-50",
+                    "list": [
+                        {
+                            "label": "Quick identity verification",
+                            "link": "/services/apply-for-digital-identity"
+                        },
+                        {
+                            "label": "Unlock all platform features",
+                            "link": "/services/apply-for-digital-identity"
+                        },
+                        {
+                            "label": "Secure digital transactions",
+                            "link": "/services/apply-for-digital-identity"
+                        }
+                    ]
             },
             {
-                    "icon": "credit-card",
-                    "title": "PayConnect",
-                    "context": "Enjoy exclusive offers on financial services provided by T+ partners."
+                    "icon": "briefcase",
+                    "iconStyle": "bg-linear-to-br from-blue-500 to-indigo-700 group-hover/parent:shadow-blue-300",
+                    "title": "BizConnect",
+                    "context": "Business networking & market intelligence",
+                    "cardStyle": "border-blue-200 hover:border-blue-400",
+                    "linkStyle": "text-blue-700 hover:text-blue-900 hover:bg-blue-50",
+                    "list": [
+                        {
+                            "label": "Business matching network",
+                            "link": "/services/biz-connect"
+                        },
+                        {
+                            "label": "Business intelligence services",
+                            "link": "/services/biz-connect"
+                        },
+                        {
+                            "label": "Partner discovery tools",
+                            "link": "/services/biz-connect"
+                        }
+                    ]
             },
             {
                     "icon": "building2",
+                    "iconStyle": "bg-linear-to-br from-sky-500 to-blue-700 group-hover/parent:shadow-sky-300",
                     "title": "GovConnect",
-                    "context": "Use smart trade functions to automate and enhance trade compliance."
+                    "context": "Smart trade compliance & automation",
+                    "cardStyle": "border-sky-200 hover:border-sky-400",
+                    "linkStyle": "text-sky-700 hover:text-sky-900 hover:bg-sky-50",
+                    "list": [
+                        {
+                            "label": "Customs automation tools",
+                            "link": "/services/gov-connect/ai-powered-customs-automation"
+                        },
+                        {
+                            "label": "HS Code AI Classifier",
+                            "link": "/services/gov-connect/hs-code-ai-classifier"
+                        },
+                        {
+                            "label": "Dual declaration service",
+                            "link": "/services/gov-connect"
+                        }
+                    ]
+            },
+            {
+                    "icon": "credit-card",
+                    "iconStyle": "bg-gradient-to-br from-cyan-500 to-teal-700 group-hover/parent:shadow-cyan-300",
+                    "title": "PayConnect",
+                    "context": "Exclusive financial services & partner offers",
+                    "cardStyle": "border-cyan-200 hover:border-cyan-400",
+                    "linkStyle": "text-cyan-700 hover:text-cyan-900 hover:bg-cyan-50",
+                    "list": [
+                        {
+                            "label": "Exclusive partner offers",
+                            "link": "/services/pay-connect"
+                        },
+                        {
+                            "label": "Financial services access",
+                            "link": "/services/pay-connect"
+                        },
+                        {
+                            "label": "Special member benefits",
+                            "link": "/services/pay-connect"
+                        }
+                    ]
             },
             {
                     "icon": "shield",
+                    "iconStyle": "bg-gradient-to-br from-emerald-500 to-green-700 group-hover/parent:shadow-emerald-300",
                     "title": "SafeConnect",
-                    "context": "Access cybersecurity services for individuals and corporations (some features may be limited)."
+                    "context": "Comprehensive cybersecurity solutions",
+                    "cardStyle": "border-emerald-200 hover:border-emerald-400",
+                    "linkStyle": "text-emerald-700 hover:text-emerald-900 hover:bg-emerald-50",
+                    "list": [
+                        {
+                            "label": "Individual security services",
+                            "link": "/services/safe-connect"
+                        },
+                        {
+                            "label": "Corporate security solutions",
+                            "link": "/services/safe-connect"
+                        },
+                        {
+                            "label": "Web vulnerability scanning",
+                            "link": "/services/safe-connect"
+                        }
+                    ]
+            },
+            {
+                "icon": "edit",
+                "iconStyle": "bg-gradient-to-br from-indigo-500 to-purple-700 group-hover/parent:shadow-indigo-300",
+                "title": "SignConnect",
+                "context": "Digital document signing with certified security",
+                "cardStyle": "border-indigo-200 hover:border-indigo-400",
+                "linkStyle": "text-indigo-700 hover:text-indigo-900 hover:bg-indigo-50",
+                "list": [
+                    {
+                        "label": "Sign via Tradelink DMSS",
+                        "link": "/services/sign-connect"
+                    },
+                    {
+                        "label": "Corporate security solutions",
+                        "link": "/services/sign-connect"
+                    },
+                    {
+                        "label": "Web vulnerability scanning",
+                        "link": "/services/sign-connect"
+                    }
+                ]
             }
         ],
         "remarks": {
-            "body": "Note: Some features may require a subscription after the trial period ends. Click on the relevant pages in the menu to start using them."
+            "title": "All features are available now with your free trial",
+            "body": "Some services may require a subscription after the trial period ends",
+            "ctaLabel": "View Plans"
         }
     },
     "featuresTBC": {

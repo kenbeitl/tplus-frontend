@@ -2,64 +2,217 @@
     "title": "仪表板",
     "welcome": {
         "title": "欢迎使用 T+",
-        "line1": "您的账户已成功创建——欢迎加入！",
-        "line2": "为了帮助您快速上手，我们已为您激活了<strong>3 个月免费试用</strong>，让您立即<br />访问一系列核心服务。立即探索，发现 T+ 如何支持<br />您的业务发展。"
+        "context": "通过快捷操作和个性化推荐，高效管理您的业务。"
     },
-    "getStartedTips": {
-        "title": "入门提示",
-        "context": "按照以下 3 个步骤，释放 T+ 的全部潜力",
-        "steps": [
+    "quickActions": {
+        "title": "快捷操作",
+        "context": "强大的工具触手可及",
+        "list": [
             {
-                "theme": "blue",
-                "icon": "user",
-                "step": "1",
-                "title": "完善您的资料",
-                "description": "填写您的用户和公司资料，以访问所有 T+ 平台功能"
+                "icon": "file-check",
+                "iconStyle": "bg-linear-to-br from-blue-500 to-blue-700",
+                "title": "AI 驱动的报关自动化",
+                "tag": "AI",
+                "tagStyle": "bg-blue-100 text-blue-700",
+                "context": "使用智能 AI 自动化报关申报",
+                "ctaLabel": "立即开始",
+                "ctaStyle": "text-blue-600",
+                "ctaLink": "/services/gov-connect/ai-powered-customs-automation"
             },
             {
-                "theme": "purple",
-                "icon": "id-card",
-                "step": "2",
-                "title": "申请数码身份",
-                "description": "创建经过验证的数码身份，安全访问 T+ 服务"
+                "icon": "file-text",
+                "iconStyle": "bg-linear-to-br from-indigo-500 to-purple-700",
+                "title": "单次提交双重申报",
+                "tag": "热门",
+                "tagStyle": "bg-indigo-100 text-indigo-700",
+                "context": "一次提交，同时向香港和中国海关申报",
+                "ctaLabel": "立即申请",
+                "ctaStyle": "text-indigo-600",
+                "ctaLink": "/services/gov-connect"
             },
             {
-                "theme": "indigo",
-                "icon": "sparkles",
-                "step": "3",
-                "title": "探索服务",
-                "description": "使用菜单栏浏览并尝试所有可用服务"
+                "icon": "file-signature",
+                "iconStyle": "bg-linear-to-br from-cyan-500 to-teal-700",
+                "title": "数字文件签署",
+                "tag": "安全",
+                "tagStyle": "bg-cyan-100 text-cyan-700",
+                "context": "使用认证的数字签名安全地签署文件",
+                "ctaLabel": "立即签署",
+                "ctaStyle": "text-cyan-600",
+                "ctaLink": "/services/sign-connect"
+            }
+        ]
+    },
+    "recommendedForYou": {
+        "title": "为您推荐",
+        "context": "根据您的需求个性化推荐",
+        "list": [
+            {
+                "icon": "shield-check",
+                "iconStyle": "bg-linear-to-br from-purple-500 to-pink-700",
+                "title": "获取您的数字身份",
+                "tag": "新",
+                "tagStyle": "bg-purple-500 text-white",
+                "context": "验证身份，解锁所有平台功能",
+                "ctaLabel": "开始验证",
+                "ctaStyle": "text-purple-600",
+                "ctaLink": "/services/get-your-digital-id"
+            },
+            {
+                "icon": "search",
+                "iconStyle": "bg-linear-to-br from-pink-500 to-rose-700",
+                "title": "网络漏洞评估",
+                "tag": "热门",
+                "tagStyle": "bg-pink-100 text-pink-700",
+                "context": "识别并修复您的网站安全漏洞",
+                "ctaLabel": "立即评估",
+                "ctaStyle": "text-pink-600",
+                "ctaLink": "/services/safe-connect/web-vulnerability-assessment"
+            },
+            {
+                "icon": "hash",
+                "iconStyle": "bg-linear-to-br from-fuchsia-500 to-purple-700",
+                "title": "HS编码AI分类器",
+                "tag": "AI",
+                "tagStyle": "bg-fuchsia-100 text-fuchsia-700",
+                "context": "利用人工智能技术为您的产品进行HS编码分类",
+                "ctaLabel": "尝试分类器",
+                "ctaStyle": "text-fuchsia-600",
+                "ctaLink": "/services/gov-connect/hs-code-ai-classifier"
             }
         ]
     },
     "freeTrialFeatures": {
         "title": "免费试用功能",
-        "context": "您可以立即开始使用以下功能（部分功能访问受限）：",
+        "context": "探索 T+ 提供的强大功能，助力您的业务发展",
         "list": [
             {
-                    "icon": "file-pen-line",
-                    "title": "SignConnect",
-                    "context": "通过 Tradelink 的 DMSS 使用经过认证的数码身份签署文件（签署配额有限）。"
+                    "icon": "id-card",
+                    "iconStyle": "bg-linear-to-br from-violet-500 to-purple-700",
+                    "title": "Apply for Digital Identity",
+                    "context": "Secure verification for all digital services",
+                    "theme": "violet",
+                    "list": [
+                        {
+                            "label": "Quick identity verification",
+                            "link": "/services/apply-for-digital-identity"
+                        },
+                        {
+                            "label": "Unlock all platform features",
+                            "link": "/services/apply-for-digital-identity"
+                        },
+                        {
+                            "label": "Secure digital transactions",
+                            "link": "/services/apply-for-digital-identity"
+                        }
+                    ]
             },
             {
-                    "icon": "credit-card",
-                    "title": "PayConnect",
-                    "context": "享受 T+ 合作伙伴提供的金融服务独家优惠。"
+                    "icon": "briefcase",
+                    "iconStyle": "bg-linear-to-br from-blue-500 to-indigo-700",
+                    "title": "BizConnect",
+                    "context": "Business networking & market intelligence",
+                    "theme": "blue",
+                    "list": [
+                        {
+                            "label": "Business matching network",
+                            "link": "/services/biz-connect"
+                        },
+                        {
+                            "label": "Business intelligence services",
+                            "link": "/services/biz-connect"
+                        },
+                        {
+                            "label": "Partner discovery tools",
+                            "link": "/services/biz-connect"
+                        }
+                    ]
             },
             {
                     "icon": "building2",
+                    "iconStyle": "bg-linear-to-br from-sky-500 to-blue-700",
                     "title": "GovConnect",
-                    "context": "使用智能贸易功能自动化和增强贸易合规性。"
+                    "context": "Smart trade compliance & automation",
+                    "theme": "sky",
+                    "list": [
+                        {
+                            "label": "Customs automation tools",
+                            "link": "/services/gov-connect/ai-powered-customs-automation"
+                        },
+                        {
+                            "label": "HS Code AI Classifier",
+                            "link": "/services/gov-connect/hs-code-ai-classifier"
+                        },
+                        {
+                            "label": "Dual declaration service",
+                            "link": "/services/gov-connect"
+                        }
+                    ]
+            },
+            {
+                    "icon": "credit-card",
+                    "iconStyle": "bg-gradient-to-br from-cyan-500 to-teal-700",
+                    "title": "PayConnect",
+                    "context": "Exclusive financial services & partner offers",
+                    "theme": "cyan",
+                    "list": [
+                        {
+                            "label": "Exclusive partner offers",
+                            "link": "/services/pay-connect"
+                        },
+                        {
+                            "label": "Financial services access",
+                            "link": "/services/pay-connect"
+                        },
+                        {
+                            "label": "Special member benefits",
+                            "link": "/services/pay-connect"
+                        }
+                    ]
             },
             {
                     "icon": "shield",
+                    "iconStyle": "bg-gradient-to-br from-emerald-500 to-green-700",
                     "title": "SafeConnect",
-                    "context": "访问个人和企业的网络安全服务（某些功能可能受限）。"
+                    "context": "Comprehensive cybersecurity solutions",
+                    "theme": "emerald",
+                    "list": [
+                        {
+                            "label": "Individual security services",
+                            "link": "/services/safe-connect"
+                        },
+                        {
+                            "label": "Corporate security solutions",
+                            "link": "/services/safe-connect"
+                        },
+                        {
+                            "label": "Web vulnerability scanning",
+                            "link": "/services/safe-connect"
+                        }
+                    ]
+            },
+            {
+                "icon": "edit",
+                "iconStyle": "bg-gradient-to-br from-emerald-500 to-green-700",
+                "title": "SignConnect",
+                "context": "Digital document signing with certified security",
+                "theme": "indigo",
+                "list": [
+                    {
+                        "label": "Sign via Tradelink DMSS",
+                        "link": "/services/sign-connect"
+                    },
+                    {
+                        "label": "Corporate security solutions",
+                        "link": "/services/sign-connect"
+                    },
+                    {
+                        "label": "Web vulnerability scanning",
+                        "link": "/services/sign-connect"
+                    }
+                ]
             }
-        ],
-        "remarks": {
-            "body": "注意：试用期结束后，某些功能可能需要订阅。点击菜单中的相关页面即可开始使用它们。"
-        }
+        ]
     },
     "featuresTBC": {
         "title": "更多功能即将推出",

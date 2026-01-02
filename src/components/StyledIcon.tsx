@@ -1,4 +1,5 @@
 import React from 'react';
+import theme from '@/theme/theme';
 
 type ColorVariant = 'transparent' | 'red' | 'green' | 'blue' | 'orange' | 'amber' | 'indigo' | 'purple' | 'gray';
 type InvertedVariant = `${Exclude<ColorVariant, 'transparent' | 'gray'>}-inverted`;
@@ -9,6 +10,7 @@ interface StyledIconProps {
   icon: React.ReactNode | string;
   size?: number;
   bgColor?: string;
+  bgGradient?: string;
   textColor?: string;
   variant?: Variant;
   className?: string;
@@ -20,6 +22,7 @@ export default function StyledIcon({
   icon,
   size = 40,
   bgColor,
+  bgGradient,
   textColor,
   variant = 'gray',
   className = '',
@@ -58,7 +61,7 @@ export default function StyledIcon({
       text: 'text-white',
     },
     'blue-gradient': {
-      bg: 'bg-linear-to-r from-blue-500 to-blue-700',
+      bg: theme.palette.gradientClasses.iconBlue,
       text: 'text-white',
     },
     opacity: {
@@ -108,7 +111,7 @@ export default function StyledIcon({
   };
 
   // Use custom colors if provided, otherwise use variant
-  const isCustom = variant === 'custom' && (bgColor || textColor);
+  const isCustom = variant === 'custom' && (bgColor || bgGradient || textColor);
   const colorClasses = isCustom ? '' : `${variants[variant].bg} ${variants[variant].text}`;
   
   // Border radius class based on square prop
@@ -126,15 +129,18 @@ export default function StyledIcon({
   };
   const elevationClass = elevation > 0 ? shadowClasses[Math.min(elevation, 6)] : '';
   
-  // Custom styles for when custom colors are provided
+  // Handle bgGradient as Tailwind classes
+  const gradientClasses = bgGradient || '';
+  
+  // Custom styles for when custom colors are provided (but not gradient)
   const customStyles = isCustom ? {
-    backgroundColor: bgColor,
-    color: textColor,
+    ...(bgColor && !bgGradient && { backgroundColor: bgColor }),
+    ...(textColor && { color: textColor }),
   } : {};
 
   return (
     <div 
-      className={`flex items-center justify-center ${borderRadiusClass} ${colorClasses} ${elevationClass} ${className}`.trim()}
+      className={`flex items-center justify-center ${borderRadiusClass} ${colorClasses} ${gradientClasses} ${elevationClass} ${className}`.trim()}
       style={{
         width: `${size}px`,
         height: `${size}px`,

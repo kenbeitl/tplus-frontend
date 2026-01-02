@@ -45,7 +45,7 @@ export default function ModalWelcome({
 
   return (
     <Modal open={open} onClose={handleClose} maxWidth={800} sx={{ p: 0, scrollbarGutter: 'auto', overflow: 'hidden' }}>
-        <Box component="div" className="relative bg-linear-to-br from-blue-600 via-blue-500 to-indigo-600" sx={{ p: 4 }}>
+        <Box component="div" className={`relative ${theme.palette.gradientClasses.blueIndigoDark}`} sx={{ p: 4 }}>
           <Box component="div" className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -mr-24 -mt-24"></Box>
           <Box component="div" className="absolute bottom-0 left-0 w-36 h-36 bg-white/10 rounded-full -ml-18 -mb-18"></Box>
           <Box component="div" className="flex items-top">
@@ -57,7 +57,7 @@ export default function ModalWelcome({
           </Box>          
         </Box>
 
-        <Box component="div" className="bg-linear-to-b from-gray-50 to-white" sx={{ p: 3, pt: 4 }}>
+        <Box component="div" className={theme.palette.gradientClasses.grayLight} sx={{ p: 3, pt: 4 }}>
           <Grid container spacing={2}>
             <Grid size={{ xs: 12, sm: 6 }}>
               <Card 
@@ -65,7 +65,7 @@ export default function ModalWelcome({
                   variant="elevation" 
                   className="relative p-3 lg:p-6 gap-4 center-layout h-full card-hover"
               >
-                <Box component="div" className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-blue-500 via-blue-600 to-indigo-600"></Box>
+                <Box component="div" className={`absolute top-0 left-0 right-0 h-1 ${theme.palette.gradientClasses.iconBlueIndigo}`}></Box>
                 <Chip 
                   label={translations.step1.title} 
                   sx={{
@@ -78,7 +78,7 @@ export default function ModalWelcome({
                   }}
                   icon={<StyledIcon icon={<Typography color={theme.palette.text.white}>1</Typography>} size={20} variant="opacity" />}
                 />
-                <Box className="relative flex items-center justify-center w-16 h-16 bg-linear-to-br from-blue-100 to-indigo-100 rounded-full border-4 border-white shadow-lg">
+                <Box className={`relative flex items-center justify-center w-16 h-16 ${theme.palette.gradientClasses.iconBlueLight} rounded-full border-4 border-white shadow-lg`}>
                     { getSVGIcon('user', 32, theme.palette.text.blue) }
                 </Box>
                 <Typography variant="body1" component="p" sx={{ textAlign: 'center' }}>
@@ -102,7 +102,7 @@ export default function ModalWelcome({
                   component="div"
                   className="p-3 lg:p-6 gap-4 center-layout h-full"
               >
-                <Box component="div" className="flex items-center justify-center w-10 h-10 bg-linear-to-br from-blue-500 to-indigo-600 rounded-full shadow-lg">
+                <Box component="div" className={`flex items-center justify-center w-10 h-10 ${theme.palette.gradientClasses.iconBlueIndigoBg} rounded-full shadow-lg`}>
                   <StyledIcon icon={getSVGIcon('arrow-right', 20, '#FFFFFF')} variant="blue-gradient" size={40} />
                 </Box>
               </Box>
@@ -113,7 +113,7 @@ export default function ModalWelcome({
                   variant="elevation" 
                   className="relative p-3 lg:p-6 gap-4 center-layout h-full card-hover"
               >
-                <Box component="div" className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-green-500 via-emerald-600 to-teal-600"></Box>
+                <Box component="div" className={`absolute top-0 left-0 right-0 h-1 ${theme.palette.gradientClasses.greenEmeraldTeal}`}></Box>
                 <Chip 
                   label={translations.step2.title} 
                   sx={{
@@ -126,7 +126,7 @@ export default function ModalWelcome({
                   }}
                   icon={<StyledIcon icon={<Typography color={theme.palette.text.white}>2</Typography>} size={20} variant="opacity" />}
                 />
-                <Box className="relative flex items-center justify-center w-16 h-16 bg-linear-to-br from-green-100 to-teal-100 rounded-full border-4 border-white shadow-lg">
+                <Box className={`relative flex items-center justify-center w-16 h-16 ${theme.palette.gradientClasses.iconGreenLight} rounded-full border-4 border-white shadow-lg`}>
                     { getSVGIcon('list', 32, theme.palette.text.lightGreen) }
                 </Box>
                 <Typography variant="body1" component="p" sx={{ textAlign: 'center' }}>
@@ -148,9 +148,9 @@ export default function ModalWelcome({
             </Grid>
           </Grid>
           <Card className="mt-4">
-            <Box className="p-3.5 bg-linear-to-r from-indigo-50 via-purple-50 to-pink-50 border border-indigo-200">
+            <Box className={`p-3.5 ${theme.palette.gradientClasses.indigoPurplePink} border border-indigo-200`}>
               <Box component="div" className="flex items-start gap-3">
-                <Box component="div" className="flex items-center justify-center w-8 h-8 bg-linear-to-br from-indigo-500 to-purple-600 rounded-full shadow-md">
+                <Box component="div" className={`flex items-center justify-center w-8 h-8 ${theme.palette.gradientClasses.iconIndigoPurple} rounded-full shadow-md`}>
                   { getSVGIcon('sparkles', 16, '#FFFFFF') }
                 </Box>
                 <Box component="div" className="flex-1">

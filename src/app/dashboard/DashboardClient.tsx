@@ -1,23 +1,28 @@
 'use client';
 
-import { useEffect, useState } from "react";
-import { Carousel, Spacer } from "@/components";
+import { useEffect, useMemo, useState } from "react";
+import { Carousel, Spacer, StyledIcon } from "@/components";
 import { useTranslations, useApp } from "@/contexts/AppContext";
 import WelcomeSection from "./components/WelcomeSection";
-import GetStartedTipsSection from "./components/GetStartedTipsSection";
+import QuickActionsSection from "./components/QuickActionsSection";
+import RecommendedForYouSection from "./components/RecommendedForYouSection";
 import FreeTrialFeaturesSection from "./components/FreeTrialFeaturesSection";
 import FeaturesTBCSection from "./components/FeaturesTBCSection";
 import NeedHelpSection from "./components/NeedHelpSection";
 import ModalWelcome from "./modal/welcome";
+import { Badge, Box, Card, CardContent, Grid, Paper, Typography } from "@mui/material";
+import { getSVGIcon } from "@/helpers/utils";
+import theme from "@/theme/theme";
+import { useRouter } from "next/navigation";
 
 export default function DashboardClient() {
 
     const t = useTranslations();
+    const router = useRouter();
     const { showDashboardWelcomeModal, setShowDashboardWelcomeModal } = useApp();
     const [modalOpen, setModalOpen] = useState(false);
     
     const welcome = t('pages.dashboard.welcome');
-    const getStartedTips = t('pages.dashboard.getStartedTips');
     const freeTrialFeatures = t('pages.dashboard.freeTrialFeatures');
     const featuresTBC = t('pages.dashboard.featuresTBC');
     const needHelp = t('pages.dashboard.needHelp');
@@ -39,6 +44,17 @@ export default function DashboardClient() {
         }
     };
 
+    const translations = useMemo(() => {
+        const quickActions = t('pages.dashboard.quickActions');
+        const recommenededForYou = t('pages.dashboard.recommendedForYou');
+        return {
+            quickActions,
+            quickActionsList: quickActions.list,
+            recommenededForYou,
+            recommenededForYouList: recommenededForYou.list,
+        }
+    }, [t]);
+
     return (
         <>
             <ModalWelcome 
@@ -53,30 +69,36 @@ export default function DashboardClient() {
                 <>
                     <WelcomeSection 
                         title={welcome.title}
-                        line1={welcome.line1}
-                        line2={welcome.line2}
+                        context={welcome.context}
                     />
-                </>
-            )}
-        
-            {getStartedTips && (
-                <>
-                    <GetStartedTipsSection
-                        title={getStartedTips.title}
-                        context={getStartedTips.context}
-                        steps={getStartedTips.steps}
-                    />
-                    <Spacer height={20} />
                 </>
             )}
 
+            <Grid container spacing={2}>
+                <Grid size={{ xs: 12, md: 6 }}>
+                    <QuickActionsSection
+                        title={translations.quickActions.title}
+                        context={translations.quickActions.context}
+                        actions={translations.quickActionsList}
+                    />
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}>
+                    <RecommendedForYouSection
+                        title={translations.recommenededForYou.title}
+                        context={translations.recommenededForYou.context}
+                        actions={translations.recommenededForYouList}
+                    />
+                </Grid>
+            </Grid>
+            <Spacer height={20} />
+           
             {freeTrialFeatures && (
                 <>
                     <FreeTrialFeaturesSection
                         title={freeTrialFeatures.title}
                         context={freeTrialFeatures.context}
-                        features={freeTrialFeatures.list}
-                        remarksBody={freeTrialFeatures.remarks?.body}
+                        features={freeTrialFeatures.features}
+                        remarks={freeTrialFeatures.remarks}
                     />
                     <Spacer height={20} />
                 </>

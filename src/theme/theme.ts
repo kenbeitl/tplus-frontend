@@ -9,9 +9,53 @@ type ColorConfig = {
 
 // Gradient constants
 const GRADIENTS = {
+  // CSS gradients (for inline styles)
   blue: 'linear-gradient(90deg, rgba(0, 73, 220, 1) 0%, rgba(0, 150, 220, 1) 100%)',
   orange: 'linear-gradient(90deg, rgba(255, 176, 102, 1) 0%, rgba(255, 92, 51, 1) 100%)',
   purple: 'linear-gradient(90deg, rgba(168, 85, 247, 1) 0%, rgba(99, 102, 241, 1) 100%)',
+  blueIndigo: 'linear-gradient(135deg, #3B82F6, #4F46E5)',
+  greenEmerald: 'linear-gradient(to right, #10B981, #059669)',
+  blueCyan: 'linear-gradient(to bottom right, #2563eb, #06b6d4)',
+  indigoPurple: 'linear-gradient(to bottom right, #4f46e5, #7c3aed)',
+};
+
+// Tailwind gradient classes (for className usage)
+const GRADIENT_CLASSES = {
+  // Background gradients - Blue family
+  blueLight: 'bg-linear-to-br from-blue-100 via-cyan-50 to-indigo-100',
+  blueCyan: 'bg-linear-to-br from-blue-600 to-cyan-600',
+  blueIndigo: 'bg-linear-to-br from-blue-500 to-indigo-600',
+  blueIndigoDark: 'bg-linear-to-br from-blue-600 via-blue-500 to-indigo-600',
+  blueIndigoAuth: 'bg-linear-to-br from-blue-100 via-indigo-100 to-purple-200',
+  blueGreenLight: 'bg-gradient-to-r from-blue-50 to-green-50',
+  
+  // Background gradients - Purple family
+  purpleIndigoLight: 'bg-gradient-to-r from-purple-50 to-indigo-50',
+  purplePinkLight: 'bg-linear-to-br from-purple-100 via-pink-50 to-rose-100',
+  indigoPurple: 'bg-linear-to-br from-indigo-500 to-purple-700',
+  indigoPurplePink: 'bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50',
+  
+  // Background gradients - Green family
+  greenEmerald: 'bg-gradient-to-r from-green-500 to-emerald-600',
+  greenEmeraldTeal: 'bg-gradient-to-r from-green-500 via-emerald-600 to-teal-600',
+  greenLight: 'bg-gradient-to-r from-green-50 to-emerald-50',
+  
+  // Background gradients - Slate/Gray family
+  slateBlueLight: 'bg-gradient-to-r from-slate-50 to-blue-50',
+  slateBlueIndigoLight: 'bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50',
+  grayLight: 'bg-gradient-to-b from-gray-50 to-white',
+  
+  // Icon/Badge gradients
+  iconBlue: 'bg-gradient-to-r from-blue-500 to-blue-700',
+  iconBlueIndigo: 'bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600',
+  iconBlueIndigoBg: 'bg-linear-to-br from-blue-500 to-indigo-600',
+  iconBlueLight: 'bg-linear-to-br from-blue-100 to-indigo-100',
+  iconGreen: 'bg-linear-to-br from-green-600 to-emerald-600',
+  iconGreenLight: 'bg-linear-to-br from-green-100 to-teal-100',
+  iconPurple: 'bg-linear-to-br from-purple-600 to-indigo-600',
+  iconPurplePink: 'bg-linear-to-br from-purple-600 to-pink-600',
+  iconIndigoPurple: 'bg-linear-to-br from-indigo-500 to-purple-600',
+  iconOrange: 'bg-linear-to-br from-orange-500 to-red-600',
 };
 
 // Custom palette extensions
@@ -21,6 +65,7 @@ type CustomPaletteExtension = {
     black: string;
   };
   gradient: typeof GRADIENTS;
+  gradientClasses: typeof GRADIENT_CLASSES;
   tag: {
     green: ColorConfig;
     blue: ColorConfig;
@@ -35,6 +80,7 @@ declare module '@mui/material/styles' {
   interface PaletteOptions {
     icon?: Partial<CustomPaletteExtension['icon']>;
     gradient?: Partial<CustomPaletteExtension['gradient']>;
+    gradientClasses?: Partial<CustomPaletteExtension['gradientClasses']>;
     tag?: Partial<CustomPaletteExtension['tag']>;
   }
   
@@ -48,6 +94,8 @@ declare module '@mui/material/styles' {
     darkAmber: string;
     blue: string;
     darkBlue: string;
+    cyan: string;
+    sky: string;
     green: string;
     lightGreen: string;
     indigo: string;
@@ -86,6 +134,8 @@ const theme = createTheme({
       darkAmber: '#78350F',
       blue: '#2563eb',
       darkBlue: '#1C398E',
+      cyan: '#06b6d4',
+      sky: '#0ea5e9',
       indigo: '#4f46e5',
       green: '#016630',
       lightGreen: '#00a63e',
@@ -106,6 +156,7 @@ const theme = createTheme({
       red: 'red',
     },
     gradient: GRADIENTS,
+    gradientClasses: GRADIENT_CLASSES,
     tag: {
       green: {
         background: '#dcfce7',
@@ -315,6 +366,18 @@ const theme = createTheme({
             color: '#2b7fff',
             backgroundColor: '#FFFFFF',
             borderColor: '#bedbff',
+          },
+        },
+        {
+          props: { variant: 'outlined', color: 'green' },
+          style: {
+            color: '#016630',
+            backgroundColor: '#FFFFFF',
+            borderColor: '#bedbff',
+            '&:hover': {
+              borderColor: '#43A047',
+              backgroundColor: '#dcfce7',
+            },
           },
         },
         {

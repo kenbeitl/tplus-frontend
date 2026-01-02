@@ -109,7 +109,7 @@ export default function SafeConnectClient() {
                 <Typography variant="body2" component="p">{translations.tGuard.context}</Typography>
                 <Spacer height={20} />
                 <Paper
-                  className="p-6 bg-linear-to-r from-blue-50 to-green-50"
+                  className={`p-6 ${theme.palette.gradientClasses.blueGreenLight}`}
                   variant="outlined"
                 >
                   <Box className="flex sm:max-md:flex-col items-top">

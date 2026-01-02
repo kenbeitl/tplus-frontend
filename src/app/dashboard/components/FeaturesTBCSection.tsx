@@ -40,7 +40,7 @@ export default function FeaturesTBCSection({
                 <Box component="span" sx={{ mr: 1 }}>
                     {getSVGIcon('calendar', 20, '#c05621')}
                 </Box>
-                <Emoji symbol="🔐" size={25} sx={{ mr: 1 }} />
+                <Emoji symbol="🎁" size={25} sx={{ mr: 1 }} />
                 <Typography variant="body1" component="h3" color="#c05621">
                     {title}
                 </Typography>
