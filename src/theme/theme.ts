@@ -119,7 +119,7 @@ declare module '@mui/material/Button' {
     green: true;
     indigo: true;
     orange: true;
-    purple: true
+    purple: true;
     white: true;
   }
 }
@@ -389,6 +389,18 @@ const theme = createTheme({
           },
         },
         {
+          props: { variant: 'outlined', color: 'orange' },
+          style: {
+            color: '#D35400',
+            backgroundColor: '#FFFFFF',
+            borderColor: '#fed7aa',
+            '&:hover': {
+              borderColor: '#fb923c',
+              backgroundColor: '#ffedd5',
+            },
+          },
+        },
+        {
           props: { variant: 'contained', color: 'primary' },
           style: {
             color: '#FFFFFF',
@@ -414,6 +426,21 @@ const theme = createTheme({
               color: '#d32f2f',
               backgroundColor: '#FFFFFF',
               borderColor: '#d32f2f',
+              boxShadow: 'none',
+            },
+          },
+        },
+        {
+          props: { variant: 'contained', color: 'orange' },
+          style: {
+            color: '#FFFFFF',
+            backgroundColor: '#ea580c',
+            boxShadow: 'none',
+            border: '1px solid #ea580c',
+            '&:hover': {
+              color: '#ea580c',
+              backgroundColor: '#FFFFFF',
+              borderColor: '#ea580c',
               boxShadow: 'none',
             },
           },

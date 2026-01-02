@@ -63,18 +63,18 @@
                 "iconStyle": "bg-linear-to-br from-pink-500 to-rose-700",
                 "title": "网络漏洞评估",
                 "tag": "热门",
-                "tagStyle": "bg-pink-100 text-pink-700",
-                "context": "识别并修复您的网站安全漏洞",
-                "ctaLabel": "立即评估",
+                "tagStyle": "bg-amber-500 text-white",
+                "context": "扫描您的网站以识别安全漏洞",
+                "ctaLabel": "开始评估",
                 "ctaStyle": "text-pink-600",
-                "ctaLink": "/services/safe-connect/web-vulnerability-assessment"
+                "ctaLink": "/services/safe-connect"
             },
             {
                 "icon": "hash",
                 "iconStyle": "bg-linear-to-br from-fuchsia-500 to-purple-700",
                 "title": "HS编码AI分类器",
                 "tag": "AI",
-                "tagStyle": "bg-fuchsia-100 text-fuchsia-700",
+                "tagStyle": "bg-fuchsia-500 text-white",
                 "context": "利用人工智能技术为您的产品进行HS编码分类",
                 "ctaLabel": "尝试分类器",
                 "ctaStyle": "text-fuchsia-600",
@@ -84,174 +84,180 @@
     },
     "freeTrialFeatures": {
         "title": "免费试用功能",
-        "context": "探索 T+ 提供的强大功能，助力您的业务发展",
-        "list": [
+        "context": "免费开始探索强大的商业工具",
+        "features": [
             {
                     "icon": "id-card",
-                    "iconStyle": "bg-linear-to-br from-violet-500 to-purple-700",
-                    "title": "Apply for Digital Identity",
-                    "context": "Secure verification for all digital services",
-                    "theme": "violet",
+                    "iconStyle": "bg-linear-to-br from-violet-500 to-purple-700 group-hover/parent:shadow-violet-300",
+                    "title": "申请数字身份",
+                    "context": "为所有数字服务提供安全验证",
+                    "cardStyle": "border-violet-200 hover:border-violet-400",
+                    "linkStyle": "text-violet-700 hover:text-violet-900 hover:bg-violet-50",
                     "list": [
                         {
-                            "label": "Quick identity verification",
+                            "label": "快速身份验证",
                             "link": "/services/apply-for-digital-identity"
                         },
                         {
-                            "label": "Unlock all platform features",
+                            "label": "解锁所有平台功能",
                             "link": "/services/apply-for-digital-identity"
                         },
                         {
-                            "label": "Secure digital transactions",
+                            "label": "安全数字交易",
                             "link": "/services/apply-for-digital-identity"
                         }
                     ]
             },
             {
                     "icon": "briefcase",
-                    "iconStyle": "bg-linear-to-br from-blue-500 to-indigo-700",
+                    "iconStyle": "bg-linear-to-br from-blue-500 to-indigo-700 group-hover/parent:shadow-blue-300",
                     "title": "BizConnect",
-                    "context": "Business networking & market intelligence",
-                    "theme": "blue",
+                    "context": "商业网络与市场情报",
+                    "cardStyle": "border-blue-200 hover:border-blue-400",
+                    "linkStyle": "text-blue-700 hover:text-blue-900 hover:bg-blue-50",
                     "list": [
                         {
-                            "label": "Business matching network",
+                            "label": "商业配对网络",
                             "link": "/services/biz-connect"
                         },
                         {
-                            "label": "Business intelligence services",
+                            "label": "商业情报服务",
                             "link": "/services/biz-connect"
                         },
                         {
-                            "label": "Partner discovery tools",
+                            "label": "合作伙伴发现工具",
                             "link": "/services/biz-connect"
                         }
                     ]
             },
             {
                     "icon": "building2",
-                    "iconStyle": "bg-linear-to-br from-sky-500 to-blue-700",
+                    "iconStyle": "bg-linear-to-br from-sky-500 to-blue-700 group-hover/parent:shadow-sky-300",
                     "title": "GovConnect",
-                    "context": "Smart trade compliance & automation",
-                    "theme": "sky",
+                    "context": "智能贸易合规与自动化",
+                    "cardStyle": "border-sky-200 hover:border-sky-400",
+                    "linkStyle": "text-sky-700 hover:text-sky-900 hover:bg-sky-50",
                     "list": [
                         {
-                            "label": "Customs automation tools",
+                            "label": "报关自动化工具",
                             "link": "/services/gov-connect/ai-powered-customs-automation"
                         },
                         {
-                            "label": "HS Code AI Classifier",
+                            "label": "HS编码AI分类器",
                             "link": "/services/gov-connect/hs-code-ai-classifier"
                         },
                         {
-                            "label": "Dual declaration service",
+                            "label": "双重申报服务",
                             "link": "/services/gov-connect"
                         }
                     ]
             },
             {
                     "icon": "credit-card",
-                    "iconStyle": "bg-gradient-to-br from-cyan-500 to-teal-700",
+                    "iconStyle": "bg-gradient-to-br from-cyan-500 to-teal-700 group-hover/parent:shadow-cyan-300",
                     "title": "PayConnect",
-                    "context": "Exclusive financial services & partner offers",
-                    "theme": "cyan",
+                    "context": "专属金融服务与合作伙伴优惠",
+                    "cardStyle": "border-cyan-200 hover:border-cyan-400",
+                    "linkStyle": "text-cyan-700 hover:text-cyan-900 hover:bg-cyan-50",
                     "list": [
                         {
-                            "label": "Exclusive partner offers",
+                            "label": "专属合作伙伴优惠",
                             "link": "/services/pay-connect"
                         },
                         {
-                            "label": "Financial services access",
+                            "label": "金融服务访问",
                             "link": "/services/pay-connect"
                         },
                         {
-                            "label": "Special member benefits",
+                            "label": "特殊会员福利",
                             "link": "/services/pay-connect"
                         }
                     ]
             },
             {
                     "icon": "shield",
-                    "iconStyle": "bg-gradient-to-br from-emerald-500 to-green-700",
+                    "iconStyle": "bg-gradient-to-br from-emerald-500 to-green-700 group-hover/parent:shadow-emerald-300",
                     "title": "SafeConnect",
-                    "context": "Comprehensive cybersecurity solutions",
-                    "theme": "emerald",
+                    "context": "全面的网络安全解决方案",
+                    "cardStyle": "border-emerald-200 hover:border-emerald-400",
+                    "linkStyle": "text-emerald-700 hover:text-emerald-900 hover:bg-emerald-50",
                     "list": [
                         {
-                            "label": "Individual security services",
+                            "label": "个人安全服务",
                             "link": "/services/safe-connect"
                         },
                         {
-                            "label": "Corporate security solutions",
+                            "label": "企业安全解决方案",
                             "link": "/services/safe-connect"
                         },
                         {
-                            "label": "Web vulnerability scanning",
+                            "label": "网络漏洞扫描",
                             "link": "/services/safe-connect"
                         }
                     ]
             },
             {
                 "icon": "edit",
-                "iconStyle": "bg-gradient-to-br from-emerald-500 to-green-700",
+                "iconStyle": "bg-gradient-to-br from-indigo-500 to-purple-700 group-hover/parent:shadow-indigo-300",
                 "title": "SignConnect",
-                "context": "Digital document signing with certified security",
-                "theme": "indigo",
+                "context": "带有认证安全的数字文档签署",
+                "cardStyle": "border-indigo-200 hover:border-indigo-400",
+                "linkStyle": "text-indigo-700 hover:text-indigo-900 hover:bg-indigo-50",
                 "list": [
                     {
-                        "label": "Sign via Tradelink DMSS",
+                        "label": "通过 Tradelink DMSS 签署",
                         "link": "/services/sign-connect"
                     },
                     {
-                        "label": "Corporate security solutions",
+                        "label": "企业安全解决方案",
                         "link": "/services/sign-connect"
                     },
                     {
-                        "label": "Web vulnerability scanning",
+                        "label": "网络漏洞扫描",
                         "link": "/services/sign-connect"
                     }
                 ]
             }
-        ]
-    },
-    "featuresTBC": {
-        "title": "更多功能即将推出",
-        "context": "我们正在积极开发更多功能，敬请期待！",
-        "list": [
-            {
-                "icon": "file-pen-line",
-                "title": "SignConnect",
-                "context": "更多高级签署功能，提升您的数字签署体验。",
-                "isActive": true
-            },
-            {
-                "icon": "building2",
-                "title": "BizConnect",
-                "context": "全面的商业解决方案，助力您的业务增长。",
-                "isActive": false
-            },
-            {
-                "icon": "building",
-                "title": "GovConnect",
-                "context": "增强的政府服务，提升贸易合规性。",
-                "isActive": true
-            },
-            {
-                "icon": "shield",
-                "title": "SafeConnect",
-                "context": "先进的网络安全功能，保护您的数字资产。",
-                "isActive": true
-            },
-            {
-                "icon": "badge",
-                "title": "ESG",
-                "context": "通过无纸化签署跟踪您的环境影响，并从 T+ 合作伙伴处下载年度 ESG 证书或徽章/报告，享受独家优惠。",
-                "isActive": true
-            }
         ],
         "remarks": {
+            "title": "所有功能现已开放免费试用",
+            "body": "某些服务在试用期结束后可能需要订阅"
+        }
+    },
+    "featuresTBC": {
+        "title": "即将推出的功能",
+        "context": "更多功能即将推出",
+        "list": [
+            {
+                    "icon": "signature",
+                    "title": "SignConnect",
+                    "context": "通过其他平台签署（例如 Docusign、Nota Sign），并访问高级功能，如 AI 文档助手和 AI 法律助手。"
+            },
+            {
+                    "icon": "briefcase",
+                    "title": "BizConnect",
+                    "context": "商业配对网络和更多商业情报服务即将推出。"
+            },
+            {
+                    "icon": "building2",
+                    "title": "GovConnect",
+                    "context": "通过 T+ 连接更多政府服务。"
+            },
+            {
+                    "icon": "shield",
+                    "title": "SafeConnect",
+                    "context": "附加网络安全服务，如额外的网络漏洞评估。"
+            },
+            {
+                    "icon": "badge",
+                    "title": "ESG",
+                    "context": "通过无纸化签署跟踪您的环境影响，并下载年度 ESG 证书或徽章/报告。"
+            }
+        ],
+        "moreFeatures": "更多功能即将推出。敬请期待！",
+        "remarks": {
             "title": "准备好升级了吗？",
-            "context": "通过订阅我们的计划，解锁所有功能——敬请期待！"
+            "context": "通过订阅我们的计划解锁所有功能——即将推出！"
         }
     },
     "viewSubscriptionPlans": "查看订阅计划",

@@ -221,45 +221,40 @@
         ],
         "remarks": {
             "title": "All features are available now with your free trial",
-            "body": "Some services may require a subscription after the trial period ends",
-            "ctaLabel": "View Plans"
+            "body": "Some services may require a subscription after the trial period ends"
         }
     },
     "featuresTBC": {
-        "title": "Features Available Soon",
-        "context": "These advanced features are being rolled out progressively. Some will only be available with a subscription:",
+        "title": "Upcoming Features",
+        "context": "More features rolling out soon",
         "list": [
             {
-                    "icon": "file-pen-line",
+                    "icon": "signature",
                     "title": "SignConnect",
-                    "context": "Sign via other platforms (e.g. DocuSign, Fadada) and access premium features such as AI Document Assistant and AI Legal Assistant — exclusive to T+ members.",
-                    "isActive": true
+                    "context": "Sign via other platforms (e.g. Docusign, Nota Sign) and access premium features such as AI Document Assistant and AI Legal Assistant."
             },
             {
-                    "icon": "building",
+                    "icon": "briefcase",
                     "title": "BizConnect",
-                    "context": "Comprehensive business intelligence, due diligence services, and global market entry support launching soon.",
-                    "isActive": false
+                    "context": "Business matching network and more business intelligence services launching soon."
             },
             {
                     "icon": "building2",
                     "title": "GovConnect",
-                    "context": "Use advanced AI tools to automate trade compliance (e.g. AI-powered customs automation) and connect to more government services via T+.",
-                    "isActive": true
+                    "context": "Connect to more government services via T+."
             },
             {
                     "icon": "shield",
                     "title": "SafeConnect",
-                    "context": "Add-on cybersecurity services, such as additional web vulnerability assessments.",
-                    "isActive": true
+                    "context": "Add-on cybersecurity services, such as additional web vulnerability assessments."
             },
             {
                     "icon": "badge",
                     "title": "ESG",
-                    "context": "Track your environmental impact through paperless signing, and download annual ESG certificates or badges/reports from T+ partners with exclusive offers.",
-                    "isActive": true
+                    "context": "Track your environmental impact through paperless signing, and download annual ESG certificates or badges/reports."
             }
         ],
+        "moreFeatures": "More features will be launching soon. Stay tuned!",
         "remarks": {
             "title": "Ready to upgrade?",
             "context": "Unlock all features by subscribing to our plans — launching soon!"

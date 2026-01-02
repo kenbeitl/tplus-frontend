@@ -8,7 +8,7 @@ interface ActionButtonProps {
   buttonProps?: Partial<ButtonProps>;
   variant?: 'text' | 'outlined' | 'contained' | 'gradient' | 'green-gradient';
   autoWidth?: boolean;
-  color?: 'blue' | 'green' | 'purple' | 'white' | 'error';
+  color?: 'blue' | 'green' | 'purple' | 'orange' | 'white' | 'error';
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   noIcon?: boolean;

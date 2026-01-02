@@ -1,25 +1,29 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Box, Card, Grid, Paper, Typography } from '@mui/material';
+import { Box, Card, CardContent, Typography } from '@mui/material';
 import theme from '@/theme/theme';
-import { ActionButton, Emoji, Spacer, StyledIcon } from '@/components';
+import { ActionButton, Emoji } from '@/components';
 import { getSVGIcon } from '@/helpers/utils';
-import { useBreakpoint } from '@/hooks/useBreakpoint';
 
 interface TBCFeature {
     icon: string;
     title: string;
     context: string;
-    isActive: boolean;
+}
+
+interface Remarks {
+    title: string;
+    context: string;
+    ctaLabel: string;
 }
 
 interface FeaturesTBCSectionProps {
     title: string;
     context: string;
     features: TBCFeature[];
-    remarksTitle?: string;
-    remarksContext?: string;
+    remarks: Remarks;
+    moreFeatures: string;
     viewSubscriptionPlansText?: string;
 }
 
@@ -27,78 +31,76 @@ export default function FeaturesTBCSection({
     title, 
     context, 
     features,
-    remarksTitle,
-    remarksContext,
+    remarks,
+    moreFeatures,
     viewSubscriptionPlansText
 }: FeaturesTBCSectionProps) {
     const router = useRouter();
-    const isAboveMobile = useBreakpoint('mobile');
 
     return (
-        <Card variant="outlined" className="p-6">
-            <Box className="flex items-center">
-                <Box component="span" sx={{ mr: 1 }}>
-                    {getSVGIcon('calendar', 20, '#c05621')}
-                </Box>
-                <Emoji symbol="🎁" size={25} sx={{ mr: 1 }} />
-                <Typography variant="body1" component="h3" color="#c05621">
-                    {title}
+        <Box component="div" className="relative overflow-hidden rounded-2xl bg-linear-to-br from-amber-100 via-orange-50 to-yellow-100 p-6 border-2 border-amber-200">
+          <Box component="div" className="relative">
+            
+            <Box component="div" className="flex items-center gap-3 mb-5">
+              <Box component="div" className="flex items-center justify-center w-12 h-12 bg-linear-to-br from-orange-600 to-amber-600 rounded-xl shadow-lg">
+                { getSVGIcon('calendar', 24, theme.palette.text.white) }
+              </Box>
+              <Box component="div">
+                <Typography variant="h3" component="h2" color={theme.palette.text.orange}>
+                  <Emoji symbol="🎁" size={50} sx={{ mr: 1 }} />
+                  {title}
                 </Typography>
+                <Typography variant="body2" component="p">{context}</Typography>
+              </Box>
             </Box>
-            <Typography variant="body2" component="p" sx={{ mt: 2 }}>
-                {context}
-            </Typography>
-            <Spacer height={20} />
-            <Grid container spacing={2}>
-                {Array.isArray(features) && features.map((feature, index) => (
-                    <Grid size={12} key={`ftbc-${index}`}>
-                        <Paper elevation={0} className={`p-3 ${feature.isActive ? 'bg-orange-50!' : 'bg-amber-50!'}`}>
-                            <Box className="flex flex-col sm:flex-row items-top">
-                                <StyledIcon 
-                                    icon={getSVGIcon(feature.icon, 18)} 
-                                    variant={feature.isActive ? 'orange' : 'amber'}
-                                    size={36}
-                                    square
-                                    className={`mr-${isAboveMobile ? '3' : '0'} mb-${isAboveMobile ? '0' : '3'}`}
-                                />
-                                <Box>
-                                    <Typography variant="body1" component="h4">
-                                        {feature.title}
-                                    </Typography>
-                                    <Typography 
-                                        variant="caption" 
-                                        component="p" 
-                                        color={feature.isActive ? '#C05621' : '#B45309'}
-                                    >
-                                        {feature.context}
-                                    </Typography>
-                                </Box>
-                            </Box>
-                        </Paper>
-                    </Grid>
-                ))}
-                {remarksTitle && remarksContext && (
-                    <Grid size={12}>
-                        <Card variant="outlined" className="p-3 bg-blue-50! border-blue-200!">
-                            <Typography variant="body1" component="h4">
-                                {remarksTitle}
-                            </Typography>
-                            <Typography variant="caption" component="h4" color="#2b7fff">
-                                {remarksContext}
-                            </Typography>
-                            {viewSubscriptionPlansText && (
-                                <ActionButton
-                                    autoWidth
-                                    variant="outlined" 
-                                    color="blue" 
-                                    buttonText={viewSubscriptionPlansText}
-                                    onClick={() => router.push("/subscriptions")}
-                                />
-                            )}
-                        </Card>
-                    </Grid>
-                )}
-            </Grid>
-        </Card>
+            
+            <Card className="bg-white/90 backdrop-blur-sm border-2 border-amber-200">
+              <CardContent className="p-6">
+                <Box component="div" className="space-y-3">
+                  {features.map(feature => {
+                    return (
+                      <Box component="div" key={feature.icon} className="p-4 bg-linear-to-r from-amber-100 to-orange-100 rounded-xl border-2 border-amber-300 hover:border-amber-400 transition-all hover:shadow-md">
+                        <Box component="div" className="flex items-start space-x-3">
+                          <Box component="div" className="w-10 h-10 rounded-lg bg-linear-to-br from-orange-500 to-amber-600 flex items-center justify-center shadow-md shrink-0">
+                            { getSVGIcon(feature.icon, 24, '#FFFFFF') }
+                          </Box>
+                          <Box component="div" className="flex-1">
+                            <Typography variant="h5" component="h4">{feature.title}</Typography>
+                            <Typography variant="body1" component="p">{feature.context}</Typography>
+                          </Box>
+                        </Box>
+                      </Box>
+                    );
+                  })}
+                </Box>
+                
+                <Box component="div" className="mt-5 p-4 bg-linear-to-r from-orange-50 to-amber-50 border-2 border-amber-200 rounded-xl text-center">
+                  <Typography variant="h6" component="h4" sx={{ fontWeight: 400 }}>
+                    <Emoji symbol="📅" size={25} sx={{ mr: 1 }} />  
+                    { moreFeatures }
+                  </Typography>
+                </Box>
+                
+                <Box component="div" className="mt-4 relative overflow-hidden rounded-xl bg-linear-to-r from-orange-600 to-amber-600 p-5 shadow-lg">
+                  <Box component="div" className="relative flex flex-col md:flex-row items-center justify-between gap-4">
+                    <Box component="div" className="text-white">
+                        <Typography variant="h5" component="h4">{ remarks.title }</Typography>
+                        <Typography variant="body1" component="p">{ remarks.context }</Typography>
+                    </Box>
+                    <ActionButton
+                        color="orange"
+                        buttonText={ viewSubscriptionPlansText as string }
+                        endIcon={getSVGIcon('arrow-right', 16)}
+                        variant="outlined"
+                        onClick={() => router.push('/subscriptions')}
+                        autoWidth
+                    />
+                  </Box>
+                </Box>
+              </CardContent>
+            </Card>
+
+        </Box>
+    </Box>
     );
 }

@@ -27,13 +27,15 @@ interface FreeTrialFeaturesSectionProps {
     context: string;
     features: Feature[];
     remarks: Remarks;
+    viewSubscriptionPlansText?: string;
 }
 
 export default function FreeTrialFeaturesSection({ 
     title, 
     context, 
     features, 
-    remarks 
+    remarks,
+    viewSubscriptionPlansText
 }: FreeTrialFeaturesSectionProps) {
 
     const router = useRouter();
@@ -98,7 +100,7 @@ export default function FreeTrialFeaturesSection({
                 </Box>
                 <ActionButton
                   color="green"
-                  buttonText={ remarks.ctaLabel }
+                  buttonText={ viewSubscriptionPlansText as string }
                   endIcon={getSVGIcon('arrow-right', 16)}
                   variant="outlined"
                   onClick={() => router.push('/subscriptions')}

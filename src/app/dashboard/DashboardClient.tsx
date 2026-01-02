@@ -99,6 +99,7 @@ export default function DashboardClient() {
                         context={freeTrialFeatures.context}
                         features={freeTrialFeatures.features}
                         remarks={freeTrialFeatures.remarks}
+                        viewSubscriptionPlansText={t('pages.dashboard.viewSubscriptionPlans')}
                     />
                     <Spacer height={20} />
                 </>
@@ -110,8 +111,8 @@ export default function DashboardClient() {
                         title={featuresTBC.title}
                         context={featuresTBC.context}
                         features={featuresTBC.list}
-                        remarksTitle={featuresTBC.remarks?.title}
-                        remarksContext={featuresTBC.remarks?.context}
+                        remarks={featuresTBC.remarks}
+                        moreFeatures={featuresTBC.moreFeatures}
                         viewSubscriptionPlansText={t('pages.dashboard.viewSubscriptionPlans')}
                     />
                     <Spacer height={20} />

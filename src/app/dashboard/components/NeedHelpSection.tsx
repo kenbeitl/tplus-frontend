@@ -22,11 +22,11 @@ export default function NeedHelpSection({
         <Card variant="outlined" className="p-6">
             <Box className="flex items-center">
                 <Emoji symbol="🛠️" size={25} sx={{ mr: 1 }} />
-                <Typography variant="body1" component="h3" fontWeight={500}>
+                <Typography variant="h6" component="h3" fontWeight={500}>
                     {title}
                 </Typography>
             </Box>
-            <Typography variant="body2" component="p" sx={{ mt: 2 }}>
+            <Typography variant="body1" component="p" sx={{ mt: 2 }}>
                 {context}
             </Typography>
             <Spacer height={20} />
