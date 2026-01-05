@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { usePathname } from 'next/navigation';
 import { styled } from '@mui/material/styles';
-import { Box, Collapse, List, ListItemText, ListItemButton as MuiListItemButton, ListItemIcon as MuiListItemIcon  } from '@mui/material';
+import { Box, Collapse, List, ListItemText, ListItemButton as MuiListItemButton, ListItemIcon as MuiListItemIcon, Tooltip  } from '@mui/material';
 
 // Local Components & Contexts
 import { useTranslations, useDrawer } from '@/contexts/AppContext';
@@ -24,6 +24,9 @@ export const ListItemButton = styled(MuiListItemButton, {
 })<{ isActive?: boolean, isDrawerOpen?: boolean }>(({ theme, isActive, isDrawerOpen }) => ({
     paddingTop: theme.spacing(0.5),
     paddingBottom: theme.spacing(0.5),
+    '&:hover': {
+        backgroundColor: 'transparent',
+    },
     // Level 2 base styles
     '&.lv2': {
         paddingLeft: theme.spacing(2),
@@ -38,12 +41,30 @@ export const ListItemButton = styled(MuiListItemButton, {
         background: isActive ? theme.palette.gradient.blue : 'transparent',
         color: isActive ? theme.palette.primary.contrastText : 'inherit',
         borderRadius: isActive ? theme.shape.borderRadius : 0,
+        transition: theme.transitions.create(['background', 'color'], {
+            duration: theme.transitions.duration.short,
+        }),
+    },
+    
+    // Hover styles
+    '&:hover .real-btn': {
+        background: isActive ? theme.palette.gradient.blue : theme.palette.background.lightblue,
+        boxShadow: isActive ? 'none' : '0px 2px 16px 2px rgba(0, 0, 0, 0.1)',
+        color: isActive ? theme.palette.primary.contrastText : 'inherit',
+        borderRadius: theme.shape.borderRadius,
+    },
+    
+    '&:hover .MuiListItemIcon-root': {
+        color: isActive ? theme.palette.primary.contrastText : 'black',
     },
     
     // Icon styles
     '& .MuiListItemIcon-root': {
         marginRight: isDrawerOpen ? theme.spacing(1) : 0,
         color: (isActive) ? theme.palette.primary.contrastText : 'black',
+        transition: theme.transitions.create('color', {
+            duration: theme.transitions.duration.short,
+        }),
     },
 }));
 
@@ -173,17 +194,47 @@ export function NavigationListItem({
     ) : primary;
   }, [primary, isComingSoon, t, mounted]);
   
+  const tooltipTitle = typeof displayText === 'string' ? displayText : primary;
+  
   return (
-    <ListItemButton
-        className={`lv${level}`}
-        isActive={isPathActive}
-        isDrawerOpen={isDrawerOpen}
-        onClick={() => onClick?.(path)}
+    <Tooltip 
+      title={tooltipTitle} 
+      placement="right" 
+      disableHoverListener={isDrawerOpen}
+      slotProps={{
+        tooltip: {
+          sx: {
+            backgroundColor: '#ffffff',
+            color: theme.palette.text.primary,
+            fontSize: '1rem',
+            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.15)',
+            padding: '5px 12px',
+            border: '1px solid ' + theme.palette.divider,
+          }
+        },
+        popper: {
+          modifiers: [
+            {
+              name: 'offset',
+              options: {
+                offset: [0, -20],
+              },
+            },
+          ],
+        },
+      }}
     >
-        <Box component="div" className="flex justify-center items-center real-btn">
-            <ListItemIcon>{icon}</ListItemIcon>
-            { isDrawerOpen && <ListItemText primary={displayText} /> }
-        </Box>
-    </ListItemButton>
+      <ListItemButton
+          className={`lv${level}`}
+          isActive={isPathActive}
+          isDrawerOpen={isDrawerOpen}
+          onClick={() => onClick?.(path)}
+      >
+          <Box component="div" className="flex justify-center items-center real-btn">
+              <ListItemIcon>{icon}</ListItemIcon>
+              { isDrawerOpen && <ListItemText primary={displayText} /> }
+          </Box>
+      </ListItemButton>
+    </Tooltip>
   );
 }

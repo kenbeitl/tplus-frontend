@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { useSession, signIn } from 'next-auth/react';
 
 import theme from '@/theme/theme';
 import { Box, Card, Container, Paper, Typography, CircularProgress, Grid, styled } from '@mui/material';
@@ -53,24 +53,14 @@ export default function LoginClient() {
         if (status === 'authenticated' && session) {
             console.log('Session authenticated, redirecting to dashboard');
             router.push('/dashboard');
+        } else if (status === 'unauthenticated') {
+            // Immediately redirect to Keycloak SSO
+            signIn('keycloak', { callbackUrl: '/dashboard' });
         }
     }, [session, status, router]);
 
-    // Show loading screen while checking authentication
-    if (status === 'loading' || status === 'authenticated') {
-        return (
-            <Container 
-                maxWidth="md"
-                className="flex items-center justify-center min-h-screen">
-                <Box className="text-center">
-                    <CircularProgress />
-                    <Typography variant="body2" sx={{ mt: 2 }}>
-                        {status === 'loading' ? t('common.loading') : subSlot(t('common.redirectingTo'), '{page}', t('nav.dashboard'))}
-                    </Typography>
-                </Box>
-            </Container>
-        );
-    }
+    // Return null for seamless redirect - no loading screen
+    return null;
 
     return (
         <Grid container spacing={6} sx={{ alignItems: 'center', minHeight: '100vh', padding: '40px 20px' }}>
