@@ -1,11 +1,20 @@
-import { Metadata } from "next";
-import LoginClient from "./login/LoginClient";
+'use client';
 
-export const metadata: Metadata = {
-  title: "Login | T+",
-  description: "Secure login portal for TPlus application",
-};
+import { useEffect } from 'react';
+import { useSession, signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export default function RootLogin() {
-  return <LoginClient />;
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === 'authenticated' && session) {
+      router.push('/dashboard');
+    } else if (status === 'unauthenticated') {
+      signIn('keycloak', { callbackUrl: '/dashboard' });
+    }
+  }, [session, status, router]);
+
+  return null;
 }
