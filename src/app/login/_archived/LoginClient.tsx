@@ -1,52 +1,53 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+// import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useSession, signIn } from 'next-auth/react';
 
-import theme from '@/theme/theme';
-import { Box, Card, Container, Paper, Typography, CircularProgress, Grid, styled } from '@mui/material';
-import Logo from '@/assets/images/Logo';
-import { useTranslations } from '@/contexts/AppContext';
-import { getSVGIcon, subSlot, toHyphenCase, toPascalCase } from '@/helpers/utils';
-import { TabContext } from '@mui/lab';
-import { Tab, TabList, TabPanel as MuiTabPanel } from '@/components/ui/CustomStyled';
-import { LoginTab } from './components/LoginTab';
-import { SignUpTab } from './components/SignUpTab';
-import { useFadeInAnimation } from '@/hooks/useFadeInAnimation';
+// import theme from '@/theme/theme';
+// import { Box, Card, Container, Paper, Typography, CircularProgress, Grid, styled } from '@mui/material';
+// import Logo from '@/assets/images/Logo';
+// import { useTranslations } from '@/contexts/AppContext';
+// import { getSVGIcon, subSlot, toHyphenCase, toPascalCase } from '@/helpers/utils';
+// import { TabContext } from '@mui/lab';
+// import { Tab, TabList, TabPanel as MuiTabPanel } from '@/components/ui/CustomStyled';
+// import { LoginTab } from './components/LoginTab';
+// import { SignUpTab } from './components/SignUpTab';
+// import { useFadeInAnimation } from '@/hooks/useFadeInAnimation';
 
-const TabPanel = styled(MuiTabPanel)({
-    padding: '40px 24px 32px 24px',
-    width: '100%'
-});
+// const TabPanel = styled(MuiTabPanel)({
+//     padding: '40px 24px 32px 24px',
+//     width: '100%'
+// });
 
 export default function LoginClient() {
-    const t = useTranslations();
-    const pathname = usePathname();
+    // const t = useTranslations();
+    // const pathname = usePathname();
     const { data: session, status } = useSession();
     const router = useRouter();
-    const [value, setValue] = React.useState(toPascalCase(pathname.slice(1)) || 'login');
-    const featuresRef = useFadeInAnimation<HTMLDivElement>({
-        direction: 'left',
-        distance: 50,
-        duration: 0.4,
-        stagger: 0.2,
-        ease: 'power2.out',
-        enabled: status !== 'loading' && status !== 'authenticated'
-    });
-    const formCard = useFadeInAnimation<HTMLDivElement>({
-        direction: 'right',
-        distance: 50,
-        duration: 0.4,
-        stagger: 0.2,
-        ease: 'power2.out',
-        enabled: status !== 'loading' && status !== 'authenticated'
-    });
+    // const [value, setValue] = React.useState(toPascalCase(pathname.slice(1)) || 'login');
+    // const featuresRef = useFadeInAnimation<HTMLDivElement>({
+    //     direction: 'left',
+    //     distance: 50,
+    //     duration: 0.4,
+    //     stagger: 0.2,
+    //     ease: 'power2.out',
+    //     enabled: status !== 'loading' && status !== 'authenticated'
+    // });
+    // const formCard = useFadeInAnimation<HTMLDivElement>({
+    //     direction: 'right',
+    //     distance: 50,
+    //     duration: 0.4,
+    //     stagger: 0.2,
+    //     ease: 'power2.out',
+    //     enabled: status !== 'loading' && status !== 'authenticated'
+    // });
     
-    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-        setValue(newValue);
-        router.push(`/${toHyphenCase(newValue)}`);
-    }
+    // const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    //     setValue(newValue);
+    //     router.push(`/${toHyphenCase(newValue)}`);
+    // }
 
     // Check if user is already logged in
     useEffect(() => {
@@ -62,6 +63,8 @@ export default function LoginClient() {
     // Return null for seamless redirect - no loading screen
     return null;
 
+    // Unused - keeping for reference if SSO is disabled later
+    /*
     return (
         <Grid container spacing={6} sx={{ alignItems: 'center', minHeight: '100vh', padding: '40px 20px' }}>
             <Grid size={{xs: 12, md: 7}}>
@@ -120,4 +123,5 @@ export default function LoginClient() {
             </Grid>            
         </Grid>
     )
+    */
 }
