@@ -107,12 +107,19 @@ export function DropdownListItem({
     }
   }, [storageKey]);
 
-  // Save dropdown state to localStorage when it changes
+  // Save dropdown state to localStorage when it changes (only when drawer is open)
   React.useEffect(() => {
-    if (mounted) {
+    if (mounted && isDrawerOpen) {
       localStorage.setItem(storageKey, open.toString());
     }
-  }, [open, mounted, storageKey]);
+  }, [open, mounted, storageKey, isDrawerOpen]);
+
+  // Force expand when drawer is collapsed
+  React.useEffect(() => {
+    if (!isDrawerOpen) {
+      setOpen(true);
+    }
+  }, [isDrawerOpen]);
 
   const handleClick = () => {
     setOpen(!open);
