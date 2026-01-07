@@ -57,16 +57,16 @@ export default function FileDropZone({
       <Upload size={40} color={isDragging ? theme.palette.text.blue : theme.palette.text.secondary} />
       
       {file ? (
-        <Typography variant="body2" component="p" sx={{ mt: 2, mb: 1, color: 'success.main', fontWeight: 600 }}>
+        <Typography variant="body2" component="p" className="mt-2 mb-1 font-semibold" sx={{ color: 'success.main' }}>
           ✓ {file.name}
         </Typography>
       ) : (
-        <Typography variant="body2" component="p" sx={{ mt: 2, mb: 1 }}>
+        <Typography variant="body2" component="p" className="mt-2 mb-1">
           {placeholder}
         </Typography>
       )}
       
-      <Typography variant="caption" component="p" sx={{ mb: 1 }}>
+      <Typography variant="caption" component="p" className="mb-1">
         {formats}
       </Typography>
       

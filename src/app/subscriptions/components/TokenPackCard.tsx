@@ -38,7 +38,7 @@ export default function TokenPackCard({ pack }: TokenPackCardProps) {
             <Paper variant="outlined" className="p-6 flex flex-col items-center h-full">
                 {getSVGIcon('coins', 24, theme.palette.text.gold)}
                 <Spacer height={10} />
-                <Typography variant="h6" component="div" sx={{ fontWeight: 700 }}>
+                <Typography variant="h6" component="div" className="font-bold">
                     {amount}
                 </Typography>
                 {bonus && bonus > 0 && (
@@ -46,12 +46,12 @@ export default function TokenPackCard({ pack }: TokenPackCardProps) {
                         variant="caption" 
                         component="div" 
                         color={theme.palette.text.lightGreen} 
-                        sx={{ mb: 1 }}
+                        className="mb-1"
                     >
                         {subSlot(t('pages.subscriptions.subscriptionPlans.extraBonus'), '{extra}', bonus)}
                     </Typography>
                 )}
-                <Typography variant="h5" component="div" sx={{ fontWeight: 700 }}>
+                <Typography variant="h5" component="div" className="font-bold">
                     ${price}
                 </Typography>
                 <Spacer height={10} />

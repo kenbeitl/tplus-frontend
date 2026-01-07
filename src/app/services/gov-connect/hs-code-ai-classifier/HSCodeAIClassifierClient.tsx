@@ -52,18 +52,18 @@ export default function HSCodeAIClassifierClient() {
                 href="/services/gov-connect"
             >{ translations.govConnect.backToGovConnect }</Button>
             <Spacer height={20} />
-            <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ translations.hsCodeAIClassifier.title }</Typography>
+            <Typography className="font-bold mb-4" variant="h4" component="h1">{ translations.hsCodeAIClassifier.title }</Typography>
             <Typography variant="body2" component="p">{ translations.hsCodeAIClassifier.context }</Typography>
             <Spacer height={20} />
             <Box component="div" className="max-w-3xl">
                 <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
                     <Box className="flex items-center mb-2">
                         <Box component="span" sx={{ mr: 1 }}>{ getSVGIcon('search', 20) }</Box>
-                        <Typography variant="body1" component="h2" sx={{ fontWeight: 600 }}>{ translations.productClassification.title }</Typography>
+                        <Typography variant="body1" component="h2" className="font-semibold">{ translations.productClassification.title }</Typography>
                     </Box>
                     <Typography variant="body2" component="p" sx={{ marginBottom: 2 }}>{ translations.productClassification.context }</Typography>
                     <Spacer height={10} />
-                    <Typography variant="body1" component="p" sx={{ fontWeight: 600 }}>{ translations.productClassification.selectHSCodeType }</Typography>
+                    <Typography variant="body1" component="p" className="font-semibold">{ translations.productClassification.selectHSCodeType }</Typography>
                     <FormControl>
                         <RadioGroup
                             defaultValue={ translations.productClassification.hkHSCode }

@@ -23,7 +23,7 @@ export default function SettingsClient() {
 
     return (
         <>
-            <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">
+            <Typography className="font-bold mb-1" variant="h4" component="h1">
                 {t("pages.settings.title")}
             </Typography>
             <Spacer height={20} />

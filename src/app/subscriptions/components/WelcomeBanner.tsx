@@ -48,7 +48,7 @@ export default function WelcomeBanner({ expiryDate, remainingDays }: WelcomeBann
                             <Box component="div" className="shrink-0">
                                 {getSVGIcon('calendar', 16, theme.palette.text.purple)}
                             </Box>
-                            <Typography variant="subtitle1" sx={{ fontWeight: 700 }} color={theme.palette.text.darkPurple}>
+                            <Typography variant="subtitle1" className="font-bold" color={theme.palette.text.darkPurple}>
                                 {subSlot(translations.welcome.daysRemainingSlot, '{days}', remainingDays)}
                             </Typography>
                         </Box>

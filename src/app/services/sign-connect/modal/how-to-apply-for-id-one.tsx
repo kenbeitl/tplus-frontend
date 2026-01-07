@@ -19,9 +19,10 @@ export default function ModalHowToApplyForIDOne({ open, onClose }: ModalProps) {
       open={open}
       onClose={onClose}
       maxWidth={768}
+      bgcolor="#F8FAFC"
     >
-      <Typography variant="h5" component="h2" sx={{ mb: 1 }}>{ t('pages.signConnect.modal.howToApplyForIdOne.title') }</Typography>
-      <Typography variant="body2" component="p">{ t('pages.signConnect.modal.howToApplyForIdOne.context') }</Typography>
+      <Typography variant="h3" component="h2" className="mb-4">{ t('pages.signConnect.modal.howToApplyForIdOne.title') }</Typography>
+      <Typography variant="body1" component="p" color={theme.palette.text.secondary}>{ t('pages.signConnect.modal.howToApplyForIdOne.context') }</Typography>
       <Spacer height={20} />
       <Card 
         variant="outlined" 
@@ -30,14 +31,14 @@ export default function ModalHowToApplyForIDOne({ open, onClose }: ModalProps) {
         <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: theme.palette.text.darkBlue, mb: 1 }}>{ t('pages.signConnect.modal.howToApplyForIdOne.eligibility.title') }</Typography>
         <List sx={{ color: theme.palette.text.blue, fontSize: 12, py: 0, pl: 2, listStyleType: 'disc', '& .MuiListItem-root': { display: 'list-item' } }}>
           {Array.isArray(ELIGIBILITY_REQUIREMENTS) && ELIGIBILITY_REQUIREMENTS.map((requirement: string, i: number) => (
-            <ListItem key={`requirement-${i}`} sx={{ py: 0 }}>
+            <ListItem key={`requirement-${i}`} className="!py-0">
               <ListItemText primary={requirement} />
             </ListItem>
           ))}
         </List>
       </Card>
       <Spacer height={20} />
-      <Typography variant="h6" component="h3" sx={{ mb: 1 }}>{ t('pages.signConnect.modal.howToApplyForIdOne.applicationSteps.title') }</Typography>
+      <Typography variant="h6" component="h3" className="mb-4">{ t('pages.signConnect.modal.howToApplyForIdOne.applicationSteps.title') }</Typography>
       {Array.isArray(APPLICATION_STEPS) && APPLICATION_STEPS.map((step, s) => (
         <Box className="flex items-top mb-3" key={`step-${s}`}>
           <StyledIcon 

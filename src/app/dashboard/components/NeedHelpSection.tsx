@@ -26,7 +26,7 @@ export default function NeedHelpSection({
                     {title}
                 </Typography>
             </Box>
-            <Typography variant="body1" component="p" sx={{ mt: 2 }}>
+            <Typography variant="body1" component="p" className="mt-8">
                 {context}
             </Typography>
             <Spacer height={20} />

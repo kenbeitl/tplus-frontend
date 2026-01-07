@@ -10,7 +10,7 @@ interface ChecklistProps {
 
 export default function Checklist({ items }: ChecklistProps) {
     return (
-        <List sx={{ flexGrow: 1 }}>
+        <List className="grow">
             {items.map((text, index) => (
                 <ListItem key={index}>
                     <ListItemIcon>

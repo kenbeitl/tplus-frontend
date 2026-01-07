@@ -60,14 +60,14 @@ export default function ProviderModal({ open, onClose, type, emoji }: ModalProps
             <Card variant="outlined" className="p-4 h-full">
               <Box className="flex items-center mb-4">
                 <Emoji symbol={emoji} size={40} />
-                <Typography variant="h6" component="h3" sx={{ ml: 2 }}>{ provider.name }</Typography>
+                <Typography variant="h6" component="h3" className="ml-8">{ provider.name }</Typography>
               </Box>
               <Typography variant="h6" component="p" sx={{ color: 'text.secondary' }}>{ provider.context }</Typography>
               <Spacer height={20} />
               <Typography variant="subtitle1" component="p">{ t('pages.payConnect.keyFeatures') }</Typography>
               <List sx={{ color: 'text.primary', fontSize: 12, py: 0, pl: 2, listStyleType: 'disc', '& .MuiListItem-root': { display: 'list-item' } }}>
                 {provider.features?.map((feature: string, f_idx: number) => (
-                  <ListItem key={`features-${f_idx}`} sx={{ py: 0 }}>
+                  <ListItem key={`features-${f_idx}`} className="!py-0">
                     <ListItemText primary={feature} />
                   </ListItem>
                 ))}

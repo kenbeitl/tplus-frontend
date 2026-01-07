@@ -40,13 +40,13 @@ export default function Carousel({ slideNum }: { slideNum: number }) {
                     }}
                 >
                     <Box className="flex items-center mb-5">
-                        <Emoji symbol="🍀" size={40} sx={{ mr: 1 }} />
+                        <Emoji symbol="🍀" size={40} className="mr-1" />
                         <Tag label="Business" variant="outlined" className="text-base!" />
                     </Box>
-                    <Typography variant="h4" component="h2" color="white" sx={{ mb: 2 }}>Single Submission for Dual Declaration Service</Typography>
-                    <Typography variant="body1" component="p" color="white" sx={{ mb: 3 }}>Streamline your customs declarations with our intelligent dual submission system</Typography>
+                    <Typography variant="h4" component="h2" color="white" className="mb-2">Single Submission for Dual Declaration Service</Typography>
+                    <Typography variant="body1" component="p" color="white" className="mb-3">Streamline your customs declarations with our intelligent dual submission system</Typography>
                     <Button
-                        sx={{ width: 'auto' }} 
+                        className="w-auto" 
                         variant="gradient" 
                         color="blue"
                     >Apply Now</Button>

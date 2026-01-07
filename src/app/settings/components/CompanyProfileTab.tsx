@@ -100,7 +100,7 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
                 </Box>
             </Card>
 
-            <Divider sx={{ my: 3 }} />
+            <Divider className="!my-12" />
 
             <Grid container spacing={2}>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -171,11 +171,11 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
 
             <Spacer height={20} />
 
-            <Typography variant="subtitle1" component="h2" sx={{ mb: 2 }}>
+            <Typography variant="subtitle1" component="h2" className="mb-8">
                 {t("pages.settings.companyProfile.businessIdentifiers")}
             </Typography>
             {companyForm.businessIdentifierList.map((identifier, index) => (
-                <Paper key={`bizId-${index}`} variant="outlined" className="p-3" sx={{ mb: 2 }}>
+                <Paper key={`bizId-${index}`} variant="outlined" className="p-3 mb-8">
                     <Box component="div" className="flex flex-row items-center gap-2">
                         <Box component="div" className="flex flex-col sm:flex-row items-center gap-2 w-full">
                             <FormSelect

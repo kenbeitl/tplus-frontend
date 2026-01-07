@@ -11,6 +11,7 @@ interface InfoModalProps {
   subtitle?: string;
   children: ReactNode;
   maxWidth?: number;
+  bgcolor?: string;
 }
 
 export default function InfoModal({
@@ -20,16 +21,17 @@ export default function InfoModal({
   subtitle,
   children,
   maxWidth = 768,
+  bgcolor,
 }: InfoModalProps) {
   return (
-    <Modal open={open} onClose={onClose} maxWidth={maxWidth}>
+    <Modal open={open} onClose={onClose} maxWidth={maxWidth} sx={{ backgroundColor: bgcolor }}>
         {title && (
-            <Typography variant="h6" component="h2" sx={{ fontSize: '18px', mb: 1 }}>
+            <Typography variant="h6" component="h2" className="mb-1" sx={{ fontSize: '18px' }}>
                 {title}
             </Typography>
         )}
         {subtitle && (
-            <Typography variant="body2" color="text.secondary" sx={{ fontSize: '14px', mb: 3 }}>
+            <Typography variant="body2" color="text.secondary" className="mb-3" sx={{ fontSize: '14px' }}>
                 {subtitle}
             </Typography>
         )}

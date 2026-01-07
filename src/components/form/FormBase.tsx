@@ -94,7 +94,7 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
   // Error state
   if (!data) {
     return (
-      <Alert severity="error" sx={{ mb: 2 }}>
+      <Alert severity="error" className="mb-2">
         Form configuration not found or failed to load.
       </Alert>
     );
@@ -104,7 +104,7 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
     <>
       {/* Form title and description */}
       {data.formTitle && (
-        <Typography variant="h5" component="h2" sx={{ mb: 1 }}>
+        <Typography variant="h5" component="h2" className="mb-1">
           {data.formTitle}
         </Typography>
       )}
@@ -112,7 +112,7 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
       {data.description && (
         <Typography 
           variant="body2" 
-          sx={{ mb: 3 }}
+          className="mb-3"
           dangerouslySetInnerHTML={{ __html: data.description }}
         />
       )}
@@ -227,7 +227,7 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
 
         {/* Privacy text - matching rolled back form */}
         <Typography 
-          sx={{ mt: 2 }} 
+          className="mt-2"
           variant="body2" 
           component="p"
         >

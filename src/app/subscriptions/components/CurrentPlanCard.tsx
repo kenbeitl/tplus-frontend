@@ -53,7 +53,7 @@ export default function CurrentPlanCard({ expiryDate, remainingDays }: CurrentPl
                     <Typography variant="caption" component="p" color={theme.palette.text.primary}>
                         {translations.currentPlanInfo.trialEnds}
                     </Typography>
-                    <Typography variant="caption" component="p" color={theme.palette.text.primary} sx={{ fontWeight: 700 }}>
+                    <Typography variant="caption" component="p" color={theme.palette.text.primary} className="font-bold">
                         {expiryDateString}
                     </Typography>
                 </Box>
@@ -61,7 +61,7 @@ export default function CurrentPlanCard({ expiryDate, remainingDays }: CurrentPl
                     <Typography variant="caption" component="p" color={theme.palette.text.purple}>
                         {translations.currentPlanInfo.daysRemaining}
                     </Typography>
-                    <Typography variant="caption" component="p" color={theme.palette.text.purple} sx={{ fontWeight: 700 }}>
+                    <Typography variant="caption" component="p" color={theme.palette.text.purple} className="font-bold">
                         {subSlot(t('common.days'), '{days}', remainingDays)}
                     </Typography>
                 </Box>

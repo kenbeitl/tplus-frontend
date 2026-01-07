@@ -83,7 +83,7 @@ export default function SafeConnectClient() {
   return (
     <Box component="div" className="relative">
       <Box component="div" className="flex items-baseline justify-between">
-        <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.safeConnect.title") }</Typography>
+        <Typography className="font-bold mb-4" variant="h4" component="h1">{ t("pages.safeConnect.title") }</Typography>
         <Tag label={t('common.servicesAvailable')} startIcon={ getSVGIcon('circle-check-big') } variant="green" />
       </Box>
       
@@ -123,7 +123,7 @@ export default function SafeConnectClient() {
                       className="mr-3 sm:max-md:mb-3 shrink-0"
                     />
                     <Box component="div">
-                      <Typography variant="body1" component="h4" sx={{ fontWeight: 700 }}>{translations.tGuardApp.name}</Typography>
+                      <Typography variant="body1" component="h4" className="font-bold">{translations.tGuardApp.name}</Typography>
                       <Typography variant="caption" component="p">{translations.tGuardApp.description}</Typography>
                       <Box component="div" className="flex flex-col-reverse md:flex-row gap-2 mt-3">
                         <Tag label={translations.tGuardApp.freeDownload} variant="green" />
@@ -139,7 +139,7 @@ export default function SafeConnectClient() {
                     variant="contained" 
                     color="primary" 
                     startIcon={ getSVGIcon('download', 16) } 
-                    sx={{ width: "100%" }} onClick={() => window.open(translations.tGuardApp.link, "_blank")}
+                    className="w-full" onClick={() => window.open(translations.tGuardApp.link, "_blank")}
                   >
                     {translations.tGuardApp.buttonText}
                   </Button>
@@ -159,7 +159,7 @@ export default function SafeConnectClient() {
               </Card>
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
-              <Card variant="outlined" sx={{ px: 3, pt: 3, pb: 6, height: '100%' }}>
+              <Card variant="outlined" className="px-12 pt-12 pb-24 h-full">
                 <Box component="div" className="flex items-center mb-3">
                   <Box component="span" className="mr-2">{ getSVGIcon('eye', 16) }</Box>
                   <Typography variant="body1" component="h4" className="font-bold!">{translations.darkWeb.title}</Typography>
@@ -193,12 +193,12 @@ export default function SafeConnectClient() {
                       variant="contained" 
                       color="primary" 
                       startIcon={getSVGIcon('search', 16)} 
-                      sx={{ width: "100%", mt: 1 }} onClick={handleDarkWebCheck} disabled={!darkWebEmail || !darkWebEmail.includes('@')}
+                      className="w-full mt-4" onClick={handleDarkWebCheck} disabled={!darkWebEmail || !darkWebEmail.includes('@')}
                     >
                       {translations.darkWeb.emailBreachCheck.buttonText}
                     </Button>
                   </div>
-                  <Typography variant="caption" component="p" sx={{ mt: 1 }}>{translations.darkWeb.emailBreachCheck.remarks}</Typography>
+                  <Typography variant="caption" component="p" className="mt-4">{translations.darkWeb.emailBreachCheck.remarks}</Typography>
                   <Spacer height={20} />
                   {darkWebResult && (
                     <>
@@ -261,7 +261,7 @@ export default function SafeConnectClient() {
                     <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: theme.palette.text.darkBlue, mb: 1 }}>{translations.darkWebEligibility.title}</Typography>
                     <List sx={{ color: theme.palette.text.blue, fontSize: 12, py: 0, pl: 2, listStyleType: 'disc', '& .MuiListItem-root': { display: 'list-item' } }}>
                       {translations.darkWebFeatures.map((features: string, i: number) => (
-                        <ListItem key={`features-${i}`} sx={{ py: 0 }}>
+                        <ListItem key={`features-${i}`} className="!py-0">
                           <ListItemText primary={features} />
                         </ListItem>
                       ))}
@@ -306,7 +306,7 @@ export default function SafeConnectClient() {
                 <Card variant="outlined" className="p-5 bg-blue-50! border-blue-200!">
                   <Box component="div" className="flex">
                     { getSVGIcon('mail', 24, '#2563EB') }
-                    <Box sx={{ ml: 1.5 }}>
+                    <Box className="ml-6">
                       <Typography variant="subtitle1" component="p" color={theme.palette.text.darkBlue} sx={{ fontWeight: 700 }}>
                         {translations.webVulnerability.reportsViaEmail.title}
                       </Typography>
@@ -342,11 +342,11 @@ export default function SafeConnectClient() {
                         </Box>
                       </Box>
                     </Box>
-                    <Typography variant="caption" component="p" sx={{ mb: 3 }}>{translations.networkBoxForSMEs.body}</Typography>
-                    <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700 }}>{translations.networkBoxForSMEs.provider.title}</Typography>
-                    <Typography variant="body2" component="p" sx={{ mb: 3 }}>{translations.networkBoxForSMEs.provider.name}</Typography>
-                    <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700 }}>{translations.networkBoxForSMEs.startingAt.title}</Typography>
-                    <Typography variant="body2" component="p" sx={{ mb: 3 }}>{translations.networkBoxForSMEs.startingAt.price}</Typography>
+                    <Typography variant="caption" component="p" className="mb-12">{translations.networkBoxForSMEs.body}</Typography>
+                    <Typography variant="subtitle1" component="p" className="font-bold">{translations.networkBoxForSMEs.provider.title}</Typography>
+                    <Typography variant="body2" component="p" className="mb-12">{translations.networkBoxForSMEs.provider.name}</Typography>
+                    <Typography variant="subtitle1" component="p" className="font-bold">{translations.networkBoxForSMEs.startingAt.title}</Typography>
+                    <Typography variant="body2" component="p" className="mb-12">{translations.networkBoxForSMEs.startingAt.price}</Typography>
                     <Box component="div" className="flex justify-end mb-2">
                       <ButtonWithFormModal
                         buttonProps={{
@@ -375,7 +375,7 @@ export default function SafeConnectClient() {
                   <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: theme.palette.text.darkBlue, mb: 1 }}>{translations.whyTPlusSecurityPartners.title}</Typography>
                   <List sx={{ color: theme.palette.text.darkBlue, fontSize: 12, py: 0, pl: 2, listStyleType: 'disc', '& .MuiListItem-root': { display: 'list-item' } }}>
                     {translations.securityPartnerReasons.map((reason: string, i: number) => (
-                      <ListItem key={`reason-${i}`} sx={{ py: 0 }}>
+                      <ListItem key={`reason-${i}`} className="!py-0">
                         <ListItemText primary={reason} />
                       </ListItem>
                     ))}

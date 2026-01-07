@@ -47,10 +47,10 @@ export default function SubscriptionPlanCard({
             <Card variant="outlined" className={`p-4 h-full ${plan.cardStyle}`}>
                 <Box component="div" className="flex flex-col items-center gap-2">
                     {getSVGIcon(plan.icon, 30, theme.palette.text[plan.theme as keyof typeof theme.palette.text])}
-                    <Typography variant="h6" component="div" color={theme.palette.text.primary} sx={{ fontWeight: 700 }}>
+                    <Typography variant="h6" component="div" color={theme.palette.text.primary} className="font-bold">
                         {plan.name}
                     </Typography>
-                    <Typography variant="h4" component="div" color={theme.palette.text.primary} sx={{ fontWeight: 700 }}>
+                    <Typography variant="h4" component="div" color={theme.palette.text.primary} className="font-bold">
                         {getLocalCurrency(isYearly ? plan.bill.yearly / 12 : plan.bill.monthly)}
                         <Typography 
                             variant="body2" 

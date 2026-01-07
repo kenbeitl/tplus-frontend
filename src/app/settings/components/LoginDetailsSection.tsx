@@ -19,7 +19,7 @@ export default function LoginDetailsSection({ userForm, formConfig, onUpdate }: 
 
     return (
         <>
-            <Typography variant="h6" component="h2" sx={{ mb: 3 }}>
+            <Typography variant="h6" component="h2" className="mb-3">
                 {t("pages.settings.userProfile.loginDetails")}
             </Typography>
             <Grid container spacing={2}>

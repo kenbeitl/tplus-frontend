@@ -25,7 +25,7 @@ export default function SignConnectClient() {
 
   return (
     <>
-      <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.signConnect.title") }</Typography>
+      <Typography className="font-bold mb-4" variant="h4" component="h1">{ t("pages.signConnect.title") }</Typography>
       <Typography variant="body2" component="p">{ t("pages.signConnect.context") }</Typography>
       <Spacer height={20} />
       <Paper variant="outlined" className="flex flex-col items-center p-6 h-full">
@@ -41,7 +41,7 @@ export default function SignConnectClient() {
         <Spacer height={30} />
         <Typography variant="body2" component="p">{ t('pages.signConnect.context') }</Typography>
         <Spacer height={30} />
-        <Grid container spacing={2} sx={{ width: '100%' }}>
+        <Grid container spacing={2} className="w-full">
           {Array.isArray(DIGITAL_SIGNING_PLATFORMS) && DIGITAL_SIGNING_PLATFORMS.map((platform, i) => (
             <Grid key={`dsp-${i}`} size={{ xs: 12, sm: 6, md: 4 }}>
               <Card variant="outlined" className={`p-6 h-full flex flex-col items-center ${platform.isActive ? 'border-2! border-blue-300!' : ''}`}>
@@ -54,7 +54,7 @@ export default function SignConnectClient() {
                 <Spacer height={20} />
                 <Typography variant="h6" component="h3">{platform.name}</Typography>
                 <Typography variant="caption" component="p" className="text-center">{platform.context}</Typography>
-                <List sx={{ textAlign: 'left', width: '100%' }}>
+                <List className="text-left w-full">
                     {platform.list.map((point: string, p: number) => (
                       <ListItem key={p}>
                         <ListItemIcon>

@@ -55,7 +55,7 @@ export default function SubscriptionPlansSection({ remainingDays }: Subscription
             <TabContext value={plan}>
                 <Box component="div" className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-15">
                     <Box component="div">
-                        <Typography variant="h6" component="h2" sx={{ fontWeight: 700 }}>
+                        <Typography variant="h6" component="h2" className="font-bold">
                             {translations.subscriptionPlans.title}
                         </Typography>
                         <Typography variant="body2" component="p">
@@ -67,7 +67,7 @@ export default function SubscriptionPlansSection({ remainingDays }: Subscription
                             <Tab label={t("common.monthly")} value="1" disableRipple />
                             <Tab 
                                 label={
-                                    <Box component="span" sx={{ display: 'flex', alignItems: 'center', gap: 1, whiteSpace: 'nowrap' }}>
+                                    <Box component="span" className="flex items-center gap-1 whitespace-nowrap">
                                         {t("common.yearly")}
                                         <Tag 
                                             variant="green" 
@@ -83,7 +83,7 @@ export default function SubscriptionPlansSection({ remainingDays }: Subscription
                 </Box>
                 <Spacer height={20} />
                 {['1', '2'].map((tabValue) => (
-                    <TabPanel key={tabValue} value={tabValue} sx={{ p: 0 }}>
+                    <TabPanel key={tabValue} value={tabValue} className="p-0">
                         <Grid container spacing={2}>
                             {translations.subscriptionPlanList.map((subscriptionPlan, index) => (
                                 <SubscriptionPlanCard
@@ -98,16 +98,16 @@ export default function SubscriptionPlansSection({ remainingDays }: Subscription
                         <Card variant="outlined" className="p-5 bg-blue-50! border-blue-200!">
                             <Box component="div" className="flex items-center gap-2 mb-2">
                                 <Emoji symbol="💡" size={24} />
-                                <Typography variant="h6" component="h2" sx={{ fontWeight: 700 }}>
+                                <Typography variant="h6" component="h2" className="font-bold">
                                     {translations.subscriptionPlansPointToNote?.title}
                                 </Typography>
                             </Box>
-                            <Typography variant="caption" component="p" color={theme.palette.text.darkBlue} sx={{ mb: 1 }}>
+                            <Typography variant="caption" component="p" color={theme.palette.text.darkBlue} className="mb-1">
                                 {translations.subscriptionPlansPointToNote?.body}
                             </Typography>
                             <Box component="div" className="flex items-center gap-2">
                                 <Emoji symbol="💡" size={24} />
-                                <Typography variant="body2" component="p" color={theme.palette.text.blue} sx={{ fontWeight: 700 }}>
+                                <Typography variant="body2" component="p" color={theme.palette.text.blue} className="font-bold">
                                     {subSlot(translations.subscriptionPlansPointToNote?.essential || '', '{days}', remainingDays)}
                                 </Typography>
                             </Box>

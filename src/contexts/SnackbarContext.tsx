@@ -73,7 +73,7 @@ export function SnackbarProvider({ children }: SnackbarProviderProps) {
           onClose={handleClose}
           severity={snackbar?.severity || 'info'}
           variant="filled"
-          sx={{ width: '100%' }}
+          className="w-full"
         >
           {snackbar?.message}
         </Alert>

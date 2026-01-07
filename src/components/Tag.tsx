@@ -18,8 +18,7 @@ const TagRoot = styled('span', {
 })<{ variant?: TagVariant }>(({ theme, variant, color }) => ({
   background: '#FFFFFF',
   display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
+  placeItems: 'center',
   borderRadius: '10px',
   padding: '0 8px',
   fontSize: '0.75rem',

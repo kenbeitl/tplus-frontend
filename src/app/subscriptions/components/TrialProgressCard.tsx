@@ -40,10 +40,10 @@ export default function TrialProgressCard({ usedDays, remainingDays, remainingPe
                 </Typography>
             </Box>
             <Box component="div" className="flex justify-between items-center">
-                <Typography variant="caption" component="p" color={theme.palette.text.purple} sx={{ fontWeight: 700 }}>
+                <Typography variant="caption" component="p" color={theme.palette.text.purple} className="font-bold">
                     {translations.trialProgress.daysLeft}
                 </Typography>
-                <Typography variant="caption" component="p" color={theme.palette.text.purple} sx={{ fontWeight: 700 }}>
+                <Typography variant="caption" component="p" color={theme.palette.text.purple} className="font-bold">
                     {subSlot(t('common.days'), '{days}', remainingDays)}
                 </Typography>
             </Box>

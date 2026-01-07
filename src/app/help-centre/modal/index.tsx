@@ -106,7 +106,7 @@ export default function HelpCentreModal({open, onClose, content}: ModalProps) {
           {Array.isArray(content.cards) && content.cards.map((item, index) => (
             <Grid size={{ xs: 12, sm: 6, md: 6 }} key={item.id || `card-${index}`}>
               <Card variant="outlined" sx={{ height: '100%', p: 0 }}>
-                <CardContent sx={{ p: 3 }}>
+                <CardContent className="p-12">
                   <Typography variant="h6" component="h3">
                     {cardTitle(item)}
                   </Typography>

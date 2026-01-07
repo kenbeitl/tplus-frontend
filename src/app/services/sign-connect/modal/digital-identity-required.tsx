@@ -5,15 +5,24 @@ import Link from 'next/link';
 
 import theme from '@/theme/theme';
 import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import { InfoModal, Spacer, StyledIcon, ActionButton } from '@/components';
+import { InfoModal, Spacer, ActionButton } from '@/components';
 import ModalHowToApplyForIdOne from './how-to-apply-for-id-one';
 import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon } from '@/helpers/utils';
+import iAMSmart from '@/assets/images/iAMSmart';
+import iDOne from '@/assets/images/iDOne';
 
 type ModalProps = {
   open: boolean;
   onClose: () => void;
 };
+
+const LOGO_COMPONENTS = {
+  iDOne: iDOne,
+  iAMSmart: iAMSmart,
+} as const;
+
+type LogoKey = keyof typeof LOGO_COMPONENTS;
 
 export default function ModalDigitalIdentityRequired({ open, onClose }: ModalProps) {
   const t = useTranslations();
@@ -36,27 +45,29 @@ export default function ModalDigitalIdentityRequired({ open, onClose }: ModalPro
       <InfoModal
         open={open}
         onClose={onClose}
-        maxWidth={768}
+        maxWidth={864}
+        bgcolor="#F8FAFC"
       >
         <Box className="flex flex-col">
-          <Typography variant="h4" component="h2" sx={{ mb: 1, alignSelf: 'center' }}>{ modalContent.title }</Typography>
-          <Typography variant="body2" component="p">{ modalContent.context }</Typography>
+          <Typography variant="h3" component="h2" className="mb-4 self-center">{ modalContent.title }</Typography>
+          <Typography variant="body1" component="p" color={theme.palette.text.secondary}>{ modalContent.context }</Typography>
           <Spacer height={20} />
           <Grid container spacing={2}>
-            {Array.isArray(DIGITAL_IDENTITY_OPTIONS) && DIGITAL_IDENTITY_OPTIONS.map((option) => (
+            {Array.isArray(DIGITAL_IDENTITY_OPTIONS) && DIGITAL_IDENTITY_OPTIONS.map((option) => {
+              const LogoComponent = LOGO_COMPONENTS[option.image as LogoKey];
+              return (
               <Grid key={`dio-${option.id}`} size={{ xs: 12, sm: 6 }}>
                 <Card variant="outlined" className="border-2! hover:border-blue-300! transition-colors! flex flex-col items-center p-6 h-full">
-                  <StyledIcon 
-                    icon={getSVGIcon(option.icon)} 
-                    variant={option.iconColor as "green" | "blue"}
-                    size={64}
-                    square
-                  />
+                  {LogoComponent && (
+                    <Box className="w-32 h-32 flex place-items-center">
+                      <LogoComponent />
+                    </Box>
+                  )}
                   <Spacer height={10} />
                   <Typography variant="h5" component="h4">{option.name}</Typography>
                   <Typography variant="body2" component="p">{option.description}</Typography>
                   <Spacer height={10} />
-                  <List sx={{ flexGrow: 1 }}>
+                  <List className="grow">
                     {option.list.map((point: string, p: number) => (
                       <ListItem key={`point-${p}`}>
                         <ListItemIcon>
@@ -73,7 +84,8 @@ export default function ModalDigitalIdentityRequired({ open, onClose }: ModalPro
                   />
                 </Card>
               </Grid>
-            ))}
+              );
+            })}
           </Grid>
           <Spacer height={20} />
           <Box component="div" className="flex flex-col sm:flex-row justify-center gap-4">

@@ -41,7 +41,7 @@ export default function BizConnectClient() {
     return (
         <>
             <Box component="div" className="flex items-start gap-2">
-                <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.bizConnect.title") }</Typography>
+                <Typography className="font-bold mb-4" variant="h4" component="h1">{ t("pages.bizConnect.title") }</Typography>
                 <Tag variant="orange" label={t('common.comingSoon')} />
             </Box>
             <Typography variant="body2" component="p">{ t("pages.bizConnect.context") }</Typography>
@@ -50,7 +50,7 @@ export default function BizConnectClient() {
                 <Box component="div" className="flex flex-col md:flex-row items-top justify-between gap-8">
                     <Box component="div">
                         <Box component="div" className="flex items-center">
-                            <Box component="span" sx={{ mr: 1 }}>{ getSVGIcon('sparkles', 24, theme.palette.text.blue) }</Box>
+                            <Box component="span" className="mr-4">{ getSVGIcon('sparkles', 24, theme.palette.text.blue) }</Box>
                             <Typography variant="h4" component="h2" color={theme.palette.text.darkBlue}>{translations.prelaunch.title}</Typography>
                         </Box>
                         <Spacer height={10} />
@@ -85,7 +85,7 @@ export default function BizConnectClient() {
                 </Box>                
             </Card>
             <Spacer height={40} />
-            <Typography variant="h4" component="h2" sx={{ mb: 2 }}>{translations.upcoming.title}</Typography>
+            <Typography variant="h4" component="h2" className="mb-8">{translations.upcoming.title}</Typography>
             <Grid container spacing={2}>
                 {Array.isArray(translations.upcomingFeatures) && translations.upcomingFeatures.map((item, w) => (
                     <Grid key={`whats-comming-${w}`} size={{ xs: 12, sm: 6, md: 4 }}>
@@ -104,8 +104,8 @@ export default function BizConnectClient() {
                                 variant={item.variant as any}
                                 size={48}
                             />
-                            <Typography variant="h6" component="h3" sx={{ mt: 2, mb: 1 }}>{ item.title }</Typography>
-                            <Typography variant="body2" component="p" sx={{ flexGrow: 1 }}>{ item.description }</Typography>
+                            <Typography variant="h6" component="h3" className="mt-8 mb-4">{ item.title }</Typography>
+                            <Typography variant="body2" component="p" className="grow">{ item.description }</Typography>
                             <Spacer height={20} />
                             <List sx={{ flexGrow: 1 }}>
                                 {item.list.map((point) => (
@@ -134,7 +134,7 @@ export default function BizConnectClient() {
                         <Grid size={{ xs: 12, sm: 6, md: 4 }} key={`built-for-your-success-feature-${f}`}>
                             <Box component="div" className="flex items-center gap-4 mb-3">
                                 { getSVGIcon(feature.icon, 24, theme.palette.text.blue) }
-                                <Typography variant="h6" component="h3" sx={{ fontWeight: 700 }}>{feature.title}</Typography>
+                                <Typography variant="h6" component="h3" className="font-bold">{feature.title}</Typography>
                             </Box>
                             <Typography variant="caption" component="p">{feature.description}</Typography>
                         </Grid>
@@ -178,7 +178,7 @@ export default function BizConnectClient() {
                 </Box>
             </Card>
              <Spacer height={40} />
-            <Card variant="outlined" sx={{ p: 3 }}>
+            <Card variant="outlined" className="p-12">
                 <Box component="div" className="flex items-top gap-4">
                     <StyledIcon 
                        variant="amber"
@@ -186,7 +186,7 @@ export default function BizConnectClient() {
                        className="shrink-0"
                     />
                     <Box component="div">
-                        <Typography variant="caption" component="h4" sx={{ fontWeight: 700 }}>{translations.developmentInProgress.title}</Typography>
+                        <Typography variant="caption" component="h4" className="font-bold">{translations.developmentInProgress.title}</Typography>
                         <Typography variant="caption" component="p" className="mt-2">{translations.developmentInProgress.body}</Typography>
                     </Box>
                 </Box>

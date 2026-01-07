@@ -72,7 +72,7 @@ export default function HelpCentreClient() {
               <Box component="div" className="shrink-0">{ getSVGIcon(item.icon, 24) }</Box>
               <Typography variant="h6" component="h2">{item.title}</Typography>
             </Box>
-            <Typography sx={{ mt: 2 }} variant="body2" component="p">
+            <Typography className="mt-8" variant="body2" component="p">
               { item.description }
             </Typography>
           </Card>
@@ -87,7 +87,7 @@ export default function HelpCentreClient() {
               <Typography variant="h6" component="h2">{item.title}</Typography>
             </Box>
             <Spacer height={10} />
-            <Stack spacing={0} sx={{ mt: 0 }}>
+            <Stack spacing={0} className="mt-0">
               {Array.isArray(item.list) && item.list.map((point: {text: string, link: string}, p: number) => (
                 <Button
                   key={`hc-card-${index}-point-${p}`} 
@@ -111,7 +111,7 @@ export default function HelpCentreClient() {
             <Typography variant="h6" component="h2">{ t('pages.helpCentre.stillNeedHelp.title') }</Typography>
           </Box >
           <Spacer height={5} />
-          <Typography sx={{ mt: 0 }} variant="body2" component="p">
+          <Typography className="mt-0" variant="body2" component="p">
             { t('pages.helpCentre.stillNeedHelp.body') }
           </Typography>
           <Spacer height={20} />

@@ -21,7 +21,7 @@ export default function DangerZoneSection({ onDelete }: DangerZoneSectionProps) 
 
     return (
         <>
-            <Typography variant="h6" component="h2" sx={{ mb: 3, color: theme.palette.text.red }}>
+            <Typography variant="h6" component="h2" className="mb-3" sx={{ color: theme.palette.text.red }}>
                 {t("pages.settings.userProfile.dangerZone")}
             </Typography>
             <Card variant="outlined" className="p-3 bg-red-50! border-red-200!">

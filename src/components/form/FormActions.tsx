@@ -20,7 +20,7 @@ export default function FormActions({
   submitType = 'submit',
 }: FormActionsProps) {
   return (
-    <Box sx={{ mt: 3, display: 'flex', gap: 2, justifyContent: 'flex-end' }}>
+    <Box className="mt-3 flex gap-2 justify-end">
       <Button variant="outlined" onClick={onCancel}>
         {cancelLabel}
       </Button>

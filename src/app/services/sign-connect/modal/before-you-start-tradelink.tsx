@@ -22,9 +22,10 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
       open={open}
       onClose={onClose}
       maxWidth={768}
+      bgcolor="#F8FAFC"
     >
-      <Typography variant="h5" component="h2" sx={{ mb: 1 }}>{ t('pages.signConnect.modal.beforeYouStartTradelink.title') }</Typography>
-      <Typography variant="body2" component="p">{ t('pages.signConnect.modal.beforeYouStartTradelink.body') }</Typography>
+      <Typography variant="h3" component="h2" className="mb-4">{ t('pages.signConnect.modal.beforeYouStartTradelink.title') }</Typography>
+      <Typography variant="body1" component="p" color={theme.palette.text.secondary}>{ t('pages.signConnect.modal.beforeYouStartTradelink.body') }</Typography>
       <Spacer height={20} />
       {Array.isArray(TRADELINK_NOTES) && TRADELINK_NOTES.map((note, s) => (
         <Box className="flex items-top mb-3" key={`note-${s}`}>

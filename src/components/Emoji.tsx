@@ -18,8 +18,7 @@ export default function Emoji({ symbol, size = 20, sx, className }: EmojiProps) 
         height: size,
         fontSize: size * 0.75,
         display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        placeItems: 'center',
         ...sx,
       }}
       className={className}

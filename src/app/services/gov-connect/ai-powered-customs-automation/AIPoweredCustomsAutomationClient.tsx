@@ -77,7 +77,7 @@ export default function AIPoweredCustomsAutomationClient() {
                 href="/services/gov-connect"
             >{ translations.govConnect.backToGovConnect }</Button>
             <Spacer height={20} />
-            <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ translations.aiPoweredCustomsAutomation.title }</Typography>
+            <Typography className="font-bold mb-4" variant="h4" component="h1">{ translations.aiPoweredCustomsAutomation.title }</Typography>
             <Typography variant="body2" component="p">{ translations.aiPoweredCustomsAutomation.context }</Typography>
             <Spacer height={20} />
             
@@ -133,7 +133,7 @@ export default function AIPoweredCustomsAutomationClient() {
                             <Box component="span" sx={{ mr: 1}}>{ getSVGIcon('brain', 20) }</Box>
                             <Typography variant="body2" component="p">{ translations.declaration.title }</Typography>
                         </Box>
-                        <Typography variant="body2" component="p" sx={{ mt: 1 }}>{ translations.declaration.context }</Typography>
+                        <Typography variant="body2" component="p" className="mt-4">{ translations.declaration.context }</Typography>
                         <Spacer height={20} />
                         <FormControl
                             fullWidth
@@ -209,7 +209,7 @@ export default function AIPoweredCustomsAutomationClient() {
                                         <Box component="span" sx={{ mr: 2 }}>{ getSVGIcon(doc.icon, 20) }</Box>
                                         <Typography variant="body2" component="p">{doc.title}</Typography>
                                     </Box>
-                                    <Typography variant="body2" component="p" sx={{ mt: 1 }}>{doc.context}</Typography>
+                                    <Typography variant="body2" component="p" className="mt-4">{doc.context}</Typography>
                                     <Spacer height={30} />
                                     <FileDropZone
                                         isDragging={fileDropHook.isDragging}
@@ -253,8 +253,8 @@ export default function AIPoweredCustomsAutomationClient() {
                                 { getSVGIcon('brain', 64, theme.palette.text.blue) }
                                 <Box component="span" className="absolute top-0 left-12">{ getSVGIcon('circle-check-big', 24, theme.palette.text.lightGreen) }</Box>
                             </Box>
-                            <Typography variant="h5" component="h2" sx={{ mt: 3, fontWeight: 700 }}>{ translations.submission.title }</Typography>
-                            <Typography variant="h6" component="p" sx={{ mt: 1, mb: 4, textAlign: 'center' }}>{ translations.submission.context }</Typography>
+                            <Typography variant="h5" component="h2" className="mt-12 font-bold">{ translations.submission.title }</Typography>
+                            <Typography variant="h6" component="p" className="mt-4 mb-16 text-center">{ translations.submission.context }</Typography>
                         </Box>
                         <Paper variant="outlined" className="p-3 bg-blue-50! border-blue-200!">
                             <List dense>

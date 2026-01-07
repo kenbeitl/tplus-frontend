@@ -21,7 +21,7 @@ export default function GovConnectClient() {
     return (
         <Box component="div" className="relative">
             <Box component="div" className="flex items-baseline justify-between">
-            <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.govConnect.title") }</Typography>
+            <Typography className="font-bold mb-4" variant="h4" component="h1">{ t("pages.govConnect.title") }</Typography>
             <Tag label={ t('common.servicesAvailable') } startIcon={ getSVGIcon('circle-check-big') } variant="green" />
             </Box>
             <Typography variant="body2" component="p">{ t("pages.govConnect.context") }</Typography>
@@ -38,11 +38,11 @@ export default function GovConnectClient() {
                                 flexDirection: 'column'
                             }}
                         >
-                            <Box sx={{ display: 'flex', alignItems: 'top', gap: 1 }}>
+                            <Box className="flex items-top gap-1">
                                 {getSVGIcon(service.icon, 24)}
                                 <Typography variant="h6" component="h2">{service.title}</Typography>
                             </Box>
-                            <Typography sx={{ mt: 2 }} variant="body2" component="p">{service.description}</Typography>
+                            <Typography className="mt-8" variant="body2" component="p">{service.description}</Typography>
                             <Checklist items={service.features} />
                             {
                                 service.id === 'govconnect-dual-declaration' 

@@ -40,8 +40,7 @@ interface serviceProps {
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  placeItems: 'center',
   padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
 }));
@@ -244,7 +243,7 @@ export default function AppWrapper({
                     key={localeKey}
                     onClick={() => handleLanguageChange(localeKey as Locale)}
                     selected={locale === localeKey}
-                    sx={{ justifyContent: 'center', px: 1 }}
+                    className="justify-center px-1"
                   >
                     {label}
                   </MenuItem>
@@ -259,7 +258,7 @@ export default function AppWrapper({
                 aria-haspopup="true"
                 onClick={handleUserMenu}
                 color="inherit"
-                sx={{ p: 0, ml: 1 }}
+                className="p-0 ml-1"
               >
                 <StyledIcon 
                   icon={<Box component="span" className="text-base">{ getInitials(user?.name) }</Box>} 
@@ -283,28 +282,28 @@ export default function AppWrapper({
               }}
             >
               { user && 
-                <Box component="div" sx={{ px: 2, py: 1 }}>
-                  <Box component="div"><Typography variant="subtitle1" sx={{ fontWeight: 700 }}>{user?.name}</Typography></Box>
+                <Box component="div" className="px-2 py-1">
+                  <Box component="div"><Typography variant="subtitle1" className="font-bold">{user?.name}</Typography></Box>
                   <Box component="div"><Typography variant="caption">{user?.email}</Typography></Box>
                   <Box component="div"><Typography variant="caption">Demo company</Typography></Box>
                   <Tag variant="white" label="Users" className="!inline-flex" />
                 </Box>
               }
-              <Divider sx={{ m: '0 !important' }} />
+              <Divider className="!m-0" />
               <MenuItem onClick={() => handleNavigation('/settings')}>
-                <ListItemIcon sx={{ minWidth: '24px !important' }}>
+                <ListItemIcon className="!min-w-[24px]">
                   { getSVGIcon('user', 16) }
                 </ListItemIcon>
                 <ListItemText primary={t('common.profile')} />
               </MenuItem>
               <MenuItem onClick={() => handleNavigation('/settings')}>
-                <ListItemIcon sx={{ minWidth: '24px !important' }}>
+                <ListItemIcon className="!min-w-[24px]">
                   { getSVGIcon('settings', 16) }
                 </ListItemIcon>
                 <ListItemText primary={t('nav.settings')} />
               </MenuItem>
-              <Divider sx={{ m: '0 !important' }} />
-              <MenuItem sx={{ justifyContent: 'center', mt: 1 }}>
+              <Divider className="!m-0" />
+              <MenuItem className="justify-center mt-1">
                 <ActionButton
                   variant="gradient"
                   startIcon={getSVGIcon('arrow-right-bracket', 12, 'white')}

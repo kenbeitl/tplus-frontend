@@ -179,7 +179,7 @@ export default function UserProfileTab({ session }: UserProfileTabProps) {
                 onUpdate={handleUpdateProfile}
             />
 
-            <Divider sx={{ my: 3 }} />
+            <Divider className="my-3" />
 
             <LoginDetailsSection
                 userForm={userForm}
@@ -187,7 +187,7 @@ export default function UserProfileTab({ session }: UserProfileTabProps) {
                 onUpdate={handleUpdateLoginDetails}
             />
 
-            <Divider sx={{ my: 3 }} />
+            <Divider className="my-3" />
 
             <DangerZoneSection onDelete={handleDeleteAccount} />
         </Card>

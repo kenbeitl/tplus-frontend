@@ -4,8 +4,7 @@
     "options": [
         {
             "id": "iAMSmart",
-            "icon": "shield",
-            "iconColor": "blue",
+            "image": "iAMSmart",
             "name": "iAM Smart",
             "description": "Digital identity for HKID holders",
             "list": [
@@ -18,8 +17,7 @@
         },
         {
             "id": "iD-One",
-            "icon": "user",
-            "iconColor": "green",
+            "image": "iDOne",
             "name": "iD-One",
             "description": "Digital identity for e-Passport holders",
             "list": [

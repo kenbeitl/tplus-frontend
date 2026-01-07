@@ -57,15 +57,15 @@ export default function AdditionalTokensSection({ remainingDays }: AdditionalTok
                     <Box component="div" className="shrink-0">
                         {getSVGIcon('calendar', 24, theme.palette.text.darkAmber)}
                     </Box>
-                    <Typography variant="h6" component="h2" sx={{ fontWeight: 700 }} color={theme.palette.text.darkAmber}>
+                    <Typography variant="h6" component="h2" className="font-bold" color={theme.palette.text.darkAmber}>
                         {translations.additionalTokensPointToNote?.title}
                     </Typography>
                 </Box>
-                <Typography variant="caption" component="p" color={theme.palette.text.darkAmber} sx={{ mb: 1 }}>
+                <Typography variant="caption" component="p" color={theme.palette.text.darkAmber} className="mb-1">
                     {translations.additionalTokensPointToNote?.body}
                     <strong>{subSlot(t('common.days'), '{days}', remainingDays)}</strong>
                 </Typography>
-                <Link variant="caption" href="/help-centre" underline="hover" sx={{ fontWeight: 700 }}>
+                <Link variant="caption" href="/help-centre" underline="hover" className="font-bold">
                     {translations.additionalTokensPointToNote?.learnMoreAboutTokenPricing}
                 </Link>
             </Card>

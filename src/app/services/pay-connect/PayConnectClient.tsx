@@ -19,7 +19,7 @@ export default function PayConnectClient() {
 
     return (
         <>
-            <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">{ t("pages.payConnect.title") }</Typography>
+            <Typography className="font-bold mb-4" variant="h4" component="h1">{ t("pages.payConnect.title") }</Typography>
             <Typography variant="body2" component="p">{ t("pages.payConnect.context") }</Typography>
             <Spacer height={20} />
             <Tag label={ t('pages.payConnect.sponsoredPartnerOffers') } className="text-base! text-only" startIcon={ getSVGIcon('sparkles', undefined, '#fd9a00') } />
@@ -29,7 +29,7 @@ export default function PayConnectClient() {
             <Grid container spacing={2}>
                 {Array.isArray(DIALOG_CARD) && DIALOG_CARD.map((item, index) => (
                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={`payconnect-card-${index}`}>
-                        <Card variant="outlined" className="p-6 card-hover" sx={{ height: '100%' }}>
+                        <Card variant="outlined" className="p-6 card-hover h-full">
                             <Box className="flex items-center">
                                 <StyledIcon
                                     icon={ getSVGIcon(item.icon) } 
@@ -42,7 +42,7 @@ export default function PayConnectClient() {
                                     <Typography variant="body1" component="h4">{item.title}</Typography>
                                 </Box>
                             </Box>
-                            <Typography sx={{ mt: 2 }} variant="body2" component="p">{item.description}</Typography>
+                            <Typography className="mt-8" variant="body2" component="p">{item.description}</Typography>
                             <Spacer height={20} />
                             <Card variant="outlined" className="p-3 border-2! bg-blue-50! border-blue-200! center-layout">
                                 <StyledIcon 

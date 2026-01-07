@@ -357,7 +357,7 @@ const theme = createTheme({
           props: { variant: 'outlined' },
           style: {
             color: '#666666',
-            borderColor: '#666666',
+            borderColor: '#E0E0E0',
           },
         },
         {

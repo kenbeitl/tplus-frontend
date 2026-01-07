@@ -21,7 +21,7 @@ export default function ProviderDetails({ open, onClose, name, emoji, source }: 
     >
       <Box className="flex items-center mb-2">
         <Emoji symbol={emoji} size={36} className="mr-3" />
-        <Typography variant="h5" component="h2" sx={{ mb: 1 }}>{name}</Typography>
+        <Typography variant="h5" component="h2" className="mb-4">{name}</Typography>
       </Box>
       <Typography variant="body2" component="p">{ t('pages.payConnect.detailedProductInfoFeatures') }</Typography>
       <Box 

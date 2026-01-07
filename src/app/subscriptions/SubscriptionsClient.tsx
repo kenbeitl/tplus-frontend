@@ -60,7 +60,7 @@ export default function SubscriptionsClient() {
 
     return (
         <>
-            <Typography sx={{ fontWeight: 700, mb: 1 }} variant="h4" component="h1">
+            <Typography className="font-bold mb-1" variant="h4" component="h1">
                 {t("pages.subscriptions.title")}
             </Typography>
             <Typography variant="body2" component="p">
