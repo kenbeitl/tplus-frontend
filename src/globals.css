@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss" layer(utilities);
 
 /* Configure CSS layer order: MUI styles first, then Tailwind utilities */
 @layer mui, tailwind-utilities;
