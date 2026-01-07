@@ -100,7 +100,7 @@ export default function AIPoweredCustomsAutomationClient() {
                             <Spacer height={10} />
                             <List sx={{ listStyle: "decimal", pl: 3, color: theme.palette.text.darkBlue }}>
                                 {translations.legalNotice.consent.points.map((point: string, idx: number) => 
-                                    <ListItem key={`consent-point-${idx}`} sx={{ display: "list-item", py: 0, fontSize: 14 }}>
+                                    <ListItem key={`consent-point-${idx}`} sx={{ display: "list-item", py: 0 }}>
                                         <ListItemText primary={<span dangerouslySetInnerHTML={{ __html: point }} />} />
                                     </ListItem>
                                 )}

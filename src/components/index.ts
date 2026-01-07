@@ -10,6 +10,7 @@ export { default as FileDropZone } from './FileDropZone';
 export { default as FluidImage } from './FluidImage';
 export { default as InfoModal } from './InfoModal';
 export { default as Modal } from './Modal';
+export { default as HeroSection } from './HeroSection';
 export {
     ListItemButton,
     ListItemIcon, 

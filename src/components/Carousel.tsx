@@ -8,10 +8,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import Tag from "./Tag";
 import Emoji from "./Emoji";
+import theme from "@/theme/theme";
+import { getSVGIcon } from "@/helpers/utils";
 
-export default function Carousel({ slideNum }: { slideNum: number }) {
+interface SlideProps {
+    emoji: string;
+    title: string;
+    context: string;
+    buttonText: string;
+    buttonLink: string;
+}
+
+export default function Carousel({ slides }: { slides: SlideProps[] }) {
     return (
         <Swiper
             modules={[Autoplay, Navigation, Pagination]}
@@ -27,30 +36,36 @@ export default function Carousel({ slideNum }: { slideNum: number }) {
                 "--swiper-pagination-bullet-inactive-opacity": "1",
             } as React.CSSProperties}
         >
-        {new Array(slideNum).fill(null).map((_, index) => (
+        {slides.map((slide, index) => (
             <SwiperSlide key={index}>
                 <Paper 
                     elevation={3}
                     className="bg-overlay-heavy"
                     sx={{
-                        // padding: 6,
+                        paddingTop: 6,
+                        paddingRight: 12,
+                        paddingBottom: 6,
+                        paddingLeft: 12,
                         height: '100%',
+                        minHeight: '180px',
                         borderRadius: 1,
-                        background: `url('/slide-${index+1}.webp') center / cover no-repeat`,
+                        backgroundColor: theme.palette.background.darkGrey,
                     }}
                 >
-                    <Box className="flex items-center mb-5">
-                        <Emoji symbol="🍀" size={40} className="mr-1" />
-                        <Tag label="Business" variant="outlined" className="text-base!" />
+                    <Box component="div" className="flex items-center">
+                        <Box component="div" className="flex flex-col justify-between grow mr-6">
+                            <Box className="flex items-center mb-5">
+                                <Emoji symbol={slide.emoji} size={48} className="mr-1" />
+                                <Typography variant="h1" component="h2" color="white" className="mb-2">{slide.title}</Typography>    
+                            </Box>                    
+                            <Typography variant="h5" component="p" color="white" sx={{ fontWeight: 400 }}>{slide.context}</Typography>
+                        </Box>
+                        <Button
+                            variant="outlined"
+                            color="white"
+                            endIcon={getSVGIcon('arrow-right', 20, theme.palette.text.primary)}
+                        >{slide.buttonText}</Button>
                     </Box>
-                    <Typography variant="h4" component="h2" color="white" className="mb-2">Single Submission for Dual Declaration Service</Typography>
-                    <Typography variant="body1" component="p" color="white" className="mb-3">Streamline your customs declarations with our intelligent dual submission system</Typography>
-                    <Button
-                        className="w-auto" 
-                        variant="gradient" 
-                        color="blue"
-                    >Apply Now</Button>
-                    <Tag label="Sponsored" className="tag absolute top-4 right-4" />
                 </Paper>
             </SwiperSlide>
         ))} 

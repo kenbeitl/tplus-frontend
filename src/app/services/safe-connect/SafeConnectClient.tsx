@@ -129,7 +129,7 @@ export default function SafeConnectClient() {
                         <Tag label={translations.tGuardApp.freeDownload} variant="green" />
                         <Box component="div" className="flex">
                           { getSVGIcon('star', 16, '#EAB308') }
-                          <span className="text-sm font-medium whitespace-nowrap">4.8 (12,847)</span>
+                          <Typography component="span" variant="caption" className="font-medium whitespace-nowrap">4.8 (12,847)</Typography>
                         </Box>  
                       </Box>
                     </Box>
@@ -151,8 +151,8 @@ export default function SafeConnectClient() {
                       <Box component="div" className="h-8 w-8 text-blue-600 mx-auto mb-2">
                         { getSVGIcon(feature.icon, 32) }
                       </Box>
-                      <Box component="div" className="font-medium text-sm mb-1">{feature.title}</Box>
-                      <Box component="div" className="text-xs text-muted-foreground text-gray-400">{feature.description}</Box>
+                      <Typography component="div" variant="caption" className="font-medium mb-1">{feature.title}</Typography>
+                      <Typography component="div" variant="caption" color="text.secondary">{feature.description}</Typography>
                     </Box>
                   ))}
                 </Box>
@@ -234,14 +234,14 @@ export default function SafeConnectClient() {
                                   <div key={index} className="bg-white p-3 rounded border">
                                     <div className="flex justify-between items-start">
                                       <div>
-                                        <p className="font-medium text-sm">{breach.name}</p>
-                                        <p className="text-xs text-muted-foreground">{breach.date}</p>
+                                        <Typography className="font-medium" variant="caption">{breach.name}</Typography>
+                                        <Typography color="text.secondary" variant="caption">{breach.date}</Typography>
                                       </div>
                                       <Badge badgeContent={breach.compromisedData.length} color="error">
                                         { getSVGIcon('shield-alert') }
                                       </Badge>
                                     </div>
-                                    <p className="text-xs mt-2 text-muted-foreground">
+                                    <Typography className="mt-8" color="text.secondary" variant="caption">
                                       {`${t('pages.safeConnect.compromised')} ${breach.compromisedData.join(', ')}`}
                                     </p>
                                   </div>
@@ -338,7 +338,7 @@ export default function SafeConnectClient() {
                         />
                         <Box component="div" className="flex items-center">
                           { getSVGIcon('star', 16, '#EAB308') }
-                          <span className="text-sm font-medium">4.8</span>
+                          <Typography component="span" variant="caption" className="font-medium">4.8</Typography>
                         </Box>
                       </Box>
                     </Box>

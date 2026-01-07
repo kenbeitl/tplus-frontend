@@ -26,12 +26,12 @@ export default function InfoModal({
   return (
     <Modal open={open} onClose={onClose} maxWidth={maxWidth} sx={{ backgroundColor: bgcolor }}>
         {title && (
-            <Typography variant="h6" component="h2" className="mb-1" sx={{ fontSize: '18px' }}>
+            <Typography variant="h6" component="h2" className="mb-1">
                 {title}
             </Typography>
         )}
         {subtitle && (
-            <Typography variant="body2" color="text.secondary" className="mb-3" sx={{ fontSize: '14px' }}>
+            <Typography variant="body2" color="text.secondary" className="mb-3">
                 {subtitle}
             </Typography>
         )}

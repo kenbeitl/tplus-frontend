@@ -49,23 +49,23 @@ export default function ModalDigitalIdentityRequired({ open, onClose }: ModalPro
         bgcolor="#F8FAFC"
       >
         <Box className="flex flex-col">
-          <Typography variant="h3" component="h2" className="mb-4 self-center">{ modalContent.title }</Typography>
-          <Typography variant="body1" component="p" color={theme.palette.text.secondary}>{ modalContent.context }</Typography>
+          <Typography variant="h1" component="h2" className="mb-4! self-center">{ modalContent.title }</Typography>
+          <Typography variant="body1" component="p">{ modalContent.context }</Typography>
           <Spacer height={20} />
           <Grid container spacing={2}>
             {Array.isArray(DIGITAL_IDENTITY_OPTIONS) && DIGITAL_IDENTITY_OPTIONS.map((option) => {
               const LogoComponent = LOGO_COMPONENTS[option.image as LogoKey];
               return (
               <Grid key={`dio-${option.id}`} size={{ xs: 12, sm: 6 }}>
-                <Card variant="outlined" className="border-2! hover:border-blue-300! transition-colors! flex flex-col items-center p-6 h-full">
+                <Card variant="outlined" className="border-2! hover:border-blue-300! hover:shadow-md! transition-all! flex flex-col items-center p-6 h-full">
                   {LogoComponent && (
                     <Box className="w-32 h-32 flex place-items-center">
                       <LogoComponent />
                     </Box>
                   )}
                   <Spacer height={10} />
-                  <Typography variant="h5" component="h4">{option.name}</Typography>
-                  <Typography variant="body2" component="p">{option.description}</Typography>
+                  <Typography variant="h3" component="h4" sx={{fontWeight: 'normal' }}>{option.name}</Typography>
+                  <Typography variant="body1" component="p">{option.description}</Typography>
                   <Spacer height={10} />
                   <List className="grow">
                     {option.list.map((point: string, p: number) => (

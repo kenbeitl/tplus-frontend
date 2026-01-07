@@ -56,6 +56,14 @@ const GRADIENT_CLASSES = {
   iconPurplePink: 'bg-linear-to-br from-purple-600 to-pink-600',
   iconIndigoPurple: 'bg-linear-to-br from-indigo-500 to-purple-600',
   iconOrange: 'bg-linear-to-br from-orange-500 to-red-600',
+  
+  // Hero section gradients
+  heroBlue: 'bg-linear-to-br from-blue-600 via-blue-700 to-indigo-800',
+  heroIndigo: 'bg-linear-to-br from-indigo-600 via-purple-600 to-pink-600',
+  heroPurple: 'bg-linear-to-br from-purple-600 via-indigo-600 to-blue-700',
+  heroEmerald: 'bg-linear-to-br from-emerald-600 via-teal-600 to-cyan-700',
+  heroCyan: 'bg-linear-to-br from-cyan-600 via-blue-600 to-indigo-700',
+  heroViolet: 'bg-linear-to-br from-violet-600 via-purple-600 to-fuchsia-700',
 };
 
 // Custom palette extensions
@@ -87,6 +95,8 @@ declare module '@mui/material/styles' {
   interface TypeBackground {
     lightblue: string;
     red: string;
+    darkGrey: string;
+    black: string;
   }
   
   interface TypeText {
@@ -154,6 +164,8 @@ const theme = createTheme({
     background: {
       lightblue: '#eff6ff',
       red: 'red',
+      darkGrey: '#1f2937',
+      black: '#000000',
     },
     gradient: GRADIENTS,
     gradientClasses: GRADIENT_CLASSES,
@@ -177,18 +189,77 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontSize: 12,
+    fontSize: 16,
     fontFamily: 'Roboto, Arial, sans-serif',
+    h1: {
+      fontSize: '2.5rem',     // 40px
+      fontWeight: 400,
+      lineHeight: 1.2,
+    },
+    h2: {
+      fontSize: '2rem',       // 32px
+      fontWeight: 400,
+      lineHeight: 1.3,
+    },
+    h3: {
+      fontSize: '1.75rem',    // 28px
+      fontWeight: 400,
+      lineHeight: 1.3,
+    },
+    h4: {
+      fontSize: '1.5rem',     // 24px
+      fontWeight: 400,
+      lineHeight: 1.4,
+    },
+    h5: {
+      fontSize: '1.25rem',    // 20px
+      fontWeight: 400,
+      lineHeight: 1.4,
+    },
+    h6: {
+      fontSize: '1rem',       // 16px
+      fontWeight: 400,
+      lineHeight: 1.5,
+    },
+    subtitle1: {
+      fontSize: '1rem',       // 16px
+      fontWeight: 400,
+      lineHeight: 1.5,
+    },
+    subtitle2: {
+      fontSize: '0.875rem',   // 14px
+      fontWeight: 400,
+      lineHeight: 1.5,
+    },
     body1: {
-      fontSize: '1rem',
+      fontSize: '1rem',       // 16px
+      fontWeight: 400,
+      lineHeight: 1.5,
     },
     body2: {
-      fontSize: '1rem',
+      fontSize: '0.875rem',   // 14px
+      fontWeight: 400,
+      lineHeight: 1.5,
       color: '#666666',
     },
+    button: {
+      fontSize: '0.875rem',   // 14px
+      fontWeight: 400,
+      lineHeight: 1.75,
+      textTransform: 'none',
+    },
     caption: {
-      fontSize: '0.875rem',
+      fontSize: '0.75rem',    // 12px
+      fontWeight: 400,
+      lineHeight: 1.4,
       color: '#666666',
+    },
+    overline: {
+      fontSize: '0.75rem',    // 12px
+      fontWeight: 400,
+      lineHeight: 2,
+      textTransform: 'uppercase',
+      letterSpacing: '0.5px',
     },
   },
   components: {
@@ -291,29 +362,24 @@ const theme = createTheme({
         }
       }
     },
-    MuiListItemText: {
-      styleOverrides: {
-        root: {
-          '& .MuiTypography-root': {
-            fontSize: '14px'
-          }
-        }
-      }
-    },
     MuiTab: {
       styleOverrides: {
         root: {
           padding: 0,
-          flexGrow: 1,
           color: '#000000',
           minHeight: 32,
-          fontSize: 14,
-          fontWeight: 600,
-          textTransform: 'none',  
+          fontSize: 16,
+          textTransform: 'none',
+          transition: 'all 0.3s ease',
+          
+          '&:hover': {
+            background: '#FFFFFF',
+            borderRadius: '5rem',
+          },
           
           '&.Mui-selected': {
-            color: '#000000',
-            backgroundColor: '#FFFFFF',
+            color: '#FFFFFF',
+            background: GRADIENTS.blue,
             borderRadius: '5rem',
             borderBottom: 0,
           },
@@ -323,9 +389,11 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
+          paddingLeft: '1.25rem',
+          paddingRight: '1.5rem',
+          fontSize: 16,
+          lineHeight: 2.5,
           textTransform: 'none',
-          lineHeight: 1.5,
-          fontSize: '0.9rem',
           '&:disabled': {
             opacity: 0.6,
           }
@@ -358,6 +426,7 @@ const theme = createTheme({
           style: {
             color: '#666666',
             borderColor: '#E0E0E0',
+            backgroundColor: '#FFFFFF',
           },
         },
         {
@@ -366,6 +435,10 @@ const theme = createTheme({
             color: '#2b7fff',
             backgroundColor: '#FFFFFF',
             borderColor: '#bedbff',
+            '&:hover': {
+              borderColor: '#2b7fff',
+              backgroundColor: '#eff6ff',
+            },
           },
         },
         {
@@ -386,6 +459,10 @@ const theme = createTheme({
             color: '#666666',
             backgroundColor: '#FFFFFF',
             borderColor: 'rgba(0, 0, 0, 0.12)',
+            '&:hover': {
+              borderColor: 'rgba(0, 0, 0, 0.32)',
+              backgroundColor: '#f5f5f5',
+            },
           },
         },
         {

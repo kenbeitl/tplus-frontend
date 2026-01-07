@@ -119,14 +119,14 @@ export default function HelpCentreModal({open, onClose, content}: ModalProps) {
                   )}
 
                   {item.description && (
-                    <Typography sx={{ fontSize: 14, mt: 2, mb: 1.5 }} variant="body2">
+                    <Typography className="mt-8 mb-6" variant="body2">
                       {item.description}
                     </Typography>
                   )}
 
                   {item.features && item.features.length > 0 && (
                     <>
-                      <Typography sx={{ fontSize: 14, mb: 0 }} variant="body2">{ t('pages.helpCentre.keyFeatures') }</Typography>
+                      <Typography className="mb-0" variant="body2">{ t('pages.helpCentre.keyFeatures') }</Typography>
                       <List dense>
                         {item.features.map((f: string, idx) => (
                           <ListItem key={`feature-${idx}`} disableGutters>
@@ -136,8 +136,7 @@ export default function HelpCentreModal({open, onClose, content}: ModalProps) {
                             <ListItemText
                               slotProps={{
                                 primary: {
-                                  variant: 'body2',
-                                  sx: { fontSize: '12px' }
+                                  variant: 'caption'
                                 }
                               }}
                               primary={f}
@@ -149,35 +148,35 @@ export default function HelpCentreModal({open, onClose, content}: ModalProps) {
                   )}
 
                   {item.eligibility && (
-                    <Typography sx={{ fontSize: 12, mt: 1 }} variant="body2">
-                      <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>{`${translations.eligibility}:`}</Box>
+                    <Typography className="mt-4" variant="caption">
+                      <Box component="span" className="font-bold mr-4">{`${translations.eligibility}:`}</Box>
                       {item.eligibility}
                     </Typography>
                   )}
 
                   {item.processingTime && (
-                    <Typography sx={{ fontSize: 12, mb: 0 }} variant="body2">
-                      <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>{`${translations.processingTime}:`}</Box>
+                    <Typography className="mb-0" variant="caption">
+                      <Box component="span" className="font-bold mr-4">{`${translations.processingTime}:`}</Box>
                       {item.processingTime}
                     </Typography>
                   )}
 
                   {item.bestFor && (
-                    <Typography sx={{ fontSize: 12, mt: 1 }} variant="body2">
-                      <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>{`${translations.bestFor}:`}</Box>
+                    <Typography className="mt-4" variant="caption">
+                      <Box component="span" className="font-bold mr-4">{`${translations.bestFor}:`}</Box>
                       {item.bestFor}
                     </Typography>
                   )}
 
                   {item.availability && (
-                    <Typography sx={{ fontSize: 12, mb: 0 }} variant="body2">
-                      <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>{`${translations.availability}:`}</Box>
+                    <Typography className="mb-0" variant="caption">
+                      <Box component="span" className="font-bold mr-4">{`${translations.availability}:`}</Box>
                       {item.availability}
                     </Typography>
                   )}
 
                   {item.cost && (
-                    <Typography sx={{ fontSize: 12, mt: 1 }} variant="body2">
+                    <Typography className="mt-4" variant="caption">
                       <Box component="span" sx={{ fontWeight: 700, mr: 1 }}>{`${translations.cost}:`}</Box>
                       {item.cost}
                     </Typography>

@@ -126,9 +126,9 @@ a {
 .swiper .swiper-button-prev,
 .swiper .swiper-button-next {
   border-radius: 2rem;
-  background-color: white;
-  width: 2rem;
-  height: 2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .swiper .swiper-button-prev {
@@ -141,8 +141,8 @@ a {
 
 .swiper .swiper-button-prev svg,
 .swiper .swiper-button-next svg {
-  width: 1rem;
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .swiper .swiper-button-prev svg path,

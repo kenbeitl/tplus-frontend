@@ -1,6 +1,43 @@
 {
     "title": "SignConnect",
-    "context": "Digital document signing and management platform",
+    "context": "Digital document signing platform powered by certified digital identities. Sign securely with iAM Smart, iD-One, and leading e-signature providers.",
+    "slides": [
+        {
+            "emoji": "✍️",
+            "title": "Tradelink DMSS - Secure Digital Signing",
+            "context": "Sign documents with legally binding digital signatures powered by Tradelink. Enterprise-grade security and compliance.",
+            "buttonText": "Learn More",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "📝",
+            "title": "eSign Solutions - Fast & Efficient",
+            "context": "Get documents signed in minutes, not days. Streamline your workflow with automated signature requests and reminders.",
+            "buttonText": "Explore Features",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "📂",
+            "title": "Contract Management Platform",
+            "context": "Store, track, and manage all your signed documents in one secure location. Advanced search and organization tools.",
+            "buttonText": "View Demo",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "📱",
+            "title": "Mobile Signing on the Go",
+            "context": "Sign documents anywhere, anytime with our mobile app. Biometric authentication for enhanced security.",
+            "buttonText": "Download App",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "📋",
+            "title": "Bulk Signing Services",
+            "context": "Process multiple documents efficiently with bulk signing capabilities. Perfect for high-volume workflows.",
+            "buttonText": "Get Started",
+            "buttonLink": "#"
+        }
+    ],
     "signingPlatform": {
         "title": "Choose Your Signing Platform",
         "context": "Select from the available signing platforms to start signing documents securely.",

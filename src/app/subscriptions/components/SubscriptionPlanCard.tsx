@@ -92,7 +92,7 @@ export default function SubscriptionPlanCard({
                                     {getSVGIcon('circle-check-big', 16, theme.palette.icon.green)}
                                 </ListItemIcon>
                                 <ListItemText
-                                    slotProps={{ primary: { variant: 'body2', sx: { fontSize: '12px' } }}}
+                                    slotProps={{ primary: { variant: 'caption' } }}
                                     primary={f}
                                 />
                             </ListItem>

@@ -53,9 +53,9 @@ export default function FormSelect({
                 ))}
             </Select>
             {error && (
-                <span style={{ fontSize: '0.75rem', color: '#d32f2f', marginTop: '4px' }}>
+                <Typography component="span" variant="caption" className="text-red-600 mt-1 block">
                     {error}
-                </span>
+                </Typography>
             )}
         </FormControl>
     );
