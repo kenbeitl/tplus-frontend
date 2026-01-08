@@ -119,7 +119,7 @@ export default function StyledIcon({
   const colorClasses = isCustom ? '' : `${variants[variant].bg} ${variants[variant].text}`;
   
   // Border radius class based on square prop
-  const borderRadiusClass = square ? 'rounded-lg' : 'rounded-full';
+  const borderRadiusClass = square ? 'rounded-2xl' : 'rounded-full';
   
   // Box shadow based on elevation
   const shadowClasses: Record<number, string> = {

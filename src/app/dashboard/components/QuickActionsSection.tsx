@@ -35,11 +35,11 @@ export default function QuickActionsSection({ title, context, actions }: QuickAc
                         {getSVGIcon('zap', 24, theme.palette.text.white)}
                     </Box>
                     <Box component="div">
-                        <Typography variant="h3" component="h2" color={theme.palette.text.darkBlue}>
+                        <Typography variant="h2" component="h2" color={theme.palette.text.darkBlue}>
                             <Emoji symbol="⚡" size={50} sx={{ mr: 1 }} />
                             {title}
                         </Typography>
-                        <Typography variant="body2" component="p">{context}</Typography>
+                        <Typography variant="body1" component="p">{context}</Typography>
                     </Box>
                 </Box>
                 <Box component="div" className="space-y-4">
