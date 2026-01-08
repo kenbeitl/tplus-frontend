@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Box, Typography, CircularProgress } from '@mui/material';
 
-export default function Login() {
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [shouldRedirect, setShouldRedirect] = useState(false);
@@ -42,5 +42,17 @@ export default function Login() {
         </Typography>
       </Box>
     </Box>
+  );
+}
+
+export default function Login() {
+  return (
+    <Suspense fallback={
+      <Box className="min-h-screen flex items-center justify-center">
+        <CircularProgress />
+      </Box>
+    }>
+      <LoginContent />
+    </Suspense>
   );
 }
