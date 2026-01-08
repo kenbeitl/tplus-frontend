@@ -129,6 +129,8 @@ export default function AppWrapper({
   const [isInitialMount, setIsInitialMount] = React.useState(true);
   const isAboveDesktop = useBreakpoint('desktop');
 
+  console.log(session);
+
   const user = session?.user;
   const logout = useLogout();
   
@@ -294,25 +296,16 @@ export default function AppWrapper({
               <Divider className="!m-0" />
               <MenuItem onClick={() => handleNavigation('/settings')}>
                 <ListItemIcon className="!min-w-[24px]">
-                  { getSVGIcon('user', 16) }
-                </ListItemIcon>
-                <ListItemText primary={t('common.profile')} />
-              </MenuItem>
-              <MenuItem onClick={() => handleNavigation('/settings')}>
-                <ListItemIcon className="!min-w-[24px]">
                   { getSVGIcon('settings', 16) }
                 </ListItemIcon>
                 <ListItemText primary={t('nav.settings')} />
               </MenuItem>
               <Divider className="!m-0" />
-              <MenuItem className="justify-center mt-1">
-                <ActionButton
-                  variant="gradient"
-                  startIcon={getSVGIcon('arrow-right-bracket', 12, 'white')}
-                  buttonText={t('common.signOut')}
-                  onClick={handleLogout}
-                  autoWidth
-                />
+              <MenuItem onClick={handleLogout}>
+                <ListItemIcon className="!min-w-[24px]">
+                  { getSVGIcon('arrow-right-bracket', 16) }
+                </ListItemIcon>
+                <ListItemText primary={t('common.signOut')} sx={{ color: theme.palette.text.red }} />
               </MenuItem>
             </Menu>
           </Toolbar>
