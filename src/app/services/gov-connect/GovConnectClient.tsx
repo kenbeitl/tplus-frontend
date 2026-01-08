@@ -67,7 +67,7 @@ export default function GovConnectClient() {
                                     buttonText={service.buttonText}
                                     endIcon={ getSVGIcon('arrow-right') }
                                     variant="gradient"
-                                    onClick={`http://192.168.221.73:8090/tdecForm`}
+                                    onClick={() => window.location.href = process.env.NEXT_PUBLIC_TDEC_FORM_URL || '/tdecForm'}
                                 />
                             }
                         </Card>

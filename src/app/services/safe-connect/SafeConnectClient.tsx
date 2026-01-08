@@ -3,9 +3,9 @@
 import React from "react";
 
 import theme from "@/theme/theme";
-import { Badge, Box, Button, Card, FormControlLabel, FormGroup, Grid, List, ListItem, ListItemText, Paper, Switch, Tab, Typography } from "@mui/material";
+import { Badge, Box, Button, Card, Divider, FormControlLabel, FormGroup, Grid, List, ListItem, ListItemText, Paper, Switch, Tab, Typography } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
-import { Tag, Spacer, TabList, TabPanel, StyledIcon, FormField, ButtonWithFormModal } from "@/components";
+import { Tag, Spacer, TabList, TabPanel, StyledIcon, FormField, ButtonWithFormModal, HeroSection, Carousel } from "@/components";
 import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon } from "@/helpers/utils";
 
@@ -82,15 +82,25 @@ export default function SafeConnectClient() {
 
   return (
     <Box component="div" className="relative">
-      <Box component="div" className="flex items-baseline justify-between">
-        <Typography className="font-bold mb-4" variant="h4" component="h1">{ t("pages.safeConnect.title") }</Typography>
-        <Tag label={t('common.servicesAvailable')} startIcon={ getSVGIcon('circle-check-big') } variant="green" />
-      </Box>
-      
-      
-      <Typography variant="body2" component="p">{ t("pages.safeConnect.context") }</Typography>
-      
+      <HeroSection
+        title={ t("pages.safeConnect.title") }
+        description={ t("pages.safeConnect.context") }
+        icon={ getSVGIcon('shield', 24, '#FFFFFF') }
+        colorScheme="emerald"
+      />
       <Spacer height={20} />
+      <Carousel slides={ t("pages.safeConnect.slides") } />
+      <Divider className="!my-9" />
+      <Box component="div" className="flex items-center mb-6">
+        <StyledIcon 
+          icon={getSVGIcon('shield', 24, '#FFFFFF')}
+          variant="green-gradient"
+          size={48}
+          className="mr-3"
+          square
+        />
+        <Typography variant="h1" component="h2">{ t("pages.safeConnect.ourServices") }</Typography>
+      </Box>
       <TabContext value={value}>
         <Box>
           <TabList onChange={handleChange} variant="fullWidth">

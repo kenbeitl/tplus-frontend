@@ -129,8 +129,6 @@ export default function AppWrapper({
   const [isInitialMount, setIsInitialMount] = React.useState(true);
   const isAboveDesktop = useBreakpoint('desktop');
 
-  console.log(session);
-
   const user = session?.user;
   const logout = useLogout();
   
@@ -289,7 +287,7 @@ export default function AppWrapper({
                 <Box component="div" className="px-2 py-1">
                   <Box component="div"><Typography variant="subtitle1" className="font-bold">{user?.name}</Typography></Box>
                   <Box component="div"><Typography variant="caption">{user?.email}</Typography></Box>
-                  <Box component="div"><Typography variant="caption">Demo company</Typography></Box>
+                  <Box component="div"><Typography variant="caption"></Typography></Box>
                   <Tag variant="white" label="Users" className="!inline-flex" />
                 </Box>
               }

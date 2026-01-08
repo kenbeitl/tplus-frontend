@@ -1,6 +1,43 @@
 {
     "title": "SignConnect",
     "context": "数字文件签署和管理平台",
+    "slides": [
+        {
+            "emoji": "✍️",
+            "title": "Tradelink DMSS - 安全数字签署",
+            "context": "使用Tradelink提供的具有法律效力的数字签名签署文件。企业级安全性和合规性。",
+            "buttonText": "了解更多",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "📝",
+            "title": "eSign解决方案 - 快速高效",
+            "context": "在几分钟内完成文件签署，而不是几天。通过自动化签名请求和提醒简化您的工作流程。",
+            "buttonText": "探索功能",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "📂",
+            "title": "合同管理平台",
+            "context": "将所有已签署的文件存储、跟踪和管理在一个安全的位置。高级搜索和组织工具。",
+            "buttonText": "查看演示",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "📱",
+            "title": "移动签署随时随地",
+            "context": "使用我们的移动应用程序随时随地签署文件。生物识别认证以增强安全性。",
+            "buttonText": "下载应用",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "📋",
+            "title": "批量签署服务",
+            "context": "通过批量签署功能高效处理多个文件。非常适合高容量工作流程。",
+            "buttonText": "开始使用",
+            "buttonLink": "#"
+        }
+    ],
     "signingPlatform": {
         "title": "选择您的签署平台",
         "context": "从可用的签署平台中选择，开始安全地签署文件。",

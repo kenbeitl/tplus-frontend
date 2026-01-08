@@ -1,6 +1,44 @@
 {
     "title": "SafeConnect",
     "context": "為個人和企業提供全面的網絡安全工具和服務",
+    "slides": [
+        {
+            "emoji": "🛡️",
+            "title": "T-Guard - 全面安全套件",
+            "context": "通過網絡漏洞掃描、暗網監控和實時威脅檢測保護您的業務。",
+            "buttonText": "開始免費試用",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "🔒",
+            "title": "Network Box - 托管安全服務",
+            "context": "企業級防火牆保護和全天候安全運營中心監控，確保全面安心。",
+            "buttonText": "了解更多",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "🔍",
+            "title": "暗網監控 - 保持保護",
+            "context": "監控暗網中的洩露憑據和敏感數據。檢測到威脅時立即獲取警報。",
+            "buttonText": "檢查您的風險",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "🔬",
+            "title": "漏洞掃描 - 發現弱點",
+            "context": "在黑客之前識別安全漏洞。提供全面的網絡應用程序和基礎設施掃描。",
+            "buttonText": "獲取評估",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "🛡️",
+            "title": "諾頓殺毒軟件 - 完整保護",
+            "context": "屢獲殊榮的殺毒軟件保護，提供實時威脅防禦、VPN 和暗網監控，保障您的業務安全。",
+            "buttonText": "開始免費試用",
+            "buttonLink": "#"
+        }
+    ],
+    "ourServices": "我們的服務",
     "compromised": "已洩露：",
     "breachFound": "發現洩露",
     "noBreachFound": "未發現洩露"

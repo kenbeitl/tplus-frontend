@@ -1,6 +1,44 @@
 {
     "title": "SafeConnect",
-    "context": "Comprehensive cybersecurity tools and services for individuals and corporations",
+    "context": "Comprehensive cybersecurity tools for individuals and corporations. Protect your digital assets with advanced threat detection and response.",
+    "slides": [
+        {
+            "emoji": "🛡️",
+            "title": "T-Guard - Comprehensive Security Suite",
+            "context": "Protect your business with web vulnerability scanning, dark web monitoring, and real-time threat detection.",
+            "buttonText": "Start Free Trial",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "🔒",
+            "title": "Network Box - Managed Security Services",
+            "context": "Enterprise-grade firewall protection and 24/7 security operations center monitoring for complete peace of mind.",
+            "buttonText": "Learn More",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "🔍",
+            "title": "Dark Web Monitoring - Stay Protected",
+            "context": "Monitor the dark web for leaked credentials and sensitive data. Get instant alerts when threats are detected.",
+            "buttonText": "Check Your Risk",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "🔬",
+            "title": "Vulnerability Scanning - Find Weaknesses",
+            "context": "Identify security vulnerabilities before hackers do. Comprehensive web application and infrastructure scanning.",
+            "buttonText": "Get Assessment",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "🛡️",
+            "title": "Norton Antivirus - Complete Protection",
+            "context": "Award-winning antivirus protection with real-time threat defense, VPN, and dark web monitoring for your business.",
+            "buttonText": "Start Free Trial",
+            "buttonLink": "#"
+        }
+    ],
+    "ourServices": "Our Services",
     "compromised": "Compromised:",
     "breachFound": "Breach Found",
     "noBreachFound": "No Breach Found"
