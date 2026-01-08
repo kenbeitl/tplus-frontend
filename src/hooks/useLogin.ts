@@ -12,34 +12,23 @@ export function useLogin({ onSuccess, onError }: UseLoginProps = {}) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const login = async (username: string, password: string) => {
+  const login = async () => {
     setIsLoading(true);
     setError(null);
 
     try {
-      const result = await signIn('credentials', {
-        username,
-        password,
-        redirect: false,
+      // Redirect to Keycloak SSO login
+      await signIn('keycloak', {
+        callbackUrl: '/dashboard',
+        redirect: true,
       });
-
-      if (result?.error) {
-        console.error('Login failed:', result.error);
-        const errorMessage = 'Invalid username or password';
-        setError(errorMessage);
-        if (onError) {
-          onError(errorMessage);
-        }
-        setIsLoading(false);
-      } else {
-        if (onSuccess) {
-          onSuccess();
-        }
-        router.push('/dashboard');
+      
+      if (onSuccess) {
+        onSuccess();
       }
     } catch (error) {
       console.error('Login error:', error);
-      const errorMessage = 'An error occurred while logging in';
+      const errorMessage = 'Failed to initiate Keycloak login';
       setError(errorMessage);
       if (onError) {
         onError(errorMessage);

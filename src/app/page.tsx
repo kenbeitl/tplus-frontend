@@ -1,74 +1,97 @@
 'use client';
 
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState } from 'react';
 import { useSession, signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Box, Typography, Button, CircularProgress } from '@mui/material';
+import { Box, Typography, Alert, Button, CircularProgress } from '@mui/material';
 
-function RootLoginContent() {
+export default function RootLogin() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check for OAuth errors in URL
     const errorParam = searchParams.get('error');
-
-    console.error(error);
-    
     if (errorParam) {
-      setError(errorParam);
-      return; // Don't redirect on error
+      // Map OAuth errors to user-friendly messages
+      const errorMessages: Record<string, string> = {
+        'OAuthSignin': 'Failed to start OAuth sign-in. Please check your Keycloak configuration.',
+        'OAuthCallback': 'Failed to process OAuth callback. Please verify redirect URIs in Keycloak.',
+        'OAuthCreateAccount': 'Failed to create user account. Please contact support.',
+        'OAuthAccountNotLinked': 'Account not linked. Please use the same sign-in method.',
+        'EmailCreateAccount': 'Failed to create account with email.',
+        'Callback': 'OAuth callback error. Please check Keycloak settings.',
+        'Configuration': 'NextAuth configuration error. Please check environment variables.',
+        'AccessDenied': 'Access denied. You may not have permission to sign in.',
+        'Verification': 'Verification token has expired or is invalid.',
+      };
+      
+      setError(errorMessages[errorParam] || `Authentication error: ${errorParam}`);
     }
+  }, [searchParams]);
 
+  useEffect(() => {
     if (status === 'authenticated' && session) {
       router.push('/dashboard');
-    } else if (status === 'unauthenticated') {
+    } else if (status === 'unauthenticated' && !error) {
       signIn('keycloak', { callbackUrl: '/dashboard' });
     }
-  }, [session, status, router, searchParams]);
+  }, [session, status, router, error]);
 
-  // Show error message if OAuth failed
   if (error) {
     return (
-      <Box className="min-h-screen flex items-center justify-center p-4">
-        <Box className="text-center max-w-md">
-          <Typography variant="h4" component="h1" className="mb-4 text-red-600">
-            Authentication Error
-          </Typography>
-          <Typography variant="body1" className="mb-6">
-            {error === 'OAuthSignin' && 'There was a problem signing in with your account.'}
-            {error === 'OAuthCallback' && 'There was a problem processing the authentication callback.'}
-            {error === 'OAuthCreateAccount' && 'There was a problem creating your account.'}
-            {!['OAuthSignin', 'OAuthCallback', 'OAuthCreateAccount'].includes(error) && `Error: ${error}`}
-          </Typography>
-          <Button 
-            variant="contained" 
-            color="primary"
-            onClick={() => {
-              setError(null);
-              router.push('/login');
-            }}
-          >
-            Try Again
-          </Button>
+      <Box className="flex flex-col items-center justify-center min-h-screen p-6">
+        <Box className="max-w-md w-full">
+          <Alert severity="error" className="mb-4">
+            <Typography variant="h6" component="div" className="mb-2">
+              Authentication Error
+            </Typography>
+            <Typography variant="body2">
+              {error}
+            </Typography>
+          </Alert>
+          
+          <Box className="space-y-2">
+            <Typography variant="body2" color="text.secondary">
+              Common causes:
+            </Typography>
+            <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+              <li>Incorrect Keycloak client configuration</li>
+              <li>Missing or invalid redirect URI in Keycloak</li>
+              <li>Environment variables not set correctly</li>
+              <li>Network connectivity issues</li>
+            </ul>
+          </Box>
+
+          <Box className="flex gap-2 mt-6">
+            <Button 
+              variant="contained" 
+              color="primary"
+              onClick={() => {
+                setError(null);
+                router.push('/');
+              }}
+              fullWidth
+            >
+              Try Again
+            </Button>
+            <Button 
+              variant="outlined"
+              onClick={() => window.location.href = '/api/auth/error?error=' + searchParams.get('error')}
+              fullWidth
+            >
+              View Details
+            </Button>
+          </Box>
         </Box>
       </Box>
     );
   }
 
-  return null;
-}
-
-export default function RootLogin() {
   return (
-    <Suspense fallback={
-      <Box className="min-h-screen flex items-center justify-center">
-        <CircularProgress />
-      </Box>
-    }>
-      <RootLoginContent />
-    </Suspense>
+    <Box className="flex items-center justify-center min-h-screen">
+      <CircularProgress />
+    </Box>
   );
 }
