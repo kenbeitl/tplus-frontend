@@ -63,7 +63,7 @@ export default function DashboardClient() {
                 onDontShowAgain={handleDontShowAgain}
             />
             
-            <Carousel slideNum={2} />
+            <Carousel slides={ t("pages.signConnect.slides") } />
 
             {welcome && (
                 <>

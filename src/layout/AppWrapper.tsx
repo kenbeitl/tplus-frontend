@@ -40,7 +40,8 @@ interface serviceProps {
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
-  placeItems: 'center',
+  alignItems: 'center',
+  justifyContent: 'center',
   padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
 }));
@@ -55,6 +56,7 @@ const AppBar = styled(MuiAppBar, {
 })<AppBarProps & { disableTransition?: boolean }>(({ theme, open, disableTransition, isAboveDesktop }) => ({
   border: 0,
   borderBottom: '1px solid ' + theme.palette.divider,
+  borderLeft: open ? 'none' : '1px solid ' + theme.palette.divider,
   marginLeft: open ? drawerWidth : (isAboveDesktop ? drawerMiniWidth : 0),
   width: open ? `calc(100% - ${drawerWidth}px)` : (isAboveDesktop ? `calc(100% - ${drawerMiniWidth}px)` : '100%' ),
   backgroundColor: '#F8FAFC',

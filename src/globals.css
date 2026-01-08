@@ -91,10 +91,6 @@ a {
 }
 
 /* Help Centre styles */
-.card-hover {
-  cursor: pointer;
-}
-
 .card-hover:hover {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }

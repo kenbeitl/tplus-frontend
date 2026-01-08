@@ -530,7 +530,7 @@ const theme = createTheme({
             boxShadow: 'none',
             '&:hover': {
               color: '#1C398E',
-              boxShadow: 'none',
+              boxShadow: '0px 1px 3px rgba(43, 127, 255, 0.3)',
               backgroundColor: 'rgba(43, 127, 255, 0.1)',
             },
           },

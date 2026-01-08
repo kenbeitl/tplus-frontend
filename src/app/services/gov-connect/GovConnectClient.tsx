@@ -45,18 +45,30 @@ export default function GovConnectClient() {
                             <Typography className="mt-8" variant="body2" component="p">{service.description}</Typography>
                             <Checklist items={service.features} />
                             {
-                                service.id === 'govconnect-dual-declaration' 
-                                ? <ButtonWithFormModal
-                                        templateId={service.id}
-                                        buttonEndIcon={ getSVGIcon('arrow-right') }
-                                        buttonText={t('common.applyNow')}
-                                    />
-                                : <ActionButton
-                                        buttonText={service.buttonText}
-                                        endIcon={ getSVGIcon('arrow-right') }
-                                        variant="gradient"
-                                        onClick={`${pathname}/${service.id}`}
-                                    />
+                                service.id === 'govconnect-dual-declaration' && 
+                                <ButtonWithFormModal
+                                    templateId={service.id}
+                                    buttonEndIcon={ getSVGIcon('arrow-right') }
+                                    buttonText={t('common.applyNow')}
+                                />
+                            }
+                            {
+                                service.id === 'hs-code-ai-classifier' && 
+                                <ActionButton
+                                    buttonText={service.buttonText}
+                                    endIcon={ getSVGIcon('arrow-right') }
+                                    variant="gradient"
+                                    onClick={`${pathname}/${service.id}`}
+                                />
+                            }
+                            {
+                                service.id === 'ai-powered-customs-automation' && 
+                                <ActionButton
+                                    buttonText={service.buttonText}
+                                    endIcon={ getSVGIcon('arrow-right') }
+                                    variant="gradient"
+                                    onClick={`http://192.168.221.73:8090/tdecForm`}
+                                />
                             }
                         </Card>
                     </Grid>
