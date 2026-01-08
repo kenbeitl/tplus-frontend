@@ -69,14 +69,17 @@ export default function AuthWrapper({
           </Typography>
           
           <Typography variant="subtitle2" sx={{ mt: 2, fontWeight: 'bold' }}>
-            Environment Variables:
+            Environment Variables (Client-side view):
           </Typography>
           <Box component="pre" sx={{ m: 0, fontSize: '11px' }}>
-            NEXTAUTH_URL: {process.env.NEXTAUTH_URL || 'NOT SET'}{'\n'}
-            KEYCLOAK_CLIENT_ID: {process.env.KEYCLOAK_CLIENT_ID || 'NOT SET'}{'\n'}
-            KEYCLOAK_ISSUER: {process.env.KEYCLOAK_ISSUER || 'NOT SET'}{'\n'}
+            NEXTAUTH_URL: {process.env.NEXTAUTH_URL || '🔒 Hidden (Server-only)'}{'\n'}
+            KEYCLOAK_CLIENT_ID: {process.env.KEYCLOAK_CLIENT_ID || '🔒 Hidden (Server-only)'}{'\n'}
+            KEYCLOAK_ISSUER: {process.env.KEYCLOAK_ISSUER || '🔒 Hidden (Server-only)'}{'\n'}
             NEXT_PUBLIC_KEYCLOAK_ISSUER: {process.env.NEXT_PUBLIC_KEYCLOAK_ISSUER || 'NOT SET'}
           </Box>
+          <Typography variant="caption" sx={{ display: 'block', mt: 1, color: 'text.secondary' }}>
+            ℹ️ Server-only variables are hidden for security. If OAuth works, they are set correctly on the server.
+          </Typography>
 
           <Typography variant="subtitle2" sx={{ mt: 2, fontWeight: 'bold' }}>
             Expected Callback URI:
