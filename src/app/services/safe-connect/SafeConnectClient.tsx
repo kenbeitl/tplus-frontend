@@ -243,7 +243,7 @@ export default function SafeConnectClient() {
                                     </div>
                                     <Typography className="mt-8" color="text.secondary" variant="caption">
                                       {`${t('pages.safeConnect.compromised')} ${breach.compromisedData.join(', ')}`}
-                                    </p>
+                                    </Typography>
                                   </div>
                                 ))}
                               </div>
