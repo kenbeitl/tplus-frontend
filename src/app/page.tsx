@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSession, signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Box, Typography, Alert, Button, CircularProgress } from '@mui/material';
 
-export default function RootLogin() {
+function RootLoginContent() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -93,5 +93,17 @@ export default function RootLogin() {
     <Box className="flex items-center justify-center min-h-screen">
       <CircularProgress />
     </Box>
+  );
+}
+
+export default function RootLogin() {
+  return (
+    <Suspense fallback={
+      <Box className="flex items-center justify-center min-h-screen">
+        <CircularProgress />
+      </Box>
+    }>
+      <RootLoginContent />
+    </Suspense>
   );
 }
