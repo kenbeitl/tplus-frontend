@@ -14,6 +14,8 @@ function RootLoginContent() {
   useEffect(() => {
     // Check for OAuth errors in URL
     const errorParam = searchParams.get('error');
+
+    console.error(error);
     
     if (errorParam) {
       setError(errorParam);
