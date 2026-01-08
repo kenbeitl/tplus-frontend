@@ -24,7 +24,7 @@ export default function PayConnectClient() {
             <Spacer height={20} />
             <Tag label={ t('pages.payConnect.sponsoredPartnerOffers') } className="text-base! text-only" startIcon={ getSVGIcon('sparkles', undefined, '#fd9a00') } />
             <Spacer height={20} />
-            <Carousel slideNum={2} />
+            <Carousel slides={ t("pages.signConnect.slides") } />
             <Spacer height={40} />
             <Grid container spacing={2}>
                 {Array.isArray(DIALOG_CARD) && DIALOG_CARD.map((item, index) => (
