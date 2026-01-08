@@ -46,7 +46,7 @@
             "breachFound": "發現外洩"
         },
         "eligibility": {
-            "title": "資格要求",
+            "title": "保護功能",
             "requirements": [
                 "即時外洩監控",
                 "身份盜用警報",

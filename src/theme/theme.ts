@@ -396,7 +396,7 @@ const theme = createTheme({
           paddingLeft: '1.25rem',
           paddingRight: '1.5rem',
           fontSize: 16,
-          lineHeight: 2.5,
+          lineHeight: 2.25,
           textTransform: 'none',
           '&:disabled': {
             opacity: 0.6,

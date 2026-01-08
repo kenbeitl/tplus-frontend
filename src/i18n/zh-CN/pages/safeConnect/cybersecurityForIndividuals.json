@@ -46,7 +46,7 @@
             "breachFound": "发现泄露"
         },
         "eligibility": {
-            "title": "资格要求",
+            "title": "保护功能",
             "requirements": [
                 "实时泄露监控",
                 "身份盗窃警报",
