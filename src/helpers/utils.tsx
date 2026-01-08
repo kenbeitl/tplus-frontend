@@ -1,11 +1,11 @@
 import { SvgIcon } from "@mui/material";
 import React from "react";
 
-const iconComponentCache = new Map<string, React.ComponentType<{ size?: number, color?: string }>>();
+const iconComponentCache = new Map<string, React.ComponentType<{ size?: number, color?: string, fill?: string }>>();
 const renderedIconCache = new Map<string, React.ReactNode>();
 
-export function getSVGIcon(iconName: string, size: number = 25, color?: string): React.ReactNode {
-    const cacheKey = `${iconName}-${size}-${color || 'default'}`;
+export function getSVGIcon(iconName: string, size: number = 25, color?: string, fill?: string): React.ReactNode {
+    const cacheKey = `${iconName}-${size}-${color || 'default'}-${fill || 'none'}`;
     
     if (renderedIconCache.has(cacheKey)) {
         return renderedIconCache.get(cacheKey)!;
@@ -17,19 +17,20 @@ export function getSVGIcon(iconName: string, size: number = 25, color?: string):
         const pascalCase = iconName.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
         try {
             const icon = require(`../assets/icons/${pascalCase}.svg`).default;
-            IconComponent = ({ size, color }: { size?: number, color?: string }) => (
+            IconComponent = ({ size, color, fill }: { size?: number, color?: string, fill?: string }) => (
                 <SvgIcon 
                     component={icon} 
                     viewBox="0 0 24 24"
                     sx={{ 
                         fontSize: size, 
-                        color: color 
+                        color: color,
+                        fill: fill 
                     }} 
                 />
             );
         } catch (e) {
             const icons = require('lucide-react');
-            IconComponent = icons[pascalCase] as React.ComponentType<{ size?: number, color?: string }>;
+            IconComponent = icons[pascalCase] as React.ComponentType<{ size?: number, color?: string, fill?: string }>;
         }
         
         if (IconComponent) {
@@ -39,7 +40,12 @@ export function getSVGIcon(iconName: string, size: number = 25, color?: string):
         }
     }
     
-    const renderedIcon = <IconComponent size={size} color={color} />;
+    const iconProps: { size?: number; color?: string; fill?: string } = { size, color };
+    if (fill) {
+        iconProps.fill = fill;
+    }
+    
+    const renderedIcon = <IconComponent {...iconProps} />;
     renderedIconCache.set(cacheKey, renderedIcon);
     
     return renderedIcon;

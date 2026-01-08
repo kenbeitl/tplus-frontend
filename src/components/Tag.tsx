@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from '@mui/material/styles';
 
-type TagVariant = 'transparent' | 'orange' | 'blue' | 'green' | 'purple' | 'white' | 'outlined';
+type TagVariant = 'transparent' | 'orange' | 'blue' | 'green' | 'green-inverted' | 'purple' | 'white' | 'outlined';
 type ColorVariant = 'yellow';
 
 interface TagProps {
@@ -52,6 +52,11 @@ const TagRoot = styled('span', {
   ...(variant === 'green' && {
     color: theme.palette.tag.green.text,
     background: theme.palette.tag.green.background,
+  }),
+  
+  ...(variant === 'green-inverted' && {
+    color: '#FFFFFF',
+    background: theme.palette.icon.green,
   }),
   
   ...(variant === 'purple' && {

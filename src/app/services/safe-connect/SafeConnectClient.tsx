@@ -8,6 +8,7 @@ import TabContext from '@mui/lab/TabContext';
 import { Tag, Spacer, TabList, TabPanel, StyledIcon, FormField, ButtonWithFormModal, HeroSection, Carousel } from "@/components";
 import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon } from "@/helpers/utils";
+import tGuard from "@/assets/images/tGuard";
 
 const WEB_VULNERABILITY_ASSESSMENT_TEMPLATE_ID = 'safeconnect-web-vulnerability-assessment';
 const NETWORK_BOX_CYBERSECURITY_TEMPLATE_ID = 'safeconnect-network-box-cybersecurity';
@@ -19,6 +20,8 @@ export default function SafeConnectClient() {
   const [darkWebResult, setDarkWebResult] = React.useState<any>({
     found: false,
   });
+
+  const LogoComponent = tGuard
 
   const translations = React.useMemo(() => {
     const individuals = t('pages.safeConnect.cybersecurityForIndividuals');
@@ -113,41 +116,35 @@ export default function SafeConnectClient() {
             <Grid size={{ xs: 12, sm: 6 }}>
               <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
                 <Box component="div" className="flex items-center mb-3">
-                  <Box component="span" className="mr-2">{ getSVGIcon('smartphone', 16) }</Box>
-                  <Typography variant="body1" component="h4" className="font-bold!">{translations.tGuard.title}</Typography>
+                  <Box component="span" className="mr-2">{ getSVGIcon('smartphone', 20) }</Box>
+                  <Typography variant="h5" component="h4" className="font-bold!">{translations.tGuard.title}</Typography>
                 </Box>
-                <Typography variant="body2" component="p">{translations.tGuard.context}</Typography>
+                <Typography variant="body1" component="p">{translations.tGuard.context}</Typography>
                 <Spacer height={20} />
                 <Paper
                   className={`p-6 ${theme.palette.gradientClasses.blueGreenLight}`}
                   variant="outlined"
                 >
                   <Box className="flex sm:max-md:flex-col items-top">
-                    <StyledIcon 
-                      icon={getSVGIcon('shield', 32)} 
-                      variant="custom"
-                      textColor={theme.palette.icon.green}
-                      bgColor="white"
-                      size={64}
-                      square
-                      className="mr-3 sm:max-md:mb-3 shrink-0"
-                    />
+                    <Box component="div" className="p-1 bg-white rounded-xl mr-6 flex items-center justify-center h-20 w-20 shadow-sm">
+                      <LogoComponent />  
+                    </Box>
                     <Box component="div">
-                      <Typography variant="body1" component="h4" className="font-bold">{translations.tGuardApp.name}</Typography>
-                      <Typography variant="caption" component="p">{translations.tGuardApp.description}</Typography>
-                      <Box component="div" className="flex flex-col-reverse md:flex-row gap-2 mt-3">
-                        <Tag label={translations.tGuardApp.freeDownload} variant="green" />
-                        <Box component="div" className="flex">
-                          { getSVGIcon('star', 16, '#EAB308') }
-                          <Typography component="span" variant="caption" className="font-medium whitespace-nowrap">4.8 (12,847)</Typography>
+                      <Typography variant="h4" component="h4" className="font-bold">{translations.tGuardApp.name}</Typography>
+                      <Typography variant="body1" component="p">{translations.tGuardApp.description}</Typography>
+                      <Box component="div" className="flex flex-col-reverse md:flex-row items-center gap-2 mt-3">
+                        <Tag label={translations.tGuardApp.freeDownload} variant="green-inverted" className="px-2! py-1! text-base! font-normal!" />
+                        <Box component="div" className="flex items-center gap-1">
+                          { getSVGIcon('star', 16, '#EAB308', '#EAB308') }
+                          <Typography variant="subtitle1" component="div" className="whitespace-nowrap">4.8 (12,847)</Typography>
                         </Box>  
                       </Box>
                     </Box>
                   </Box>
                   <Spacer height={20} />
                   <Button 
-                    variant="contained" 
-                    color="primary" 
+                    variant="gradient" 
+                    color="blue" 
                     startIcon={ getSVGIcon('download', 16) } 
                     className="w-full" onClick={() => window.open(translations.tGuardApp.link, "_blank")}
                   >
@@ -161,20 +158,20 @@ export default function SafeConnectClient() {
                       <Box component="div" className="h-8 w-8 text-blue-600 mx-auto mb-2">
                         { getSVGIcon(feature.icon, 32) }
                       </Box>
-                      <Typography component="div" variant="caption" className="font-medium mb-1">{feature.title}</Typography>
-                      <Typography component="div" variant="caption" color="text.secondary">{feature.description}</Typography>
+                      <Typography component="div" variant="subtitle1" className="font-medium mb-1">{feature.title}</Typography>
+                      <Typography component="div" variant="subtitle2" color="text.secondary">{feature.description}</Typography>
                     </Box>
                   ))}
                 </Box>
               </Card>
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
-              <Card variant="outlined" className="px-12 pt-12 pb-24 h-full">
+              <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
                 <Box component="div" className="flex items-center mb-3">
-                  <Box component="span" className="mr-2">{ getSVGIcon('eye', 16) }</Box>
-                  <Typography variant="body1" component="h4" className="font-bold!">{translations.darkWeb.title}</Typography>
+                  <Box component="span" className="mr-2">{ getSVGIcon('eye', 20) }</Box>
+                  <Typography variant="h4" component="h4" className="font-bold!">{translations.darkWeb.title}</Typography>
                 </Box>
-                <Typography variant="body2" component="p">{translations.darkWeb.context}</Typography>
+                <Typography variant="body1" component="p">{translations.darkWeb.context}</Typography>
                 <Spacer height={20} />
                   <Box component="div" className="flex flex-col md:flex-row justify-between items-start md:items-center">
                     <Typography variant="body1" component="h4" className="font-bold! mb-3">{translations.darkWeb.emailBreachCheck.title}</Typography>
@@ -284,7 +281,7 @@ export default function SafeConnectClient() {
         <TabPanel value="2">
           <Grid container spacing={2}>
             <Grid size={{ xs: 12, sm: 6 }}>
-              <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
+              <Card variant="outlined" sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <Box component="div" className="flex items-center mb-3">
                   <Box component="span" className="mr-2">{ getSVGIcon('search', 16) }</Box>
                   <Typography variant="body1" component="h4" className="font-bold!">{translations.webVulnerability.title}</Typography>
@@ -330,7 +327,7 @@ export default function SafeConnectClient() {
               </Card>
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
-              <Card variant="outlined" sx={{ p: 3, height: '100%' }}>
+              <Card variant="outlined" sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <Box component="div" className="flex items-center mb-3">
                   <Box component="span" className="mr-2">{ getSVGIcon('users', 16) }</Box>
                   <Typography variant="body1" component="h4" className="font-bold!">{translations.consultingServices.title}</Typography>
