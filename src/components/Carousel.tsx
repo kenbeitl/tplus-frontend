@@ -52,9 +52,9 @@ export default function Carousel({ slides }: { slides: SlideProps[] }) {
                         backgroundColor: theme.palette.background.darkGrey,
                     }}
                 >
-                    <Box component="div" className="flex items-center">
-                        <Box component="div" className="flex flex-col justify-between grow mr-6">
-                            <Box className="flex items-center mb-5">
+                    <Box component="div" className="flex flex-col md:flex-row items-center">
+                        <Box component="div" className="flex flex-col justify-between grow mb-5 md:mr-6 md:mb-0">
+                            <Box className="flex flex-col md:flex-row md:items-center mb-5">
                                 <Emoji symbol={slide.emoji} size={48} className="mr-1" />
                                 <Typography variant="h1" component="h2" color="white" className="mb-2">{slide.title}</Typography>    
                             </Box>                    
@@ -64,6 +64,7 @@ export default function Carousel({ slides }: { slides: SlideProps[] }) {
                             variant="outlined"
                             color="white"
                             endIcon={getSVGIcon('arrow-right', 20, theme.palette.text.primary)}
+                            className="whitespace-nowrap px-10!"
                         >{slide.buttonText}</Button>
                     </Box>
                 </Paper>

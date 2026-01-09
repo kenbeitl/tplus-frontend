@@ -488,6 +488,9 @@ const theme = createTheme({
             backgroundColor: '#2b7fff',
             boxShadow: 'none',
             border: '1px solid #2b7fff',
+            '&.Mui-disabled': {
+              border: 0,
+            },
             '&:hover': {
               color: '#2b7fff',
               backgroundColor: '#FFFFFF',

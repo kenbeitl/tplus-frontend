@@ -159,7 +159,7 @@ export default function SafeConnectClient() {
                         <Tag label={translations.tGuardApp.freeDownload} variant="green-inverted" className="px-2! py-1! text-sm! font-normal!" />
                         <Box component="div" className="flex items-center gap-1">
                           { getSVGIcon('star', 16, '#EAB308', '#EAB308') }
-                          <Typography variant="subtitle1" component="div" className="whitespace-nowrap">4.8 (12,847)</Typography>
+                          <Typography variant="h6" component="div" className="whitespace-nowrap">4.8 (12,847)</Typography>
                         </Box>  
                       </Box>
                     </Box>
