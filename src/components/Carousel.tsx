@@ -21,12 +21,19 @@ interface SlideProps {
     buttonLink: string;
 }
 
-export default function Carousel({ slides }: { slides: SlideProps[] }) {
+export default function Carousel({ 
+    slides, 
+    isPayConnect = false
+}: { 
+    slides: SlideProps[], 
+    isPayConnect?: boolean
+}) {
     const router = useRouter();
     
     const handleClick = (link: string) => {
+        if (link.trim() === '#') return;
+
         if (link.startsWith('http')) {
-            // Open external links in a new tab
             window.open(link, '_blank');
         } else {
             router.push(link);
@@ -39,7 +46,7 @@ export default function Carousel({ slides }: { slides: SlideProps[] }) {
             navigation
             pagination={{ clickable: true }}
             loop
-            // autoplay
+            autoplay={{ delay: 5000 }}
             spaceBetween={8}
             slidesPerView={1}
             style={{
@@ -59,7 +66,7 @@ export default function Carousel({ slides }: { slides: SlideProps[] }) {
                         paddingBottom: 6,
                         paddingLeft: 12,
                         height: '100%',
-                        minHeight: '180px',
+                        minHeight: isPayConnect ? '300px' : '200px',
                         borderRadius: 1,
                         backgroundColor: theme.palette.background.darkGrey,
                     }}
