@@ -1,6 +1,6 @@
 {
     "title": "PayConnect",
-    "context": "为您的业务提供全面的金融服务和支付解决方案",
+    "context": "为您的企业提供金融服务和支付解决方案。通过我们的合作伙伴网络，访问银行、汇款、贸易融资和数字支付。",
     "serviceProvidersAvailable": "可用的服务提供商",
     "viewAllProviders": "查看所有提供商",
     "compareSelectProvider": "从 {slot} 个可用提供商中进行比较和选择",

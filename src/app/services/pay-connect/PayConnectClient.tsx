@@ -1,7 +1,7 @@
 'use client';
 
 import { Box, Card, Grid, Typography } from '@mui/material';
-import { ButtonWithModal, Carousel, Tag, Spacer, StyledIcon } from '@/components';
+import { ButtonWithModal, Carousel, Tag, Spacer, StyledIcon, HeroSection } from '@/components';
 import ProviderModal from './modal/provider-modal';
 import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon } from '@/helpers/utils';
@@ -19,8 +19,17 @@ export default function PayConnectClient() {
 
     return (
         <>
-            <Typography className="font-bold mb-4" variant="h4" component="h1">{ t("pages.payConnect.title") }</Typography>
-            <Typography variant="body2" component="p">{ t("pages.payConnect.context") }</Typography>
+            <Typography className="font-bold mb-4" variant="h4" component="h1"></Typography>
+            <Typography variant="body2" component="p"></Typography>
+
+            <HeroSection
+                title={ t("pages.payConnect.title") }
+                description={ t("pages.payConnect.context") }
+                icon={ getSVGIcon('credit-card', 24, '#FFFFFF') }
+                colorScheme="cyan"
+            />
+
+
             <Spacer height={20} />
             <Tag label={ t('pages.payConnect.sponsoredPartnerOffers') } className="text-base! text-only" startIcon={ getSVGIcon('sparkles', undefined, '#fd9a00') } />
             <Spacer height={20} />

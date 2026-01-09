@@ -1,6 +1,6 @@
 {
     "title": "PayConnect",
-    "context": "Comprehensive financial services and payment solutions for your business",
+    "context": "Financial services and payment solutions for your business. Access banking, remittance, trade finance, and digital payments through our partner network.",
     "serviceProvidersAvailable": "Service Providers Available",
     "viewAllProviders": "View All Providers",
     "compareSelectProvider": "Compare and select from {slot} available providers",

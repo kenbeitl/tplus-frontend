@@ -3,6 +3,7 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useRouter } from 'next/navigation';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -21,6 +22,17 @@ interface SlideProps {
 }
 
 export default function Carousel({ slides }: { slides: SlideProps[] }) {
+    const router = useRouter();
+    
+    const handleClick = (link: string) => {
+        if (link.startsWith('http')) {
+            // Open external links in a new tab
+            window.open(link, '_blank');
+        } else {
+            router.push(link);
+        }
+    };
+    
     return (
         <Swiper
             modules={[Autoplay, Navigation, Pagination]}
@@ -65,6 +77,7 @@ export default function Carousel({ slides }: { slides: SlideProps[] }) {
                             color="white"
                             endIcon={getSVGIcon('arrow-right', 20, theme.palette.text.primary)}
                             className="whitespace-nowrap px-10!"
+                            onClick={() => handleClick(slide.buttonLink)}
                         >{slide.buttonText}</Button>
                     </Box>
                 </Paper>
