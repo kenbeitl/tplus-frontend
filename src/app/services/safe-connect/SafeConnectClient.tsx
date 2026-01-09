@@ -125,7 +125,7 @@ export default function SafeConnectClient() {
           className="mr-3"
           square
         />
-        <Typography variant="h2" component="h2">{ t("pages.safeConnect.ourServices") }</Typography>
+        <Typography variant="h2" component="h2">{ t("common.ourServices") }</Typography>
       </Box>
       <TabContext value={value}>
         <Box>

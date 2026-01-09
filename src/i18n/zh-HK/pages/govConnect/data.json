@@ -1,11 +1,43 @@
 {
     "title": "GovConnect",
-    "context": "單一提交雙重申報",
+    "context": "訪問政府服務並簡化法規合規。使用AI驅動的自動化連接香港和中國海關。",
+    "slides": [
+        {
+            "emoji": "✍️",
+            "title": "SignConnect",
+            "context": "使用Tradelink DMSS進行數字文件簽名 - 安全、高效且具有法律約束力",
+            "buttonText": "探索SignConnect",
+            "buttonLink": "/services/sign-connect"
+        },
+        {
+            "emoji": "💳",
+            "title": "PayConnect",
+            "context": "金融服務和支付解決方案 - 銀行、匯款和貿易融資",
+            "buttonText": "探索PayConnect",
+            "buttonLink": "/services/pay-connect"
+        },
+        {
+            "emoji": "🤝",
+            "title": "BizConnect",
+            "context": "商業智能和網絡 - 盡職調查、市場准入和合作夥伴關係",
+            "buttonText": "探索BizConnect",
+            "buttonLink": "/services/biz-connect"
+        },
+        {
+            "emoji": "🔒",
+            "title": "SafeConnect",
+            "context": "網絡安全服務 - 網站漏洞掃描、監控和數據洩露檢測",
+            "buttonText": "探索SafeConnect",
+            "buttonLink": "/services/safe-connect"
+        }
+    ],
     "backToGovConnect": "返回GovConnect",
     "services": [
         {
             "id": "govconnect-dual-declaration",
             "icon": "file-text",
+            "theme": "purple",
+            "cardStyle": "border-purple-100! hover:border-purple-300! focus:ring-purple-400!",
             "title": "單一提交雙重申報",
             "description": "簡化海關申報，單一提交滿足進出口要求",
             "features": [
@@ -17,6 +49,8 @@
         {
             "id": "hs-code-ai-classifier",
             "icon": "search",
+            "theme": "blue",
+            "cardStyle": "border-blue-100! hover:border-blue-300! focus:ring-blue-400!",
             "title": "HS編碼AI分類器",
             "description": "即時獲取AI驅動的產品HS編碼分類",
             "features": [
@@ -29,6 +63,8 @@
         {
             "id": "ai-powered-customs-automation",
             "icon": "brain",
+            "theme": "emerald",
+            "cardStyle": "border-emerald-100! hover:border-emerald-300! focus:ring-emerald-400!",
             "title": "AI驅動的海關自動化",
             "description": "利用AI驅動的文檔處理自動化海關申報",
             "features": [

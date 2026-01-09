@@ -1,11 +1,44 @@
 {
     "title": "GovConnect",
-    "context": "Single Submission for Dual Declaration",
+    "context": "Access government services and streamline regulatory compliance. Connect with Hong Kong and China customs using AI-powered automation.",
+    "slides": [
+        {
+            "emoji": "✍️",
+            "title": "SignConnect",
+            "context": "Digital document signing with Tradelink DMSS - Secure, efficient, and legally binding",
+            "buttonText": "Explore SignConnect",
+            "buttonLink": "/services/sign-connect"
+        },
+        {
+            "emoji": "💳",
+            "title": "PayConnect",
+            "context": "Financial services and payment solutions - Banking, remittance, and trade financing",
+            "buttonText": "Explore PayConnect",
+            "buttonLink": "/services/pay-connect"
+        },
+        {
+            "emoji": "🤝",
+            "title": "BizConnect",
+            "context": "Business intelligence and networking - Due diligence, market entry, and partnerships",
+            "buttonText": "Explore BizConnect",
+            "buttonLink": "/services/biz-connect"
+        },
+        {
+            "emoji": "🔒",
+            "title": "SafeConnect",
+            "context": "Cybersecurity services - Web vulnerability scans, monitoring, and data leak detection",
+            "buttonText": "Explore SafeConnect",
+            "buttonLink": "/services/safe-connect"
+        }
+
+    ],
     "backToGovConnect": "Back to GovConnect",
     "services": [
         {
             "id": "govconnect-dual-declaration",
             "icon": "file-text",
+            "theme": "purple",
+            "cardStyle": "border-purple-100! hover:border-purple-300! focus:ring-purple-400!",
             "title": "Single Submission for Dual Declaration",
             "description": "Streamline customs declarations with single submission for both import and export requirements",
             "features": [
@@ -17,6 +50,8 @@
         {
             "id": "hs-code-ai-classifier",
             "icon": "search",
+            "theme": "blue",
+            "cardStyle": "border-blue-100! hover:border-blue-300! focus:ring-blue-400!",
             "title": "HS Code AI Classifier",
             "description": "Get AI-powered HS code classification for your products instantly",
             "features": [
@@ -29,6 +64,8 @@
         {
             "id": "ai-powered-customs-automation",
             "icon": "brain",
+            "theme": "emerald",
+            "cardStyle": "border-emerald-100! hover:border-emerald-300! focus:ring-emerald-400!",
             "title": "AI-Powered Customs Automation",
             "description": "Automate customs declarations with AI-powered document processing",
             "features": [

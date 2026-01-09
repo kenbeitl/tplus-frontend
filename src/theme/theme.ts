@@ -17,6 +17,13 @@ const GRADIENTS = {
   greenEmerald: 'linear-gradient(to right, #10B981, #059669)',
   blueCyan: 'linear-gradient(to bottom right, #2563eb, #06b6d4)',
   indigoPurple: 'linear-gradient(to bottom right, #4f46e5, #7c3aed)',
+  // Button gradients
+  buttonBlue: 'linear-gradient(to right, #2563eb, #1d4ed8)',
+  buttonBlueHover: 'linear-gradient(to right, #1d4ed8, #1e40af)',
+  buttonEmerald: 'linear-gradient(to right, #059669, #047857)',
+  buttonEmeraldHover: 'linear-gradient(to right, #047857, #065f46)',
+  buttonPurple: 'linear-gradient(to right, #9333ea, #7e22ce)',
+  buttonPurpleHover: 'linear-gradient(to right, #7e22ce, #6b21a8)',
 };
 
 // Tailwind gradient classes (for className usage)
@@ -52,7 +59,9 @@ const GRADIENT_CLASSES = {
   iconBlueLight: 'bg-linear-to-br from-blue-100 to-indigo-100',
   iconGreen: 'bg-linear-to-br from-green-600 to-emerald-600',
   iconGreenLight: 'bg-linear-to-br from-green-100 to-teal-100',
+  iconEmerald: 'bg-gradient-to-br from-emerald-500 to-emerald-600',
   iconPurple: 'bg-linear-to-br from-purple-600 to-indigo-600',
+  iconPurpleGradient: 'bg-gradient-to-br from-purple-500 to-purple-600',
   iconPurplePink: 'bg-linear-to-br from-purple-600 to-pink-600',
   iconIndigoPurple: 'bg-linear-to-br from-indigo-500 to-purple-600',
   iconOrange: 'bg-linear-to-br from-orange-500 to-red-600',

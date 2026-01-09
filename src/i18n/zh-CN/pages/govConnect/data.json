@@ -1,11 +1,43 @@
 {
     "title": "GovConnect",
-    "context": "单一提交双重申报",
+    "context": "访问政府服务并简化法规合规。使用AI驱动的自动化连接香港和中国海关。",
+    "slides": [
+        {
+            "emoji": "✍️",
+            "title": "SignConnect",
+            "context": "使用Tradelink DMSS进行数字文件签名 - 安全、高效且具有法律约束力",
+            "buttonText": "探索SignConnect",
+            "buttonLink": "/services/sign-connect"
+        },
+        {
+            "emoji": "💳",
+            "title": "PayConnect",
+            "context": "金融服务和支付解决方案 - 银行、汇款和贸易融资",
+            "buttonText": "探索PayConnect",
+            "buttonLink": "/services/pay-connect"
+        },
+        {
+            "emoji": "🤝",
+            "title": "BizConnect",
+            "context": "商业智能和网络 - 尽职调查、市场准入和合作伙伴关系",
+            "buttonText": "探索BizConnect",
+            "buttonLink": "/services/biz-connect"
+        },
+        {
+            "emoji": "🔒",
+            "title": "SafeConnect",
+            "context": "网络安全服务 - 网站漏洞扫描、监控和数据泄露检测",
+            "buttonText": "探索SafeConnect",
+            "buttonLink": "/services/safe-connect"
+        }
+    ],
     "backToGovConnect": "返回GovConnect",
     "services": [
         {
             "id": "govconnect-dual-declaration",
             "icon": "file-text",
+            "theme": "purple",
+            "cardStyle": "border-purple-100! hover:border-purple-300! focus:ring-purple-400!",
             "title": "单一提交双重申报",
             "description": "简化海关申报，单一提交满足进出口要求",
             "features": [
@@ -17,6 +49,8 @@
         {
             "id": "hs-code-ai-classifier",
             "icon": "search",
+            "theme": "blue",
+            "cardStyle": "border-blue-100! hover:border-blue-300! focus:ring-blue-400!",
             "title": "HS编码AI分类器",
             "description": "即时获取AI驱动的产品HS编码分类",
             "features": [
@@ -29,6 +63,8 @@
         {
             "id": "ai-powered-customs-automation",
             "icon": "brain",
+            "theme": "emerald",
+            "cardStyle": "border-emerald-100! hover:border-emerald-300! focus:ring-emerald-400!",
             "title": "AI驱动的海关自动化",
             "description": "利用AI驱动的文档处理自动化海关申报",
             "features": [

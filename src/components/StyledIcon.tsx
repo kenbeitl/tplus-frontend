@@ -1,9 +1,9 @@
 import React from 'react';
 import theme from '@/theme/theme';
 
-type ColorVariant = 'transparent' | 'red' | 'green' | 'blue' | 'orange' | 'amber' | 'indigo' | 'purple' | 'gray';
+type ColorVariant = 'transparent' | 'red' | 'green' | 'emerald' | 'blue' | 'orange' | 'amber' | 'indigo' | 'purple' | 'gray';
 type InvertedVariant = `${Exclude<ColorVariant, 'transparent' | 'gray'>}-inverted`;
-type Variant = ColorVariant | InvertedVariant | 'blue-gradient' | 'green-gradient' | 'opacity' | 'custom';
+type Variant = ColorVariant | InvertedVariant | 'blue-gradient' | 'green-gradient' | 'emerald' | 'purple' | 'opacity' | 'custom';
 type Elevation = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 interface StyledIconProps {
@@ -56,6 +56,18 @@ export default function StyledIcon({
       bg: theme.palette.gradientClasses.iconGreen,
       text: 'text-white',
     },
+    emerald: {
+      bg: 'bg-emerald-100',
+      text: 'text-emerald-600',
+    },
+    'emerald-inverted': {
+      bg: 'bg-emerald-600',
+      text: 'text-white',
+    },
+    'emerald-gradient': {
+      bg: theme.palette.gradientClasses.iconEmerald,
+      text: 'text-white',
+    },
     blue: {
       bg: 'bg-blue-100',
       text: 'text-blue-600',
@@ -102,6 +114,10 @@ export default function StyledIcon({
     },
     'purple-inverted': {
       bg: 'bg-purple-600',
+      text: 'text-white',
+    },
+    'purple-gradient': {
+      bg: theme.palette.gradientClasses.iconPurpleGradient,
       text: 'text-white',
     },
     gray: {
