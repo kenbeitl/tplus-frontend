@@ -46,48 +46,47 @@
     "viewDetailedInformation": "查看詳細信息",
     "detailedProductInfoFeatures": "詳細的產品信息和功能",
     "useService": "使用服務",
-    "cards": [
+    "availableServices": [
         {
-            "icon": "building",
+            "icon": "building2",
             "title": "銀行賬戶開設",
             "description": "與亞太地區的合作銀行開設企業賬戶",
             "type": "bankAccountOpening",
-            "emoji": "🏦"
-        },
-        {
-            "icon": "credit-card",
-            "title": "綜合支付解決方案",
-            "description": "為您的業務提供線上和線下支付處理",
-            "type": "integratedPaymentSolutions",
-            "emoji": "💳"
+            "slug": "/services/pay-connect/bank-account-opening"
         },
         {
             "icon": "plane",
             "title": "本地及跨境匯款",
             "description": "快速且安全的本地和國際資金轉移",
             "type": "localCrossBorderRemittance",
-            "emoji": "🌐"
+            "slug": "/services/pay-connect/local-cross-border-remittance"
         },
         {
             "icon": "dollar-sign",
             "title": "貿易融資",
             "description": "靈活的貿易融資解決方案，支持您的業務增長",
             "type": "tradeFinancing",
-            "emoji": "🏛️"
+            "slug": "/services/pay-connect/trade-financing"
+        }
+    ],
+    "upcomingFeatures": [
+        {
+            "icon": "credit-card",
+            "title": "綜合支付解決方案",
+            "description": "為您的業務提供線上和線下支付處理",
+            "type": "integratedPaymentSolutions"
         },
         {
             "icon": "shield",
             "title": "貿易信用保險",
             "description": "保護您的業務免受貿易信用風險影響",
-            "type": "tradeCreditInsurance",
-            "emoji": "🛡️"
+            "type": "tradeCreditInsurance"
         },
         {
             "icon": "users",
             "title": "債務催收服務",
             "description": "為您的業務提供高效的債務回收解決方案",
-            "type": "debtCollectionServices",
-            "emoji": "⚖️"
+            "type": "debtCollectionServices"
         }
     ]
 }

@@ -69,7 +69,7 @@ export default function SignConnectClient() {
                     ))}
                   </List>
                   <Button
-                    className={platform.isActive ? 'bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800' : ''}
+                    className={platform.isActive ? 'bg-linear-to-r from-blue-600 to-blue-700 text-white! hover:from-blue-700 hover:to-blue-800 transition-colors!' : ''}
                     variant={platform.isActive ? 'contained' : 'outlined'}
                     disabled={!platform.isActive}
                     onClick={platform.isActive ? (platform.action === 'open-modal' ? () => tradelinkModal.handleOpen() : undefined ) : undefined}

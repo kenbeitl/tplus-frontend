@@ -66,7 +66,7 @@ export default function Carousel({
             <SwiperSlide key={index}>
                 <Paper 
                     elevation={3}
-                    className="bg-overlay-heavy"
+                    className="bg-grey-900" // background image placeholder
                     sx={{
                         paddingTop: 6,
                         paddingRight: 12,
@@ -102,7 +102,7 @@ export default function Carousel({
                         }
                         { slideLayout === 2 && 
                             <>                                  
-                                <Box component="div" className="flex flex-col">
+                                <Box component="div" className="flex flex-col gap-2">
                                     <Box component="div" className="flex items-center">
                                         <Emoji symbol={slide.emoji} size={48} className="mr-1" />
                                         <Tag variant="outlined" label={ slide.tag || '' } />
@@ -110,10 +110,10 @@ export default function Carousel({
                                     <Typography variant="h2" component="h2" color="white">{slide.title}</Typography>
                                     <Typography variant="body1" component="p" color="white">{slide.context}</Typography>
                                     <Button
-                                        className={slide.buttonStyle ? `bg-linear-to-r ${slide.buttonStyle} text-white` : ''}
+                                        className={`bg-linear-to-r ${slide.buttonStyle} text-white! w-fit border-0!`}
                                         variant="contained"
                                         onClick={() => handleClick(slide.buttonLink)}
-                                        sx={{ width: '100%', mt: 'auto' }}
+                                        endIcon={ getSVGIcon('external-link', 16, '#FFFFFF') }
                                     >
                                         {slide.buttonText}
                                     </Button>

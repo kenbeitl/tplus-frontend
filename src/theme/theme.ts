@@ -407,6 +407,11 @@ const theme = createTheme({
           fontSize: 16,
           lineHeight: 2.25,
           textTransform: 'none',
+          transition: 'all 0.2s ease-in-out',
+          '&:hover': {
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+            transform: 'translateY(-2px)',
+          },
           '&:disabled': {
             opacity: 0.6,
           }

@@ -6,9 +6,8 @@ import { styled } from '@mui/material/styles';
 import { Box, Collapse, List, ListItemText, ListItemButton as MuiListItemButton, ListItemIcon as MuiListItemIcon, Tooltip  } from '@mui/material';
 
 // Local Components & Contexts
-import { useTranslations, useDrawer } from '@/contexts/AppContext';
+import { useDrawer } from '@/contexts/AppContext';
 import { menuIconSize } from '@/helpers/constants'
-import Tag from './Tag';
 import { getSVGIcon } from '@/helpers/utils';import theme from '@/theme/theme';
 ;
 
@@ -163,7 +162,6 @@ interface NavigationListItemProps {
   primary: string;
   path: string;
   isActive?: boolean;
-  isComingSoon?: boolean;
   level?: number;
   onClick?: (path: string) => void;
   sx?: any;
@@ -172,12 +170,10 @@ interface NavigationListItemProps {
 export function NavigationListItem({ 
   icon, 
   primary, 
-  path, 
-  isComingSoon = false,
+  path,
   level = 1,
   onClick,
 }: NavigationListItemProps) {
-  const t = useTranslations();
   const pathname = usePathname();
   const [mounted, setMounted] = React.useState(false);
   const isDrawerOpen = useDrawer().drawerOpen;
@@ -192,20 +188,9 @@ export function NavigationListItem({
     return pathname === path || pathname.startsWith(path + '/');
   }, [pathname, path, mounted]);
   
-  const displayText = React.useMemo(() => {
-    if (!mounted) return primary; // Consistent initial render
-    return isComingSoon ? (
-      <Box component="div" className="flex items-center gap-2">
-        {primary} <Tag variant="orange" label={t('common.comingSoon')} />
-      </Box>
-    ) : primary;
-  }, [primary, isComingSoon, t, mounted]);
-  
-  const tooltipTitle = typeof displayText === 'string' ? displayText : primary;
-  
   return (
     <Tooltip 
-      title={tooltipTitle} 
+      title={primary} 
       placement="right" 
       disableHoverListener={isDrawerOpen}
       slotProps={{
@@ -239,7 +224,7 @@ export function NavigationListItem({
       >
           <Box component="div" className="flex justify-center items-center real-btn">
               <ListItemIcon>{icon}</ListItemIcon>
-              { isDrawerOpen && <ListItemText primary={displayText} /> }
+              { isDrawerOpen && <ListItemText primary={primary} /> }
           </Box>
       </ListItemButton>
     </Tooltip>

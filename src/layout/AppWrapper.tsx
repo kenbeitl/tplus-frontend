@@ -337,17 +337,16 @@ export default function AppWrapper({
               storageKey="dropdown_services"
             >
               {
-                  Array.isArray(serviceList) && serviceList.map((service: any, index: number) => (
-                    <NavigationListItem
-                      key={index}
-                      level={2}
-                      icon={getSVGIcon(service.icon, menuIconSize)}
-                      primary={service.name}
-                      path={service.path}
-                      isComingSoon={!service.isActive}
-                      onClick={handleNavigation}
-                    />
-                  ))
+                Array.isArray(serviceList) && serviceList.map((service: any, index: number) => (
+                  <NavigationListItem
+                    key={index}
+                    level={2}
+                    icon={getSVGIcon(service.icon, menuIconSize)}
+                    primary={service.name}
+                    path={service.path}
+                    onClick={handleNavigation}
+                  />
+                ))
               }
             </DropdownListItem>
           </List>

@@ -46,48 +46,47 @@
     "viewDetailedInformation": "View Detailed Information",
     "detailedProductInfoFeatures": "Detailed product information and features",
     "useService": "Use Service",
-    "cards": [
+    "availableServices": [
         {
-            "icon": "building",
+            "icon": "building2",
             "title": "Bank Account Opening",
             "description": "Open business accounts with partner banks across Asia-Pacific",
             "type": "bankAccountOpening",
-            "emoji": "🏦"
-        },
-        {
-            "icon": "credit-card",
-            "title": "Integrated Payment Solutions",
-            "description": "Online and offline payment processing for your business",
-            "type": "integratedPaymentSolutions",
-            "emoji": "💳"
+            "slug": "/services/pay-connect/bank-account-opening"
         },
         {
             "icon": "plane",
             "title": "Local & Cross-Border Remittance",
             "description": "Fast and secure money transfers locally and internationally",
             "type": "localCrossBorderRemittance",
-            "emoji": "🌐"
+            "slug": "/services/pay-connect/local-cross-border-remittance"
         },
         {
             "icon": "dollar-sign",
             "title": "Trade Financing",
             "description": "Flexible trade financing solutions to support your business growth",
             "type": "tradeFinancing",
-            "emoji": "🏛️"
+            "slug": "/services/pay-connect/trade-financing"
+        }
+    ],
+    "upcomingFeatures": [
+        {
+            "icon": "credit-card",
+            "title": "Integrated Payment Solutions",
+            "description": "Online and offline payment processing for your business",
+            "type": "integratedPaymentSolutions"
         },
         {
             "icon": "shield",
             "title": "Trade Credit Insurance",
             "description": "Protect your business against trade credit risks",
-            "type": "tradeCreditInsurance",
-            "emoji": "🛡️"
+            "type": "tradeCreditInsurance"
         },
         {
             "icon": "users",
             "title": "Debt Collection Services",
             "description": "Efficient debt recovery solutions for your business",
-            "type": "debtCollectionServices",
-            "emoji": "⚖️"
+            "type": "debtCollectionServices"
         }
     ]
 }

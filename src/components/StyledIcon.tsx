@@ -3,7 +3,7 @@ import theme from '@/theme/theme';
 
 type ColorVariant = 'transparent' | 'red' | 'green' | 'emerald' | 'blue' | 'orange' | 'amber' | 'indigo' | 'purple' | 'gray';
 type InvertedVariant = `${Exclude<ColorVariant, 'transparent' | 'gray'>}-inverted`;
-type Variant = ColorVariant | InvertedVariant | 'blue-gradient' | 'green-gradient' | 'emerald' | 'purple' | 'opacity' | 'custom';
+type Variant = ColorVariant | InvertedVariant | 'blue-gradient' | 'green-gradient' | 'orange-gradient' | 'amber-gradient' | 'emerald' | 'purple' | 'opacity' | 'custom';
 type Elevation = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 interface StyledIconProps {
@@ -92,12 +92,20 @@ export default function StyledIcon({
       bg: 'bg-orange-600',
       text: 'text-white',
     },
+    'orange-gradient': {
+      bg: theme.palette.gradientClasses.iconOrange,
+      text: 'text-white',
+    },
     amber: {
       bg: 'bg-amber-100',
       text: 'text-amber-600',
     },
     'amber-inverted': {
       bg: 'bg-amber-600',
+      text: 'text-white',
+    },
+    'amber-gradient': {
+      bg: 'bg-gradient-to-br from-amber-500 to-orange-600',
       text: 'text-white',
     },
     indigo: {
@@ -133,7 +141,7 @@ export default function StyledIcon({
   // Use custom colors if provided, otherwise use variant
   const isCustom = variant === 'custom' && (bgColor || bgGradient || textColor);
   const colorClasses = isCustom ? '' : `${variants[variant].bg} ${variants[variant].text}`;
-  const borderRadiusClass = square ? 'rounded-lg' : 'rounded-full';
+  const borderRadiusClass = square ? 'rounded-xl' : 'rounded-full';
   
   // Box shadow based on elevation
   const shadowClasses: Record<number, string> = {
