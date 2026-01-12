@@ -8,6 +8,7 @@ import { FormField, Spacer } from "@/components";
 import { useFormValidation } from "@/hooks/useFormValidation";
 import { useTranslations } from "@/contexts/AppContext";
 import { getSVGIcon } from "@/helpers/utils";
+import theme from "@/theme/theme";
 
 export default function HSCodeAIClassifierClient() {
     const t = useTranslations();
@@ -100,7 +101,7 @@ export default function HSCodeAIClassifierClient() {
                             } 
                         }}
                     />
-                    <Typography variant="caption" component="p" sx={{ color: 'text.secondary', marginTop: 1 }}>{ translations.productClassification.productTip }</Typography>
+                    <Typography variant="caption" component="p" color={theme.palette.text.secondary} sx={{ marginTop: 1 }}>{ translations.productClassification.productTip }</Typography>
                     <Spacer height={20} />
                     <Button
                         className="bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"

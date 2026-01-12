@@ -13,9 +13,9 @@
             "coverage": "",
             "minDeposit": "10000",
             "fees": "",
-            "processingTime":"5-7",
+            "processingTime":"5-7 business days",
             "successRate": "",
-            "details": "/slide-1.webp",
+            "details": "",
             "formId": "hsbc-business-banking"
         },
         {
@@ -29,10 +29,42 @@
             "coverage": "",
             "minDeposit": "5000",
             "fees": "",
-            "processingTime":"3-5",
+            "processingTime":"3-5 business days",
             "successRate": "",
             "details": "",
             "formId": "dbs-sme-banking"
+        },
+        {
+            "name":"Standard Chartered Business",
+            "context": "Trade finance solutions for growing businesses",
+            "features": [
+                "Trade finance expertise",
+                "Asia-focused network",
+                "Business loans"
+            ],
+            "coverage": "",
+            "minDeposit": "8000",
+            "fees": "",
+            "processingTime":"5-7 business days",
+            "successRate": "",
+            "details": "",
+            "formId": "standard-chartered-business"
+        },
+        {
+            "name":"Citibank Commercial",
+            "context": "Global payment solutions with real-time FX rates",
+            "features": [
+                "Global payment solutions",
+                "Real-time FX rates",
+                "Treasury services"
+            ],
+            "coverage": "",
+            "minDeposit": "15000",
+            "fees": "",
+            "processingTime":"7-10 business days",
+            "successRate": "",
+            "details": "",
+            "formId": "citibank-commercial"
         }
     ]
 }

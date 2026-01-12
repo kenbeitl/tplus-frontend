@@ -88,5 +88,6 @@
             "description": "为您的业务提供高效的债务回收解决方案",
             "type": "debtCollectionServices"
         }
-    ]
+    ],
+    "backToPayConnect": "返回 PayConnect"
 }

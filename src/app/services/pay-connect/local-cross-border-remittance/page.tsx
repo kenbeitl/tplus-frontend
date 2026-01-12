@@ -13,7 +13,7 @@ export default async function LocalCrossBorderRemittancePage() {
   
   return <PayConnectProviderList 
     modalNode="pages.payConnect.localCrossBorderRemittance" 
-    icon={ getSVGIcon('plane', 24) }
+    icon={ getSVGIcon('plane', 36) }
     providerEmoji="🌐"
   />;
 }

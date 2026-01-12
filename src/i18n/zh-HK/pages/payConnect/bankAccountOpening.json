@@ -33,6 +33,38 @@
             "successRate": "",
             "details": "",
             "formId": "dbs-sme-banking"
+        },
+        {
+            "name": "渣打商業銀行",
+            "context": "助力企業實現全球業務拓展與增長",
+            "features": [
+                "貿易融資專長",
+                "亞洲網絡",
+                "企業貸款"
+            ],
+            "coverage": "",
+            "minDeposit": "8000",
+            "fees": "",
+            "processingTime": "5-7 個工作天",
+            "successRate": "",
+            "details": "",
+            "formId": "standard-chartered-business"
+        },
+        {
+            "name": "花旗商業銀行",
+            "context": "提供全球支付解決方案與實時外匯匯率",
+            "features": [
+                "全球支付解決方案",
+                "實時外匯匯率",
+                "資金管理服務"
+            ],
+            "coverage": "",
+            "minDeposit": "15000",
+            "fees": "",
+            "processingTime": "7-10 個工作天",
+            "successRate": "",
+            "details": "",
+            "formId": "citi-commercial-banking"
         }
     ]
 }

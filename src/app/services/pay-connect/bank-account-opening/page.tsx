@@ -12,7 +12,7 @@ export default async function BankAccountOpeningPage() {
   
   return <PayConnectProviderList 
     modalNode="pages.payConnect.bankAccountOpening" 
-    icon={ getSVGIcon('building2', 24) }
+    icon={ getSVGIcon('building2', 36) }
     providerEmoji="🏦"
   />;
 }

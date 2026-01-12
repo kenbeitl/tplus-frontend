@@ -88,5 +88,6 @@
             "description": "Efficient debt recovery solutions for your business",
             "type": "debtCollectionServices"
         }
-    ]
+    ],
+    "backToPayConnect": "Back to PayConnect"
 }

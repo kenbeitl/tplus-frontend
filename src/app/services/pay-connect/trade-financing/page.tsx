@@ -13,7 +13,7 @@ export default async function TradeFinancingPage() {
   
   return <PayConnectProviderList 
     modalNode="pages.payConnect.tradeFinancing" 
-    icon={ getSVGIcon('dollar-sign', 24) }
+    icon={ getSVGIcon('dollar-sign', 36) }
     providerEmoji="🏛️"
   />;
 }

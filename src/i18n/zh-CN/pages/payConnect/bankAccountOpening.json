@@ -15,7 +15,7 @@
             "fees": "",
             "processingTime": "5-7 个工作日",
             "successRate": "",
-            "details": "/slide-1.webp",
+            "details": "",
             "formId": "hsbc-business-banking"
         },
         {
@@ -33,6 +33,38 @@
             "successRate": "",
             "details": "",
             "formId": "dbs-sme-banking"
+        },
+        {
+            "name": "渣打企业银行",
+            "context": "助力企业实现全球业务拓展与增长",
+            "features": [
+                "贸易融资专长",
+                "亚洲网络",
+                "企业贷款"
+            ],
+            "coverage": "",
+            "minDeposit": "8000",
+            "fees": "",
+            "processingTime": "5-7 个工作日",
+            "successRate": "",
+            "details": "",
+            "formId": "standard-chartered-business"
+        },
+        {
+            "name": "花旗商业银行",
+            "context": "提供全球支付解决方案与实时外汇汇率",
+            "features": [
+                "全球支付解决方案",
+                "实时外汇汇率",
+                "资金管理服务"
+            ],
+            "coverage": "",
+            "minDeposit": "15000",
+            "fees": "",
+            "processingTime": "7-10 个工作日",
+            "successRate": "",
+            "details": "",
+            "formId": "citibank-commercial"
         }
     ]
 }

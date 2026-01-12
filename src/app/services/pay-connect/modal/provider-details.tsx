@@ -2,6 +2,7 @@
 import { Box, Link, Paper, Typography } from '@mui/material';
 import { InfoModal, Emoji } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
+import theme from '@/theme/theme';
 
 type Props = {
   open: boolean;
@@ -28,10 +29,10 @@ export default function ProviderDetails({ open, onClose, name, emoji, source }: 
         component="div"
         className="mt-12 mx-8 mb-8 border-dashed border-2 border-gray-300 rounded-xl bg-gray-200!"
       >
-        <Paper className="flex items-center justify-center bg-transparent! overflow-hidden" elevation={0}>
-          <Link href={source} target="_blank" rel="noopener noreferrer">
-          <img src={source} alt={name} />
-          </Link>
+        <Paper className="aspect-[16/10] flex flex-col items-center justify-center bg-transparent! overflow-hidden" elevation={0}>
+          <Emoji symbol={emoji} size={100} />
+          <Typography variant="body1" component="div" color={theme.palette.text.primary}>Detailed product information image from { name }</Typography>
+          <Typography variant="body1" component="div" color={theme.palette.text.primary}>Full service details, pricing, and specifications</Typography>
         </Paper>
       </Box>
     </InfoModal>
