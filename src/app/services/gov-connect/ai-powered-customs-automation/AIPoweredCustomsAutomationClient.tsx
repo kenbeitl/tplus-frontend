@@ -5,7 +5,7 @@ import { useMemo, useState, useEffect } from "react";
 
 import theme from "@/theme/theme";
 import { alpha, Box, Button, Card, FormControl, FormControlLabel, List, ListItem, ListItemIcon, ListItemText, Paper, Radio, RadioGroup, Typography } from "@mui/material";
-import { ActionButton, FileDropZone, Spacer } from "@/components";
+import { FileDropZone, Spacer } from "@/components";
 import { useTranslations } from "@/contexts/AppContext";
 import { getSVGIcon, subSlot } from "@/helpers/utils";
 import { useFormValidation } from "@/hooks/useFormValidation";
@@ -115,12 +115,14 @@ export default function AIPoweredCustomsAutomationClient() {
                                 variant="outlined"
                                 href="/services/gov-connect"
                             >{ t('common.decline') }</Button>
-                            <ActionButton
-                                buttonText={ t('common.acceptAndContinue') }
-                                variant="gradient"
+                            <Button
+                                className="bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
+                                variant="contained"
                                 onClick={() => setCurrentStep(currentStep+1)}
-                                autoWidth
-                            />
+                                sx={{ width: 'auto' }}
+                            >
+                                { t('common.acceptAndContinue') }
+                            </Button>
                         </Box>
                     </Card>
                     }
@@ -180,19 +182,21 @@ export default function AIPoweredCustomsAutomationClient() {
                         </FormControl>
                         <Spacer height={20} />
                         <Box component="div" className="flex justify-between gap-4">
-                            <ActionButton
-                                buttonText={ t('common.back') }
+                            <Button
                                 variant="outlined"
-                                color="white"
                                 onClick={() => setCurrentStep(currentStep-1)}
-                                autoWidth
-                            />
-                            <ActionButton
-                                buttonText={ translations.declaration.buttonText }
-                                variant="gradient"
+                                sx={{ width: 'auto' }}
+                            >
+                                { t('common.back') }
+                            </Button>
+                            <Button
+                                className="bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
+                                variant="contained"
                                 onClick={() => setCurrentStep(currentStep+1)}
-                                autoWidth
-                            />
+                                sx={{ width: 'auto' }}
+                            >
+                                { translations.declaration.buttonText }
+                            </Button>
                         </Box>
                     </Card>
                     }
@@ -228,20 +232,22 @@ export default function AIPoweredCustomsAutomationClient() {
                             );
                         })}
                         <Box component="div" className="flex justify-between gap-4">
-                            <ActionButton
-                                buttonText={ t('common.back') }
+                            <Button
                                 variant="outlined"
-                                color="white"
                                 onClick={() => setCurrentStep(currentStep-1)}
-                                autoWidth
-                            />
-                            <ActionButton
-                                buttonText={ translations.declaration.buttonText }
-                                variant="gradient"
+                                sx={{ width: 'auto' }}
+                            >
+                                { t('common.back') }
+                            </Button>
+                            <Button
+                                className="bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
+                                variant="contained"
                                 onClick={() => setCurrentStep(currentStep+1)}
-                                autoWidth
                                 disabled={files.shipment === undefined || files.goods === undefined}
-                            />
+                                sx={{ width: 'auto' }}
+                            >
+                                { translations.declaration.buttonText }
+                            </Button>
                         </Box>
                     </>
                     }
@@ -278,12 +284,15 @@ export default function AIPoweredCustomsAutomationClient() {
                         </Paper>
                         <Spacer height={25} />
                          <Box component="div" className="flex flex-col gap-3">
-                            <ActionButton
+                            <Button
+                                className="bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
+                                variant="contained"
                                 startIcon={getSVGIcon('external-link', 20)}
-                                buttonText={ translations.submission.viewDraft }
-                                variant="gradient"
-                                onClick="https://app.tradelinksig.com/auth/realms/tradelinkbox/protocol/openid-connect/auth?client_id=tdec&redirect_uri=https%3A%2F%2Fapp.tradelinksig.com%2Ftdec%2F%3Flocale%3Dzh_TW&state=a58ad935-e0b5-479a-8873-9f11697c9dd7&response_mode=fragment&response_type=code&scope=openid&nonce=994d7247-8466-4684-92a0-299d8aec9750&ui_locales=zh-TW&code_challenge=tQ2CSyOBRh0f7501lNreIq7U44BVUZSr04J8pY2rBpY&code_challenge_method=S256"
-                            />
+                                onClick={() => window.open("https://app.tradelinksig.com/auth/realms/tradelinkbox/protocol/openid-connect/auth?client_id=tdec&redirect_uri=https%3A%2F%2Fapp.tradelinksig.com%2Ftdec%2F%3Flocale%3Dzh_TW&state=a58ad935-e0b5-479a-8873-9f11697c9dd7&response_mode=fragment&response_type=code&scope=openid&nonce=994d7247-8466-4684-92a0-299d8aec9750&ui_locales=zh-TW&code_challenge=tQ2CSyOBRh0f7501lNreIq7U44BVUZSr04J8pY2rBpY&code_challenge_method=S256", '_blank')}
+                                sx={{ width: '100%' }}
+                            >
+                                { translations.submission.viewDraft }
+                            </Button>
                             <Button
                                 component={Link}
                                 variant="outlined"

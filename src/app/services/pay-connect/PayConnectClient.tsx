@@ -19,21 +19,17 @@ export default function PayConnectClient() {
 
     return (
         <>
-            <Typography className="font-bold mb-4" variant="h4" component="h1"></Typography>
-            <Typography variant="body2" component="p"></Typography>
-
             <HeroSection
                 title={ t("pages.payConnect.title") }
                 description={ t("pages.payConnect.context") }
                 icon={ getSVGIcon('credit-card', 24, '#FFFFFF') }
                 colorScheme="cyan"
             />
-
-
             <Spacer height={20} />
-            <Tag label={ t('pages.payConnect.sponsoredPartnerOffers') } className="text-base! text-only" startIcon={ getSVGIcon('sparkles', undefined, '#fd9a00') } />
-            <Spacer height={20} />
-            <Carousel slides={ t("pages.signConnect.slides") } />
+            <Carousel 
+                slides={ t("pages.payConnect.slides") }
+                slideLayout={2}
+            />
             <Spacer height={40} />
             <Grid container spacing={2}>
                 {Array.isArray(DIALOG_CARD) && DIALOG_CARD.map((item, index) => (

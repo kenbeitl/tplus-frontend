@@ -2,8 +2,7 @@
 
 import React from "react";
 import { useTranslations } from '@/contexts/AppContext';
-import { ActionButton } from "@/components";
-import { Box, Card, Typography } from "@mui/material";
+import { Box, Button, Card, Typography } from "@mui/material";
 import theme from "@/theme/theme";
 
 interface DangerZoneSectionProps {
@@ -34,13 +33,14 @@ export default function DangerZoneSection({ onDelete }: DangerZoneSectionProps) 
                             {t("pages.settings.userProfile.deleteAccount.description")}
                         </Typography>
                     </Box>
-                    <ActionButton
-                        buttonText={t("pages.settings.userProfile.deleteAccount.buttonText")}
+                    <Button
                         variant="contained"
                         color="error"
                         onClick={handleDelete}
-                        autoWidth
-                    />
+                        sx={{ width: 'auto' }}
+                    >
+                        {t("pages.settings.userProfile.deleteAccount.buttonText")}
+                    </Button>
                 </Box>
             </Card>
         </>

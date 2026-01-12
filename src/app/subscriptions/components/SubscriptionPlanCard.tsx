@@ -1,9 +1,10 @@
 'use client';
 
 import { useMemo } from 'react';
-import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material';
+import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material';
+import Link from 'next/link';
 import theme from '@/theme/theme';
-import { ActionButton, Tag } from '@/components';
+import { Tag } from '@/components';
 import { getSVGIcon, getLocalCurrency, subSlot } from '@/helpers/utils';
 import { useTranslations } from '@/contexts/AppContext';
 
@@ -108,14 +109,14 @@ export default function SubscriptionPlanCard({
                             )}
                         </Box>
                     </Paper>
-                    <ActionButton 
-                        buttonText={
-                            t('common.availableSoon') || t('pages.subscriptions.subscriptionPlans.selectPlan')
-                        }
-                        variant={plan.isCurrentPlan ? 'gradient' : 'outlined'}
-                        color={plan.isCurrentPlan ? 'purple' : 'white'}
+                    <Button 
+                        className={plan.isCurrentPlan ? 'bg-linear-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800' : ''}
+                        variant={plan.isCurrentPlan ? 'contained' : 'outlined'}
                         disabled
-                    />
+                        sx={{ width: '100%', mt: 'auto' }}
+                    >
+                        {t('common.availableSoon') || t('pages.subscriptions.subscriptionPlans.selectPlan')}
+                    </Button>
                     <Typography 
                         variant="caption" 
                         component="p" 
@@ -130,11 +131,13 @@ export default function SubscriptionPlanCard({
                             : t('pages.subscriptions.subscriptionPlans.availableAfterTrialPeriod')
                         }
                     </Typography>
-                    <ActionButton
-                        buttonText={t('common.learnMore')}
+                    <Button
+                        component={Link}
+                        href="/help-centre"
                         variant="text"
-                        onClick="/help-centre"
-                    />
+                    >
+                        {t('common.learnMore')}
+                    </Button>
                 </Box>
             </Card>
         </Grid>

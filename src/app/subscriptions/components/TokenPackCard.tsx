@@ -1,9 +1,9 @@
 'use client';
 
 import { useMemo } from 'react';
-import { Grid, Paper, Typography } from '@mui/material';
+import { Button, Grid, Paper, Typography } from '@mui/material';
 import theme from '@/theme/theme';
-import { ActionButton, Spacer, Tag } from '@/components';
+import { Spacer, Tag } from '@/components';
 import { getSVGIcon, subSlot } from '@/helpers/utils';
 import { useTranslations } from '@/contexts/AppContext';
 
@@ -55,12 +55,14 @@ export default function TokenPackCard({ pack }: TokenPackCardProps) {
                     ${price}
                 </Typography>
                 <Spacer height={10} />
-                <ActionButton 
-                    buttonText={isActive ? 'Purchase' : t('common.availableSoon')}
-                    variant={isActive ? 'gradient' : 'outlined'}
-                    color={isActive ? 'blue' : 'white'}
+                <Button 
+                    className={isActive ? 'bg-linear-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800' : ''}
+                    variant={isActive ? 'contained' : 'outlined'}
                     disabled
-                />
+                    sx={{ width: '100%' }}
+                >
+                    {isActive ? 'Purchase' : t('common.availableSoon')}
+                </Button>
                 <Spacer height={10} />
                 {bonusPercentage > 0 && (
                     <Tag 

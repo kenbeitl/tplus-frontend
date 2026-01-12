@@ -166,10 +166,10 @@ export default function SafeConnectClient() {
                   </Box>
                   <Spacer height={20} />
                   <Button 
-                    variant="gradient" 
-                    color="blue" 
+                    className="w-full bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
+                    variant="contained"
                     startIcon={ getSVGIcon('download', 16) } 
-                    className="w-full" onClick={() => window.open(translations.tGuardApp.link, "_blank")}
+                    onClick={() => window.open(translations.tGuardApp.link, "_blank")}
                   >
                     {translations.tGuardApp.buttonText}
                   </Button>

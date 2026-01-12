@@ -26,7 +26,7 @@ import { getSVGIcon } from '@/helpers/utils';
 import { useBreakpoint } from '@/hooks/useBreakpoint';
 import { menuIconSize } from '@/helpers/constants'
 import theme from '@/theme/theme';
-import { ActionButton, Tag } from '@/components';
+import { Tag } from '@/components';
 
 const drawerWidth = 240;
 const drawerMiniWidth = 64;

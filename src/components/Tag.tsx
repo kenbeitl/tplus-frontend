@@ -21,8 +21,8 @@ const TagRoot = styled('span', {
   placeItems: 'center',
   borderRadius: '0.5em',
   padding: '4px 10px',
-  fontSize: '0.75rem',
-  fontWeight: 500,
+  fontSize: '0.8rem',
+  fontWeight: 400,
   lineHeight: 1.5,
   
   '&.text-only': {

@@ -2,8 +2,8 @@
 
 import React from "react";
 import { useTranslations } from '@/contexts/AppContext';
-import { FormField, ActionButton } from "@/components";
-import { Box, Grid } from "@mui/material";
+import { FormField } from "@/components";
+import { Box, Button, Grid } from "@mui/material";
 
 interface UserInfoSectionProps {
     userForm: any;
@@ -68,12 +68,14 @@ export default function UserInfoSection({ userForm, formConfig, onUpdate }: User
                 </Grid>
             </Grid>
             <Box component="div" className="flex justify-end mt-4">
-                <ActionButton
-                    buttonText={t('common.updateProfile')}
-                    variant="gradient"
+                <Button
+                    className="bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
+                    variant="contained"
                     onClick={onUpdate}
-                    autoWidth
-                />
+                    sx={{ width: 'auto' }}
+                >
+                    {t('common.updateProfile')}
+                </Button>
             </Box>
         </>
     );

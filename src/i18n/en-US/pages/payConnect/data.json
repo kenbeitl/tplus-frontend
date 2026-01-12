@@ -1,6 +1,38 @@
 {
     "title": "PayConnect",
     "context": "Financial services and payment solutions for your business. Access banking, remittance, trade finance, and digital payments through our partner network.",
+    "slides": [
+        {
+            "isSponsor": true,
+            "emoji": "💳",
+            "tag": "Global Payment Solutions",
+            "title": "Unlock 0% Transaction Fees for 90 Days",
+            "context": "Start accepting payments globally with no setup fees. Limited time offer for new T+ members.",
+            "buttonText": "Get Started",
+            "buttonLink": "#",
+            "buttonStyle": "from-blue-600 to-indigo-600"
+        },
+        {
+            "isSponsor": true,
+            "emoji": "🏛️",
+            "tag": "Asia Trade Finance",
+            "title": "Pre-Approved Trade Credit Lines Up to $500K",
+            "context": "Fast-track your international trade with instant credit approval. Exclusive rates for T+ partners.",
+            "buttonText": "Apply Now",
+            "buttonLink": "#",
+            "buttonStyle": "from-emerald-600 to-teal-600"
+        },
+        {
+            "isSponsor": true,
+            "emoji": "🏛️",
+            "tag": "Premium Banking Partners",
+            "title": "Waived Banking Fees + Priority Support",
+            "context": "Open your business account today and enjoy exclusive benefits. Dedicated relationship manager included.",
+            "buttonText": "Learn More",
+            "buttonLink": "#",
+            "buttonStyle": "from-violet-600 to-purple-600"
+        }
+    ],
     "serviceProvidersAvailable": "Service Providers Available",
     "viewAllProviders": "View All Providers",
     "compareSelectProvider": "Compare and select from {slot} available providers",

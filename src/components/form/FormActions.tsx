@@ -25,8 +25,8 @@ export default function FormActions({
         {cancelLabel}
       </Button>
       <Button
-        variant="gradient"
-        color="blue"
+        className="bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
+        variant="contained"
         type={submitType}
         onClick={onSubmit}
         disabled={isSubmitDisabled}

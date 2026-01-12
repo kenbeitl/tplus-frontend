@@ -4,8 +4,8 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 import theme from '@/theme/theme';
-import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material';
-import { Spacer, StyledIcon, ActionButton, HeroSection, Carousel } from '@/components';
+import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material';
+import { Spacer, StyledIcon, HeroSection, Carousel } from '@/components';
 import { useModal } from '@/hooks/useModal';
 import { useTranslations } from '@/contexts/AppContext';
 import { ModalBeforeYouStartTradelink, ModalDigitalIdentityRequired } from './modal';
@@ -68,26 +68,27 @@ export default function SignConnectClient() {
                       </ListItem>
                     ))}
                   </List>
-                  <ActionButton
-                    buttonText={platform.isActive ? t('pages.signConnect.selectService') : t('common.comingSoon')}
-                    variant={platform.isActive ? 'gradient' : 'outlined'}
-                    color={platform.isActive ? 'blue' : 'white'}
+                  <Button
+                    className={platform.isActive ? 'bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800' : ''}
+                    variant={platform.isActive ? 'contained' : 'outlined'}
                     disabled={!platform.isActive}
                     onClick={platform.isActive ? (platform.action === 'open-modal' ? () => tradelinkModal.handleOpen() : undefined ) : undefined}
-                    noIcon
-                  />
+                    sx={{ width: '100%', mt: 'auto' }}
+                  >
+                    {platform.isActive ? t('pages.signConnect.selectService') : t('common.comingSoon')}
+                  </Button>
               </Card>
             </Grid>
           ))}
         </Grid>
         <Spacer height={30} />
         <Box component="div" className="flex justify-center">
-          <ActionButton
-            buttonText={ t('pages.signConnect.learnMoreAboutSigningPlatforms') }
+          <Button
             variant="text"
             onClick={() => router.push('/help-centre')}
-            noIcon
-          />
+          >
+            { t('pages.signConnect.learnMoreAboutSigningPlatforms') }
+          </Button>
         </Box>
       </Paper>
 

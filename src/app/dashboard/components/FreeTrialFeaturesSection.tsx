@@ -1,10 +1,10 @@
 'use client';
 
-import { Box, Card, CardContent, CardHeader, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, CardHeader, Typography } from '@mui/material';
 import theme from '@/theme/theme';
 import { getSVGIcon } from '@/helpers/utils';
 import { useRouter } from 'next/navigation';
-import { ActionButton, Emoji } from '@/components';
+import { Emoji } from '@/components';
 
 interface Feature {
     icon: string;
@@ -98,14 +98,15 @@ export default function FreeTrialFeaturesSection({
                     <Typography variant="body1" component="p">{ remarks.body }</Typography>
                   </Box>
                 </Box>
-                <ActionButton
-                  color="green"
-                  buttonText={ viewSubscriptionPlansText as string }
+                <Button
+                  color="success"
                   endIcon={getSVGIcon('arrow-right', 16)}
                   variant="outlined"
                   onClick={() => router.push('/subscriptions')}
-                  autoWidth
-                />
+                  sx={{ width: 'auto' }}
+                >
+                  {viewSubscriptionPlansText}
+                </Button>
               </Box>
             </Box>
           </Box>

@@ -1,16 +1,19 @@
 'use client';
 
 import { useMemo } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link';
 
-import { Box, Card, Divider, Grid, Typography } from '@mui/material';
-import { Spacer, Tag, ActionButton, ButtonWithFormModal, Checklist, HeroSection, Carousel, StyledIcon } from '@/components';
+import { Box, Button, Card, Divider, Grid, Typography } from '@mui/material';
+import { Spacer, Tag, ButtonWithFormModal, Checklist, HeroSection, Carousel, StyledIcon } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon } from '@/helpers/utils';
+import { getButtonGradientClass, getIconGradientVariant } from '@/helpers/gradientUtils';
 
 export default function GovConnectClient() {
     const t = useTranslations();
     const pathname = usePathname();
+    const router = useRouter();
     const translations = useMemo(() => {
         return {
             govServices: t('pages.govConnect.services')
@@ -28,7 +31,7 @@ export default function GovConnectClient() {
             />
             <Spacer height={20} />
             <Carousel slides={ t("pages.govConnect.slides") } />        
-            <Divider className="!my-9" />
+            <Divider className="my-9!" />
             <Box component="div" className="flex items-center mb-6">
                 <StyledIcon
                     icon={getSVGIcon('shield', 24, '#FFFFFF')}
@@ -53,7 +56,7 @@ export default function GovConnectClient() {
                         >
                             <StyledIcon
                                 icon={getSVGIcon(service.icon, 32)}
-                                variant={`${service.theme}-gradient` as any}
+                                variant={getIconGradientVariant(service.theme) as any}
                                 size={64}
                                 className="mb-4"
                                 square
@@ -77,27 +80,30 @@ export default function GovConnectClient() {
                                     templateId={service.id}
                                     buttonEndIcon={getSVGIcon('arrow-right')}
                                     buttonText={t('common.applyNow')}
-                                    variant="gradient"
-                                    color={service.theme}
+                                    className={getButtonGradientClass(service.theme)}
                                 />
                             )}
                             {service.id === 'hs-code-ai-classifier' && (
-                                <ActionButton
-                                    buttonText={service.buttonText}
+                                <Button
+                                    className={getButtonGradientClass(service.theme)}
+                                    variant="contained"
                                     endIcon={getSVGIcon('arrow-right')}
-                                    variant="gradient"
-                                    color={service.theme}
-                                    onClick={`${pathname}/${service.id}`}
-                                />
+                                    onClick={() => router.push(`${pathname}/${service.id}`)}
+                                    sx={{ width: '100%', mt: 'auto' }}
+                                >
+                                    {service.buttonText}
+                                </Button>
                             )}
                             {service.id === 'ai-powered-customs-automation' && (
-                                <ActionButton
-                                    buttonText={service.buttonText}
+                                <Button
+                                    className={getButtonGradientClass(service.theme)}
+                                    variant="contained"
                                     endIcon={getSVGIcon('arrow-right')}
-                                    variant="gradient"
-                                    color={service.theme}
                                     onClick={() => window.open(process.env.NEXT_PUBLIC_TDEC_FORM_URL || '/tdecForm', '_blank')}
-                                />
+                                    sx={{ width: '100%', mt: 'auto' }}
+                                >
+                                    {service.buttonText}
+                                </Button>
                             )}
                         </Card>
                     </Grid>

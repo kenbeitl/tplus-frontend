@@ -103,6 +103,7 @@ a {
 
 .swiper-slide {
   width: 100% !important;
+  height: auto !important;
   box-sizing: border-box;
 }
 

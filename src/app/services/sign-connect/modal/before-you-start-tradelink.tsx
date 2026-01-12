@@ -1,9 +1,10 @@
 'use client';
-import { Box, Card, Typography } from '@mui/material';
+import { useRouter } from 'next/navigation';
+import { Box, Button, Card, Typography } from '@mui/material';
 import { useSession } from 'next-auth/react';
 
 import theme from '@/theme/theme';
-import { InfoModal, Spacer, StyledIcon, Tag, ActionButton } from '@/components';
+import { InfoModal, Spacer, StyledIcon, Tag } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon } from '@/helpers/utils';
 
@@ -14,6 +15,7 @@ type ModalProps = {
 
 export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalProps) {
   const t = useTranslations();
+  const router = useRouter();
   const { data: session } = useSession();
   const TRADELINK_NOTES = t('pages.signConnect.modal.beforeYouStartTradelink.notes');
   
@@ -53,12 +55,20 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
       </Card>
       <Spacer height={20} />
       <Box className="flex justify-center">
-        <ActionButton
-          autoWidth 
-          noIcon
-          buttonText={ t('pages.signConnect.modal.beforeYouStartTradelink.buttonText') }
-          onClick={ t('pages.signConnect.modal.beforeYouStartTradelink.link') }
-        />
+        <Button
+          variant="contained"
+          onClick={() => {
+            const link = t('pages.signConnect.modal.beforeYouStartTradelink.link');
+            if (link.startsWith('http')) {
+              window.open(link, '_blank');
+            } else {
+              router.push(link);
+            }
+          }}
+          sx={{ width: 'auto' }}
+        >
+          { t('pages.signConnect.modal.beforeYouStartTradelink.buttonText') }
+        </Button>
       </Box>
     </InfoModal>
   );

@@ -3,8 +3,8 @@
 import { useMemo } from "react";
 
 import theme from "@/theme/theme";
-import { Box, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
-import { Tag, Spacer, StyledIcon, ActionButton, ButtonWithFormModal } from "@/components";
+import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
+import { Tag, Spacer, StyledIcon, ButtonWithFormModal } from "@/components";
 import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon } from "@/helpers/utils";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
@@ -65,13 +65,14 @@ export default function BizConnectClient() {
                                     sx:{ width: isAboveMobile ? 'auto' : '100%' }
                                 }}
                             />
-                            <ActionButton 
+                            <Button 
                                 variant="outlined"
-                                buttonText={t("common.learnMore")}
-                                autoWidth={isAboveMobile ? true : false}
                                 endIcon={ getSVGIcon('arrow-right', 16) }
-                                color="white"
-                            />
+                                color="inherit"
+                                sx={{ width: isAboveMobile ? 'auto' : '100%' }}
+                            >
+                                {t("common.learnMore")}
+                            </Button>
                         </Box>
                     </Box>
                     <StyledIcon

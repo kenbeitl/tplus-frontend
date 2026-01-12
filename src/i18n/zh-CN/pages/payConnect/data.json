@@ -1,6 +1,38 @@
 {
     "title": "PayConnect",
     "context": "为您的企业提供金融服务和支付解决方案。通过我们的合作伙伴网络，访问银行、汇款、贸易融资和数字支付。",
+    "slides": [
+        {
+            "isSponsor": true,
+            "emoji": "💳",
+            "tag": "全球支付解决方案",
+            "title": "解锁90天0%交易费用",
+            "context": "开始全球接受支付，无需设置费用。T+新会员的限时优惠。",
+            "buttonText": "立即开始",
+            "buttonLink": "#",
+            "buttonStyle": "from-blue-600 to-indigo-600"
+        },
+        {
+            "isSponsor": true,
+            "emoji": "🏛️",
+            "tag": "亚洲贸易融资",
+            "title": "预批准高达50万美元的贸易信用额度",
+            "context": "通过即时信用批准加快您的国际贸易。T+合作伙伴的独家利率。",
+            "buttonText": "立即申请",
+            "buttonLink": "#",
+            "buttonStyle": "from-emerald-600 to-teal-600"
+        },
+        {
+            "isSponsor": true,
+            "emoji": "🏛️",
+            "tag": "优质银行合作伙伴",
+            "title": "免除银行费用 + 优先支持",
+            "context": "今天开设您的企业账户，享受独家优惠。包括专属客户经理。",
+            "buttonText": "了解更多",
+            "buttonLink": "#",
+            "buttonStyle": "from-violet-600 to-purple-600"
+        }
+    ],
     "serviceProvidersAvailable": "可用的服务提供商",
     "viewAllProviders": "查看所有提供商",
     "compareSelectProvider": "从 {slot} 个可用提供商中进行比较和选择",

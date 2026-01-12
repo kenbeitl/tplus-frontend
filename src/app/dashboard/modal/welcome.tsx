@@ -1,12 +1,12 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Box, Card, Checkbox, Chip, FormControlLabel, Grid, Paper, Typography } from '@mui/material';
+import { Box, Button, Card, Checkbox, Chip, FormControlLabel, Grid, Paper, Typography } from '@mui/material';
 import Modal from '@/components/Modal';
 import { getSVGIcon } from '@/helpers/utils';
 import theme from '@/theme/theme';
 import { useTranslations } from '@/contexts/AppContext';
-import { ActionButton, Emoji, StyledIcon } from '@/components';
+import { Emoji, StyledIcon } from '@/components';
 import { useRouter } from 'next/navigation';
 
 interface WelcomeProps {
@@ -90,11 +90,14 @@ export default function ModalWelcome({
                       <Typography variant="subtitle2" component="p" color={theme.palette.text.blue} sx={{ textAlign: 'left' }}>{ translations.step1.check }</Typography>
                     </Box>
                 </Paper>
-                <ActionButton
-                  buttonText={ translations.step1.button }
+                <Button
+                  variant="contained"
                   endIcon={getSVGIcon('arrow-right', 20, '#FFFFFF')}
                   onClick={() => router.push('/settings')}
-                />
+                  sx={{ width: '100%', mt: 'auto' }}
+                >
+                  { translations.step1.button }
+                </Button>
               </Card>
             </Grid>
             <Grid size={{ xs: 12, sm: 1 }}>
@@ -138,12 +141,14 @@ export default function ModalWelcome({
                       <Typography variant="subtitle2" component="p" color={theme.palette.text.lightGreen} sx={{ textAlign: 'left' }}>{ translations.step2.check }</Typography>
                     </Box>
                 </Paper>
-                <ActionButton
-                  buttonText={ translations.step2.goal }
+                <Button
+                  className="bg-linear-to-r from-green-50 to-emerald-50 text-emerald-600! border-2 border-dashed hover:from-emerald-50 hover:to-emerald-100"
+                  variant="contained"
                   startIcon={<Emoji symbol="✨" />}
-                  variant="green-gradient"
-                  border={`2px dashed ${theme.palette.text.lightGreen}`}
-                />
+                  sx={{ borderColor: theme.palette.text.lightGreen, width: '100%', mt: 'auto' }}
+                >
+                  { translations.step2.goal }
+                </Button>
               </Card>
             </Grid>
           </Grid>

@@ -1,6 +1,5 @@
 export * from './form';
 export * from './ui';
-export { default as ActionButton } from './ActionButton';
 export { default as ButtonWithFormModal } from './ButtonWithFormModal';
 export { default as ButtonWithModal } from './ButtonWithModal';
 export { default as Carousel } from './Carousel';

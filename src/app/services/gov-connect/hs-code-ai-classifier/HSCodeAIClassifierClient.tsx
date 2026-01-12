@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import Link from "next/link";
 
 import { Box, Button, Card, FormControl, FormControlLabel, Radio, RadioGroup, Typography } from "@mui/material";
-import { ActionButton, FormField, Spacer } from "@/components";
+import { FormField, Spacer } from "@/components";
 import { useFormValidation } from "@/hooks/useFormValidation";
 import { useTranslations } from "@/contexts/AppContext";
 import { getSVGIcon } from "@/helpers/utils";
@@ -102,13 +102,16 @@ export default function HSCodeAIClassifierClient() {
                     />
                     <Typography variant="caption" component="p" sx={{ color: 'text.secondary', marginTop: 1 }}>{ translations.productClassification.productTip }</Typography>
                     <Spacer height={20} />
-                    <ActionButton
-                        buttonText={ translations.productClassification.classifyProduct }
+                    <Button
+                        className="bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
+                        variant="contained"
                         startIcon={ getSVGIcon('bot', 16) }
-                        variant="gradient"
                         onClick={() => {}}
                         disabled={form.values.productDescription === ''}
-                    />
+                        sx={{ width: '100%' }}
+                    >
+                        { translations.productClassification.classifyProduct }
+                    </Button>
                 </Card>
             </Box>
         </Box>

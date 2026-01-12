@@ -1,9 +1,9 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Box, Card, CardContent, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, Typography } from '@mui/material';
 import theme from '@/theme/theme';
-import { ActionButton, Emoji } from '@/components';
+import { Emoji } from '@/components';
 import { getSVGIcon } from '@/helpers/utils';
 
 interface TBCFeature {
@@ -87,14 +87,15 @@ export default function FeaturesTBCSection({
                         <Typography variant="h5" component="h4">{ remarks.title }</Typography>
                         <Typography variant="body1" component="p">{ remarks.context }</Typography>
                     </Box>
-                    <ActionButton
-                        color="orange"
-                        buttonText={ viewSubscriptionPlansText as string }
-                        endIcon={getSVGIcon('arrow-right', 16)}
-                        variant="outlined"
-                        onClick={() => router.push('/subscriptions')}
-                        autoWidth
-                    />
+                  <Button
+                      color="warning"
+                      endIcon={getSVGIcon('arrow-right', 16)}
+                      variant="outlined"
+                      onClick={() => router.push('/subscriptions')}
+                      sx={{ width: 'auto' }}
+                  >
+                      {viewSubscriptionPlansText}
+                  </Button>
                   </Box>
                 </Box>
               </CardContent>

@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import theme from '@/theme/theme';
 import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import { InfoModal, Spacer, ActionButton } from '@/components';
+import { InfoModal, Spacer } from '@/components';
 import ModalHowToApplyForIdOne from './how-to-apply-for-id-one';
 import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon } from '@/helpers/utils';
@@ -77,11 +77,13 @@ export default function ModalDigitalIdentityRequired({ open, onClose }: ModalPro
                       </ListItem>
                     ))}
                   </List>
-                  <ActionButton 
-                    buttonText={ t('common.apply') }
-                    noIcon
+                  <Button
+                    variant="contained"
                     onClick={() => handleAction(option.action)}
-                  />
+                    sx={{ width: '100%', mt: 'auto' }}
+                  >
+                    { t('common.apply') }
+                  </Button>
                 </Card>
               </Grid>
               );
