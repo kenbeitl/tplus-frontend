@@ -35,15 +35,13 @@ export default function SignConnectClient() {
       <Carousel slides={ t("pages.signConnect.slides") } />
       <Spacer height={20} />
       <Paper variant="outlined" className="flex flex-col items-center p-6 card-hover h-full">
-        <Box 
-          className="w-32 h-32 bg-gray-200 flex items-center justify-center"
-        >
-          Placeholder
+        <Box className="w-45 h-45">
+          <img src="/assets/images/SignConnect.jpg" alt={ t('pages.signConnect.signingPlatform.title') } />
         </Box>
-        <Spacer height={20} />
-        <Typography variant="h2" component="h2" sx={{ fontWeight: 400 }}>{ t('pages.signConnect.signingPlatform.title') }</Typography>
-        <Typography variant="h5" component="p" sx={{ fontWeight: 400 }}>{ t('pages.signConnect.signingPlatform.context') }</Typography>
         <Spacer height={30} />
+        <Typography variant="h2" component="h2" className="mb-3!" sx={{ fontWeight: 400 }}>{ t('pages.signConnect.signingPlatform.title') }</Typography>
+        <Typography variant="subtitle1" component="p" color={ theme.palette.text.secondary } sx={{ fontWeight: 400 }}>{ t('pages.signConnect.signingPlatform.context') }</Typography>
+        <Spacer height={40} />
         <Grid container spacing={2} className="w-full">
           {Array.isArray(DIGITAL_SIGNING_PLATFORMS) && DIGITAL_SIGNING_PLATFORMS.map((platform, i) => (
             <Grid key={`dsp-${i}`} size={{ xs: 12, sm: 6, md: 4 }}>
