@@ -28,10 +28,10 @@ export function getButtonGradientClass(theme: string): string {
 export function getIconGradientVariant(theme: string): string {
   const variantMap: Record<string, string> = {
     blue: 'blue-gradient',
-    emerald: 'green-gradient', // Use green-gradient for emerald
+    emerald: 'emerald-gradient',
     green: 'green-gradient',
-    purple: 'blue-gradient', // Fallback to blue for purple
-    orange: 'blue-gradient', // Fallback to blue for orange
+    purple: 'purple-gradient',
+    orange: 'blue-gradient',
   };
 
   return variantMap[theme] || 'blue-gradient';
