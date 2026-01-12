@@ -58,7 +58,18 @@ export default function GovConnectClient() {
                                 className="mb-4"
                                 square
                             />
-                            <Typography className="mb-2!" variant="h4" component="h2">{service.title}</Typography>
+                            <Typography className="mb-2!" variant="h4" component="h2">
+                                {service.title}
+                                {
+                                    service.tag && (
+                                        <Tag
+                                            label={service.tag}
+                                            startIcon={service.tagIcon ? getSVGIcon(service.tagIcon, 16) : undefined}
+                                            className={`ml-2! inline-flex! ${service.tagStyle}`}
+                                        />
+                                    )
+                                }
+                            </Typography>
                             <Typography className="mb-2!" variant="body1" component="p">{service.description}</Typography>
                             <Checklist items={service.features} />
                             {service.id === 'govconnect-dual-declaration' && (

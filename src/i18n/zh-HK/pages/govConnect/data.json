@@ -52,6 +52,9 @@
             "theme": "blue",
             "cardStyle": "border-blue-100! hover:border-blue-300! focus:ring-blue-400!",
             "title": "HS編碼AI分類器",
+            "tag": "AI",
+            "tagIcon": "sparkles",
+            "tagStyle": "bg-cyan-600! text-white!",
             "description": "即時獲取AI驅動的產品HS編碼分類",
             "features": [
                 "香港HS編碼（諮詢Tracie）",
@@ -66,6 +69,9 @@
             "theme": "emerald",
             "cardStyle": "border-emerald-100! hover:border-emerald-300! focus:ring-emerald-400!",
             "title": "AI驅動的海關自動化",
+            "tag": "快速",
+            "tagIcon": "zap",
+            "tagStyle": "bg-emerald-100! text-emerald-700!",
             "description": "利用AI驅動的文檔處理自動化海關申報",
             "features": [
                 "自動數據提取",

@@ -53,6 +53,9 @@
             "theme": "blue",
             "cardStyle": "border-blue-100! hover:border-blue-300! focus:ring-blue-400!",
             "title": "HS Code AI Classifier",
+            "tag": "AI",
+            "tagIcon": "sparkles",
+            "tagStyle": "bg-cyan-600! text-white!",
             "description": "Get AI-powered HS code classification for your products instantly",
             "features": [
                 "HK HS Code (Ask Tracie)",
@@ -67,6 +70,9 @@
             "theme": "emerald",
             "cardStyle": "border-emerald-100! hover:border-emerald-300! focus:ring-emerald-400!",
             "title": "AI-Powered Customs Automation",
+            "tag": "Fast",
+            "tagIcon": "zap",
+            "tagStyle": "bg-emerald-100! text-emerald-700!",
             "description": "Automate customs declarations with AI-powered document processing",
             "features": [
                 "Automated data extraction",
