@@ -54,26 +54,26 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
 
     return (
         <Card variant="outlined" className="p-6">
-            <Box component="div" className="flex items-center gap-2 mb-1">
-                {getSVGIcon('building', 20)}
+            <Box component="div" className="flex items-center gap-2 mb-1!">
+                { getSVGIcon('building', 20) }
                 <Typography variant="h6" component="h2">
-                    {t("pages.settings.companyProfile.title")}
+                    { t("pages.settings.companyProfile.title") }
                 </Typography>
             </Box>
             <Typography variant="body2" component="p">
-                {t("pages.settings.companyProfile.context")}
+                { t("pages.settings.companyProfile.context") }
             </Typography>
             <Spacer height={20} />
 
             <Card variant="outlined" className="p-3 bg-amber-50! border-amber-200!">
                 <Box component="div" className="flex items-center gap-2 mb-1">
-                    {getSVGIcon('eye', 20, theme.palette.text.gold)}
+                    { getSVGIcon('eye', 20, theme.palette.text.gold) }
                     <Typography variant="h6" component="h2" color={theme.palette.text.darkAmber}>
-                        {t("pages.settings.companyProfile.viewOnly.title")}
+                        { t("pages.settings.companyProfile.viewOnly.title") }
                     </Typography>
                 </Box>
                 <Typography variant="caption" component="h2" color={theme.palette.text.darkAmber}>
-                    {t("pages.settings.companyProfile.viewOnly.description")}
+                    { t("pages.settings.companyProfile.viewOnly.description") }
                 </Typography>
             </Card>
 
@@ -82,9 +82,9 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
             <Card variant="outlined" className="p-3 bg-amber-50! border-amber-200! relative">
                 <Box component="div" className="flex justify-between items-center">
                     <Box component="div">
-                        <Box component="div" className="flex items-center gap-2 mb-1">
+                        <Box component="div" className="flex items-center gap-2 mb-1!">
                             <Typography variant="h6" component="h2">
-                                {t("pages.settings.companyProfile.publicProfile.title")}
+                                { t("pages.settings.companyProfile.publicProfile.title") }
                             </Typography>
                             <Tag 
                                 variant="orange" 
@@ -93,14 +93,14 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
                             />
                         </Box>
                         <Typography variant="caption" component="h2">
-                            {t("pages.settings.companyProfile.publicProfile.body")}
+                            { t("pages.settings.companyProfile.publicProfile.body") }
                         </Typography>
                     </Box>
                     <Switch disabled />
                 </Box>
             </Card>
 
-            <Divider className="!my-12" />
+            <Divider className="my-12!" />
 
             <Grid container spacing={2}>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -171,7 +171,7 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
 
             <Spacer height={20} />
 
-            <Typography variant="subtitle1" component="h2" className="mb-8">
+            <Typography variant="subtitle1" component="h2" className="mb-2!">
                 {t("pages.settings.companyProfile.businessIdentifiers")}
             </Typography>
             {companyForm.businessIdentifierList.map((identifier, index) => (

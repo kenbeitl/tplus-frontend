@@ -355,21 +355,21 @@ export default function AppWrapper({
             className="w-full max-w-sm"
             component="nav"
           >
-            {/* Subscription Navigation */}
-            <NavigationListItem
-              level={1}
-              icon={ getSVGIcon('shopping-cart', menuIconSize) }
-              primary={t('nav.subscriptions')}
-              path="/subscriptions"
-              onClick={handleNavigation}
-            />
-            
             {/* Settings Navigation */}
             <NavigationListItem
               level={1}
               icon={ getSVGIcon('settings', menuIconSize) }
               primary={t('nav.settings')}
               path="/settings"
+              onClick={handleNavigation}
+            />
+            
+            {/* Subscription Navigation */}
+            <NavigationListItem
+              level={1}
+              icon={ getSVGIcon('shopping-cart', menuIconSize) }
+              primary={t('nav.subscriptions')}
+              path="/subscriptions"
               onClick={handleNavigation}
             />
 

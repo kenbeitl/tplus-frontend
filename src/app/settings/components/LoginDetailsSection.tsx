@@ -19,7 +19,7 @@ export default function LoginDetailsSection({ userForm, formConfig, onUpdate }: 
 
     return (
         <>
-            <Typography variant="h6" component="h2" className="mb-3">
+            <Typography variant="h6" component="h2" className="mb-3!">
                 {t("pages.settings.userProfile.loginDetails")}
             </Typography>
             <Grid container spacing={2}>
@@ -91,14 +91,14 @@ export default function LoginDetailsSection({ userForm, formConfig, onUpdate }: 
                     />
                 </Grid>
             </Grid>
-            <Box component="div" className="flex justify-end mt-4">
+            <Box component="div" className="flex justify-end mt-4!">
                 <Button
                     className="bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
                     variant="contained"
                     onClick={onUpdate}
                     sx={{ width: 'auto' }}
                 >
-                    {t('common.updatePassword')}
+                    { t('common.updatePassword') }
                 </Button>
             </Box>
         </>

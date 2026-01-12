@@ -162,14 +162,14 @@ export default function UserProfileTab({ session }: UserProfileTabProps) {
 
     return (
         <Card variant="outlined" className="p-6">
-            <Box component="div" className="flex items-center gap-2 mb-1">
+            <Box component="div" className="flex items-center gap-2 mb-!">
                 {getSVGIcon('user', 20)}
                 <Typography variant="h6" component="h2">
-                    {t("pages.settings.userProfile.title")}
+                    { t("pages.settings.userProfile.title") }
                 </Typography>
             </Box>
             <Typography variant="body2" component="p">
-                {t("pages.settings.userProfile.context")}
+                { t("pages.settings.userProfile.context") }
             </Typography>
             <Spacer height={20} />
 
@@ -179,7 +179,7 @@ export default function UserProfileTab({ session }: UserProfileTabProps) {
                 onUpdate={handleUpdateProfile}
             />
 
-            <Divider className="my-3" />
+            <Divider className="my-3!" />
 
             <LoginDetailsSection
                 userForm={userForm}
@@ -187,7 +187,7 @@ export default function UserProfileTab({ session }: UserProfileTabProps) {
                 onUpdate={handleUpdateLoginDetails}
             />
 
-            <Divider className="my-3" />
+            <Divider className="my-3!" />
 
             <DangerZoneSection onDelete={handleDeleteAccount} />
         </Card>

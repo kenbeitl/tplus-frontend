@@ -67,7 +67,7 @@ export default function UserInfoSection({ userForm, formConfig, onUpdate }: User
                     />
                 </Grid>
             </Grid>
-            <Box component="div" className="flex justify-end mt-4">
+            <Box component="div" className="flex justify-end mt-4!">
                 <Button
                     className="bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
                     variant="contained"
