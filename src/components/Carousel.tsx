@@ -56,6 +56,7 @@ export default function Carousel({
             // autoplay={{ delay: 5000 }}
             spaceBetween={8}
             slidesPerView={1}
+            className="shadow-lg"
             style={{
                 "--swiper-pagination-color": "#FFFFFF",
                 "--swiper-pagination-bullet-inactive-color": "#999999",

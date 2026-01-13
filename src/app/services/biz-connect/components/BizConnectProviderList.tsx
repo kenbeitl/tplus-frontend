@@ -1,0 +1,166 @@
+'use client';
+
+import { ButtonWithFormModal, Spacer, StyledIcon } from "@/components";
+import { useTranslations } from "@/contexts/AppContext";
+import { getSVGIcon } from "@/helpers/utils";
+import { Box, Button, Card, Grid, List, ListItem as MuiListItem, ListItemIcon as MuiListItemIcon, ListItemText, Typography, styled } from "@mui/material";
+import theme from "@/theme/theme";
+import { useRouter } from "next/navigation";
+
+interface Provider {
+    name: string;
+    context: string;
+    features?: string[];
+    pricing: string;
+    deliveryTime?: string;
+    consultation?: string;
+    formId?: string;
+}
+
+interface BizConnectProviderListProps {
+  modalNode: string;
+  iconName?: string;
+  iconSize?: number;
+  variant?: string;
+}
+
+const ListItem = styled(MuiListItem)({
+    marginBottom: 0,
+});
+
+const ListItemIcon = styled(MuiListItemIcon)({
+    alignSelf: 'flex-start',
+    marginTop: '0.55em',
+});
+
+export default function BizConnectProviderList({ 
+  modalNode, 
+  iconName = 'building',
+  iconSize = 18,
+  variant = 'blue-gradient',
+}: BizConnectProviderListProps) {
+    const t = useTranslations();
+    const router = useRouter();
+    const providerList = Array.isArray(t(`${modalNode}.providers`)) ? t(`${modalNode}.providers`) : [];
+
+    return (
+        <>
+            <Button 
+                variant="text"
+                className="text-gray-600! mb-2!"
+                startIcon={ getSVGIcon('arrow-left', 16) }
+                onClick={() => router.push("/services/biz-connect")}
+            >
+                { t('pages.bizConnect.backToBizConnect') }
+            </Button>
+            <Box className="flex items-center">
+                <StyledIcon
+                    icon={ getSVGIcon(iconName, iconSize) } 
+                    variant={variant as any}
+                    size={64}
+                    square
+                    className="mr-3"
+                />
+                <Box>
+                <Typography variant="h3" component="h1">{ t(`${modalNode}.title`) }</Typography>
+                <Typography variant="body1" component="p" color={theme.palette.text.secondary}>{ t(`${modalNode}.context`) }</Typography>
+                </Box>
+            </Box>
+            <Spacer height={30} />
+            <Grid container spacing={3}>
+                {providerList.map((provider: Provider, index: number) => (
+                    <Grid key={index} size={{ xs: 12 }}>
+                        <Card variant="outlined" className="p-4 h-full border! card-hover">
+                            <Typography variant="h3" component="h3" className="ml-8">{ provider.name }</Typography>
+                            <Typography variant="h6" component="p" color={ theme.palette.text.secondary }>{ provider.context }</Typography>
+                            <Spacer height={20} />
+                            <Typography variant="subtitle1" component="p">{ t('pages.bizConnect.servicesOffered') }</Typography>
+                            <List sx={{ flexGrow: 1 }}>
+                                {provider.features?.map((feature: string, f_idx: number) => (
+                                <ListItem key={`features-${f_idx}`} className="py-0!">
+                                    <ListItemIcon>
+                                        { getSVGIcon('circle-check-big', 16, theme.palette.icon.lightGreen) }
+                                    </ListItemIcon>
+                                    <ListItemText primary={feature} />
+                                </ListItem>
+                                ))}
+                            </List>
+                            <Spacer height={20} />
+                            <Box className="p-3 bg-gray-50 rounded">
+                                <Grid container spacing={2}>
+                                {provider.pricing && (
+                                    <Grid size={6}>
+                                    <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
+                                        { t('pages.bizConnect.pricing') }
+                                    </Typography>
+                                    <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                                        {provider.pricing}
+                                    </Typography>
+                                    </Grid>
+                                )}
+                                {provider.deliveryTime && (
+                                    <Grid size={6}>
+                                    <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
+                                        { t('pages.bizConnect.deliveryTime') }
+                                    </Typography>
+                                    <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                                        {provider.deliveryTime}
+                                    </Typography>
+                                    </Grid>
+                                )}
+                                {provider.consultation && (
+                                    <Grid size={6}>
+                                    <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
+                                        { t('pages.bizConnect.consultation') }
+                                    </Typography>
+                                    <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                                        {provider.consultation}
+                                    </Typography>
+                                    </Grid>
+                                )}
+                                </Grid>
+                            </Box>
+                            <Spacer height={20} />
+                            <Box component="div" className="flex items-center gap-2">
+                                <ButtonWithFormModal
+                                    templateId="bizconnect-service-providers"
+                                    formId={`bizconnect-service-providers@${provider.formId}`}
+                                    buttonText={ modalNode.indexOf('dueDiligenceService') >= 0 ? t('pages.bizConnect.requestService') : t('pages.bizConnect.requestConsultation') }
+                                    buttonProps={{
+                                        variant: 'gradient',
+                                        color: 'blue',
+                                    }}
+                                    className="w-auto!"
+                                />
+                                <Button 
+                                    variant="outlined" 
+                                    color="white"
+                                    endIcon={ getSVGIcon('external-link', 16) }
+                                    onClick={ () => window.open('') }
+                                    className="whitespace-nowrap"
+                                >
+                                    { modalNode.indexOf('dueDiligenceService') >= 0 ? t('pages.bizConnect.learnMore') : t('pages.bizConnect.downloadBrochure') }
+                                </Button>
+                            </Box>                            
+                        </Card>
+                    </Grid>
+                ))}
+            </Grid>
+            { modalNode.indexOf('oneStopGoGlobalServices') >= 0 && (
+                <Card variant="outlined" className="mt-6 p-4 border-2! border-blue-300! bg-blue-50!">
+                    <Typography variant="h6" component="p" color={theme.palette.text.darkBlue}>{ t(`${modalNode}.whyUs.title`) }</Typography>
+                    <List sx={{ flexGrow: 1 }}>
+                        {t(`${modalNode}.whyUs.rationale`)?.map((reason: string, r_idx: number) => (
+                        <ListItem key={`reason-${r_idx}`} className="py-0!">
+                            <ListItemIcon>
+                                { getSVGIcon('circle-check-big', 16, theme.palette.icon.blue) }
+                            </ListItemIcon>
+                            <ListItemText primary={reason} sx={{ color: theme.palette.text.darkBlue }} />
+                        </ListItem>
+                        ))}
+                    </List>
+                </Card>
+            )}
+        </>
+    )
+}

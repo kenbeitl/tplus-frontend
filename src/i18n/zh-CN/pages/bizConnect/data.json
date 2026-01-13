@@ -1,98 +1,164 @@
 {
     "title": "BizConnect",
     "context": "您通往全球商业机会和合作伙伴关系的门户",
-    "prelaunch": {
-        "title": "扩展您的商业网络",
-        "body": "BizConnect 是我们全面的商业情报和网络平台，旨在帮助您发现合作伙伴，进行尽职调查，并自信地拓展新市场。",
-        "buttonText": "在发布时通知我"
-    },
-    "upcoming": {
-        "title": "BizConnect 即将推出的功能",
-        "features": [
-            {
-                "icon": "search",
-                "variant": "blue-inverted",
-                "title": "商业匹配网络",
-                "description": "访问我们在香港、中国大陆和海外市场的超过 100 万家经过验证的企业的广泛数据库",
-                "list": [
-                    "高级搜索和过滤功能",
-                    "行业特定推荐",
-                    "AI 驱动的合作伙伴建议"
-                ]
-            },
-            {
-                "icon": "file-check",
-                "variant": "purple-inverted",
-                "title": "尽职调查服务",
-                "description": "为潜在商业合作伙伴提供全面的背景调查和验证服务",
-                "list": [
-                    "市场进入策略咨询",
-                    "国际合作伙伴促进",
-                    "跨境监管指导"
-                ]
-            },
-            {
-                "icon": "globe",
-                "variant": "green-inverted",
-                "title": "一站式全球化服务",
-                "description": "满足您拓展业务进入国际市场的所有需求",
-                "list": [
-                    "市场进入策略咨询",
-                    "国际合作伙伴促进",
-                    "跨境监管指导"
-                ]
-            },
-            {
-                "icon": "target",
-                "variant": "red-inverted",
-                "title": "中国市场进入服务",
-                "description": "为希望进入或扩展中国市场的企业提供专业支持",
-                "list": [
-                    "中国大陆企业注册",
-                    "本地合作伙伴识别",
-                    "监管合规协助"
-                ]
-            },
-            {
-                "icon": "users",
-                "variant": "orange-inverted",
-                "title": "验证的商业网络",
-                "description": "通过我们经过验证和认证的商业社区自信地建立联系",
-                "list": [
-                    "数码身份验证",
-                    "商业凭证认证",
-                    "安全通信渠道"
-                ]
-            }
-        ]
-    },
+    "slides": [
+        {
+            "emoji": "🏦",
+            "title": "Fusion Bank",
+            "context": "通过 Fusion Bank 简化您的商业账户开户流程 - T+ 会员专享优惠",
+            "buttonText": "开设账户",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "📊",
+            "title": "Coface",
+            "context": "全球风险洞察、数据、评分、信用意见和报告，助您做出明智决策。",
+            "buttonText": "查看服务",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "💼",
+            "title": "Accolade",
+            "context": "为本地和国际客户提供一站式商业咨询服务",
+            "buttonText": "了解更多",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "💸",
+            "title": "XTransfer",
+            "context": "本地和跨境汇款变得简单 - 快速、安全且具有成本效益",
+            "buttonText": "开始使用",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "🤝",
+            "title": "eBRAM",
+            "context": "促进商业谈判和交易管理的交易平台",
+            "buttonText": "查看平台",
+            "buttonLink": "#"
+        }
+    ],
     "builtForYourSuccess": {
         "title": "为您的成功而打造",
         "context": "BizConnect 结合了尖端技术和全面的商业服务，旨在帮助您实现业务目标。",
+        "figures": [
+            {
+                "icon": "users",
+                "iconColor": "text-blue-600",
+                "number": "1M+",
+                "description": "验证企业"
+            },
+            {
+                "icon": "globe",
+                "iconColor": "text-indigo-600",
+                "number": "50+",
+                "description": "覆盖国家"
+            },
+            {
+                "icon": "zap",
+                "iconColor": "text-purple-600",
+                "number": "24/7",
+                "description": "可用支援"
+            }
+        ],
         "features": [
             {
                 "icon": "briefcase",
+                "iconStyle": "iconBlue",
                 "title": "全面的商业数据库",
                 "description": "访问我们庞大的经过验证的企业数据库，涵盖多个行业和地区。"
             },
             {
-                "icon": "building-2",
-                "title": "专业的市场洞察",
-                "description": "利用数据驱动的见解做出明智的业务决策，识别新兴趋势和机会。"
+                "icon": "shield",
+                "iconStyle": "iconGreen",
+                "title": "可靠的验证服务",
+                "description": "利用我们的尽职调查和验证服务，自信地与经过验证的企业建立联系。"
             },
             {
-                "icon": "circle-check-big",
-                "title": "可靠的验证服务",
-                "description": "确保与可信赖的合作伙伴建立联系，降低风险并保护您的业务利益。"
+                "icon": "globe",
+                "iconStyle": "iconPurplePink",
+                "title": "强大的网络工具",
+                "description": "利用我们平台的连接和协作功能，扩展您的商业网络并发现新的合作伙伴关系。"
             }
         ]
     },
-    "stayInformed": {
-        "title": "保持信息畅通",
-        "body": "注册以在 BizConnect 发布时收到通知，并获取最新的功能更新和新闻。"
-    },
+    "ourServices": [
+        {
+            "icon": "file-check",
+            "variant": "purple-gradient",
+            "title": "尽职调查服务",
+            "description": "为潜在商业合作伙伴提供全面的背景调查和验证服务",
+            "list": [
+                "市场进入策略咨询",
+                "国际合作伙伴促进",
+                "跨境监管指导"
+            ],
+            "cardStyle": "hover:border-purple-300!",
+            "slug": "/services/biz-connect/due-diligence-services"
+        },
+        {
+            "icon": "globe",
+            "variant": "green-gradient",
+            "title": "一站式全球化服务",
+            "description": "满足您拓展业务进入国际市场的所有需求",
+            "list": [
+                "市场进入策略咨询",
+                "国际合作伙伴促进",
+                "跨境监管指导"
+            ],
+            "cardStyle": "hover:border-green-300!",
+            "slug": "/services/biz-connect/one-stop-go-global-services"
+        }
+    ],
+    "upcomingFeatures": [
+        {
+            "icon": "search",
+            "variant": "blue-gradient",
+            "title": "商业匹配网络",
+            "description": "访问我们在香港、中国大陆和海外市场的超过 100 万家经过验证的企业的广泛数据库",
+            "list": [
+                "高级搜索和过滤功能",
+                "行业特定推荐",
+                "AI 驱动的合作伙伴建议"
+            ],
+            "cardStyle": "hover:border-blue-300!"
+        },
+        {
+            "icon": "target",
+            "variant": "red-gradient",
+            "title": "中国市场进入服务",
+            "description": "为希望进入或扩展中国市场的企业提供专业支持",
+            "list": [
+                "中国大陆企业注册",
+                "本地合作伙伴识别",
+                "监管合规协助"
+            ],
+            "cardStyle": "hover:border-red-300!"
+        },
+        {
+            "icon": "users",
+            "variant": "orange-gradient",
+            "title": "验证的商业网络",
+            "description": "通过我们经过验证和认证的商业社区自信地建立联系",
+            "list": [
+                "数码身份验证",
+                "商业凭证认证",
+                "安全通信渠道"
+            ],
+            "cardStyle": "hover:border-orange-300!"
+        }
+    ],
     "developmentInProgress": {
         "title": "正在开发中",
-        "body": "我们正在努力打造 BizConnect，为您提供无与伦比的商业网络和情报工具。敬请期待！"
-    }
+        "body": "我们的团队正在努力工作，为您带来这些强大的功能。成为首批获悉其发布的人！"
+    },
+    "servicesOffered": "提供的服务",
+    "pricing": "定价",
+    "consultation": "咨询",
+    "deliveryTime": "交付时间",
+    "requestConsultation": "请求咨询",
+    "requestService": "请求服务",
+    "downloadBrochure": "下载宣传册",
+    "learnMore": "了解更多",
+    "backToBizConnect": "返回 BizConnect"
 }

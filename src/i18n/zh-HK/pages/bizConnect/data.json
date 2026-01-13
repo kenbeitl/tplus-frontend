@@ -1,98 +1,164 @@
 {
     "title": "BizConnect",
     "context": "您通往全球商業機會和合作夥伴關係的門戶",
-    "prelaunch": {
-        "title": "擴展您的商業網絡",
-        "body": "BizConnect 是我們全面的商業情報和網絡平台，旨在幫助您發現合作夥伴，進行盡職調查，並自信地拓展新市場。",
-        "buttonText": "在發布時通知我"
-    },
-    "upcoming": {
-        "title": "BizConnect 即將推出的功能",
-        "features": [
-            {
-                "icon": "search",
-                "variant": "blue-inverted",
-                "title": "商業匹配網絡",
-                "description": "訪問我們在香港、中國大陸和海外市場的超過 100 萬家經過驗證的企業的廣泛數據庫",
-                "list": [
-                    "高級搜索和篩選功能",
-                    "行業特定推薦",
-                    "AI 驅動的合作夥伴建議"
-                ]
-            },
-            {
-                "icon": "file-check",
-                "variant": "purple-inverted",
-                "title": "盡職調查服務",
-                "description": "為潛在商業合作夥伴提供全面的背景調查和驗證服務",
-                "list": [
-                    "市場進入策略諮詢",
-                    "國際合作夥伴促進",
-                    "跨境監管指導"
-                ]
-            },
-            {
-                "icon": "globe",
-                "variant": "green-inverted",
-                "title": "一站式全球化服務",
-                "description": "滿足您拓展業務進入國際市場的所有需求",
-                "list": [
-                    "市場進入策略諮詢",
-                    "國際合作夥伴促進",
-                    "跨境監管指導"
-                ]
-            },
-            {
-                "icon": "target",
-                "variant": "red-inverted",
-                "title": "中國市場進入服務",
-                "description": "為希望進入或擴展中國市場的企業提供專業支持",
-                "list": [
-                    "中國大陸企業註冊",
-                    "本地合作夥伴識別",
-                    "監管合規協助"
-                ]
-            },
-            {
-                "icon": "users",
-                "variant": "orange-inverted",
-                "title": "驗證的商業網絡",
-                "description": "通過我們經過驗證和認證的商業社區自信地建立聯繫",
-                "list": [
-                    "嚴格的驗證流程",
-                    "用戶評價和反饋系統",
-                    "持續的質量監控"
-                ]
-            }
-        ]
-    },
+    "slides": [
+        {
+            "emoji": "🏦",
+            "title": "Fusion Bank",
+            "context": "通過 Fusion Bank 簡化您的商業賬戶開戶流程 - T+ 會員專享優惠",
+            "buttonText": "開設賬戶",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "📊",
+            "title": "Coface",
+            "context": "全球風險洞察、數據、評分、信用意見和報告，助您做出明智決策。",
+            "buttonText": "查看服務",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "💼",
+            "title": "Accolade",
+            "context": "為本地和國際客戶提供一站式商業諮詢服務",
+            "buttonText": "了解更多",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "💸",
+            "title": "XTransfer",
+            "context": "本地和跨境匯款變得簡單 - 快速、安全且具有成本效益",
+            "buttonText": "開始使用",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "🤝",
+            "title": "eBRAM",
+            "context": "促進商業談判和交易管理的交易平台",
+            "buttonText": "查看平台",
+            "buttonLink": "#"
+        }
+    ],
     "builtForYourSuccess": {
         "title": "為您的成功而打造",
         "body": "BizConnect 結合了尖端技術和全面的商業服務，旨在幫助您實現業務目標並推動增長。無論您是尋找合作夥伴、進行盡職調查，還是拓展新市場，我們的平台都為您的成功提供支持。",
+        "figures": [
+            {
+                "icon": "users",
+                "iconColor": "text-blue-600",
+                "number": "1M+",
+                "description": "驗證企業"
+            },
+            {
+                "icon": "globe",
+                "iconColor": "text-indigo-600",
+                "number": "50+",
+                "description": "覆蓋國家"
+            },
+            {
+                "icon": "zap",
+                "iconColor": "text-purple-600",
+                "number": "24/7",
+                "description": "可用支援"
+            }
+        ],
         "features": [
             {
                 "icon": "briefcase",
+                "iconStyle": "iconBlue",
                 "title": "全面的商業情報",
                 "description": "獲取深入的市場洞察和分析，幫助您做出明智的決策並識別增長機會。"
             },
             {
-                "icon": "building-2",
-                "title": "強大的網絡工具",
-                "description": "利用我們的平台連接和合作，擴展您的商業網絡並發現新的合作夥伴關係。"
-            },
-            {
-                "icon": "circle-check-big",
+                "icon": "shield",
+                "iconStyle": "iconGreen",
                 "title": "可靠的驗證服務",
                 "description": "利用我們的盡職調查和驗證服務，自信地與經過驗證的企業建立聯繫。"
+            },
+            {
+                "icon": "globe",
+                "iconStyle": "iconPurplePink",
+                "title": "強大的網路工具",
+                "description": "利用我們平台的連接和協作功能，擴展您的商業網絡並發現新的合作夥伴關係。"
             }
         ]
     },
-    "stayInformed": {
-        "title": "保持訊息暢通",
-        "body": "註冊以在 BizConnect 發佈時收到通知，並獲取最新的功能更新和新聞。"
-    },
+    "ourServices": [
+        {
+            "icon": "file-check",
+            "variant": "purple-gradient",
+            "title": "盡職調查服務",
+            "description": "為潛在商業合作夥伴提供全面的背景調查和驗證服務",
+            "list": [
+                "市場進入策略諮詢",
+                "國際合作夥伴促進",
+                "跨境監管指導"
+            ],
+            "cardStyle": "hover:border-purple-300!",
+            "slug": "/services/biz-connect/due-diligence-services"
+        },
+        {
+            "icon": "globe",
+            "variant": "green-gradient",
+            "title": "一站式全球化服務",
+            "description": "滿足您拓展業務進入國際市場的所有需求",
+            "list": [
+                "市場進入策略諮詢",
+                "國際合作夥伴促進",
+                "跨境監管指導"
+            ],
+            "cardStyle": "hover:border-green-300!",
+            "slug": "/services/biz-connect/one-stop-go-global-services"
+        }
+    ],
+    "upcomingFeatures": [
+        {
+            "icon": "search",
+            "variant": "blue-gradient",
+            "title": "商業匹配網絡",
+            "description": "訪問我們在香港、中國大陸和海外市場的超過 100 萬家經過驗證的企業的廣泛數據庫",
+            "list": [
+                "高級搜索和篩選功能",
+                "行業特定推薦",
+                "AI 驅動的合作夥伴建議"
+            ],
+            "cardStyle": "hover:border-blue-300!"
+        },
+        {
+            "icon": "target",
+            "variant": "red-gradient",
+            "title": "中國市場進入服務",
+            "description": "為希望進入或擴展中國市場的企業提供專業支持",
+            "list": [
+                "中國大陸企業註冊",
+                "本地合作夥伴識別",
+                "監管合規協助"
+            ],
+            "cardStyle": "hover:border-red-300!"
+        },
+        {
+            "icon": "users",
+            "variant": "orange-gradient",
+            "title": "驗證的商業網絡",
+            "description": "通過我們經過驗證和認證的商業社區自信地建立聯繫",
+            "list": [
+                "嚴格的驗證流程",
+                "用戶評價和反饋系統",
+                "持續的質量監控"
+            ],
+            "cardStyle": "hover:border-orange-300!"
+        }
+    ],
     "developmentInProgress": {
         "title": "正在開發中",
-        "body": "我們正在努力打造 BizConnect，為您提供無與倫比的商業網路和情報工具。敬請期待！"
-    }
+        "body": "我們的團隊正在努力工作，為您帶來這些強大的功能。成為首批獲悉其發布的人！"
+    },
+    "servicesOffered": "提供的服務",
+    "pricing": "定價",
+    "consultation": "諮詢",
+    "deliveryTime": "交付時間",
+    "requestConsultation": "請求諮詢",
+    "requestService": "請求服務",
+    "downloadBrochure": "下載宣傳冊",
+    "learnMore": "了解更多",
+    "backToBizConnect": "返回 BizConnect"
 }

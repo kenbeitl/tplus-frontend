@@ -1,8 +1,6 @@
 import { Metadata } from "next";
-
 import { requireAuth } from "@/lib/auth";
 import PayConnectProviderList from "../components/PayConnectProviderList";
-import { getSVGIcon } from "@/helpers/utils";
 
 export const metadata: Metadata = {
   title: 'Trade Financing | PayConnect | Services | T+',
@@ -13,7 +11,9 @@ export default async function TradeFinancingPage() {
   
   return <PayConnectProviderList 
     modalNode="pages.payConnect.tradeFinancing" 
-    icon={ getSVGIcon('dollar-sign', 36) }
+    iconName="dollar-sign"
+    iconSize={18}
+    iconVariant="blue-gradient"
     providerEmoji="🏛️"
   />;
 }

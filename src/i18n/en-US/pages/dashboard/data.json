@@ -154,7 +154,7 @@
             },
             {
                     "icon": "credit-card",
-                    "iconStyle": "bg-gradient-to-br from-cyan-500 to-teal-700 group-hover/parent:shadow-cyan-300",
+                    "iconStyle": "bg-linear-to-br from-cyan-500 to-teal-700 group-hover/parent:shadow-cyan-300",
                     "title": "PayConnect",
                     "context": "Exclusive financial services & partner offers",
                     "cardStyle": "border-cyan-200 hover:border-cyan-400",
@@ -176,7 +176,7 @@
             },
             {
                     "icon": "shield",
-                    "iconStyle": "bg-gradient-to-br from-emerald-500 to-green-700 group-hover/parent:shadow-emerald-300",
+                    "iconStyle": "bg-linear-to-br from-emerald-500 to-green-700 group-hover/parent:shadow-emerald-300",
                     "title": "SafeConnect",
                     "context": "Comprehensive cybersecurity solutions",
                     "cardStyle": "border-emerald-200 hover:border-emerald-400",
@@ -198,7 +198,7 @@
             },
             {
                 "icon": "edit",
-                "iconStyle": "bg-gradient-to-br from-indigo-500 to-purple-700 group-hover/parent:shadow-indigo-300",
+                "iconStyle": "bg-linear-to-br from-indigo-500 to-purple-700 group-hover/parent:shadow-indigo-300",
                 "title": "SignConnect",
                 "context": "Digital document signing with certified security",
                 "cardStyle": "border-indigo-200 hover:border-indigo-400",

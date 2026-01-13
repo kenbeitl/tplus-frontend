@@ -23,14 +23,18 @@ interface Provider {
 
 interface PayConnectProviderListProps {
   modalNode: string;
-  icon?: React.ReactNode;
+  iconName?: string;
+  iconSize?: number;
+  iconVariant?: string;
   providerEmoji?: string;
 }
 
 export default function PayConnectProviderList({ 
   modalNode, 
-  icon,
-  providerEmoji,
+  iconName = 'building',
+  iconSize = 18,
+  iconVariant = 'blue-gradient',
+  providerEmoji = '🏦',
 }: PayConnectProviderListProps) {
     const t = useTranslations();
     const router = useRouter();
@@ -49,8 +53,8 @@ export default function PayConnectProviderList({
             </Button>
             <Box className="flex items-center">
                 <StyledIcon
-                    icon={icon} 
-                    variant="blue-gradient"
+                    icon={ getSVGIcon(iconName, iconSize) } 
+                    variant={iconVariant as any}
                     size={64}
                     square
                     className="mr-3"

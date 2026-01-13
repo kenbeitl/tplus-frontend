@@ -34,37 +34,38 @@ const GRADIENT_CLASSES = {
   blueIndigo: 'bg-linear-to-br from-blue-500 to-indigo-600',
   blueIndigoDark: 'bg-linear-to-br from-blue-600 via-blue-500 to-indigo-600',
   blueIndigoAuth: 'bg-linear-to-br from-blue-100 via-indigo-100 to-purple-200',
-  blueGreenLight: 'bg-gradient-to-r from-blue-50 to-green-50',
+  blueGreenLight: 'bg-linear-to-r from-blue-50 to-green-50',
   
   // Background gradients - Purple family
-  purpleIndigoLight: 'bg-gradient-to-r from-purple-50 to-indigo-50',
+  purpleIndigoLight: 'bg-linear-to-r from-purple-50 to-indigo-50',
   purplePinkLight: 'bg-linear-to-br from-purple-100 via-pink-50 to-rose-100',
   indigoPurple: 'bg-linear-to-br from-indigo-500 to-purple-700',
-  indigoPurplePink: 'bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50',
+  indigoPurplePink: 'bg-linear-to-r from-indigo-50 via-purple-50 to-pink-50',
   
   // Background gradients - Green family
-  greenEmerald: 'bg-gradient-to-r from-green-500 to-emerald-600',
-  greenEmeraldTeal: 'bg-gradient-to-r from-green-500 via-emerald-600 to-teal-600',
-  greenLight: 'bg-gradient-to-r from-green-50 to-emerald-50',
+  greenEmerald: 'bg-linear-to-r from-green-500 to-emerald-600',
+  greenEmeraldTeal: 'bg-linear-to-r from-green-500 via-emerald-600 to-teal-600',
+  greenLight: 'bg-linear-to-r from-green-50 to-emerald-50',
   
   // Background gradients - Slate/Gray family
-  slateBlueLight: 'bg-gradient-to-r from-slate-50 to-blue-50',
+  slateBlueLight: 'bg-linear-to-r from-slate-50 to-blue-50',
   slateBlueIndigoLight: 'bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50',
-  grayLight: 'bg-gradient-to-b from-gray-50 to-white',
+  grayLight: 'bg-linear-to-b from-gray-50 to-white',
   
   // Icon/Badge gradients
-  iconBlue: 'bg-gradient-to-r from-blue-500 to-blue-700',
-  iconBlueIndigo: 'bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600',
+  iconBlue: 'bg-linear-to-r from-blue-500 to-blue-700',
+  iconBlueIndigo: 'bg-linear-to-r from-blue-500 via-blue-600 to-indigo-600',
   iconBlueIndigoBg: 'bg-linear-to-br from-blue-500 to-indigo-600',
   iconBlueLight: 'bg-linear-to-br from-blue-100 to-indigo-100',
   iconGreen: 'bg-linear-to-br from-green-600 to-emerald-600',
   iconGreenLight: 'bg-linear-to-br from-green-100 to-teal-100',
-  iconEmerald: 'bg-gradient-to-br from-emerald-500 to-emerald-600',
+  iconEmerald: 'bg-linear-to-br from-emerald-500 to-emerald-600',
   iconPurple: 'bg-linear-to-br from-purple-600 to-indigo-600',
-  iconPurpleGradient: 'bg-gradient-to-br from-purple-500 to-purple-600',
+  iconPurpleGradient: 'bg-linear-to-br from-purple-500 to-purple-600',
   iconPurplePink: 'bg-linear-to-br from-purple-600 to-pink-600',
   iconIndigoPurple: 'bg-linear-to-br from-indigo-500 to-purple-600',
   iconOrange: 'bg-linear-to-br from-orange-500 to-red-600',
+  iconRed: 'bg-linear-to-br from-red-500 to-red-700',
   
   // Hero section gradients
   heroBlue: 'bg-linear-to-br from-blue-600 via-blue-700 to-indigo-800',
@@ -79,7 +80,9 @@ const GRADIENT_CLASSES = {
 type CustomPaletteExtension = {
   icon: {
     green: string;
+    lightGreen: string;
     black: string;
+    blue: string;
   };
   gradient: typeof GRADIENTS;
   gradientClasses: typeof GRADIENT_CLASSES;
@@ -168,7 +171,9 @@ const theme = createTheme({
     },
     icon: {
       green: '#43A047',
+      lightGreen: '#22c55e',
       black: '#000000',
+      blue: '#2563eb',
     },
     background: {
       lightblue: '#eff6ff',

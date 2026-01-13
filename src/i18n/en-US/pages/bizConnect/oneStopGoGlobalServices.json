@@ -1,0 +1,43 @@
+{
+    "title": "One-stop Go Global Services",
+    "context": "Our trusted partners providing comprehensive market entry and international expansion services",
+    "providers": [
+        {
+            "name":"Accolade Consultancy",
+            "context": "One-stop business consultancy for local and international expansion",
+            "features": [
+                "Market entry strategy and feasibility studies",
+                "Business registration and entity setup (Hong Kong and international)",
+                "Regulatory compliance and licensing support",
+                "Partner identification and networking services",
+                "Accounting, tax planning, and ongoing compliance"
+            ],
+            "pricing": "Custom quote based on services",
+            "consultation": "Free initial consultation",
+            "formId": "accolade-consultancy"
+        },
+        {
+            "name":"Talent Growth Group",
+            "context": "Strategic talent acquisition and international HR solutions for growing businesses",
+            "features": [
+                "Executive search and recruitment services",
+                "Cross-border talent mobility and immigration support",
+                "Organizational development and HR consulting",
+                "Compensation and benefits strategy",
+                "Leadership development and training programs"
+            ],
+            "pricing": "Flexible packages and retainer options",
+            "consultation": "Free 30-minute discovery call",
+            "formId": "talent-growth-group"
+        }
+    ],
+    "whyUs": {
+        "title": "Why Choose Our Go Global Partners?",
+        "rationale": [
+            "Vetted and verified by T+ for quality and reliability",
+            "Comprehensive end-to-end support for international expansion",
+            "Exclusive rates and priority service for T+ members",
+            "Proven track record with successful market entries"
+        ]
+    }
+}

@@ -104,7 +104,8 @@ export default function PayConnectClient() {
                 <Grid container spacing={3}>
                     {Array.isArray(UPCOMING_FEATURES) && UPCOMING_FEATURES.map((item, index) => (
                         <Grid size={{ xs: 12, sm: 6, md: 4 }} key={`upcoming-features-${index}`}>
-                            <Card variant="outlined" className="p-5 card-hover h-full border-2! border-yellow-300! hover:border-blue-400! transition-colors!">                                <StyledIcon
+                            <Card variant="outlined" className="p-5 card-hover h-full border-2! border-yellow-300! hover:border-blue-400! transition-colors!">                                
+                                <StyledIcon
                                     icon={ getSVGIcon(item.icon, 30) } 
                                     variant="blue-inverted"
                                     size={60}

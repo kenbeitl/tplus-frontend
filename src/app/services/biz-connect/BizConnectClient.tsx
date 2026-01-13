@@ -3,14 +3,21 @@
 import { useMemo } from "react";
 
 import theme from "@/theme/theme";
-import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
-import { Tag, Spacer, StyledIcon, ButtonWithFormModal } from "@/components";
+import { Box, Card, Grid, List, ListItem, ListItemIcon as MuiListItemIcon, ListItemText, Paper, Typography, styled } from "@mui/material";
+import { Tag, Spacer, StyledIcon, ButtonWithFormModal, HeroSection, Carousel } from "@/components";
 import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon } from "@/helpers/utils";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { useRouter } from "next/navigation";
+
+const ListItemIcon = styled(MuiListItemIcon)({
+    alignSelf: 'flex-start',
+    marginTop: '0.55em',
+});
 
 export default function BizConnectClient() {
     const t = useTranslations();
+    const router = useRouter();
     const isAboveMobile = useBreakpoint('mobile');
 
     const CONTACT_SUPPORT_TEMPLATE_ID = 'contact-support';
@@ -22,14 +29,16 @@ export default function BizConnectClient() {
         title: string;
         description: string;
         list: string[];
+        cardStyle?: string;
+        slug?: string;
     }
 
     const translations = useMemo(() => {
         const bizConnect = t('pages.bizConnect');
         return {
-            prelaunch: bizConnect.prelaunch,
             upcoming: bizConnect.upcoming,
-            upcomingFeatures: bizConnect.upcoming?.features as bizConnectFeatureProps[],
+            ourServices: bizConnect.ourServices as bizConnectFeatureProps[],
+            upcomingFeatures: bizConnect.upcomingFeatures as bizConnectFeatureProps[],
             builtForYourSuccess: bizConnect.builtForYourSuccess,
             builtForYourSuccessFeatures: bizConnect.builtForYourSuccess?.features as Pick<bizConnectFeatureProps, "icon" | "title" | "description">[],
             stayInformed: bizConnect.stayInformed,
@@ -40,90 +49,16 @@ export default function BizConnectClient() {
     
     return (
         <>
-            <Box component="div" className="flex items-start gap-2">
-                <Typography className="font-bold mb-4" variant="h4" component="h1">{ t("pages.bizConnect.title") }</Typography>
-                <Tag variant="orange" label={t('common.comingSoon')} />
-            </Box>
-            <Typography variant="body2" component="p">{ t("pages.bizConnect.context") }</Typography>
-            <Spacer height={40} />
-            <Card variant="outlined" className="p-6 bg-blue-50! border-2! border-blue-200!">
-                <Box component="div" className="flex flex-col md:flex-row items-top justify-between gap-8">
-                    <Box component="div">
-                        <Box component="div" className="flex items-center">
-                            <Box component="span" className="mr-4">{ getSVGIcon('sparkles', 24, theme.palette.text.blue) }</Box>
-                            <Typography variant="h4" component="h2" color={theme.palette.text.darkBlue}>{translations.prelaunch.title}</Typography>
-                        </Box>
-                        <Spacer height={10} />
-                        <Typography variant="body2" component="p" className="mt-4">{translations.prelaunch.body}</Typography>
-                        <Box component="div" className="flex flex-col sm:flex-row items-center gap-2 mt-6">
-                            <ButtonWithFormModal
-                                templateId={GET_NOTIFICATION_ID}
-                                formId="BizConnect"
-                                buttonStartIcon={ getSVGIcon('bell', 16) }
-                                buttonText={translations.prelaunch.buttonText}
-                                buttonProps={{
-                                    sx:{ width: isAboveMobile ? 'auto' : '100%' }
-                                }}
-                            />
-                            <Button 
-                                variant="outlined"
-                                endIcon={ getSVGIcon('arrow-right', 16) }
-                                color="inherit"
-                                sx={{ width: isAboveMobile ? 'auto' : '100%' }}
-                            >
-                                {t("common.learnMore")}
-                            </Button>
-                        </Box>
-                    </Box>
-                    <StyledIcon
-                        icon={ getSVGIcon('building-2', 100) }
-                        variant="blue-inverted"
-                        square
-                        size={200}
-                        className="shrink-0"
-                        elevation={5}
-                    />
-                </Box>                
-            </Card>
-            <Spacer height={40} />
-            <Typography variant="h4" component="h2" className="mb-8">{translations.upcoming.title}</Typography>
-            <Grid container spacing={2}>
-                {Array.isArray(translations.upcomingFeatures) && translations.upcomingFeatures.map((item, w) => (
-                    <Grid key={`whats-comming-${w}`} size={{ xs: 12, sm: 6, md: 4 }}>
-                        <Card 
-                            variant="outlined"
-                            sx={{
-                                p: 3,
-                                height: '100%',
-                                display: 'flex',
-                                flexDirection: 'column'
-                            }}
-                        >
-                            <StyledIcon 
-                                icon={getSVGIcon(item.icon)}
-                                square
-                                variant={item.variant as any}
-                                size={48}
-                            />
-                            <Typography variant="h6" component="h3" className="mt-8 mb-4">{ item.title }</Typography>
-                            <Typography variant="body2" component="p" className="grow">{ item.description }</Typography>
-                            <Spacer height={20} />
-                            <List sx={{ flexGrow: 1 }}>
-                                {item.list.map((point) => (
-                                    <ListItem key={`${item.title}-point-${point}`}>
-                                        <ListItemIcon>
-                                            { getSVGIcon('circle-check-big', 16, theme.palette.icon.green) }
-                                        </ListItemIcon>
-                                        <ListItemText primary={point} />
-                                    </ListItem>
-                                ))}
-                            </List>
-                        </Card>
-                    </Grid>
-                ))}            
-            </Grid>
-            <Spacer height={40} />
-            <Card variant="outlined" className={`${theme.palette.gradientClasses.slateBlueLight} p-6`}>
+            <HeroSection
+                title={ t("pages.bizConnect.title") }
+                description={ t("pages.bizConnect.context") }
+                icon={ getSVGIcon('briefcase', 24, '#FFFFFF') }
+                colorScheme="blue"
+            />
+            <Spacer height={20} />
+            <Carousel slides={ t("pages.bizConnect.slides") } />
+            <Spacer height={20} />
+            <Paper variant="outlined" className={`${theme.palette.gradientClasses.slateBlueLight} p-6 border-2! border-blue-200/50! shadow-lg overflow-hidden`}>
                 <Box component="div" className="flex items-center gap-4 mb-3">
                     { getSVGIcon('shield', 32, theme.palette.text.blue) }
                     <Typography variant="h6" component="h3">{translations.builtForYourSuccess.title}</Typography>
@@ -141,57 +76,168 @@ export default function BizConnectClient() {
                         </Grid>
                     ))}                    
                 </Grid>
-            </Card>
+            </Paper>
+
             <Spacer height={40} />
-            <Card variant="outlined" className="p-6 bg-blue-600! border-2! border-blue-200!">
-                <Box component="div" className="flex flex-col sm:flex-row items-top justify-between gap-6">
-                    <Box component="div">
-                        <Typography variant="h4" component="h2" color={theme.palette.text.white}>{translations.stayInformed.title}</Typography>
-                        <Typography variant="body2" component="p" color={theme.palette.text.white} className="mt-4">{translations.stayInformed.body}</Typography>
-                    </Box>
-                    <Box component="div" className="flex flex-col sm:flex-row gap-2 items-center">
-                        <ButtonWithFormModal 
-                            templateId={GET_NOTIFICATION_ID}
-                            formId="BizConnect"
-                            buttonStartIcon={ getSVGIcon('bell', 16) }
-                            buttonText={t('common.getNotified')}
-                            buttonProps={{
-                                variant: 'outlined',
-                                sx: { 
-                                    whiteSpace: 'nowrap', 
-                                    margin: 0,
-                                    width: isAboveMobile ? 'auto' : '100%',
-                                }
-                            }}
-                        />
-                        <ButtonWithFormModal 
-                            templateId={CONTACT_SUPPORT_TEMPLATE_ID}
-                            buttonText={t('common.contactSupport')}
-                            buttonProps={{
-                                variant: 'outlined',
-                                sx: { 
-                                    whiteSpace: 'nowrap',
-                                    width: isAboveMobile ? 'auto' : '100%',
-                                }
-                            }}
-                        />
-                    </Box>
-                </Box>
-            </Card>
-             <Spacer height={40} />
-            <Card variant="outlined" className="p-12">
-                <Box component="div" className="flex items-top gap-4">
-                    <StyledIcon 
-                       variant="amber"
-                       icon={ getSVGIcon('sparkles', 24) }
-                       className="shrink-0"
+
+            <Paper variant="outlined" className="bg-linear-to-br! from-green-50! via-emerald-50! to-teal-50! p-8 border-2! border-green-200/50! shadow-lg overflow-hidden">
+                <Box component="div" className="flex items-center mb-6">
+                    <StyledIcon
+                        icon={getSVGIcon('briefcase', 24, '#FFFFFF')}
+                        variant="green-gradient"
+                        size={48}
+                        className="mr-3 shrink-0 shadow-lg"
+                        square
                     />
-                    <Box component="div">
-                        <Typography variant="caption" component="h4" className="font-bold">{translations.developmentInProgress.title}</Typography>
-                        <Typography variant="caption" component="p" className="mt-2">{translations.developmentInProgress.body}</Typography>
-                    </Box>
+                    <Typography variant="h2" component="h2">{ t("common.ourServices") }</Typography>
                 </Box>
-            </Card>
+                <Grid container spacing={3}>
+                    {Array.isArray(translations.ourServices) && translations.ourServices.map((item, w) => (
+                        <Grid key={`our-services-${w}`} size={{ xs: 12, sm: 6, md: 4 }}>
+                            <Card 
+                                variant="outlined"
+                                sx={{
+                                    p: 3,
+                                    height: '100%',
+                                    display: 'flex',
+                                    flexDirection: 'column'
+                                }}
+                                className={`group card-hover border-2! border-transparent! ${item.cardStyle} transition-colors! ${item.slug ? 'cursor-pointer!' : ''}`}
+                                onClick={() => item.slug && router.push(item.slug)}
+                            >
+                                <StyledIcon 
+                                    icon={getSVGIcon(item.icon, 30)}
+                                    square
+                                    variant={item.variant as any}
+                                    size={60}
+                                    className="shrink-0 shadow-lg"
+                                />
+                                <Typography variant="h4" component="h3" className="mt-6! mb-2!">{ item.title }</Typography>
+                                <Typography variant="body1" component="p" color={theme.palette.text.primary}>{ item.description }</Typography>
+                                <Spacer height={20} />
+                                <List sx={{ flexGrow: 1 }}>
+                                    {item.list.map((point) => (
+                                        <ListItem key={`${item.title}-point-${point}`}>
+                                            <ListItemIcon>
+                                                { getSVGIcon('circle-check-big', 16, theme.palette.icon.lightGreen) }
+                                            </ListItemIcon>
+                                            <ListItemText primary={point} />
+                                        </ListItem>
+                                    ))}
+                                </List>
+                                <Box className="flex items-center gap-1 text-blue-600!">
+                                    { t('common.clickToViewProvider') }
+                                    <Box component="span" className="group-hover:ml-1 transition-all">{ getSVGIcon('arrow-right', 16, theme.palette.text.blue) }</Box>
+                                </Box>
+                            </Card>
+                        </Grid>
+                    ))}            
+                </Grid>
+            </Paper>
+
+            <Spacer height={20} />
+
+            <Paper variant="outlined" className="bg-linear-to-br! from-yellow-50! via-amber-50! to-orange-50! p-8 border-2! border-yellow-200/50! shadow-lg overflow-hidden">
+                <Box component="div" className="flex items-start justify-between mb-6">
+                    <Box component="div" className="flex items-center">
+                        <StyledIcon
+                            icon={getSVGIcon('clock')}
+                            variant="amber-gradient"
+                            size={48}
+                            className="mr-3"
+                            square
+                        />
+                        <Typography variant="h2" component="h2">{ t("common.upcomingFeatures") }</Typography>
+                    </Box>
+                    <Tag
+                        label={ t('common.comingSoon') }
+                        variant="orange"
+                        startIcon={ getSVGIcon('sparkles', 16, theme.palette.text.white) }
+                        className="text-base!"
+                    />
+                </Box>
+                <Grid container spacing={3}>
+                        {Array.isArray(translations.upcomingFeatures) && translations.upcomingFeatures.map((item, w) => (
+                        <Grid key={`upcoming-features-${w}`} size={{ xs: 12, sm: 6, md: 4 }}>
+                            <Card 
+                                variant="outlined"
+                                sx={{
+                                    p: 3,
+                                    height: '100%',
+                                    display: 'flex',
+                                    flexDirection: 'column'
+                                }}
+                                className={`card-hover border-2! border-amber-200! ${item.cardStyle} transition-colors!`}
+                            >
+                                <StyledIcon 
+                                    icon={getSVGIcon(item.icon, 30)}
+                                    square
+                                    variant={item.variant as any}
+                                    size={60}
+                                    className="shrink-0 shadow-lg"
+                                />
+                                <Typography variant="h4" component="h3" className="mt-6! mb-2!">{ item.title }</Typography>
+                                <Typography variant="body1" component="p" color={theme.palette.text.primary}>{ item.description }</Typography>
+                                <Spacer height={20} />
+                                <List sx={{ flexGrow: 1 }}>
+                                    {item.list.map((point) => (
+                                        <ListItem key={`${item.title}-point-${point}`}>
+                                            <ListItemIcon>
+                                                { getSVGIcon('circle-check-big', 16, theme.palette.icon.lightGreen) }
+                                            </ListItemIcon>
+                                            <ListItemText primary={point} />
+                                        </ListItem>
+                                    ))}
+                                </List>
+                            </Card>
+                        </Grid>
+                    ))}  
+                </Grid>
+
+                <Spacer height={20} />
+
+                <Card variant="outlined" className="p-6 bg-blue-600! border-2! border-blue-200!">
+                    <Box component="div" className="flex flex-col items-center gap-6 text-white">
+                        <StyledIcon 
+                            variant="opacity"
+                            icon={ getSVGIcon('sparkles', 36) }
+                            size={72}
+                            className="shrink-0"
+                        />
+                        <Typography variant="h2" component="h4" color={theme.palette.text.white}>{translations.developmentInProgress.title}</Typography>
+                        <Typography variant="h6" component="h6" className="text-center" color={theme.palette.text.white}>{translations.developmentInProgress.body}</Typography>
+                        <Box component="div" className="flex flex-col sm:flex-row gap-2 items-center">
+                            <ButtonWithFormModal 
+                                templateId={GET_NOTIFICATION_ID}
+                                formId="BizConnect"
+                                buttonStartIcon={ getSVGIcon('bell', 16) }
+                                buttonText={t('common.notifyMeAtLaunch')}
+                                buttonProps={{
+                                    variant: 'outlined',
+                                    color: 'blue',
+                                    sx: { 
+                                        whiteSpace: 'nowrap', 
+                                        margin: 0,
+                                        width: isAboveMobile ? 'auto' : '100%',
+                                    }
+                                }}
+                            />
+                            <ButtonWithFormModal 
+                                templateId={CONTACT_SUPPORT_TEMPLATE_ID}
+                                buttonText={t('common.contactUs')}
+                                buttonProps={{
+                                    variant: 'outlined',
+                                    color: 'blue',
+                                    sx: { 
+                                        whiteSpace: 'nowrap',
+                                        width: isAboveMobile ? 'auto' : '100%',
+                                    }
+                                }}
+                            />
+                        </Box>
+                    </Box>
+                </Card>
+            </Paper>    
         </>
     );
 }

@@ -1,98 +1,164 @@
 {
     "title": "BizConnect",
     "context": "Your gateway to global business opportunities and partnerships",
-    "prelaunch": {
-        "title": "Expanding Your Business Network",
-        "body": "BizConnect is our comprehensive business intelligence and networking platform designed to help you discover partnerships, conduct due diligence, and expand into new markets with confidence.",
-        "buttonText": "Notify Me at Launch"
-    },
-    "upcoming": {
-        "title": "What's Coming with BizConnect",
-        "features": [
-            {
-                "icon": "search",
-                "variant": "blue-inverted",
-                "title": "Business Matching Network",
-                "description": "Access our extensive database of 1M+ verified businesses across Hong Kong, Mainland China, and overseas markets",
-                "list": [
-                    "Advanced search and filtering capabilities",
-                    "Industry-specific recommendations",
-                    "AI-powered partnership suggestions"
-                ]
-            },
-            {
-                "icon": "file-check",
-                "variant": "purple-inverted",
-                "title": "Due Diligence Services",
-                "description": "Comprehensive background checks and verification services for potential business partners",
-                "list": [
-                    "Company verification and credentials",
-                    "Financial health assessments",
-                    "Regulatory compliance checks"
-                ]
-            },
-            {
-                "icon": "globe",
-                "variant": "green-inverted",
-                "title": "One-Stop Go Global Services",
-                "description": "Everything you need to expand your business into international markets",
-                "list": [
-                    "Market entry strategy consulting",
-                    "International partnership facilitation",
-                    "Cross-border regulatory guidance"
-                ]
-            },
-            {
-                "icon": "target",
-                "variant": "red-inverted",
-                "title": "China Market Entry Services",
-                "description": "Specialized support for businesses looking to enter or expand in the Chinese market",
-                "list": [
-                    "Mainland China business registration",
-                    "Local partner identification",
-                    "Regulatory compliance assistance"
-                ]
-            },
-            {
-                "icon": "users",
-                "variant": "orange-inverted",
-                "title": "Verified Business Network",
-                "description": "Connect with confidence through our verified and authenticated business community",
-                "list": [
-                    "Digital identity verification",
-                    "Business credential authentication",
-                    "Secure communication channels"
-                ]
-            }
-        ]
-    },
+    "slides": [
+        {
+            "emoji": "🏦",
+            "title": "Fusion Bank",
+            "context": "Streamline your business account opening with Fusion Bank - exclusive offers for T+ members",
+            "buttonText": "Open Account",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "📊",
+            "title": "Coface",
+            "context": "Global risk insights, data, scores, credit opinions and reports for smart decisions.",
+            "buttonText": "View Services",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "💼",
+            "title": "Accolade",
+            "context": "One-stop business consultancy services for local and international clients",
+            "buttonText": "Learn More",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "💸",
+            "title": "XTransfer",
+            "context": "Local and cross-border remittance made simple - Fast, secure, and cost-effective",
+            "buttonText": "Get Started",
+            "buttonLink": "#"
+        },
+        {
+            "emoji": "🤝",
+            "title": "eBRAM",
+            "context": "Deal-making platform to facilitate business negotiations and transaction management",
+            "buttonText": "View Platform",
+            "buttonLink": "#"
+        }
+    ],
     "builtForYourSuccess": {
         "title": "Built for Your Success",
         "context": "BizConnect combines cutting-edge technology with comprehensive business services",
+        "figures": [
+            {
+                "icon": "users",
+                "iconColor": "text-blue-600",
+                "number": "1M+",
+                "description": "Verified Businesses"
+            },
+            {
+                "icon": "globe",
+                "iconColor": "text-indigo-600",
+                "number": "50+",
+                "description": "Countries Covered"
+            },
+            {
+                "icon": "zap",
+                "iconColor": "text-purple-600",
+                "number": "24/7",
+                "description": "Support Available"
+            }
+        ],
         "features": [
             {
-                "icon": "briefcase", 
+                "icon": "briefcase",
+                "iconStyle": "iconBlue",
                 "title": "End-to-End Support",
                 "description": "From initial research to partnership execution, we support you throughout your business expansion journey"
             },
             {
-                "icon": "shield", 
+                "icon": "shield",
+                "iconStyle": "iconGreen",
                 "title": "Secure & Verified",
                 "description": "All businesses in our network undergo rigorous verification to ensure authenticity and reliability"
             },
             {
-                "icon": "globe", 
+                "icon": "globe",
+                "iconStyle": "iconPurplePink",
                 "title": "Global Reach",
                 "description": "Access opportunities across multiple markets including Hong Kong, Mainland China, and international territories"
             }
         ]
     },
-    "stayInformed": {
-        "title": "Stay Informed",
-        "body": "Be the first to know when BizConnect launches and get exclusive early access"
-    },
+    "ourServices": [
+        {
+            "icon": "file-check",
+            "variant": "purple-gradient",
+            "title": "Due Diligence Services",
+            "description": "Comprehensive background checks and verification services for potential business partners",
+            "list": [
+                "Company verification and credentials",
+                "Financial health assessments",
+                "Regulatory compliance checks"
+            ],
+            "cardStyle": "hover:border-purple-300!",
+            "slug": "/services/biz-connect/due-diligence-services"
+        },
+        {
+            "icon": "globe",
+            "variant": "green-gradient",
+            "title": "One-Stop Go Global Services",
+            "description": "Everything you need to expand your business into international markets",
+            "list": [
+                "Market entry strategy consulting",
+                "International partnership facilitation",
+                "Cross-border regulatory guidance"
+            ],
+            "cardStyle": "hover:border-green-300!",
+            "slug": "/services/biz-connect/one-stop-go-global-services"
+        }
+    ],
+    "upcomingFeatures": [
+        {
+            "icon": "search",
+            "variant": "blue-gradient",
+            "title": "Business Matching Network",
+            "description": "Access our extensive database of 1M+ verified businesses across Hong Kong, Mainland China, and overseas markets",
+            "list": [
+                "Advanced search and filtering capabilities",
+                "Industry-specific recommendations",
+                "AI-powered partnership suggestions"
+            ],
+            "cardStyle": "hover:border-blue-300!"
+        },
+        {
+            "icon": "target",
+            "variant": "red-gradient",
+            "title": "China Market Entry Services",
+            "description": "Specialized support for businesses looking to enter or expand in the Chinese market",
+            "list": [
+                "Mainland China business registration",
+                "Local partner identification",
+                "Regulatory compliance assistance"
+            ],
+            "cardStyle": "hover:border-red-300!"
+        },
+        {
+            "icon": "users",
+            "variant": "orange-gradient",
+            "title": "Verified Business Network",
+            "description": "Connect with confidence through our verified and authenticated business community",
+            "list": [
+                "Digital identity verification",
+                "Business credential authentication",
+                "Secure communication channels"
+            ],
+            "cardStyle": "hover:border-orange-300!"
+        }
+    ],
     "developmentInProgress": {
         "title": "Development in Progress",
-        "body": "Our team is working diligently to bring you BizConnect with all its powerful features. We're currently in active development and expect to launch in the coming months. Thank you for your patience!"
-    }
+        "body": "Our team is working diligently to bring you these powerful features. Be the first to know when they launch!"
+    },
+    "servicesOffered": "Services Offered",
+    "pricing": "Pricing",
+    "consultation": "Consultation",
+    "deliveryTime": "Delivery Time",
+    "requestConsultation": "Request Consultation",
+    "requestService": "Request Service",
+    "downloadBrochure": "Download Brochure",
+    "learnMore": "Learn More",
+    "backToBizConnect": "Back to BizConnect"
 }

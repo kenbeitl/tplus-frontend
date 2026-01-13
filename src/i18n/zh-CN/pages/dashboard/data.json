@@ -154,7 +154,7 @@
             },
             {
                     "icon": "credit-card",
-                    "iconStyle": "bg-gradient-to-br from-cyan-500 to-teal-700 group-hover/parent:shadow-cyan-300",
+                    "iconStyle": "bg-linear-to-br from-cyan-500 to-teal-700 group-hover/parent:shadow-cyan-300",
                     "title": "PayConnect",
                     "context": "专属金融服务与合作伙伴优惠",
                     "cardStyle": "border-cyan-200 hover:border-cyan-400",
@@ -176,7 +176,7 @@
             },
             {
                     "icon": "shield",
-                    "iconStyle": "bg-gradient-to-br from-emerald-500 to-green-700 group-hover/parent:shadow-emerald-300",
+                    "iconStyle": "bg-linear-to-br from-emerald-500 to-green-700 group-hover/parent:shadow-emerald-300",
                     "title": "SafeConnect",
                     "context": "全面的网络安全解决方案",
                     "cardStyle": "border-emerald-200 hover:border-emerald-400",
@@ -198,7 +198,7 @@
             },
             {
                 "icon": "edit",
-                "iconStyle": "bg-gradient-to-br from-indigo-500 to-purple-700 group-hover/parent:shadow-indigo-300",
+                "iconStyle": "bg-linear-to-br from-indigo-500 to-purple-700 group-hover/parent:shadow-indigo-300",
                 "title": "SignConnect",
                 "context": "带有认证安全的数字文档签署",
                 "cardStyle": "border-indigo-200 hover:border-indigo-400",

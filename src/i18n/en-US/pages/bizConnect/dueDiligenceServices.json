@@ -1,0 +1,32 @@
+{
+    "title": "Due Diligence Service Providers",
+    "context": "Our trusted partners providing comprehensive business intelligence and due diligence services",
+    "providers": [
+        {
+            "name":"Coface",
+            "context": "Global risk insights, data, scores, credit opinions and reports for smart decisions.",
+            "features": [
+                "URBA Report - Comprehensive credit risk assessment",
+                "Financial strength and business risk evaluation",
+                "Payment experience data and industry analysis",
+                "Country risk assessment for international markets"
+            ],
+            "pricing": "From $199 per report",
+            "deliveryTime": "24-72 hours",
+            "formId": "coface"
+        },
+        {
+            "name":"Dun & Bradstreet (D&B)",
+            "context": "Trusted source of business intelligence worldwide",
+            "features": [
+                "Business Information Report - Complete company intelligence",
+                "Credit rating and risk assessment with proprietary scoring",
+                "Management structure and ownership details",
+                "Industry benchmarking and payment behavior trends"
+            ],
+            "pricing": "From $299 per report",
+            "deliveryTime": "24-48 hours",
+            "formId": "dun-bradstreet"
+        }
+    ]
+}
