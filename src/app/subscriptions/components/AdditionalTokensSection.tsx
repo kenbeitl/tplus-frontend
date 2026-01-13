@@ -45,7 +45,7 @@ export default function AdditionalTokensSection({ remainingDays }: AdditionalTok
             <Typography variant="body2" component="p">
                 {translations.additionalTokens?.intro}
             </Typography>
-            <Spacer height={20} />
+            <Spacer height={30} />
             <Grid container spacing={2}>
                 {tokenPacks.map((tokenPack, tp) => (
                     <TokenPackCard key={`token-plan-${tp}`} pack={tokenPack} />

@@ -171,7 +171,7 @@ export default function UserProfileTab({ session }: UserProfileTabProps) {
             <Typography variant="body2" component="p">
                 { t("pages.settings.userProfile.context") }
             </Typography>
-            <Spacer height={20} />
+            <Spacer height={30} />
 
             <UserInfoSection 
                 userForm={userForm} 

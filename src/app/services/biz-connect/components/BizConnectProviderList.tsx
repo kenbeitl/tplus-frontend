@@ -73,7 +73,7 @@ export default function BizConnectProviderList({
                         <Card variant="outlined" className="p-4 h-full border! card-hover">
                             <Typography variant="h3" component="h3" className="ml-8">{ provider.name }</Typography>
                             <Typography variant="h6" component="p" color={ theme.palette.text.secondary }>{ provider.context }</Typography>
-                            <Spacer height={20} />
+                            <Spacer height={30} />
                             <Typography variant="subtitle1" component="p">{ t('pages.bizConnect.servicesOffered') }</Typography>
                             <List sx={{ flexGrow: 1 }}>
                                 {provider.features?.map((feature: string, f_idx: number) => (
@@ -85,7 +85,7 @@ export default function BizConnectProviderList({
                                 </ListItem>
                                 ))}
                             </List>
-                            <Spacer height={20} />
+                            <Spacer height={30} />
                             <Box className="p-3 bg-gray-50 rounded">
                                 <Grid container spacing={2}>
                                 {provider.pricing && (
@@ -120,7 +120,7 @@ export default function BizConnectProviderList({
                                 )}
                                 </Grid>
                             </Box>
-                            <Spacer height={20} />
+                            <Spacer height={30} />
                             <Box component="div" className="flex items-center gap-2">
                                 <ButtonWithFormModal
                                     templateId="bizconnect-service-providers"

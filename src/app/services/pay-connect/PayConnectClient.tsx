@@ -28,7 +28,7 @@ export default function PayConnectClient() {
                 icon={ getSVGIcon('credit-card', 24, '#FFFFFF') }
                 colorScheme="cyan"
             />
-            <Spacer height={20} />
+            <Spacer height={30} />
             <Carousel 
                 slides={ t("pages.payConnect.slides") }
                 slideLayout={2}
@@ -59,7 +59,7 @@ export default function PayConnectClient() {
                                 <Typography variant="h4" component="h4">{item.title}</Typography>
                             </Box>
                             <Typography variant="body1" component="p">{item.description}</Typography>
-                            <Spacer height={20} />
+                            <Spacer height={30} />
                             <Card variant="outlined" className="p-3 border! bg-blue-50! border-blue-200/50! center-layout">
                                 <StyledIcon 
                                     icon={ <Box component="span" className="text-3xl">{ getProviderCount(item.type) }</Box> }
@@ -67,7 +67,7 @@ export default function PayConnectClient() {
                                 />
                                 <Typography variant="h6" component="p" color={theme.palette.text.secondary}>{ t('pages.payConnect.serviceProvidersAvailable') }</Typography>
                             </Card>
-                            <Spacer height={20} />
+                            <Spacer height={30} />
                             <Button
                                 variant='gradient'
                                 color='blue'

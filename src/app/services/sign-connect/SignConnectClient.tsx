@@ -31,9 +31,9 @@ export default function SignConnectClient() {
         icon={ getSVGIcon('file-signature', 24, '#FFFFFF') }
         colorScheme="indigo"
       />
-      <Spacer height={20} />
+      <Spacer height={30} />
       <Carousel slides={ t("pages.signConnect.slides") } />
-      <Spacer height={20} />
+      <Spacer height={30} />
       <Paper variant="outlined" className="flex flex-col items-center p-6 card-hover h-full">
         <Box className="w-45 h-45">
           <img src="/assets/images/SignConnect.jpg" alt={ t('pages.signConnect.signingPlatform.title') } />
@@ -52,29 +52,29 @@ export default function SignConnectClient() {
                   square
                   size={50}
                 />
-                <Spacer height={20} />
+                <Spacer height={30} />
                 <Typography variant="h5" component="h3" sx={{ fontWeight: 400 }}>{platform.name}</Typography>
                 <Typography variant="h6" component="p" sx={{ fontWeight: 400 }}>{platform.description}</Typography>
-                <Spacer height={20} />
+                <Spacer height={30} />
                 <List className="text-left w-full">
-                    {platform.list.map((point: string, p: number) => (
-                      <ListItem key={p}>
-                        <ListItemIcon>
-                          { getSVGIcon('circle-check-big', 16, theme.palette.icon.green) }
-                        </ListItemIcon>
-                        <ListItemText primary={point} />
-                      </ListItem>
-                    ))}
-                  </List>
-                  <Button
-                    className={platform.isActive ? 'bg-linear-to-r from-blue-600 to-blue-700 text-white! hover:from-blue-700 hover:to-blue-800 transition-colors!' : ''}
-                    variant={platform.isActive ? 'contained' : 'outlined'}
-                    disabled={!platform.isActive}
-                    onClick={platform.isActive ? (platform.action === 'open-modal' ? () => tradelinkModal.handleOpen() : undefined ) : undefined}
-                    sx={{ width: '100%', mt: 'auto' }}
-                  >
-                    {platform.isActive ? t('pages.signConnect.selectService') : t('common.comingSoon')}
-                  </Button>
+                  {platform.list.map((point: string, p: number) => (
+                    <ListItem key={p}>
+                      <ListItemIcon>
+                        { getSVGIcon('circle-check-big', 16, theme.palette.icon.green) }
+                      </ListItemIcon>
+                      <ListItemText primary={point} />
+                    </ListItem>
+                  ))}
+                </List>
+                <Button
+                  className={platform.isActive ? 'bg-linear-to-r from-blue-600 to-blue-700 text-white! hover:from-blue-700 hover:to-blue-800 transition-colors!' : ''}
+                  variant={platform.isActive ? 'contained' : 'outlined'}
+                  disabled={!platform.isActive}
+                  onClick={platform.isActive ? (platform.action === 'open-modal' ? () => tradelinkModal.handleOpen() : undefined ) : undefined}
+                  sx={{ width: '100%', mt: 'auto' }}
+                >
+                  {platform.isActive ? t('pages.signConnect.selectService') : t('common.comingSoon')}
+                </Button>
               </Card>
             </Grid>
           ))}

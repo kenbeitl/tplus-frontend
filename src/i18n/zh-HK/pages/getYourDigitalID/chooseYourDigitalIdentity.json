@@ -1,0 +1,86 @@
+{
+    "title": "選擇您的數位身份",
+    "context": "請選擇最符合您需求的選項。兩種方式同樣安全可靠，均獲得香港特區政府認可。",
+    "options": [
+        {
+            "name": "iAM Smart",
+            "image": "iAMSmart",
+            "description": "適用於香港身份證持有人的數字身份",
+            "eligibility": {
+                "title": "資格",
+                "criteria": [
+                    "所有年滿18歲及以上並持有有效香港身份證的個人",
+                    "香港居民"
+                ]
+            },
+            "features": {
+                "title": "特點",
+                "list": [
+                    "獲得香港特區政府認可",
+                    "免費申請",
+                    "申請時間少於5分鐘",
+                    "可訪問200多個政府電子服務"
+                ]
+            },
+            "requirements": {
+                "title": "所需條件",
+                "list": [
+                    {
+                        "item": "帶有攝像頭的智能手機",
+                        "icon": "smartphone"
+                    },
+                    {
+                        "item": "有效的香港身份證",
+                        "icon": "id-card"
+                    },
+                    {
+                        "item": "有效的電子郵件地址",
+                        "icon": "file-text"
+                    }    
+                ]
+            },
+            "buttonText": "申請 iAM Smart",
+            "buttonLink": "https://www.iamsmart.gov.hk/zh-hant/"
+        },
+        {
+            "name": "iD-One",
+            "image": "iDOne",
+            "description": "適用於電子護照持有人的數字身份",
+            "eligibility": {
+                "title": "資格",
+                "criteria": [
+                    "所有年滿18歲及以上並持有符合ICAO標準電子護照的個人",
+                    "接受任何國籍"
+                ]
+            },
+            "features": {
+                "title": "特點",
+                "list": [
+                    "獲得香港特區政府認可",
+                    "遠程申請（無需親臨現場）",
+                    "申請時間少於5分鐘",
+                    "全球認可"
+                ]
+            },
+            "requirements": {
+                "title": "所需條件",
+                "list": [
+                    {
+                        "item": "帶有攝像頭的智能手機或電腦",
+                        "icon": "smartphone"
+                    },
+                    {
+                        "item": "有效的電子護照",
+                        "icon": "passport"
+                    },
+                    {
+                        "item": "有效的電子郵件地址",
+                        "icon": "file-text"
+                    }
+                ]
+            },
+            "buttonText": "申請 iD-One",
+            "buttonLink": "open-modal"
+        }
+    ]
+}

@@ -3,7 +3,7 @@ import BizConnectClient from "./BizConnectClient";
 import { requireAuth } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: 'BizConnect | Services | T+',
+  title: 'BizConnect | My Services | T+',
 }
 
 export default async function BizConnect() {

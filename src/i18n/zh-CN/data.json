@@ -1,37 +1,37 @@
 {
     "nav": {
         "dashboard": "仪表板",
-        "services": "服务",
+        "services": "我的服务",
         "serviceList": [
+            {
+                "name": "获取您的数字身份",
+                "icon": "id-card",
+                "path": "/services/get-your-digital-id"
+            },
             {
                 "name": "SignConnect",
                 "icon": "file-pen-line",
-                "path": "/services/sign-connect",
-                "isActive": true
+                "path": "/services/sign-connect"
             },
             {
                 "name": "BizConnect",
                 "icon": "briefcase",
-                "path": "/services/biz-connect",
-                "isActive": false
+                "path": "/services/biz-connect"
             },
             {
                 "name": "PayConnect",
                 "icon": "credit-card",
-                "path": "/services/pay-connect",
-                "isActive": true
+                "path": "/services/pay-connect"
             },
             {
                 "name": "GovConnect",
                 "icon": "building",
-                "path": "/services/gov-connect",
-                "isActive": true
+                "path": "/services/gov-connect"
             },
             {
                 "name": "SafeConnect",
                 "icon": "shield",
-                "path": "/services/safe-connect",
-                "isActive": true
+                "path": "/services/safe-connect"
             }
         ],
         "subscriptions": "订阅",

@@ -3,7 +3,7 @@ import GovConnectClient from "./GovConnectClient";
 import { requireAuth } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: 'GovConnect | Services | T+',
+  title: 'GovConnect | My Services | T+',
 }
 
 export default async function GovConnect() {

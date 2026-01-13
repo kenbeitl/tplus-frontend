@@ -3,7 +3,7 @@ import { requireAuth } from "@/lib/auth";
 import BizConnectProviderList from "../components/BizConnectProviderList";
 
 export const metadata: Metadata = {
-  title: 'One-stop Go Global Services | BizConnect | Services | T+',
+  title: 'One-stop Go Global Services | BizConnect | My Services | T+',
 }
 
 export default async function OneStopGoGlobalServicesPage() {

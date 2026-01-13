@@ -29,7 +29,7 @@ export default function NeedHelpSection({
             <Typography variant="body1" component="p" className="mt-8">
                 {context}
             </Typography>
-            <Spacer height={20} />
+            <Spacer height={30} />
             <Box className="flex flex-row gap-5 justify-center items-center" component="div">
                 <Link variant="caption" href="/help-centre" underline="hover">
                     {helpCentreText}

@@ -1,0 +1,86 @@
+{
+    "title": "选择您的数字身份",
+    "context": "请选择最符合您需求的选项。两种方式同样安全可靠，均获得香港特区政府认可。",
+    "options": [
+        {
+            "name": "iAM Smart",
+            "image": "iAMSmart",
+            "description": "适用于香港身份证持有人的数字身份",
+            "eligibility": {
+                "title": "资格",
+                "criteria": [
+                    "所有年满18岁及以上并持有有效香港身份证的个人",
+                    "香港居民"
+                ]
+            },
+            "features": {
+                "title": "特点",
+                "list": [
+                    "获得香港特区政府认可",
+                    "免费申请",
+                    "申请时间少于5分钟",
+                    "可访问200多个政府电子服务"
+                ]
+            },
+            "requirements": {
+                "title": "所需条件",
+                "list": [
+                    {
+                        "item": "带有摄像头的智能手机",
+                        "icon": "smartphone"
+                    },
+                    {
+                        "item": "有效的香港身份证",
+                        "icon": "id-card"
+                    },
+                    {
+                        "item": "有效的电子邮件地址",
+                        "icon": "file-text"
+                    }    
+                ]
+            },
+            "buttonText": "申请 iAM Smart",
+            "buttonLink": "https://www.iamsmart.gov.hk/zh-hant/"
+        },
+        {
+            "name": "iD-One",
+            "image": "iDOne",
+            "description": "适用于电子护照持有人的数字身份",
+            "eligibility": {
+                "title": "资格",
+                "criteria": [
+                    "所有年满18岁及以上并持有符合ICAO标准电子护照的个人",
+                    "接受任何国籍"
+                ]
+            },
+            "features": {
+                "title": "特点",
+                "list": [
+                    "获得香港特区政府认可",
+                    "远程申请（无需亲临现场）",
+                    "申请时间少于5分钟",
+                    "全球认可"
+                ]
+            },
+            "requirements": {
+                "title": "所需条件",
+                "list": [
+                    {
+                        "item": "带有摄像头的智能手机",
+                        "icon": "smartphone"
+                    },
+                    {
+                        "item": "有效的电子护照（符合ICAO标准）",
+                        "icon": "id-card"
+                    },
+                    {
+                        "item": "有效的电子邮件地址",
+                        "icon": "file-text"
+                    }    
+                ]
+            },
+            "buttonText": "申请 iD-One",
+            "buttonLink": "open-modal"
+        }
+    ]
+}

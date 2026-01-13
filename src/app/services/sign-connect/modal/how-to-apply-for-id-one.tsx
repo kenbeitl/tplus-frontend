@@ -23,7 +23,7 @@ export default function ModalHowToApplyForIDOne({ open, onClose }: ModalProps) {
     >
       <Typography variant="h3" component="h2" className="mb-4">{ t('pages.signConnect.modal.howToApplyForIdOne.title') }</Typography>
       <Typography variant="body1" component="p" color={theme.palette.text.secondary}>{ t('pages.signConnect.modal.howToApplyForIdOne.context') }</Typography>
-      <Spacer height={20} />
+      <Spacer height={30} />
       <Card 
         variant="outlined" 
         className="p-4 bg-blue-50! border-2! border-blue-200!"
@@ -37,7 +37,7 @@ export default function ModalHowToApplyForIDOne({ open, onClose }: ModalProps) {
           ))}
         </List>
       </Card>
-      <Spacer height={20} />
+      <Spacer height={30} />
       <Typography variant="h6" component="h3" className="mb-4">{ t('pages.signConnect.modal.howToApplyForIdOne.applicationSteps.title') }</Typography>
       {Array.isArray(APPLICATION_STEPS) && APPLICATION_STEPS.map((step, s) => (
         <Box className="flex items-top mb-3" key={`step-${s}`}>

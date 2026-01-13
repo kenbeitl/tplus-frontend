@@ -55,16 +55,16 @@ export default function BizConnectClient() {
                 icon={ getSVGIcon('briefcase', 24, '#FFFFFF') }
                 colorScheme="blue"
             />
-            <Spacer height={20} />
+            <Spacer height={30} />
             <Carousel slides={ t("pages.bizConnect.slides") } />
-            <Spacer height={20} />
+            <Spacer height={30} />
             <Paper variant="outlined" className={`${theme.palette.gradientClasses.slateBlueLight} p-6 border-2! border-blue-200/50! shadow-lg overflow-hidden`}>
                 <Box component="div" className="flex items-center gap-4 mb-3">
                     { getSVGIcon('shield', 32, theme.palette.text.blue) }
                     <Typography variant="h6" component="h3">{translations.builtForYourSuccess.title}</Typography>
                 </Box>
                 <Typography variant="body2" component="p">{translations.builtForYourSuccess.context}</Typography>
-                <Spacer height={20} />
+                <Spacer height={30} />
                 <Grid container spacing={2}>
                     {Array.isArray(translations.builtForYourSuccessFeatures) && translations.builtForYourSuccessFeatures.map((feature, f) => (
                         <Grid size={{ xs: 12, sm: 6, md: 4 }} key={`built-for-your-success-feature-${f}`}>
@@ -114,7 +114,7 @@ export default function BizConnectClient() {
                                 />
                                 <Typography variant="h4" component="h3" className="mt-6! mb-2!">{ item.title }</Typography>
                                 <Typography variant="body1" component="p" color={theme.palette.text.primary}>{ item.description }</Typography>
-                                <Spacer height={20} />
+                                <Spacer height={30} />
                                 <List sx={{ flexGrow: 1 }}>
                                     {item.list.map((point) => (
                                         <ListItem key={`${item.title}-point-${point}`}>
@@ -135,7 +135,7 @@ export default function BizConnectClient() {
                 </Grid>
             </Paper>
 
-            <Spacer height={20} />
+            <Spacer height={30} />
 
             <Paper variant="outlined" className="bg-linear-to-br! from-yellow-50! via-amber-50! to-orange-50! p-8 border-2! border-yellow-200/50! shadow-lg overflow-hidden">
                 <Box component="div" className="flex items-start justify-between mb-6">
@@ -178,7 +178,7 @@ export default function BizConnectClient() {
                                 />
                                 <Typography variant="h4" component="h3" className="mt-6! mb-2!">{ item.title }</Typography>
                                 <Typography variant="body1" component="p" color={theme.palette.text.primary}>{ item.description }</Typography>
-                                <Spacer height={20} />
+                                <Spacer height={30} />
                                 <List sx={{ flexGrow: 1 }}>
                                     {item.list.map((point) => (
                                         <ListItem key={`${item.title}-point-${point}`}>
@@ -194,7 +194,7 @@ export default function BizConnectClient() {
                     ))}  
                 </Grid>
 
-                <Spacer height={20} />
+                <Spacer height={30} />
 
                 <Card variant="outlined" className="p-6 bg-blue-600! border-2! border-blue-200!">
                     <Box component="div" className="flex flex-col items-center gap-6 text-white">

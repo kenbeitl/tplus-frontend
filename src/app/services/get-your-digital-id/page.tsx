@@ -1,15 +1,15 @@
 import { Metadata } from "next";
-import SafeConnectClient from "./SafeConnectClient";
+import GetYourDigitalIDClient from "./GetYourDigitalIDClient";
 import { requireAuth } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: 'SafeConnect | My Services | T+',
+  title: 'Get Your Digital ID | My Services | T+',
 }
 
 export default async function SafeConnect() {
   await requireAuth();
 
   return (
-   <SafeConnectClient />
+    <GetYourDigitalIDClient />
   );
 }

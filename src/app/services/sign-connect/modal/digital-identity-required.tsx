@@ -51,8 +51,8 @@ export default function ModalDigitalIdentityRequired({ open, onClose }: ModalPro
         <Box className="flex flex-col">
           <Typography variant="h1" component="h2" className="mb-4! self-center">{ modalContent.title }</Typography>
           <Typography variant="body1" component="p">{ modalContent.context }</Typography>
-          <Spacer height={20} />
-          <Grid container spacing={2}>
+          <Spacer height={30} />
+          <Grid container spacing={3}>
             {Array.isArray(DIGITAL_IDENTITY_OPTIONS) && DIGITAL_IDENTITY_OPTIONS.map((option) => {
               const LogoComponent = LOGO_COMPONENTS[option.image as LogoKey];
               return (
@@ -89,7 +89,7 @@ export default function ModalDigitalIdentityRequired({ open, onClose }: ModalPro
               );
             })}
           </Grid>
-          <Spacer height={20} />
+          <Spacer height={30} />
           <Box component="div" className="flex flex-col sm:flex-row justify-center gap-4">
             <Button component={Link} variant="outlined" href="/help-centre">{ modalContent.learnMoreAboutDigitalIdentities }</Button>
             <Button variant="contained" color="primary" onClick={onClose}>{ modalContent.alreadyHaveDigitalID }</Button>

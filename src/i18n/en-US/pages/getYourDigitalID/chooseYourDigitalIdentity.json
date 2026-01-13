@@ -1,0 +1,86 @@
+{
+    "title": "Choose Your Digital Identity",
+    "context": "Select the option that best suits your needs. Both are equally secure and recognized by the HKSAR Government.",
+    "options": [
+        {
+            "name": "iAM Smart",
+            "image": "iAMSmart",
+            "description": "Digital identity for HKID holders",
+            "eligibility": {
+                "title": "Eligibility",
+                "criteria": [
+                    "All individuals aged 18+ with a valid HKID card",
+                    "Hong Kong residents"
+                ]
+            },
+            "features": {
+                "title": "Features",
+                "list": [
+                    "Recognized by the HKSAR government",
+                    "Free application",
+                    "Application takes less than 5 minutes",
+                    "Access to 200+ government e-services"
+                ]
+            },
+            "requirements": {
+                "title": "Requirements",
+                "list": [
+                    {
+                        "item": "Smartphone with camera",
+                        "icon": "smartphone"
+                    },
+                    {
+                        "item": "Valid HKID card",
+                        "icon": "id-card"
+                    },
+                    {
+                        "item": "Valid email address",
+                        "icon": "file-text"
+                    }    
+                ]
+            },
+            "buttonText": "Apply for iAM Smart",
+            "buttonLink": "https://www.iamsmart.gov.hk/en/"
+        },
+        {
+            "name": "iD-One",
+            "image": "iDOne",
+            "description": "Digital identity for e-Passport holders",
+            "eligibility": {
+                "title": "Eligibility",
+                "criteria": [
+                    "All individuals aged 18+ with an ICAO compliant e-Passport",
+                    "Any nationality accepted"
+                ]
+            },
+            "features": {
+                "title": "Features",
+                "list": [
+                    "Recognized by the HKSAR government",
+                    "Remote application (no in-person visit needed)",
+                    "Application takes less than 5 minutes",
+                    "Global recognition"
+                ]
+            },
+            "requirements": {
+                "title": "Requirements",
+                "list": [
+                    {
+                        "item": "Smartphone with camera",
+                        "icon": "smartphone"
+                    },
+                    {
+                        "item": "Valid e-Passport (ICAO compliant)",
+                        "icon": "id-card"
+                    },
+                    {
+                        "item": "Valid email address",
+                        "icon": "file-text"
+                    }    
+                ]
+            },
+            "buttonText": "Apply for iD-One",
+            "buttonLink": "open-modal"
+        }
+    ]
+}

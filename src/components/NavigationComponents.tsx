@@ -36,7 +36,7 @@ export const ListItemButton = styled(MuiListItemButton, {
     // Button wrapper styles
     '& .real-btn': {
         width: '100%',
-        padding: theme.spacing(0.75, 1),
+        padding: isDrawerOpen ? theme.spacing(0, 1) : theme.spacing(0.75, 1),
         background: isActive ? theme.palette.gradient.blue : 'transparent',
         color: isActive ? theme.palette.primary.contrastText : 'inherit',
         borderRadius: isActive ? theme.shape.borderRadius : 0,

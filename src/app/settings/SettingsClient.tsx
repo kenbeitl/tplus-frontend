@@ -26,7 +26,7 @@ export default function SettingsClient() {
             <Typography className="font-bold mb-1" variant="h4" component="h1">
                 {t("pages.settings.title")}
             </Typography>
-            <Spacer height={20} />
+            <Spacer height={30} />
             <TabContext value={value}>
                 <Box>
                     <TabList onChange={handleChange} variant="fullWidth">

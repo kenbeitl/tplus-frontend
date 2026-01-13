@@ -1,0 +1,38 @@
+{
+    "title": "Quick Comparison",
+    "context": "Compare the two digital identity options to find the best fit for you",
+    "feature": "Feature",
+    "eligibility": "Eligibility",
+    "applicationTime": "Application Time",
+    "applicationCost": "Application Cost",
+    "governmentRecognition": "Government Recognition",
+    "remoteApplication": "Remote Application",
+    "requiredDocument": "Required Document",
+    "bestFor": "Best For",
+    "options": {
+        "feature": [
+            "iAM Smart",
+            "iD-One"
+        ],
+        "eligibility": [
+            "HKID holders",
+            "e-Passport holders"
+        ],
+        "applicationTime": [
+            "< 5 minutes",
+            "< 5 minutes"
+        ],
+        "applicationCost": [
+            "Free",
+            "Free"
+        ],
+        "requiredDocument": [
+            "HKID Card",
+            "e-Passport"
+        ],
+        "bestFor": [
+            "Hong Kong residents",
+            "International users"
+        ]
+    }
+}

@@ -3,7 +3,7 @@ import { requireAuth } from "@/lib/auth";
 import BizConnectProviderList from "../components/BizConnectProviderList";
 
 export const metadata: Metadata = {
-  title: 'Due Diligence Services | BizConnect | Services | T+',
+  title: 'Due Diligence Services | BizConnect | My Services | T+',
 }
 
 export default async function DueDiligenceServicesPage() {

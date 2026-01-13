@@ -63,7 +63,7 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
             <Typography variant="body2" component="p">
                 { t("pages.settings.companyProfile.context") }
             </Typography>
-            <Spacer height={20} />
+            <Spacer height={30} />
 
             <Card variant="outlined" className="p-3 bg-amber-50! border-amber-200!">
                 <Box component="div" className="flex items-center gap-2 mb-1">
@@ -77,7 +77,7 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
                 </Typography>
             </Card>
 
-            <Spacer height={20} />
+            <Spacer height={30} />
 
             <Card variant="outlined" className="p-3 bg-amber-50! border-amber-200! relative">
                 <Box component="div" className="flex justify-between items-center">
@@ -169,7 +169,7 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
                 </Grid>
             </Grid>
 
-            <Spacer height={20} />
+            <Spacer height={30} />
 
             <Typography variant="subtitle1" component="h2" className="mb-2!">
                 {t("pages.settings.companyProfile.businessIdentifiers")}

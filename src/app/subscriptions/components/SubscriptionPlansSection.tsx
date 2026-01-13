@@ -81,7 +81,7 @@ export default function SubscriptionPlansSection({ remainingDays }: Subscription
                         </TabList>
                     </Box>
                 </Box>
-                <Spacer height={20} />
+                <Spacer height={30} />
                 {['1', '2'].map((tabValue) => (
                     <TabPanel key={tabValue} value={tabValue} className="p-0">
                         <Grid container spacing={2}>
@@ -94,7 +94,7 @@ export default function SubscriptionPlansSection({ remainingDays }: Subscription
                                 />
                             ))}
                         </Grid>
-                        <Spacer height={20} />
+                        <Spacer height={30} />
                         <Card variant="outlined" className="p-5 bg-blue-50! border-blue-200!">
                             <Box component="div" className="flex items-center gap-2 mb-2">
                                 <Emoji symbol="💡" size={24} />

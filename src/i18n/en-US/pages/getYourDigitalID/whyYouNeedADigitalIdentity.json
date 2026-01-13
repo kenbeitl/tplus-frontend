@@ -1,0 +1,19 @@
+{
+    "title": "Why You Need a Digital Identity",
+    "context": "A digital identity is your secure passport to the digital world. It enables you to:",
+    "benefits": [
+        "Sign documents securely online",
+        "Access government e-services",
+        "Verify your identity without physical documents",
+        "Complete transactions with enhanced security"
+    ],
+    "quickEasyApply": {
+        "title": "Quick & Easy Application",
+        "features": [
+            "Application takes less than 5 minutes",
+            "No cost to apply",
+            "Instant or same-day approval",
+            "Recognized by HKSAR Government"
+        ]
+    }
+}

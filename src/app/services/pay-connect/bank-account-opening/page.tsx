@@ -3,7 +3,7 @@ import { requireAuth } from "@/lib/auth";
 import PayConnectProviderList from "../components/PayConnectProviderList";
 
 export const metadata: Metadata = {
-  title: 'Bank Account Opening | PayConnect | Services | T+',
+  title: 'Bank Account Opening | PayConnect | My Services | T+',
 }
 
 export default async function BankAccountOpeningPage() {

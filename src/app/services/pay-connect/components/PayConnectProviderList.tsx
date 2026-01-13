@@ -66,7 +66,7 @@ export default function PayConnectProviderList({
             </Box>
             <Spacer height={30} />
             <Typography variant="body1" component="p" color={theme.palette.text.secondary}>{ subSlot(t('pages.payConnect.compareSelectProvider'), '{slot}', providerCount) }</Typography>
-            <Spacer height={20} />
+            <Spacer height={30} />
             <Grid container spacing={3}>
                 {providerList.map((provider: Provider, index: number) => (
                     <Grid key={index} size={{ xs: 12, md: 6 }}>
@@ -76,7 +76,7 @@ export default function PayConnectProviderList({
                                 <Typography variant="h6" component="h3" className="ml-8">{ provider.name }</Typography>
                             </Box>
                             <Typography variant="h6" component="p" color={ theme.palette.text.secondary }>{ provider.context }</Typography>
-                            <Spacer height={20} />
+                            <Spacer height={30} />
                             <Typography variant="subtitle1" component="p">{ t('pages.payConnect.keyFeatures') }</Typography>
                             <List sx={{ color: 'text.primary', fontSize: 12, py: 0, pl: 2, listStyleType: 'disc', '& .MuiListItem-root': { display: 'list-item' } }}>
                                 {provider.features?.map((feature: string, f_idx: number) => (
@@ -85,7 +85,7 @@ export default function PayConnectProviderList({
                                 </ListItem>
                                 ))}
                             </List>
-                            <Spacer height={20} />
+                            <Spacer height={30} />
                             <Box className="p-3 bg-gray-50 rounded">
                                 <Grid container spacing={2}>
                                 {provider.coverage && (
@@ -140,7 +140,7 @@ export default function PayConnectProviderList({
                                 )}
                                 </Grid>
                             </Box>
-                            <Spacer height={20} />
+                            <Spacer height={30} />
                             <ButtonWithModal
                                 buttonText={ t('pages.payConnect.viewDetailedInformation') }
                                 buttonProps={{

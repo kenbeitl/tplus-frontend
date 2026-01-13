@@ -245,7 +245,7 @@ export default function AppWrapper({
                     key={localeKey}
                     onClick={() => handleLanguageChange(localeKey as Locale)}
                     selected={locale === localeKey}
-                    className="justify-center px-1"
+                    className="justify-center! px-1"
                   >
                     {label}
                   </MenuItem>
@@ -288,19 +288,19 @@ export default function AppWrapper({
                   <Box component="div"><Typography variant="subtitle1" className="font-bold">{user?.name}</Typography></Box>
                   <Box component="div"><Typography variant="caption">{user?.email}</Typography></Box>
                   <Box component="div"><Typography variant="caption"></Typography></Box>
-                  <Tag variant="white" label="Users" className="!inline-flex" />
+                  <Tag variant="white" label="Users" className="inline-flex!" />
                 </Box>
               }
-              <Divider className="!m-0" />
+              <Divider className="m-0!" />
               <MenuItem onClick={() => handleNavigation('/settings')}>
-                <ListItemIcon className="!min-w-[24px]">
+                <ListItemIcon className="min-w-6!">
                   { getSVGIcon('settings', 16) }
                 </ListItemIcon>
                 <ListItemText primary={t('nav.settings')} />
               </MenuItem>
-              <Divider className="!m-0" />
+              <Divider className="m-0!" />
               <MenuItem onClick={handleLogout}>
-                <ListItemIcon className="!min-w-[24px]">
+                <ListItemIcon className="min-w-6!">
                   { getSVGIcon('arrow-right-bracket', 16) }
                 </ListItemIcon>
                 <ListItemText primary={t('common.signOut')} sx={{ color: theme.palette.text.red }} />
@@ -332,7 +332,7 @@ export default function AppWrapper({
             
             {/* Services Dropdown */}
             <DropdownListItem
-              icon={ getSVGIcon('building2') }
+              icon={ getSVGIcon('briefcase', menuIconSize) }
               primary={t('nav.services')}
               storageKey="dropdown_services"
             >
@@ -363,7 +363,7 @@ export default function AppWrapper({
               path="/settings"
               onClick={handleNavigation}
             />
-            
+
             {/* Subscription Navigation */}
             <NavigationListItem
               level={1}

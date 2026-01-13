@@ -90,7 +90,7 @@ export default function DashboardClient() {
                     />
                 </Grid>
             </Grid>
-            <Spacer height={20} />
+            <Spacer height={30} />
            
             {freeTrialFeatures && (
                 <>
@@ -101,7 +101,7 @@ export default function DashboardClient() {
                         remarks={freeTrialFeatures.remarks}
                         viewSubscriptionPlansText={t('pages.dashboard.viewSubscriptionPlans')}
                     />
-                    <Spacer height={20} />
+                    <Spacer height={30} />
                 </>
             )}
             
@@ -115,7 +115,7 @@ export default function DashboardClient() {
                         moreFeatures={featuresTBC.moreFeatures}
                         viewSubscriptionPlansText={t('pages.dashboard.viewSubscriptionPlans')}
                     />
-                    <Spacer height={20} />
+                    <Spacer height={30} />
                 </>
             )}
             

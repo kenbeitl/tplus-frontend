@@ -16,7 +16,7 @@ export default function WelcomeSection({ title, context }: WelcomeSectionProps) 
                 <Emoji symbol="🎉" size={40} sx={{ mr: 1 }} />
                 <Typography variant="h1" component="h1" color={theme.palette.text.darkBlue} sx={{ fontWeight: 700 }}>{title}</Typography>
             </Box>
-            <Spacer height={20} />
+            <Spacer height={30} />
             <Typography variant="h3" component="p" color={theme.palette.text.blue} className="max-w-3xl">{context}</Typography>
         </Box>
     );

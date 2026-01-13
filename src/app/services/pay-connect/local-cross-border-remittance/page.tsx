@@ -3,7 +3,7 @@ import { requireAuth } from "@/lib/auth";
 import PayConnectProviderList from "../components/PayConnectProviderList";
 
 export const metadata: Metadata = {
-  title: 'Local & Cross-Border Remittance | PayConnect | Services | T+',
+  title: 'Local & Cross-Border Remittance | PayConnect | My Services | T+',
 }
 
 export default async function LocalCrossBorderRemittancePage() {

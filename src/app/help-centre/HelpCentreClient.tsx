@@ -61,7 +61,7 @@ export default function HelpCentreClient() {
         }}
       />
     </Box>
-    <Spacer height={20} />
+    <Spacer height={30} />
     {/* search bar */}
     <Grid container spacing={2}>
 
@@ -114,7 +114,7 @@ export default function HelpCentreClient() {
           <Typography className="mt-0" variant="body2" component="p">
             { t('pages.helpCentre.stillNeedHelp.body') }
           </Typography>
-          <Spacer height={20} />
+          <Spacer height={30} />
           <Box component="div" className="flex flex-col sm:flex-row items-center gap-1">
             <ButtonWithFormModal
                 templateId={CONTACT_SUPPORT_TEMPLATE_ID} 

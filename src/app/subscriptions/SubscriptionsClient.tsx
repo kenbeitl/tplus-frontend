@@ -66,10 +66,10 @@ export default function SubscriptionsClient() {
             <Typography variant="body2" component="p">
                 {t("pages.subscriptions.context")}
             </Typography>
-            <Spacer height={20} />
+            <Spacer height={30} />
             
             <WelcomeBanner expiryDate={expiryDate} remainingDays={remainingDays} />
-            <Spacer height={20} />
+            <Spacer height={30} />
             
             <CurrentPlanSection
                 expiryDate={expiryDate}
@@ -80,10 +80,10 @@ export default function SubscriptionsClient() {
                 tokenCapacity={TOKEN_CAPACITY}
                 daysToReset={daysToReset}
             />
-            <Spacer height={20} />
+            <Spacer height={30} />
             
             <SubscriptionPlansSection remainingDays={remainingDays} />
-            <Spacer height={20} />
+            <Spacer height={30} />
             
             <AdditionalTokensSection remainingDays={remainingDays} />
         </>

@@ -3,7 +3,7 @@ import HSCodeAIClassifierClient from "./HSCodeAIClassifierClient";
 import { requireAuth } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: 'HS Code AI Classifier | GovConnect | Services | T+',
+  title: 'HS Code AI Classifier | GovConnect | My Services | T+',
 }
 
 export default async function HSCodeAIClassifierPage() {

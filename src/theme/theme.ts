@@ -151,7 +151,7 @@ const theme = createTheme({
     mode: 'light',
     text: {
       primary: '#333333',
-      secondary: '#919191',
+      secondary: '#475569',
       red: '#ef4444',
       darkAmber: '#78350F',
       blue: '#2563eb',

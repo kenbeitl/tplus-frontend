@@ -28,7 +28,7 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
     >
       <Typography variant="h3" component="h2" className="mb-4">{ t('pages.signConnect.modal.beforeYouStartTradelink.title') }</Typography>
       <Typography variant="body1" component="p" color={theme.palette.text.secondary}>{ t('pages.signConnect.modal.beforeYouStartTradelink.body') }</Typography>
-      <Spacer height={20} />
+      <Spacer height={30} />
       {Array.isArray(TRADELINK_NOTES) && TRADELINK_NOTES.map((note, s) => (
         <Box className="flex items-top mb-3" key={`note-${s}`}>
           <StyledIcon 
@@ -53,7 +53,7 @@ export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalPro
           />
         </Box>
       </Card>
-      <Spacer height={20} />
+      <Spacer height={30} />
       <Box className="flex justify-center">
         <Button
           variant="contained"

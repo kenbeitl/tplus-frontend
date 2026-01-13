@@ -3,7 +3,7 @@ import PayConnectClient from "./PayConnectClient";
 import { requireAuth } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: 'PayConnect | Services | T+',
+  title: 'PayConnect | My Services | T+',
 }
 
 export default async function PayConnect() {

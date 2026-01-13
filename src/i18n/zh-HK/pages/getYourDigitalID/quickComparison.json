@@ -1,0 +1,38 @@
+{
+    "title": "快速比較",
+    "context": "比較兩種數位身分方案，找出最適合您的方案。",
+    "feature": "功能",
+    "eligibility": "資格",
+    "applicationTime": "申請時間",
+    "applicationCost": "申請費用",
+    "governmentRecognition": "政府認可",
+    "remoteApplication": "遠端申請",
+    "requiredDocument": "所需文件",
+    "bestFor": "適合人群",
+    "options": {
+        "feature": [
+            "iAM Smart",
+            "iD-One"
+        ],
+        "eligibility": [
+            "香港身分證持有人",
+            "電子護照持有人"
+        ],
+        "applicationTime": [
+            "< 5 分鐘",
+            "< 5 分鐘"
+        ],
+        "applicationCost": [
+            "免費",
+            "免費"
+        ],
+        "requiredDocument": [
+            "香港身分證",
+            "電子護照"
+        ],
+        "bestFor": [
+            "香港居民",
+            "國際用戶"
+        ]
+    }
+}

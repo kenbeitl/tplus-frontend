@@ -52,10 +52,10 @@ export default function HSCodeAIClassifierClient() {
                 variant="outlined"
                 href="/services/gov-connect"
             >{ translations.govConnect.backToGovConnect }</Button>
-            <Spacer height={20} />
+            <Spacer height={30} />
             <Typography className="font-bold mb-4" variant="h4" component="h1">{ translations.hsCodeAIClassifier.title }</Typography>
             <Typography variant="body2" component="p">{ translations.hsCodeAIClassifier.context }</Typography>
-            <Spacer height={20} />
+            <Spacer height={30} />
             <Box component="div" className="max-w-3xl">
                 <Card variant="outlined" className="p-6" sx={{ height: '100%' }}>
                     <Box className="flex items-center mb-2">
@@ -102,7 +102,7 @@ export default function HSCodeAIClassifierClient() {
                         }}
                     />
                     <Typography variant="caption" component="p" color={theme.palette.text.secondary} sx={{ marginTop: 1 }}>{ translations.productClassification.productTip }</Typography>
-                    <Spacer height={20} />
+                    <Spacer height={30} />
                     <Button
                         className="bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
                         variant="contained"

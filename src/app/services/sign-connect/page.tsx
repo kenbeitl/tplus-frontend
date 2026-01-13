@@ -3,7 +3,7 @@ import SignConnectClient from "./SignConnectClient";
 import { requireAuth } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: 'SignConnect | Services | T+',
+  title: 'SignConnect | My Services | T+',
 }
 
 export default async function SignConnect() {

@@ -76,10 +76,10 @@ export default function AIPoweredCustomsAutomationClient() {
                 variant="outlined"
                 href="/services/gov-connect"
             >{ translations.govConnect.backToGovConnect }</Button>
-            <Spacer height={20} />
+            <Spacer height={30} />
             <Typography className="font-bold mb-4" variant="h4" component="h1">{ translations.aiPoweredCustomsAutomation.title }</Typography>
             <Typography variant="body2" component="p">{ translations.aiPoweredCustomsAutomation.context }</Typography>
-            <Spacer height={20} />
+            <Spacer height={30} />
             
             <Box component="div" className="max-w-4xl">
 
@@ -91,7 +91,7 @@ export default function AIPoweredCustomsAutomationClient() {
                             <Box component="span" sx={{ mr: 1}}>{ getSVGIcon('circle-alert', 20, theme.palette.text.blue) }</Box>
                             <Typography variant="body2" component="p">{ translations.legalNotice.title }</Typography>
                         </Box>
-                        <Spacer height={20} />
+                        <Spacer height={30} />
                         <Paper variant="outlined" className="px-12 py-6 bg-blue-50! border-blue-200! relative">
                             <Box component="span" className="top-5 left-4 absolute">{ getSVGIcon('circle-alert', 16) }</Box>
                             <Typography variant="h6" component="p" color={theme.palette.text.darkBlue} sx={{ fontWeight: 700 }}>{ translations.legalNotice.consent.title }</Typography>
@@ -108,7 +108,7 @@ export default function AIPoweredCustomsAutomationClient() {
                             <Spacer height={10} />
                             <Typography variant="caption" component="p" color={theme.palette.text.darkBlue} sx={{ fontWeight: 700 }}>{ translations.legalNotice.consent.agreement }</Typography>
                         </Paper>
-                        <Spacer height={20} />
+                        <Spacer height={30} />
                         <Box component="div" className="flex justify-end gap-4">
                             <Button
                                 component={Link}
@@ -136,7 +136,7 @@ export default function AIPoweredCustomsAutomationClient() {
                             <Typography variant="body2" component="p">{ translations.declaration.title }</Typography>
                         </Box>
                         <Typography variant="body2" component="p" className="mt-4">{ translations.declaration.context }</Typography>
-                        <Spacer height={20} />
+                        <Spacer height={30} />
                         <FormControl
                             fullWidth
                         >
@@ -180,7 +180,7 @@ export default function AIPoweredCustomsAutomationClient() {
                                 ))}
                             </RadioGroup>
                         </FormControl>
-                        <Spacer height={20} />
+                        <Spacer height={30} />
                         <Box component="div" className="flex justify-between gap-4">
                             <Button
                                 variant="outlined"

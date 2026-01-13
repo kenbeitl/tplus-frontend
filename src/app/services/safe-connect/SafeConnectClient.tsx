@@ -114,9 +114,9 @@ export default function SafeConnectClient() {
         icon={ getSVGIcon('shield', 24, '#FFFFFF') }
         colorScheme="emerald"
       />
-      <Spacer height={20} />
+      <Spacer height={30} />
       <Carousel slides={ t("pages.safeConnect.slides") } />
-      <Divider className="!my-9" />
+      <Divider className="my-9!" />
       <Box component="div" className="flex items-center mb-6">
         <StyledIcon 
           icon={getSVGIcon('shield', 24, '#FFFFFF')}
@@ -143,7 +143,7 @@ export default function SafeConnectClient() {
                   <Typography variant="h6" component="h4">{translations.tGuard.title}</Typography>
                 </Box>
                 <Typography variant="body1" component="p">{translations.tGuard.context}</Typography>
-                <Spacer height={20} />
+                <Spacer height={30} />
                 <Paper
                   className={`p-6 ${theme.palette.gradientClasses.blueGreenLight}`}
                   variant="outlined"
@@ -164,7 +164,7 @@ export default function SafeConnectClient() {
                       </Box>
                     </Box>
                   </Box>
-                  <Spacer height={20} />
+                  <Spacer height={30} />
                   <Button 
                     className="w-full bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
                     variant="contained"
@@ -174,7 +174,7 @@ export default function SafeConnectClient() {
                     {translations.tGuardApp.buttonText}
                   </Button>
                 </Paper>
-                <Spacer height={20} />
+                <Spacer height={30} />
                 <Box component="div" className="grid sm:grid-cols-2 gap-3">
                   {translations.tGuardFeatures.map((feature, index: number) => (
                     <Box key={`tg-${index}`} component="div" className="text-center p-3 bg-gray-50 rounded-lg">
@@ -195,7 +195,7 @@ export default function SafeConnectClient() {
                   <Typography variant="h6" component="h4">{translations.darkWeb.title}</Typography>
                 </Box>
                 <Typography variant="body1" component="p">{translations.darkWeb.context}</Typography>
-                <Spacer height={20} />
+                <Spacer height={30} />
                   <Box component="div" className="flex flex-col mb-2 md:flex-row justify-between items-start md:items-center">
                     <Typography variant="body1" component="h4">{translations.darkWeb.emailBreachCheck.title}</Typography>
                   </Box>
@@ -215,7 +215,7 @@ export default function SafeConnectClient() {
                       onBlur={() => {}}
                       size="small"
                     />
-                    <Spacer height={20} />
+                    <Spacer height={30} />
                     <Button 
                       type="submit"
                       variant="contained" 
@@ -228,7 +228,7 @@ export default function SafeConnectClient() {
                     </Button>
                   </Box>
                   <Typography variant="caption" component="p">{translations.darkWeb.emailBreachCheck.remarks}</Typography>
-                  <Spacer height={20} />
+                  <Spacer height={30} />
                   {darkWebResult && darkWebResult.email && (
                     <>
                       <Box component="div" className={`p-4 rounded-lg border ${
@@ -275,7 +275,7 @@ export default function SafeConnectClient() {
                           </Box>
                         </Box>
                       </Box>
-                      <Spacer height={20} />
+                      <Spacer height={30} />
                     </>
                   )}
                   <Card 
@@ -304,7 +304,7 @@ export default function SafeConnectClient() {
                   <Typography variant="h6" component="h4">{translations.webVulnerability.title}</Typography>
                 </Box>
                 <Typography variant="body1" component="p">{translations.webVulnerability.context}</Typography>
-                <Spacer height={20} />
+                <Spacer height={30} />
                 <Card variant="outlined" className="p-3 bg-green-50! border-green-200!">
                   <Box component="div" className="flex items-center mb-2">
                     <Box component="span" className="mr-2">{ getSVGIcon('circle-check-big', 16) }</Box>
@@ -312,7 +312,7 @@ export default function SafeConnectClient() {
                   </Box>
                   <Typography variant="body2" component="p" color={theme.palette.text.green}>{translations.webVulnerability.freeAnnual.body}</Typography>
                 </Card>
-                <Spacer height={20} />
+                <Spacer height={30} />
                 <Box component="div" className="flex sm:max-md:flex-col items-start md:items-center justify-between gap-2 mb-2">
                   <Typography variant="body1" component="h4">{translations.webVulnerability.newRequest.title}</Typography>
                   <Tag
@@ -352,7 +352,7 @@ export default function SafeConnectClient() {
                   <Typography variant="h6" component="h4">{translations.consultingServices.title}</Typography>
                 </Box>
                 <Typography variant="body1" component="p">{translations.consultingServices.context}</Typography>
-                <Spacer height={20} />
+                <Spacer height={30} />
                 <Card variant="outlined" className="px-5 py-7 card-hover">
                     <Box component="div" className="flex flex-row flex-wrap items-center justify-between gap-2 mb-2">
                       <Typography variant="h5" component="h4">{translations.networkBoxForSMEs.title}</Typography>
@@ -396,7 +396,7 @@ export default function SafeConnectClient() {
                       ))}
                     </Box>
                 </Card>
-                <Spacer height={20} />
+                <Spacer height={30} />
                 <Card variant="outlined" className="p-5 bg-blue-50! border-blue-200!">
                   <Typography variant="h6" component="h3" color={theme.palette.text.darkBlue} className="mb-2!">{translations.whyTPlusSecurityPartners.title}</Typography>
                   <List sx={{ color: theme.palette.text.blue, fontSize: 12, py: 0, pl: 2, listStyleType: 'disc', '& .MuiListItem-root': { display: 'list-item' } }}>

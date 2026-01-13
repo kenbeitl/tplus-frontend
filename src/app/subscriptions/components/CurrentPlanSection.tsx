@@ -49,7 +49,7 @@ export default function CurrentPlanSection({
             <Typography variant="body2" component="p">
                 {translations.currentPlan.intro}
             </Typography>
-            <Spacer height={20} />
+            <Spacer height={30} />
             <Grid container spacing={2}>
                 <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                     <CurrentPlanCard expiryDate={expiryDate} remainingDays={remainingDays} />
