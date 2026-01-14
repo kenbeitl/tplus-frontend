@@ -5,6 +5,7 @@ import { useSession } from '@/hooks/useSession';
 import { useTranslations } from '@/contexts/AppContext';
 import { useSnackbar } from '@/contexts/SnackbarContext';
 import { useFormValidation } from "@/hooks/useFormValidation";
+import { keycloakApiService } from '@/lib/keycloakApi';
 
 import { Spacer } from "@/components";
 import { Box, Card, Divider, Typography } from "@mui/material";
@@ -68,27 +69,26 @@ export default function UserProfileTab() {
             return;
         }
 
+        if (!session?.accessToken) {
+            userForm.setFieldError('email', 'No access token available');
+            return;
+        }
+
         try {
-            const response = await fetch('/api/settings', {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
+            await keycloakApiService.updateUserProfile(
+                session.accessToken,
+                {
                     firstName: userForm.values.firstName,
                     lastName: userForm.values.lastName,
                     email: userForm.values.email,
-                }),
-            });
-
-            if (!response.ok) {
-                const data = await response.json();
-                userForm.setFieldError('email', data.error || 'Failed to update profile');
-                return;
-            }
+                }
+            );
 
             showSnackbar('Profile updated successfully!', 'success');
-        } catch (error) {
+        } catch (error: any) {
             console.error('Update error:', error);
-            userForm.setFieldError('email', 'An error occurred while updating profile');
+            const errorMessage = error.response?.data?.message || error.response?.data?.error || 'An error occurred while updating profile';
+            userForm.setFieldError('email', errorMessage);
         }
     };
 

@@ -9,9 +9,13 @@ const keycloakApi: AxiosInstance = axios.create({
   },
 });
 
-// Request interceptor - no automatic token injection
+// Request interceptor - automatically adds Authorization header if accessToken is provided
 keycloakApi.interceptors.request.use(
   (config) => {
+    // If accessToken is provided in custom config, add Authorization header
+    if (config.headers && (config as any).accessToken) {
+      config.headers.Authorization = `Bearer ${(config as any).accessToken}`;
+    }
     return config;
   },
   (error) => {
@@ -60,11 +64,24 @@ export const keycloakApiService = {
     const response = await keycloakApi.post(
       '/api/general/users/change-password',
       {},
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
+      { accessToken } as any
+    );
+    return response.data;
+  },
+
+  /**
+   * Update user profile
+   * @param accessToken - User's access token
+   * @param data - User profile data (firstName, lastName, email)
+   */
+  updateUserProfile: async (
+    accessToken: string,
+    data: { firstName: string; lastName: string; email: string }
+  ): Promise<{ message: string }> => {
+    const response = await keycloakApi.put(
+      '/api/general/users/update-user-profile',
+      data,
+      { accessToken } as any
     );
     return response.data;
   },
