@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { useSession } from '@/hooks/useSession';
 
 // MUI Components
 import { styled, Theme, CSSObject } from '@mui/material/styles';
@@ -120,7 +120,7 @@ export default function AppWrapper({
   children: React.ReactNode 
 }) {
   const router = useRouter();
-  const { data: session, status } = useSession();
+  const { data: session, status, tokenPayload } = useSession();
   const { locale, setLocale } = useLanguage();
   const t = useTranslations();
   const { drawerOpen, toggleDrawer } = useDrawer();
@@ -128,9 +128,10 @@ export default function AppWrapper({
   const [userMenuAnchorEl, setUserMenuAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isInitialMount, setIsInitialMount] = React.useState(true);
   const isAboveDesktop = useBreakpoint('desktop');
-
-  const user = session?.user;
   const logout = useLogout();
+  const user = session?.user;
+  const companyName = tokenPayload?.companyName || '';
+  const user_role = tokenPayload?.user_role;
   
   const serviceList: serviceProps[] = t('nav.serviceList');
 
@@ -285,10 +286,10 @@ export default function AppWrapper({
             >
               { user && 
                 <Box component="div" className="px-2 py-1">
-                  <Box component="div"><Typography variant="subtitle1" className="font-bold">{user?.name}</Typography></Box>
-                  <Box component="div"><Typography variant="caption">{user?.email}</Typography></Box>
-                  <Box component="div"><Typography variant="caption"></Typography></Box>
-                  <Tag variant="white" label="Users" className="inline-flex!" />
+                  <Box component="div"><Typography variant="subtitle1" className="font-bold">{ user?.name }</Typography></Box>
+                  <Box component="div"><Typography variant="caption">{ user?.email }</Typography></Box>
+                  <Box component="div"><Typography variant="caption">{ companyName }</Typography></Box>
+                  <Tag variant="white" label={ user_role } className="inline-flex!" />
                 </Box>
               }
               <Divider className="m-0!" />

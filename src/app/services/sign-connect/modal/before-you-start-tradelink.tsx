@@ -1,7 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { Box, Button, Card, Typography } from '@mui/material';
-import { useSession } from 'next-auth/react';
 
 import theme from '@/theme/theme';
 import { InfoModal, Spacer, StyledIcon, Tag } from '@/components';
@@ -16,7 +15,6 @@ type ModalProps = {
 export default function ModalBeforeYouStartTradelink({ open, onClose }: ModalProps) {
   const t = useTranslations();
   const router = useRouter();
-  const { data: session } = useSession();
   const TRADELINK_NOTES = t('pages.signConnect.modal.beforeYouStartTradelink.notes');
   
   return (

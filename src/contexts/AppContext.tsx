@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useSession, TokenPayload } from '@/hooks/useSession';
 
 // Static imports for instant translation loading
 import enMessages from '@/i18n/en-US.json';
@@ -37,6 +38,8 @@ interface AppContextType {
   // Dashboard Welcome Modal
   showDashboardWelcomeModal: boolean;
   setShowDashboardWelcomeModal: (show: boolean) => void;
+  // Token Payload
+  tokenPayload: TokenPayload | null;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -52,6 +55,7 @@ export function AppProvider({ children, defaultLocale = 'en-US' }: AppProviderPr
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const [showDashboardWelcomeModal, setShowDashboardWelcomeModal] = useState<boolean>(true);
   const [isClient, setIsClient] = useState(false);
+  const { tokenPayload } = useSession();
 
   // Load saved locale from localStorage on mount
   useEffect(() => {
@@ -147,7 +151,8 @@ export function AppProvider({ children, defaultLocale = 'en-US' }: AppProviderPr
     setDrawerOpen,
     toggleDrawer,
     showDashboardWelcomeModal,
-    setShowDashboardWelcomeModal
+    setShowDashboardWelcomeModal,
+    tokenPayload
   };
 
   return (
@@ -181,4 +186,10 @@ export function useTranslations() {
 export function useDrawer() {
   const { drawerOpen, setDrawerOpen, toggleDrawer } = useApp();
   return { drawerOpen, setDrawerOpen, toggleDrawer };
+}
+
+// Hook for accessing decoded token payload
+export function useTokenPayload() {
+  const { tokenPayload } = useApp();
+  return tokenPayload;
 }

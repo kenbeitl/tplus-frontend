@@ -1,26 +1,19 @@
 'use client';
 
 import React from "react";
-import { Session } from "next-auth";
+import { useSession } from '@/hooks/useSession';
 import { useTranslations } from '@/contexts/AppContext';
 import { Spacer, FormSelect, Tag } from "@/components";
-import { Box, Card, Divider, Grid, Paper, Switch, TextField, Typography } from "@mui/material";
+import { Box, Button, Card, Divider, Grid, Paper, Switch, TextField, Typography } from "@mui/material";
 import { SelectChangeEvent } from '@mui/material';
 import { getSVGIcon } from "@/helpers/utils";
 import theme from "@/theme/theme";
 
-interface CompanyProfileTabProps {
-    session: Session | null;
-}
-
-type BusinessIdentifier = {
-    type: string;
-    value: string;
-    verified: boolean;
-};
-
-export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
+export default function CompanyProfileTab() {
+    const { data: session, tokenPayload } = useSession();
     const t = useTranslations();
+
+    const isAdmin = tokenPayload?.user_role?.toLowerCase() === 'admin';
 
     const formConfig = React.useMemo(() => {
         const form = t('pages.settings.form');
@@ -33,16 +26,12 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
     }, [t]);
 
     const [companyForm, setCompanyForm] = React.useState({
-        companyName: ((session?.user as any)?.company as any)?.name || '',
-        industry: ((session?.user as any)?.company as any)?.industry || '',
-        location: ((session?.user as any)?.company as any)?.location || '',
-        websiteURL: ((session?.user as any)?.company as any)?.websiteURL || '',
-        cetsID: ((session?.user as any)?.company as any)?.cetsID || '',
-        employeeCount: ((session?.user as any)?.company as any)?.employeeCount || '',
-        businessIdentifierList: [
-            { type: 'business_registration_no', value: '123456789', verified: true },
-            { type: 'duns_no', value: '91350211MA2Y3XXXXXX', verified: false },
-        ] as BusinessIdentifier[]
+        companyName: tokenPayload?.companyName || '',
+        industry: (tokenPayload?.company as any)?.industry || '',
+        location: (tokenPayload?.company as any)?.location || '',
+        websiteURL: (tokenPayload?.company as any)?.websiteURL || '',
+        cetsID: (tokenPayload?.company as any)?.cetsID || '',
+        employeeCount: (tokenPayload?.company as any)?.employeeCount || '',
     });
 
     const handleSelectChange = (event: SelectChangeEvent) => {
@@ -52,8 +41,12 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
         });
     };
 
+    const handleUpdateProfile = async () => {
+        // Implement update logic here
+    };
+
     return (
-        <Card variant="outlined" className="p-6">
+        <Card variant="outlined" className="p-6 card-hover">
             <Box component="div" className="flex items-center gap-2 mb-1!">
                 { getSVGIcon('building', 20) }
                 <Typography variant="h6" component="h2">
@@ -111,7 +104,7 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
                         placeholder="Demo Company"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
-                        disabled
+                        disabled={!isAdmin}
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -121,7 +114,7 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
                         value={companyForm.industry}
                         onChange={handleSelectChange}
                         options={formConfig.industryOptions}
-                        disabled
+                        disabled={!isAdmin}
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -132,7 +125,7 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
                         placeholder="City, Country"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
-                        disabled
+                        disabled={!isAdmin}
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -143,7 +136,7 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
                         placeholder="https://www.company.com"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
-                        disabled
+                        disabled={!isAdmin}
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -154,7 +147,7 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
                         placeholder="Enter CETS"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
-                        disabled
+                        disabled={!isAdmin}
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -164,42 +157,52 @@ export default function CompanyProfileTab({ session }: CompanyProfileTabProps) {
                         value={companyForm.employeeCount}
                         onChange={handleSelectChange}
                         options={formConfig.employeeCountOptions}
-                        disabled
+                        disabled={!isAdmin}
                     />
                 </Grid>
             </Grid>
 
-            <Spacer height={30} />
+            <Box component="div" className="flex justify-end mt-4!">
+                <Button
+                    variant="gradient"
+                    color="blue"
+                    onClick={handleUpdateProfile}
+                    sx={{ width: 'auto' }}
+                >
+                    {t('common.saveProfile')}
+                </Button>
+            </Box>
+
+            {/* <Spacer height={30} />
 
             <Typography variant="subtitle1" component="h2" className="mb-2!">
                 {t("pages.settings.companyProfile.businessIdentifiers")}
             </Typography>
-            {companyForm.businessIdentifierList.map((identifier, index) => (
-                <Paper key={`bizId-${index}`} variant="outlined" className="p-3 mb-8">
-                    <Box component="div" className="flex flex-row items-center gap-2">
-                        <Box component="div" className="flex flex-col sm:flex-row items-center gap-2 w-full">
-                            <FormSelect
-                                name={`businessIdentifierType-${index + 1}`}
-                                label={""}
-                                value={identifier.type}
-                                onChange={handleSelectChange}
-                                options={formConfig.businessIdentifierTypeOptions}
-                                disabled
-                                fullWidth={true}
-                                sx={{ width: '100%' }}
-                            />
-                            <TextField
-                                name={`businessIdentifierValue-${index + 1}`}
-                                label={""}
-                                value={identifier.value}
-                                disabled
-                                sx={{ width: '100%' }}
-                            />
-                        </Box>
-                        {identifier.verified && getSVGIcon('circle-check-big', 20, theme.palette.text.lightGreen)}
+            
+            <Paper key={`bizId-${index}`} variant="outlined" className="p-3 mb-8">
+                <Box component="div" className="flex flex-row items-center gap-2">
+                    <Box component="div" className="flex flex-col sm:flex-row items-center gap-2 w-full">
+                        <FormSelect
+                            name={`businessIdentifierType-${index + 1}`}
+                            label={""}
+                            value={identifier.type}
+                            onChange={handleSelectChange}
+                            options={formConfig.businessIdentifierTypeOptions}
+                            disabled
+                            fullWidth={true}
+                            sx={{ width: '100%' }}
+                        />
+                        <TextField
+                            name={`businessIdentifierValue-${index + 1}`}
+                            label={""}
+                            value={identifier.value}
+                            disabled
+                            sx={{ width: '100%' }}
+                        />
                     </Box>
-                </Paper>
-            ))}
+                    {identifier.verified && getSVGIcon('circle-check-big', 20, theme.palette.text.lightGreen)}
+                </Box>
+            </Paper> */}
         </Card>
     );
 }

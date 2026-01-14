@@ -80,13 +80,16 @@ export default function GovConnectClient() {
                                     templateId={service.id}
                                     buttonEndIcon={getSVGIcon('arrow-right')}
                                     buttonText={t('common.applyNow')}
+                                    variant="gradient"
+                                    color="purple"
                                     className={getButtonGradientClass(service.theme)}
                                 />
                             )}
                             {service.id === 'hs-code-ai-classifier' && (
                                 <Button
                                     className={getButtonGradientClass(service.theme)}
-                                    variant="contained"
+                                    variant="gradient"
+                                    color="blue"
                                     endIcon={getSVGIcon('arrow-right')}
                                     onClick={() => router.push(`${pathname}/${service.id}`)}
                                     sx={{ width: '100%', mt: 'auto' }}
@@ -97,7 +100,8 @@ export default function GovConnectClient() {
                             {service.id === 'ai-powered-customs-automation' && (
                                 <Button
                                     className={getButtonGradientClass(service.theme)}
-                                    variant="contained"
+                                    variant="gradient"
+                                    color="green"
                                     endIcon={getSVGIcon('arrow-right')}
                                     onClick={() => window.open(process.env.NEXT_PUBLIC_TDEC_FORM_URL || '/tdecForm', '_blank')}
                                     sx={{ width: '100%', mt: 'auto' }}

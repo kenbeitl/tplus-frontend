@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useSession, signIn } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
+import { useSession } from '@/hooks/useSession';
 import { useRouter } from 'next/navigation';
 
 export default function SignUp() {

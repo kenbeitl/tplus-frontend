@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import { useSession } from "next-auth/react";
+import { useSession } from '@/hooks/useSession';
 import { useTranslations } from '@/contexts/AppContext';
 
 import { Spacer, TabList, TabPanel } from "@/components";
@@ -11,11 +11,14 @@ import TabContext from '@mui/lab/TabContext';
 // Import tab components
 import UserProfileTab from './components/UserProfileTab';
 import CompanyProfileTab from './components/CompanyProfileTab';
+import ManageUsersTab from "./components/ManageUsersTab";
 
 export default function SettingsClient() {
-    const { data: session } = useSession();
+    const { tokenPayload } = useSession();
     const t = useTranslations();
     const [value, setValue] = React.useState('1');
+
+    const isAdmin = tokenPayload?.user_role?.toLowerCase() === 'admin';
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
@@ -32,14 +35,21 @@ export default function SettingsClient() {
                     <TabList onChange={handleChange} variant="fullWidth">
                         <Tab label={t("pages.settings.userProfile.title")} value="1" disableRipple />
                         <Tab label={t("pages.settings.companyProfile.title")} value="2" disableRipple />
+                        { isAdmin && <Tab label={t("pages.settings.manageUsers.title")} value="3" disableRipple /> }
                     </TabList>
                 </Box>
                 <TabPanel value="1">
-                    <UserProfileTab session={session} />
+                    <UserProfileTab />
                 </TabPanel>
                 <TabPanel value="2">
-                    <CompanyProfileTab session={session} />
+                    <CompanyProfileTab />
                 </TabPanel>
+                { isAdmin && 
+                    <TabPanel value="3">
+                        <ManageUsersTab />
+                    </TabPanel>
+                }
+                
             </TabContext>
         </>
     );

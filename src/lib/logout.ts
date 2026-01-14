@@ -1,6 +1,7 @@
 'use client';
 
-import { signOut, useSession } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
+import { useSession } from '@/hooks/useSession';
 
 export function useLogout() {
   const { data: session } = useSession();

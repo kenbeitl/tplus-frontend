@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo } from "react";
-import { Session } from "next-auth";
+import { useSession } from '@/hooks/useSession';
 import { useTranslations } from '@/contexts/AppContext';
 import { useSnackbar } from '@/contexts/SnackbarContext';
 import { useFormValidation } from "@/hooks/useFormValidation";
@@ -14,11 +14,8 @@ import UserInfoSection from './UserInfoSection';
 import LoginDetailsSection from './LoginDetailsSection';
 import DangerZoneSection from './DangerZoneSection';
 
-interface UserProfileTabProps {
-    session: Session | null;
-}
-
-export default function UserProfileTab({ session }: UserProfileTabProps) {
+export default function UserProfileTab() {
+    const { data: session, tokenPayload } = useSession();
     const t = useTranslations();
     const { showSnackbar } = useSnackbar();
 
@@ -44,23 +41,23 @@ export default function UserProfileTab({ session }: UserProfileTabProps) {
     }, [formConfig]);
 
     const initialValues = useMemo(() => ({
-        firstName: (session?.user as any)?.firstName || '',
-        lastName: (session?.user as any)?.lastName || '',
-        companyName: (session?.user as any)?.companyName || '',
-        userRole: (session?.user as any)?.role || '',
-        email: (session?.user as any)?.email || '',
+        firstName: tokenPayload?.given_name || '',
+        lastName: tokenPayload?.family_name || '',
+        companyName: tokenPayload?.companyName || '',
+        userRole: tokenPayload?.user_role || tokenPayload?.cust_user_role || '',
+        email: tokenPayload?.email || '',
         currentPassword: '',
         newPassword: '',
-    }), [session?.user]);
+    }), [tokenPayload]);
 
     const userForm = useFormValidation(initialValues, validationRules);
 
     // Update form values when session loads
     React.useEffect(() => {
-        if (session?.user) {
+        if (tokenPayload) {
             userForm.setValues(initialValues);
         }
-    }, [session?.user]);
+    }, [tokenPayload]);
 
     const handleUpdateProfile = async () => {
         userForm.clearFieldError('firstName');
@@ -161,7 +158,7 @@ export default function UserProfileTab({ session }: UserProfileTabProps) {
     };
 
     return (
-        <Card variant="outlined" className="p-6">
+        <Card variant="outlined" className="p-6 card-hover">
             <Box component="div" className="flex items-center gap-2 mb-!">
                 {getSVGIcon('user', 20)}
                 <Typography variant="h6" component="h2">

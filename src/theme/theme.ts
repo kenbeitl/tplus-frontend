@@ -431,6 +431,13 @@ const theme = createTheme({
           },
         },
         {
+          props: { variant: 'gradient', color: 'green' },
+          style: {
+            color: '#FFFFFF !important',
+            background: GRADIENTS.greenEmerald,
+          },
+        },
+        {
           props: { variant: 'gradient', color: 'purple' },
           style: {
             color: '#FFFFFF !important',

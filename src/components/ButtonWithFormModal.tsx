@@ -12,8 +12,8 @@ interface ButtonWithFormModalProps {
   buttonEndIcon?: React.ReactNode;
   textOnly?: boolean;
   buttonProps?: Partial<ButtonProps>;
-  variant?: 'text' | 'outlined' | 'contained';
-  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success';
+  variant?: 'text' | 'outlined' | 'contained' | 'gradient';
+  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | 'blue' | 'purple' | 'green' | 'orange' | 'red';
   className?: string; // Tailwind classes including gradients
 }
 
