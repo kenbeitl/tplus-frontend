@@ -92,50 +92,6 @@ export default function UserProfileTab() {
         }
     };
 
-    const handleUpdateLoginDetails = async () => {
-        userForm.clearFieldError('currentPassword');
-        userForm.clearFieldError('newPassword');
-
-        if (!userForm.values.currentPassword || !userForm.values.newPassword) {
-            if (!userForm.values.currentPassword) {
-                userForm.setFieldError('currentPassword', 'Current password is required');
-            }
-            if (!userForm.values.newPassword) {
-                userForm.setFieldError('newPassword', 'New password is required');
-            }
-            return;
-        }
-
-        try {
-            const response = await fetch('/api/settings/password', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    currentPassword: userForm.values.currentPassword,
-                    newPassword: userForm.values.newPassword,
-                }),
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                userForm.setFieldError('currentPassword', data.error || 'Failed to update password');
-                return;
-            }
-
-            userForm.setValues({
-                ...userForm.values,
-                currentPassword: '',
-                newPassword: '',
-            });
-
-            showSnackbar('Password updated successfully!', 'success');
-        } catch (error) {
-            console.error('Password update error:', error);
-            userForm.setFieldError('currentPassword', 'An error occurred while updating password');
-        }
-    };
-
     const handleDeleteAccount = async () => {
         try {
             const response = await fetch('/api/settings', {
@@ -181,7 +137,6 @@ export default function UserProfileTab() {
             <LoginDetailsSection
                 userForm={userForm}
                 formConfig={formConfig}
-                onUpdate={handleUpdateLoginDetails}
             />
 
             <Divider className="my-3!" />

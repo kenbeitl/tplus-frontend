@@ -64,6 +64,7 @@
         "ourServices": "我们的服务",
         "profile": "个人资料",
         "redirectingTo": "正在重定向到{page}...",
+        "resetPassword": "重设密码",
         "returnTo": "返回{page}",
         "saveChanges": "保存",
         "saveProfile": "保存资料",
@@ -72,7 +73,6 @@
         "sponsored": "赞助",
         "success": "成功",
         "upcomingFeatures": "即将推出的功能",
-        "updatePassword": "更新密码",
         "updateProfile": "更新个人资料",
         "yearly": "每年"
     },

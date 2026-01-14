@@ -64,6 +64,7 @@
         "ourServices": "我們的服務",
         "profile": "個人資料",
         "redirectingTo": "正在重定向到{page}...",
+        "resetPassword": "重設密碼",
         "returnTo": "返回{page}",
         "saveChanges": "保存更改",
         "saveProfile": "保存資料",
@@ -72,7 +73,6 @@
         "sponsored": "贊助",
         "success": "成功",
         "upcomingFeatures": "即將推出的功能",
-        "updatePassword": "更新密碼",
         "updateProfile": "更新個人資料",
         "yearly": "每年"
     },

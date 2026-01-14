@@ -64,6 +64,7 @@
         "ourServices": "Our Services",
         "profile": "Profile",
         "redirectingTo": "Redirecting to {page}...",
+        "resetPassword": "Reset Password",
         "returnTo": "Return to {page}",
         "saveChanges": "Save Changes",
         "saveProfile": "Save Profile",
@@ -72,7 +73,6 @@
         "sponsored": "Sponsored",
         "success": "Success",
         "upcomingFeatures": "Upcoming Features",
-        "updatePassword": "Update Password",
         "updateProfile": "Update Profile",
         "yearly": "Yearly"
     },

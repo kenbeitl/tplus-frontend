@@ -1,21 +1,44 @@
 'use client';
 
-import React, { useState } from "react";
+import { useState } from 'react';
+import { useSession } from '@/hooks/useSession';
 import { useTranslations } from '@/contexts/AppContext';
+import { useSnackbar } from '@/contexts/SnackbarContext';
+import { keycloakApiService } from '@/lib/keycloakApi';
 import { FormField } from "@/components";
-import { Box, Button, Grid, IconButton, InputAdornment, Typography } from "@mui/material";
-import { getSVGIcon } from "@/helpers/utils";
+import { Box, Button, CircularProgress, Grid, Typography } from "@mui/material";
 
 interface LoginDetailsSectionProps {
     userForm: any;
     formConfig: any;
-    onUpdate: () => void;
 }
 
-export default function LoginDetailsSection({ userForm, formConfig, onUpdate }: LoginDetailsSectionProps) {
+export default function LoginDetailsSection({ userForm, formConfig }: LoginDetailsSectionProps) {
+    const { data: session } = useSession();
     const t = useTranslations();
-    const [showCurrentPassword, setShowCurrentPassword] = useState(false);
-    const [showNewPassword, setShowNewPassword] = useState(false);
+    const { showSnackbar } = useSnackbar();
+    const [isLoading, setIsLoading] = useState(false);
+
+    const resetPassword = async () => {
+        // Check if access token is available
+        if (!session?.accessToken) {
+            showSnackbar('Session expired. Please log in again.', 'error');
+            return;
+        }
+
+        setIsLoading(true);
+
+        try {
+            await keycloakApiService.resetPassword(session.accessToken);
+            showSnackbar('Password reset email has been sent to your mailbox!', 'success');
+        } catch (error: any) {
+            console.error('Password reset error:', error);
+            const errorMessage = error.response?.data?.message || 'Failed to reset password';
+            showSnackbar(errorMessage, 'error');
+        } finally {
+            setIsLoading(false);
+        }
+    }
 
     return (
         <>
@@ -36,70 +59,17 @@ export default function LoginDetailsSection({ userForm, formConfig, onUpdate }: 
                         fullWidth
                     />
                 </Grid>
-                <Grid size={{ xs: 12, sm: 6 }}>
-                    <FormField
-                        name="currentPassword"
-                        label={formConfig.labels.currentPassword}
-                        type={showCurrentPassword ? "text" : "password"}
-                        value={userForm.values.currentPassword || ''}
-                        onChange={userForm.handleChange}
-                        onBlur={userForm.handleBlur}
-                        error={userForm.touched.currentPassword ? (userForm.errors.currentPassword as string) : ''}
-                        autoComplete="new-password"
-                        fullWidth
-                        slotProps={{
-                            input: {
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                                            edge="end"
-                                        >
-                                            {getSVGIcon(showCurrentPassword ? 'eye-off' : 'eye', 20)}
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
-                            },
-                        }}
-                    />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6 }}>
-                    <FormField
-                        name="newPassword"
-                        label={formConfig.labels.newPassword}
-                        type={showNewPassword ? "text" : "password"}
-                        value={userForm.values.newPassword || ''}
-                        onChange={userForm.handleChange}
-                        onBlur={userForm.handleBlur}
-                        error={userForm.touched.newPassword ? (userForm.errors.newPassword as string) : ''}
-                        autoComplete="new-password"
-                        fullWidth
-                        slotProps={{
-                            input: {
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            onClick={() => setShowNewPassword(!showNewPassword)}
-                                            edge="end"
-                                        >
-                                            {getSVGIcon(showNewPassword ? 'eye-off' : 'eye', 20)}
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
-                            },
-                        }}
-                    />
-                </Grid>
             </Grid>
             <Box component="div" className="flex justify-end mt-4!">
                 <Button
-                    className="bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
                     variant="gradient"
                     color="blue"
-                    onClick={onUpdate}
+                    onClick={resetPassword}
+                    disabled={isLoading}
+                    startIcon={isLoading ? <CircularProgress size={16} color="inherit" /> : undefined}
                     sx={{ width: 'auto' }}
                 >
-                    { t('common.updatePassword') }
+                    { t('common.resetPassword') }
                 </Button>
             </Box>
         </>
