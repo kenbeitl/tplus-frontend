@@ -31,6 +31,10 @@ export default function ButtonWithFormModal({
   className = '',
 }: ButtonWithFormModalProps) {
   
+  // Only pass standard MUI colors to the Button component
+  const standardColors = ['primary', 'secondary', 'error', 'warning', 'info', 'success'];
+  const buttonColor = standardColors.includes(color) ? color : undefined;
+  
   return (
     <ButtonWithModal
       buttonText={buttonText}
@@ -41,8 +45,8 @@ export default function ButtonWithFormModal({
           mt: 'auto',
           ...buttonProps?.sx,
         },
-        variant,
-        color,
+        variant: variant as any,
+        ...(buttonColor && { color: buttonColor as any }),
         ...buttonProps,
       }}
       buttonStartIcon={buttonStartIcon}
