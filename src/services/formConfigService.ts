@@ -66,7 +66,7 @@ class FormConfigService {
     const searchParams = new URLSearchParams();
     searchParams.append('filters[FormTemplate][templateId][$eq]', templateId);
     searchParams.append('populate[FormTemplate]', 'true');
-    const url = `/form?${searchParams.toString()}`;
+    const url = `/form-templates?${searchParams.toString()}`;
     
     const response = await strapiService.getCollectionByUrl<FormConfig>(url);
     
