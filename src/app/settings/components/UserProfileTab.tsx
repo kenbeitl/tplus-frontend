@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useSession } from '@/hooks/useSession';
 import { useTranslations } from '@/contexts/AppContext';
 import { useSnackbar } from '@/contexts/SnackbarContext';
@@ -18,6 +18,10 @@ export default function UserProfileTab() {
     const { data: session, tokenPayload } = useSession();
     const t = useTranslations();
     const { showSnackbar } = useSnackbar();
+
+    useEffect(() => {
+        console.log(tokenPayload);
+    }, [tokenPayload]);
 
     const formConfig = useMemo(() => {
         const form = t('pages.settings.form');
