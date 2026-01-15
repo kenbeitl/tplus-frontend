@@ -60,7 +60,9 @@ export const keycloakApiService = {
    * Reset user password (sends reset email or initiates reset process)
    * @param accessToken - User's access token
    */
-  resetPassword: async (accessToken: string): Promise<{ message: string }> => {
+  resetPassword: async (
+    accessToken: string
+  ): Promise<{ message: string }> => {
     const response = await keycloakApi.post(
       '/api/general/users/change-password',
       {},
@@ -76,7 +78,7 @@ export const keycloakApiService = {
    */
   updateUserProfile: async (
     accessToken: string,
-    data: { firstName: string; lastName: string; email: string }
+    data: { email: string; firstName: string; lastName: string; companyName: string; }
   ): Promise<{ message: string }> => {
     const response = await keycloakApi.put(
       '/api/general/users/update-user-profile',

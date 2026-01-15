@@ -12,7 +12,6 @@ import { Box, Card, Divider, Typography } from "@mui/material";
 import { getSVGIcon } from "@/helpers/utils";
 
 import UserInfoSection from './UserInfoSection';
-import LoginDetailsSection from './LoginDetailsSection';
 import DangerZoneSection from './DangerZoneSection';
 
 export default function UserProfileTab() {
@@ -63,6 +62,7 @@ export default function UserProfileTab() {
     const handleUpdateProfile = async () => {
         userForm.clearFieldError('firstName');
         userForm.clearFieldError('lastName');
+        userForm.clearFieldError('companyName');
         userForm.clearFieldError('email');
 
         if (!userForm.validateAll()) {
@@ -78,9 +78,10 @@ export default function UserProfileTab() {
             await keycloakApiService.updateUserProfile(
                 session.accessToken,
                 {
+                    email: userForm.values.email,
                     firstName: userForm.values.firstName,
                     lastName: userForm.values.lastName,
-                    email: userForm.values.email,
+                    companyName: userForm.values.companyName,
                 }
             );
 
@@ -130,13 +131,6 @@ export default function UserProfileTab() {
                 userForm={userForm} 
                 formConfig={formConfig}
                 onUpdate={handleUpdateProfile}
-            />
-
-            <Divider className="my-3!" />
-
-            <LoginDetailsSection
-                userForm={userForm}
-                formConfig={formConfig}
             />
 
             <Divider className="my-3!" />
