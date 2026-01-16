@@ -193,3 +193,14 @@ export function useTokenPayload() {
   const { tokenPayload } = useApp();
   return tokenPayload;
 }
+
+// Hook for getting web locale format
+export function useWebLocale(): string {
+  const { locale } = useApp();
+  const webLocaleMap: Record<Locale, string> = {
+    'en-US': 'en',
+    'zh-HK': 'tc',
+    'zh-CN': 'sc'
+  };
+  return webLocaleMap[locale];
+}

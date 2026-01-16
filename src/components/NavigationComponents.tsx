@@ -27,7 +27,7 @@ export const ListItemButton = styled(MuiListItemButton, {
     '&:hover': {
         backgroundColor: 'transparent',
     },
-    
+
     '&.lv1': {
         paddingLeft: 0,
         paddingRight: 0,
@@ -207,7 +207,8 @@ export function NavigationListItem({
           sx: {
             backgroundColor: '#ffffff',
             color: theme.palette.text.primary,
-            fontSize: '1rem',
+            fontSize: '0.875rem',
+            fontWeight: 400,
             boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.15)',
             padding: '5px 12px',
             border: '1px solid ' + theme.palette.divider,

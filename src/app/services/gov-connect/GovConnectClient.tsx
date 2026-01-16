@@ -2,11 +2,10 @@
 
 import { useMemo } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import Link from 'next/link';
 
 import { Box, Button, Card, Divider, Grid, Typography } from '@mui/material';
 import { Spacer, Tag, ButtonWithFormModal, Checklist, HeroSection, Carousel, StyledIcon } from '@/components';
-import { useTranslations } from '@/contexts/AppContext';
+import { useTranslations, useWebLocale } from '@/contexts/AppContext';
 import { getSVGIcon } from '@/helpers/utils';
 import { getButtonGradientClass, getIconGradientVariant } from '@/helpers/gradientUtils';
 
@@ -14,12 +13,15 @@ export default function GovConnectClient() {
     const t = useTranslations();
     const pathname = usePathname();
     const router = useRouter();
+    const webLocale = useWebLocale();
     const translations = useMemo(() => {
         return {
             govServices: t('pages.govConnect.services')
         }
     }, [t]);
     const GOV_SERVICES = translations.govServices;
+
+    
 
     return (
         <Box component="div" className="relative">
@@ -93,7 +95,7 @@ export default function GovConnectClient() {
                                     variant="gradient"
                                     color="blue"
                                     endIcon={getSVGIcon('arrow-right')}
-                                    onClick={() => router.push(`${pathname}/${service.id}`)}
+                                    onClick={() => window.open(`https://tplus.ai/${webLocale}/gov-connect/hs-code-ai-classifier/#section-HS-Code`, '_blank')}
                                     sx={{ width: '100%', mt: 'auto' }}
                                 >
                                     {service.buttonText}

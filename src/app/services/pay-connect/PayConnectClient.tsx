@@ -46,33 +46,36 @@ export default function PayConnectClient() {
             <Grid container spacing={3}>
                 {Array.isArray(AVAILABLE_SERVICES) && AVAILABLE_SERVICES.map((item, index) => (
                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={`available-services-${index}`}>
-                        <Card variant="outlined" className="p-6 card-hover h-full">
-                            <Box className="flex items-center mb-2">
-                                <StyledIcon
-                                    icon={ getSVGIcon(item.icon, 30) } 
-                                    variant="blue-gradient"
-                                    size={48}
-                                    square
-                                    className="mr-3 shrink-0"
-                                />
-                                <Typography variant="h4" component="h4">{item.title}</Typography>
+                        <Card variant="outlined" className="flex flex-col justify-between p-6 card-hover h-full">
+                            <Box component="div">
+                                <Box className="flex items-center mb-2">
+                                    <StyledIcon
+                                        icon={ getSVGIcon(item.icon, 30) } 
+                                        variant="blue-gradient"
+                                        size={48}
+                                        square
+                                        className="mr-3 shrink-0"
+                                    />
+                                    <Typography variant="h4" component="h4">{item.title}</Typography>
+                                </Box>
+                                <Typography variant="body1" component="p">{item.description}</Typography>
                             </Box>
-                            <Typography variant="body1" component="p">{item.description}</Typography>
-                            <Spacer height={30} />
+                            {/* <Spacer height={30} />
                             <Card variant="outlined" className="p-3 border! bg-blue-50! border-blue-200/50! center-layout">
                                 <StyledIcon 
                                     icon={ <Box component="span" className="text-3xl">{ getProviderCount(item.type) }</Box> }
                                     variant="transparent"
                                 />
                                 <Typography variant="h6" component="p" color={theme.palette.text.secondary}>{ t('pages.payConnect.serviceProvidersAvailable') }</Typography>
-                            </Card>
+                            </Card> */}
                             <Spacer height={30} />
                             <Button
-                                variant='gradient'
-                                color='blue'
+                                variant={item.active ? 'gradient': 'outlined'}
+                                color={item.active ? 'blue': 'white'}
                                 className='w-full text-lg! font-normal!'
                                 endIcon={ getSVGIcon('arrow-right', 20) }
                                 onClick={ () => router.push(item.slug) }
+                                disabled={!item.active}
                             >
                                 { t('pages.payConnect.viewAllProviders') }
                             </Button> 

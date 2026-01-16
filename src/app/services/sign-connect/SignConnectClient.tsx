@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 import theme from '@/theme/theme';
@@ -8,20 +7,15 @@ import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Pa
 import { Spacer, StyledIcon, HeroSection, Carousel } from '@/components';
 import { useModal } from '@/hooks/useModal';
 import { useTranslations } from '@/contexts/AppContext';
-import { ModalBeforeYouStartTradelink, ModalDigitalIdentityRequired } from './modal';
+import { ModalBeforeYouStartTradelink } from './modal';
 import { getSVGIcon } from '@/helpers/utils';
 
 export default function SignConnectClient() {
   const t = useTranslations();
-  const digitalIdentityModal = useModal();
   const tradelinkModal = useModal();
   const router = useRouter();
 
   const DIGITAL_SIGNING_PLATFORMS = t('pages.signConnect.signingPlatform.platforms');
-
-  useEffect(() => {
-    digitalIdentityModal.handleOpen();
-  }, []);
 
   return (
     <>
@@ -93,11 +87,6 @@ export default function SignConnectClient() {
         </Box>
       </Paper>
 
-
-      <ModalDigitalIdentityRequired
-        open={digitalIdentityModal.open}
-        onClose={digitalIdentityModal.handleClose}
-      />
       <ModalBeforeYouStartTradelink
         open={tradelinkModal.open}
         onClose={tradelinkModal.handleClose}

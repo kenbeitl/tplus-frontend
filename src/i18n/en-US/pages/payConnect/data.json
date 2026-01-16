@@ -48,25 +48,28 @@
     "useService": "Use Service",
     "availableServices": [
         {
-            "icon": "building2",
-            "title": "Bank Account Opening",
-            "description": "Open business accounts with partner banks across Asia-Pacific",
-            "type": "bankAccountOpening",
-            "slug": "/services/pay-connect/bank-account-opening"
-        },
-        {
             "icon": "plane",
             "title": "Local & Cross-Border Remittance",
             "description": "Fast and secure money transfers locally and internationally",
             "type": "localCrossBorderRemittance",
-            "slug": "/services/pay-connect/local-cross-border-remittance"
+            "slug": "/services/pay-connect/local-cross-border-remittance",
+            "active": true
+        },
+        {
+            "icon": "building2",
+            "title": "Bank Account Opening",
+            "description": "Open business accounts with partner banks across Asia-Pacific",
+            "type": "bankAccountOpening",
+            "slug": "/services/pay-connect/bank-account-opening",
+            "active": false
         },
         {
             "icon": "dollar-sign",
             "title": "Trade Financing",
             "description": "Flexible trade financing solutions to support your business growth",
             "type": "tradeFinancing",
-            "slug": "/services/pay-connect/trade-financing"
+            "slug": "/services/pay-connect/trade-financing",
+            "active": false
         }
     ],
     "upcomingFeatures": [

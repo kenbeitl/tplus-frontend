@@ -48,25 +48,28 @@
     "useService": "使用服务",
     "availableServices": [
         {
-            "icon": "building2",
-            "title": "银行账户开设",
-            "description": "与亚太地区的合作银行开设企业账户",
-            "type": "bankAccountOpening",
-            "slug": "/services/pay-connect/bank-account-opening"
-        },
-        {
             "icon": "plane",
             "title": "本地及跨境汇款",
             "description": "快速且安全的本地和国际资金转移",
             "type": "localCrossBorderRemittance",
-            "slug": "/services/pay-connect/local-cross-border-remittance"
+            "slug": "/services/pay-connect/local-cross-border-remittance",
+            "active": true
+        },
+        {
+            "icon": "building2",
+            "title": "银行账户开设",
+            "description": "与亚太地区的合作银行开设企业账户",
+            "type": "bankAccountOpening",
+            "slug": "/services/pay-connect/bank-account-opening",
+            "active": false
         },
         {
             "icon": "dollar-sign",
             "title": "贸易融资",
             "description": "灵活的贸易融资解决方案，支持您的业务增长",
             "type": "tradeFinancing",
-            "slug": "/services/pay-connect/trade-financing"
+            "slug": "/services/pay-connect/trade-financing",
+            "active": false
         }
     ],
     "upcomingFeatures": [
