@@ -11,6 +11,7 @@ import { SnackbarProvider } from "@/contexts/SnackbarContext";
 import { SessionProvider } from "next-auth/react";
 import { Box } from "@mui/material";
 import theme from "@/theme/theme";
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -46,6 +47,8 @@ export default function RootLayout({
             </SnackbarProvider>
           </AppProvider>
         </SessionProvider>
+
+        {process.env.NODE_ENV === 'production' && <GoogleAnalytics gaId="G-KPTQ5B2XRD" />}
       </body>
     </html>
   );
