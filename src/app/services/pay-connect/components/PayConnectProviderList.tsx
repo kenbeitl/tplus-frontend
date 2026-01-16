@@ -1,6 +1,6 @@
 'use client';
 
-import { ButtonWithFormModal, ButtonWithModal, Emoji, Spacer, StyledIcon } from "@/components";
+import { ButtonWithFormModal, ButtonWithModal, Checklist, Emoji, Spacer, StyledIcon } from "@/components";
 import { useTranslations } from "@/contexts/AppContext";
 import { getSVGIcon, subSlot } from "@/helpers/utils";
 import { Box, Button, Card, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
@@ -19,6 +19,7 @@ interface Provider {
   processingTime?: string;
   details?: string;
   formId?: string;
+  logo?: string;
 }
 
 interface PayConnectProviderListProps {
@@ -26,7 +27,6 @@ interface PayConnectProviderListProps {
   iconName?: string;
   iconSize?: number;
   iconVariant?: string;
-  providerEmoji?: string;
 }
 
 export default function PayConnectProviderList({ 
@@ -34,7 +34,6 @@ export default function PayConnectProviderList({
   iconName = 'building',
   iconSize = 18,
   iconVariant = 'blue-gradient',
-  providerEmoji = '🏦',
 }: PayConnectProviderListProps) {
     const t = useTranslations();
     const router = useRouter();
@@ -55,115 +54,115 @@ export default function PayConnectProviderList({
                 <StyledIcon
                     icon={ getSVGIcon(iconName, iconSize) } 
                     variant={iconVariant as any}
-                    size={64}
+                    size={48}
                     square
                     className="mr-3"
                 />
                 <Box>
-                <Typography variant="h3" component="h1">{ t(`${modalNode}.title`) }</Typography>
+                <Typography variant="h4" component="h1">{ t(`${modalNode}.title`) }</Typography>
                 <Typography variant="body1" component="p" color={theme.palette.text.secondary}>{ t(`${modalNode}.context`) }</Typography>
                 </Box>
             </Box>
             <Spacer height={30} />
-            <Typography variant="body1" component="p" color={theme.palette.text.secondary}>{ subSlot(t('pages.payConnect.compareSelectProvider'), '{slot}', providerCount) }</Typography>
-            <Spacer height={30} />
+
+            {/* Search field here */}
+            
+            {/* <Spacer height={30} /> */}
             <Grid container spacing={3}>
                 {providerList.map((provider: Provider, index: number) => (
                     <Grid key={index} size={{ xs: 12, md: 6 }}>
-                        <Card variant="outlined" className="p-4 h-full border-2! card-hover hover:border-blue-300!">
-                            <Box className="flex items-center mb-4">
-                                <Emoji symbol={providerEmoji as string} size={40} />
-                                <Typography variant="h6" component="h3" className="ml-8">{ provider.name }</Typography>
+                        <Card variant="outlined" className="h-full card-hover">
+                            <Box className="pt-4 px-4 w-full h-32 bg-linear-to-br from-gray-100 to-gray-200 flex items-center justify-center border-b border-gray-300">
+                                <img src={`/assets/logo/${provider.logo}`} alt={provider.name} width={200} />
                             </Box>
-                            <Typography variant="h6" component="p" color={ theme.palette.text.secondary }>{ provider.context }</Typography>
-                            <Spacer height={30} />
-                            <Typography variant="subtitle1" component="p">{ t('pages.payConnect.keyFeatures') }</Typography>
-                            <List sx={{ color: 'text.primary', fontSize: 12, py: 0, pl: 2, listStyleType: 'disc', '& .MuiListItem-root': { display: 'list-item' } }}>
-                                {provider.features?.map((feature: string, f_idx: number) => (
-                                <ListItem key={`features-${f_idx}`} className="py-0!">
-                                    <ListItemText primary={feature} />
-                                </ListItem>
-                                ))}
-                            </List>
-                            <Spacer height={30} />
-                            <Box className="p-3 bg-gray-50 rounded">
-                                <Grid container spacing={2}>
-                                {provider.coverage && (
-                                    <Grid size={6}>
-                                    <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
-                                        { t('pages.payConnect.coverage') }
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
-                                        {provider.coverage}
-                                    </Typography>
+                            <Box className="pt-12 px-4 flex flex-col items-center mb-4">
+                                <Typography variant="h6" component="h3" className="ml-8 font-bold!">{ provider.name }</Typography>
+                                <Typography variant="h6" component="p" color={ theme.palette.text.secondary }>{ provider.context }</Typography>
+                            </Box>  
+                            <Box className="px-4 pb-4">
+                                <Spacer height={30} />
+                                <Typography variant="subtitle1" component="p">{ t('pages.payConnect.keyFeatures') }</Typography>
+                                <Checklist items={provider.features || []} />
+                                <Spacer height={30} />
+                                <Box className="p-3 bg-gray-50 rounded">
+                                    <Grid container spacing={2}>
+                                    {provider.coverage && (
+                                        <Grid size={6}>
+                                        <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
+                                            { t('pages.payConnect.coverage') }
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                                            {provider.coverage}
+                                        </Typography>
+                                        </Grid>
+                                    )}
+                                    {provider.minDeposit && (
+                                        <Grid size={6}>
+                                        <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
+                                            { t('pages.payConnect.minDeposit') }
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                                            ${Number(provider.minDeposit).toLocaleString('en-US')}
+                                        </Typography>
+                                        </Grid>
+                                    )}
+                                    {provider.fees && (
+                                        <Grid size={6}>
+                                        <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
+                                            { t('pages.payConnect.fees') }
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                                            {provider.fees}
+                                        </Typography>
+                                        </Grid>
+                                    )}
+                                    {provider.successRate && (
+                                        <Grid size={6}>
+                                        <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
+                                            { t('pages.payConnect.successRate') }
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                                            {provider.successRate}
+                                        </Typography>
+                                        </Grid>
+                                    )}
+                                    {provider.processingTime && (
+                                        <Grid size={6}>
+                                        <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
+                                            { t('pages.payConnect.processingTime') }
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                                            {provider.processingTime}
+                                        </Typography>
+                                        </Grid>
+                                    )}
                                     </Grid>
-                                )}
-                                {provider.minDeposit && (
-                                    <Grid size={6}>
-                                    <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
-                                        { t('pages.payConnect.minDeposit') }
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
-                                        ${Number(provider.minDeposit).toLocaleString('en-US')}
-                                    </Typography>
-                                    </Grid>
-                                )}
-                                {provider.fees && (
-                                    <Grid size={6}>
-                                    <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
-                                        { t('pages.payConnect.fees') }
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
-                                        {provider.fees}
-                                    </Typography>
-                                    </Grid>
-                                )}
-                                {provider.successRate && (
-                                    <Grid size={6}>
-                                    <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
-                                        { t('pages.payConnect.successRate') }
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
-                                        {provider.successRate}
-                                    </Typography>
-                                    </Grid>
-                                )}
-                                {provider.processingTime && (
-                                    <Grid size={6}>
-                                    <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
-                                        { t('pages.payConnect.processingTime') }
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
-                                        {provider.processingTime}
-                                    </Typography>
-                                    </Grid>
-                                )}
-                                </Grid>
+                                </Box>
+                                <Spacer height={30} />
+                                <Box component="div" className="flex justify-between gap-2">
+                                    <ButtonWithFormModal
+                                        templateId="payconnect-service-providers"
+                                        formId={`payconnect-service-providers@${provider.formId}`}
+                                        buttonText={ t('pages.payConnect.requestService') }
+                                        buttonProps={{
+                                            variant: 'gradient',
+                                            color: 'blue',
+                                            sx: { width: '100%' }
+                                        }}
+                                    />
+                                    <ButtonWithModal
+                                        buttonText={ t('pages.payConnect.learnMore') }
+                                        buttonProps={{
+                                            variant: 'outlined',
+                                            sx: { width: '100%' }
+                                        }}
+                                        buttonStartIcon={ getSVGIcon('external-link', 16) }
+                                        modalContent={(open: boolean, onClose: () => void) => (
+                                            <ProviderDetails open={open} onClose={onClose} name={provider.name} emoji="📸" source={provider.details || ''} />
+                                        )}
+                                    />
+                                </Box>
                             </Box>
-                            <Spacer height={30} />
-                            <ButtonWithModal
-                                buttonText={ t('pages.payConnect.viewDetailedInformation') }
-                                buttonProps={{
-                                    variant: 'outlined',
-                                    sx: { width: '100%' }
-                                }}
-                                buttonStartIcon={ getSVGIcon('eye', 16) }
-                                modalContent={(open: boolean, onClose: () => void) => (
-                                    <ProviderDetails open={open} onClose={onClose} name={provider.name} emoji={providerEmoji as string} source={provider.details || ''} />
-                                )}
-                            />
-                            <Spacer height={provider.details ? 10 : 20} />
-                            <ButtonWithFormModal
-                                templateId="payconnect-service-providers"
-                                formId={`payconnect-service-providers@${provider.formId}`}
-                                buttonText={ t('pages.payConnect.useService') }
-                                buttonProps={{
-                                    variant: 'gradient',
-                                    color: 'blue',
-                                    sx: { width: '100%' }
-                                }}
-                                buttonStartIcon={ getSVGIcon('external-link', 16) }
-                            />
                         </Card>
                     </Grid>
                 ))}

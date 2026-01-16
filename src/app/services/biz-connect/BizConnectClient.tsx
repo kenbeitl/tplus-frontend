@@ -9,9 +9,6 @@ import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon } from "@/helpers/utils";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { useRouter } from "next/navigation";
-import { Check } from "lucide-react";
-
-
 
 export default function BizConnectClient() {
     const t = useTranslations();

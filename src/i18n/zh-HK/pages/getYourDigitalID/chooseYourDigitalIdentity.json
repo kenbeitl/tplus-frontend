@@ -3,8 +3,8 @@
     "context": "請選擇最符合您需求的選項。兩種方式同樣安全可靠，均獲得香港特區政府認可。",
     "options": [
         {
-            "name": "iAM Smart",
-            "image": "iAMSmart",
+            "name": "iAM Smart!",
+            "image": "logo-iam-smart-plus.png",
             "description": "適用於香港身份證持有人的數字身份",
             "eligibility": {
                 "title": "資格",
@@ -44,7 +44,7 @@
         },
         {
             "name": "iD-One",
-            "image": "iDOne",
+            "image": "logo-iDOne.svg",
             "description": "適用於電子護照持有人的數字身份",
             "eligibility": {
                 "title": "資格",

@@ -43,9 +43,9 @@
     "fees": "Fees",
     "successRate": "Success Rate",
     "processingTime": "Processing Time",
-    "viewDetailedInformation": "View Detailed Information",
+    "requestService": "Request Service",
     "detailedProductInfoFeatures": "Detailed product information and features",
-    "useService": "Use Service",
+    "learnMore": "Learn More",
     "availableServices": [
         {
             "icon": "plane",

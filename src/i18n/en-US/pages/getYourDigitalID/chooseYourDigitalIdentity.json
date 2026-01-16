@@ -3,8 +3,8 @@
     "context": "Select the option that best suits your needs. Both are equally secure and recognized by the HKSAR Government.",
     "options": [
         {
-            "name": "iAM Smart",
-            "image": "iAMSmart",
+            "name": "iAM Smart+",
+            "image": "logo-iam-smart-plus.png",
             "description": "Digital identity for HKID holders",
             "eligibility": {
                 "title": "Eligibility",
@@ -44,7 +44,7 @@
         },
         {
             "name": "iD-One",
-            "image": "iDOne",
+            "image": "logo-iDOne.svg",
             "description": "Digital identity for e-Passport holders",
             "eligibility": {
                 "title": "Eligibility",

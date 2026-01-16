@@ -12,8 +12,7 @@ export default async function LocalCrossBorderRemittancePage() {
   return <PayConnectProviderList 
     modalNode="pages.payConnect.localCrossBorderRemittance" 
     iconName="plane"
-    iconSize={18}
+    iconSize={24}
     iconVariant="blue-gradient"
-    providerEmoji="🌐"
-  />;
+  />
 }

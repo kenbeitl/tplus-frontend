@@ -8,7 +8,6 @@ import TabContext from '@mui/lab/TabContext';
 import { Tag, Spacer, TabList, TabPanel, StyledIcon, FormField, ButtonWithFormModal, HeroSection, Carousel } from "@/components";
 import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon } from "@/helpers/utils";
-import tGuard from "@/assets/images/tGuard";
 
 const WEB_VULNERABILITY_ASSESSMENT_TEMPLATE_ID = 'safeconnect-web-vulnerability-assessment';
 const NETWORK_BOX_CYBERSECURITY_TEMPLATE_ID = 'safeconnect-network-box-cybersecurity';
@@ -21,8 +20,6 @@ export default function SafeConnectClient() {
     found: false,
   });
   const [isCheckingDarkWeb, setIsCheckingDarkWeb] = React.useState(false);
-
-  const LogoComponent = tGuard
 
   const translations = React.useMemo(() => {
     const individuals = t('pages.safeConnect.cybersecurityForIndividuals');
@@ -151,8 +148,8 @@ export default function SafeConnectClient() {
                   variant="outlined"
                 >
                   <Box className="flex sm:max-md:flex-col items-top">
-                    <Box component="div" className="p-1 bg-white rounded-xl mr-6 flex items-center justify-center h-18 w-18 shadow-sm">
-                      <LogoComponent />  
+                    <Box component="div" className="p-1 bg-white rounded-xl mr-6 flex items-center justify-center h-18 w-18 shadow-sm shrink-0">
+                      <img src="/assets/logo/logo-tGuard.svg" alt="T Guard Mobile App" className="w-full" />
                     </Box>
                     <Box component="div">
                       <Typography variant="h5" component="h4" className="font-bold">{translations.tGuardApp.name}</Typography>

@@ -12,8 +12,7 @@ export default async function TradeFinancingPage() {
   return <PayConnectProviderList 
     modalNode="pages.payConnect.tradeFinancing" 
     iconName="dollar-sign"
-    iconSize={18}
+    iconSize={24}
     iconVariant="blue-gradient"
-    providerEmoji="🏛️"
   />;
 }

@@ -12,8 +12,7 @@ export default async function BankAccountOpeningPage() {
   return <PayConnectProviderList 
     modalNode="pages.payConnect.bankAccountOpening" 
     iconName="building2"
-    iconSize={18}
+    iconSize={24}
     iconVariant="blue-gradient"
-    providerEmoji="🏦"
-  />;
+  />
 }

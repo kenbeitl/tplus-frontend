@@ -43,9 +43,9 @@
     "fees": "費用",
     "successRate": "成功率",
     "processingTime": "處理時間",
-    "viewDetailedInformation": "查看詳細信息",
+    "requestService": "請求服務",
     "detailedProductInfoFeatures": "詳細的產品信息和功能",
-    "useService": "使用服務",
+    "learnMore": "了解更多",
     "availableServices": [
         {
             "icon": "plane",

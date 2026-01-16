@@ -14,21 +14,8 @@
             ],
             "pricing": "Custom quote based on services",
             "consultation": "Free initial consultation",
-            "formId": "accolade-consultancy"
-        },
-        {
-            "name":"Talent Growth Group",
-            "context": "Strategic talent acquisition and international HR solutions for growing businesses",
-            "features": [
-                "Executive search and recruitment services",
-                "Cross-border talent mobility and immigration support",
-                "Organizational development and HR consulting",
-                "Compensation and benefits strategy",
-                "Leadership development and training programs"
-            ],
-            "pricing": "Flexible packages and retainer options",
-            "consultation": "Free 30-minute discovery call",
-            "formId": "talent-growth-group"
+            "formId": "accolade-consultancy",
+            "logo": "logo-accolade.png"
         }
     ],
     "whyUs": {

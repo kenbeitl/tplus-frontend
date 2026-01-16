@@ -1,4 +1,3 @@
-import { SvgIcon } from "@mui/material";
 import React from "react";
 
 const iconComponentCache = new Map<string, React.ComponentType<{ size?: number, color?: string, fill?: string }>>();
@@ -15,23 +14,8 @@ export function getSVGIcon(iconName: string, size: number = 25, color?: string, 
     
     if (!IconComponent) {
         const pascalCase = iconName.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
-        try {
-            const icon = require(`../assets/icons/${pascalCase}.svg`).default;
-            IconComponent = ({ size, color, fill }: { size?: number, color?: string, fill?: string }) => (
-                <SvgIcon 
-                    component={icon} 
-                    viewBox="0 0 24 24"
-                    sx={{ 
-                        fontSize: size, 
-                        color: color,
-                        fill: fill 
-                    }} 
-                />
-            );
-        } catch (e) {
-            const icons = require('lucide-react');
-            IconComponent = icons[pascalCase] as React.ComponentType<{ size?: number, color?: string, fill?: string }>;
-        }
+        const icons = require('lucide-react');
+        IconComponent = icons[pascalCase] as React.ComponentType<{ size?: number, color?: string, fill?: string }>;
         
         if (IconComponent) {
             iconComponentCache.set(iconName, IconComponent);

@@ -13,7 +13,17 @@
                 "International commercial arbitration"
             ],
             "pricing": "Competitive rates based on dispute value",
-            "formId": "ebram-odr"
+            "formId": "ebram-odr",
+            "logo": "logo-ebram.png"
         }
-    ]
+    ],
+    "whyUs": {
+        "title": "Why Choose Our Due Diligence Partners?",
+        "rationale": [
+            "Globally recognized leaders in business intelligence and credit risk assessment",
+            "Comprehensive data coverage across 200+ countries and territories",
+            "Fast turnaround times with detailed, actionable insights",
+            "Preferred rates and priority service for T+ members"
+        ]
+    }
 }

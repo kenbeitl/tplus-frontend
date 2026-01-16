@@ -45,6 +45,7 @@
             {
                 "icon": "file-pen-line",
                 "name": "Tradelink",
+                "logo": "logo-tradelink.svg",
                 "description": "Basic signing functions with iAM Smart+ and iD-One",
                 "list": [
                     "Basic signing functions",
@@ -58,6 +59,7 @@
             {
                 "icon": "file-text",
                 "name": "DocuSign",
+                "logo": "logo-docusign.svg",
                 "description": "Industry-leading eSignature solution for secure document signing.",
                 "list": [
                     "Sign with iD-One",
@@ -70,6 +72,7 @@
             {
                 "icon": "brain",
                 "name": "Fadada",
+                "logo": "logo-fadada.png",
                 "description": "Industry-leading eSignature solution for secure document signing.",
                 "list": [
                     "Sign with iD-One",

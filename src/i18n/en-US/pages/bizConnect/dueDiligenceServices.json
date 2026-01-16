@@ -13,7 +13,8 @@
             ],
             "pricing": "From $199 per report",
             "deliveryTime": "24-72 hours",
-            "formId": "coface"
+            "formId": "coface",
+            "logo": "logo-coface.png"
         },
         {
             "name":"Dun & Bradstreet (D&B)",
@@ -26,7 +27,8 @@
             ],
             "pricing": "From $299 per report",
             "deliveryTime": "24-48 hours",
-            "formId": "dun-bradstreet"
+            "formId": "dun-bradstreet",
+            "logo": "logo-dun-bradstreet.png"
         }
     ]
 }

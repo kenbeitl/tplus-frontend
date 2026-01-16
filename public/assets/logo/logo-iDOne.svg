@@ -1,6 +1,4 @@
-export default function iDOne() {
-    return (
-        <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="960" height="233.5" viewBox="0 0 960 233.5">
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="960" height="233.5" viewBox="0 0 960 233.5">
             <g id="Layer_1-2" data-name="Layer 1">
                 <g>
                 <path d="M35.9,31.5H0V0h35.9v31.5ZM35.9,230.4H0V70.6h35.9v159.8Z" fill="#ffc72c"/>
@@ -12,5 +10,3 @@ export default function iDOne() {
                 </g>
             </g>
         </svg>
-    )
-}

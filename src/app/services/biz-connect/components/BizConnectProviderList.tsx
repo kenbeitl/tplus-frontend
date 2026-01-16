@@ -15,6 +15,7 @@ interface Provider {
     deliveryTime?: string;
     consultation?: string;
     formId?: string;
+    logo?: string;
 }
 
 interface BizConnectProviderListProps {
@@ -70,87 +71,95 @@ export default function BizConnectProviderList({
             <Grid container spacing={3}>
                 {providerList.map((provider: Provider, index: number) => (
                     <Grid key={index} size={{ xs: 12, sm: 6 }}>
-                        <Card variant="outlined" className="p-4 h-full border! card-hover">
-                            <Typography variant="h3" component="h3" className="ml-8">{ provider.name }</Typography>
-                            <Typography variant="h6" component="p" color={ theme.palette.text.secondary }>{ provider.context }</Typography>
-                            <Spacer height={30} />
-                            <Typography variant="subtitle1" component="p">{ t('pages.bizConnect.servicesOffered') }</Typography>
-                            <List sx={{ flexGrow: 1 }}>
-                                {provider.features?.map((feature: string, f_idx: number) => (
-                                <ListItem key={`features-${f_idx}`} className="py-0!">
-                                    <ListItemIcon>
-                                        { getSVGIcon('circle-check-big', 16, theme.palette.icon.lightGreen) }
-                                    </ListItemIcon>
-                                    <ListItemText primary={feature} />
-                                </ListItem>
-                                ))}
-                            </List>
-                            <Spacer height={30} />
-                            <Box className="p-3 bg-gray-50 rounded">
-                                <Grid container spacing={2}>
-                                {provider.pricing && (
-                                    <Grid size={6}>
-                                    <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
-                                        { t('pages.bizConnect.pricing') }
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: 'text.primary' }}>
-                                        {provider.pricing}
-                                    </Typography>
-                                    </Grid>
-                                )}
-                                {provider.deliveryTime && (
-                                    <Grid size={6}>
-                                    <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
-                                        { t('pages.bizConnect.deliveryTime') }
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: 'text.primary' }}>
-                                        {provider.deliveryTime}
-                                    </Typography>
-                                    </Grid>
-                                )}
-                                {provider.consultation && (
-                                    <Grid size={6}>
-                                    <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
-                                        { t('pages.bizConnect.consultation') }
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: 'text.primary' }}>
-                                        {provider.consultation}
-                                    </Typography>
-                                    </Grid>
-                                )}
-                                </Grid>
+                        <Card variant="outlined" className="h-full border! card-hover">
+                            <Box className="pt-4 px-4 w-full h-32 flex items-center justify-center">
+                                <img src={`/assets/logo/${provider.logo}`} alt={provider.name} width={200} />
                             </Box>
-                            <Spacer height={30} />
-                            <Box component="div" className="flex items-center gap-2">
-                                <ButtonWithFormModal
-                                    templateId="bizconnect-service-providers"
-                                    formId={`bizconnect-service-providers@${provider.formId}`}
-                                    buttonText={ modalNode.indexOf('dueDiligenceService') >= 0 ? t('pages.bizConnect.requestService') : t('pages.bizConnect.requestConsultation') }
-                                    buttonProps={{
-                                        variant: 'gradient',
-                                        color: 'blue',
-                                    }}
-                                    className="w-auto!"
-                                />
-                                <Button 
-                                    variant="outlined" 
-                                    color="white"
-                                    endIcon={ getSVGIcon('external-link', 16) }
-                                    onClick={ () => window.open('') }
-                                    className="whitespace-nowrap"
-                                >
-                                    { modalNode.indexOf('dueDiligenceService') >= 0 ? t('pages.bizConnect.learnMore') : t('pages.bizConnect.downloadBrochure') }
-                                </Button>
-                            </Box>                            
+                            <Box className="pt-12 px-4 flex flex-col items-center mb-4">
+                                <Typography variant="h6" component="h3" className="ml-8 font-bold!">{ provider.name }</Typography>
+                                <Typography variant="h6" component="p" color={ theme.palette.text.secondary }>{ provider.context }</Typography>
+                            </Box>  
+                            <Box className="px-4 pb-4">
+                                <Spacer height={30} />
+                                <Typography variant="subtitle1" component="p">{ t('pages.bizConnect.servicesOffered') }</Typography>
+                                <List sx={{ flexGrow: 1 }}>
+                                    {provider.features?.map((feature: string, f_idx: number) => (
+                                    <ListItem key={`features-${f_idx}`} className="py-0!">
+                                        <ListItemIcon>
+                                            { getSVGIcon('circle-check-big', 16, theme.palette.icon.lightGreen) }
+                                        </ListItemIcon>
+                                        <ListItemText primary={feature} />
+                                    </ListItem>
+                                    ))}
+                                </List>
+                                <Spacer height={30} />
+                                <Box className="p-3 bg-gray-50 rounded">
+                                    <Grid container spacing={2}>
+                                    {provider.pricing && (
+                                        <Grid size={6}>
+                                        <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
+                                            { t('pages.bizConnect.pricing') }
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: 'text.primary' }}>
+                                            {provider.pricing}
+                                        </Typography>
+                                        </Grid>
+                                    )}
+                                    {provider.deliveryTime && (
+                                        <Grid size={6}>
+                                        <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
+                                            { t('pages.bizConnect.deliveryTime') }
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: 'text.primary' }}>
+                                            {provider.deliveryTime}
+                                        </Typography>
+                                        </Grid>
+                                    )}
+                                    {provider.consultation && (
+                                        <Grid size={6}>
+                                        <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
+                                            { t('pages.bizConnect.consultation') }
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: 'text.primary' }}>
+                                            {provider.consultation}
+                                        </Typography>
+                                        </Grid>
+                                    )}
+                                    </Grid>
+                                </Box>
+                                <Spacer height={30} />
+                                <Box component="div" className="flex justify-between gap-2">
+                                    <ButtonWithFormModal
+                                        templateId="bizconnect-service-providers"
+                                        formId={`bizconnect-service-providers@${provider.formId}`}
+                                        buttonText={ modalNode.indexOf('dueDiligenceService') >= 0 ? t('pages.bizConnect.requestService') : t('pages.bizConnect.requestConsultation') }
+                                        buttonProps={{
+                                            variant: 'gradient',
+                                            color: 'blue',
+                                            sx: { width: '100%' }
+                                        }}
+                                    />
+                                    <Button 
+                                        variant="outlined" 
+                                        color="white"
+                                        endIcon={ getSVGIcon('external-link', 16) }
+                                        onClick={ () => window.open('') }
+                                        className="whitespace-nowrap"
+                                        sx={{ width: '100%' }}
+                                    >
+                                        { modalNode.indexOf('dueDiligenceService') >= 0 ? t('pages.bizConnect.learnMore') : t('pages.bizConnect.downloadBrochure') }
+                                    </Button>
+                                </Box> 
+                            </Box>                           
                         </Card>
                     </Grid>
                 ))}
             </Grid>
-            { modalNode.indexOf('oneStopGoGlobalServices') >= 0 && (
+            {/* { t(`${modalNode}.whyUs`) && (
                 <Card variant="outlined" className="mt-6 p-4 border-2! border-blue-300! bg-blue-50!">
                     <Typography variant="h6" component="p" color={theme.palette.text.darkBlue}>{ t(`${modalNode}.whyUs.title`) }</Typography>
                     <List sx={{ flexGrow: 1 }}>
-                        {t(`${modalNode}.whyUs.rationale`)?.map((reason: string, r_idx: number) => (
+                        {t(`${modalNode}.whyUs`)?.rationale?.map((reason: string, r_idx: number) => (
                         <ListItem key={`reason-${r_idx}`} className="py-0!">
                             <ListItemIcon>
                                 { getSVGIcon('circle-check-big', 16, theme.palette.icon.blue) }
@@ -160,7 +169,7 @@ export default function BizConnectProviderList({
                         ))}
                     </List>
                 </Card>
-            )}
+            )} */}
         </>
     )
 }

@@ -16,7 +16,7 @@ import IconButton from '@mui/material/IconButton';
 import { ListItemIcon, ListItemText, Menu, MenuItem, Typography } from '@mui/material';
 
 // Local Components & Contexts
-import Logo from '@/assets/images/Logo';
+import Logo from '@/components/Logo';
 import { DropdownListItem, NavigationListItem } from '@/components/NavigationComponents';
 import { useLanguage, useTranslations, useDrawer, localeLabels, type Locale } from '@/contexts/AppContext';
 import { SnackbarProvider } from '@/contexts/SnackbarContext';
