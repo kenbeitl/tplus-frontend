@@ -34,7 +34,7 @@ export default function WhyYouNeedADigitalIdentity({
                 square
                 className="shrink-0"
               />
-              <Typography variant="h2" component="h2">{whyYouNeedADigitalIdentity.title}</Typography>
+              <Typography variant="h5" component="h2" className="font-bold!">{whyYouNeedADigitalIdentity.title}</Typography>
             </Box>
             <Typography variant="body1" component="p">{whyYouNeedADigitalIdentity.context}</Typography>
             <List>

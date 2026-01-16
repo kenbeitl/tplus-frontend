@@ -35,11 +35,7 @@ export default function QuickActionsSection({ title, context, actions }: QuickAc
                         {getSVGIcon('zap', 24, theme.palette.text.white)}
                     </Box>
                     <Box component="div">
-                        <Typography variant="h2" component="h2" color={theme.palette.text.darkBlue}>
-                            <Emoji symbol="⚡" size={50} sx={{ mr: 1 }} />
-                            {title}
-                        </Typography>
-                        <Typography variant="body1" component="p">{context}</Typography>
+                        <Typography variant="h5" component="h2" className="font-bold!" color={theme.palette.text.darkBlue}>{title}</Typography>
                     </Box>
                 </Box>
                 <Box component="div" className="space-y-4">
@@ -63,9 +59,9 @@ export default function QuickActionsSection({ title, context, actions }: QuickAc
                                     <Box component="div" className="flex-1 space-y-2">
                                         <Box component="div" className="flex items-start gap-2">
                                             <Typography variant="h5" component="h3" sx={{ fontWeight: 700 }}>{action.title}</Typography>
-                                            <Badge className={`py-1 px-3 rounded-xl ${action.tagStyle}`}>{action.tag}</Badge>
+                                            <Badge className={`py-1 px-3 rounded-xl ${action.tagStyle} text-sm`}>{action.tag}</Badge>
                                         </Box>
-                                        <Typography variant="body1" component="p">{action.context}</Typography>
+                                        <Typography variant="caption" component="p">{action.context}</Typography>
                                         <Box 
                                             component="div" 
                                             className={`flex items-center font-medium pt-1 ${action.ctaStyle}`}

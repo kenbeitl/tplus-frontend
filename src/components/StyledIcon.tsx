@@ -3,7 +3,7 @@ import theme from '@/theme/theme';
 
 type ColorVariant = 'transparent' | 'red' | 'green' | 'emerald' | 'blue' | 'orange' | 'amber' | 'indigo' | 'purple' | 'gray';
 type InvertedVariant = `${Exclude<ColorVariant, 'transparent' | 'gray'>}-inverted`;
-type Variant = ColorVariant | InvertedVariant | 'blue-gradient' | 'green-gradient' | 'orange-gradient' | 'amber-gradient' | 'red-gradient' | 'emerald' | 'purple' | 'opacity' | 'custom';
+type Variant = ColorVariant | InvertedVariant | 'blue-gradient' | 'green-gradient' | 'orange-gradient' | 'amber-gradient' | 'red-gradient' | 'gray-gradient' | 'emerald' | 'purple' | 'opacity' | 'custom';
 type Elevation = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 interface StyledIconProps {
@@ -101,7 +101,7 @@ export default function StyledIcon({
       text: 'text-white',
     },
     amber: {
-      bg: 'bg-amber-100',
+      bg: 'bg-amber-500',
       text: 'text-amber-600',
     },
     'amber-inverted': {
@@ -135,6 +135,10 @@ export default function StyledIcon({
     gray: {
       bg: 'bg-gray-100',
       text: 'text-gray-600',
+    },
+    'gray-gradient': {
+      bg: theme.palette.gradientClasses.iconGray,
+      text: 'text-white',
     },
     custom: {
       bg: '',

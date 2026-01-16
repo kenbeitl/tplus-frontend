@@ -28,7 +28,7 @@ import { menuIconSize } from '@/helpers/constants'
 import theme from '@/theme/theme';
 import { Tag } from '@/components';
 
-const drawerWidth = 240;
+const drawerWidth = 256;
 const drawerMiniWidth = 55;
 
 interface serviceProps {

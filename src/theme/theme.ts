@@ -66,6 +66,7 @@ const GRADIENT_CLASSES = {
   iconIndigoPurple: 'bg-linear-to-br from-indigo-500 to-purple-600',
   iconOrange: 'bg-linear-to-br from-orange-500 to-red-600',
   iconRed: 'bg-linear-to-br from-red-500 to-red-700',
+  iconGray: 'bg-linear-to-r from-gray-400 to-gray-500',
   
   // Hero section gradients
   heroBlue: 'bg-linear-to-br from-blue-600 via-blue-700 to-indigo-800',

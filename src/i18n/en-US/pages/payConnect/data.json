@@ -1,6 +1,6 @@
 {
     "title": "PayConnect",
-    "context": "Financial services and payment solutions for your business. Access banking, remittance, trade finance, and digital payments through our partner network.",
+    "context": "Access financial services and payment solutions for your business through our partner network",
     "slides": [
         {
             "isSponsor": true,
@@ -70,26 +70,27 @@
             "type": "tradeFinancing",
             "slug": "/services/pay-connect/trade-financing",
             "active": false
-        }
-    ],
-    "upcomingFeatures": [
+        },
         {
             "icon": "credit-card",
             "title": "Integrated Payment Solutions",
             "description": "Online and offline payment processing for your business",
-            "type": "integratedPaymentSolutions"
+            "type": "integratedPaymentSolutions",
+            "active": false
         },
         {
             "icon": "shield",
             "title": "Trade Credit Insurance",
             "description": "Protect your business against trade credit risks",
-            "type": "tradeCreditInsurance"
+            "type": "tradeCreditInsurance",
+            "active": false
         },
         {
             "icon": "users",
             "title": "Debt Collection Services",
             "description": "Efficient debt recovery solutions for your business",
-            "type": "debtCollectionServices"
+            "type": "debtCollectionServices",
+            "active": false
         }
     ],
     "backToPayConnect": "Back to PayConnect"

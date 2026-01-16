@@ -38,56 +38,11 @@
             "buttonLink": "#"
         }
     ],
-    "builtForYourSuccess": {
-        "title": "为您的成功而打造",
-        "context": "BizConnect 结合了尖端技术和全面的商业服务，旨在帮助您实现业务目标。",
-        "figures": [
-            {
-                "icon": "users",
-                "iconColor": "text-blue-600",
-                "number": "1M+",
-                "description": "验证企业"
-            },
-            {
-                "icon": "globe",
-                "iconColor": "text-indigo-600",
-                "number": "50+",
-                "description": "覆盖国家"
-            },
-            {
-                "icon": "zap",
-                "iconColor": "text-purple-600",
-                "number": "24/7",
-                "description": "可用支援"
-            }
-        ],
-        "features": [
-            {
-                "icon": "briefcase",
-                "iconStyle": "iconBlue",
-                "title": "全面的商业数据库",
-                "description": "访问我们庞大的经过验证的企业数据库，涵盖多个行业和地区。"
-            },
-            {
-                "icon": "shield",
-                "iconStyle": "iconGreen",
-                "title": "可靠的验证服务",
-                "description": "利用我们的尽职调查和验证服务，自信地与经过验证的企业建立联系。"
-            },
-            {
-                "icon": "globe",
-                "iconStyle": "iconPurplePink",
-                "title": "强大的网络工具",
-                "description": "利用我们平台的连接和协作功能，扩展您的商业网络并发现新的合作伙伴关系。"
-            }
-        ]
-    },
     "ourServices": [
         {
             "icon": "file-check",
             "variant": "purple-gradient",
             "title": "尽职调查服务",
-            "description": "为潜在商业合作伙伴提供全面的背景调查和验证服务",
             "list": [
                 "市场进入策略咨询",
                 "国际合作伙伴促进",
@@ -100,7 +55,6 @@
             "icon": "globe",
             "variant": "green-gradient",
             "title": "一站式全球化服务",
-            "description": "满足您拓展业务进入国际市场的所有需求",
             "list": [
                 "市场进入策略咨询",
                 "国际合作伙伴促进",
@@ -110,6 +64,33 @@
             "slug": "/services/biz-connect/one-stop-go-global-services"
         }
     ],
+    "builtForYourSuccess": {
+        "title": "为您的成功而打造",
+        "context": "从调研到合作执行的全面支持",
+        "features": [
+            {
+                "cardStyle": "border-blue-200/50!",
+                "icon": "briefcase",
+                "iconStyle": "iconBlue",
+                "title": "全面的商业数据库",
+                "description": "访问我们庞大的经过验证的企业数据库，涵盖多个行业和地区。"
+            },
+            {
+                "cardStyle": "border-green-200/50!",
+                "icon": "shield",
+                "iconStyle": "iconGreen",
+                "title": "可靠的验证服务",
+                "description": "利用我们的尽职调查和验证服务，自信地与经过验证的企业建立联系。"
+            },
+            {
+                "cardStyle": "border-purple-200/50!",
+                "icon": "globe",
+                "iconStyle": "iconPurplePink",
+                "title": "强大的网络工具",
+                "description": "利用我们平台的连接和协作功能，扩展您的商业网络并发现新的合作伙伴关系。"
+            }
+        ]
+    },
     "upcomingFeatures": [
         {
             "icon": "search",

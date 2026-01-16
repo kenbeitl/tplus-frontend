@@ -1,6 +1,6 @@
 'use client';
 
-import { Spacer } from "@/components";
+import { Checklist, Spacer } from "@/components";
 import theme from "@/theme/theme";
 import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import iAMSmart from '@/assets/images/iAMSmart';
@@ -64,8 +64,7 @@ export default function ChooseYourDigitalIdentity({ chooseYourDigitalIdentity }:
 
     return (
         <>
-            <Typography variant="h2" component="h2" className="mb-3!">{chooseYourDigitalIdentity.title}</Typography>
-            <Typography variant="body1" component="p" color={theme.palette.text.secondary}>{chooseYourDigitalIdentity.context}</Typography>
+            <Typography variant="h5" component="h2" className="text-center font-bold!">{chooseYourDigitalIdentity.title}</Typography>
             <Spacer height={30} />
             <Grid container spacing={3}>
                 {Array.isArray(DIGITAL_IDENTITY_OPTIONS) && DIGITAL_IDENTITY_OPTIONS.map((option) => {
@@ -74,38 +73,20 @@ export default function ChooseYourDigitalIdentity({ chooseYourDigitalIdentity }:
                 <Grid key={`dio-${option.name}`} size={{ xs: 12, sm: 6 }}>
                     <Card variant="outlined" className="border-2! hover:border-blue-300! hover:shadow-md! transition-all! flex flex-col items-center p-6 h-full">
                     {LogoComponent && (
-                        <Box className="w-32 h-32 flex place-items-center">
+                        <Box className="w-32 h-24 flex place-items-center">
                             <LogoComponent />
                         </Box>
                     )}
                     <Spacer height={10} />
-                    <Typography variant="h2" component="h3" sx={{fontWeight: 'normal' }}>{option.name}</Typography>
-                    <Typography variant="body1" component="p" color={theme.palette.text.secondary}>{option.description}</Typography>
+                    <Typography variant="h5" component="h3" sx={{fontWeight: 'normal' }}>{option.name}</Typography>
+                    <Typography variant="subtitle2" component="p" className="font-normal!" color={theme.palette.text.secondary}>{option.description}</Typography>
                     <Spacer height={10} />
                     <Box component="div" className="text-left w-full mb-3">
                         <Typography variant="h6" component="h4">{ option.eligibility.title }</Typography>
-                        <List className="grow">
-                            {option.eligibility.criteria.map((criteria: string, c: number) => (
-                            <ListItem key={`criteria-${c}`} sx={{ mb: 0 }}>
-                                <ListItemIcon>
-                                    { getSVGIcon('circle-check-big', 16, theme.palette.icon.green) }
-                                </ListItemIcon>
-                                <ListItemText primary={criteria} />
-                            </ListItem>
-                            ))}
-                        </List>
+                        <Checklist items={option.eligibility.criteria} />
                         <Spacer height={10} />
                         <Typography variant="h6" component="h4">{ option.features.title }</Typography>
-                        <List className="grow">
-                            {option.features.list.map((feature: string, f: number) => (
-                            <ListItem key={`feature-${f}`} sx={{ mb: 0 }}>
-                                <ListItemIcon>
-                                    { getSVGIcon('circle-check-big', 16, theme.palette.icon.green) }
-                                </ListItemIcon>
-                                <ListItemText primary={feature} />
-                            </ListItem>
-                            ))}
-                        </List>
+                        <Checklist items={option.features.list} />
                         <Spacer height={10} />
                         <Typography variant="h6" component="h4">{ option.requirements.title }</Typography>
                         <List className="grow">
@@ -114,7 +95,7 @@ export default function ChooseYourDigitalIdentity({ chooseYourDigitalIdentity }:
                                 <ListItemIcon>
                                     { getSVGIcon(requirement.icon, 16, theme.palette.icon.blue) }
                                 </ListItemIcon>
-                                <ListItemText primary={requirement.item} />
+                                <ListItemText primary={requirement.item} slotProps={{ primary: { sx: { fontSize: '14px'} } }} />
                             </ListItem>
                             ))}
                         </List>

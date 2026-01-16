@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material';
 import Link from 'next/link';
 import theme from '@/theme/theme';
-import { Tag } from '@/components';
+import { Checklist, Tag } from '@/components';
 import { getSVGIcon, getLocalCurrency, subSlot } from '@/helpers/utils';
 import { useTranslations } from '@/contexts/AppContext';
 
@@ -86,19 +86,7 @@ export default function SubscriptionPlanCard({
                     <Typography variant="caption" component="p" color={theme.palette.text.secondary}>
                         {plan.description}
                     </Typography>
-                    <List>
-                        {plan.featureList?.map((f) => (
-                            <ListItem key={f} disableGutters>
-                                <ListItemIcon>
-                                    {getSVGIcon('circle-check-big', 16, theme.palette.icon.green)}
-                                </ListItemIcon>
-                                <ListItemText
-                                    slotProps={{ primary: { variant: 'caption' } }}
-                                    primary={f}
-                                />
-                            </ListItem>
-                        ))}
-                    </List>
+                    <Checklist items={plan.featureList} />
                     <Paper variant="outlined" className="w-full border-amber-200! bg-amber-50! rounded-md!">
                         <Box component="div" className="p-2 flex items-center justify-center gap-2">
                             {getSVGIcon('coins', 16, theme.palette.text.gold)}

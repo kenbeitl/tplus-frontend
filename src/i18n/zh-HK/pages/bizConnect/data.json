@@ -38,56 +38,11 @@
             "buttonLink": "#"
         }
     ],
-    "builtForYourSuccess": {
-        "title": "為您的成功而打造",
-        "body": "BizConnect 結合了尖端技術和全面的商業服務，旨在幫助您實現業務目標並推動增長。無論您是尋找合作夥伴、進行盡職調查，還是拓展新市場，我們的平台都為您的成功提供支持。",
-        "figures": [
-            {
-                "icon": "users",
-                "iconColor": "text-blue-600",
-                "number": "1M+",
-                "description": "驗證企業"
-            },
-            {
-                "icon": "globe",
-                "iconColor": "text-indigo-600",
-                "number": "50+",
-                "description": "覆蓋國家"
-            },
-            {
-                "icon": "zap",
-                "iconColor": "text-purple-600",
-                "number": "24/7",
-                "description": "可用支援"
-            }
-        ],
-        "features": [
-            {
-                "icon": "briefcase",
-                "iconStyle": "iconBlue",
-                "title": "全面的商業情報",
-                "description": "獲取深入的市場洞察和分析，幫助您做出明智的決策並識別增長機會。"
-            },
-            {
-                "icon": "shield",
-                "iconStyle": "iconGreen",
-                "title": "可靠的驗證服務",
-                "description": "利用我們的盡職調查和驗證服務，自信地與經過驗證的企業建立聯繫。"
-            },
-            {
-                "icon": "globe",
-                "iconStyle": "iconPurplePink",
-                "title": "強大的網路工具",
-                "description": "利用我們平台的連接和協作功能，擴展您的商業網絡並發現新的合作夥伴關係。"
-            }
-        ]
-    },
     "ourServices": [
         {
             "icon": "file-check",
             "variant": "purple-gradient",
             "title": "盡職調查服務",
-            "description": "為潛在商業合作夥伴提供全面的背景調查和驗證服務",
             "list": [
                 "市場進入策略諮詢",
                 "國際合作夥伴促進",
@@ -100,7 +55,6 @@
             "icon": "globe",
             "variant": "green-gradient",
             "title": "一站式全球化服務",
-            "description": "滿足您拓展業務進入國際市場的所有需求",
             "list": [
                 "市場進入策略諮詢",
                 "國際合作夥伴促進",
@@ -110,6 +64,33 @@
             "slug": "/services/biz-connect/one-stop-go-global-services"
         }
     ],
+    "builtForYourSuccess": {
+        "title": "為您的成功而打造",
+        "body": "從調研到合作執行的全面支持",
+        "features": [
+            {
+                "cardStyle": "border-blue-200/50!",
+                "icon": "briefcase",
+                "iconStyle": "iconBlue",
+                "title": "全面的商業情報",
+                "description": "獲取深入的市場洞察和分析，幫助您做出明智的決策並識別增長機會。"
+            },
+            {
+                "cardStyle": "border-green-200/50!",
+                "icon": "shield",
+                "iconStyle": "iconGreen",
+                "title": "可靠的驗證服務",
+                "description": "利用我們的盡職調查和驗證服務，自信地與經過驗證的企業建立聯繫。"
+            },
+            {
+                "cardStyle": "border-purple-200/50!",
+                "icon": "globe",
+                "iconStyle": "iconPurplePink",
+                "title": "強大的網路工具",
+                "description": "利用我們平台的連接和協作功能，擴展您的商業網絡並發現新的合作夥伴關係。"
+            }
+        ]
+    },
     "upcomingFeatures": [
         {
             "icon": "search",

@@ -62,14 +62,14 @@ export default function BizConnectProviderList({
                     className="mr-3"
                 />
                 <Box>
-                <Typography variant="h3" component="h1">{ t(`${modalNode}.title`) }</Typography>
-                <Typography variant="body1" component="p" color={theme.palette.text.secondary}>{ t(`${modalNode}.context`) }</Typography>
+                <Typography variant="h5" component="h1" className="font-bold!">{ t(`${modalNode}.title`) }</Typography>
+                <Typography variant="caption" component="p" color={theme.palette.text.secondary}>{ t(`${modalNode}.context`) }</Typography>
                 </Box>
             </Box>
             <Spacer height={30} />
             <Grid container spacing={3}>
                 {providerList.map((provider: Provider, index: number) => (
-                    <Grid key={index} size={{ xs: 12 }}>
+                    <Grid key={index} size={{ xs: 12, sm: 6 }}>
                         <Card variant="outlined" className="p-4 h-full border! card-hover">
                             <Typography variant="h3" component="h3" className="ml-8">{ provider.name }</Typography>
                             <Typography variant="h6" component="p" color={ theme.palette.text.secondary }>{ provider.context }</Typography>
@@ -93,7 +93,7 @@ export default function BizConnectProviderList({
                                     <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
                                         { t('pages.bizConnect.pricing') }
                                     </Typography>
-                                    <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                                    <Typography variant="body2" sx={{ color: 'text.primary' }}>
                                         {provider.pricing}
                                     </Typography>
                                     </Grid>
@@ -103,7 +103,7 @@ export default function BizConnectProviderList({
                                     <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
                                         { t('pages.bizConnect.deliveryTime') }
                                     </Typography>
-                                    <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                                    <Typography variant="body2" sx={{ color: 'text.primary' }}>
                                         {provider.deliveryTime}
                                     </Typography>
                                     </Grid>
@@ -113,7 +113,7 @@ export default function BizConnectProviderList({
                                     <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
                                         { t('pages.bizConnect.consultation') }
                                     </Typography>
-                                    <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>
+                                    <Typography variant="body2" sx={{ color: 'text.primary' }}>
                                         {provider.consultation}
                                     </Typography>
                                     </Grid>

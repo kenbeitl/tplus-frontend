@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Carousel, Spacer } from "@/components";
 import { useTranslations, useApp } from "@/contexts/AppContext";
-import WelcomeSection from "./components/WelcomeSection";
 import QuickActionsSection from "./components/QuickActionsSection";
 import RecommendedForYouSection from "./components/RecommendedForYouSection";
 import FreeTrialFeaturesSection from "./components/FreeTrialFeaturesSection";
@@ -18,7 +17,6 @@ export default function DashboardClient() {
     const { showDashboardWelcomeModal, setShowDashboardWelcomeModal } = useApp();
     const [modalOpen, setModalOpen] = useState(false);
     
-    const welcome = t('pages.dashboard.welcome');
     const freeTrialFeatures = t('pages.dashboard.freeTrialFeatures');
     const featuresTBC = t('pages.dashboard.featuresTBC');
     const needHelp = t('pages.dashboard.needHelp');
@@ -60,15 +58,6 @@ export default function DashboardClient() {
             />
             
             {/* <Carousel slides={ t("pages.signConnect.slides") } /> */}
-
-            {welcome && (
-                <>
-                    <WelcomeSection 
-                        title={welcome.title}
-                        context={welcome.context}
-                    />
-                </>
-            )}
 
             <Grid container spacing={2}>
                 <Grid size={{ xs: 12, md: 6 }}>

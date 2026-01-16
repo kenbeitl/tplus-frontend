@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 
 import theme from '@/theme/theme';
 import { Box, Card, CardContent, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
-import { InfoModal, Spacer, Tag } from '@/components';
+import { Checklist, InfoModal, Spacer, Tag } from '@/components';
 import { useTranslations } from '@/contexts/AppContext';
 import { getSVGIcon } from '@/helpers/utils';
 
@@ -127,23 +127,7 @@ export default function HelpCentreModal({open, onClose, content}: ModalProps) {
                   {item.features && item.features.length > 0 && (
                     <>
                       <Typography className="mb-0" variant="body2">{ t('pages.helpCentre.keyFeatures') }</Typography>
-                      <List dense>
-                        {item.features.map((f: string, idx) => (
-                          <ListItem key={`feature-${idx}`} disableGutters>
-                            <ListItemIcon sx={{ minWidth: 12 }}>
-                              { getSVGIcon('circle-check-big', 12, theme.palette.icon.green) }
-                            </ListItemIcon>
-                            <ListItemText
-                              slotProps={{
-                                primary: {
-                                  variant: 'caption'
-                                }
-                              }}
-                              primary={f}
-                            />
-                          </ListItem>
-                        ))}
-                      </List>
+                      <Checklist items={item.features} />
                     </>
                   )}
 

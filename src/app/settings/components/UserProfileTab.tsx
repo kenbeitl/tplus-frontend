@@ -120,7 +120,7 @@ export default function UserProfileTab() {
 
     return (
         <Card variant="outlined" className="p-6 card-hover">
-            <Box component="div" className="flex items-center gap-2 mb-!">
+            <Box component="div" className="flex items-center gap-2 mb-1!">
                 {getSVGIcon('user', 20)}
                 <Typography variant="h6" component="h2">
                     { t("pages.settings.userProfile.title") }

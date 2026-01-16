@@ -70,26 +70,27 @@
             "type": "tradeFinancing",
             "slug": "/services/pay-connect/trade-financing",
             "active": false
-        }
-    ],
-    "upcomingFeatures": [
+        },
         {
             "icon": "credit-card",
             "title": "综合支付解决方案",
             "description": "为您的业务提供线上和线下支付处理",
-            "type": "integratedPaymentSolutions"
+            "type": "integratedPaymentSolutions",
+            "active": false
         },
         {
             "icon": "shield",
             "title": "贸易信用保险",
             "description": "保护您的业务免受贸易信用风险影响",
-            "type": "tradeCreditInsurance"
+            "type": "tradeCreditInsurance",
+            "active": false
         },
         {
             "icon": "users",
             "title": "债务催收服务",
             "description": "为您的业务提供高效的债务回收解决方案",
-            "type": "debtCollectionServices"
+            "type": "debtCollectionServices",
+            "active": false
         }
     ],
     "backToPayConnect": "返回 PayConnect"

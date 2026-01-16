@@ -45,14 +45,14 @@ export default function ModalWelcome({
 
   return (
     <Modal open={open} onClose={handleClose} maxWidth={800} sx={{ p: 0, scrollbarGutter: 'auto', overflow: 'hidden' }}>
-        <Box component="div" className={`relative ${theme.palette.gradientClasses.blueIndigoDark}`} sx={{ p: 4 }}>
+        <Box component="div" className={`relative ${theme.palette.gradientClasses.blueIndigoDark} p-4`}>
           <Box component="div" className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -mr-24 -mt-24"></Box>
           <Box component="div" className="absolute bottom-0 left-0 w-36 h-36 bg-white/10 rounded-full -ml-18 -mb-18"></Box>
           <Box component="div" className="flex items-top">
               <StyledIcon icon={getSVGIcon('sparkles', 24, theme.palette.text.yellow)} variant="opacity" size={48} className="mr-3" />
               <Box component="div">
-                <Typography variant="h3" component="h2" color={theme.palette.text.white} sx={{ mb: 3 }}>{ translations.welcomeModal.title }</Typography>
-                <Typography variant="body1" component="p" color={theme.palette.text.white}>{ translations.welcomeModal.context }</Typography>
+                <Typography variant="h5" component="h2" color={theme.palette.text.white} className="font-bold! mb-3!">{ translations.welcomeModal.title }</Typography>
+                <Typography variant="caption" component="p" color={theme.palette.text.white}>{ translations.welcomeModal.context }</Typography>
               </Box>              
           </Box>          
         </Box>
@@ -73,25 +73,26 @@ export default function ModalWelcome({
                     color: theme.palette.text.white, 
                     background: 'linear-gradient(135deg, #3B82F6, #4F46E5)',
                     '& .MuiChip-label': {
-                      fontSize: '18px',
+                      fontSize: '14px',
                     },
                   }}
-                  icon={<StyledIcon icon={<Typography color={theme.palette.text.white}>1</Typography>} size={20} variant="opacity" />}
+                  icon={<StyledIcon icon={<Typography variant="caption" color={theme.palette.text.white}>1</Typography>} size={20} variant="opacity" />}
                 />
                 <Box className={`relative flex items-center justify-center w-16 h-16 ${theme.palette.gradientClasses.iconBlueLight} rounded-full border-4 border-white shadow-lg`}>
                     { getSVGIcon('user', 32, theme.palette.text.blue) }
                 </Box>
-                <Typography variant="body1" component="p" sx={{ textAlign: 'center' }}>
+                <Typography variant="subtitle2" component="p" className="text-center font-normal!">
                   { translations.step1.description }
                 </Typography>
                 <Paper variant="outlined" className="p-2 bg-blue-50! border-blue-200!">
-                    <Box component="div" className="flex items-top gap-3">
+                    <Box component="div" className="flex items-center gap-3">
                       <Box className="shrink-0">{ getSVGIcon('circle-check-big', 16, theme.palette.text.blue) }</Box>
-                      <Typography variant="subtitle2" component="p" color={theme.palette.text.blue} sx={{ textAlign: 'left' }}>{ translations.step1.check }</Typography>
+                      <Typography variant="caption" component="p" color={theme.palette.text.blue} className="text-left">{ translations.step1.check }</Typography>
                     </Box>
                 </Paper>
                 <Button
-                  variant="contained"
+                  variant="gradient"
+                  color="blue"
                   endIcon={getSVGIcon('arrow-right', 20, '#FFFFFF')}
                   onClick={() => router.push('/settings')}
                   sx={{ width: '100%', mt: 'auto' }}
@@ -124,25 +125,25 @@ export default function ModalWelcome({
                     color: theme.palette.text.white, 
                     background: 'linear-gradient(135deg, #10B981, #059669)',
                     '& .MuiChip-label': {
-                      fontSize: '18px',
+                      fontSize: '14px',
                     },
                   }}
-                  icon={<StyledIcon icon={<Typography color={theme.palette.text.white}>2</Typography>} size={20} variant="opacity" />}
+                  icon={<StyledIcon icon={<Typography variant="caption" color={theme.palette.text.white}>2</Typography>} size={20} variant="opacity" />}
                 />
                 <Box className={`relative flex items-center justify-center w-16 h-16 ${theme.palette.gradientClasses.iconGreenLight} rounded-full border-4 border-white shadow-lg`}>
                     { getSVGIcon('list', 32, theme.palette.text.lightGreen) }
                 </Box>
-                <Typography variant="body1" component="p" sx={{ textAlign: 'center' }}>
+                <Typography variant="subtitle2" component="p" className="text-center font-normal!">
                   { translations.step2.description }
                 </Typography>
                 <Paper variant="outlined" className="p-2 bg-green-50! border-green-200!">
-                    <Box component="div" className="flex items-top gap-3">
+                    <Box component="div" className="flex items-center gap-3">
                       <Box className="shrink-0">{ getSVGIcon('circle-check-big', 16, theme.palette.text.lightGreen) }</Box>
-                      <Typography variant="subtitle2" component="p" color={theme.palette.text.lightGreen} sx={{ textAlign: 'left' }}>{ translations.step2.check }</Typography>
+                      <Typography variant="caption" component="p" color={theme.palette.text.lightGreen} className="text-left">{ translations.step2.check }</Typography>
                     </Box>
                 </Paper>
                 <Button
-                  className="bg-linear-to-r from-green-50 to-emerald-50 text-emerald-600! border-2 border-dashed hover:from-emerald-50 hover:to-emerald-100"
+                  className="bg-linear-to-r! from-green-50! to-emerald-50! text-emerald-600! border-2! border-dashed! hover:from-emerald-50! hover:to-emerald-100! hover:border-emerald-700! transition-all!"
                   variant="contained"
                   startIcon={<Emoji symbol="✨" />}
                   sx={{ borderColor: theme.palette.text.lightGreen, width: '100%', mt: 'auto' }}
@@ -152,7 +153,7 @@ export default function ModalWelcome({
               </Card>
             </Grid>
           </Grid>
-          <Card className="mt-4">
+          {/* <Card className="mt-4">
             <Box className={`p-3.5 ${theme.palette.gradientClasses.indigoPurplePink} border border-indigo-200`}>
               <Box component="div" className="flex items-start gap-3">
                 <Box component="div" className={`flex items-center justify-center w-8 h-8 ${theme.palette.gradientClasses.iconIndigoPurple} rounded-full shadow-md`}>
@@ -164,7 +165,7 @@ export default function ModalWelcome({
                 </Box>
               </Box>
             </Box>
-          </Card>
+          </Card> */}
         </Box>
 
         <Box component="div" className="bg-white" sx={{ py: 2, px: 4 }}>
@@ -173,9 +174,18 @@ export default function ModalWelcome({
               <Checkbox 
                 checked={dontShowAgain}
                 onChange={(e) => setDontShowAgain(e.target.checked)}
+                sx={{
+                  '& .MuiSvgIcon-root': {
+                    fontSize: '24px',
+                    
+                  },
+                  '& .MuiCheckbox-root': {
+                    borderWidth: '1px',
+                  }
+                }}
               />
             }
-            label={ translations.welcomeModal.dontShowAgain }
+            label={ <Typography variant="caption">{ translations.welcomeModal.dontShowAgain }</Typography> }
           />
         </Box>
     </Modal>

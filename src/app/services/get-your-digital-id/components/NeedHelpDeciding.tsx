@@ -17,7 +17,7 @@ export default function NeedHelpDeciding({ needHelpDeciding }: { needHelpDecidin
         <Card variant="outlined" className="p-6 bg-blue-50! border! border-blue-200!">
             <Box className="flex flex-col md:flex-row gap-6 items-center justify-between">
                 <Box component="div">
-                    <Typography variant="h3" component="h3" className="mb-2!">
+                    <Typography variant="h5" component="h3" className="mb-2!">
                         {needHelpDeciding.title}
                     </Typography>
                     <Typography variant="body1" component="p" color={theme.palette.text.secondary}>

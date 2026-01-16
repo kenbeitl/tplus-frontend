@@ -28,7 +28,7 @@ export default function GovConnectClient() {
             <HeroSection
                 title={ t("pages.govConnect.title") }
                 description={ t("pages.govConnect.context") }
-                icon={ getSVGIcon('file-text', 24, '#FFFFFF') }
+                icon={ getSVGIcon('building2', 24, '#FFFFFF') }
                 colorScheme="blue"
             />
 
@@ -38,13 +38,13 @@ export default function GovConnectClient() {
             <Divider className="my-9!" />
             <Box component="div" className="flex items-center mb-6">
                 <StyledIcon
-                    icon={getSVGIcon('shield', 24, '#FFFFFF')}
+                    icon={getSVGIcon('building2', 20, '#FFFFFF')}
                     variant="blue-gradient"
-                    size={48}
+                    size={40}
                     className="mr-3"
                     square
                 />
-                <Typography variant="h2" component="h2">{ t("common.ourServices") }</Typography>
+                <Typography variant="h5" component="h2" className="font-bold!">{ t("common.ourServices") }</Typography>
             </Box>
             <Grid container spacing={2}>
                 {Array.isArray(GOV_SERVICES) && GOV_SERVICES.map((service, index: number) => (
@@ -65,7 +65,7 @@ export default function GovConnectClient() {
                                 className="mb-4"
                                 square
                             />
-                            <Typography className="mb-2!" variant="h4" component="h2">
+                            <Typography variant="h5" component="h2" className="mb-2! font-bold!">
                                 {service.title}
                                 {
                                     service.tag && (
@@ -77,8 +77,8 @@ export default function GovConnectClient() {
                                     )
                                 }
                             </Typography>
-                            <Typography className="mb-2!" variant="body1" component="p">{service.description}</Typography>
-                            <Checklist items={service.features} />
+                            <Typography variant="subtitle1" component="p" className="mb-2! font-normal!">{service.description}</Typography>
+                            <Checklist items={service.features} stylish />
                             {service.id === 'govconnect-dual-declaration' && (
                                 <ButtonWithFormModal
                                     templateId={service.id}

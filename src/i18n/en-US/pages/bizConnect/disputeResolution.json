@@ -1,0 +1,19 @@
+{
+    "title": "Dispute Resolution Services",
+    "context": "Efficient and cost-effective online dispute resolution services for businesses with cross-border commercial conflicts",
+    "providers": [
+        {
+            "name":"eBRAM International Online Dispute Resolution Centre",
+            "context": "Leading provider of online dispute resolution services for cross-border e-commerce and commercial disputes",
+            "features": [
+                "Online arbitration and mediation",
+                "Domain name dispute resolution",
+                "E-commerce and cross-border disputes",
+                "Intellectual property disputes",
+                "International commercial arbitration"
+            ],
+            "pricing": "Competitive rates based on dispute value",
+            "formId": "ebram-odr"
+        }
+    ]
+}

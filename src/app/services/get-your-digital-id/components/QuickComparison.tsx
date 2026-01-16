@@ -41,56 +41,56 @@ export default function QuickComparison({ quickComparison }: { quickComparison: 
     return (
         <Card variant="outlined" className="p-6 bg-yellow-50! border! border-yellow-200!">
             <Card variant="outlined" className="p-6 bg-white! border! border-divider!">
-                <Typography variant="h2" component="h2" className="mb-2!">{ quickComparison.title }</Typography>
+                <Typography variant="h5" component="h2" className="mb-2!">{ quickComparison.title }</Typography>
                 <Typography variant="body1" component="p" color={theme.palette.text.secondary} className="mb-3!">{ quickComparison.context }</Typography>
                 <CardContent>
                     <Box component="div" className="overflow-x-auto">
                         <Table>
                             <TableBody>
                                 <TableRow>
-                                    <TableCell sx={{ fontWeight: 500 }}>{quickComparison.feature}</TableCell>
+                                    <TableCell>{quickComparison.feature}</TableCell>
                                     {quickComparison.options.feature.map((feature, index) => (
                                         <TableCell key={index}>{feature}</TableCell>
                                     ))}
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell sx={{ fontWeight: 500 }}>{quickComparison.eligibility}</TableCell>
+                                    <TableCell className="text-sm!">{quickComparison.eligibility}</TableCell>
                                     {quickComparison.options.eligibility.map((eligibility, index) => (
-                                        <TableCell key={index}>{eligibility}</TableCell>
+                                        <TableCell key={index} className="text-sm!">{eligibility}</TableCell>
                                     ))}
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell sx={{ fontWeight: 500 }}>{quickComparison.applicationTime}</TableCell>
+                                    <TableCell className="text-sm!">{quickComparison.applicationTime}</TableCell>
                                     {quickComparison.options.applicationTime.map((applicationTime, index) => (
-                                        <TableCell key={index}>{ getSVGIcon('circle-check-big', 20, theme.palette.text.lightGreen) }{applicationTime}</TableCell>
+                                        <TableCell key={index} className="text-sm!">{ getSVGIcon('circle-check-big', 20, theme.palette.text.lightGreen) }{applicationTime}</TableCell>
                                     ))}
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell sx={{ fontWeight: 500 }}>{quickComparison.applicationCost}</TableCell>
+                                    <TableCell className="text-sm!">{quickComparison.applicationCost}</TableCell>
                                     {quickComparison.options.applicationCost.map((applicationCost, index) => (
-                                        <TableCell key={index}>{applicationCost}</TableCell>
+                                        <TableCell key={index} className="text-sm!">{applicationCost}</TableCell>
                                     ))}
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell sx={{ fontWeight: 500 }}>{quickComparison.governmentRecognition}</TableCell>
-                                    <TableCell>{ getSVGIcon('circle-check-big', 20, theme.palette.text.lightGreen) }</TableCell>
-                                    <TableCell>{ getSVGIcon('circle-check-big', 20, theme.palette.text.lightGreen) }</TableCell>
+                                    <TableCell className="text-sm!">{quickComparison.governmentRecognition}</TableCell>
+                                    <TableCell className="text-sm!">{ getSVGIcon('circle-check-big', 20, theme.palette.text.lightGreen) }</TableCell>
+                                    <TableCell className="text-sm!">{ getSVGIcon('circle-check-big', 20, theme.palette.text.lightGreen) }</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell sx={{ fontWeight: 500 }}>{quickComparison.remoteApplication}</TableCell>
-                                    <TableCell>{ getSVGIcon('circle-check-big', 20, theme.palette.text.lightGreen) }</TableCell>
-                                    <TableCell>{ getSVGIcon('circle-check-big', 20, theme.palette.text.lightGreen) }</TableCell>
+                                    <TableCell className="text-sm!">{quickComparison.remoteApplication}</TableCell>
+                                    <TableCell className="text-sm!">{ getSVGIcon('circle-check-big', 20, theme.palette.text.lightGreen) }</TableCell>
+                                    <TableCell className="text-sm!">{ getSVGIcon('circle-check-big', 20, theme.palette.text.lightGreen) }</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell sx={{ fontWeight: 500 }}>{quickComparison.requiredDocument}</TableCell>
+                                    <TableCell className="text-sm!">{quickComparison.requiredDocument}</TableCell>
                                     {quickComparison.options.requiredDocument.map((requiredDocument, index) => (
-                                        <TableCell key={index}>{requiredDocument}</TableCell>
+                                        <TableCell key={index} className="text-sm!">{requiredDocument}</TableCell>
                                     ))}
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell sx={{ fontWeight: 500 }}>{quickComparison.bestFor}</TableCell>
+                                    <TableCell className="text-sm!">{quickComparison.bestFor}</TableCell>
                                     {quickComparison.options.bestFor.map((bestFor, index) => (
-                                        <TableCell key={index}>{bestFor}</TableCell>
+                                        <TableCell key={index} className="text-sm!">{bestFor}</TableCell>
                                     ))}
                                 </TableRow>
                             </TableBody>

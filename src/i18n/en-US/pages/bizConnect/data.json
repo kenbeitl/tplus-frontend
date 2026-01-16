@@ -38,56 +38,11 @@
             "buttonLink": "#"
         }
     ],
-    "builtForYourSuccess": {
-        "title": "Built for Your Success",
-        "context": "BizConnect combines cutting-edge technology with comprehensive business services",
-        "figures": [
-            {
-                "icon": "users",
-                "iconColor": "text-blue-600",
-                "number": "1M+",
-                "description": "Verified Businesses"
-            },
-            {
-                "icon": "globe",
-                "iconColor": "text-indigo-600",
-                "number": "50+",
-                "description": "Countries Covered"
-            },
-            {
-                "icon": "zap",
-                "iconColor": "text-purple-600",
-                "number": "24/7",
-                "description": "Support Available"
-            }
-        ],
-        "features": [
-            {
-                "icon": "briefcase",
-                "iconStyle": "iconBlue",
-                "title": "End-to-End Support",
-                "description": "From initial research to partnership execution, we support you throughout your business expansion journey"
-            },
-            {
-                "icon": "shield",
-                "iconStyle": "iconGreen",
-                "title": "Secure & Verified",
-                "description": "All businesses in our network undergo rigorous verification to ensure authenticity and reliability"
-            },
-            {
-                "icon": "globe",
-                "iconStyle": "iconPurplePink",
-                "title": "Global Reach",
-                "description": "Access opportunities across multiple markets including Hong Kong, Mainland China, and international territories"
-            }
-        ]
-    },
     "ourServices": [
         {
             "icon": "file-check",
             "variant": "purple-gradient",
             "title": "Due Diligence Services",
-            "description": "Comprehensive background checks and verification services for potential business partners",
             "list": [
                 "Company verification and credentials",
                 "Financial health assessments",
@@ -100,7 +55,6 @@
             "icon": "globe",
             "variant": "green-gradient",
             "title": "One-Stop Go Global Services",
-            "description": "Everything you need to expand your business into international markets",
             "list": [
                 "Market entry strategy consulting",
                 "International partnership facilitation",
@@ -108,8 +62,47 @@
             ],
             "cardStyle": "hover:border-green-300!",
             "slug": "/services/biz-connect/one-stop-go-global-services"
+        },
+        {
+            "icon": "scale",
+            "variant": "orange-gradient",
+            "title": "Dispute Resolution Services",
+            "list": [
+                "Online arbitration and mediation services",
+                "Cross-border commercial disputes",
+                "Cost-effective alternative to litigation"
+            ],
+            "cardStyle": "hover:border-orange-300!",
+            "slug": "/services/biz-connect/dispute-resolution-services"
         }
     ],
+    "builtForYourSuccess": {
+        "title": "Built for Your Success",
+        "context": "Comprehensive support from research to partnership execution",
+        "features": [
+            {
+                "cardStyle": "border-blue-200/50!",
+                "icon": "briefcase",
+                "iconStyle": "iconBlue",
+                "title": "End-to-End Support",
+                "description": "Complete journey coverage"
+            },
+            {
+                "cardStyle": "border-green-200/50!",
+                "icon": "shield",
+                "iconStyle": "iconGreen",
+                "title": "Secure & Verified",
+                "description": "Rigorous business authentication"
+            },
+            {
+                "cardStyle": "border-purple-200/50!",
+                "icon": "globe",
+                "iconStyle": "iconPurplePink",
+                "title": "Global Reach",
+                "description": "HK, Mainland & international marketss"
+            }
+        ]
+    },
     "upcomingFeatures": [
         {
             "icon": "search",

@@ -121,13 +121,13 @@ export default function SafeConnectClient() {
       <Divider className="my-9!" />
       <Box component="div" className="flex items-center mb-6">
         <StyledIcon 
-          icon={getSVGIcon('shield', 24, '#FFFFFF')}
+          icon={getSVGIcon('shield', 20, '#FFFFFF')}
           variant="green-gradient"
-          size={48}
+          size={40}
           className="mr-3"
           square
         />
-        <Typography variant="h2" component="h2">{ t("common.ourServices") }</Typography>
+        <Typography variant="h5" component="h2" className="font-bold!">{ t("common.ourServices") }</Typography>
       </Box>
       <TabContext value={value}>
         <Box>

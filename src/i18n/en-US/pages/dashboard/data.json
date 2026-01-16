@@ -1,12 +1,7 @@
 {
     "title": "Dashboard",
-    "welcome": {
-        "title": "Welcome to T+",
-        "context": "Manage your business efficiently with quick actions and personalised recommendations."
-    },
     "quickActions": {
         "title": "Quick Actions",
-        "context": "Powerful tools at your fingertips",
         "list": [
             {
                 "icon": "file-check",
@@ -45,7 +40,6 @@
     },
     "recommendedForYou": {
         "title": "Recommended For You",
-        "context": "Personalized picks based on your needs",
         "list": [
             {
                 "icon": "shield-check",
@@ -84,7 +78,6 @@
     },
     "freeTrialFeatures": {
         "title": "Free Trial Features",
-        "context": "Start exploring powerful business tools at no cost",
         "features": [
             {
                     "icon": "id-card",
@@ -226,7 +219,6 @@
     },
     "featuresTBC": {
         "title": "Upcoming Features",
-        "context": "More features rolling out soon",
         "list": [
             {
                     "icon": "signature",
@@ -263,6 +255,6 @@
     "viewSubscriptionPlans": "View Subscription Plans",
     "needHelp": {
         "title": "Need help getting started?",
-        "context": "Follow these 3 steps to unlock the full potential of T+"
+        "context": "Our support team is here to assist you!"
     }
 }

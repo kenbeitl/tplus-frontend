@@ -1,9 +1,5 @@
 {
     "title": "儀表板",
-    "welcome": {
-        "title": "歡迎使用 T+",
-        "context": "通過快捷操作和個性化推薦，高效管理您的業務。"
-    },
     "quickActions": {
         "title": "快捷操作",
         "context": "強大的工具，觸手可及",

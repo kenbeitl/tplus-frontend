@@ -66,7 +66,7 @@ export default function HeroSection({
   const sentences = splitIntoSentences(description);
 
   return (
-    <Box className={`relative overflow-hidden rounded-2xl ${colors.gradient} p-5 text-white shadow-xl`} sx={{ minHeight: '180px' }}>
+    <Box className={`relative overflow-hidden rounded-2xl ${colors.gradient} p-5 text-white shadow-xl`}>
       <Box 
         className="absolute inset-0 bg-grid-white/10" 
         sx={{ 

@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { usePathname } from 'next/navigation';
 import { styled } from '@mui/material/styles';
-import { Box, Collapse, List, ListItemText, ListItemButton as MuiListItemButton, ListItemIcon as MuiListItemIcon, Tooltip  } from '@mui/material';
+import { Box, Collapse, List, ListItemText as MuiListItemText, ListItemButton as MuiListItemButton, ListItemIcon as MuiListItemIcon, Tooltip  } from '@mui/material';
 
 // Local Components & Contexts
 import { useDrawer } from '@/contexts/AppContext';
@@ -12,18 +12,13 @@ import { getSVGIcon } from '@/helpers/utils';import theme from '@/theme/theme';
 ;
 
 // Styled ListItemButton with active state support
-export const ListItemIcon = styled(MuiListItemIcon)(() => ({
-    minWidth: 'auto',
-    width: menuIconSize,
-    color: theme.palette.text.black
-}));
-
 export const ListItemButton = styled(MuiListItemButton, {
     shouldForwardProp: (prop) => prop !== 'isActive' && prop !== 'isDrawerOpen',
 })<{ isActive?: boolean, isDrawerOpen?: boolean }>(({ theme, isActive, isDrawerOpen }) => ({
     paddingTop: theme.spacing(0.5),
     paddingBottom: theme.spacing(0.5),
     marginLeft: isDrawerOpen ? theme.spacing(2) : 0,
+    marginRight: isDrawerOpen ? theme.spacing(2) : 0,
     '&:hover': {
         backgroundColor: 'transparent',
     },
@@ -61,7 +56,6 @@ export const ListItemButton = styled(MuiListItemButton, {
         color: isActive ? theme.palette.primary.contrastText : 'inherit',
         borderRadius: theme.shape.borderRadius,
     },
-    
     '&:hover .MuiListItemIcon-root': {
         color: isActive ? theme.palette.primary.contrastText : 'black',
     },
@@ -73,6 +67,21 @@ export const ListItemButton = styled(MuiListItemButton, {
         transition: theme.transitions.create('color', {
             duration: theme.transitions.duration.short,
         }),
+    },
+}));
+
+export const ListItemIcon = styled(MuiListItemIcon)(() => ({
+    minWidth: 'auto',
+    width: menuIconSize,
+    color: theme.palette.text.black
+}));
+
+export const ListItemText = styled(MuiListItemText)(() => ({
+    '& .MuiListItemText-primary': {
+        fontSize: '0.875rem',
+    },
+    '& .MuiListItemText-primary:hover': {
+        textDecoration: 'underline',
     },
 }));
 

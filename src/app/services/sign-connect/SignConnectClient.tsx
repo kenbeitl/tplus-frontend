@@ -36,13 +36,13 @@ export default function SignConnectClient() {
           <img src="/assets/images/SignConnect.jpg" alt={ t('pages.signConnect.signingPlatform.title') } />
         </Box>
         <Spacer height={30} />
-        <Typography variant="h2" component="h2" className="mb-3!" sx={{ fontWeight: 400 }}>{ t('pages.signConnect.signingPlatform.title') }</Typography>
+        <Typography variant="h5" component="h2" className="mb-3! font-bold!" sx={{ fontWeight: 400 }}>{ t('pages.signConnect.signingPlatform.title') }</Typography>
         <Typography variant="subtitle1" component="p" color={ theme.palette.text.secondary } sx={{ fontWeight: 400 }}>{ t('pages.signConnect.signingPlatform.context') }</Typography>
         <Spacer height={40} />
         <Grid container spacing={2} className="w-full">
           {Array.isArray(DIGITAL_SIGNING_PLATFORMS) && DIGITAL_SIGNING_PLATFORMS.map((platform, i) => (
             <Grid key={`dsp-${i}`} size={{ xs: 12, sm: 6, md: 4 }}>
-              <Card variant="outlined" className={`p-6 h-full flex flex-col items-center ${platform.isActive ? 'border-2! border-blue-500! shadow-lg ring-2! ring-blue-200! bg-linear-to-br from-blue-50 to-indigo-50' : ''}`}>
+              <Card variant="outlined" className={`p-4 h-full flex flex-col items-center ${platform.isActive ? 'border-2! border-blue-500! shadow-lg ring-2! ring-blue-200! bg-linear-to-br from-blue-50 to-indigo-50' : ''}`}>
                 <StyledIcon 
                   icon={getSVGIcon(platform.icon)} 
                   variant={platform.isActive ? 'blue-gradient' : 'gray'}
@@ -50,8 +50,8 @@ export default function SignConnectClient() {
                   size={50}
                 />
                 <Spacer height={30} />
-                <Typography variant="h5" component="h3" sx={{ fontWeight: 400 }}>{platform.name}</Typography>
-                <Typography variant="h6" component="p" sx={{ fontWeight: 400 }}>{platform.description}</Typography>
+                <Typography variant="h6" component="h3" sx={{ fontWeight: 400 }}>{platform.name}</Typography>
+                <Typography variant="caption" component="p" sx={{ fontWeight: 400 }}>{platform.description}</Typography>
                 <Spacer height={30} />
                 <List className="text-left w-full">
                   {platform.list.map((point: string, p: number) => (
@@ -59,7 +59,7 @@ export default function SignConnectClient() {
                       <ListItemIcon>
                         { getSVGIcon('circle-check-big', 16, theme.palette.icon.green) }
                       </ListItemIcon>
-                      <ListItemText primary={point} />
+                      <ListItemText primary={point} slotProps={{ primary: { sx: { fontSize: '14px'} } }} />
                     </ListItem>
                   ))}
                 </List>
