@@ -6,7 +6,7 @@ import { useTranslations, useApp } from "@/contexts/AppContext";
 import QuickActionsSection from "./components/QuickActionsSection";
 import RecommendedForYouSection from "./components/RecommendedForYouSection";
 import FreeTrialFeaturesSection from "./components/FreeTrialFeaturesSection";
-import FeaturesTBCSection from "./components/FeaturesTBCSection";
+import UpcomingFeaturesSection from "./components/UpcomingFeaturesSection";
 import NeedHelpSection from "./components/NeedHelpSection";
 import ModalWelcome from "./modal/welcome";
 import { Grid } from "@mui/material";
@@ -18,7 +18,7 @@ export default function DashboardClient() {
     const [modalOpen, setModalOpen] = useState(false);
     
     const freeTrialFeatures = t('pages.dashboard.freeTrialFeatures');
-    const featuresTBC = t('pages.dashboard.featuresTBC');
+    const upcomingFeatures = t('pages.dashboard.upcomingFeatures');
     const needHelp = t('pages.dashboard.needHelp');
 
     useEffect(() => {
@@ -90,14 +90,14 @@ export default function DashboardClient() {
                 </>
             )}
             
-            {featuresTBC && (
+            {upcomingFeatures && (
                 <>
-                    <FeaturesTBCSection
-                        title={featuresTBC.title}
-                        context={featuresTBC.context}
-                        features={featuresTBC.list}
-                        remarks={featuresTBC.remarks}
-                        moreFeatures={featuresTBC.moreFeatures}
+                    <UpcomingFeaturesSection
+                        title={upcomingFeatures.title}
+                        context={upcomingFeatures.context}
+                        features={upcomingFeatures.list}
+                        remarks={upcomingFeatures.remarks}
+                        moreFeatures={upcomingFeatures.moreFeatures}
                         viewSubscriptionPlansText={t('pages.dashboard.viewSubscriptionPlans')}
                     />
                     <Spacer height={30} />

@@ -6,7 +6,7 @@ import theme from '@/theme/theme';
 import { Emoji, StyledIcon } from '@/components';
 import { getSVGIcon } from '@/helpers/utils';
 
-interface TBCFeature {
+interface UpcomingGFeature {
     icon: string;
     title: string;
     context: string;
@@ -18,23 +18,23 @@ interface Remarks {
     ctaLabel: string;
 }
 
-interface FeaturesTBCSectionProps {
+interface UpcomingFeaturesSectionProps {
     title: string;
     context: string;
-    features: TBCFeature[];
+    features: UpcomingGFeature[];
     remarks: Remarks;
     moreFeatures: string;
     viewSubscriptionPlansText?: string;
 }
 
-export default function FeaturesTBCSection({ 
+export default function UpcomingFeaturesSection({ 
     title, 
     context, 
     features,
     remarks,
     moreFeatures,
     viewSubscriptionPlansText
-}: FeaturesTBCSectionProps) {
+}: UpcomingFeaturesSectionProps) {
     const router = useRouter();
 
     return (

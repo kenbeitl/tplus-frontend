@@ -83,114 +83,48 @@
         "context": "免費開始探索強大的商業工具",
         "features": [
             {
-                    "icon": "id-card",
-                    "iconStyle": "bg-linear-to-br from-violet-500 to-purple-700 group-hover/parent:shadow-violet-300",
-                    "title": "申請數碼身份",
-                    "context": "為所有數碼服務提供安全驗證",
-                    "cardStyle": "border-violet-200 hover:border-violet-400",
-                    "linkStyle": "text-violet-700 hover:text-violet-900 hover:bg-violet-50",
-                    "list": [
-                        {
-                            "label": "快速身份驗證",
-                            "link": "/services/apply-for-digital-identity"
-                        },
-                        {
-                            "label": "解鎖所有平台功能",
-                            "link": "/services/apply-for-digital-identity"
-                        },
-                        {
-                            "label": "安全數碼交易",
-                            "link": "/services/apply-for-digital-identity"
-                        }
-                    ]
+                "icon": "briefcase",
+                "iconStyle": "bg-linear-to-br from-blue-500 to-indigo-700 group-hover/parent:shadow-blue-300",
+                "title": "BizConnect",
+                "context": "商業網絡與市場情報",
+                "cardStyle": "border-blue-200 hover:border-blue-400",
+                "linkStyle": "text-blue-700 hover:text-blue-900 hover:bg-blue-50",
+                "list": [
+                    {
+                        "label": "商業配對網絡",
+                        "link": "/services/biz-connect"
+                    },
+                    {
+                        "label": "商業情報服務",
+                        "link": "/services/biz-connect"
+                    },
+                    {
+                        "label": "合作夥伴發現工具",
+                        "link": "/services/biz-connect"
+                    }
+                ]
             },
             {
-                    "icon": "briefcase",
-                    "iconStyle": "bg-linear-to-br from-blue-500 to-indigo-700 group-hover/parent:shadow-blue-300",
-                    "title": "BizConnect",
-                    "context": "商業網絡與市場情報",
-                    "cardStyle": "border-blue-200 hover:border-blue-400",
-                    "linkStyle": "text-blue-700 hover:text-blue-900 hover:bg-blue-50",
-                    "list": [
-                        {
-                            "label": "商業配對網絡",
-                            "link": "/services/biz-connect"
-                        },
-                        {
-                            "label": "商業情報服務",
-                            "link": "/services/biz-connect"
-                        },
-                        {
-                            "label": "合作夥伴發現工具",
-                            "link": "/services/biz-connect"
-                        }
-                    ]
-            },
-            {
-                    "icon": "building2",
-                    "iconStyle": "bg-linear-to-br from-sky-500 to-blue-700 group-hover/parent:shadow-sky-300",
-                    "title": "GovConnect",
-                    "context": "智能貿易合規與自動化",
-                    "cardStyle": "border-sky-200 hover:border-sky-400",
-                    "linkStyle": "text-sky-700 hover:text-sky-900 hover:bg-sky-50",
-                    "list": [
-                        {
-                            "label": "通關自動化工具",
-                            "link": "/services/gov-connect/ai-powered-customs-automation"
-                        },
-                        {
-                            "label": "HS編碼AI分類器",
-                            "link": "/services/gov-connect/hs-code-ai-classifier"
-                        },
-                        {
-                            "label": "雙重申報服務",
-                            "link": "/services/gov-connect"
-                        }
-                    ]
-            },
-            {
-                    "icon": "credit-card",
-                    "iconStyle": "bg-linear-to-br from-cyan-500 to-teal-700 group-hover/parent:shadow-cyan-300",
-                    "title": "PayConnect",
-                    "context": "專屬金融服務與合作夥伴優惠",
-                    "cardStyle": "border-cyan-200 hover:border-cyan-400",
-                    "linkStyle": "text-cyan-700 hover:text-cyan-900 hover:bg-cyan-50",
-                    "list": [
-                        {
-                            "label": "專屬合作夥伴優惠",
-                            "link": "/services/pay-connect"
-                        },
-                        {
-                            "label": "金融服務訪問",
-                            "link": "/services/pay-connect"
-                        },
-                        {
-                            "label": "特殊會員福利",
-                            "link": "/services/pay-connect"
-                        }
-                    ]
-            },
-            {
-                    "icon": "shield",
-                    "iconStyle": "bg-linear-to-br from-emerald-500 to-green-700 group-hover/parent:shadow-emerald-300",
-                    "title": "SafeConnect",
-                    "context": "全面的網絡安全解決方案",
-                    "cardStyle": "border-emerald-200 hover:border-emerald-400",
-                    "linkStyle": "text-emerald-700 hover:text-emerald-900 hover:bg-emerald-50",
-                    "list": [
-                        {
-                            "label": "個人安全服務",
-                            "link": "/services/safe-connect"
-                        },
-                        {
-                            "label": "企業安全解決方案",
-                            "link": "/services/safe-connect"
-                        },
-                        {
-                            "label": "網絡漏洞掃描",
-                            "link": "/services/safe-connect"
-                        }
-                    ]
+                "icon": "id-card",
+                "iconStyle": "bg-linear-to-br from-violet-500 to-purple-700 group-hover/parent:shadow-violet-300",
+                "title": "申請數碼身份",
+                "context": "為所有數碼服務提供安全驗證",
+                "cardStyle": "border-violet-200 hover:border-violet-400",
+                "linkStyle": "text-violet-700 hover:text-violet-900 hover:bg-violet-50",
+                "list": [
+                    {
+                        "label": "快速身份驗證",
+                        "link": "/services/apply-for-digital-identity"
+                    },
+                    {
+                        "label": "解鎖所有平台功能",
+                        "link": "/services/apply-for-digital-identity"
+                    },
+                    {
+                        "label": "安全數碼交易",
+                        "link": "/services/apply-for-digital-identity"
+                    }
+                ]
             },
             {
                 "icon": "edit",
@@ -213,14 +147,76 @@
                         "link": "/services/sign-connect"
                     }
                 ]
+            },
+            {
+                "icon": "building2",
+                "iconStyle": "bg-linear-to-br from-sky-500 to-blue-700 group-hover/parent:shadow-sky-300",
+                "title": "GovConnect",
+                "context": "智能貿易合規與自動化",
+                "cardStyle": "border-sky-200 hover:border-sky-400",
+                "linkStyle": "text-sky-700 hover:text-sky-900 hover:bg-sky-50",
+                "list": [
+                    {
+                        "label": "通關自動化工具",
+                        "link": "/services/gov-connect/ai-powered-customs-automation"
+                    },
+                    {
+                        "label": "HS編碼AI分類器",
+                        "link": "/services/gov-connect/hs-code-ai-classifier"
+                    },
+                    {
+                        "label": "雙重申報服務",
+                        "link": "/services/gov-connect"
+                    }
+                ]
+            },
+            {
+                "icon": "credit-card",
+                "iconStyle": "bg-linear-to-br from-cyan-500 to-teal-700 group-hover/parent:shadow-cyan-300",
+                "title": "PayConnect",
+                "context": "專屬金融服務與合作夥伴優惠",
+                "cardStyle": "border-cyan-200 hover:border-cyan-400",
+                "linkStyle": "text-cyan-700 hover:text-cyan-900 hover:bg-cyan-50",
+                "list": [
+                    {
+                        "label": "專屬合作夥伴優惠",
+                        "link": "/services/pay-connect"
+                    },
+                    {
+                        "label": "金融服務訪問",
+                        "link": "/services/pay-connect"
+                    },
+                    {
+                        "label": "特殊會員福利",
+                        "link": "/services/pay-connect"
+                    }
+                ]
+            },
+            {
+                "icon": "shield",
+                "iconStyle": "bg-linear-to-br from-emerald-500 to-green-700 group-hover/parent:shadow-emerald-300",
+                "title": "SafeConnect",
+                "context": "全面的網絡安全解決方案",
+                "cardStyle": "border-emerald-200 hover:border-emerald-400",
+                "linkStyle": "text-emerald-700 hover:text-emerald-900 hover:bg-emerald-50",
+                "list": [
+                    {
+                        "label": "個人安全服務",
+                        "link": "/services/safe-connect"
+                    },
+                    {
+                        "label": "企業安全解決方案",
+                        "link": "/services/safe-connect"
+                    },
+                    {
+                        "label": "網絡漏洞掃描",
+                        "link": "/services/safe-connect"
+                    }
+                ]
             }
-        ],
-        "remarks": {
-            "title": "所有功能現已開放免費試用",
-            "body": "某些服務在試用期結束後可能需要訂閱"
-        }
+        ]
     },
-    "featuresTBC": {
+    "upcomingFeatures": {
         "title": "即將推出的功能",
         "context": "更多功能即將推出",
         "list": [

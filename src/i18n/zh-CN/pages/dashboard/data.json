@@ -83,28 +83,6 @@
         "context": "免费开始探索强大的商业工具",
         "features": [
             {
-                    "icon": "id-card",
-                    "iconStyle": "bg-linear-to-br from-violet-500 to-purple-700 group-hover/parent:shadow-violet-300",
-                    "title": "申请数字身份",
-                    "context": "为所有数字服务提供安全验证",
-                    "cardStyle": "border-violet-200 hover:border-violet-400",
-                    "linkStyle": "text-violet-700 hover:text-violet-900 hover:bg-violet-50",
-                    "list": [
-                        {
-                            "label": "快速身份验证",
-                            "link": "/services/apply-for-digital-identity"
-                        },
-                        {
-                            "label": "解锁所有平台功能",
-                            "link": "/services/apply-for-digital-identity"
-                        },
-                        {
-                            "label": "安全数字交易",
-                            "link": "/services/apply-for-digital-identity"
-                        }
-                    ]
-            },
-            {
                     "icon": "briefcase",
                     "iconStyle": "bg-linear-to-br from-blue-500 to-indigo-700 group-hover/parent:shadow-blue-300",
                     "title": "BizConnect",
@@ -127,68 +105,24 @@
                     ]
             },
             {
-                    "icon": "building2",
-                    "iconStyle": "bg-linear-to-br from-sky-500 to-blue-700 group-hover/parent:shadow-sky-300",
-                    "title": "GovConnect",
-                    "context": "智能贸易合规与自动化",
-                    "cardStyle": "border-sky-200 hover:border-sky-400",
-                    "linkStyle": "text-sky-700 hover:text-sky-900 hover:bg-sky-50",
+                    "icon": "id-card",
+                    "iconStyle": "bg-linear-to-br from-violet-500 to-purple-700 group-hover/parent:shadow-violet-300",
+                    "title": "申请数字身份",
+                    "context": "为所有数字服务提供安全验证",
+                    "cardStyle": "border-violet-200 hover:border-violet-400",
+                    "linkStyle": "text-violet-700 hover:text-violet-900 hover:bg-violet-50",
                     "list": [
                         {
-                            "label": "报关自动化工具",
-                            "link": "/services/gov-connect/ai-powered-customs-automation"
+                            "label": "快速身份验证",
+                            "link": "/services/apply-for-digital-identity"
                         },
                         {
-                            "label": "HS编码AI分类器",
-                            "link": "/services/gov-connect/hs-code-ai-classifier"
+                            "label": "解锁所有平台功能",
+                            "link": "/services/apply-for-digital-identity"
                         },
                         {
-                            "label": "双重申报服务",
-                            "link": "/services/gov-connect"
-                        }
-                    ]
-            },
-            {
-                    "icon": "credit-card",
-                    "iconStyle": "bg-linear-to-br from-cyan-500 to-teal-700 group-hover/parent:shadow-cyan-300",
-                    "title": "PayConnect",
-                    "context": "专属金融服务与合作伙伴优惠",
-                    "cardStyle": "border-cyan-200 hover:border-cyan-400",
-                    "linkStyle": "text-cyan-700 hover:text-cyan-900 hover:bg-cyan-50",
-                    "list": [
-                        {
-                            "label": "专属合作伙伴优惠",
-                            "link": "/services/pay-connect"
-                        },
-                        {
-                            "label": "金融服务访问",
-                            "link": "/services/pay-connect"
-                        },
-                        {
-                            "label": "特殊会员福利",
-                            "link": "/services/pay-connect"
-                        }
-                    ]
-            },
-            {
-                    "icon": "shield",
-                    "iconStyle": "bg-linear-to-br from-emerald-500 to-green-700 group-hover/parent:shadow-emerald-300",
-                    "title": "SafeConnect",
-                    "context": "全面的网络安全解决方案",
-                    "cardStyle": "border-emerald-200 hover:border-emerald-400",
-                    "linkStyle": "text-emerald-700 hover:text-emerald-900 hover:bg-emerald-50",
-                    "list": [
-                        {
-                            "label": "个人安全服务",
-                            "link": "/services/safe-connect"
-                        },
-                        {
-                            "label": "企业安全解决方案",
-                            "link": "/services/safe-connect"
-                        },
-                        {
-                            "label": "网络漏洞扫描",
-                            "link": "/services/safe-connect"
+                            "label": "安全数字交易",
+                            "link": "/services/apply-for-digital-identity"
                         }
                     ]
             },
@@ -213,14 +147,76 @@
                         "link": "/services/sign-connect"
                     }
                 ]
+            },
+            {
+                "icon": "building2",
+                "iconStyle": "bg-linear-to-br from-sky-500 to-blue-700 group-hover/parent:shadow-sky-300",
+                "title": "GovConnect",
+                "context": "智能贸易合规与自动化",
+                "cardStyle": "border-sky-200 hover:border-sky-400",
+                "linkStyle": "text-sky-700 hover:text-sky-900 hover:bg-sky-50",
+                "list": [
+                    {
+                        "label": "报关自动化工具",
+                        "link": "/services/gov-connect/ai-powered-customs-automation"
+                    },
+                    {
+                        "label": "HS编码AI分类器",
+                        "link": "/services/gov-connect/hs-code-ai-classifier"
+                    },
+                    {
+                        "label": "双重申报服务",
+                        "link": "/services/gov-connect"
+                    }
+                ]
+            },
+            {
+                "icon": "credit-card",
+                "iconStyle": "bg-linear-to-br from-cyan-500 to-teal-700 group-hover/parent:shadow-cyan-300",
+                "title": "PayConnect",
+                "context": "专属金融服务与合作伙伴优惠",
+                "cardStyle": "border-cyan-200 hover:border-cyan-400",
+                "linkStyle": "text-cyan-700 hover:text-cyan-900 hover:bg-cyan-50",
+                "list": [
+                    {
+                        "label": "专属合作伙伴优惠",
+                        "link": "/services/pay-connect"
+                    },
+                    {
+                        "label": "金融服务访问",
+                        "link": "/services/pay-connect"
+                    },
+                    {
+                        "label": "特殊会员福利",
+                        "link": "/services/pay-connect"
+                    }
+                ]
+            },
+            {
+                "icon": "shield",
+                "iconStyle": "bg-linear-to-br from-emerald-500 to-green-700 group-hover/parent:shadow-emerald-300",
+                "title": "SafeConnect",
+                "context": "全面的网络安全解决方案",
+                "cardStyle": "border-emerald-200 hover:border-emerald-400",
+                "linkStyle": "text-emerald-700 hover:text-emerald-900 hover:bg-emerald-50",
+                "list": [
+                    {
+                        "label": "个人安全服务",
+                        "link": "/services/safe-connect"
+                    },
+                    {
+                        "label": "企业安全解决方案",
+                        "link": "/services/safe-connect"
+                    },
+                    {
+                        "label": "网络漏洞扫描",
+                        "link": "/services/safe-connect"
+                    }
+                ]
             }
-        ],
-        "remarks": {
-            "title": "所有功能现已开放免费试用",
-            "body": "某些服务在试用期结束后可能需要订阅"
-        }
+        ]
     },
-    "featuresTBC": {
+    "upcomingFeatures": {
         "title": "即将推出的功能",
         "context": "更多功能即将推出",
         "list": [

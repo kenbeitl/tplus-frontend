@@ -80,114 +80,48 @@
         "title": "Free Trial Features",
         "features": [
             {
-                    "icon": "id-card",
-                    "iconStyle": "bg-linear-to-br from-violet-500 to-purple-700 group-hover/parent:shadow-violet-300",
-                    "title": "Apply for Digital Identity",
-                    "context": "Secure verification for all digital services",
-                    "cardStyle": "border-violet-200 hover:border-violet-400",
-                    "linkStyle": "text-violet-700 hover:text-violet-900 hover:bg-violet-50",
-                    "list": [
-                        {
-                            "label": "Quick identity verification",
-                            "link": "/services/apply-for-digital-identity"
-                        },
-                        {
-                            "label": "Unlock all platform features",
-                            "link": "/services/apply-for-digital-identity"
-                        },
-                        {
-                            "label": "Secure digital transactions",
-                            "link": "/services/apply-for-digital-identity"
-                        }
-                    ]
+                "icon": "briefcase",
+                "iconStyle": "bg-linear-to-br from-blue-500 to-indigo-700 group-hover/parent:shadow-blue-300",
+                "title": "BizConnect",
+                "context": "Business networking & market intelligence",
+                "cardStyle": "border-blue-200 hover:border-blue-400",
+                "linkStyle": "text-blue-700 hover:text-blue-900 hover:bg-blue-50 hover:border-blue-400/20",
+                "list": [
+                    {
+                        "label": "Business matching network",
+                        "link": "/services/biz-connect"
+                    },
+                    {
+                        "label": "Business intelligence services",
+                        "link": "/services/biz-connect"
+                    },
+                    {
+                        "label": "Partner discovery tools",
+                        "link": "/services/biz-connect"
+                    }
+                ]
             },
             {
-                    "icon": "briefcase",
-                    "iconStyle": "bg-linear-to-br from-blue-500 to-indigo-700 group-hover/parent:shadow-blue-300",
-                    "title": "BizConnect",
-                    "context": "Business networking & market intelligence",
-                    "cardStyle": "border-blue-200 hover:border-blue-400",
-                    "linkStyle": "text-blue-700 hover:text-blue-900 hover:bg-blue-50",
-                    "list": [
-                        {
-                            "label": "Business matching network",
-                            "link": "/services/biz-connect"
-                        },
-                        {
-                            "label": "Business intelligence services",
-                            "link": "/services/biz-connect"
-                        },
-                        {
-                            "label": "Partner discovery tools",
-                            "link": "/services/biz-connect"
-                        }
-                    ]
-            },
-            {
-                    "icon": "building2",
-                    "iconStyle": "bg-linear-to-br from-sky-500 to-blue-700 group-hover/parent:shadow-sky-300",
-                    "title": "GovConnect",
-                    "context": "Smart trade compliance & automation",
-                    "cardStyle": "border-sky-200 hover:border-sky-400",
-                    "linkStyle": "text-sky-700 hover:text-sky-900 hover:bg-sky-50",
-                    "list": [
-                        {
-                            "label": "Customs automation tools",
-                            "link": "/services/gov-connect/ai-powered-customs-automation"
-                        },
-                        {
-                            "label": "HS Code AI Classifier",
-                            "link": "/services/gov-connect/hs-code-ai-classifier"
-                        },
-                        {
-                            "label": "Dual declaration service",
-                            "link": "/services/gov-connect"
-                        }
-                    ]
-            },
-            {
-                    "icon": "credit-card",
-                    "iconStyle": "bg-linear-to-br from-cyan-500 to-teal-700 group-hover/parent:shadow-cyan-300",
-                    "title": "PayConnect",
-                    "context": "Exclusive financial services & partner offers",
-                    "cardStyle": "border-cyan-200 hover:border-cyan-400",
-                    "linkStyle": "text-cyan-700 hover:text-cyan-900 hover:bg-cyan-50",
-                    "list": [
-                        {
-                            "label": "Exclusive partner offers",
-                            "link": "/services/pay-connect"
-                        },
-                        {
-                            "label": "Financial services access",
-                            "link": "/services/pay-connect"
-                        },
-                        {
-                            "label": "Special member benefits",
-                            "link": "/services/pay-connect"
-                        }
-                    ]
-            },
-            {
-                    "icon": "shield",
-                    "iconStyle": "bg-linear-to-br from-emerald-500 to-green-700 group-hover/parent:shadow-emerald-300",
-                    "title": "SafeConnect",
-                    "context": "Comprehensive cybersecurity solutions",
-                    "cardStyle": "border-emerald-200 hover:border-emerald-400",
-                    "linkStyle": "text-emerald-700 hover:text-emerald-900 hover:bg-emerald-50",
-                    "list": [
-                        {
-                            "label": "Individual security services",
-                            "link": "/services/safe-connect"
-                        },
-                        {
-                            "label": "Corporate security solutions",
-                            "link": "/services/safe-connect"
-                        },
-                        {
-                            "label": "Web vulnerability scanning",
-                            "link": "/services/safe-connect"
-                        }
-                    ]
+                "icon": "id-card",
+                "iconStyle": "bg-linear-to-br from-violet-500 to-purple-700 group-hover/parent:shadow-violet-300",
+                "title": "Digital Identity",
+                "context": "Secure verification for all digital services",
+                "cardStyle": "border-violet-200 hover:border-violet-400",
+                "linkStyle": "text-violet-700 hover:text-violet-900 hover:bg-violet-50 hover:border-violet-400/20",
+                "list": [
+                    {
+                        "label": "Quick identity verification",
+                        "link": "/services/apply-for-digital-identity"
+                    },
+                    {
+                        "label": "Unlock all platform features",
+                        "link": "/services/apply-for-digital-identity"
+                    },
+                    {
+                        "label": "Secure digital transactions",
+                        "link": "/services/apply-for-digital-identity"
+                    }
+                ]
             },
             {
                 "icon": "edit",
@@ -195,7 +129,7 @@
                 "title": "SignConnect",
                 "context": "Digital document signing with certified security",
                 "cardStyle": "border-indigo-200 hover:border-indigo-400",
-                "linkStyle": "text-indigo-700 hover:text-indigo-900 hover:bg-indigo-50",
+                "linkStyle": "text-indigo-700 hover:text-indigo-900 hover:bg-indigo-50 hover:border-indigo-400/20",
                 "list": [
                     {
                         "label": "Sign via Tradelink DMSS",
@@ -210,14 +144,76 @@
                         "link": "/services/sign-connect"
                     }
                 ]
+            },
+            {
+                "icon": "building2",
+                "iconStyle": "bg-linear-to-br from-sky-500 to-blue-700 group-hover/parent:shadow-sky-300",
+                "title": "GovConnect",
+                "context": "Smart trade compliance & automation",
+                "cardStyle": "border-sky-200 hover:border-sky-400",
+                "linkStyle": "text-sky-700 hover:text-sky-900 hover:bg-sky-50 hover:border-sky-400/20",
+                "list": [
+                    {
+                        "label": "Customs automation tools",
+                        "link": "/services/gov-connect/ai-powered-customs-automation"
+                    },
+                    {
+                        "label": "HS Code AI Classifier",
+                        "link": "/services/gov-connect/hs-code-ai-classifier"
+                    },
+                    {
+                        "label": "Dual declaration service",
+                        "link": "/services/gov-connect"
+                    }
+                ]
+            },
+            {
+                "icon": "credit-card",
+                "iconStyle": "bg-linear-to-br from-cyan-500 to-teal-700 group-hover/parent:shadow-cyan-300",
+                "title": "PayConnect",
+                "context": "Exclusive financial services & partner offers",
+                "cardStyle": "border-cyan-200 hover:border-cyan-400",
+                "linkStyle": "text-cyan-700 hover:text-cyan-900 hover:bg-cyan-50 hover:border-cyan-400/20",
+                "list": [
+                    {
+                        "label": "Exclusive partner offers",
+                        "link": "/services/pay-connect"
+                    },
+                    {
+                        "label": "Financial services access",
+                        "link": "/services/pay-connect"
+                    },
+                    {
+                        "label": "Special member benefits",
+                        "link": "/services/pay-connect"
+                    }
+                ]
+            },
+            {
+                "icon": "shield",
+                "iconStyle": "bg-linear-to-br from-emerald-500 to-green-700 group-hover/parent:shadow-emerald-300",
+                "title": "SafeConnect",
+                "context": "Comprehensive cybersecurity solutions",
+                "cardStyle": "border-emerald-200 hover:border-emerald-400",
+                "linkStyle": "text-emerald-700 hover:text-emerald-900 hover:bg-emerald-50 hover:border-emerald-400/20",
+                "list": [
+                    {
+                        "label": "Individual security services",
+                        "link": "/services/safe-connect"
+                    },
+                    {
+                        "label": "Corporate security solutions",
+                        "link": "/services/safe-connect"
+                    },
+                    {
+                        "label": "Web vulnerability scanning",
+                        "link": "/services/safe-connect"
+                    }
+                ]
             }
-        ],
-        "remarks": {
-            "title": "All features are available now with your free trial",
-            "body": "Some services may require a subscription after the trial period ends"
-        }
+        ]
     },
-    "featuresTBC": {
+    "upcomingFeatures": {
         "title": "Upcoming Features",
         "list": [
             {
