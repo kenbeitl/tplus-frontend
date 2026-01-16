@@ -28,11 +28,10 @@ export default function PayConnectClient() {
                 icon={ getSVGIcon('credit-card', 24, '#FFFFFF') }
                 colorScheme="cyan"
             />
-            <Spacer height={30} />
-            <Carousel 
-                slides={ t("pages.payConnect.slides") }
-                slideLayout={2}
-            />
+            
+            {/* <Spacer height={30} />
+            <Carousel slides={ t("pages.payConnect.slides") } /> */}
+            
             <Divider className="my-9!" />
             <Box component="div" className="flex items-center mb-6">
                 <StyledIcon

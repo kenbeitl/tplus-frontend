@@ -29,8 +29,10 @@ export default function GovConnectClient() {
                 icon={ getSVGIcon('file-text', 24, '#FFFFFF') }
                 colorScheme="blue"
             />
-            <Spacer height={30} />
-            <Carousel slides={ t("pages.govConnect.slides") } />        
+
+            {/* <Spacer height={30} />
+            <Carousel slides={ t("pages.govConnect.slides") } /> */}
+            
             <Divider className="my-9!" />
             <Box component="div" className="flex items-center mb-6">
                 <StyledIcon

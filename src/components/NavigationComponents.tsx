@@ -23,20 +23,29 @@ export const ListItemButton = styled(MuiListItemButton, {
 })<{ isActive?: boolean, isDrawerOpen?: boolean }>(({ theme, isActive, isDrawerOpen }) => ({
     paddingTop: theme.spacing(0.5),
     paddingBottom: theme.spacing(0.5),
+    marginLeft: isDrawerOpen ? theme.spacing(2) : 0,
     '&:hover': {
         backgroundColor: 'transparent',
     },
-    // Level 2 base styles
+    
+    '&.lv1': {
+        paddingLeft: 0,
+        paddingRight: 0,
+        borderLeft: 0,
+    },
+
     '&.lv2': {
-        paddingLeft: theme.spacing(2),
+        paddingLeft: isDrawerOpen ? theme.spacing(2) : 0,
+        paddingRight: isDrawerOpen ? theme.spacing(2) : 0,
         borderLeft: isDrawerOpen ? `1px solid ${theme.palette.divider}` : 0,
-        marginLeft: isDrawerOpen ? theme.spacing(2) : 0,
     },
     
     // Button wrapper styles
     '& .real-btn': {
-        width: '100%',
-        padding: isDrawerOpen ? theme.spacing(0, 1) : theme.spacing(0.75, 1),
+        width: isDrawerOpen ? '100%' : 32,
+        height: isDrawerOpen ? '100%' : 32,
+        margin: isDrawerOpen ? 0 : '0 auto',
+        padding: isDrawerOpen ? theme.spacing(0, 1) : theme.spacing(0.75),
         background: isActive ? theme.palette.gradient.blue : 'transparent',
         color: isActive ? theme.palette.primary.contrastText : 'inherit',
         borderRadius: isActive ? theme.shape.borderRadius : 0,

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from "react";
-import { Carousel, Spacer, StyledIcon } from "@/components";
+import { Carousel, Spacer } from "@/components";
 import { useTranslations, useApp } from "@/contexts/AppContext";
 import WelcomeSection from "./components/WelcomeSection";
 import QuickActionsSection from "./components/QuickActionsSection";
@@ -10,15 +10,11 @@ import FreeTrialFeaturesSection from "./components/FreeTrialFeaturesSection";
 import FeaturesTBCSection from "./components/FeaturesTBCSection";
 import NeedHelpSection from "./components/NeedHelpSection";
 import ModalWelcome from "./modal/welcome";
-import { Badge, Box, Card, CardContent, Grid, Paper, Typography } from "@mui/material";
-import { getSVGIcon } from "@/helpers/utils";
-import theme from "@/theme/theme";
-import { useRouter } from "next/navigation";
+import { Grid } from "@mui/material";
 
 export default function DashboardClient() {
 
     const t = useTranslations();
-    const router = useRouter();
     const { showDashboardWelcomeModal, setShowDashboardWelcomeModal } = useApp();
     const [modalOpen, setModalOpen] = useState(false);
     
@@ -63,7 +59,7 @@ export default function DashboardClient() {
                 onDontShowAgain={handleDontShowAgain}
             />
             
-            <Carousel slides={ t("pages.signConnect.slides") } />
+            {/* <Carousel slides={ t("pages.signConnect.slides") } /> */}
 
             {welcome && (
                 <>

@@ -31,9 +31,12 @@ export default function SignConnectClient() {
         icon={ getSVGIcon('file-signature', 24, '#FFFFFF') }
         colorScheme="indigo"
       />
+
+      {/* <Spacer height={30} />
+      <Carousel slides={ t("pages.signConnect.slides") } /> */}
+      
       <Spacer height={30} />
-      <Carousel slides={ t("pages.signConnect.slides") } />
-      <Spacer height={30} />
+
       <Paper variant="outlined" className="flex flex-col items-center p-6 card-hover h-full">
         <Box className="w-45 h-45">
           <img src="/assets/images/SignConnect.jpg" alt={ t('pages.signConnect.signingPlatform.title') } />

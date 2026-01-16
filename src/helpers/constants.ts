@@ -1,1 +1,1 @@
-export const menuIconSize = 20;
+export const menuIconSize = 18;

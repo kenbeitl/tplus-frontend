@@ -114,8 +114,10 @@ export default function SafeConnectClient() {
         icon={ getSVGIcon('shield', 24, '#FFFFFF') }
         colorScheme="emerald"
       />
-      <Spacer height={30} />
-      <Carousel slides={ t("pages.safeConnect.slides") } />
+      
+      {/*<Spacer height={30} />
+      <Carousel slides={ t("pages.safeConnect.slides") } /> */}
+      
       <Divider className="my-9!" />
       <Box component="div" className="flex items-center mb-6">
         <StyledIcon 

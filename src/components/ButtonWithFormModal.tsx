@@ -43,6 +43,7 @@ export default function ButtonWithFormModal({
         sx: {
           width: '100%',
           mt: 'auto',
+          ...(variant === 'gradient' && { color: '#FFFFFF' }),
           ...buttonProps?.sx,
         },
         variant: variant as any,

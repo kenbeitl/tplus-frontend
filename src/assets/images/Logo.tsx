@@ -13,7 +13,7 @@ const Logo = ({
   ...props 
 }: LogoProps) => {
   const logoRatio = 960 / 464;
-  const logoWidth = width ?? (open ? 60 : 32);
+  const logoWidth = width ?? (open ? 60 : 36);
   const logoHeight = height ?? (logoWidth / logoRatio);
   
   return (
@@ -21,7 +21,7 @@ const Logo = ({
       xmlns="http://www.w3.org/2000/svg" 
       width={logoWidth} 
       height={logoHeight} 
-      viewBox="0 0 960 464"
+      viewBox={`0 0 ${!open ? 464 : 960} 464`}
       {...props}
     >
     <path
@@ -48,12 +48,14 @@ const Logo = ({
         fill: "#ffc800",
       }}
     />
-    <path
-      d="M691.288 142.119v209.474h-48.143V142.119h-75.628v-39.095h200.424v39.095h-76.652ZM960 237.893v43.363h-62.481v70.337h-45.242v-70.337h-62.653v-43.363h62.653v-67.264h45.242v67.264H960Z"
-      style={{
-        fill: "#0049dc",
-      }}
+    { open && 
+      <path
+        d="M691.288 142.119v209.474h-48.143V142.119h-75.628v-39.095h200.424v39.095h-76.652ZM960 237.893v43.363h-62.481v70.337h-45.242v-70.337h-62.653v-43.363h62.653v-67.264h45.242v67.264H960Z"
+        style={{
+          fill: "#0049dc",
+        }}
     />
+    }
   </svg>
   );
 };

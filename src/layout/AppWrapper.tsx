@@ -29,7 +29,7 @@ import theme from '@/theme/theme';
 import { Tag } from '@/components';
 
 const drawerWidth = 240;
-const drawerMiniWidth = 64;
+const drawerMiniWidth = 55;
 
 interface serviceProps {
   serviceName: string;
@@ -56,7 +56,6 @@ const AppBar = styled(MuiAppBar, {
 })<AppBarProps & { disableTransition?: boolean }>(({ theme, open, disableTransition, isAboveDesktop }) => ({
   border: 0,
   borderBottom: '1px solid ' + theme.palette.divider,
-  borderLeft: open ? 'none' : '1px solid ' + theme.palette.divider,
   marginLeft: open ? drawerWidth : (isAboveDesktop ? drawerMiniWidth : 0),
   width: open ? `calc(100% - ${drawerWidth}px)` : (isAboveDesktop ? `calc(100% - ${drawerMiniWidth}px)` : '100%' ),
   backgroundColor: '#F8FAFC',
@@ -70,7 +69,7 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const drawerMixin = (theme: Theme, open: boolean, disableTransition = false, isAboveDesktop = true): CSSObject => ({
-  width: open ? drawerWidth : (isAboveDesktop ? `calc(${theme.spacing(8)} + 1px)` : 0),
+  width: open ? drawerWidth : (isAboveDesktop ? drawerMiniWidth : 0),
   height: '100%',
   transition: disableTransition ? 'none' : theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,

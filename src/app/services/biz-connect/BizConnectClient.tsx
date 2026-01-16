@@ -46,7 +46,6 @@ export default function BizConnectClient() {
         };
     }, [t]);
 
-    
     return (
         <>
             <HeroSection
@@ -55,9 +54,12 @@ export default function BizConnectClient() {
                 icon={ getSVGIcon('briefcase', 24, '#FFFFFF') }
                 colorScheme="blue"
             />
+            
+            {/* <Spacer height={30} />
+            <Carousel slides={ t("pages.bizConnect.slides") } /> */}
+            
             <Spacer height={30} />
-            <Carousel slides={ t("pages.bizConnect.slides") } />
-            <Spacer height={30} />
+            
             <Paper variant="outlined" className={`${theme.palette.gradientClasses.slateBlueLight} p-6 border-2! border-blue-200/50! shadow-lg overflow-hidden`}>
                 <Box component="div" className="flex items-center gap-4 mb-3">
                     { getSVGIcon('shield', 32, theme.palette.text.blue) }
