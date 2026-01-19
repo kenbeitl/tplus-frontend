@@ -25,7 +25,7 @@ const BACKEND_URL = process.env.KEYCLOAK_API_URL || 'https://portal.tplus.ai/bac
  * Generic handler for Keycloak API requests
  * Handles session validation, API proxying, and error handling
  */
-export async function createKeycloakApiHandler(config: KeycloakApiConfig) {
+export function createKeycloakApiHandler(config: KeycloakApiConfig) {
   return async (request: NextRequest) => {
     try {
       // Validate session
