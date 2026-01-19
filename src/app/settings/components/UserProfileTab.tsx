@@ -84,14 +84,13 @@ export default function UserProfileTab() {
             });
 
             // Fetch updated user data and refresh session
-            const updatedUser = await keycloakApiService.refreshUser();
-            await updateSession();
+            // const updatedUser = await keycloakApiService.refreshUser();
 
             showSnackbar('Profile updated successfully!', 'success');
         } catch (error: any) {
             console.error('Update error:', error);
             const errorMessage = error.message || 'An error occurred while updating profile';
-            userForm.setFieldError('email', errorMessage);
+            showSnackbar(errorMessage, 'error');
         }
     };
 
