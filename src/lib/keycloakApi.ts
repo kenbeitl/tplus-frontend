@@ -9,6 +9,8 @@ interface KeycloakApiOptions<T = any> {
   body?: T;
 }
 
+type userRoles = "Admin" | "General";
+
 /**
  * Internal generic function to call Keycloak API endpoints
  * Not exported - use keycloakApiService methods instead for better type safety
@@ -80,4 +82,9 @@ export const keycloakApiService = {
   }) => callKeycloakApi('/update-company-profile', { method: 'PUT', body: data }),
 
   getAllUsers: () => callKeycloakApi('/get-all-users', { method: 'GET' }),
+
+  createUser: (data: {
+    email: string, 
+    userRole: userRoles
+  }) => callKeycloakApi('/create-user', { method: 'POST', body: data })
 };
