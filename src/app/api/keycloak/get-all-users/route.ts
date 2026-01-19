@@ -1,6 +1,6 @@
 import { createKeycloakApiHandler } from "../keycloakApiHandler";
 
 export const GET = createKeycloakApiHandler({
-  endpoint: '/api/keycloak/refresh-user',
+  endpoint: '/api/admin/group/members',
   method: 'GET',
 });
