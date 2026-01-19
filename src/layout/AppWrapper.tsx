@@ -201,7 +201,7 @@ export default function AppWrapper({
 
   return (
     <SnackbarProvider>
-      <Box component="div" className="app-layout min-h-screen">
+      <Box component="div" className={`app-layout min-h-screen ${theme.palette.gradientClasses.slateBlueIndigoLight}`}>
         <Box className="flex">
           <AppBar 
             position="fixed"

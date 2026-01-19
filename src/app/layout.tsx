@@ -40,7 +40,7 @@ export default function RootLayout({
                   <AuthWrapper>{children}</AuthWrapper>
                 ) : (
                   <AppWrapper>
-                    <Box component="div" className={`p-4 sm:p-6 ${theme.palette.gradientClasses.slateBlueIndigoLight}`}>{children}</Box>
+                    <Box component="div" className="p-4 sm:p-6">{children}</Box>
                   </AppWrapper>
                 )}
               </MUIThemeProvider>

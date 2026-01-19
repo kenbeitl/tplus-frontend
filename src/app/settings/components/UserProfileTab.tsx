@@ -12,7 +12,7 @@ import { Box, Card, Divider, Typography } from "@mui/material";
 import { getSVGIcon } from "@/helpers/utils";
 
 import UserInfoSection from './UserInfoSection';
-import DangerZoneSection from './DangerZoneSection';
+import DangerZoneSection from './_DangerZoneSection';
 
 export default function UserProfileTab() {
     const { data: session, tokenPayload } = useSession();
@@ -97,27 +97,6 @@ export default function UserProfileTab() {
         }
     };
 
-    const handleDeleteAccount = async () => {
-        try {
-            const response = await fetch('/api/settings', {
-                method: 'DELETE',
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                showSnackbar(data.error || 'Failed to delete account', 'error');
-                return;
-            }
-
-            showSnackbar('Account deleted successfully', 'success');
-            window.location.href = '/login';
-        } catch (error) {
-            console.error('Delete error:', error);
-            showSnackbar('An error occurred while deleting account', 'error');
-        }
-    };
-
     return (
         <Card variant="outlined" className="p-6 card-hover">
             <Box component="div" className="flex items-center gap-2 mb-1!">
@@ -136,10 +115,6 @@ export default function UserProfileTab() {
                 formConfig={formConfig}
                 onUpdate={handleUpdateProfile}
             />
-
-            <Divider className="my-3!" />
-
-            <DangerZoneSection onDelete={handleDeleteAccount} />
         </Card>
     );
 }
