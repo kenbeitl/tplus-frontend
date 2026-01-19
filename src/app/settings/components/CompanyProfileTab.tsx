@@ -4,7 +4,7 @@ import React from "react";
 import { useSession } from '@/hooks/useSession';
 import { useTranslations } from '@/contexts/AppContext';
 import { useSnackbar } from '@/contexts/SnackbarContext';
-import { callKeycloakApi } from '@/lib/keycloakApi';
+import { keycloakApiService } from '@/lib/keycloakApi';
 import { Spacer, FormSelect, Tag } from "@/components";
 import { Box, Button, Card, Divider, Grid, Paper, Switch, TextField, Typography } from "@mui/material";
 import { SelectChangeEvent } from '@mui/material';
@@ -81,10 +81,7 @@ export default function CompanyProfileTab() {
                 },
             };
 
-            await callKeycloakApi('/update-company-profile', {
-                method: 'PUT',
-                body: requestBody,
-            });
+            await keycloakApiService.updateCompanyProfile(requestBody);
 
             showSnackbar('Company profile updated successfully!', 'success');
         } catch (error: any) {

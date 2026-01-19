@@ -10,25 +10,13 @@ interface KeycloakApiOptions<T = any> {
 }
 
 /**
- * Generic function to call any Keycloak API endpoint
+ * Internal generic function to call Keycloak API endpoints
+ * Not exported - use keycloakApiService methods instead for better type safety
  * @param endpoint - The endpoint path (e.g., '/reset-password', '/update-profile')
  * @param options - Request options (method, body)
  * @returns Response data
- * 
- * @example
- * // Simple POST
- * await callKeycloakApi('/reset-password', { method: 'POST' });
- * 
- * // PUT with body
- * await callKeycloakApi('/update-profile', {
- *   method: 'PUT',
- *   body: { email, firstName, lastName }
- * });
- * 
- * // GET request
- * await callKeycloakApi('/user-details', { method: 'GET' });
  */
-export async function callKeycloakApi<TResponse = any, TBody = any>(
+async function callKeycloakApi<TResponse = any, TBody = any>(
   endpoint: string,
   options: KeycloakApiOptions<TBody> = {}
 ): Promise<TResponse> {
@@ -59,8 +47,8 @@ export async function callKeycloakApi<TResponse = any, TBody = any>(
 }
 
 /**
- * Legacy service methods - kept for backward compatibility
- * New code should use callKeycloakApi() directly
+ * Keycloak API service methods
+ * Use these typed methods instead of calling API routes directly
  */
 export const keycloakApiService = {
   resetPassword: () => callKeycloakApi('/reset-password', { method: 'POST' }),
@@ -74,4 +62,22 @@ export const keycloakApiService = {
   }) => callKeycloakApi('/update-profile', { method: 'PUT', body: data }),
   
   refreshUser: () => callKeycloakApi('/refresh-user', { method: 'GET' }),
+
+  updateCompanyProfile: (data: {
+    id: string;
+    name: string;
+    attributes: {
+      name: string[];
+      relatedIndustries: string[];
+      addressBlkBldg: string[];
+      addressStreet: string[];
+      addressDistrict: string[];
+      addressCity: string[];
+      websiteURL: string[];
+      cetsID: string[];
+      numOfEmployeeInHK: string[];
+    };
+  }) => callKeycloakApi('/update-company-profile', { method: 'PUT', body: data }),
+
+  getAllUsers: () => callKeycloakApi('/get-all-users', { method: 'GET' }),
 };
