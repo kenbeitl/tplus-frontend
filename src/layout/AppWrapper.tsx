@@ -130,7 +130,7 @@ export default function AppWrapper({
   const logout = useLogout();
   const user = session?.user;
   const companyName = tokenPayload?.companyName || '';
-  const user_role = tokenPayload?.user_role;
+  const userRole = tokenPayload?.customUserAttributes?.userRole;
   
   const serviceList: serviceProps[] = t('nav.serviceList');
 
@@ -288,7 +288,7 @@ export default function AppWrapper({
                   <Box component="div"><Typography variant="subtitle1" className="font-bold">{ user?.name }</Typography></Box>
                   <Box component="div"><Typography variant="caption">{ user?.email }</Typography></Box>
                   <Box component="div"><Typography variant="caption">{ companyName }</Typography></Box>
-                  <Tag variant="white" label={ user_role } className="inline-flex!" />
+                  <Tag variant="white" label={ userRole } className="inline-flex!" />
                 </Box>
               }
               <Divider className="m-0!" />

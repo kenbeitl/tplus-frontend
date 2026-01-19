@@ -10,7 +10,7 @@ import TabContext from '@mui/lab/TabContext';
 
 // Import tab components
 import UserProfileTab from './components/UserProfileTab';
-import CompanyProfileTab from './components/CompanyProfileTab';
+import CompanyProfileTab from './components/_CompanyProfileTab';
 import ManageUsersTab from "./components/ManageUsersTab";
 
 export default function SettingsClient() {
@@ -18,7 +18,7 @@ export default function SettingsClient() {
     const t = useTranslations();
     const [value, setValue] = React.useState('1');
 
-    const isAdmin = tokenPayload?.user_role?.toLowerCase() === 'admin';
+    const isAdmin = tokenPayload?.customUserAttributes?.userRole?.toLowerCase() === 'admin';
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);

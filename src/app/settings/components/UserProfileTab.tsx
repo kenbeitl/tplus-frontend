@@ -48,7 +48,7 @@ export default function UserProfileTab() {
         firstName: tokenPayload?.given_name || '',
         lastName: tokenPayload?.family_name || '',
         companyName: tokenPayload?.companyName || '',
-        userRole: tokenPayload?.user_role || tokenPayload?.cust_user_role || '',
+        userRole: tokenPayload?.customUserAttributes?.userRole || '',
         email: tokenPayload?.email || '',
         currentPassword: '',
         newPassword: '',

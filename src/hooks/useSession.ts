@@ -5,19 +5,30 @@ import type { Session } from 'next-auth';
 
 export interface TokenPayload {
   [key: string]: any;
-  // Keycloak token fields
+  // JWT standard fields
   sub?: string;
+  exp?: number;
+  iat?: number;
+  auth_time?: number;
+  jti?: string;
+  iss?: string;
+  aud?: string;
+  typ?: string;
+  azp?: string;
+  sid?: string;
+  acr?: string;
+  scope?: string;
+  // User profile fields
   email?: string;
   email_verified?: boolean;
   name?: string;
   given_name?: string;
   family_name?: string;
   preferred_username?: string;
-  display_name?: string;
-  user_role?: string;
-  cust_user_role?: string;
   companyName?: string;
   company?: any[];
+  // Access control
+  "allowed-origins"?: string[];
   realm_access?: {
     roles: string[];
   };
@@ -26,9 +37,11 @@ export interface TokenPayload {
       roles: string[];
     };
   };
-  exp?: number;
-  iat?: number;
-  auth_time?: number;
+  // Custom attributes
+  customUserAttributes?: {
+    companyName?: string;
+    userRole?: string;
+  };
 }
 
 export interface ExtendedSession extends Session {
@@ -45,7 +58,7 @@ export function useSession() {
 
     try {
       const decoded = jwtDecode<TokenPayload>(session.accessToken);
-      // console.log(decoded);
+      console.log(decoded);
       return decoded;
     } catch (error) {
       console.error('Failed to decode token:', error);

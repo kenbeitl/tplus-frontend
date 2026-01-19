@@ -13,7 +13,7 @@ export default function CompanyProfileTab() {
     const { data: session, tokenPayload } = useSession();
     const t = useTranslations();
 
-    const isAdmin = tokenPayload?.user_role?.toLowerCase() === 'admin';
+    const isAdmin = tokenPayload?.customUserAttributes?.userRole?.toLowerCase() === 'admin';
 
     const formConfig = React.useMemo(() => {
         const form = t('pages.settings.form');
