@@ -1,0 +1,7 @@
+{
+    "title": "开始之前",
+    "context": "持有香港身份证的用户将通过 {slot} 进行签署",
+    "digitalIdentityRequired": "所需数字身份：{digitalIdentity}",
+    "applyFor": "申请 {digitalIdentity}",
+    "buttonText": "登录 {signingPlatform}"
+}

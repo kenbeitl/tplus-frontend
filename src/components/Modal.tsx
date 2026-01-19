@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Modal as MuiModal, Box, IconButton } from '@mui/material';
 import { getSVGIcon } from '@/helpers/utils';
+import theme from '@/theme/theme';
 
 interface ModalProps {
   open: boolean;
@@ -32,8 +33,8 @@ export default function Modal({
           transform: 'translate(-50%, -50%)',
           width: '90%',
           maxWidth: maxWidth,
-          bgcolor: 'background.paper',
-          borderRadius: 2,
+          bgcolor: theme.palette.background.slate,
+          borderRadius: 1,
           boxShadow: 24,
           p: 4,
           maxHeight: '95vh',

@@ -19,7 +19,7 @@
             },
             {
                 "title": "Prepare Your Documents and Activation Code",
-                "context": "Have your e-passport ready for scanning. Input activation code \"TPLUS@T6LK30\" in the App."
+                "context": "Have your e-passport ready for scanning. Input activation code {code} in the App."
             },
             {
                 "title": "Complete Identity Verification",

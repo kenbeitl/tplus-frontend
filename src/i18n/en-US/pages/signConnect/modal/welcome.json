@@ -1,0 +1,26 @@
+{
+    "title": "Welcome to Tradelink Digital Signing",
+    "selectYourDocumentType": "Select your document type",
+    "documentTypes": [
+        {
+            "id": "hkid",
+            "icon": "id-card",
+            "iconStyle": "from-blue-500 to-cyan-400",
+            "shorthand": "HKID",
+            "type": "Hong Kong Identity Card",
+            "bestFor": "Best for: Hong Kong Residents",
+            "cardStyle": "from-blue-50 via-cyan-50 to-blue-50",
+            "titleStyle": "from-blue-600 to-cyan-500"
+        },
+        {
+            "id": "e-Passport",
+            "icon": "plane",
+            "iconStyle": "from-indigo-500 to-purple-400",
+            "shorthand": "e-Passport",
+            "type": "ICAO compliant e-Passport",
+            "bestFor": "Best for: International Users",
+            "cardStyle": "from-indigo-50 via-purple-50 to-indigo-50",
+            "titleStyle": "from-indigo-600 to-purple-500"
+        }
+    ]
+}

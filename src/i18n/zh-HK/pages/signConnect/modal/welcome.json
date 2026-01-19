@@ -1,0 +1,26 @@
+{
+    "title": "歡迎使用 Tradelink 數位簽章",
+    "selectYourDocumentType": "請選擇您的證件類型",
+    "documentTypes": [
+        {
+            "id": "hkid",
+            "icon": "id-card",
+            "iconStyle": "from-blue-500 to-cyan-400",
+            "shorthand": "香港身分證",
+            "type": "香港身分證",
+            "bestFor": "適用於：香港居民",
+            "cardStyle": "from-blue-50 via-cyan-50 to-blue-50",
+            "titleStyle": "from-blue-600 to-cyan-500"
+        },
+        {
+            "id": "e-Passport",
+            "icon": "plane",
+            "iconStyle": "from-indigo-500 to-purple-400",
+            "shorthand": "電子護照",
+            "type": "符合 ICAO 標準的電子護照",
+            "bestFor": "適用於：國際用戶",
+            "cardStyle": "from-indigo-50 via-purple-50 to-indigo-50",
+            "titleStyle": "from-indigo-600 to-purple-500"
+        }
+    ]
+}

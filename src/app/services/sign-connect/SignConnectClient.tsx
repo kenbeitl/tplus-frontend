@@ -1,22 +1,35 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 import theme from '@/theme/theme';
 import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material';
-import { Spacer, StyledIcon, HeroSection, Carousel } from '@/components';
+import { Spacer, HeroSection, Carousel } from '@/components';
 import { useModal } from '@/hooks/useModal';
 import { useTranslations } from '@/contexts/AppContext';
-import { ModalBeforeYouStartTradelink } from './modal';
+import { ModalHowToApplyForIDOne ,ModalWelcome, ModalBeforeYouStart } from './modal';
 import { getSVGIcon } from '@/helpers/utils';
+
+type docTypes = "hkid" | "e-Passport";
 
 export default function SignConnectClient() {
   const t = useTranslations();
-  const tradelinkModal = useModal();
+  const welcomeModal = useModal();
+  const beforeYouStartModal = useModal();
+  const howToApplyForIDOneModal = useModal();
   const router = useRouter();
+  const [selectedDocType, setSelectedDocType] = useState<docTypes | null>(null);
 
   const DIGITAL_SIGNING_PLATFORMS = t('pages.signConnect.signingPlatform.platforms');
 
+  const openBeforeYouStartModal = (docType: docTypes) => {
+    setSelectedDocType(docType);
+    beforeYouStartModal.handleOpen();
+  }
+  const openApplyForIDOneModal = () => {
+    howToApplyForIDOneModal.handleOpen();
+  }
   return (
     <>
       <HeroSection
@@ -64,7 +77,7 @@ export default function SignConnectClient() {
                   className={platform.isActive ? 'bg-linear-to-r from-blue-600 to-blue-700 text-white! hover:from-blue-700 hover:to-blue-800 transition-colors!' : ''}
                   variant={platform.isActive ? 'contained' : 'outlined'}
                   disabled={!platform.isActive}
-                  onClick={platform.isActive ? (platform.action === 'open-modal' ? () => tradelinkModal.handleOpen() : undefined ) : undefined}
+                  onClick={platform.isActive ? (platform.action === 'open-modal' ? () => welcomeModal.handleOpen() : undefined ) : undefined}
                   sx={{ width: '100%', mt: 'auto' }}
                 >
                   {platform.isActive ? t('pages.signConnect.selectService') : t('common.comingSoon')}
@@ -84,9 +97,24 @@ export default function SignConnectClient() {
         </Box>
       </Paper>
 
-      <ModalBeforeYouStartTradelink
-        open={tradelinkModal.open}
-        onClose={tradelinkModal.handleClose}
+      <ModalWelcome
+        open={welcomeModal.open}
+        onClose={welcomeModal.handleClose}
+        docType={selectedDocType}
+        updateDocType={setSelectedDocType}
+        handleContinue={openBeforeYouStartModal}
+      />
+
+      <ModalBeforeYouStart
+        open={beforeYouStartModal.open}
+        onClose={beforeYouStartModal.handleClose}
+        docType={selectedDocType}
+        handleContinue={openApplyForIDOneModal}
+      />
+
+      <ModalHowToApplyForIDOne 
+        open={howToApplyForIDOneModal.open}
+        onClose={howToApplyForIDOneModal.handleClose}
       />
     </>
   );

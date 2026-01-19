@@ -45,6 +45,7 @@
             {
                 "icon": "file-pen-line",
                 "name": "Tradelink",
+                "logo": "logo-tradelink.svg",
                 "description": "使用iAM Smart+和iD-One的基本签署功能",
                 "list": [
                     "基本签署功能",
@@ -58,6 +59,7 @@
             {
                 "icon": "file-text",
                 "name": "DocuSign",
+                "logo": "logo-docusign.svg",
                 "description": "行业领先的电子签名解决方案，确保文件安全签署。",
                 "list": [
                     "使用iD-One签署",
@@ -70,6 +72,7 @@
             {
                 "icon": "brain",
                 "name": "法大大",
+                "logo": "logo-fadada.png",
                 "description": "行业领先的电子签名解决方案，确保文件安全签署。",
                 "list": [
                     "使用iD-One签署",

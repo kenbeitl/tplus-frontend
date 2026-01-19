@@ -1,0 +1,7 @@
+{
+    "title": "開始之前",
+    "context": "持有香港身份證的用戶將通過 {slot} 進行簽署",
+    "digitalIdentityRequired": "所需數字身份：{digitalIdentity}",
+    "applyFor": "申請 {digitalIdentity}",
+    "buttonText": "登錄 {signingPlatform}"
+}

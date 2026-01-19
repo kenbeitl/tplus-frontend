@@ -185,7 +185,7 @@ export default function BizConnectClient() {
                                             <ListItemIcon>
                                                 { getSVGIcon('circle-check-big', 16, theme.palette.icon.lightGreen) }
                                             </ListItemIcon>
-                                            <ListItemText primary={point} primaryTypographyProps={{ sx: { fontSize: '14px' } }} />
+                                            <ListItemText primary={point} slotProps={{ primary: { sx: { fontSize: '14px'} } }} />
                                         </ListItem>
                                     ))}
                                 </List>

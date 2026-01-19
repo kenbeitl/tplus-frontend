@@ -16,7 +16,7 @@ const CONTACT_SUPPORT_TEMPLATE_ID = 'contact-support';
 const TextField = styled(MuiTextField)({
   '& .MuiOutlinedInput-root': {
     borderRadius: 10,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: theme.palette.background.slate,
     height: 34,
     fontSize: 14,
   },

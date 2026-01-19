@@ -47,9 +47,10 @@
     "common": {
         "acceptAndContinue": "Accept and Continue",
         "apply": "Apply",
-        "applyNow": "Apply Now",
+        "applyNow": "Apply Now",        
         "availableSoon": "Available Soon",
         "back": "Back",
+        "cancel": "Cancel",
         "clickToViewProvider": "Click to view provider",
         "comingSoon": "Coming Soon",
         "contactSupport": "Contact Support",

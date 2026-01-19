@@ -1,0 +1,7 @@
+{
+    "title": "Before You Start",
+    "context": "HKID holders will be signing via {slot}",
+    "digitalIdentityRequired": "Digital Identity Required: {digitalIdentity}",
+    "applyFor": "Apply for {digitalIdentity}",
+    "buttonText": "Log in to {signingPlatform}"
+}

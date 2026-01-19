@@ -1,0 +1,18 @@
+{
+    "hkid": {
+        "signVia": "透过 iAM Smart+ 进入 DMSS",
+        "platform": "iAM Smart+",
+        "platformLink": "https://www.iamsmart.gov.hk/sc/reg.html",
+        "logo": "logo-iam-smart-plus.png",
+        "digitalSigning": "DMSS",
+        "buttonLink": "https://dmss.tradelink.com.hk/dmss/web/secure"    
+    },
+    "e-Passport": {
+        "signVia": "透过 iD-One 进入 Tradelink Sign",
+        "platform": "iD-One",
+        "platformLink": "open-modal",
+        "logo": "logo-iDOne.svg",
+        "digitalSigning": "Tradelink Sign",
+        "buttonLink": "https://rssp.tradelink.com.hk/tradelinksign/services/w3c/index"
+    }
+}

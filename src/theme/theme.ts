@@ -110,6 +110,7 @@ declare module '@mui/material/styles' {
     red: string;
     darkGrey: string;
     black: string;
+    slate: string;
   }
   
   interface TypeText {
@@ -181,6 +182,7 @@ const theme = createTheme({
       red: 'red',
       darkGrey: '#1f2937',
       black: '#000000',
+      slate: '#F8FAFC',
     },
     gradient: GRADIENTS,
     gradientClasses: GRADIENT_CLASSES,
@@ -190,8 +192,8 @@ const theme = createTheme({
         text: '#016630',
       },
       blue: {
-        background: '#84baff',
-        text: '#000000',
+        background: '#DBEAFE',
+        text: '#1D4ED8',
       },
       white: {
         background: '#FFFFFF',
@@ -368,6 +370,9 @@ const theme = createTheme({
         root: {
           padding: 0,
           marginBottom: 6,
+          '&:last-of-type': {
+            marginBottom: 0,
+          },
         }
       }
     },
@@ -408,7 +413,7 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          paddingLeft: '1.25rem',
+          paddingLeft: '1.5rem',
           paddingRight: '1.5rem',
           fontSize: 16,
           lineHeight: 2.25,
