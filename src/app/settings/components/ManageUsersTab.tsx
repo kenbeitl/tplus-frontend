@@ -3,7 +3,7 @@
 import { useSession } from '@/hooks/useSession';
 import { useTranslations } from '@/contexts/AppContext';
 import { useSnackbar } from '@/contexts/SnackbarContext';
-import { keycloakApiService } from '@/lib/keycloakApi';
+import { keycloakApiService, userRoles } from '@/lib/keycloakApi';
 import { Spacer, Tag } from "@/components";
 import Modal from '@/components/Modal';
 import { 
@@ -50,7 +50,7 @@ export default function ManageUsersTab() {
     const [nameFilter, setNameFilter] = useState('Name');
     const [roleFilter, setRoleFilter] = useState('All Roles');
     const [openModal, setOpenModal] = useState(false);
-    const [formData, setFormData] = useState({ email: '', role: 'General' });
+    const [formData, setFormData] = useState<{ email: string; role: userRoles }>({ email: '', role: 'General' });
     const [submitting, setSubmitting] = useState(false);
 
     const translations = useMemo(() => {

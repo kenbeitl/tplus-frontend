@@ -9,7 +9,7 @@ interface KeycloakApiOptions<T = any> {
   body?: T;
 }
 
-type userRoles = "Admin" | "General";
+export type userRoles = "Admin" | "General";
 
 /**
  * Internal generic function to call Keycloak API endpoints
