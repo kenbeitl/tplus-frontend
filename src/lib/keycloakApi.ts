@@ -72,4 +72,6 @@ export const keycloakApiService = {
     companyName: string;
     userRole: string;
   }) => callKeycloakApi('/update-profile', { method: 'PUT', body: data }),
+  
+  refreshUser: () => callKeycloakApi('/refresh-user', { method: 'GET' }),
 };

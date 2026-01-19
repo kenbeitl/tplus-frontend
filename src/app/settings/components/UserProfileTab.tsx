@@ -83,7 +83,8 @@ export default function UserProfileTab() {
                 userRole: userForm.values.userRole,
             });
 
-            // Refresh session to get updated token with new user data
+            // Fetch updated user data and refresh session
+            const updatedUser = await keycloakApiService.refreshUser();
             await updateSession();
 
             showSnackbar('Profile updated successfully!', 'success');
