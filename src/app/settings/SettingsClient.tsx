@@ -10,7 +10,7 @@ import TabContext from '@mui/lab/TabContext';
 
 // Import tab components
 import UserProfileTab from './components/UserProfileTab';
-import CompanyProfileTab from './components/_CompanyProfileTab';
+import CompanyProfileTab from './components/CompanyProfileTab';
 import ManageUsersTab from "./components/ManageUsersTab";
 
 export default function SettingsClient() {

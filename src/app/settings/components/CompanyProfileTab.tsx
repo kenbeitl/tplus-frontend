@@ -3,6 +3,8 @@
 import React from "react";
 import { useSession } from '@/hooks/useSession';
 import { useTranslations } from '@/contexts/AppContext';
+import { useSnackbar } from '@/contexts/SnackbarContext';
+import { callKeycloakApi } from '@/lib/keycloakApi';
 import { Spacer, FormSelect, Tag } from "@/components";
 import { Box, Button, Card, Divider, Grid, Paper, Switch, TextField, Typography } from "@mui/material";
 import { SelectChangeEvent } from '@mui/material';
@@ -12,6 +14,7 @@ import theme from "@/theme/theme";
 export default function CompanyProfileTab() {
     const { data: session, tokenPayload } = useSession();
     const t = useTranslations();
+    const { showSnackbar } = useSnackbar();
 
     const isAdmin = tokenPayload?.customUserAttributes?.userRole?.toLowerCase() === 'admin';
 
@@ -26,12 +29,15 @@ export default function CompanyProfileTab() {
     }, [t]);
 
     const [companyForm, setCompanyForm] = React.useState({
-        companyName: tokenPayload?.companyName || '',
-        industry: (tokenPayload?.company as any)?.industry || '',
-        location: (tokenPayload?.company as any)?.location || '',
-        websiteURL: (tokenPayload?.company as any)?.websiteURL || '',
-        cetsID: (tokenPayload?.company as any)?.cetsID || '',
-        employeeCount: (tokenPayload?.company as any)?.employeeCount || '',
+        name: tokenPayload?.companyName || '',
+        relatedIndustries: (tokenPayload?.company as any)?.[0]?.relatedIndustries || '',
+        addressBlkBldg: (tokenPayload?.company as any)?.[0]?.addressBlkBldg || '',
+        addressStreet: (tokenPayload?.company as any)?.[0]?.addressStreet || '',
+        addressDistrict: (tokenPayload?.company as any)?.[0]?.addressDistrict || '',
+        addressCity: (tokenPayload?.company as any)?.[0]?.addressCity || '',
+        websiteURL: (tokenPayload?.company as any)?.[0]?.websiteURL || '',
+        cetsID: (tokenPayload?.company as any)?.[0]?.cetsID || '',
+        numOfEmployeeInHK: (tokenPayload?.company as any)?.[0]?.numOfEmployeeInHK || '',
     });
 
     const handleSelectChange = (event: SelectChangeEvent) => {
@@ -41,8 +47,50 @@ export default function CompanyProfileTab() {
         });
     };
 
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCompanyForm({
+            ...companyForm,
+            [event.target.name]: event.target.value,
+        });
+    };
+
     const handleUpdateProfile = async () => {
-        // Implement update logic here
+        try {
+            // Get company/group ID from token payload (company is an array)
+            const companyId = (tokenPayload?.company as any)?.[0]?.id;
+            
+            if (!companyId) {
+                showSnackbar('Company ID not found', 'error');
+                return;
+            }
+
+            // Transform form data to match API schema (each field must be an array)
+            const requestBody = {
+                id: companyId,
+                name: companyForm.name,
+                attributes: {
+                    name: [companyForm.name],
+                    relatedIndustries: [companyForm.relatedIndustries],
+                    addressBlkBldg: [companyForm.addressBlkBldg],
+                    addressStreet: [companyForm.addressStreet],
+                    addressDistrict: [companyForm.addressDistrict],
+                    addressCity: [companyForm.addressCity],
+                    websiteURL: [companyForm.websiteURL],
+                    cetsID: [companyForm.cetsID],
+                    numOfEmployeeInHK: [companyForm.numOfEmployeeInHK],
+                },
+            };
+
+            await callKeycloakApi('/update-company-profile', {
+                method: 'PUT',
+                body: requestBody,
+            });
+
+            showSnackbar('Company profile updated successfully!', 'success');
+        } catch (error: any) {
+            console.error('Update company profile error:', error);
+            showSnackbar(error.message || 'Failed to update company profile', 'error');
+        }
     };
 
     return (
@@ -56,23 +104,28 @@ export default function CompanyProfileTab() {
             <Typography variant="body2" component="p">
                 { t("pages.settings.companyProfile.context") }
             </Typography>
+            
+
+            { !isAdmin && 
+                <>
+                    <Spacer height={30} />
+                    <Card variant="outlined" className="p-3 bg-amber-50! border-amber-200!">
+                        <Box component="div" className="flex items-center gap-2 mb-1">
+                            { getSVGIcon('eye', 20, theme.palette.text.gold) }
+                            <Typography variant="h6" component="h2" color={theme.palette.text.darkAmber}>
+                                { t("pages.settings.companyProfile.viewOnly.title") }
+                            </Typography>
+                        </Box>
+                        <Typography variant="caption" component="h2" color={theme.palette.text.darkAmber}>
+                            { t("pages.settings.companyProfile.viewOnly.description") }
+                        </Typography>
+                    </Card>
+                </>
+            }
+
             <Spacer height={30} />
 
-            <Card variant="outlined" className="p-3 bg-amber-50! border-amber-200!">
-                <Box component="div" className="flex items-center gap-2 mb-1">
-                    { getSVGIcon('eye', 20, theme.palette.text.gold) }
-                    <Typography variant="h6" component="h2" color={theme.palette.text.darkAmber}>
-                        { t("pages.settings.companyProfile.viewOnly.title") }
-                    </Typography>
-                </Box>
-                <Typography variant="caption" component="h2" color={theme.palette.text.darkAmber}>
-                    { t("pages.settings.companyProfile.viewOnly.description") }
-                </Typography>
-            </Card>
-
-            <Spacer height={30} />
-
-            <Card variant="outlined" className="p-3 bg-amber-50! border-amber-200! relative">
+            {/* <Card variant="outlined" className="p-3 bg-amber-50! border-amber-200! relative">
                 <Box component="div" className="flex justify-between items-center">
                     <Box component="div">
                         <Box component="div" className="flex items-center gap-2 mb-1!">
@@ -93,15 +146,16 @@ export default function CompanyProfileTab() {
                 </Box>
             </Card>
 
-            <Divider className="my-12!" />
+            <Divider className="my-12!" /> */}
 
             <Grid container spacing={2}>
                 <Grid size={{ xs: 12, sm: 6 }}>
                     <TextField
-                        name="companyName"
+                        name="name"
                         label={formConfig.labels.companyName}
-                        value={companyForm.companyName}
-                        placeholder="Demo Company"
+                        value={companyForm.name}
+                        onChange={handleInputChange}
+                        placeholder="Company Name"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
                         disabled={!isAdmin}
@@ -109,9 +163,9 @@ export default function CompanyProfileTab() {
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
                     <FormSelect
-                        name="industry"
+                        name="relatedIndustries"
                         label={formConfig.labels.industry}
-                        value={companyForm.industry}
+                        value={companyForm.relatedIndustries}
                         onChange={handleSelectChange}
                         options={formConfig.industryOptions}
                         disabled={!isAdmin}
@@ -119,10 +173,47 @@ export default function CompanyProfileTab() {
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
                     <TextField
-                        name="location"
-                        label={formConfig.labels.location}
-                        value={companyForm.location}
-                        placeholder="City, Country"
+                        name="addressBlkBldg"
+                        label={formConfig.labels.addressBlkBldg || "Block/Building"}
+                        value={companyForm.addressBlkBldg}
+                        onChange={handleInputChange}
+                        placeholder="Block/Building"
+                        slotProps={{ inputLabel: { shrink: true } }}
+                        fullWidth
+                        disabled={!isAdmin}
+                    />
+                </Grid>
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <TextField
+                        name="addressStreet"
+                        label={formConfig.labels.addressStreet || "Street"}
+                        value={companyForm.addressStreet}
+                        onChange={handleInputChange}
+                        placeholder="Street Address"
+                        slotProps={{ inputLabel: { shrink: true } }}
+                        fullWidth
+                        disabled={!isAdmin}
+                    />
+                </Grid>
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <TextField
+                        name="addressDistrict"
+                        label={formConfig.labels.addressDistrict || "District"}
+                        value={companyForm.addressDistrict}
+                        onChange={handleInputChange}
+                        placeholder="District"
+                        slotProps={{ inputLabel: { shrink: true } }}
+                        fullWidth
+                        disabled={!isAdmin}
+                    />
+                </Grid>
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <TextField
+                        name="addressCity"
+                        label={formConfig.labels.addressCity || "City"}
+                        value={companyForm.addressCity}
+                        onChange={handleInputChange}
+                        placeholder="City"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
                         disabled={!isAdmin}
@@ -133,7 +224,8 @@ export default function CompanyProfileTab() {
                         name="websiteURL"
                         label={formConfig.labels.websiteURL}
                         value={companyForm.websiteURL}
-                        placeholder="https://www.company.com"
+                        onChange={handleInputChange}
+                        placeholder="https://www.example.com"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
                         disabled={!isAdmin}
@@ -144,7 +236,8 @@ export default function CompanyProfileTab() {
                         name="cetsID"
                         label={formConfig.labels.cetsID}
                         value={companyForm.cetsID}
-                        placeholder="Enter CETS"
+                        onChange={handleInputChange}
+                        placeholder="CETS ID"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
                         disabled={!isAdmin}
@@ -152,9 +245,9 @@ export default function CompanyProfileTab() {
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
                     <FormSelect
-                        name="employeeCount"
+                        name="numOfEmployeeInHK"
                         label={formConfig.labels.employeeCount}
-                        value={companyForm.employeeCount}
+                        value={companyForm.numOfEmployeeInHK}
                         onChange={handleSelectChange}
                         options={formConfig.employeeCountOptions}
                         disabled={!isAdmin}
@@ -162,16 +255,18 @@ export default function CompanyProfileTab() {
                 </Grid>
             </Grid>
 
-            <Box component="div" className="flex justify-end mt-4!">
-                <Button
-                    variant="gradient"
-                    color="blue"
-                    onClick={handleUpdateProfile}
-                    sx={{ width: 'auto' }}
-                >
-                    {t('common.saveProfile')}
-                </Button>
-            </Box>
+            { isAdmin &&
+                <Box component="div" className="flex justify-end mt-4!">
+                    <Button
+                        variant="gradient"
+                        color="blue"
+                        onClick={handleUpdateProfile}
+                        sx={{ width: 'auto' }}
+                    >
+                        {t('common.saveProfile')}
+                    </Button>
+                </Box>
+            }
 
             {/* <Spacer height={30} />
 
