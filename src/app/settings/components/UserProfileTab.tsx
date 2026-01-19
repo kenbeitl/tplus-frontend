@@ -15,7 +15,7 @@ import UserInfoSection from './UserInfoSection';
 import DangerZoneSection from './_DangerZoneSection';
 
 export default function UserProfileTab() {
-    const { data: session, tokenPayload } = useSession();
+    const { data: session, tokenPayload, update: updateSession } = useSession();
     const t = useTranslations();
     const { showSnackbar } = useSnackbar();
 
@@ -68,31 +68,28 @@ export default function UserProfileTab() {
         userForm.clearFieldError('lastName');
         userForm.clearFieldError('companyName');
         userForm.clearFieldError('email');
+        userForm.clearFieldError('userRole');
 
         if (!userForm.validateAll()) {
             return;
         }
 
-        if (!session?.accessToken) {
-            userForm.setFieldError('email', 'No access token available');
-            return;
-        }
-
         try {
-            await keycloakApiService.updateUserProfile(
-                session.accessToken,
-                {
-                    email: userForm.values.email,
-                    firstName: userForm.values.firstName,
-                    lastName: userForm.values.lastName,
-                    companyName: userForm.values.companyName,
-                }
-            );
+            await keycloakApiService.updateUserProfile({
+                email: userForm.values.email,
+                firstName: userForm.values.firstName,
+                lastName: userForm.values.lastName,
+                companyName: userForm.values.companyName,
+                userRole: userForm.values.userRole,
+            });
+
+            // Refresh session to get updated token with new user data
+            await updateSession();
 
             showSnackbar('Profile updated successfully!', 'success');
         } catch (error: any) {
             console.error('Update error:', error);
-            const errorMessage = error.response?.data?.message || error.response?.data?.error || 'An error occurred while updating profile';
+            const errorMessage = error.message || 'An error occurred while updating profile';
             userForm.setFieldError('email', errorMessage);
         }
     };

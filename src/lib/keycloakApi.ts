@@ -1,92 +1,75 @@
-import axios, { AxiosInstance } from 'axios';
+/**
+ * Generic Keycloak API client
+ * Calls Next.js API routes under /api/keycloak/*
+ * No need to add methods here - just create the API route and call it directly
+ */
 
-// Create axios instance for Keycloak API
-const keycloakApi: AxiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_KEYCLOAK_API_URL || 'https://portal.tplus.ai/backend-api-service',
-  timeout: 10000,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+interface KeycloakApiOptions<T = any> {
+  method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+  body?: T;
+}
 
-// Request interceptor - automatically adds Authorization header if accessToken is provided
-keycloakApi.interceptors.request.use(
-  (config) => {
-    // If accessToken is provided in custom config, add Authorization header
-    if (config.headers && (config as any).accessToken) {
-      config.headers.Authorization = `Bearer ${(config as any).accessToken}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
+/**
+ * Generic function to call any Keycloak API endpoint
+ * @param endpoint - The endpoint path (e.g., '/reset-password', '/update-profile')
+ * @param options - Request options (method, body)
+ * @returns Response data
+ * 
+ * @example
+ * // Simple POST
+ * await callKeycloakApi('/reset-password', { method: 'POST' });
+ * 
+ * // PUT with body
+ * await callKeycloakApi('/update-profile', {
+ *   method: 'PUT',
+ *   body: { email, firstName, lastName }
+ * });
+ * 
+ * // GET request
+ * await callKeycloakApi('/user-details', { method: 'GET' });
+ */
+export async function callKeycloakApi<TResponse = any, TBody = any>(
+  endpoint: string,
+  options: KeycloakApiOptions<TBody> = {}
+): Promise<TResponse> {
+  const { method = 'GET', body } = options;
+
+  // Remove leading slash if provided
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
+
+  const fetchOptions: RequestInit = {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  if (body && method !== 'GET') {
+    fetchOptions.body = JSON.stringify(body);
   }
-);
 
-// Response interceptor
-keycloakApi.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    if (error.response) {
-      // Handle specific error codes
-      const { status, data } = error.response;
-      
-      switch (status) {
-        case 401:
-          console.error('Unauthorized - Invalid or expired token');
-          break;
-        case 403:
-          console.error('Forbidden - Insufficient permissions');
-          break;
-        case 404:
-          console.error('Not found');
-          break;
-        case 500:
-          console.error('Server error');
-          break;
-        default:
-          console.error('API error:', data?.message || error.message);
-      }
-    }
-    return Promise.reject(error);
+  const response = await fetch(`/api/keycloak/${cleanEndpoint}`, fetchOptions);
+
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({ error: 'Request failed' }));
+    throw new Error(error.error || `Failed to ${method} ${endpoint}`);
   }
-);
 
-// Keycloak API service methods
+  return response.json();
+}
+
+/**
+ * Legacy service methods - kept for backward compatibility
+ * New code should use callKeycloakApi() directly
+ */
 export const keycloakApiService = {
-  /**
-   * Reset user password (sends reset email or initiates reset process)
-   * @param accessToken - User's access token
-   */
-  resetPassword: async (
-    accessToken: string
-  ): Promise<{ message: string }> => {
-    const response = await keycloakApi.post(
-      '/api/general/users/change-password',
-      {},
-      { accessToken } as any
-    );
-    return response.data;
-  },
-
-  /**
-   * Update user profile
-   * @param accessToken - User's access token
-   * @param data - User profile data (firstName, lastName, email)
-   */
-  updateUserProfile: async (
-    accessToken: string,
-    data: { email: string; firstName: string; lastName: string; companyName: string; }
-  ): Promise<{ message: string }> => {
-    const response = await keycloakApi.put(
-      '/api/general/users/update-user-profile',
-      data,
-      { accessToken } as any
-    );
-    return response.data;
-  },
+  resetPassword: () => callKeycloakApi('/reset-password', { method: 'POST' }),
+  
+  updateUserProfile: (data: { 
+    email: string; 
+    firstName: string; 
+    lastName: string; 
+    companyName: string;
+    userRole: string;
+  }) => callKeycloakApi('/update-profile', { method: 'PUT', body: data }),
 };
-
-export default keycloakApi;

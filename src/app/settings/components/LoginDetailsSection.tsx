@@ -20,20 +20,14 @@ export default function LoginDetailsSection({ userForm, formConfig }: LoginDetai
     const [isLoading, setIsLoading] = useState(false);
 
     const resetPassword = async () => {
-        // Check if access token is available
-        if (!session?.accessToken) {
-            showSnackbar('Session expired. Please log in again.', 'error');
-            return;
-        }
-
         setIsLoading(true);
 
         try {
-            await keycloakApiService.resetPassword(session.accessToken);
+            await keycloakApiService.resetPassword();
             showSnackbar('Password reset email has been sent to your mailbox!', 'success');
         } catch (error: any) {
             console.error('Password reset error:', error);
-            const errorMessage = error.response?.data?.message || 'Failed to reset password';
+            const errorMessage = error.message || 'Failed to reset password';
             showSnackbar(errorMessage, 'error');
         } finally {
             setIsLoading(false);
