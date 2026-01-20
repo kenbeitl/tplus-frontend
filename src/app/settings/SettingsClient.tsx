@@ -26,6 +26,7 @@ export default function SettingsClient() {
     const getTabFromPath = () => {
         if (pathname?.includes('/company-profile')) return '2';
         if (pathname?.includes('/manage-users')) return '3';
+        if (pathname?.includes('/user-profile')) return '1';
         return '1'; // default to user profile
     };
 
