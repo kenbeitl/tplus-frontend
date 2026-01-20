@@ -27,9 +27,12 @@
     "manageUsers": {
         "title": "管理用戶",
         "context": "管理您組織中的所有用戶",
-        "placeholder": "搜尋用戶...",
+        "searchPlaceholder": "搜尋用戶...",
         "name": "名稱",
         "allRoles": "所有角色",
+        "admin": "管理員",
+        "general": "普通用戶",
+        "allServices": "所有服務",
         "tableHeaders": {
             "name": "名稱",
             "email": "電郵地址",
@@ -37,6 +40,18 @@
             "serviceAccess": "服務存取權",
             "status": "狀態",
             "actions": "操作"
+        },
+        "loadingUsers": "正在加載用戶...",
+        "noUsersFound": "未找到用戶",
+        "addUserButton": "添加用戶",
+        "addUserModal": {
+            "title": "添加新用戶",
+            "context": "向您的組織添加新用戶。邀請電郵將發送給該用戶。",
+            "email": "電郵地址",
+            "role": "角色",
+            "remarks": "管理員用戶自動獲得對所有服務的完全存取權。",
+            "sending": "正在發送...",
+            "buttonText": "添加用戶"            
         }
     },
     "form": {

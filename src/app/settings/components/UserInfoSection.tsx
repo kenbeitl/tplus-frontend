@@ -78,18 +78,6 @@ export default function UserInfoSection({ userForm, formConfig, onUpdate }: User
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
                     <FormField
-                        name="companyName"
-                        label={formConfig.labels.companyName}
-                        value={userForm.values.companyName || ''}
-                        onChange={userForm.handleChange}
-                        onBlur={userForm.handleBlur}
-                        error={userForm.touched.companyName ? (userForm.errors.companyName as string) : ''}
-                        required
-                        fullWidth
-                    />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6 }}>
-                    <FormField
                         name="userRole"
                         label={formConfig.labels.userRole}
                         value={userForm.values.userRole || ''}

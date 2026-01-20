@@ -58,8 +58,6 @@ export function useSession() {
 
     try {
       const decoded = jwtDecode<TokenPayload>(session.accessToken);
-      console.log(session);
-      // console.log(decoded);
       return decoded;
     } catch (error) {
       console.error('Failed to decode token:', error);

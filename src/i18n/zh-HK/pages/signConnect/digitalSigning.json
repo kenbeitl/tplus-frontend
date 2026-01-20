@@ -5,7 +5,7 @@
         "platformLink": "https://www.iamsmart.gov.hk/tc/reg.html",
         "logo": "logo-iam-smart-plus.png",
         "digitalSigning": "DMSS",
-        "buttonLink": "https://rssp-test.tradelink.com.hk/dmss/web/secure"    
+        "buttonLink": "https://dmss.tradelink.com.hk/dmss/web/login?lang=zh_CN"    
     },
     "e-Passport": {
         "signVia": "透過 iD-One 進入 Tradelink Sign",

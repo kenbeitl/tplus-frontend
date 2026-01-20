@@ -8,11 +8,10 @@ import { useFormValidation } from "@/hooks/useFormValidation";
 import { keycloakApiService } from '@/lib/keycloakApi';
 
 import { Spacer } from "@/components";
-import { Box, Card, Divider, Typography } from "@mui/material";
+import { Box, Card, Typography } from "@mui/material";
 import { getSVGIcon } from "@/helpers/utils";
 
 import UserInfoSection from './UserInfoSection';
-import DangerZoneSection from './_DangerZoneSection';
 
 export default function UserProfileTab() {
     const { data: session, tokenPayload, update: updateSession } = useSession();
@@ -36,7 +35,6 @@ export default function UserProfileTab() {
         return {
             firstName: { required: true, minLength: 2, message: validation.firstNameRequired || '' },
             lastName: { required: true, minLength: 2, message: validation.lastNameRequired || '' },
-            companyName: { required: false },
             userRole: { required: false },
             email: { required: true, email: true, message: validation.emailRequired || '' },
             currentPassword: { required: false, minLength: 4, message: validation.currentPasswordMinLength || '' },
@@ -47,7 +45,6 @@ export default function UserProfileTab() {
     const initialValues = useMemo(() => ({
         firstName: tokenPayload?.given_name || '',
         lastName: tokenPayload?.family_name || '',
-        companyName: tokenPayload?.companyName || '',
         userRole: tokenPayload?.customUserAttributes?.userRole || '',
         email: tokenPayload?.email || '',
         currentPassword: '',
@@ -66,7 +63,6 @@ export default function UserProfileTab() {
     const handleUpdateProfile = async () => {
         userForm.clearFieldError('firstName');
         userForm.clearFieldError('lastName');
-        userForm.clearFieldError('companyName');
         userForm.clearFieldError('email');
         userForm.clearFieldError('userRole');
 
@@ -79,12 +75,11 @@ export default function UserProfileTab() {
                 email: userForm.values.email,
                 firstName: userForm.values.firstName,
                 lastName: userForm.values.lastName,
-                companyName: userForm.values.companyName,
                 userRole: userForm.values.userRole,
             });
 
-            // Fetch updated user data and refresh session
-            // const updatedUser = await keycloakApiService.refreshUser();
+            // Refresh session to get updated user data
+            await updateSession();
 
             showSnackbar('Profile updated successfully!', 'success');
         } catch (error: any) {

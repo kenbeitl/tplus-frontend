@@ -53,17 +53,24 @@ async function callKeycloakApi<TResponse = any, TBody = any>(
  * Use these typed methods instead of calling API routes directly
  */
 export const keycloakApiService = {
-  resetPassword: () => callKeycloakApi('/reset-password', { method: 'POST' }),
+  // Create
+  createUser: (data: {
+    email: string, 
+    userRole: userRoles
+  }) => callKeycloakApi('/create-user', { method: 'POST', body: data }),
+
+  // Read
+  getAllUsers: () => callKeycloakApi('/get-all-users', { method: 'GET' }),
   
+  refreshUser: () => callKeycloakApi('/refresh-user', { method: 'GET' }),
+
+  // Update
   updateUserProfile: (data: { 
     email: string; 
     firstName: string; 
     lastName: string; 
-    companyName: string;
     userRole: string;
   }) => callKeycloakApi('/update-profile', { method: 'PUT', body: data }),
-  
-  refreshUser: () => callKeycloakApi('/refresh-user', { method: 'GET' }),
 
   updateCompanyProfile: (data: {
     id: string;
@@ -81,10 +88,5 @@ export const keycloakApiService = {
     };
   }) => callKeycloakApi('/update-company-profile', { method: 'PUT', body: data }),
 
-  getAllUsers: () => callKeycloakApi('/get-all-users', { method: 'GET' }),
-
-  createUser: (data: {
-    email: string, 
-    userRole: userRoles
-  }) => callKeycloakApi('/create-user', { method: 'POST', body: data })
+  resetPassword: () => callKeycloakApi('/reset-password', { method: 'POST' }),
 };

@@ -27,9 +27,12 @@
     "manageUsers": {
         "title": "Manage Users",
         "context": "Manage all users in your organisation",
-        "placeholder": "Search users...",
+        "searchPlaceholder": "Search users...",
         "name": "Name",
         "allRoles": "All Roles",
+        "admin": "Admin",
+        "general": "General",
+        "allServices": "All Services",
         "tableHeaders": {
             "name": "Name",
             "email": "Email",
@@ -37,6 +40,18 @@
             "serviceAccess": "Service Access",
             "status": "Status",
             "actions": "Actions"
+        },
+        "loadingUsers": "Loading users...",
+        "noUsersFound": "No users found",
+        "addUserButton": "Add User",
+        "addUserModal": {
+            "title": "Add New User",
+            "context": "Add a new user to your organisation. An invitation email will be sent to the user.",
+            "email": "Email",
+            "role": "Role",
+            "remarks": "Admin users automatically get full access to all services.",
+            "sending": "Sending...",
+            "buttonText": "Add User"            
         }
     }, 
     "form": {
