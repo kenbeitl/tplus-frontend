@@ -3,6 +3,8 @@
 import React from "react";
 import { useSession } from '@/hooks/useSession';
 import { useTranslations } from '@/contexts/AppContext';
+import { useRouter, usePathname } from 'next/navigation';
+import { useSnackbar } from '@/contexts/SnackbarContext';
 
 import { Spacer, TabList, TabPanel } from "@/components";
 import { Box, Tab, Typography } from "@mui/material";
@@ -16,12 +18,46 @@ import ManageUsersTab from "./components/ManageUsersTab";
 export default function SettingsClient() {
     const { tokenPayload } = useSession();
     const t = useTranslations();
-    const [value, setValue] = React.useState('1');
+    const router = useRouter();
+    const pathname = usePathname();
+    const { showSnackbar } = useSnackbar();
+    
+    // Map pathname to tab value
+    const getTabFromPath = () => {
+        if (pathname?.includes('/company-profile')) return '2';
+        if (pathname?.includes('/manage-users')) return '3';
+        return '1'; // default to user profile
+    };
+
+    const [value, setValue] = React.useState(getTabFromPath());
+
+    // Update tab value when pathname changes
+    React.useEffect(() => {
+        const newTab = getTabFromPath();
+        
+        // Check permission for manage-users tab
+        if (newTab === '3' && !isAdmin) {
+            showSnackbar('You do not have permission to view this page', 'error');
+            router.push('/settings');
+            return;
+        }
+        
+        setValue(newTab);
+    }, [pathname, tokenPayload]);
 
     const isAdmin = tokenPayload?.customUserAttributes?.userRole?.toLowerCase() === 'admin';
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
+        
+        // Navigate to the corresponding route
+        const routes: { [key: string]: string } = {
+            '1': '/settings',
+            '2': '/settings/company-profile',
+            '3': '/settings/manage-users'
+        };
+        
+        router.push(routes[newValue] || '/settings');
     };
 
     return (
