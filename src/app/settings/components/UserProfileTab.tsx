@@ -60,7 +60,6 @@ export default function UserProfileTab() {
         userForm.clearFieldError('firstName');
         userForm.clearFieldError('lastName');
         userForm.clearFieldError('email');
-        userForm.clearFieldError('userRole');
 
         if (!userForm.validateAll()) {
             return;
@@ -71,7 +70,6 @@ export default function UserProfileTab() {
                 email: userForm.values.email,
                 firstName: userForm.values.firstName,
                 lastName: userForm.values.lastName,
-                userRole: userForm.values.userRole,
             });
 
             // Refresh session to get updated user data

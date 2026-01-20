@@ -62,7 +62,7 @@ export const keycloakApiService = {
   // Read
   getAllUsers: () => callKeycloakApi('/get-all-users', { method: 'GET' }),
   
-  refreshUser: () => callKeycloakApi('/refresh-user', { method: 'GET' }),
+  getGroups: () => callKeycloakApi('/get-groups', { method: 'GET' }),
 
   // Update
   enableUser: (userId: string) => callKeycloakApi(`/enable-user/${userId}`, { method: 'PUT' }),
@@ -73,7 +73,6 @@ export const keycloakApiService = {
     email: string; 
     firstName: string; 
     lastName: string; 
-    userRole: string;
   }) => callKeycloakApi('/update-profile', { method: 'PUT', body: data }),
 
   updateCompanyProfile: (data: {

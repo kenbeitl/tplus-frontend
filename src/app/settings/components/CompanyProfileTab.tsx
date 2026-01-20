@@ -16,6 +16,8 @@ export default function CompanyProfileTab() {
     const t = useTranslations();
     const { showSnackbar } = useSnackbar();
 
+    console.log('Token Payload:', tokenPayload);
+
     const isAdmin = tokenPayload?.customUserAttributes?.userRole?.toLowerCase() === 'admin';
 
     const formConfig = React.useMemo(() => {

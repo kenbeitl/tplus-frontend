@@ -9,6 +9,7 @@ import FormActions from './FormActions';
 import FormSkeleton from './FormSkeleton';
 import { useFormValidation } from '@/hooks/useFormValidation';
 import { useFormSubmission } from '@/hooks/useFormSubmission';
+import { useSession } from '@/hooks/useSession';
 import { applicationService } from '@/services';
 
 // Import the types from formConfigService
@@ -23,6 +24,8 @@ interface FormBaseProps {
 }
 
 export default function FormBase({ data, loading = false, onClose }: FormBaseProps) {
+  const { tokenPayload } = useSession();
+  
   // Build validation rules - matching the rolled back form
   const validationRules = useMemo(() => {
     return {
@@ -38,16 +41,20 @@ export default function FormBase({ data, loading = false, onClose }: FormBasePro
 
   // Build initial form values - matching the rolled back form
   const initialValues = useMemo(() => {
+    const fullName = tokenPayload?.given_name && tokenPayload?.family_name
+      ? `${tokenPayload.given_name} ${tokenPayload.family_name}`
+      : '';
+    
     return {
       formId: data?.formId || '',
-      name: '',
+      name: fullName,
       phoneNumber: '',
-      email: '',
+      email: tokenPayload?.email || '',
       jobTitle: '',
-      companyName: 'Demo Company',
+      companyName: tokenPayload?.companyName || '',
       message: '',
     };
-  }, [data?.formId]);
+  }, [data?.formId, tokenPayload]);
 
   // Initialize form validation
   const form = useFormValidation(initialValues, validationRules);
