@@ -5,6 +5,7 @@ import { useTranslations } from '@/contexts/AppContext';
 import { useSnackbar } from '@/contexts/SnackbarContext';
 import { keycloakApiService, userRoles } from '@/lib/keycloakApi';
 import AddUserModal from './AddUserModal';
+import EditUserModal from './EditUserModal';
 import { 
     Box, 
     Card, 
@@ -27,10 +28,29 @@ import {
 } from "@mui/material";
 import theme from "@/theme/theme";
 import { useMemo, useEffect, useState } from 'react';
-import { Search, Edit, UserPlus, Users } from 'lucide-react';
+import { Search, UserPlus } from 'lucide-react';
 import { getSVGIcon } from '@/helpers/utils';
 
 interface User {
+    id: string;
+    username: string;
+    email: string;
+    emailVerified: boolean;
+    firstName: string;
+    lastName: string;
+    enabled: boolean;
+    createdTimestamp: number;
+    attributes?: {
+        userRole?: string[];
+        displayName?: string[];
+    };
+    totp: boolean;
+    disableableCredentialTypes: string[];
+    requiredActions: string[];
+    notBefore: number;
+}
+
+interface DisplayUser {
     id: string;
     name: string;
     email: string;
@@ -43,12 +63,14 @@ export default function ManageUsersTab() {
     const { data: session, tokenPayload } = useSession();
     const t = useTranslations();
     const { showSnackbar } = useSnackbar();
-    const [users, setUsers] = useState<User[]>([]);
+    const [users, setUsers] = useState<DisplayUser[]>([]);
     const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
     const [nameFilter, setNameFilter] = useState('Name');
-    const [roleFilter, setRoleFilter] = useState('All Roles');
+    const [roleFilter, setRoleFilter] = useState('*');
     const [openModal, setOpenModal] = useState(false);
+    const [openEditModal, setOpenEditModal] = useState(false);
+    const [selectedUser, setSelectedUser] = useState<DisplayUser | null>(null);
 
     const translations = useMemo(() => {
         const page = t('pages.settings.manageUsers');
@@ -57,27 +79,49 @@ export default function ManageUsersTab() {
         }
     }, [t])
 
+    // Transform Keycloak user data to display format
+    const transformUsers = (keycloakUsers: User[]): DisplayUser[] => {
+        return keycloakUsers.map(user => ({
+            id: user.id,
+            name: user.attributes?.displayName?.[0] || `${user.firstName} ${user.lastName}`,
+            email: user.email,
+            role: user.attributes?.userRole?.[0] || 'General',
+            serviceAccess: [],
+            status: user.enabled ? 'Active' : 'Inactive'
+        }));
+    };
+
+    // Fetch and refresh user list
+    const fetchAndRefreshUsers = async () => {
+        try {
+            const data = await keycloakApiService.getAllUsers();
+            const extractedData: User[] = data[0]?.members;
+            const displayUsers = transformUsers(extractedData);
+            setUsers(displayUsers);
+        } catch (error) {
+            console.error('Failed to fetch users:', error);
+            throw error;
+        }
+    };
+
     useEffect(() => {
-        const fetchUsers = async () => {
+        const loadUsers = async () => {
             try {
                 setLoading(true);
-                const data = await keycloakApiService.getAllUsers();
-                setUsers(data);
-            } catch (error) {
-                console.error('Failed to fetch users:', error);
+                await fetchAndRefreshUsers();
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchUsers();
+        loadUsers();
     }, []);
 
     const filteredUsers = useMemo(() => {
         return users.filter(user => {
             const matchesSearch = user.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
                                 user.email?.toLowerCase().includes(searchQuery.toLowerCase());
-            const matchesRole = roleFilter === 'All Roles' || user.role === roleFilter;
+            const matchesRole = roleFilter === '*' || user.role === roleFilter;
             return matchesSearch && matchesRole;
         });
     }, [users, searchQuery, roleFilter]);
@@ -90,13 +134,46 @@ export default function ManageUsersTab() {
         setOpenModal(false);
     };
 
+    const handleOpenEditModal = (user: DisplayUser) => {
+        setSelectedUser(user);
+        setOpenEditModal(true);
+    };
+
+    const handleCloseEditModal = () => {
+        setOpenEditModal(false);
+        setSelectedUser(null);
+    };
+
     const handleUserAdded = async () => {
-        // Refresh user list after adding a new user
         try {
-            const data = await keycloakApiService.getAllUsers();
-            setUsers(data);
+            await fetchAndRefreshUsers();
         } catch (error) {
-            console.error('Failed to refresh users:', error);
+            console.error('Failed to refresh users after adding:', error);
+        }
+    };
+
+    const handleToggleUserStatus = async (userId: string, currentStatus: 'Active' | 'Inactive') => {
+        try {
+            if (currentStatus === 'Active') {
+                await keycloakApiService.disableUser(userId);
+                showSnackbar('User disabled successfully', 'success');
+            } else {
+                await keycloakApiService.enableUser(userId);
+                showSnackbar('User enabled successfully', 'success');
+            }
+            
+            await fetchAndRefreshUsers();
+        } catch (error: any) {
+            console.error('Failed to toggle user status:', error);
+            showSnackbar(error.message || 'Failed to update user status', 'error');
+        }
+    };
+
+    const handleUserUpdated = async () => {
+        try {
+            await fetchAndRefreshUsers();
+        } catch (error) {
+            console.error('Failed to refresh users after update:', error);
         }
     };
 
@@ -141,7 +218,7 @@ export default function ManageUsersTab() {
                         onChange={(e) => setRoleFilter(e.target.value)}
                         size="small"
                     >
-                        <MenuItem value={ translations.page.allRoles }>{ translations.page.allRoles }</MenuItem>
+                        <MenuItem value="*">{ translations.page.allRoles }</MenuItem>
                         <MenuItem value="Admin">Admin</MenuItem>
                         <MenuItem value="General">General</MenuItem>
                     </Select>
@@ -165,17 +242,13 @@ export default function ManageUsersTab() {
                         {loading ? (
                             <TableRow>
                                 <TableCell colSpan={6} align="center">
-                                    <Typography variant="body2" color="text.secondary">
-                                        Loading users...
-                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">{ translations.page.loadingUsers}</Typography>
                                 </TableCell>
                             </TableRow>
                         ) : filteredUsers.length === 0 ? (
                             <TableRow>
                                 <TableCell colSpan={6} align="center">
-                                    <Typography variant="body2" color="text.secondary">
-                                        No users found
-                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">{ translations.page.noUsersFound}</Typography>
                                 </TableCell>
                             </TableRow>
                         ) : (
@@ -207,7 +280,7 @@ export default function ManageUsersTab() {
                                                     />
                                                 ))
                                             ) : (
-                                                <Chip label="All Services" size="small" variant="outlined" />
+                                                <Chip label={ translations.page.allServices } size="small" variant="outlined" />
                                             )}
                                         </Box>
                                     </TableCell>
@@ -223,13 +296,25 @@ export default function ManageUsersTab() {
                                         />
                                     </TableCell>
                                     <TableCell align="right">
-                                        <Box component="div" className="flex gap-1 justify-end">
-                                            <IconButton size="small" aria-label="edit user">
-                                                <Edit size={18} />
-                                            </IconButton>
-                                            <IconButton size="small" aria-label="manage user">
-                                                <UserPlus size={18} />
-                                            </IconButton>
+                                        <Box component="div" className="flex gap-2 justify-end">
+                                            {/* <IconButton 
+                                                size="small" 
+                                                aria-label="edit user" 
+                                                className="p-2! border-2! border-gray-200! rounded-md! bg-slate-100!"
+                                                onClick={() => handleOpenEditModal(user)}
+                                            >
+                                                { getSVGIcon('edit', 18) }
+                                            </IconButton> */}
+                                            {user.email !== tokenPayload?.email && (
+                                                <IconButton 
+                                                    size="small" 
+                                                    aria-label={user.status === 'Active' ? 'disable user' : 'enable user'} 
+                                                    className="p-2! border-2! border-gray-200! rounded-md! bg-slate-100!"
+                                                    onClick={() => handleToggleUserStatus(user.id, user.status)}
+                                                >
+                                                    { getSVGIcon(user.status === 'Active' ? 'user-x' : 'user-check', 18) }
+                                                </IconButton>
+                                            )}
                                         </Box>
                                     </TableCell>
                                 </TableRow>
@@ -251,7 +336,7 @@ export default function ManageUsersTab() {
                     onClick={handleOpenModal}
                     sx={{ bgcolor: theme.palette.primary.main }}
                 >
-                    Add User
+                    { translations.page.addUserButton }
                 </Button>
             </Box>
 
@@ -260,6 +345,14 @@ export default function ManageUsersTab() {
                 open={openModal} 
                 onClose={handleCloseModal}
                 onUserAdded={handleUserAdded}
+            />
+
+            {/* Edit User Modal */}
+            <EditUserModal
+                open={openEditModal}
+                onClose={handleCloseEditModal}
+                onUserUpdated={handleUserUpdated}
+                user={selectedUser}
             />
         </Card>
     );

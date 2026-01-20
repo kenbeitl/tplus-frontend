@@ -65,6 +65,10 @@ export const keycloakApiService = {
   refreshUser: () => callKeycloakApi('/refresh-user', { method: 'GET' }),
 
   // Update
+  enableUser: (userId: string) => callKeycloakApi(`/enable-user/${userId}`, { method: 'PUT' }),
+
+  disableUser: (userId: string) => callKeycloakApi(`/disable-user/${userId}`, { method: 'PUT' }),
+
   updateUserProfile: (data: { 
     email: string; 
     firstName: string; 

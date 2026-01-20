@@ -87,14 +87,14 @@ export default function SignConnectClient() {
           ))}
         </Grid>
         <Spacer height={30} />
-        <Box component="div" className="flex justify-center">
+        {/* <Box component="div" className="flex justify-center">
           <Button
             variant="text"
             onClick={() => router.push('/help-centre')}
           >
             { t('pages.signConnect.learnMoreAboutSigningPlatforms') }
           </Button>
-        </Box>
+        </Box> */}
       </Paper>
 
       <ModalWelcome

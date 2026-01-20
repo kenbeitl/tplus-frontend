@@ -18,10 +18,6 @@ export default function UserProfileTab() {
     const t = useTranslations();
     const { showSnackbar } = useSnackbar();
 
-    useEffect(() => {
-        console.log(tokenPayload);
-    }, [tokenPayload]);
-
     const formConfig = useMemo(() => {
         const form = t('pages.settings.form');
         return {

@@ -13,7 +13,8 @@ interface ExtendedSession {
 }
 
 interface KeycloakApiConfig {
-  endpoint: string;
+  endpoint?: string;
+  keycloakEndpoint?: (req: NextRequest, context: { params: any }) => string;
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
   validateBody?: (body: any) => { valid: boolean; error?: string };
   transformBody?: (body: any) => any;
@@ -26,13 +27,25 @@ const BACKEND_URL = process.env.KEYCLOAK_API_URL || 'https://portal.tplus.ai/bac
  * Handles session validation, API proxying, and error handling
  */
 export function createKeycloakApiHandler(config: KeycloakApiConfig) {
-  return async (request: NextRequest) => {
+  return async (request: NextRequest, context?: { params: Promise<any> }) => {
     try {
       // Validate session
       const session = await getServerSession(authOptions) as ExtendedSession | null;
       
       if (!session?.accessToken) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      }
+
+      // Resolve dynamic params if present
+      const params = context?.params ? await context.params : {};
+
+      // Determine endpoint
+      const endpoint = config.keycloakEndpoint 
+        ? config.keycloakEndpoint(request, { params })
+        : config.endpoint;
+
+      if (!endpoint) {
+        return NextResponse.json({ error: "Endpoint not configured" }, { status: 500 });
       }
 
       // Parse request body for non-GET requests
@@ -65,7 +78,7 @@ export function createKeycloakApiHandler(config: KeycloakApiConfig) {
       // Prepare axios config
       const axiosConfig: AxiosRequestConfig = {
         method: config.method,
-        url: `${BACKEND_URL}${config.endpoint}`,
+        url: `${BACKEND_URL}${endpoint}`,
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${session.accessToken}`,
