@@ -16,6 +16,7 @@ interface Provider {
     consultation?: string;
     formId?: string;
     logo?: string;
+    link?: string;
 }
 
 interface BizConnectProviderListProps {
@@ -139,16 +140,18 @@ export default function BizConnectProviderList({
                                             sx: { width: '100%' }
                                         }}
                                     />
-                                    <Button 
-                                        variant="outlined" 
-                                        color="white"
-                                        endIcon={ getSVGIcon('external-link', 16) }
-                                        onClick={ () => window.open('') }
-                                        className="whitespace-nowrap"
-                                        sx={{ width: '100%' }}
-                                    >
-                                        { modalNode.indexOf('dueDiligenceService') >= 0 ? t('pages.bizConnect.learnMore') : t('pages.bizConnect.downloadBrochure') }
-                                    </Button>
+                                    {provider.link && 
+                                        <Button 
+                                            variant="outlined" 
+                                            color="white"
+                                            endIcon={ getSVGIcon('external-link', 16) }
+                                            onClick={ () => window.open(`/assets/files/${provider.link}`, "_blank") }
+                                            className="whitespace-nowrap"
+                                            sx={{ width: '100%' }}
+                                        >
+                                            { modalNode.indexOf('dueDiligenceService') >= 0 ? t('pages.bizConnect.learnMore') : t('pages.bizConnect.downloadBrochure') }
+                                        </Button>
+                                    }                                    
                                 </Box> 
                             </Box>                           
                         </Card>

@@ -390,13 +390,9 @@ export default function AppWrapper({
           onClick={handleDrawerClick}
         />
         <Box component="main" sx={{ 
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          width: isAboveDesktop 
-            ? (drawerOpen ? `calc(100% - ${drawerWidth}px)` : `calc(100% - ${drawerMiniWidth}px)`)
-            : '100%',
-          transition: theme.transitions.create('width', {
+          flexGrow: 1,
+          minHeight: '100vh',
+          transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
             duration: drawerOpen 
               ? theme.transitions.duration.enteringScreen 

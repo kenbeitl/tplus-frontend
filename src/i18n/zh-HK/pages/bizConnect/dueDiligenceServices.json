@@ -4,7 +4,7 @@
     "providers": [
         {
             "name":"Coface",
-            "context": "全球風險洞察、數據、評分、信用意見和報告，助您做出明智決策。",
+            "context": "全球風險解析、數據、評分、信用意見與報告，助您精準決策。",
             "features": [
                 "URBA報告 - 全面的信用風險評估",
                 "財務實力與商業風險評估",
@@ -13,20 +13,8 @@
             ],
             "pricing": "每份報告起價199美元",
             "deliveryTime": "24-72小時",
-            "formId": "coface"
-        },
-        {
-            "name":"鄧白氏（D&B）",
-            "context": "全球值得信賴的商業情報來源",
-            "features": [
-                "商業資訊報告 - 完整的公司情報",
-                "使用專有評分的信用評等和風險評估",
-                "管理結構與所有權詳情",
-                "產業基準與付款行為趨勢"
-            ],
-            "pricing": "每份報告起價299美元",
-            "deliveryTime": "24-48小時",
-            "formId": "dun-bradstreet"
+            "formId": "coface",
+            "link": "coface-bi-one-pager.pdf"
         }
     ]
 }
