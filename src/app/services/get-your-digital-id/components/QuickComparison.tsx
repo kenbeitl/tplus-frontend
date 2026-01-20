@@ -29,7 +29,7 @@ interface quickComparisonProps {
 
 const TableCell = styled(MuiTableCell)({
     fontSize: '1rem',
-    '&:not(:first-child)': {
+    '&:not(:first-of-type)': {
         textAlign: 'center',
     },
     '& svg': {

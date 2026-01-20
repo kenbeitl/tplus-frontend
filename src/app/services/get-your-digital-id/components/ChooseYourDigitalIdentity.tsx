@@ -6,6 +6,7 @@ import { Box, Button, Card, Grid, List, ListItem, ListItemIcon, ListItemText, Ty
 import { getSVGIcon } from "@/helpers/utils";
 import { useState } from "react";
 import { Option } from "lucide-react";
+import ModalHowToApplyForIDOne from "../../sign-connect/modal/how-to-apply-for-id-one";
 
 interface requirementItem {
     item: string;
@@ -40,11 +41,11 @@ interface ChooseYourDigitalIdentityProps {
 
 export default function ChooseYourDigitalIdentity({ chooseYourDigitalIdentity }: ChooseYourDigitalIdentityProps) {
 
-    const [selectYourDocumentTypeModal, setSelectYourDocumentTypeModal] = useState(false);
+    const [openHowToApplyForIDOneModal, setOpenHowToApplyForIDOneModal] = useState(false);
 
     const handleAction = (action: string) => {
         if (action === 'open-modal') {
-            setSelectYourDocumentTypeModal(true);
+            setOpenHowToApplyForIDOneModal(true);
         } else if (action) {
         // External URL
         window.open(action, '_blank');
@@ -90,17 +91,24 @@ export default function ChooseYourDigitalIdentity({ chooseYourDigitalIdentity }:
                                 </List>
                             </Box>
                             <Button
-                                variant="contained"
+                                variant="gradient"
+                                color="blue"
                                 onClick={() => handleAction(option.buttonLink)}
                                 sx={{ width: '100%', mt: 'auto' }}
                             >
-                                { option.buttonText  }
+                                { option.buttonText }
                             </Button>
                             </Card>
                         </Grid>
                     );
                 })}
             </Grid>
+
+            {/* How to Apply for iD One Modal */}
+            <ModalHowToApplyForIDOne 
+                open={openHowToApplyForIDOneModal} 
+                onClose={() => setOpenHowToApplyForIDOneModal(false)} 
+            />
         </>
     );
 }
