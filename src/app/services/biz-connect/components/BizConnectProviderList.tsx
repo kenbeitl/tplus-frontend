@@ -86,7 +86,7 @@ export default function BizConnectProviderList({
                                 <List sx={{ flexGrow: 1 }}>
                                     {provider.features?.map((feature: string, f_idx: number) => (
                                     <ListItem key={`features-${f_idx}`}>
-                                        <ListItemIcon>
+                                        <ListItemIcon sx={{ marginTop: '0.35em' }}>
                                             { getSVGIcon('circle-check-big', 16, theme.palette.icon.lightGreen) }
                                         </ListItemIcon>
                                         <ListItemText primary={feature} slotProps={{ primary: { sx: { fontSize: '14px' } } }} />
