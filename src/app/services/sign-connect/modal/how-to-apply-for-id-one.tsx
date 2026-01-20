@@ -69,7 +69,9 @@ export default function ModalHowToApplyForIDOne({ open, onClose }: ModalProps) {
               {s === 0 && 
                 <Grid container spacing={2} className="mb-3">
                   <Grid size={{ xs: 12, sm: 6 }} className="flex flex-col items-center">
-                    <Box component="div" className="p-3 bg-white border-2! border-gray-200! rounded-lg mb-3"><img src="/assets/images/iDOne-step1-ios.png" alt="ID One Step 1 for iOS" width="100" /></Box>
+                    <Box component="div" className="p-2 bg-white border-2! border-gray-200! rounded-xl mb-3">
+                      <img src="/assets/images/iDOne-step1-ios.png" alt="ID One Step 1 for iOS" width="100" />
+                    </Box>
                     <Button 
                       variant="outlined" 
                       href="https://apps.apple.com/hk/app/tradelink-sign/id6480483296" 
@@ -78,7 +80,9 @@ export default function ModalHowToApplyForIDOne({ open, onClose }: ModalProps) {
                     >App Store</Button>
                   </Grid>
                   <Grid size={{ xs: 12, sm: 6 }} className="flex flex-col items-center">
-                    <Box component="div" className="p-3 bg-white border-2! border-gray-200! rounded-lg mb-3"><img src="/assets/images/iDOne-step1-android.png" alt="ID One Step 1 for Android" width="100" /></Box>
+                    <Box component="div" className="p-2 bg-white border-2! border-gray-200! rounded-lg mb-3">
+                      <img src="/assets/images/iDOne-step1-android.png" alt="ID One Step 1 for Android" width="100" />
+                    </Box>
                     <Button 
                       variant="outlined" 
                       href="https://play.google.com/store/apps/details?id=com.tradelink.sign" 
@@ -89,7 +93,7 @@ export default function ModalHowToApplyForIDOne({ open, onClose }: ModalProps) {
                 </Grid>
               }
             </Box>            
-            {s === 1 && <Box component="div" className="p-1 border! border-gray-200! rounded-lg ml-3"><img src="/assets/images/iDOne-step2.png" alt={step.title} /></Box>}
+            {s === 1 && <Box component="div" className="p-1 border! border-gray-200! rounded-lg ml-3"><img src="/assets/images/iDOne-step2.png" alt={step.title} width="300" /></Box>}
           </Box>
         </React.Fragment>        
       ))}
