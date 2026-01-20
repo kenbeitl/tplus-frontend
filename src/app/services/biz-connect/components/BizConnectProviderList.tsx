@@ -3,7 +3,7 @@
 import { ButtonWithFormModal, Spacer, StyledIcon } from "@/components";
 import { useTranslations } from "@/contexts/AppContext";
 import { getSVGIcon } from "@/helpers/utils";
-import { Box, Button, Card, Grid, List, ListItem as MuiListItem, ListItemIcon as MuiListItemIcon, ListItemText, Typography, styled } from "@mui/material";
+import { Box, Button, Card, Grid, List, ListItem as MuiListItem, ListItemIcon as MuiListItemIcon, ListItemText, Typography, styled, Divider } from "@mui/material";
 import theme from "@/theme/theme";
 import { useRouter } from "next/navigation";
 
@@ -76,29 +76,28 @@ export default function BizConnectProviderList({
                             <Box className="pt-4 px-4 w-full h-32 flex items-center justify-center">
                                 <img src={`/assets/logo/${provider.logo}`} alt={provider.name} width={200} />
                             </Box>
-                            <Box className="pt-12 px-4 flex flex-col items-center mb-4">
-                                <Typography variant="h6" component="h3" className="ml-8 font-bold!">{ provider.name }</Typography>
-                                <Typography variant="h6" component="p" color={ theme.palette.text.secondary }>{ provider.context }</Typography>
+                            <Box className="pt-5 px-4 flex flex-col items-center mb-4">
+                                <Typography variant="h5" component="h3" className="ml-8">{ provider.name }</Typography>
+                                <Typography variant="caption" component="p" color={ theme.palette.text.secondary }>{ provider.context }</Typography>
                             </Box>  
                             <Box className="px-4 pb-4">
                                 <Spacer height={30} />
-                                <Typography variant="subtitle1" component="p">{ t('pages.bizConnect.servicesOffered') }</Typography>
+                                <Typography variant="subtitle2" component="p" className="font-normal!">{ t('pages.bizConnect.servicesOffered') }</Typography>
                                 <List sx={{ flexGrow: 1 }}>
                                     {provider.features?.map((feature: string, f_idx: number) => (
-                                    <ListItem key={`features-${f_idx}`} className="py-0!">
+                                    <ListItem key={`features-${f_idx}`}>
                                         <ListItemIcon>
                                             { getSVGIcon('circle-check-big', 16, theme.palette.icon.lightGreen) }
                                         </ListItemIcon>
-                                        <ListItemText primary={feature} />
+                                        <ListItemText primary={feature} slotProps={{ primary: { sx: { fontSize: '14px' } } }} />
                                     </ListItem>
                                     ))}
                                 </List>
-                                <Spacer height={30} />
-                                <Box className="p-3 bg-gray-50 rounded">
-                                    <Grid container spacing={2}>
+                                <Divider className="my-2!" />
+                                <Grid container spacing={2}>
                                     {provider.pricing && (
                                         <Grid size={6}>
-                                        <Typography variant="body2" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
+                                        <Typography variant="caption" color={theme.palette.text.secondary} sx={{ display: 'block' }}>
                                             { t('pages.bizConnect.pricing') }
                                         </Typography>
                                         <Typography variant="body2" sx={{ color: 'text.primary' }}>
@@ -126,8 +125,8 @@ export default function BizConnectProviderList({
                                         </Typography>
                                         </Grid>
                                     )}
-                                    </Grid>
-                                </Box>
+                                </Grid>
+                                
                                 <Spacer height={30} />
                                 <Box component="div" className="flex justify-between gap-2">
                                     <ButtonWithFormModal
