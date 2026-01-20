@@ -16,8 +16,6 @@ export default function CompanyProfileTab() {
     const t = useTranslations();
     const { showSnackbar } = useSnackbar();
 
-    console.log('Token Payload:', tokenPayload);
-
     const isAdmin = tokenPayload?.customUserAttributes?.userRole?.toLowerCase() === 'admin';
 
     const formConfig = React.useMemo(() => {
@@ -157,7 +155,8 @@ export default function CompanyProfileTab() {
                         placeholder="Company Name"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
-                        disabled={!isAdmin}
+                        // disabled={!isAdmin}
+                        disabled
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -167,7 +166,8 @@ export default function CompanyProfileTab() {
                         value={companyForm.relatedIndustries}
                         onChange={handleSelectChange}
                         options={formConfig.industryOptions}
-                        disabled={!isAdmin}
+                        // disabled={!isAdmin}
+                        disabled
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -179,7 +179,8 @@ export default function CompanyProfileTab() {
                         placeholder="Block/Building"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
-                        disabled={!isAdmin}
+                        // disabled={!isAdmin}
+                        disabled
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -191,7 +192,8 @@ export default function CompanyProfileTab() {
                         placeholder="Street Address"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
-                        disabled={!isAdmin}
+                        // disabled={!isAdmin}
+                        disabled
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -203,7 +205,8 @@ export default function CompanyProfileTab() {
                         placeholder="District"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
-                        disabled={!isAdmin}
+                        // disabled={!isAdmin}
+                        disabled
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -215,7 +218,8 @@ export default function CompanyProfileTab() {
                         placeholder="City"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
-                        disabled={!isAdmin}
+                        // disabled={!isAdmin}
+                        disabled
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -227,7 +231,8 @@ export default function CompanyProfileTab() {
                         placeholder="https://www.example.com"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
-                        disabled={!isAdmin}
+                        // disabled={!isAdmin}
+                        disabled
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -239,7 +244,8 @@ export default function CompanyProfileTab() {
                         placeholder="CETS ID"
                         slotProps={{ inputLabel: { shrink: true } }}
                         fullWidth
-                        disabled={!isAdmin}
+                        // disabled={!isAdmin}
+                        disabled
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -249,7 +255,8 @@ export default function CompanyProfileTab() {
                         value={companyForm.numOfEmployeeInHK}
                         onChange={handleSelectChange}
                         options={formConfig.employeeCountOptions}
-                        disabled={!isAdmin}
+                        // disabled={!isAdmin}
+                        disabled
                     />
                 </Grid>
             </Grid>
@@ -261,6 +268,7 @@ export default function CompanyProfileTab() {
                         color="blue"
                         onClick={handleUpdateProfile}
                         sx={{ width: 'auto' }}
+                        disabled
                     >
                         {t('common.saveProfile')}
                     </Button>

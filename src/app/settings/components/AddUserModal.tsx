@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
-import Modal from '@/components/Modal';
 import { keycloakApiService, userRoles } from '@/lib/keycloakApi';
 import { useSnackbar } from '@/contexts/SnackbarContext';
 import {
@@ -15,6 +14,7 @@ import {
 } from "@mui/material";
 import theme from "@/theme/theme";
 import { useTranslations } from '@/contexts/AppContext';
+import { InfoModal } from '@/components';
 
 interface AddUserModalProps {
     open: boolean;
@@ -25,8 +25,10 @@ interface AddUserModalProps {
 export default function AddUserModal({ open, onClose, onUserAdded }: AddUserModalProps) {
     const t = useTranslations();
     const translations = useMemo(() => {
+        const page = t('pages.settings.manageUsers');
         const modal = t('pages.settings.manageUsers.addUserModal');
         return {
+            page,
             modal
         }
     }, [t])
@@ -68,11 +70,11 @@ export default function AddUserModal({ open, onClose, onUserAdded }: AddUserModa
     };
 
     return (
-        <Modal 
+        <InfoModal 
             open={open} 
             onClose={handleClose}
-            
-            
+            title={ translations.modal.title }
+            subtitle={ translations.modal.context }
             maxWidth={800}
         >
             <Box component="form" onSubmit={handleSubmit}>
@@ -101,13 +103,11 @@ export default function AddUserModal({ open, onClose, onUserAdded }: AddUserModa
                             onChange={(e) => setFormData({ ...formData, role: e.target.value as userRoles })}
                             disabled={submitting}
                         >
-                            <MenuItem value="General">General</MenuItem>
-                            <MenuItem value="Admin">Admin</MenuItem>
+                            <MenuItem value="General">{ translations.page.general }</MenuItem>
+                            <MenuItem value="Admin">{ translations.page.admin }</MenuItem>
                         </Select>
                     </FormControl>
-                    <Typography variant="caption" color="text.secondary" sx={{ fontStyle: 'italic', display: 'block', mt: 1 }}>
-                        Admin users automatically get full access to all services.
-                    </Typography>
+                    <Typography variant="caption" color="text.secondary" sx={{ fontStyle: 'italic', display: 'block', mt: 1 }}>{ translations.modal.remarks }</Typography>
                 </Box>
 
                 <Box component="div" className="flex justify-end gap-2 mt-6!">
@@ -116,18 +116,19 @@ export default function AddUserModal({ open, onClose, onUserAdded }: AddUserModa
                         onClick={handleClose}
                         disabled={submitting}
                     >
-                        Cancel
+                        { t('common.cancel') }
                     </Button>
                     <Button
                         type="submit"
-                        variant="contained"
+                        variant="gradient"
+                        color="blue"
                         disabled={submitting}
                         sx={{ bgcolor: theme.palette.primary.main }}
                     >
-                        {submitting ? 'Sending...' : 'Add User'}
+                        { translations.modal[submitting ? 'sending' : 'buttonText'] }
                     </Button>
                 </Box>
             </Box>
-        </Modal>
+        </InfoModal>
     );
 }

@@ -62,6 +62,7 @@ export default function UserInfoSection({ userForm, formConfig, onUpdate }: User
                         error={userForm.touched.firstName ? (userForm.errors.firstName as string) : ''}
                         required
                         fullWidth
+                        disabled
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -74,6 +75,7 @@ export default function UserInfoSection({ userForm, formConfig, onUpdate }: User
                         error={userForm.touched.lastName ? (userForm.errors.lastName as string) : ''}
                         required
                         fullWidth
+                        disabled
                     />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
@@ -106,6 +108,7 @@ export default function UserInfoSection({ userForm, formConfig, onUpdate }: User
                     color="blue"
                     onClick={onUpdate}
                     sx={{ width: 'auto' }}
+                    disabled
                 >
                     {t('common.updateProfile')}
                 </Button>

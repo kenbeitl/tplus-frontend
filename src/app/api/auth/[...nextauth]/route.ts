@@ -17,18 +17,20 @@ async function refreshAccessToken(token: any) {
     const refreshedTokens = await response.json();
 
     if (!response.ok) {
+      console.error("Token refresh failed:", refreshedTokens);
       throw refreshedTokens;
     }
 
+    console.log("Token refreshed successfully");
     return {
       ...token,
       accessToken: refreshedTokens.access_token,
-      accessTokenExpires: Date.now() + refreshedTokens.expires_in * 1000,
+      accessTokenExpires: Date.now() + (refreshedTokens.expires_in || 300) * 1000,
       refreshToken: refreshedTokens.refresh_token ?? token.refreshToken,
       idToken: refreshedTokens.id_token,
     };
   } catch (error) {
-    console.error("Error refreshing access token", error);
+    console.error("Error refreshing access token:", error);
     return {
       ...token,
       error: "RefreshAccessTokenError",
@@ -68,6 +70,11 @@ export const authOptions: AuthOptions = {
       return refreshAccessToken(token);
     },
     async session({ session, token }) {
+      // If there's a refresh error, force re-login
+      if (token.error === "RefreshAccessTokenError") {
+        return { ...session, error: token.error };
+      }
+      
       (session as any).accessToken = token.accessToken;
       (session as any).idToken = token.idToken;
       return session;

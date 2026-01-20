@@ -16,7 +16,7 @@ import CompanyProfileTab from './components/CompanyProfileTab';
 import ManageUsersTab from "./components/ManageUsersTab";
 
 export default function SettingsClient() {
-    const { tokenPayload } = useSession();
+    const { tokenPayload, status } = useSession();
     const t = useTranslations();
     const router = useRouter();
     const pathname = usePathname();
@@ -32,8 +32,15 @@ export default function SettingsClient() {
 
     const [value, setValue] = React.useState(getTabFromPath());
 
+    const isAdmin = tokenPayload?.customUserAttributes?.userRole?.toLowerCase() === 'admin';
+
     // Update tab value when pathname changes
     React.useEffect(() => {
+        // Don't check permissions while session is loading
+        if (status === 'loading' || !tokenPayload) {
+            return;
+        }
+
         const newTab = getTabFromPath();
         
         // Check permission for manage-users tab
@@ -44,9 +51,7 @@ export default function SettingsClient() {
         }
         
         setValue(newTab);
-    }, [pathname, tokenPayload]);
-
-    const isAdmin = tokenPayload?.customUserAttributes?.userRole?.toLowerCase() === 'admin';
+    }, [pathname, tokenPayload, status, isAdmin]);
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);

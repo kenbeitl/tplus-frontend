@@ -1,6 +1,6 @@
 import { useSession as useNextAuthSession } from 'next-auth/react';
 import { jwtDecode } from 'jwt-decode';
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import type { Session } from 'next-auth';
 
 export interface TokenPayload {
@@ -64,6 +64,31 @@ export function useSession() {
       return null;
     }
   }, [session, session?.accessToken]);
+
+  // Refresh session when page becomes visible after being idle
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible' && session) {
+        // Check if token is expired or close to expiring
+        if (tokenPayload?.exp) {
+          const expiresAt = tokenPayload.exp * 1000; // Convert to milliseconds
+          const now = Date.now();
+          const timeUntilExpiry = expiresAt - now;
+          
+          // Refresh if token expires in less than 1 minute or already expired
+          if (timeUntilExpiry < 60000) {
+            update();
+          }
+        }
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [session, tokenPayload, update]);
 
   return {
     data: session,

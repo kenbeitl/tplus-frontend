@@ -1,6 +1,7 @@
 'use client';
 
 import { createTheme } from '@mui/material/styles';
+import { NodeNextRequest } from 'next/dist/server/base-http/node';
 
 type ColorConfig = {
   background: string;
@@ -424,7 +425,16 @@ const theme = createTheme({
             transform: 'translateY(-2px)',
           },
           '&:disabled': {
-            opacity: 0.6,
+            cursor: 'not-allowed',
+            backgroundImage: 'none',
+            backgroundColor: '#e0e0e0',
+            color: '#9e9e9e',
+            border: '1px solid #e0e0e0',
+            boxShadow: 'none',
+            '&:hover': {
+              boxShadow: 'none',
+              transform: 'none',
+            },
           }
         },
       },
@@ -520,9 +530,6 @@ const theme = createTheme({
             backgroundColor: '#2b7fff',
             boxShadow: 'none',
             border: '1px solid #2b7fff',
-            '&.Mui-disabled': {
-              border: 0,
-            },
             '&:hover': {
               color: '#2b7fff',
               backgroundColor: '#FFFFFF',
