@@ -11,6 +11,7 @@ import { getButtonGradientClass, getIconGradientVariant } from '@/helpers/gradie
 
 export default function GovConnectClient() {
     const t = useTranslations();
+    const locale = useWebLocale();
     const pathname = usePathname();
     const router = useRouter();
     const webLocale = useWebLocale();
@@ -107,7 +108,7 @@ export default function GovConnectClient() {
                                     variant="gradient"
                                     color="green"
                                     endIcon={getSVGIcon('arrow-right')}
-                                    onClick={() => window.open(process.env.NEXT_PUBLIC_TDEC_FORM_URL || '/tdecForm', '_blank')}
+                                    onClick={() => window.open(`${process.env.NEXT_PUBLIC_TDEC_FORM_URL || '/tdecForm'}?lang=${locale}`, '_blank')}
                                     sx={{ width: '100%', mt: 'auto' }}
                                 >
                                     {service.buttonText}
